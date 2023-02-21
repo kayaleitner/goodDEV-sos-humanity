@@ -1,4 +1,4 @@
-const domain = 'flynt.test'
+const domain = 'https://crossboundaryenergy.local:61988/'
 const dest = './dist'
 
 const host = `https://${domain}`
