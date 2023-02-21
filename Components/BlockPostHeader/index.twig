@@ -1,0 +1,28 @@
+<flynt-component client:visible name="BlockPostHeader">
+  <div class="container" data-theme="light">
+    <div class="centerContentMaxWidth">
+      <h1>{{ post.title }}</h1>
+      {% if post.post_excerpt %}
+        <p class="h5">{{ post.post_excerpt }}</p>
+      {% endif %}
+      <div class="meta">
+        <a class="author" href="{{ post.author.link|e('esc_url') }}">
+          {% if post.author.avatar %}
+            <img class="avatar" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
+          {% endif %}
+          <span class="visuallyHidden">{{ labels.postedBy|e }}</span>
+          {{ post.author.name }}
+        </a>
+        <a class="category" href="{{ post.category.link|e('esc_url') }}">
+          <span class="visuallyHidden">{{ labels.postedIn|e }}</span>
+          {{ post.category }}
+        </a>
+        <time class="date" datetime="{{ post.post_date|date('c') }}">{{ post.post_date|date(dateFormat) }}</time>
+        <span class="readingtime">{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</span>
+      </div>
+    </div>
+  </div>
+  {% if post.thumbnail %}
+    {{ renderComponent('BlockImage', { image: post.thumbnail, options: { size: 'large' }, noComponentSpacing: true }) }}
+  {% endif %}
+</flynt-component>
