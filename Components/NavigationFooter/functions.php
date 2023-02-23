@@ -2,8 +2,10 @@
 
 namespace Flynt\Components\NavigationFooter;
 
+use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
 use Flynt\Shortcodes;
+use Flynt\ComponentManager;
 use Timber\Timber;
 
 add_action('init', function () {
@@ -19,10 +21,80 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
     return $data;
 });
 
+add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
+    $componentManager = ComponentManager::getInstance();
+    $componentPathFull = $componentManager->getComponentDirPath('NavigationFooter');
+    $componentPath = str_replace(trailingslashit(get_template_directory()), '', $componentPathFull);
+
+    if (!empty($data['social'])) {
+        $data['social'] = array_map(function ($item) use ($componentPath) {
+            $item['icon'] = Asset::getContents("{$componentPath}Assets/{$item['platform']['value']}.svg");
+            return $item;
+        }, $data['social']);
+    }
+    return $data;
+});
+
 Options::addTranslatable('NavigationFooter', [
     [
-        'label' => __('General', 'flynt'),
-        'name' => 'generalTab',
+        'label' => __('Logo', 'flynt'),
+        'name' => 'logoTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Logo', 'flynt'),
+        'name' => 'logoFooter',
+        'type' => 'image',
+        'preview_size' => 'medium',
+        'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
+        'required' => 0,
+        'mime_types' => 'jpg,jpeg,png,svg'
+    ],
+    [
+        'label' => __('Menus', 'flynt'),
+        'name' => 'menusTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Menu', 'flynt'),
+        'name' => 'repeaterOuter',
+        'type' => 'repeater',
+        'layout' => 'block',
+        'min' => '1',
+        'button_label' => __('Add Menu', 'flynt'),
+        'sub_fields' => [
+            [
+                'label' => __('Title', 'flynt'),
+                'name' => 'title',
+                'type' => 'text'
+            ],
+            [
+                'label' => __('Menu Items', 'flynt'),
+                'name' => 'repeaterInner',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => __('Add Page Link', 'flynt'),
+                'sub_fields' => [
+                    [
+                        'label' => __('Page Link', 'flynt'),
+                        'name' => 'pageLink',
+                        'type' => 'link',
+                        'return_format' => 'array',
+                        'wrapper' => [
+                            'width' => 100
+                        ],
+                    ],
+                ]
+            ],
+        ]
+    ],
+    [
+        'label' => __('Content', 'flynt'),
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0
@@ -35,6 +107,42 @@ Options::addTranslatable('NavigationFooter', [
         'delay' => 1,
         'toolbar' => 'basic',
         'default_value' => '©&nbsp;[year] [sitetitle]'
+    ],
+    [
+        'label' => __('Social Media', 'flynt'),
+        'name' => 'socialmediaTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Social Platform', 'flynt'),
+        'name' => 'social',
+        'type' => 'repeater',
+        'layout' => 'table',
+        'button_label' => __('Add Social Link', 'flynt'),
+        'sub_fields' => [
+            [
+                'label' => __('Platform', 'flynt'),
+                'name' => 'platform',
+                'type' => 'select',
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 1,
+                'ajax' => 0,
+                'return_format' => 'array',
+                'choices' => [
+                    'facebook' => 'Facebook',
+                    'twitter' => 'Twitter'
+                ]
+            ],
+            [
+                'label' => __('Link', 'flynt'),
+                'name' => 'url',
+                'type' => 'url',
+                'required' => 1
+            ],
+        ]
     ],
     [
         'label' => __('Content Examples', 'flynt'),

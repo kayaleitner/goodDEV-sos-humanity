@@ -1,12 +1,43 @@
-<flynt-component client:visible name="NavigationFooter" data-theme="dark">
-  <div class="container centerMaxWidthContainerLarge">
-    {% if menu %}
-      <nav class="navigation" aria-label="{{ labels.ariaLabel }}">
-        {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
-      </nav>
-    {% endif %}
-    {% if contentHtml %}
-      <div class="content">{{ contentHtml|e('wp_kses_post') }}</div>
-    {% endif %}
-  </div>
+<flynt-component client:visible name="NavigationFooter" class="text-white bg-green">
+  <div class="max-w-screen-max mx-auto flex flex-col px-sm lg:px-lg py-md">
+    <div class="flex flex-col lg:flex-row align-top justify-between gap-lg w-full mb-lg">
+      {% if logoFooter %}
+        <a href="{{ site.link }}">
+          <img class="logo lazyload max-w-[230px]"
+          src="{{ logoFooter.src | resize(32) }}"
+          data-srcset="{{function('wp_get_attachment_image_srcset', logoFooter.id)}}"
+          data-sizes="auto">
+        </a>
+      {% endif %}
+      <div class="grow flex flex-col lg:flex-row align-top items-start justify-between lg:justify-end flex-nowrap gap-md">
+        {% for panelOuter in repeaterOuter %}
+          <div class="w-1/2 lg:w-auto flex flex-col align-top items-start justify-start gap-sm" id="content-{{ loop.index }}">
+            <div class="font-bold">
+              {{ panelOuter.title }}
+            </div>
+            {% for panelInner in panelOuter.repeaterInner %}
+              <a class="inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200" href="{{ panelInner.pageLink.url|e }}" alt="{{ panelInner.pageLink.alt|e }}" {% if panelInner.pageLink.target %} target="{{ panelInner.pageLink.target }}" rel="noreferrer noopener"{% endif %}>
+                {{ panelInner.pageLink.title|e }}
+              </a>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="flex flex-col-reverse lg:flex-row align-middle items-start lg:items-center justify-start lg:justify-between gap-lg w-full">
+      {% if contentHtml %}
+        <div class="lg:w-1/2">{{ contentHtml|e('wp_kses_post') }}</div>
+      {% endif %}
+      {% if social %}
+        <div class="social lg:w-1/2 flex flex-row align-middle items-center justify-start lg:justify-end gap-md">
+          {% for socials in social %}
+            <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
+              {{ socials.icon }}
+            </a>
+          {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  <div>
 </flynt-component>
