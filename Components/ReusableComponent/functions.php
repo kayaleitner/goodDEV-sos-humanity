@@ -6,10 +6,10 @@ function getACFLayout()
 {
     return [
         'name' => 'ReusableComponent',
-        'label' => sprintf('%1$s <i class="dashicons dashicons-controls-repeat"></i>', __('Reusable', 'flynt')),
+        'label' => sprintf('%1$s <i class="dashicons dashicons-controls-repeat"></i>', __('Fixed Block', 'flynt')),
         'sub_fields' => [
             [
-                'label' => __('Select Reusable Component', 'flynt'),
+                'label' => __('Select Fixed Block', 'flynt'),
                 'name' => 'reusableComponent',
                 'type' => 'post_object',
                 'post_type' => [
@@ -33,7 +33,7 @@ add_filter('acf/prepare_field/name=reusableComponent', function ($field) {
 
     $instructions = sprintf(
         /* translators: 1: <a> element 2: </a> element */
-        __('Add %1$sreusable component%2$s.', 'flynt'),
+        __('Add %1$sfixed block%2$s.', 'flynt'),
         "<a href='${reusableAdminLink}' target='_blank' rel='noopener noreferrer'>",
         "</a>"
     );

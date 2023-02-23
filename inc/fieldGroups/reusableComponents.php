@@ -6,15 +6,15 @@ use Flynt\Components;
 add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
         'name' => 'reusableComponents',
-        'title' => __('Reusable Components', 'flynt'),
+        'title' => __('Fixed Blocks', 'flynt'),
         'style' => 'seamless',
         'menu_order' => 1,
         'fields' => [
             [
                 'name' => 'reusableComponents',
-                'label' => __('Reusable Components', 'flynt'),
+                'label' => __('Fixed Blocks', 'flynt'),
                 'type' => 'flexible_content',
-                'button_label' => __('Add Component', 'flynt'),
+                'button_label' => __('Add Block', 'flynt'),
                 'layouts' => [
                     Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
