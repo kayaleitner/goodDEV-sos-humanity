@@ -10,12 +10,12 @@
   --color-error: hsl(343, 98%, 46%);
 }
 
-[data-theme='light'] {
+[data-theme='cbe'] {
   --color-background: hsla(228, 56%, 98%, 1);
   --color-text: hsla(212, 100%, 15%, 1);
 }
 
-[data-theme='dark'] {
+[data-theme='cbg'] {
   --color-accent: hsla(79, 100%, 60%, 1);
   --color-background: hsla(212, 100%, 15%, 1);
   --color-background-secondary: hsl(228, 56%, 98%, 0.06);

@@ -72,10 +72,10 @@ h5,
   }
 }
 
-a {
-  color: var(--color-accent);
-  text-underline-offset: 0.25em;
-}
+// a {
+//   color: var(--color-accent);
+//   text-underline-offset: 0.25em;
+// }
 
 hr {
   --flow-space: var(--component-spacing);
@@ -128,11 +128,6 @@ blockquote,
 /**
 * Lists & Tables
 */
-
-ul,
-ol {
-  padding-inline-start: 1.5rem;
-}
 
 table {
   border-collapse: collapse;
@@ -316,11 +311,6 @@ flynt-component {
 }
 
 /* Base flow for content */
-:where(#{$heading-selectors}, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video, fieldset) {
-  + * {
-    margin-block-start: var(--flow-space);
-  }
-}
 
 .pageWrapper {
   display: grid;
