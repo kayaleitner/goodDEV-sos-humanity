@@ -9,8 +9,8 @@ export default function (el) {
 
   function loadVideo () {
     refs.iframe.addEventListener('load', videoIsLoaded, { once: true })
-    refs.iframe.setAttribute('src', refs.iframe.getAttribute('data-src'))
-    refs.videoPlayer.dataset.state = 'isLoading'
+    // refs.iframe.setAttribute('src', refs.iframe.getAttribute('data-src'))
+    refs.videoPlayer.dataset.state = 'isLoaded'
   }
 
   function videoIsLoaded () {
