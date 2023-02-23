@@ -1,0 +1,1 @@
+import{b as i}from"./helpers-0bb72b7a.js";function s(t){const e=i(t,!1,{iframe:"iframe"});e.playButton.addEventListener("click",a,{once:!0});function a(){e.iframe.addEventListener("load",d,{once:!0}),e.videoPlayer.dataset.state="isLoaded"}function d(){e.videoPlayer.dataset.state="isLoaded",e.posterImage.dataset.state="isHidden"}}export{s as default};
