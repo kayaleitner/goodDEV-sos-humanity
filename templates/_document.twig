@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html class="html {{ body_class }}" {{ site.language_attributes }}>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} {{ __('Feed', 'flynt') }}" href="{{ site.rss2 | e('esc_url') }}">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} {{ __('Feed', 'flynt') }}" href="{{ site.rss2|e('esc_url') }}" />
     {{ function('wp_head') }}
   </head>
-  <body>
-    <a href="#mainContent" class="skipLink">
-      {{ __("Skip to main content", "flynt") }}
-    </a>
+  <body class="">
+    <a href="#mainContent" class="skipLink">{{ __('Skip to main content', 'flynt') }}</a>
     {% block layout %}
       <div class="pageWrapper" data-theme="{{ options.global_theme }}">
         <header class="mainHeader">
@@ -26,16 +24,14 @@
               No <code>{{ '{% block content %}' }}</code> defined for this template.
             {% endblock %}
           {% endif %}
+          <footer class="mainFooter">
+            {% block footer %}
+              {{ renderComponent('NavigationFooter') }}
+            {% endblock %}
+          </footer>
         </main>
-        <footer class="mainFooter">
-          {% block footer %}
-            {{ renderComponent('NavigationFooter') }}
-          {% endblock %}
-        </footer>
+        <div class="wpFooter">{{ function('wp_footer') }}</div>
       </div>
     {% endblock %}
-    <div class="wpFooter">
-      {{ function('wp_footer') }}
-    </div>
   </body>
 </html>

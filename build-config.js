@@ -1,7 +1,7 @@
-const domain = 'https://crossboundaryenergy.local:61988/'
+const domain = 'crossboundaryenergy.local/'
 const dest = './dist'
 
-const host = `https://${domain}`
+const host = `http://${domain}`
 
 const entries = [
   './assets/admin.js',

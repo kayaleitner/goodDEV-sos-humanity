@@ -3,6 +3,8 @@ import './scripts/loadCustomElements'
 import './scripts/custom'
 import Alpine from 'alpinejs'
 import FlyntComponent from './scripts/FlyntComponent'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 import 'lazysizes'
 
@@ -17,6 +19,8 @@ window.customElements.define(
 
 window.Alpine = Alpine
 Alpine.start()
+
+gsap.registerPlugin(ScrollTrigger)
 
 import.meta.glob([
   '../Components/**',

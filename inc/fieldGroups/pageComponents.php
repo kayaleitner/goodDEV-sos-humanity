@@ -27,6 +27,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\ListComponents\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
                     Components\ReusableComponent\getACFLayout(),
+                    Components\HeroScrollySplit\getACFLayout(),
                 ],
             ],
         ],

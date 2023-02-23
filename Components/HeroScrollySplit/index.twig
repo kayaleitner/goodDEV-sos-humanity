@@ -1,0 +1,96 @@
+<flynt-component client:visible name="HeroScrollySplit" class="h-[150vh] w-full" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <section data-refs="section" class="HeroScrollySplit relative h-screen w-full overflow-hidden">
+  {% set images = [slides[1], slides[0], slides[1]] %}
+  {% for slide in images %}
+  <div class="
+    img-{{loop.index}}
+    w-full h-screen
+    grid grid-cols-2
+    overflow-hidden
+    {% if loop.index == 1 %} mt-[-100vh] {% endif %}
+  ">
+    <div data-refs="left" class="absolute w-full h-full [clip-path:inset(0_50%_0_0)] left">
+      <picture class="h-full">
+        <source srcset="
+          {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+          media="(min-width: 768px)"
+          sizes="100vw"
+        />
+        <img class="object-cover h-full w-full"
+          srcset="
+            {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+          src="{{ slide.image.src | resize(32) }}"
+          sizes="100vw"
+          data-object-fit="cover"
+          alt="{{ slide.image.alt|e }}"
+        />
+      </picture>
+       <div id="overlay" class="
+        absolute top-0 left-0
+        h-full w-full
+        bg-black/30
+        z-10
+      "></div>
+      <div data-refs="text_{{loop.index}}" class="
+        absolute z-20 top-0 right-0
+        w-1/3 h-full
+        opacity-0
+        py-48 px-24
+        text-white
+        mr-[50vw]
+      ">
+        <h1 class="text-5xl text-right font-light w-full">
+          {{ slide.text_1 }}
+        </h1>
+      </div>
+    </div>
+    <div data-refs="right" class="absolute h-full w-full [clip-path:inset(0_0_0_50%)] translate-y-0">
+      <picture class="h-full">
+        <source srcset="
+          {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+          media="(min-width: 768px)"
+          sizes="100vw"
+        />
+        <img class="object-cover h-full w-full"
+          srcset="
+            {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+          src="{{ slide.image.src | resize(32) }}"
+          sizes="100vw"
+          data-object-fit="cover"
+          alt="{{ slide.image.alt|e }}"
+        />
+      </picture>
+       <div id="overlay" class="
+        absolute top-0 left-0
+        h-full w-full
+        bg-black/30
+        z-10
+      "></div>
+      <div data-refs="text_{{loop.index}}" class="
+        absolute z-20 top-0 flex flex-row items-center
+        w-1/2 ml-[50vw] h-full
+        opacity-0
+        py-48 px-24
+        text-white
+      ">
+        <h1 class="text-8xl font-light">
+          {{ slide.text_2 }}
+        </h1>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <div id="scrolly-intro-dots" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+  <svg width="16" height="166" viewBox="0 0 16 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="7.9999" cy="141.544" r="2.82559" fill="#ffffff"/>
+    <circle cx="7.99995" cy="164.149" r="1.41279" fill="#ffffff"/>
+    <circle cx="8.0001" cy="117.526" r="4.23838" fill="#ffffff"/>
+    <circle cx="8" cy="89.2706" r="7.06396" fill="#ffffff"/>
+    <ellipse cx="8.00005" cy="8.74138" rx="1.41279" ry="1.41279" transform="rotate(-180 8.00005 8.74138)" fill="#ffffff"/>
+    <ellipse cx="8.0001" cy="32.7589" rx="2.82559" ry="2.82559" transform="rotate(-180 8.0001 32.7589)" fill="#ffffff"/>
+    <circle cx="8.0001" cy="61.0147" r="4.23838" fill="#ffffff"/>
+    </svg>
+  </div>
+  </section>
+</flynt-component>
