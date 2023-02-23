@@ -16,6 +16,16 @@
     "isDynamicEntry": true,
     "src": "Components/GridPostsArchive/script.js"
   },
+  "Components/HeroScrollySplit/script.js": {
+    "file": "assets/script-edbbebf1.js",
+    "imports": [
+      "_swiper-bundle.min-84d06f2a.js",
+      "_helpers-0bb72b7a.js",
+      "assets/main.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "Components/HeroScrollySplit/script.js"
+  },
   "Components/ListComponents/script.js": {
     "file": "assets/script-6fca4744.js",
     "imports": [
@@ -50,16 +60,10 @@
     "isDynamicEntry": true,
     "src": "Components/NavigationMain/script.js"
   },
-  "Components/SliderImages/script.css": {
-    "file": "assets/script-6c3c321b.css",
-    "src": "Components/SliderImages/script.css"
-  },
   "Components/SliderImages/script.js": {
-    "css": [
-      "assets/script-6c3c321b.css"
-    ],
-    "file": "assets/script-046c0c3a.js",
+    "file": "assets/script-7677297c.js",
     "imports": [
+      "_swiper-bundle.min-84d06f2a.js",
       "_helpers-0bb72b7a.js"
     ],
     "isDynamicEntry": true,
@@ -70,6 +74,12 @@
   },
   "_index-2a8ce3c2.js": {
     "file": "assets/index-2a8ce3c2.js"
+  },
+  "_swiper-bundle.min-84d06f2a.js": {
+    "css": [
+      "assets/swiper-bundle-6c3c321b.css"
+    ],
+    "file": "assets/swiper-bundle.min-84d06f2a.js"
   },
   "assets/admin.js": {
     "file": "assets/admin-02f88806.js",
@@ -154,17 +164,18 @@
       "node_modules/@webreflection/custom-elements-builtin/esm/index.js",
       "Components/BlockVideoOembed/script.js",
       "Components/GridPostsArchive/script.js",
+      "Components/HeroScrollySplit/script.js",
       "Components/ListComponents/script.js",
       "Components/NavigationBurger/script.js",
       "Components/NavigationMain/script.js",
       "Components/SliderImages/script.js"
     ],
-    "file": "assets/main-613378e6.js",
+    "file": "assets/main-557e367d.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-c190efd3.css",
+    "file": "assets/main-db1ebfce.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -182,5 +193,9 @@
     "file": "assets/index-1b2afe3b.js",
     "isDynamicEntry": true,
     "src": "node_modules/@webreflection/custom-elements-builtin/esm/index.js"
+  },
+  "swiper-bundle.css": {
+    "file": "assets/swiper-bundle-6c3c321b.css",
+    "src": "swiper-bundle.css"
   }
 }
