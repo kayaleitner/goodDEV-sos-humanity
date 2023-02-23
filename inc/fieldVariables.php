@@ -18,8 +18,8 @@ function getTheme($default = '')
         'ajax' => 0,
         'choices' => [
             '' => __('(none)', 'flynt'),
-            'light' => __('Light', 'flynt'),
-            'dark' => __('Dark', 'flynt'),
+            'cbe' => __('CrossBoundary Energy', 'flynt'),
+            'cbg' => __('CrossBoundary Group', 'flynt'),
         ],
         'default_value' => $default,
     ];
