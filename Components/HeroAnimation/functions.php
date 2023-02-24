@@ -23,14 +23,28 @@ function getACFLayout()
                 'name' => 'blockTitle',
                 'type' => 'text'
             ],
+            // [
+            //     'label' => __('Animation', 'flynt'),
+            //     'instructions' => __('Upload the lottie animation file here.', 'flynt'),
+            //     'name' => 'animation',
+            //     'type' => 'image',
+            //     'preview_size' => 'medium',
+            //     'required' => 1,
+            //     'mime_types' => 'jpg,jpeg,png,svg'
+            // ],
+            // [
+            //     'label' => __('Animation', 'flynt'),
+            //     'instructions' => __('Upload the lottie animation file here.', 'flynt'),
+            //     'name' => 'animationFile',
+            //     'type' => 'file',
+            //     'return_format' => 'url',
+            //     'mime_types' => 'json'
+            // ],
             [
-                'label' => __('Animation', 'flynt'),
+                'label' => __('Lottie Animation Link', 'flynt'),
                 'instructions' => __('Upload the lottie animation file here.', 'flynt'),
-                'name' => 'animation',
-                'type' => 'image',
-                'preview_size' => 'medium',
-                'required' => 1,
-                'mime_types' => 'jpg,jpeg,png,svg'
+                'name' => 'lottieAnimationLink',
+                'type' => 'url',
             ],
         ]
     ];
