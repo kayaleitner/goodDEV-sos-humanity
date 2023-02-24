@@ -4,9 +4,11 @@ flynt-component[name='BlockVideoOembed'] {
     position: relative;
 
     &-player {
-      aspect-ratio: 16/9;
-      height: auto;
-      position: relative;
+      height: 0;
+      inset-block-start: 0;
+      margin-block-start: 0;
+      padding-block-end: calc(100% / 16 * 9);
+      position: absolute;
       width: 100%;
       z-index: 10;
 
@@ -15,6 +17,7 @@ flynt-component[name='BlockVideoOembed'] {
           display: block;
         }
 
+        .video-title,
         .video-playButton {
           display: none;
         }
@@ -22,6 +25,7 @@ flynt-component[name='BlockVideoOembed'] {
 
       &[data-state='isLoaded'] {
         .video-loader,
+        .video-title,
         .video-playButton {
           display: none;
         }
@@ -37,8 +41,30 @@ flynt-component[name='BlockVideoOembed'] {
       height: 100%;
       inset-block-start: 0;
       inset-inline-start: 0;
-      position: relative;
+      position: absolute;
       width: 100%;
+    }
+
+    &[data-video-size='small'] {
+      max-width: 375px;
+    }
+
+    &[data-video-size='medium'] {
+      max-width: var(--content-max-width);
+    }
+
+    &[data-video-size='large'] {
+      max-width: var(--content-max-width-large);
+    }
+
+    &[data-video-size='full'] {
+      max-width: 100%;
+
+      .figure-caption {
+        margin-inline: auto;
+        max-width: var(--container-max-width);
+        padding-inline: var(--container-padding);
+      }
     }
   }
 

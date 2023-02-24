@@ -1,11 +1,16 @@
-<flynt-component load:on="visible" name="BlockVideoOembed" class="boxed">
-  <div>
-    <div class="video" data-video-size="{{ options.size }}">
-      {# {% include 'Partials/_figure.twig' ignore missing with {image: posterImage} only %} #}
-      <div data-ref="videoPlayer" class="video-player" data-state="isLoaded">
+<flynt-component load:on="visible" name="BlockVideoOembed">
+  <div class="w-screen">
+    <div class="video">
+      {% include 'Partials/_figure.twig' ignore missing with {image: posterImage} only %}
+      <div data-ref="videoPlayer" class="video-player">
         {{ oembed }}
         <div class="video-loader"></div>
-        <button data-ref="playButton" class="video-playButton" type="button" aria-label="Play Video"></button>
+        <div class="absolute w-full h-full flex flex-col justify-center align-middle items-center">
+          <div class="max-w-screen-md mx-auto flex flex-col justify-center align-middle items-center gap-md">
+            <div class="video-title text-h1 text-white text-center">{{ contentHtml|e('wp_kses_post') }}</div>
+            <button data-ref="playButton" class="video-playButton px-sm py-xs cursor-pointer block relative z-2 border border-white rounded-full hover:bg-black text-white text-btn transition-all" type="button" aria-label="Play Video">Play Video</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
