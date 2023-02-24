@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Adds SVG to the mime types supported (useful for gallery uploads in the WP Backend).
+ * Adds SVG and JSON to the mime types supported (useful for gallery uploads in the WP Backend).
  */
 
 namespace Flynt\MimeTypes;
 
 add_filter('upload_mimes', function ($mimes) {
     $mimes['svg'] = 'image/svg+xml';
+    $mimes['json'] = 'application/json';
     return $mimes;
 });
