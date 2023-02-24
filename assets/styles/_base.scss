@@ -2,19 +2,13 @@
 *  Typography
 */
 
-@include font-face('Public Sans', 'public-sans-v14-latin-regular', '400', 'normal');
-@include font-face('Public Sans', 'public-sans-v14-latin-500', '500', 'normal');
-@include font-face('Public Sans', 'public-sans-v14-latin-600', '600', 'normal');
-@include font-face('Public Sans', 'public-sans-v14-latin-700', '700', 'normal');
-@include font-face('Public Sans', 'public-sans-v14-latin-italic', '400', 'italic');
-@include font-face('Public Sans', 'public-sans-v14-latin-500italic', '500', 'italic');
-@include font-face('Public Sans', 'public-sans-v14-latin-600italic', '600', 'italic');
-@include font-face('Public Sans', 'public-sans-v14-latin-700italic', '700', 'italic');
+@include font-face('Aeonik', 'AeonikTRIAL-Regular', '400', 'normal');
+@include font-face('Aeonik', 'AeonikTRIAL-Bold', '700', 'normal');
 
 body,
 .paragraph {
   color: var(--color-text);
-  font-family: 'Public Sans', Verdana, sans-serif; // FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
+  font-family: 'Aeonik', Verdana, sans-serif; // FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
   font-size: var(--body-font-size);
 }
 
