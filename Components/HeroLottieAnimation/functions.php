@@ -1,14 +1,14 @@
 <?php
 
-namespace Flynt\Components\HeroAnimation;
+namespace Flynt\Components\HeroLottieAnimation;
 
 use Flynt\FieldVariables;
 
 function getACFLayout()
 {
     return [
-        'name' => 'HeroAnimation',
-        'label' => __('Hero: Animation', 'flynt'),
+        'name' => 'HeroLottieAnimation',
+        'label' => __('Hero: Lottie Animation', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
