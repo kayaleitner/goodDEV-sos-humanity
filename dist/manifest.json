@@ -16,8 +16,13 @@
     "isDynamicEntry": true,
     "src": "Components/GridPostsArchive/script.js"
   },
+  "Components/HeroAnimation/script.js": {
+    "file": "assets/script-c4865691.js",
+    "isDynamicEntry": true,
+    "src": "Components/HeroAnimation/script.js"
+  },
   "Components/HeroScrollySplit/script.js": {
-    "file": "assets/script-a718b1ec.js",
+    "file": "assets/script-c8136e06.js",
     "imports": [
       "_swiper-bundle.min-84d06f2a.js",
       "_helpers-0bb72b7a.js",
@@ -117,6 +122,7 @@
       "node_modules/@webreflection/custom-elements-builtin/esm/index.js",
       "Components/BlockVideoOembed/script.js",
       "Components/GridPostsArchive/script.js",
+      "Components/HeroAnimation/script.js",
       "Components/HeroScrollySplit/script.js",
       "Components/ListComponents/script.js",
       "Components/NavigationBurger/script.js",
@@ -124,12 +130,12 @@
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-e7787812.js",
+    "file": "assets/main-a14f7d47.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-58ba9220.css",
+    "file": "assets/main-3afe8f3a.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
