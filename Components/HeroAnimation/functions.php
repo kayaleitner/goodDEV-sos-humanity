@@ -18,55 +18,20 @@ function getACFLayout()
                 'endpoint' => 0,
             ],
             [
-                'label' => __('Text Align', 'flynt'),
-                'name' => 'textAlign',
-                'type' => 'button_group',
-                'choices' => [
-                    'left' => sprintf('<i class="dashicons dashicons-editor-alignleft" title="%1$s"></i>', __('Align text left', 'flynt')),
-                    'center' => sprintf('<i class="dashicons dashicons-editor-aligncenter" title="%1$s"></i>', __('Align text center', 'flynt'))
-                ]
+                'label' => __('Title', 'flynt'),
+                // 'instructions' => __('Upload the lottie animation file here.', 'flynt'),
+                'name' => 'blockTitle',
+                'type' => 'text'
             ],
             [
-                'label' => __('Content', 'flynt'),
-                'name' => 'contentHtml',
-                'type' => 'wysiwyg',
-                'delay' => 1,
-                'media_upload' => 0,
+                'label' => __('Animation', 'flynt'),
+                'instructions' => __('Upload the lottie animation file here.', 'flynt'),
+                'name' => 'animation',
+                'type' => 'image',
+                'preview_size' => 'medium',
                 'required' => 1,
+                'mime_types' => 'jpg,jpeg,png,svg'
             ],
-            [
-                'label' => __('Options', 'flynt'),
-                'name' => 'optionsTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0
-            ],
-            [
-                'label' => '',
-                'name' => 'options',
-                'type' => 'group',
-                'layout' => 'row',
-                'sub_fields' => [
-                    FieldVariables\getTheme(),
-                    [
-                        'label' => __('Max Width', 'flynt'),
-                        'name' => 'maxWidth',
-                        'type' => 'radio',
-                        'other_choice' => 0,
-                        'save_other_choice' => 0,
-                        'layout' => 'horizontal',
-                        'choices' => [
-                            '' => __('Default', 'flynt'),
-                            'large' => __('Large', 'flynt)'),
-                            'full' => __('Full', 'flynt)'),
-                        ],
-                        'default_value' => '',
-                        'wrapper' =>  [
-                            'width' => '100',
-                        ],
-                    ],
-                ]
-            ]
         ]
     ];
 }

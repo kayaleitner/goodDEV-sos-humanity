@@ -1,7 +1,18 @@
-<flynt-component client:visible name="HeroAnimation" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
-  <div class="container centerMaxWidthContainer">
-    <div class="content {{- options.maxWidth != 'full' ? ' centerContentMaxWidth'}}{{ options.maxWidth == 'large' ? 'Large' }}" {{ textAlign ? 'data-text-align="' ~ textAlign ~ '"' }}>
-      {{ contentHtml|e('wp_kses_post') }}
+<flynt-component client:visible name="HeroAnimation">
+  <div class="w-screen h-screen relatuive">
+    {% if blockTitle %}
+    <div class="absolute top-0 left-0">
+      <div class="max-w-screen-max mx-auto px-md py-md text-h4">{{ blockTitle }}</div>
     </div>
+    {% endif %}
+    {% if animation %}
+      <img class="image lazyload"
+        src="{{ animation.src | resize(32) }}"
+        data-srcset="{{function('wp_get_attachment_image_srcset', animation.id)}}"
+        data-sizes="auto"
+        data-src="{{ animation.src }}"
+        alt="{{ animation.alt|e }}"
+      >
+    {% endif %}
   </div>
 </flynt-component>
