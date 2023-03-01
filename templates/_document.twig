@@ -9,7 +9,7 @@
   <body class="">
     <a href="#mainContent" class="skipLink">{{ __('Skip to main content', 'flynt') }}</a>
     {% block layout %}
-      <div class="pageWrapper" data-theme="{{ options.global_theme }}">
+      <div class="pageWrapper" data-theme="{{ theme_options.globalThemeOption }}">
         <header class="mainHeader">
           {% block header %}
             {{ renderComponent('NavigationMain') }}
