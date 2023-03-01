@@ -45,11 +45,8 @@ function getACFLayout()
             [
                 'label' => __('Title', 'flynt'),
                 'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
-                'name' => 'preContentHtml',
-                'type' => 'wysiwyg',
-                'tabs' => 'visual,text',
-                'media_upload' => 0,
-                'delay' => 1,
+                'name' => 'blockTitle',
+                'type' => 'text',
             ],
             [
                 'label' => __('Categories', 'flynt'),
@@ -122,7 +119,7 @@ Options::addTranslatable('GridPostsLatest', [
                 'label' => __('All Posts', 'flynt'),
                 'name' => 'allPosts',
                 'type' => 'text',
-                'default_value' => __('See More Posts', 'flynt'),
+                'default_value' => __('View all', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => 50
