@@ -67,7 +67,7 @@ Options::addTranslatable('GridPostsArchive', [
         'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
         'name' => 'preContentHtml',
         'type' => 'wysiwyg',
-        'tabs' => 'visual,text',
+        'tabs' => 'visual',
         'media_upload' => 0,
         'delay' => 1,
     ],

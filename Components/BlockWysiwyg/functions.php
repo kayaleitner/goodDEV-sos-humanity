@@ -18,15 +18,6 @@ function getACFLayout()
                 'endpoint' => 0,
             ],
             [
-                'label' => __('Text Align', 'flynt'),
-                'name' => 'textAlign',
-                'type' => 'button_group',
-                'choices' => [
-                    'left' => sprintf('<i class="dashicons dashicons-editor-alignleft" title="%1$s"></i>', __('Align text left', 'flynt')),
-                    'center' => sprintf('<i class="dashicons dashicons-editor-aligncenter" title="%1$s"></i>', __('Align text center', 'flynt'))
-                ]
-            ],
-            [
                 'label' => __('Content', 'flynt'),
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',

@@ -2,20 +2,45 @@
 import './rIC.js'
 const componentsWithScripts = import.meta.glob('@/Components/**/script.js')
 
+const interactionEvents = new Set([
+  'pointerdown',
+  'scroll'
+])
+
 const upgradedElements = new WeakMap()
+const FlyntComponents = new WeakMap()
+const parents = new WeakMap()
 
 export default class FlyntComponent extends window.HTMLElement {
+  constructor () {
+    super()
+    let setReady
+    const isReady = new Promise((resolve) => {
+      setReady = resolve
+    })
+    FlyntComponents.set(this, [isReady, setReady])
+  }
+
   async connectedCallback () {
-    const loadingStrategy = determineLoadingStrategy(this)
-    const loadingFunctionWrapper = getLoadingFunctionWrapper(loadingStrategy, this)
-    const mediaQuery = getMediaQuery(this)
-    const loadingFunction = getLoadingFunction(this)
+    if (hasScript(this)) {
+      const loadingStrategy = determineLoadingStrategy(this)
+      const loadingFunctionWrapper = getLoadingFunctionWrapper(loadingStrategy, this)
+      const mediaQuery = getMediaQuery(this)
+      const loadingFunction = getLoadingFunction(this)
 
-    if (mediaQuery) {
-      await mediaQueryMatches(mediaQuery, this)
+      if (mediaQuery) {
+        await mediaQueryMatches(mediaQuery, this)
+      }
+
+      if (hasParent(this)) {
+        const [parentLoaded] = FlyntComponents.get(parents.get(this))
+        await parentLoaded
+      }
+
+      loadingFunctionWrapper(loadingFunction)
+    } else {
+      setComponentReady(this)
     }
-
-    loadingFunctionWrapper(loadingFunction)
   }
 
   disconnectedCallback () {
@@ -23,6 +48,40 @@ export default class FlyntComponent extends window.HTMLElement {
     this.mediaQueryList?.removeEventListener('change')
     cleanupElement(this)
   }
+}
+
+function getComponentPath (node) {
+  const componentName = node.getAttribute('name')
+  return window.FlyntData.componentsWithScript[componentName]
+}
+
+function hasScript (node) {
+  const componentPath = getComponentPath(node)
+  return !!componentPath
+}
+
+function getScriptPath (node) {
+  const componentPath = getComponentPath(node)
+  return `/Components/${componentPath}/script.js`
+}
+
+function getScriptImport (node) {
+  return componentsWithScripts[getScriptPath(node)]
+}
+
+function hasParent (node) {
+  if (!parents.has(node)) {
+    const parent = node.parentElement.closest('flynt-component')
+    parents.set(node, parent)
+    return !!parent
+  } else {
+    return !!parents.get(node)
+  }
+}
+
+function setComponentReady (node) {
+  const setReady = FlyntComponents.get(node)[1]
+  setReady()
 }
 
 function visible (node) {
@@ -57,13 +116,14 @@ function mediaQueryMatches (query, node) {
 }
 
 function determineLoadingStrategy (node) {
-  return node.hasAttribute('client:visible')
-    ? 'visible'
-    : (
-        node.hasAttribute('client:idle')
-          ? 'idle'
-          : 'load'
-      )
+  const defaultStrategy = 'load'
+  const strategies = {
+    load: 'load',
+    idle: 'idle',
+    visible: 'visible',
+    interaction: 'interaction'
+  }
+  return strategies[node.getAttribute('load:on')] ?? defaultStrategy
 }
 
 function getLoadingFunctionWrapper (strategyName, node) {
@@ -73,6 +133,17 @@ function getLoadingFunctionWrapper (strategyName, node) {
     visible: async (x) => {
       await visible(node)
       x()
+    },
+    interaction: (x) => {
+      const load = () => {
+        interactionEvents.forEach((event) =>
+          document.removeEventListener(event, load)
+        )
+        x()
+      }
+      interactionEvents.forEach((event) =>
+        document.addEventListener(event, load, { once: true })
+      )
     }
   }
   const defaultFn = loadingFunctions.load
@@ -80,20 +151,18 @@ function getLoadingFunctionWrapper (strategyName, node) {
 }
 
 function getMediaQuery (node) {
-  return node.hasAttribute('client:media') ? node.getAttribute('client:media') : null
+  return node.hasAttribute('load:on:media') ? node.getAttribute('load:on:media') : null
 }
 
 function getLoadingFunction (node) {
   return async () => {
-    const componentName = node.getAttribute('name')
-    const componentPath = window.FlyntData.componentsWithScript[componentName]
-    if (componentPath) {
-      const componentScript = await componentsWithScripts[`/Components/${componentPath}/script.js`]()
-      if (typeof componentScript.default === 'function' && !upgradedElements.has(node)) {
-        const cleanupFn = componentScript.default(node)
-        upgradedElements.set(node, cleanupFn)
-      }
+    const componentScriptImport = getScriptImport(node)
+    const componentScript = await componentScriptImport()
+    if (typeof componentScript.default === 'function' && !upgradedElements.has(node)) {
+      const cleanupFn = componentScript.default(node)
+      upgradedElements.set(node, cleanupFn)
     }
+    setComponentReady(node)
   }
 }
 
