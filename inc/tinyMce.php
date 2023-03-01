@@ -92,32 +92,32 @@ function getConfig()
                 'items' => [
                     [
                         'title' => __('Heading 1', 'flynt'),
-                        'classes' => 'h1',
+                        'classes' => 'text-h1',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 2', 'flynt'),
-                        'classes' => 'h2',
+                        'classes' => 'text-h2',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 3', 'flynt'),
-                        'classes' => 'h3',
+                        'classes' => 'text-h3',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 4', 'flynt'),
-                        'classes' => 'h4',
+                        'classes' => 'text-h4',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 5', 'flynt'),
-                        'classes' => 'h5',
+                        'classes' => 'text-h5',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 6', 'flynt'),
-                        'classes' => 'h6',
+                        'classes' => 'text-h6',
                         'selector' => '*'
                     ],
                 ]
@@ -156,8 +156,12 @@ function getConfig()
                     'styleselect',
                     'bold',
                     'italic',
-                    'strikethrough',
                     'blockquote',
+                    '|',
+                    'alignleft',
+                    'aligncenter',
+                    'alignright',
+                    'alignjustify',
                     '|',
                     'bullist',
                     'numlist',
@@ -165,26 +169,29 @@ function getConfig()
                     'link',
                     'unlink',
                     '|',
-                    'pastetext',
-                    'removeformat',
-                    '|',
-                    'undo',
-                    'redo',
-                    'fullscreen'
+                    'removeformat'
                 ]
             ],
             'basic' => [
                 [
+                    'formatselect',
+                    'styleselect',
                     'bold',
                     'italic',
-                    'strikethrough',
+                    'blockquote',
+                    '|',
+                    'alignleft',
+                    'aligncenter',
+                    'alignright',
+                    'alignjustify',
+                    '|',
+                    'bullist',
+                    'numlist',
                     '|',
                     'link',
                     'unlink',
                     '|',
-                    'undo',
-                    'redo',
-                    'fullscreen'
+                    'removeformat'
                 ]
             ]
         ]
