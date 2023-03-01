@@ -27,6 +27,7 @@
     "replaceVersion:php": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'"
   },
   "dependencies": {
+    "@lottiefiles/lottie-interactivity": "^1.6.2",
     "@lottiefiles/lottie-player": "^1.7.1",
     "@webreflection/custom-elements-builtin": "^0.3.0",
     "alpinejs": "^3.11.1",
