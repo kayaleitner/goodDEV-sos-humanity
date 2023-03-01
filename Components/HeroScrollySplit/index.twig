@@ -1,4 +1,4 @@
-<flynt-component client:visible name="HeroScrollySplit" class="h-[150vh] w-full" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+<flynt-component load:on="idle" name="HeroScrollySplit" class="h-[150vh] w-full" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <section data-refs="section" class="HeroScrollySplit relative h-screen w-full overflow-hidden">
   {% set images = [slides[1], slides[0], slides[1]] %}
