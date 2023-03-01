@@ -12,11 +12,10 @@ body,
   font-size: var(--body-font-size);
 }
 
-#{$heading-selectors} {
-  --flow-space: 2.5rem;
-  font-weight: 600;
-  line-height: calc(1em + 0.5rem);
-}
+// #{$heading-selectors} {
+//   --flow-space: 2.5rem;
+//   line-height: calc(1em + 0.5rem);
+// }
 
 h1,
 .h1 {
@@ -32,7 +31,6 @@ h1,
 h2,
 .h2 {
   font-size: 2.3125rem;
-  font-weight: 700;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 2.5625rem;
