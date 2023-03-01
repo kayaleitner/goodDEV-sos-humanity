@@ -1,4 +1,18 @@
 import '@lottiefiles/lottie-player'
+import '@lottiefiles/lottie-interactivity'
+// import { create } from '@lottiefiles/lottie-interactivity';
+
+// LottieInteractivity.create({
+//     mode: 'scroll',
+//     player: '#firstLottie',
+//     actions: [
+//         {
+//             visibility: [0,1],
+//             type: 'seek',
+//             frames: [0, 60],
+//         },
+//     ],
+// });
 
 // const player = document.querySelector("lottie-player");
 // player.load("https://assets6.lottiefiles.com/private_files/lf30_3vNNXU.json");
