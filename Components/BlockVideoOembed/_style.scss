@@ -17,16 +17,14 @@ flynt-component[name='BlockVideoOembed'] {
           display: block;
         }
 
-        .video-title,
-        .video-playButton {
+        .video-content {
           display: none;
         }
       }
 
       &[data-state='isLoaded'] {
         .video-loader,
-        .video-title,
-        .video-playButton {
+        .video-content {
           display: none;
         }
 
