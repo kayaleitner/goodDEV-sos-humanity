@@ -50,7 +50,7 @@ function getACFLayout()
                     'ajax' => 0,
                     'choices' => [
                         '#272a5f' => __('Blue', 'flynt'),
-                        '#169b83' => __('Navy Green', 'flynt'),
+                        '#169b83' => __('CBE Green', 'flynt'),
                         '#52b756' => __('Green', 'flynt'),
                     ],
                     'return_format' => 'value',

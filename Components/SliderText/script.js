@@ -16,7 +16,7 @@ function initSlider (refs, data) {
     a11y: options.a11y,
     roundLengths: true,
     slidesPerView: 'auto',
-    spaceBetween: 40,
+    spaceBetween: 0,
     navigation: {
       nextEl: refs.next,
       prevEl: refs.prev

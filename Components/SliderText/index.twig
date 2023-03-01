@@ -1,11 +1,11 @@
-<flynt-component client:visible name="SliderText" class="py-xl">
+<flynt-component load:on="idle" name="SliderText" class="pb-lg lg:pb-xl overflow-hidden">
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div>
     {% if blockTitle %}
-      <div class="max-w-screen-max mx-auto px-md py-md text-h4">{{ blockTitle }}</div>
+      <div class="max-w-screen-max mx-auto p-sm lg:p-md text-h4">{{ blockTitle }}</div>
     {% endif %}
     <div data-ref="slider" class="slider swiper-container">
-      <div class="button-wrapper w-full max-w-screen-max absolute right-lg top-0 flex align-middle justify-end">
+      <div class="button-wrapper absolute right-md lg:right-lg top-0 flex align-middle justify-end">
         <button type="button" data-ref="prev" class="slider-button slider-button--prev">
           <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3.93801 13.9393C3.35222 14.5251 3.35222 15.4749 3.93801 16.0607L13.4839 25.6066C14.0697 26.1924 15.0195 26.1924 15.6053 25.6066C16.1911 25.0208 16.1911 24.0711 15.6053 23.4853L7.11999 15L15.6053 6.51472C16.1911 5.92893 16.1911 4.97918 15.6053 4.3934C15.0195 3.80761 14.0697 3.80761 13.484 4.3934L3.93801 13.9393ZM34.3438 13.5L4.99867 13.5L4.99867 16.5L34.3437 16.5L34.3438 13.5Z" fill="black"/>
@@ -17,9 +17,9 @@
           </svg>
         </button>
       </div>
-      <div class="swiper-wrapper px-md">
+      <div class="swiper-wrapper lg:px-md">
         {% for box in contentBoxes %}
-          <div class="slider-item swiper-slide p-md text-white flex flex-col justify-between" style="background: {{ box.panelTextboxbgcolor }};">
+          <div class="slider-item swiper-slide p-md lg:mr-md text-white flex flex-col justify-between" style="background: {{ box.panelTextboxbgcolor }};">
             {% if box.panelTextbox %}<div class="text-h5">{{ box.panelTextbox|e('wp_kses_post') }}</div>{% endif %}
             {% if box.panelLogo %}
               <div class="">
