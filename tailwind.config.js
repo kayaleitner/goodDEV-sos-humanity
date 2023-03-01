@@ -15,42 +15,43 @@ module.exports = {
     colors: {
       white: '#fff',
       black: '#000',
-      navygreen: '#169b83',
+      cbegreen: '#169b83',
       blue: '#272a5f',
       green: '#52b756',
       grey: '#7b838d',
       current: 'currentColor'
     },
     fontSize: {
-      btn: ['1.25rem', {
-        lineHeight: '1.25rem',
-        fontWeight: '400'
-      }],
       h1: ['4.813rem', {
-        lineHeight: '5.25rem',
-        // letterSpacing: '-0.01em',
+        lineHeight: 'normal',
         fontWeight: '400'
       }],
       h2: ['3.438rem', {
-        lineHeight: '2.25rem',
-        letterSpacing: '-0.02em',
+        lineHeight: '110%',
         fontWeight: '700'
       }],
-      h3: ['1.875rem', {
-        lineHeight: '2.25rem',
-        letterSpacing: '-0.02em',
-        fontWeight: '700'
+      h3: ['2.188rem', {
+        lineHeight: 'normal',
+        fontWeight: '400'
       }],
       h4: ['2rem', {
-        lineHeight: 'auto',
+        lineHeight: 'normal',
         fontWeight: '700'
       }],
       h5: ['1.563rem', {
-        lineHeight: 'auto',
+        lineHeight: '140%',
         fontWeight: '400'
       }],
-      h6: ['1.25rem', {
-        lineHeight: 'auto',
+      h6: ['1.563rem', {
+        lineHeight: 'normal',
+        fontWeight: '400'
+      }],
+      small: ['0.938rem', {
+        lineHeight: 'normal',
+        fontWeight: '400'
+      }],
+      button: ['1.25rem', {
+        lineHeight: '1.25rem',
         fontWeight: '400'
       }]
     },
@@ -68,6 +69,14 @@ module.exports = {
         2: '2px',
         3: '3px',
         4: '4px'
+      },
+      height: {
+        xs: '10px',
+        sm: '15px',
+        md: '35px',
+        lg: '50px',
+        xl: '75px',
+        xxl: '100px'
       },
       spacing: {
         xs: '10px',

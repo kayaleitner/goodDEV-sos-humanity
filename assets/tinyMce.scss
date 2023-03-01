@@ -3,6 +3,10 @@
   'styles/variables',
   'styles/base';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
   box-sizing: border-box;
   overflow-wrap: break-word;
