@@ -4,4 +4,10 @@
   &[data-state='isHidden'] {
     visibility: hidden;
   }
+
+  &-image {
+    @media (max-width: $breakpoint-desktop) {
+      height: 100vw;
+    }
+  }
 }
