@@ -1,13 +1,12 @@
 .menu {
   @include reset-list;
   backface-visibility: hidden;
-  background-color: var(--color-background);
-  height: calc(100% - var(--navigation-height));
-  inset-block-start: var(--navigation-height);
+  height: 100vh;
+  inset-block-start: 0;
   inset-inline-start: 0;
   margin: 0;
   overflow-y: auto;
-  padding: var(--component-spacing) var(--container-padding);
+  padding: var(--navigation-height) 16px;
   position: fixed;
   transform: translateX(100%);
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.45s;
@@ -19,16 +18,6 @@
   .admin-bar & {
     height: calc(100% - var(--navigation-height) - var(--wp-admin--admin-bar--height));
     inset-block-start: calc(var(--navigation-height) + var(--wp-admin--admin-bar--height));
-  }
-
-  .link {
-    @include reset-link;
-    color: var(--color-text);
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 400;
-    padding: 0.9rem 1.25rem;
-    text-decoration: none;
   }
 
   .current-menu-item {

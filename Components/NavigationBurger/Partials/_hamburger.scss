@@ -1,6 +1,4 @@
 .hamburger {
-  --line-width: 29px;
-  --line-border-width: 2px;
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -17,7 +15,7 @@
   &-lines {
     height: 18px;
     position: relative;
-    width: var(--line-width);
+    width: 27px;
 
     &::before,
     &::after {
@@ -28,14 +26,14 @@
     &::after,
     &--primary,
     &--text {
-      background-color: var(--color-text);
+      background-color: var(--white);
       border-radius: 6px;
       display: block;
-      height: var(--line-border-width);
+      height: 2px;
       inset-inline-start: 0;
       position: absolute;
       transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s;
-      width: var(--line-width);
+      width: 30px;
       will-change: opacity, transform;
     }
 

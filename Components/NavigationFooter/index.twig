@@ -1,4 +1,4 @@
-<flynt-component load:on="visible" name="NavigationFooter" class="text-white bg-cbegreen w-full left-0 bottom-0">
+<flynt-component load:on="visible" name="NavigationFooter" class="text-white w-full left-0 bottom-0" style="background: var(--secondary);">
   <div class="max-w-screen-max mx-auto flex flex-col px-sm lg:px-lg py-md">
     <div class="flex flex-col lg:flex-row align-top justify-between gap-lg w-full mb-lg">
       {% if logoFooter %}
@@ -9,9 +9,9 @@
           data-sizes="auto">
         </a>
       {% endif %}
-      <div class="grow flex flex-col lg:flex-row align-top items-start justify-between lg:justify-end flex-nowrap gap-md">
+      <div class="grow flex flex-row lg:flex-row align-top items-start justify-between lg:justify-end flex-wrap gap-sm lg:gap-md">
         {% for panelOuter in repeaterOuter %}
-          <div class="w-1/2 lg:w-auto flex flex-col align-top items-start justify-start gap-sm" id="content-{{ loop.index }}">
+          <div class="w-1/3 lg:w-auto flex flex-col align-top items-start justify-start gap-sm" id="content-{{ loop.index }}">
             <div class="font-bold">
               {{ panelOuter.title }}
             </div>

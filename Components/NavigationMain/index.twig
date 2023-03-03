@@ -2,7 +2,7 @@
   <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
     <div class="max-w-screen-max mx-auto px-lg py-md flex flex-row align-top justify-between gap-sm">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
-      <div class="menu-wrapper flex align-middle justify-start gap-md w-1/2">
+      <div class="menu-wrapper flex items-center justify-start gap-md w-1/2 h-fit">
         {% if menu %}
           {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
         {% endif %}

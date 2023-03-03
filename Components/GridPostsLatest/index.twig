@@ -3,7 +3,7 @@
     <div class="">
       {% if blockTitle %}
         <div class="max-w-screen-max w-full mx-auto p-sm lg:p-md flex flex-row justify-between align-bottom items-end content-end">
-          <div class="text-h4">{{ blockTitle }}</div>
+          <div class="h4">{{ blockTitle }}</div>
           <a href="{{ postTypeArchiveLink }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
@@ -13,7 +13,7 @@
             <a class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
                 <figure class="figure hidden lg:block">
-                  <img class="image lazyload h-full min-h-[400px] object-cover"
+                  <img class="image lazyload min-h-[400px] object-cover"
                     src="{{  post.thumbnail.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
                     data-sizes="auto"
@@ -21,13 +21,13 @@
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
-              <div class="content border p-sm">
+              <div class="content border p-sm flex flex-col gap-0 lg:gap-sm justify-between items-stretch">
                 <div class="w-full flex flex-row justify-between align-middle items-center">
                   <div class="">{{ post.date("d.m.Y") }}</div>
                   <div class="underline">{{ post.category }}</div>
                 </div>
-                <div class="flex flex-row lg:flex-col gap-0 lg:gap-sm justify-between items-end lg:items-stretch pt-sm">
-                  <h2 class="text-h5 w-3/4 lg:w-full grow">{{ post.title }}</h2>
+                <div class="flex flex-row lg:flex-col gap-sm justify-between items-end lg:items-stretch h-full">
+                  <h2 class="h5 w-3/4 lg:w-full grow">{{ post.title }}</h2>
                   <span class="border border-black hover:bg-black hover:text-white rounded-full flex justify-center items-center h-lg w-lg">→</span>
                 </div>
               </div>
