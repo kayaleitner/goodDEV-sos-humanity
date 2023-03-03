@@ -6,19 +6,20 @@ use Flynt\Components;
 add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
         'name' => 'optionsMeta',
-        'title' => 'Options Meta',
+        'title' => 'Theme Options',
         'style' => '',
-        'menu_order' => 1,
+        'menu_order' => 0,
+        'position' => 'acf_after_title',
         'fields' => [
             [
-                'label' => __('Theme Options', 'flynt'),
+                'label' => __('Theme Name', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
             ],
             [
-                'label' => __('Theme', 'flynt'),
+                'label' => __('', 'flynt'),
                 'name' => 'globalThemeOption',
                 'type' => 'select',
                 'allow_null' => 0,
@@ -26,10 +27,13 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'ui' => 0,
                 'ajax' => 0,
                 'choices' => [
-                    'cbe' => __('CrossBoundary Energy', 'flynt'),
-                    'cbg' => __('CrossBoundary Group', 'flynt'),
+                    'none' => __('None', 'flynt'),
+                    'cbenergy' => __('CB Energy', 'flynt'),
+                    'cbaccess' => __('CB Access', 'flynt'),
+                    'cbadvisory' => __('CB Advisory', 'flynt'),
+                    'cbdhowventures' => __('CB Dhow Ventures', 'flynt'),
                 ],
-                'default_value' => 'cbe',
+                'default_value' => 'none',
             ]
         ],
         'location' => [
@@ -39,11 +43,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'operator' => '==',
                     'value' => 'GlobalOptions-Default',
                 ],
-                // [
-                //     'param' => 'post_type',
-                //     'operator' => '==',
-                //     'value' => 'page'
-                // ],
             ]
         ],
     ]);

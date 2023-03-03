@@ -10,18 +10,24 @@
   --color-error: hsl(343, 98%, 46%);
 }
 
-[data-theme='cbe'] {
-  --color-background: hsla(228, 56%, 98%, 1);
-  --color-text: hsla(212, 100%, 15%, 1);
+[data-theme='cbenergy'] {
+  --primary: #272a5f;
+  --secondary: #169b83;
 }
 
-[data-theme='cbg'] {
-  --color-accent: hsla(79, 100%, 60%, 1);
-  --color-background: hsla(212, 100%, 15%, 1);
-  --color-background-secondary: hsl(228, 56%, 98%, 0.06);
-  --color-border-secondary: hsl(0, 0%, 90%, 0.68);
-  --color-text: hsla(0, 0%, 100%, 1);
-  --color-text-muted: hsl(0, 0%, 100%, 0.8);
+[data-theme='cbaccess'] {
+  --primary: #302e78;
+  --secondary: #007506;
+}
+
+[data-theme='cbadvisory'] {
+  --primary: #272a5f;
+  --secondary: #002cf0;
+}
+
+[data-theme='cbdhowventures'] {
+  --primary: #302e78;
+  --secondary: #f06c00;
 }
 
 $breakpoint-mobile-horizontal: 480px;
@@ -33,9 +39,12 @@ $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
 
 :root {
-  --body-font-size: 1.125rem; // Always use rem. 1rem = 16px
-  --body-font-size-small: 1rem;
-  --flow-space: 1.5625rem;
+  // --body-font-size: 1.125rem; // Always use rem. 1rem = 16px
+  // --body-font-size-small: 1rem;
+  // --flow-space: 1.5625rem;
+
+  --black: #000;
+  --white: #fff;
 
   --content-max-width: 55ch;
   --content-max-width-large: 75ch;
