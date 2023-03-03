@@ -1,0 +1,49 @@
+flynt-component[name='BlockNewsletter'] {
+  .wpcf7 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: $breakpoint-desktop) {
+      justify-content: space-between;
+    }
+
+    form {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-spinner {
+      display: none;
+    }
+
+    &-not-valid-tip {
+      position: absolute;
+      top: 50px;
+    }
+
+    &-response-output {
+      bottom: 0;
+      position: absolute;
+    }
+
+    input {
+      @apply px-sm;
+      @apply py-xs;
+    }
+
+    input[type='submit'] {
+      @apply px-sm;
+      @apply py-xs;
+      @apply border-l;
+      @apply border-white;
+      @apply cursor-pointer;
+      @apply rounded-r-full;
+      @apply hover:bg-black;
+      @apply hover:border-black;
+      @apply text-white;
+      @apply transition-all;
+    }
+  }
+}
