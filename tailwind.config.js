@@ -19,9 +19,26 @@ module.exports = {
       blue: '#272a5f',
       green: '#52b756',
       grey: '#7b838d',
-      current: 'currentColor'
+      current: 'currentColor',
+      transparent: 'transparent'
     },
     fontSize: {
+      small: ['0.938rem', {
+        lineHeight: 'normal',
+        fontWeight: '400'
+      }],
+      base: ['1rem', {
+        lineHeight: 'normal',
+        fontWeight: '400'
+      }],
+      large: ['1.25rem', {
+        lineHeight: 'normal',
+        fontWeight: '400'
+      }],
+      button: ['1.25rem', {
+        lineHeight: '1.25rem',
+        fontWeight: '400'
+      }],
       h1: ['4.813rem', {
         lineHeight: 'normal',
         fontWeight: '400'
@@ -45,21 +62,12 @@ module.exports = {
       h6: ['1.563rem', {
         lineHeight: 'normal',
         fontWeight: '400'
-      }],
-      small: ['0.938rem', {
-        lineHeight: 'normal',
-        fontWeight: '400'
-      }],
-      button: ['1.25rem', {
-        lineHeight: '1.25rem',
-        fontWeight: '400'
       }]
     },
     screens: {
-      sm: '641px',
-      md: '769px',
-      lg: '1181px',
-      xl: '1281px',
+      sm: '640px',
+      md: '780px',
+      lg: '1280px',
       max: '1440px'
     },
     extend: {
