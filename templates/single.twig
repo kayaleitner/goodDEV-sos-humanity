@@ -2,7 +2,7 @@
 
 {% block content %}
   <article class="post">
-    <header class="post-header">
+    <header class="post-header mt-[134px]">
       {{ renderComponent('BlockPostHeader', { post: post }) }}
     </header>
     <section class="post-main">
@@ -10,9 +10,6 @@
         {{ renderComponent(component) }}
       {% endfor %}
     </section>
-    <footer class="post-meta">
-      {{ renderComponent('BlockPostFooter', { post: post }) }}
-    </footer>
     <section class="post-related">
       {{ renderComponent('GridPostsLatest', {'preContentHtml': '<h2>' ~ __('Related Posts') ~ '</h2>','taxonomies': post.categories(), 'options': {'theme': 'light', 'maxColumns': 3}}) }}
     </section>
