@@ -14,13 +14,18 @@ function initSlider (refs, data) {
   const config = {
     modules: [Navigation, A11y, Autoplay],
     a11y: options.a11y,
-    roundLengths: true,
     slidesPerView: 'auto',
     spaceBetween: 0,
     navigation: {
       nextEl: refs.next,
       prevEl: refs.prev
     }
+    // breakpoints: {
+    //   1181: {
+    //     slidesPerView: 4,
+    //     spaceBetween: 35,
+    //   },
+    // },
   }
   if (options.autoplay && options.autoplaySpeed) {
     config.autoplay = {

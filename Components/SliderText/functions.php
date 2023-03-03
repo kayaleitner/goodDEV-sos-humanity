@@ -49,12 +49,16 @@ function getACFLayout()
                     'ui' => 0,
                     'ajax' => 0,
                     'choices' => [
-                        '#272a5f' => __('Blue', 'flynt'),
-                        '#169b83' => __('CBE Green', 'flynt'),
-                        '#52b756' => __('Green', 'flynt'),
+                        'var(--primary)' => __('Primary', 'flynt'),
+                        'var(--secondary)' => __('Secondary', 'flynt')
                     ],
                     'return_format' => 'value',
                     ],
+                    // [
+                    //     'label' => __('Box Background Color', 'flynt'),
+                    //     'name' => 'panelTextboxbgcolor',
+                    //     'type' => 'color_picker',
+                    // ],
                     [
                         'label' => __('Content', 'flynt'),
                         'name' => 'panelTextbox',

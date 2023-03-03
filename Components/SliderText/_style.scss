@@ -3,32 +3,26 @@ flynt-component[name='SliderText'] {
     max-width: 100%;
     position: relative;
 
-    // .swiper-wrapper {
-    //   justify-content: flex-start;
-    //   width: calc(100% - 140px);
-    // }
+    .swiper-wrapper {
+      box-sizing: inherit;
+    }
 
     &-item {
       display: flex;
       flex-flow: column wrap;
+      height: 450px;
       justify-content: space-between;
-      min-height: 400px;
       overflow: hidden;
       position: relative;
-      width: 25%;
+      width: 100%;
 
-      @media (max-width: $breakpoint-tablet) {
-        // height: 100%;
-        width: 100%;
+      @media (min-width: $breakpoint-desktop) {
+        width: 400px;
       }
-
-      // &:last-child {
-      //   margin-right: 0 !important;
-      // }
     }
 
     .button-wrapper {
-      transform: translateY(-55px);
+      transform: translateY(-50px);
 
       @media (min-width: $breakpoint-desktop) {
         transform: translateY(-80px);
