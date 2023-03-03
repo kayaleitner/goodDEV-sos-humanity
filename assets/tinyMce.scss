@@ -1,11 +1,8 @@
 @import
+  'styles/tailwind',
   'styles/mixins',
   'styles/variables',
   'styles/base';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 html {
   box-sizing: border-box;
@@ -16,5 +13,10 @@ html {
   *::before,
   *::after {
     box-sizing: inherit;
+  }
+  
+  .mce-content-body {
+    background-color: #cdcdcd;
+    margin: 10px;
   }
 }

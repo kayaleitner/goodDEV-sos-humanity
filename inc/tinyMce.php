@@ -42,6 +42,11 @@ add_filter('tiny_mce_before_init', function ($init) {
             // Send it to style_formats as true js array
             $init['style_formats'] = json_encode($config['styleformats']);
         }
+
+        if (isset($config['textcolor_map'])) {
+            // Send it to textcolor_map as true js array
+            $init['textcolor_map'] = json_encode($config['textcolor_map']);
+        }
     }
     return $init;
 });
@@ -76,6 +81,13 @@ function getBlockFormats($blockFormats)
 function getConfig()
 {
     return [
+        'textcolor_map' => [
+            '000', 'Black',
+            'fff', 'White',
+            '169b83', 'Blue',
+            '272a5f', 'CBEgreen',
+            '52b756', 'Green'
+        ],
         'blockformats' => [
             __('Paragraph', 'flynt') => 'p',
             __('Heading 1', 'flynt') => 'h1',
@@ -92,32 +104,32 @@ function getConfig()
                 'items' => [
                     [
                         'title' => __('Heading 1', 'flynt'),
-                        'classes' => 'text-h1',
+                        'classes' => 'h1',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 2', 'flynt'),
-                        'classes' => 'text-h2',
+                        'classes' => 'h2',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 3', 'flynt'),
-                        'classes' => 'text-h3',
+                        'classes' => 'h3',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 4', 'flynt'),
-                        'classes' => 'text-h4',
+                        'classes' => 'h4',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 5', 'flynt'),
-                        'classes' => 'text-h5',
+                        'classes' => 'h5',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Heading 6', 'flynt'),
-                        'classes' => 'text-h6',
+                        'classes' => 'h6',
                         'selector' => '*'
                     ],
                 ]
@@ -157,6 +169,7 @@ function getConfig()
                     'bold',
                     'italic',
                     'blockquote',
+                    'forecolor',
                     '|',
                     'alignleft',
                     'aligncenter',
