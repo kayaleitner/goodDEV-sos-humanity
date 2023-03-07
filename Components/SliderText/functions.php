@@ -68,7 +68,7 @@ function getACFLayout()
                         'delay' => 1,
                     ],
                     [
-                        'label' => __('Logo', 'flynt'),
+                        'label' => __('Logo/Icon', 'flynt'),
                         'name' => 'panelLogo',
                         'type' => 'image',
                         'preview_size' => 'small',
