@@ -1,0 +1,44 @@
+{% if posts|length > 0 %}
+  <flynt-component load:on="visible" name="ListingProjects" class="pb-lg lg:pb-xl">
+    <div class="">
+      {% if blockTitle %}
+        <div class="max-w-screen-max w-full mx-auto p-sm lg:p-md flex flex-row justify-between align-bottom items-end content-end">
+          <div class="h4">{{ blockTitle }}</div>
+          <a href="{{ postTypeArchiveLink }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
+        </div>
+      {% endif %}
+      <ul class="max-w-screen-max mx-auto px-sm lg:px-md flex flex-col lg:flex-row gap-sm lg:gap-md justify-between">
+        {% for post in posts %}
+          <li class="post lg:w-1/3 grow">
+            <a class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
+              {% if post.thumbnail %}
+                <figure class="figure block">
+                  <img class="image lazyload min-h-[400px] object-cover"
+                    src="{{  post.thumbnail.src | resize(32) }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                    data-sizes="auto"
+                    data-src="{{ post.thumbnail.src }}"
+                    alt="{{ post.thumbnail.alt|e }}">
+                </figure>
+              {% endif %}
+              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
+                <div class="flex flex-col gap-sm">
+                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border font-mono font-bold">
+                    {{ post.category }}
+                  </div>
+                  <div class="w-full flex flex-col gap-xs justify-between align-start items-start">
+                    <div>{{ post.category }}</div>
+                    <h2 class="h5 w-full grow">{{ post.title }}</h2>
+                  </div>
+                </div>
+                <div class="flex flex-row lg:flex-col gap-sm justify-end items-end lg:items-start h-full">
+                  <span class="border border-black hover:bg-black hover:text-white rounded-full flex justify-center items-center w-fit py-xs px-sm">{{ labels.readMore }}</span>
+                </div>
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </flynt-component>
+{% endif %}
