@@ -33,6 +33,10 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
+x-cloak {
+  display: none !important;
+}
+
 /* Remove padding on lists */
 ul,
 ol {
