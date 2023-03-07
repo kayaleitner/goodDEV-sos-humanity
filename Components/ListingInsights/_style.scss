@@ -1,4 +1,4 @@
-flynt-component[name='GridPostsLatest'] {
+flynt-component[name='ListingInsights'] {
   .grid {
     --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
     --grid-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));

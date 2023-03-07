@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Components\GridPostsLatest;
+namespace Flynt\Components\ListingInsights;
 
 use Flynt\FieldVariables;
 use Flynt\Utils\Options;
@@ -8,7 +8,7 @@ use Timber\Timber;
 
 const POST_TYPE = 'post';
 
-add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
+add_filter('Flynt/addComponentData?name=ListingInsights', function ($data) {
     $postType = POST_TYPE;
 
     $data['taxonomies'] = $data['taxonomies'] ?: [];
@@ -32,8 +32,8 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
 function getACFLayout()
 {
     return [
-        'name' => 'GridPostsLatest',
-        'label' => __('Grid: Posts Latest', 'flynt'),
+        'name' => 'ListingInsights',
+        'label' => __('Listing: Insights', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -91,7 +91,7 @@ function getACFLayout()
     ];
 }
 
-Options::addTranslatable('GridPostsLatest', [
+Options::addTranslatable('ListingInsights', [
     [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
