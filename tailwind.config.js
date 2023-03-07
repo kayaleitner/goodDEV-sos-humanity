@@ -68,7 +68,8 @@ module.exports = {
       sm: '640px',
       md: '780px',
       lg: '1280px',
-      max: '1440px'
+      xl: '1440px',
+      max: '1600px'
     },
     extend: {
       borderWidth: {

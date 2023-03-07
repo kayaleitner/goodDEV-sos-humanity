@@ -19,7 +19,7 @@ add_filter('Flynt/addComponentData?name=ListingInsights', function ($data) {
         'category' => join(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
-        'posts_per_page' => $data['options']['maxColumns'],
+        'posts_per_page' => $data['options']['maxPosts'],
         'ignore_sticky_posts' => 1,
         'post__not_in' => array(get_the_ID())
     ]);
@@ -77,12 +77,12 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => __('Max Columns', 'flynt'),
-                        'name' => 'maxColumns',
+                        'label' => __('Max Number of Items', 'flynt'),
+                        'name' => 'maxPosts',
                         'type' => 'number',
                         'default_value' => 3,
                         'min' => 1,
-                        'max' => 4,
+                        // 'max' => 4,
                         'step' => 1
                     ]
                 ]

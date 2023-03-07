@@ -2,18 +2,27 @@
   <flynt-component load:on="visible" name="ListingInsights" class="pb-lg lg:pb-xl">
     <div class="">
       {% if blockTitle %}
-        <div class="max-w-screen-max w-full mx-auto p-sm lg:p-md flex flex-row justify-between align-bottom items-end content-end">
+        <div class="max-w-screen-max w-full mx-auto p-sm md:p-lg flex flex-row justify-between align-bottom items-end content-end">
           <div class="h4">{{ blockTitle }}</div>
           <a href="{{ postTypeArchiveLink }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
-      <ul class="max-w-screen-max mx-auto px-sm lg:px-md flex flex-col lg:flex-row gap-sm lg:gap-md justify-between">
+      <ul
+        class="
+          max-w-screen-max
+          mx-auto
+          grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+          px-sm md:px-lg
+          gap-sm lg:gap-md
+        "
+      >
         {% for post in posts %}
-          <li class="post lg:w-1/3 grow">
+          <li
+            class="post w-full">
             <a class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
-                <figure class="figure hidden lg:block">
-                  <img class="image lazyload min-h-[400px] object-cover"
+                <figure class="figure aspect-square">
+                  <img class="image lazyload object-cover w-full h-full"
                     src="{{  post.thumbnail.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
                     data-sizes="auto"
@@ -21,15 +30,20 @@
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
-              <div class="content border p-sm flex flex-col gap-0 lg:gap-sm justify-between items-stretch">
+              <div class="content aspect-square border p-sm flex flex-col gap-0 lg:gap-sm justify-between items-stretch">
                 <div class="w-full flex flex-row justify-between align-middle items-center">
                   <div class="">{{ post.date("d.m.Y") }}</div>
                   <div class="underline">{{ post.category }}</div>
                 </div>
-                <div class="flex flex-row lg:flex-col gap-sm justify-between items-end lg:items-stretch h-full">
-                  <h2 class="h5 w-3/4 lg:w-full grow">{{ post.title }}</h2>
-                  <span class="border border-black hover:bg-black hover:text-white rounded-full flex justify-center items-center h-lg w-lg">→</span>
+                <div class="flex flex-row lg:flex-col gap-sm justify-between items-between lg:items-stretch h-full">
+                  <h2 class="h5 w-3/4 lg:w-full grow mt-4">{{ post.title }}</h2>
                 </div>
+                <span class="aspect-square h-lg w-lg">
+                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24.084" cy="23.4199" r="22.0918" stroke="black" stroke-width="2"/>
+                    <path d="M37.0147 24.129C37.4052 23.7385 37.4052 23.1053 37.0147 22.7148L30.6507 16.3508C30.2602 15.9603 29.6271 15.9603 29.2365 16.3508C28.846 16.7413 28.846 17.3745 29.2365 17.765L34.8934 23.4219L29.2365 29.0787C28.846 29.4693 28.846 30.1024 29.2365 30.4929C29.6271 30.8835 30.2602 30.8835 30.6507 30.4929L37.0147 24.129ZM11.8477 24.4219L36.3076 24.4219L36.3076 22.4219L11.8477 22.4219L11.8477 24.4219Z" fill="black"/>
+                  </svg>
+                </span>
               </div>
             </a>
           </li>
