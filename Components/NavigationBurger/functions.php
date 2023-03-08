@@ -24,6 +24,22 @@ add_filter('Flynt/addComponentData?name=NavigationBurger', function ($data) {
 
 Options::addTranslatable('NavigationBurger', [
     [
+        'label' => __('Call to Action', 'flynt'),
+        'name' => 'ctaTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('CTA Link', 'flynt'),
+        'name' => 'ctaLink',
+        'type' => 'link',
+        'return_format' => 'array',
+        'wrapper' =>  [
+            'width' => '100',
+        ]
+    ],
+    [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
         'type' => 'tab',

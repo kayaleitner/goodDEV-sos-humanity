@@ -1,12 +1,11 @@
 .menu {
-  @include reset-list;
   backface-visibility: hidden;
   height: 100vh;
   inset-block-start: 0;
   inset-inline-start: 0;
   margin: 0;
-  overflow-y: auto;
-  padding: var(--navigation-height) 16px;
+  overflow-x: hidden;
+  overflow-y: hidden;
   position: fixed;
   transform: translateX(100%);
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.45s;
@@ -34,6 +33,11 @@
   }
 }
 
-.open {
-  transform: translateX(0);
+.submenu {
+  display: block !important;
+  transform: translateX(100%);
+
+  &.open {
+    transform: translateX(0);
+  }
 }

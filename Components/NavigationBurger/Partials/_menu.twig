@@ -1,42 +1,45 @@
-<ul x-data="{ activeSubmenu:  '' }" data-ref="menu" class="menu" style="background: var(--secondary);">
+<ul x-data="{ activeSubmenu:  '' }" data-ref="menu" class="menu pt-[80px]" style="background: var(--secondary);">
   {% for item in items %}
     {# regular menu item #}
     {% if not item.children %}
-      <li data-item="{{loop.index}}" class="h-fit item {{- item.current ? ' current-menu-item underline underline-offset-8' }}">
-        <a class="link block no-underline text-white py-sm font-normal" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+      <li data-item="{{loop.index}}" class="h-fit px-sm item {{- item.current ? ' current-menu-item underline underline-offset-8' }}">
+        <a class="link h3 block no-underline text-white py-sm border-b border-white font-normal" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
       </li>
     {% endif %}
     {# menu with submenu item #}
     {% if item.children %}
-      <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }}" >
+      <li data-item="{{loop.index}}" class="h-fit item px-sm open-submenu {{- item.current ? ' current-menu-item' }}" >
         <a @click="activeSubmenu = {{loop.index}}" 
-          class="tab-control pb-sm text-white link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200" 
+          class="tab-control h3 w-full py-sm text-white border-b border-white link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200" 
           :class="{ 'open': activeSubmenu === {{loop.index}} }" 
           href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
         <ul x-show="activeSubmenu === {{loop.index}}" x-cloak
-            x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-450" 
+            x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-650" 
             x-transition:enter-start="opacity-0" 
             x-transition:enter-end="opacity-100" 
-            x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-450" 
+            x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-650" 
             x-transition:leave-start="opacity-100" 
             x-transition:leave-end="opacity-0" 
-            class="submenu border-t border-white fixed top-0 right-0 h-screen w-full pt-[135px] px-sm z-50 translate-x-full" style="background: var(--secondary);"
+            class="submenu fixed top-0 right-0 h-screen w-full pt-[80px] z-50 translate-x-full" style="background: var(--secondary);"
             :class="{ 'open': activeSubmenu === {{loop.index}} }">
-            <div class="text-white py-sm grid grid-cols-3">
-              <span @click="activeSubmenu = false">←</span>
-              <span class="text-center">{{ item.title }}</span>
+            <div class="text-white py-sm grid grid-cols-3 border-b border-white">
+              <span @click="activeSubmenu = false" class="px-sm">←</span>
+              <span class="text-center px-sm">{{ item.title }}</span>
             </div>
           {% for subitem in item.children %}
-            <li class="h-fit mb-sm border-b border-white item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
-              <a class="link pb-sm text-white font-normal inline-block no-underline text-currentColor transition-all duration-200" href="{{ subitem.link }}">{{ subitem.title }}</a>
+            <li class="h-fit px-sm item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
+              <a class="link h3 w-full py-sm text-white font-normal border-b border-white inline-block no-underline text-currentColor transition-all duration-200" href="{{ subitem.link }}">{{ subitem.title }}</a>
             </li>
           {% endfor %}
         </ul>
       </li>
     {% endif %}
   {% endfor %}
+  <div class="absolute bottom-sm w-full flex justify-center">
+    <a class="rounded-full bg-white hover:bg-black hover:no-underline inline-flex justify-center items-center py-1 px-2 lg:py-2 lg:px-6 text-button text-center text-black hover:text-white ease-linear duration-200" href="{{ ctaLink.url }}" {% if ctaLink.target %} target="{{ ctaLink.target }}" rel="noreferrer noopener"{% endif %}>{{ ctaLink.title|e }}</a>
+  </div>
 </ul>
