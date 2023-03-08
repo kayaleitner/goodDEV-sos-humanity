@@ -15,7 +15,6 @@ flynt-component[name='NavigationBurger'] {
     padding-block: 12px;
     position: fixed;
     width: 100vw;
-    z-index: 99;
 
     .admin-bar & {
       inset-block-start: var(--wp-admin--admin-bar--height);

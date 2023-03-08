@@ -13,7 +13,8 @@
       <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }}" >
         <a @mouseover="activeSubmenu = {{loop.index}}" 
           class="tab-control link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" 
-          :class="{ 'open': activeSubmenu === {{loop.index}} }" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+          :class="{ 'open': activeSubmenu === {{loop.index}} }" 
+          href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
         <ul x-show="activeSubmenu === {{loop.index}}" x-cloak @mouseover.away="activeSubmenu = false"
