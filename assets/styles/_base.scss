@@ -218,8 +218,29 @@ table {
   }
 
   &--outlined {
+    @apply py-sm px-md;
+    @apply gap-sm;
+    align-items: center;
     background-color: transparent;
-    color: var(--color-accent);
+    border: 1px solid var(--white);
+    border-radius: 9999px;
+    color: var(--white);
+    display: flex;
+    transition: all 100ms linear;
+    width: fit-content;
+
+    &:focus,
+    &:hover {
+      &::after {
+        content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
+        margin-left: 10px;
+      }
+    }
+
+    &::after {
+      content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
+      transition: all 0.2s linear;
+    }
   }
 
   &--text {
