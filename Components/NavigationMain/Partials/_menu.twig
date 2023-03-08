@@ -1,9 +1,9 @@
-<ul x-data="{ activeTab:  0 }" class="menu grow list-none flex flex-row align-top gap-md justify-start w-1/2 h-fit text-white z-[9999]">
+<ul x-data="{ activeSubmenu:  '' }" class="menu grow list-none flex flex-row align-top gap-md justify-between w-1/2 h-fit text-white">
   {% for item in items %}
     {# regular menu item #}
     {% if not item.children %}
-      <li data-item="{{loop.index}}" class="h-fit flex align-middle items-start justify-center grow item {{- item.current ? ' current-menu-item underline underline-offset-8' }}">
-        <a class="link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+      <li data-item="{{loop.index}}" class="h-fit item {{- item.current ? ' current-menu-item underline underline-offset-8' }}">
+        <a class="link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
       </li>
@@ -11,17 +11,23 @@
     {# menu with submenu item #}
     {% if item.children %}
       <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }}" >
-        <a @click="activeTab = {{loop.index}}" 
-          class="tab-control link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200" 
-          :class="{ 'active': activeTab === {{loop.index}} }" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+        <a @mouseover="activeSubmenu = {{loop.index}}" 
+          class="tab-control link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" 
+          :class="{ 'open': activeSubmenu === {{loop.index}} }" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
-        <ul x-show.transition.in.opacity.duration.600="activeTab === {{loop.index}}" x-cloak
-            class="menu submenu fixed top-xxl right-0 h-screen w-1/2 rounded-l-[30px] pt-xxl pr-md pb-auto pl-xl" style="background: var(--secondary);"
-            :class="{ 'active': activeTab === {{loop.index}} }">
+        <ul x-show="activeSubmenu === {{loop.index}}" x-cloak @mouseover.away="activeSubmenu = false"
+            x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-450" 
+            x-transition:enter-start="opacity-0" 
+            x-transition:enter-end="opacity-100" 
+            x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-450" 
+            x-transition:leave-start="opacity-100" 
+            x-transition:leave-end="opacity-0" 
+            class="menu submenu fixed top-0 right-0 h-screen w-1/2 rounded-l-[30px] pt-xxl pr-md pb-auto pl-xl z-50 translate-x-full" style="background: var(--secondary);"
+            :class="{ 'open': activeSubmenu === {{loop.index}} }">
           {% for subitem in item.children %}
-            <li class="h-fit item {{- item.current ? ' current-menu-item' }}">
-              <a class="link h2 inline-block no-underline hover:underline underline-offset-8 text-currentColor font-normal transition-all duration-200" href="{{ subitem.link }}">{{ subitem.title }}</a>
+            <li class="h-fit mb-sm item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
+              <a class="link h2 font-normal inline-block no-underline text-currentColor transition-all duration-200" href="{{ subitem.link }}">{{ subitem.title }}</a>
             </li>
           {% endfor %}
         </ul>

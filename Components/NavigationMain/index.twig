@@ -1,8 +1,8 @@
 <flynt-component load:on="idle" load:onmedia="(min-width: 1024px)" name="NavigationMain" class="hidden lg:block">
   <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
-    <div class="max-w-screen-max mx-auto px-lg py-md flex flex-row align-top justify-between gap-sm">
+    <div class="max-w-screen-max mx-auto px-lg py-md">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
-      <div class="menu-wrapper flex items-center justify-start gap-md w-1/2 h-fit">
+      <div class="menu-wrapper fixed left-[50%] top-md flex items-center justify-start gap-md w-1/2 h-fit pr-md pl-xl">
         {% if menu %}
           {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
         {% endif %}

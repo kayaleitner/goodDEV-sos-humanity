@@ -1,4 +1,8 @@
 flynt-component[name='NavigationMain'] {
+  .open {
+    transform: translateX(0);
+  }
+
   // .navigation {
   //   .admin-bar & {
   //     inset-block-start: var(--wp-admin--admin-bar--height);
