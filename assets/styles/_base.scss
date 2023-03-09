@@ -9,6 +9,7 @@ html {
   color: var(--black);
   font-family: 'Aeonik', Verdana, sans-serif;
   font-size: 16px;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeSpeed;
 
