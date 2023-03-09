@@ -15,17 +15,21 @@ function initSlider (refs, data) {
     modules: [Navigation, A11y, Autoplay],
     a11y: options.a11y,
     slidesPerView: 'auto',
-    spaceBetween: 0,
+    spaceBetween: 35,
     navigation: {
       nextEl: refs.next,
       prevEl: refs.prev
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 35
+      },
+      1181: {
+        slidesPerView: 3,
+        spaceBetween: 35
+      }
     }
-    // breakpoints: {
-    //   1181: {
-    //     slidesPerView: 4,
-    //     spaceBetween: 35,
-    //   },
-    // },
   }
   if (options.autoplay && options.autoplaySpeed) {
     config.autoplay = {

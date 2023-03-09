@@ -1,8 +1,8 @@
 <flynt-component load:on="idle" name="HeroLottieAnimation" class="bg-cbegreen">
-  <div class="w-screen h-screen relatuive">
+  <div class="w-screen h-auto lg:h-screen relative py-xl px-sm lg:p-lg">
     {% if blockTitle %}
     <div class="absolute top-0 left-0">
-      <div class="max-w-screen-max mx-auto px-md py-md h4 text-black z-50">{{ blockTitle }}</div>
+      <div class="max-w-screen-max mx-auto px-sm py-sm lg:px-md lg:py-md h4 text-black z-50">{{ blockTitle }}</div>
     </div>
     {% endif %}
     {% if lottieAnimationLink %}

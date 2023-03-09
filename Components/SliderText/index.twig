@@ -1,8 +1,8 @@
 <flynt-component load:on="idle" name="SliderText" class="pb-0 lg:pb-xl overflow-hidden">
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="max-w-screen-max mx-auto p-sm md:p-lg">
+  <div class="max-w-screen-max mx-auto p-sm lg:py-lg lg:px-0">
     {% if blockTitle %}
-      <div class="py-sm lg:py-md h4">{{ blockTitle }}</div>
+      <div class="py-sm px-sm lg:py-md lg:px-md h4">{{ blockTitle }}</div>
     {% endif %}
     <div data-ref="slider" class="slider swiper-container">
       <div class="button-wrapper absolute right-md lg:right-lg top-0 flex align-middle justify-end">
@@ -23,7 +23,7 @@
             {% if box.panelTextbox %}<div class="h5">{{ box.panelTextbox|e('wp_kses_post') }}</div>{% endif %}
             {% if box.panelLogo %}
               <div class="">
-                <img class="logo lazyload max-w-[100px]"
+                <img class="logo lazyload w-auto max-w-[w00px]"
                 src="{{ box.panelLogo.src | resize(32) }}"
                 data-srcset="{{function('wp_get_attachment_image_srcset', box.panelLogo.id)}}"
                 data-sizes="auto">

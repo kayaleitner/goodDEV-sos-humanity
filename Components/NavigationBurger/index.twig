@@ -8,7 +8,6 @@
     </div>
     {% if menu %}
       {% include 'Partials/_menu.twig' with { 'items': menu.items, 'ctaLink': ctaLink  } only %}
-      {# {% include 'Partials/_cta.twig' with { 'ctaLink': ctaLink } only %} #}
     {% endif %}
   </nav>
 </flynt-component>
