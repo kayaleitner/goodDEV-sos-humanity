@@ -1,0 +1,60 @@
+<?php
+
+namespace Flynt\Components\HeroIllustration;
+
+use Flynt\FieldVariables;
+
+function getACFLayout()
+{
+    return [
+        'name' => 'HeroIllustration',
+        'label' => __('Hero: Illustration', 'flynt'),
+        'sub_fields' => [
+            [
+                'label' => __('General', 'flynt'),
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
+                'label' => __('Title', 'flynt'),
+                'name' => 'blockTitle',
+                'type' => 'text'
+            ],
+            [
+                'label' => __('Illustrations', 'flynt'),
+                'name' => 'illustrations',
+                'type' => 'repeater',
+                'collapsed' => '',
+                'layout' => 'block',
+                'button_label' => __('Add Illustration', 'flynt'),
+                'min' => 1,
+                'sub_fields' => [
+                    [
+                        'label' => __('Illustration', 'flynt'),
+                        'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
+                        'name' => 'illustration',
+                        'type' => 'image',
+                        'preview_size' => 'medium',
+                        'mime_types' => 'jpg,jpeg,png,svg',
+                        'wrapper' => [
+                            'width' => 40
+                        ],
+                    ],
+                    [
+                        'label' => __('Text', 'flynt'),
+                        'name' => 'contentHtml',
+                        'type' => 'wysiwyg',
+                        'tabs' => 'visual',
+                        'media_upload' => 0,
+                        'delay' => 1,
+                        'wrapper' => [
+                            'width' => 60
+                        ],
+                    ]
+                ]
+            ],
+        ]
+    ];
+}

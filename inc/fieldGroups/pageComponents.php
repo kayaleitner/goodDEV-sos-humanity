@@ -22,6 +22,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\GridImageText\getACFLayout(),
+                    Components\HeroIllustration\getACFLayout(),
                     Components\HeroLottieAnimation\getACFLayout(),
                     Components\HeroScrollySplit\getACFLayout(),
                     Components\ListComponents\getACFLayout(),
