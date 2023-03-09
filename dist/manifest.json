@@ -22,9 +22,11 @@
     "src": "Components/HeroLottieAnimation/script.js"
   },
   "Components/HeroScrollySplit/script.js": {
-    "file": "assets/script-57f90ecf.js",
+    "css": [
+      "assets/swiper-bundle-6c3c321b.css"
+    ],
+    "file": "assets/script-bc2ebf90.js",
     "imports": [
-      "_swiper-bundle.min-84d06f2a.js",
       "_helpers-0bb72b7a.js",
       "assets/main.js"
     ],
@@ -66,34 +68,37 @@
     "src": "Components/NavigationMain/script.js"
   },
   "Components/SliderImages/script.js": {
-    "file": "assets/script-7677297c.js",
+    "css": [
+      "assets/swiper-bundle-6c3c321b.css"
+    ],
+    "file": "assets/script-3f90b04b.js",
     "imports": [
-      "_swiper-bundle.min-84d06f2a.js",
+      "_autoplay-cba721e1.js",
       "_helpers-0bb72b7a.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/SliderImages/script.js"
   },
   "Components/SliderText/script.js": {
-    "file": "assets/script-320c3520.js",
+    "css": [
+      "assets/swiper-bundle-6c3c321b.css"
+    ],
+    "file": "assets/script-87a17065.js",
     "imports": [
-      "_swiper-bundle.min-84d06f2a.js",
+      "_autoplay-cba721e1.js",
       "_helpers-0bb72b7a.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/SliderText/script.js"
+  },
+  "_autoplay-cba721e1.js": {
+    "file": "assets/autoplay-cba721e1.js"
   },
   "_helpers-0bb72b7a.js": {
     "file": "assets/helpers-0bb72b7a.js"
   },
   "_index-2a8ce3c2.js": {
     "file": "assets/index-2a8ce3c2.js"
-  },
-  "_swiper-bundle.min-84d06f2a.js": {
-    "css": [
-      "assets/swiper-bundle-6c3c321b.css"
-    ],
-    "file": "assets/swiper-bundle.min-84d06f2a.js"
   },
   "assets/admin.js": {
     "file": "assets/admin-02f88806.js",
@@ -130,12 +135,12 @@
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-c98da26f.js",
+    "file": "assets/main-a20a23e1.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-9ff06684.css",
+    "file": "assets/main-a1f534ff.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -145,7 +150,7 @@
     "src": "assets/print.scss"
   },
   "assets/tinyMce.scss": {
-    "file": "assets/tinyMce-b2bd2a06.css",
+    "file": "assets/tinyMce-c48e23b8.css",
     "isEntry": true,
     "src": "assets/tinyMce.scss"
   },
