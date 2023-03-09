@@ -1,72 +1,66 @@
-import Swiper, { Navigation, A11y, Autoplay } from 'swiper'
 import 'swiper/css/bundle'
-import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
+import { buildRefs } from '@/assets/scripts/helpers.js'
 import gsap from 'gsap'
 
 export default function (heroScrollySplit) {
   const refs = buildRefs(heroScrollySplit, true)
-  const data = getJSON(heroScrollySplit)
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: refs.section,
-      pin: true,
-      start: 'top top',
-      end: 'bottom+=50% bottom',
-      scrub: true,
-      // snap: 1,
-      // markers: true,
-      snap: {
-        snapTo: 1,
-        duration: { min: 0.01, max: 0.3 },
-        delay: 0,
-        ease: 'power0.inOut',
-        inertia: true
+
+  const mm = gsap.matchMedia()
+  const breakPoint = 780
+
+  mm.add({
+    // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+    isDesktop: `(min-width: ${breakPoint}px) and (prefers-reduced-motion: no-preference)`,
+    isMobile: `(max-width: ${breakPoint - 1}px) and (prefers-reduced-motion: no-preference)`
+  }, (context) => {
+    const { isDesktop, isMobile } = context.conditions
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: refs.section,
+        pin: true,
+        start: 'top top',
+        end: 'bottom+=50% bottom',
+        scrub: true,
+        // markers: true,
+        snap: {
+          snapTo: 1,
+          duration: { min: 0.01, max: 0.2 },
+          delay: 0,
+          ease: 'power1.in',
+          inertia: true,
+          directional: true
+        }
       }
-    }
-  })
-  timeline
-    .from(refs.text_2, {
-      opacity: 1,
-      duration: 0.2
     })
-    .to(refs.left, {
-      y: '100vh'
-    }, 0)
-    .to(refs.right, {
-      y: '-100vh'
-    }, 0)
-    .to(refs.text_2, {
-      opacity: 0,
-      duration: 0.2
-    }, 0)
-    .to(refs.text_3, {
-      opacity: 1,
-      duration: 0.2
-    }, 0)
-    .to(refs.text_1, {
-      opacity: 1,
-      duration: 0.2
-    }, 0)
-  const swiper = initSlider(refs, data)
-  return () => swiper.destroy()
-}
-
-function initSlider (refs, data) {
-  const { options } = data
-  const config = {
-    modules: [Navigation, A11y, Autoplay],
-    a11y: options.a11y,
-    roundLengths: true,
-    navigation: {
-      nextEl: refs.next,
-      prevEl: refs.prev
-    }
-  }
-  if (options.autoplay && options.autoplaySpeed) {
-    config.autoplay = {
-      delay: options.autoplaySpeed
-    }
-  }
-
-  return new Swiper(refs.slider, config)
+    timeline
+      .from(refs.text_2, {
+        opacity: isDesktop && 1,
+        duration: 0.2
+      })
+      .to(refs.left, {
+        y: isDesktop && '100vh',
+        x: isMobile && '-100vw'
+      }, 0)
+      .to(refs.right, {
+        y: isDesktop && '-100vh',
+        x: isMobile && '100vw'
+      }, 0)
+      .to(refs.text_2, {
+        opacity: isDesktop && 0,
+        duration: 0.2
+      }, 0)
+      .to(refs.text_3, {
+        opacity: isDesktop && 1,
+        duration: 0.2
+      }, 0)
+      .to(refs.text_1, {
+        opacity: isDesktop && 1,
+        duration: 0.2
+      }, 0)
+      .to('.scrollyDot', {
+        y: -40,
+        width: (i, target) => i <= 5 ? i * (i - 2) - 1 : (10 - i) * (i - 2) - 1
+      }, 0)
+  })
 }

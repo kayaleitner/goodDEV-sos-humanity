@@ -1,92 +1,129 @@
 <flynt-component load:on="idle" name="HeroScrollySplit" class="h-[150vh] w-full" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <section data-refs="section" class="HeroScrollySplit relative h-screen w-full overflow-hidden">
-  {% set images = [slides[1], slides[0], slides[1]] %}
-  {% for slide in images %}
-  <div class="
-    img-{{loop.index}} w-full h-screen grid grid-cols-2 overflow-hidden {% if loop.index == 1 %} mt-[-100vh] {% endif %}">
-    <div data-refs="left" class="absolute w-full h-full lg:[clip-path:inset(0_50%_0_0)] left">
-      <picture class="h-1/2 lg:h-full">
-        <source srcset="
-          {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
-          media="(min-width: 768px)"
-          sizes="100vw"
-        />
-        <img class="object-cover h-full w-full"
-          srcset="
-            {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
-          src="{{ slide.image.src | resize(32) }}"
-          sizes="100vw"
-          data-object-fit="cover"
-          alt="{{ slide.image.alt|e }}"
-        />
-      </picture>
-       <div id="overlay" class="
-        absolute top-0 left-0 hidden lg:block 
-        h-full w-full
-        bg-black/30
-        z-10
-      "></div>
-      <div data-refs="text_{{loop.index}}" class="
-        absolute z-20 top-auto bottom-0 lg:top-0 lg:bottom-auto right-0  hidden lg:block 
-        w-1/3 h-full
-        opacity-0
-        py-sm px-sm lg:py-48 lg:px-24
-        text-white bg-cbegreen lg:bg-transparent mr-[50vw]
+  <section
+    data-refs="section"
+    class="
+      HeroScrollySplit
+      md:block relative
+      grid grid-cols-3 scrollygridcontainer
+      h-screen w-full
+      overflow-hidden
+      bg-cbegreen
+    "
+  >
+    {% set images = [slides[1], slides[0], slides[1]] %}
+    {% for slide in images %}
+      <div class="
+        img-{{loop.index}}
+        w-full h-screen
+        flex flex-col
+        md:grid md:grid-cols-2
+        md:overflow-hidden
+        ml-[-100vw] md:ml-0
+        {% if loop.index == 1 %} md:mt-[-100vh] {% endif %}
       ">
-        <h1 class="text-5xl text-right font-light w-full block">
-          <span class="block">{{ slide.text_1 }}</span>
-          <span class="block lg:hidden">{{ slide.text_2 }}</span>
-        </h1>
+        <div data-refs="left" class="md:absolute w-[100vw] md:w-full h-1/2 md:h-full md:[clip-path:inset(0_50%_0_0)] left">
+          <picture class="h-full {% if loop.index != 2 %} hidden md:block {% endif %}">
+            <source srcset="
+              {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+              media="(min-width: 768px)"
+              sizes="100vw"
+            />
+            <img class="object-cover h-full w-full"
+              srcset="
+                {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+              src="{{ slide.image.src | resize(32) }}"
+              sizes="100vw"
+              data-object-fit="cover"
+              alt="{{ slide.image.alt|e }}"
+            />
+          </picture>
+          <div id="overlay" class="
+            absolute top-0 left-0 hidden md:block 
+            h-full w-full
+            bg-black/40
+            z-10
+          "></div>
+          <div data-refs="text_{{loop.index}}" class="
+            max-w-screen-lg mx-auto w-full
+            h-full md:h-screen
+            absolute z-20
+            {% if loop.index == 2 %} hidden {% endif %}
+            flex md:flex
+            top-0 left-0 right-0
+            items-end md:items-center
+            md:opacity-0
+            text-white bg-cbegreen md:bg-transparent
+          ">
+            <h1 class="md:text-[3.438rem] md:w-1/2 p-4 md:pr-24 text-8xl md:text-right font-light w-full {% if loop.index == 2 %} hidden md:block {% endif %}">
+              <span class="block">{{ slide.text_1 }}</span>
+              <span class="block md:hidden">{{ slide.text_2 }}</span>
+            </h1>
+          </div>
+        </div>
+        <div data-refs="right" class="md:absolute w-full h-1/2 md:h-full md:[clip-path:inset(0_0_0_50%)] translate-y-0">
+          <picture class="h-full {% if loop.index == 2 %} hidden md:block {% endif %}">
+            <source srcset="
+              {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+              media="(min-width: 768px)"
+              sizes="100vw"
+            />
+            <img class="object-cover h-full w-full"
+              srcset="
+                {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+              src="{{ slide.image.src | resize(32) }}"
+              sizes="100vw"
+              data-object-fit="cover"
+              alt="{{ slide.image.alt|e }}"
+            />
+          </picture>
+          <div id="overlay" class="
+            absolute top-0 left-0 hidden md:block 
+            h-full w-full
+            bg-black/40
+            z-10
+          "></div>
+          <div data-refs="text_{{loop.index}}" class="
+            max-w-screen-lg mx-auto w-full h-screen
+            absolute z-20
+            flex
+            top-0 left-0 right-0
+            md:items-center md:justify-end
+            md:opacity-0 {% if loop.index != 2 %} opacity-0 {% endif %}
+            text-white bg-cbegreen md:bg-transparent
+          ">
+            <h1 class="md:text-[3.438rem] md:w-1/2 p-4 md:pl-24 text-8xl font-light h-1/2 md:h-auto {% if loop.index != 2 %} hidden md:block {% endif %}">
+              <span class="block md:hidden">{{ slide.text_1 }}</span>
+              <span class="block">{{ slide.text_2 }}</span>
+            </h1>
+          </div>
+        </div>
       </div>
+    {% endfor %}
+    <div
+      data-refs="dots"
+      id="scrolly-intro-dots"
+      class="
+        absolute flex flex-col
+        items-center
+        bottom-0 top-auto md:bottom-auto md:top-1/2 left-1/2
+        -translate-x-1/2 translate-y-1/4 md:-translate-y-1/2 -rotate-90 md:rotate-0
+      "
+    >
+      <div class="spacer h-[40px] w-4"></div>
+      {% set k = 10 %}
+      {% for i in range(1, k) %}
+        {% if i <= 4 %}
+          {% set s = i * i %}
+        {% else %}
+          {% set s = (8 - i) * i %}
+        {% endif %}
+        <div
+          id="dot-{{i}}"
+          class="scrollyDot rounded-full bg-white m-2 aspect-square"
+          style="width:{{s}}px;"
+        ></div>
+      {% endfor %}
     </div>
-    <div data-refs="right" class="absolute w-full h-full lg:[clip-path:inset(0_0_0_50%)] translate-y-0">
-      <picture class="h-1/2 lg:h-full">
-        <source srcset="
-          {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
-          media="(min-width: 768px)"
-          sizes="100vw"
-        />
-        <img class="object-cover h-full w-full"
-          srcset="
-            {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
-          src="{{ slide.image.src | resize(32) }}"
-          sizes="100vw"
-          data-object-fit="cover"
-          alt="{{ slide.image.alt|e }}"
-        />
-      </picture>
-       <div id="overlay" class="
-        absolute top-0 left-0 hidden lg:block 
-        h-full w-full
-        bg-black/30
-        z-10
-      "></div>
-      <div data-refs="text_{{loop.index}}" class="
-        absolute z-20 top-auto bottom-0 lg:top-0 lg:bottom-auto flex flex-row items-start lg:items-center
-        w-full lg:w-1/2 lg:ml-[50vw] h-1/2 lg:h-full
-        opacity-0
-        py-sm px-sm lg:py-48 lg:px-24
-        text-white bg-cbegreen lg:bg-transparent
-      ">
-        <h1 class="text-8xl font-light block">
-          <span class="block lg:hidden">{{ slide.text_1 }}</span>
-          <span class="block">{{ slide.text_2 }}</span>
-        </h1>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-  <div id="scrolly-intro-dots" class="absolute block bottom-0 top-auto lg:bottom-auto lg:top-1/2 left-1/2 -translate-x-1/2 lg:-translate-y-1/2 rotate-90 lg:rotate-0">
-    <svg width="16" height="166" viewBox="0 0 16 166" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="7.9999" cy="141.544" r="2.82559" fill="#ffffff"/>
-      <circle cx="7.99995" cy="164.149" r="1.41279" fill="#ffffff"/>
-      <circle cx="8.0001" cy="117.526" r="4.23838" fill="#ffffff"/>
-      <circle cx="8" cy="89.2706" r="7.06396" fill="#ffffff"/>
-      <ellipse cx="8.00005" cy="8.74138" rx="1.41279" ry="1.41279" transform="rotate(-180 8.00005 8.74138)" fill="#ffffff"/>
-      <ellipse cx="8.0001" cy="32.7589" rx="2.82559" ry="2.82559" transform="rotate(-180 8.0001 32.7589)" fill="#ffffff"/>
-      <circle cx="8.0001" cy="61.0147" r="4.23838" fill="#ffffff"/>
-    </svg>
-  </div>
   </section>
 </flynt-component>
