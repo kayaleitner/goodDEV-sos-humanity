@@ -1,11 +1,11 @@
 import 'vite/modulepreload-polyfill'
 import './scripts/loadCustomElements'
 import './scripts/custom'
+import './scripts/map'
 import Alpine from 'alpinejs'
 import FlyntComponent from './scripts/FlyntComponent'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-
 import 'lazysizes'
 
 if (import.meta.env.DEV) {

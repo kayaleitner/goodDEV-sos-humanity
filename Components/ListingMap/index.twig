@@ -11,14 +11,15 @@
       <div x-data="{ activeProject:  1 }" class="max-w-screen-max w-full mx-auto p-sm flex flex-col md:flex-row gap-lg justify-between items-center">
         
         <div class="w-full md:w-3/4 flex justify-center items-center mx-auto relative">
+          <div class="" id="dotteMap"></div>
           <img src="/wp-content/uploads/2023/03/map.svg" class="relative">
           
           <!-- Dots -->
-          <div class="absolute top-[-40px] w-full flex items-center justify-center px-4">
+          <div class="absolute top-0 w-full flex items-center justify-center px-4">
             {% for post in posts %}
               <button
                 @click="activeProject = {{loop.index}}"
-                class="tab-control bg-cbegreen opacity-50 flex w-sm h-sm mx-2 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:bg-teal-600 hover:shadow-lg"
+                class="tab-control bg-[#7CD3B9] flex w-md h-md mx-2 rounded-full overflow-hidden transition-all duration-100 linear"
                 :class="{ 'active': activeProject === {{loop.index}} }"
               ></button>
               {% endfor %}
@@ -28,17 +29,6 @@
         <div 
           class="w-full md:w-1/4 mx-auto relative"
         >
-          <!-- Arrows -->
-          {# <div class="absolute top-[-40px] w-full flex items-center justify-center px-4">
-            <button
-              @click="activeProject = activeProject === 1 ? {{ loop.index }} - 1"
-              class="tab-control text-black flex-1 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out"
-            ><-</button>
-            <button
-              @click="activeProject = activeProject === 1 ? {{ loop.index }} + 1"
-              class="tab-control text-black flex-1 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out"
-            >-></button>
-          </div> #}
 
           <!-- Project -->
           {% for post in posts %}
@@ -53,7 +43,9 @@
             x-transition:leave-start="opacity-100 block" 
             x-transition:leave-end="opacity-0 hidden" 
             class="project flex items-start" 
-            :class="{ 'active': activeProject === {{loop.index}} }">
+            :class="{ 'active': activeProject === {{loop.index}} }"
+            data-latitude="{{ post.latitude }}" 
+            data-longitude="{{ post.longitude }}">
             <div class="post w-full grow">
               {% if post.thumbnail %}
                 <figure class="figure hidden md:block">

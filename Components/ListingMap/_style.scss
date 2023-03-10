@@ -1,7 +1,11 @@
 flynt-component[name='ListingMap'] {
-  button {
+  button {    
     &.active {
-      @apply opacity-100;
+      @apply bg-cbegreen;
+      @apply w-lg;
+      @apply h-lg;
+      outline: 2px solid var(--secondary);
+      outline-offset: 4px;
     }
   }
 }
