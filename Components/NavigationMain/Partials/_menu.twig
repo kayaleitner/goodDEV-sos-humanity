@@ -11,12 +11,12 @@
     {# menu with submenu item #}
     {% if item.children %}
       <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }}" >
-        <a @click="activeSubmenu = {{loop.index}}" 
+        <button @click="activeSubmenu = {{loop.index}}" 
           class="tab-control link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" 
           :class="{ 'open': activeSubmenu === {{loop.index}} }" 
-          href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+          >
           {{ item.title }}
-        </a>
+        </button>
         <ul x-show="activeSubmenu === {{loop.index}}" x-cloak 
             @click.away="activeSubmenu = false"
             {# @click.away.prevent="activeSubmenu.menu{{ counter }} = false" #}
