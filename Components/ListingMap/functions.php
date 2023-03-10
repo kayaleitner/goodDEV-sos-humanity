@@ -24,8 +24,6 @@ add_filter('Flynt/addComponentData?name=ListingMap', function ($data) {
         'post__not_in' => array(get_the_ID())
     ]);
 
-    $data['postTypeArchiveLink'] = get_post_type_archive_link($postType);
-
     return $data;
 });
 
@@ -130,17 +128,6 @@ Options::addTranslatable('ListingMap', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => __('Reading Time - (20) min read', 'flynt'),
-                'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
-                'name' => 'readingTime',
-                'type' => 'text',
-                'default_value' => __('%d min read', 'flynt'),
-                'required' => 1,
-                'wrapper' => [
-                    'width' => 50
-                ],
-            ],
-            [
                 'label' => __('All Posts', 'flynt'),
                 'name' => 'allPosts',
                 'type' => 'text',
@@ -151,10 +138,30 @@ Options::addTranslatable('ListingMap', [
                 ],
             ],
             [
+                'label' => __('All Posts Link', 'flynt'),
+                'name' => 'allPostsLink',
+                'type' => 'link',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
+            [
                 'label' => __('Read More', 'flynt'),
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => __('Read More', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
+            [
+                'label' => __('Reading Time - (20) min read', 'flynt'),
+                'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
+                'name' => 'readingTime',
+                'type' => 'text',
+                'default_value' => __('%d min read', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => 50

@@ -4,57 +4,86 @@
       {% if blockTitle %}
         <div class="max-w-screen-max w-full mx-auto p-sm flex flex-col gap-sm justify-between align-start items-start content-start">
           <div class="h4">{{ blockTitle }}</div>
-          <a href="{{ postTypeArchiveLink }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
+          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
 
-      <div class="max-w-screen-max w-full mx-auto p-sm flex flex-col md:flex-row gap-lg justify-between items-center">
+      <div x-data="{ activeProject:  1 }" class="max-w-screen-max w-full mx-auto p-sm flex flex-col md:flex-row gap-lg justify-between items-center">
         
-        <div class="w-full md:w-3/4 flex justify-center items-center mx-auto">
-          <img src="https://crossboundaryenergy.local:61988/wp-content/uploads/2023/03/map.svg">
+        <div class="w-full md:w-3/4 flex justify-center items-center mx-auto relative">
+          <img src="/wp-content/uploads/2023/03/map.svg" class="relative">
+          
+          <!-- Dots -->
+          <div class="absolute top-[-40px] w-full flex items-center justify-center px-4">
+            {% for post in posts %}
+              <button
+                @click="activeProject = {{loop.index}}"
+                class="tab-control bg-cbegreen opacity-50 flex w-sm h-sm mx-2 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:bg-teal-600 hover:shadow-lg"
+                :class="{ 'active': activeProject === {{loop.index}} }"
+              ></button>
+              {% endfor %}
+          </div>
         </div>
 
         <div 
           class="w-full md:w-1/4 mx-auto relative"
-          x-data="{ activeSlide: 1, slides: [1, 2, 3] }"
         >
-          <!-- Slides -->
-          <template x-for="slide in slides" :key="slide">
-            {% for post in posts %}
-            <div
-              x-show="activeSlide === slide"
-              class="flex items-start">
-              <div class="post w-full grow">
-                <a class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
-                  {% if post.thumbnail %}
-                    <figure class="figure hidden md:block">
-                      <img class="image lazyload h-[400px] object-cover"
-                        src="{{  post.thumbnail.src | resize(32) }}"
-                        data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-                        data-sizes="auto"
-                        data-src="{{ post.thumbnail.src }}"
-                        alt="{{ post.thumbnail.alt|e }}">
-                    </figure>
-                  {% endif %}
-                  <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
-                    <div class="flex flex-col gap-sm">
-                      <div class="w-full p-sm flex flex-row justify-between align-middle items-center border font-mono font-bold">
-                        {{ post.category }}
-                      </div>
-                      <div class="w-full flex flex-col gap-xs justify-between align-start items-start">
-                        <div>{{ post.category }}</div>
-                        <h2 class="h5 w-full grow">{{ post.title }}</h2>
-                      </div>
-                    </div>
-                    <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
-                      <span class="border border-black hover:bg-black hover:text-white rounded-full flex justify-center items-center w-fit py-xs px-sm">{{ labels.readMore }}</span>
-                    </div>
+          <!-- Arrows -->
+          {# <div class="absolute top-[-40px] w-full flex items-center justify-center px-4">
+            <button
+              @click="activeProject = activeProject === 1 ? {{ loop.index }} - 1"
+              class="tab-control text-black flex-1 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out"
+            ><-</button>
+            <button
+              @click="activeProject = activeProject === 1 ? {{ loop.index }} + 1"
+              class="tab-control text-black flex-1 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out"
+            >-></button>
+          </div> #}
+
+          <!-- Project -->
+          {% for post in posts %}
+          <div
+            x-cloak 
+            x-show="activeProject === {{loop.index}}" 
+            data-item="{{loop.index}}"
+            x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
+            x-transition:enter-start="opacity-0 hidden" 
+            x-transition:enter-end="opacity-100 block" 
+            x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
+            x-transition:leave-start="opacity-100 block" 
+            x-transition:leave-end="opacity-0 hidden" 
+            class="project flex items-start" 
+            :class="{ 'active': activeProject === {{loop.index}} }">
+            <div class="post w-full grow">
+              {% if post.thumbnail %}
+                <figure class="figure hidden md:block">
+                  <img class="image lazyload h-[400px] object-cover"
+                    src="{{  post.thumbnail.src | resize(32) }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                    data-sizes="auto"
+                    data-src="{{ post.thumbnail.src }}"
+                    alt="{{ post.thumbnail.alt|e }}">
+                </figure>
+              {% endif %}
+              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
+                <div class="flex flex-col gap-sm">
+                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border font-mono font-bold">
+                    {{ post.category }}
                   </div>
-                </a>
+                  <div class="w-full flex flex-col gap-xs justify-between align-start items-start">
+                    <div>{{ post.category }}</div>
+                    <h2 class="h5 w-full grow">{{ post.title }}</h2>
+                  </div>
+                </div>
+                <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
+                  <button class="border border-black hover:bg-black hover:text-white rounded-full flex justify-center items-center w-fit py-xs px-sm">
+                    <a class="link" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
+                  </button>
+                </div>
               </div>
             </div>
-            {% endfor %}
-          </template>
+          </div>
+          {% endfor %}
           
           
           <!-- Prev/Next Arrows -->
@@ -74,22 +103,6 @@
               </button>
             </div>        
           </div> #}
-
-          <!-- Buttons -->
-          <div class="absolute w-full flex items-center justify-center px-4">
-            <template x-for="slide in slides" :key="slide">
-            {% for post in posts %}
-              <button
-                class="flex-1 w-4 h-2 mt-4 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:bg-teal-600 hover:shadow-lg"
-                :class="{ 
-                    'bg-cbegreen': activeSlide === slide,
-                    'bg-blue': activeSlide !== slide 
-                }" 
-                x-on:click="activeSlide = slide"
-              ></button>
-              {% endfor %}
-            </template>
-          </div>
         </div>
 
       </div>

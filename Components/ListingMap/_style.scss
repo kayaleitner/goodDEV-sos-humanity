@@ -1,64 +1,7 @@
 flynt-component[name='ListingMap'] {
-  .grid {
-    --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
-    --grid-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
-    @include reset-list;
-    @include grid(1, center);
-    margin-inline: auto;
-    max-width: var(--grid-max-width);
-
-    &[data-max-columns='2'],
-    &[data-max-columns='3'],
-    &[data-max-columns='4'] {
-      @media (min-width: $breakpoint-tablet) {
-        --grid-columns: 2;
-      }
-    }
-
-    &[data-max-columns='3'],
-    &[data-max-columns='4'] {
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        --grid-columns: 3;
-      }
-    }
-
-    &[data-max-columns='4'] {
-      @media (min-width: $breakpoint-desktop) {
-        --grid-columns: 4;
-      }
-    }
-  }
-
-  .post {
-    .link {
-      @include reset-link;
-      color: currentColor;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .content {
-      color: var(--color-text);
-      flex-grow: 1;
-
-      #{$heading-selectors} {
-        color: var(--color-headline);
-      }
-    }
-
-    .footer {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 var(--box-padding) var(--box-padding);
-      position: relative;
-      width: 100%;
-
-      .readingTime {
-        color: var(--color-text-muted);
-        font-size: var(--body-font-size-small);
-      }
+  button {
+    &.active {
+      @apply opacity-100;
     }
   }
 }
