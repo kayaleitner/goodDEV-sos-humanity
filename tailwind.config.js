@@ -72,6 +72,10 @@ module.exports = {
       max: '1600px'
     },
     extend: {
+      aspectRatio: {
+        '4/3': '4 / 3',
+        '3/4': '3 / 4'
+      },
       borderWidth: {
         DEFAULT: '1px',
         0: '0',
@@ -85,7 +89,8 @@ module.exports = {
         md: '35px',
         lg: '50px',
         xl: '75px',
-        xxl: '100px'
+        xxl: '125px',
+        max: '200px'
       },
       spacing: {
         xs: '10px',
@@ -93,7 +98,8 @@ module.exports = {
         md: '35px',
         lg: '50px',
         xl: '75px',
-        xxl: '100px'
+        xxl: '120px',
+        max: '200px'
       }
     }
   },
