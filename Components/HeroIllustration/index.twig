@@ -1,16 +1,14 @@
 <flynt-component load:on="idle" name="HeroIllustration" class="" style="background-color: var(--secondary);">
-  <div class="w-screen h-auto lg:h-screen relative py-xl px-sm lg:p-lg">
+  <div class="max-w-screen-max mx-auto px-sm py-sm md:px-lg md:py-lg">
     {% if blockTitle %}
-    <div class="absolute top-0 left-0">
-      <div class="max-w-screen-max mx-auto px-sm py-sm lg:px-md lg:py-md h4 text-black z-50">{{ blockTitle }}</div>
-    </div>
+    <div class="h4 text-white z-50">{{ blockTitle }}</div>
     {% endif %}
-    <div class="h-full flex flex-col gap-xl lg:flex-row items-center justify-around">
+    <div class="max-w-screen-max mx-auto h-full flex flex-col gap-xl md:flex-row items-center md:items-start justify-around p-lg md:py-xl">
     {% for item in illustrations %}
-      <div class="item w-full lg:w-1/3 max-w-[400px] flex flex-col gap-md lg:gap-lg justify-center items-center">
+      <div class="item w-full md:w-1/3 max-w-[400px] flex flex-col gap-md md:gap-lg justify-center items-center">
           {% if item.illustration %}
             <figure class="figure">
-              <img class="figure-image lazyload max-w-[200px] my-auto"
+              <img class="figure-image lazyload max-w-[200px] my-auto max-h-40 md:max-h-max"
                 src="{{ item.illustration.src | resize(32) }}"
                 data-srcset="{{function('wp_get_attachment_image_srcset', item.illustration.id)}}"
                 data-sizes="auto">
