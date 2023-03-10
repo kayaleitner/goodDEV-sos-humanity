@@ -17,7 +17,9 @@
           >
           {{ item.title }}
         </button>
-        <ul x-show="activeSubmenu === {{loop.index}}" x-cloak 
+        <ul 
+            x-cloak 
+            x-show="activeSubmenu === {{loop.index}}" 
             @click.away="activeSubmenu = false"
             {# @click.away.prevent="activeSubmenu.menu{{ counter }} = false" #}
             x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
