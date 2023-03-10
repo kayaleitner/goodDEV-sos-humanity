@@ -105,17 +105,6 @@ Options::addTranslatable('ListingInsights', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => __('Reading Time - (20) min read', 'flynt'),
-                'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
-                'name' => 'readingTime',
-                'type' => 'text',
-                'default_value' => __('%d min read', 'flynt'),
-                'required' => 1,
-                'wrapper' => [
-                    'width' => 50
-                ],
-            ],
-            [
                 'label' => __('All Posts', 'flynt'),
                 'name' => 'allPosts',
                 'type' => 'text',
@@ -126,10 +115,30 @@ Options::addTranslatable('ListingInsights', [
                 ],
             ],
             [
+                'label' => __('All Posts Link', 'flynt'),
+                'name' => 'allPostsLink',
+                'type' => 'link',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
+            [
                 'label' => __('Read More', 'flynt'),
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => __('Read More', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
+            [
+                'label' => __('Reading Time - (20) min read', 'flynt'),
+                'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
+                'name' => 'readingTime',
+                'type' => 'text',
+                'default_value' => __('%d min read', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => 50

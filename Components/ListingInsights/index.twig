@@ -4,7 +4,7 @@
       {% if blockTitle %}
         <div class="max-w-screen-max w-full mx-auto p-sm md:p-lg flex flex-row justify-between align-bottom items-end content-end">
           <div class="h4">{{ blockTitle }}</div>
-          <a href="{{ postTypeArchiveLink }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
+          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
       <ul
