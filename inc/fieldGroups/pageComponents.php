@@ -19,6 +19,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
+                    Components\BlockImageTextFull\getACFLayout(),
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\GridImageText\getACFLayout(),
@@ -27,6 +28,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\HeroScrollySplit\getACFLayout(),
                     Components\ListComponents\getACFLayout(),
                     Components\ListingInsights\getACFLayout(),
+                    Components\ListingMap\getACFLayout(),
                     Components\ListingProjects\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
                     Components\ReusableComponent\getACFLayout(),
@@ -40,6 +42,11 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'param' => 'post_type',
                     'operator' => '!=',
                     'value' => 'post'
+                ],
+                [
+                    'param' => 'post_type',
+                    'operator' => '!=',
+                    'value' => 'project'
                 ],
                 [
                     'param' => 'post_type',
