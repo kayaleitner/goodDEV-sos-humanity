@@ -13,7 +13,7 @@
             <a class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
                 <figure class="figure block">
-                  <img class="image lazyload min-h-[400px] object-cover"
+                  <img class="image lazyload h-[400px] object-cover"
                     src="{{  post.thumbnail.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
                     data-sizes="auto"
