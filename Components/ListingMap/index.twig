@@ -11,16 +11,25 @@
       <div x-data="{ activeProject:  1 }" class="max-w-screen-max w-full mx-auto p-sm flex flex-col md:flex-row gap-lg justify-between items-center">
         
         <div class="w-full md:w-3/4 flex justify-center items-center mx-auto relative">
-          <div class="" id="dotteMap"></div>
-          <img src="/wp-content/uploads/2023/03/map.svg" class="relative">
-          
+          <div data-ref="mapWrapper" class="w-full h-auto aspect-video" id="dottedMap"></div>          
           <!-- Dots -->
           <div class="absolute top-0 w-full flex items-center justify-center px-4">
             {% for post in posts %}
               <button
                 @click="activeProject = {{loop.index}}"
-                class="tab-control bg-[#7CD3B9] flex w-md h-md mx-2 rounded-full overflow-hidden transition-all duration-100 linear"
+                class="
+                  tab-control
+                  bg-[#7CD3B9]
+                  flex w-md h-md mx-2
+                  rounded-full
+                  overflow-hidden
+                  transition-all duration-100 linear
+                  absolute
+                "
                 :class="{ 'active': activeProject === {{loop.index}} }"
+                data-ref="pin"
+                data-latitude="{{ post.latitude }}" 
+                data-longitude="{{ post.longitude }}"
               ></button>
               {% endfor %}
           </div>

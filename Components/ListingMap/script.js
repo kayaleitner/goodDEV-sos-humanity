@@ -1,28 +1,37 @@
 import DottedMap from 'dotted-map'
+import { buildRefs } from '@/assets/scripts/helpers.js'
 
-const map = new DottedMap({
-  height: 90,
-  width: 100,
-  grid: 'diagonal'
-})
+const resolution = 10
 
-map.addPin({
-  lat: 40.73061,
-  lng: -73.935242,
-  svgOptions: { color: '#169b83', radius: 0.4 }
-})
-map.addPin({
-  lat: 48.8534,
-  lng: 2.3488,
-  svgOptions: { color: '#169b83', radius: 0.4 }
-})
+export default function (listingMap) {
+  const refs = buildRefs(listingMap)
+  const wrapper = refs.mapWrapper
 
-console.log(map)
+  const map = new DottedMap({
+    height: wrapper.offsetHeight / resolution,
+    width: wrapper.offsetWidth / resolution,
+    grid: 'vertical'
+  })
 
-const svgMap = map.getSVG({
-  radius: 0.22,
-  color: '#423B38',
-  shape: 'circle'
-})
+  const svgMap = map.getSVG({
+    radius: 0.36,
+    color: '#7b838d',
+    shape: 'circle'
+  })
 
-document.getElementById('dottedMap').innerHTML = svgMap
+  document.getElementById('dottedMap').innerHTML = svgMap
+
+  const pinRefs = document.querySelectorAll('[data-ref="pin"]')
+  console.log(pinRefs)
+
+  pinRefs.forEach(pin => {
+    const { latitude, longitude } = pin.dataset
+    console.log(latitude, longitude)
+    const pinCoords = map.getPin({
+      lat: parseFloat(latitude),
+      lng: parseFloat(longitude)
+    })
+    pin.style.left = pinCoords.x * resolution + 'px'
+    pin.style.top = pinCoords.y * resolution + 'px'
+  })
+}
