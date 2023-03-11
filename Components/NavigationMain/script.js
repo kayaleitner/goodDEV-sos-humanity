@@ -1,3 +1,6 @@
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
 export default function (el) {
   const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
 
@@ -18,4 +21,18 @@ export default function (el) {
       : navigationHeight
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
+
+  // hide/show navigation on scroll
+  const showAnim = gsap.from('[name="NavigationMain"]', { 
+    yPercent: -100,
+    paused: true,
+    duration: 0.2,
+  }).progress(1);
+  ScrollTrigger.create({
+    start: "center top",
+    end: 99999,
+    onUpdate: (self) => {
+      self.direction === -1 ? showAnim.play() : showAnim.reverse()
+    }
+  });
 }
