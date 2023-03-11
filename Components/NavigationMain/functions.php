@@ -19,12 +19,11 @@ add_action('customize_register', function ($wp_customize) {
         'default'        => 'Dark Logo',
     ));
 
-    $wp_customize->add_control( new \WP_Customize_Image_Control( $wp_customize, 'logo_dark', array(
+    $wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'logo_dark', array(
         'label'             => "Set Dark Logo",
         'section'           => 'title_tagline',
-        'settings'          => 'logo_dark',    
+        'settings'          => 'logo_dark',
     )));
-    
 });
 
 

@@ -23,16 +23,16 @@ export default function (el) {
   }
 
   // hide/show navigation on scroll
-  const showAnim = gsap.from('[name="NavigationMain"]', { 
+  const showAnim = gsap.from('[name="NavigationMain"]', {
     yPercent: -100,
     paused: true,
-    duration: 0.2,
-  }).progress(1);
+    duration: 0.2
+  }).progress(1)
   ScrollTrigger.create({
-    start: "center top",
+    start: 'center top',
     end: 99999,
     onUpdate: (self) => {
       self.direction === -1 ? showAnim.play() : showAnim.reverse()
     }
-  });
+  })
 }
