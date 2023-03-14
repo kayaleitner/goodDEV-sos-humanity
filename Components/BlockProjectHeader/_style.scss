@@ -37,7 +37,7 @@ flynt-component[name='BlockProjectHeader'] {
         margin-inline-end: 0.75rem;
         width: 32px;
 
-        @media (min-width: $breakpoint-mobile-horizontal) {
+        @media (min-width: $breakpoint-mobile) {
           height: 48px;
           width: 48px;
         }
