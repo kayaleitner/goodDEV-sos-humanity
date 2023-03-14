@@ -41,7 +41,6 @@ add_action('customize_register', function ($wp_customize) {
     )));
 });
 
-
 Options::addTranslatable('NavigationMain', [
     [
         'label' => __('Call to Action', 'flynt'),
