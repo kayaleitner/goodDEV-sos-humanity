@@ -11,7 +11,7 @@
       {% endfor %}
     </section>
     <section class="post-related">
-      {{ renderComponent('ListingInsights,', {'preContentHtml': '<h2>' ~ __('Related Posts') ~ '</h2>','taxonomies': post.categories()}) }}
+      {{ renderComponent('ListingInsights,', {'preContentHtml': '<h2>' ~ __('Related Posts') ~ '</h2>','taxonomies': post.categories(), 'options': {'maxColumns': 3}}) }}
     </section>
   </article>
 {% endblock %}
