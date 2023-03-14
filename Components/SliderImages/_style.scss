@@ -1,6 +1,5 @@
 flynt-component[name='SliderImages'] {
   .slider {
-    background-color: var(--color-border);
     overflow: hidden;
     position: relative;
 
@@ -76,12 +75,6 @@ flynt-component[name='SliderImages'] {
     margin-block-end: 0;
     position: absolute;
 
-    &-image {
-      height: 100%;
-      margin: 0 auto;
-      width: auto;
-    }
-
     &-caption {
       color: #fff;
       display: inline-block;
@@ -103,6 +96,35 @@ flynt-component[name='SliderImages'] {
         width: 100%;
         z-index: -1;
       }
+    }
+  }
+
+  .slider-pagination {
+    align-items: center;
+    bottom: 35px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+
+    @media (max-width: $breakpoint-tablet) {
+      bottom: 15px;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    background: transparent;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    display: inline-block;
+    height: 12px;
+    opacity: 1;
+    width: 12px;
+
+    &-active {
+      background: var(--white);
+      opacity: 1;
     }
   }
 }
