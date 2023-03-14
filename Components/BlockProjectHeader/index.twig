@@ -1,0 +1,20 @@
+<flynt-component load:on="visible" name="BlockProjectHeader" class="w-full mx-auto flex flex-col md:flex-row justify-between items-center" style="background: var(--secondary);">
+  <div class="w-full mx-auto flex flex-col md:flex-row justify-between items-center">
+    <div class="w-full md:w-1/2 grow hidden md:block"></div>
+    {% if post.thumbnail %}
+      <div class="w-full md:w-1/2 grow md:h-[650px] lg:h-[950px] overflow-hidden">
+        <img class="lazyload w-full h-full object-cover aspect-square"
+          src="{{ post.thumbnail.src | resize(32) }}"
+          data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+          data-sizes="auto">
+      </div>
+    {% endif %}
+  </div>
+  <div class="w-full max-w-screen-xl mx-auto flex flex-row justify-center items-center md:absolute md:left-1/2 md:-translate-x-1/2">
+    <div class="w-full md:w-1/2 p-sm sm:p-md lg:p-lg grow text-white" style="background: var(--secondary);">
+      <h1 class="h2 font-bold">{{ post.title }}</h1>
+      <div class="h3">Ghana</div> {# Country Name #}
+    </div>
+    <div class="w-full md:w-1/2 grow hidden md:block"></div>
+  </div>
+</flynt-component>
