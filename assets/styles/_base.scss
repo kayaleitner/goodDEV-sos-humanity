@@ -98,17 +98,8 @@ h6,
 // }
 
 hr {
-  --flow-space: var(--component-spacing);
-  border: 0;
-  margin: var(--flow-space) auto;
-
-  &::after {
-    background-color: var(--color-text);
-    content: '';
-    display: block;
-    height: 2px;
-    opacity: 0.28;
-  }
+  border: 1px solid currentColor;
+  color: currentColor;
 }
 
 code {
