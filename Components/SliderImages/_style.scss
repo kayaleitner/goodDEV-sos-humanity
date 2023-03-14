@@ -3,6 +3,18 @@ flynt-component[name='SliderImages'] {
     overflow: hidden;
     position: relative;
 
+    @media (max-width: $breakpoint-tablet-horizontal) {
+      width: calc(100vw - 100px);
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      width: calc(100vw - 70px);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      width: calc(100vw - 30px);
+    }
+
     &-item {
       height: 0;
       padding-block-end: calc((2/3) * 100%);
