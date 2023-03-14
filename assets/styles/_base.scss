@@ -29,6 +29,7 @@ h1,
   font-size: 2.813rem;
   font-weight: 400;
   line-height: normal;
+  margin-bottom: 1.2rem;
 
   @media (min-width: $breakpoint-desktop) {
     font-size: 4.813rem;
@@ -40,6 +41,7 @@ h2,
   font-size: 2.188rem;
   font-weight: 700;
   line-height: 110%;
+  margin-bottom: 1.2rem;
 
   @media (min-width: $breakpoint-desktop) {
     font-size: 3.438rem;
