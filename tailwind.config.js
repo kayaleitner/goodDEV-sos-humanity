@@ -95,7 +95,7 @@ module.exports = {
       },
       spacing: {
         xs: '10px',
-        sm: '15px',
+        sm: '20px',
         md: '35px',
         lg: '50px',
         xl: '75px',
