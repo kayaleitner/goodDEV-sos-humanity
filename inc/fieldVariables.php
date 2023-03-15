@@ -40,3 +40,23 @@ function getRawSvg()
         'new_lines' => '',
     ];
 }
+
+function getNavStyle($default = 'light-blur')
+{
+    return [
+        'label' => __('Navbar Style', 'flynt'),
+        'name' => 'navStyle',
+        'type' => 'select',
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 0,
+        'ajax' => 0,
+        'choices' => [
+            'light-blur' => __('Light with Blur', 'flynt'),
+            'dark-blur' => __('Dark with Blur', 'flynt'),
+            'light-clear' => __('Light Clear', 'flynt'),
+            'dark-clear' => __('Dark Clear', 'flynt'),
+        ],
+        'default_value' => $default,
+    ];
+}
