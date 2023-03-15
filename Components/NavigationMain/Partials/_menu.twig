@@ -1,9 +1,20 @@
-<ul x-data="{ activeSubmenu:  '' }" class="menu grow list-none flex flex-row align-top gap-md justify-between w-1/2 h-fit">
+<ul
+  x-data="{ activeSubmenu: 0 }"
+  class="menu grow list-none flex flex-row align-top gap-md justify-between w-1/2 h-fit"
+  x-init="$watch('activeSubmenu', value => {
+    console.log('moin')
+    if (value) {
+      document.querySelector('#blur-overlay').style.display = 'block';
+    } else {
+      document.querySelector('#blur-overlay').style.display = 'none';
+    }
+  })"
+>
   {% for item in items %}
     {# regular menu item #}
     {% if not item.children %}
       <li data-item="{{loop.index}}" class="h-fit item {{- item.current ? ' current-menu-item underline underline-offset-8' }}">
-        <a class="link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+        <a class="text-button font-bold link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
       </li>
@@ -11,31 +22,38 @@
     {# menu with submenu item #}
     {% if item.children %}
       <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }}" >
-        <button @click="activeSubmenu = {{loop.index}}" 
-          class="tab-control link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" 
+        <button
+          @click="activeSubmenu = {{loop.index}}"
+          class="tab-control text-button font-bold link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" 
           :class="{ 'open': activeSubmenu === {{loop.index}} }" 
           >
           {{ item.title }}
         </button>
-        <ul 
-            x-cloak 
-            x-show="activeSubmenu === {{loop.index}}" 
-            @click.away="activeSubmenu = false"
-            {# @click.away.prevent="activeSubmenu.menu{{ counter }} = false" #}
-            x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
-            x-transition:enter-start="opacity-0" 
-            x-transition:enter-end="opacity-100" 
-            x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
-            x-transition:leave-start="opacity-100" 
-            x-transition:leave-end="opacity-0" 
-            class="submenu fixed top-0 right-0 h-screen w-1/2 rounded-l-[30px] pt-xxl pr-md pb-auto pl-xl z-50" style="background: var(--secondary);"
-            :class="{ 'open': activeSubmenu === {{loop.index}} }">
-          {% for subitem in item.children %}
-            <li class="h-fit mb-sm item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
-              <a class="link h2 font-normal inline-block no-underline text-currentColor transition-all duration-200" href="{{ subitem.link }}">{{ subitem.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
+        <div
+          x-cloak 
+          x-show="activeSubmenu === {{loop.index}}" 
+          {# @click.away.prevent="activeSubmenu.menu{{ counter }} = false" #}
+          x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
+          x-transition:enter-start="opacity-0" 
+          x-transition:enter-end="opacity-100" 
+          x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
+          x-transition:leave-start="opacity-100" 
+          x-transition:leave-end="opacity-0" 
+          class="submenu-wrapper absolute -top-[48px] right-0 h-screen w-[calc(100%_+_75px)] z-50"
+          :class="{ 'open': activeSubmenu === {{loop.index}} }"
+          @click.away="activeSubmenu = 0"
+        >
+          <ul
+            class="submenu rounded-l-[30px] h-full pt-xxl pr-md pb-auto pl-xl"
+            style="background: var(--secondary);"
+          >
+            {% for subitem in item.children %}
+              <li class="h-fit mb-sm item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
+                <a class="link h2 font-normal inline-block no-underline text-currentColor transition-all duration-200" href="{{ subitem.link }}">{{ subitem.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
       </li>
     {% endif %}
   {% endfor %}

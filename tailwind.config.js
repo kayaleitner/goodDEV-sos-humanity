@@ -35,8 +35,8 @@ module.exports = {
         lineHeight: 'normal',
         fontWeight: '400'
       }],
-      button: ['1.25rem', {
-        lineHeight: '1.25rem',
+      button: ['1.125rem', {
+        lineHeight: '1.125rem',
         fontWeight: '700'
       }],
       h1: ['4.813rem', {
