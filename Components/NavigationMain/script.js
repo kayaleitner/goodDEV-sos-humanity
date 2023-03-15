@@ -22,13 +22,12 @@ export default function (el) {
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
 
-  const sections = gsap.utils.toArray('#mainContent flynt-component')
+  const sections = gsap.utils.toArray(['#mainContent flynt-component', '#mainContent article'])
   sections.forEach((section) => {
     gsap.to(section, {
       scrollTrigger: {
         trigger: section,
-        // start: 'top top+=100',
-        start: 'top top',
+        start: 'top-=135 top',
         end: 'bottom top+=70',
         onToggle: (self) => {
           if (self.isActive) {
