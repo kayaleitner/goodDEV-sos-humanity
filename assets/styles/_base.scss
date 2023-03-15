@@ -21,9 +21,18 @@ html {
 body,
 p
 .paragraph {
-  font-family: 'Aeonik', Verdana, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 1.2rem;
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: 1.563rem;
+    line-height: 140%;
+  }
 }
 
+// Title Large
 h1,
 .h1 {
   font-size: 2.813rem;
@@ -36,21 +45,24 @@ h1,
   }
 }
 
+// Title Small
 h2,
 .h2 {
   font-size: 2.188rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 110%;
   margin-bottom: 1.2rem;
 
   @media (min-width: $breakpoint-desktop) {
     font-size: 3.438rem;
+    line-height: normal;
   }
 }
 
+// Subtitle
 h3,
 .h3 {
-  font-size: 1.75rem;
+  font-size: 1.875rem;
   font-weight: 400;
   line-height: normal;
 
@@ -81,6 +93,7 @@ h5,
   }
 }
 
+// Caption
 h6,
 .h6 {
   font-size: 0.938rem;
@@ -88,7 +101,7 @@ h6,
   line-height: normal;
 
   @media (min-width: $breakpoint-desktop) {
-    font-size: 1.563rem;
+    font-size: 1.125rem;
   }
 }
 
@@ -188,51 +201,116 @@ table {
 */
 
 .button {
-  --border-width: 2px;
-  --padding-inline: calc(1.125rem - var(--border-width));
-  --padding-block: calc(0.625rem - var(--border-width));
   @include reset-link;
-  appearance: none;
-  background-color: var(--color-accent);
-  border: solid var(--border-width) var(--color-accent);
-  color: var(--color-background);
-  cursor: pointer;
-  display: inline-block;
-  font: inherit;
-  font-weight: 700;
-  letter-spacing: 0;
-  padding: var(--padding-block) var(--padding-inline);
-  text-align: center;
-  text-decoration: none;
+  @apply appearance-none;
+  @apply cursor-pointer;
+  @apply flex;
+  @apply gap-sm;
+  @apply items-center;
+  @apply no-underline;
+  @apply px-md;
+  @apply py-sm;
+  @apply relative;
+  @apply rounded-full;
+  @apply text-button;
+  @apply text-center;
+  @apply transition-all;
+  @apply w-fit;
+  @apply z-50;
+
 
   &:disabled {
-    cursor: default;
-    opacity: 0.5;
-    pointer-events: none;
+    @apply cursor-default;
+    @apply opacity-5;
+    @apply pointer-events-none;
   }
 
-  &--outlined {
-    @apply py-sm px-md;
-    @apply gap-sm;
-    align-items: center;
-    background-color: transparent;
-    border: 1px solid var(--white);
-    border-radius: 9999px;
-    color: var(--white);
-    display: flex;
-    transition: all 100ms linear;
-    width: fit-content;
+  &--outlineWhite {
+    @apply border-white;
+    @apply hover:border-transparent;
+    @apply active:border-transparent;
+    @apply hover:bg-cbegreen;
+    @apply active:bg-cbegreen;
+    @apply text-white;
+    @apply border;
+    @apply bg-transparent;    
 
     &:focus,
     &:hover {
-      &::after {
-        content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
-        margin-left: 10px;
-      }
+      // &::after {
+      //   content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
+      //   margin-left: 10px;
+      // }
     }
 
+    // &::after {
+    //   content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
+    //   transition: all 0.2s linear;
+    // }
+  }
+
+  &--outlineBlack {
+    @apply border-black;
+    @apply hover:border-transparent;
+    @apply active:border-black;
+    @apply hover:bg-cbegreen;
+    @apply text-black;
+    @apply border;
+    @apply bg-transparent;
+
+    &:focus,
+    &:hover {
+      // &::after {
+      //   content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
+      //   margin-left: 10px;
+      // }
+    }
+
+    // &::after {
+    //   content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
+    //   transition: all 0.2s linear;
+    // }
+  }
+
+  &--outlineBlackWhite {
+    @apply border-white;
+    @apply active:border-black;
+    @apply hover:bg-white;
+    @apply text-white;
+    @apply hover:text-black;
+    @apply border;
+    @apply bg-transparent;
+
+    &:focus,
+    &:hover {
+      // &::after {
+      //   content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
+      //   margin-left: 10px;
+      // }
+    }
+
+    // &::after {
+    //   content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
+    //   transition: all 0.2s linear;
+    // }
+  }
+
+  &--arrow {
+    @apply border-black;
+    @apply hover:border-transparent;
+    @apply active:border-black;
+    @apply hover:bg-white;
+    @apply border;
+    @apply bg-transparent;
+    @apply hover:bg-cbegreen;
+    @apply active:bg-cbegreen;
+    @apply h-[45px];
+    @apply justify-center;
+    @apply p-0;
+    @apply w-[45px];
+
     &::after {
-      content: url('data:image/svg+xml,%3Csvg width="16" height="29" viewBox="0 0 16 29" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.14551 1.32812L14.4114 14.594L1.14551 27.8598" stroke="white"/%3E%3C/svg%3E%0A');
+      content: url('data:image/svg+xml,%3Csvg width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M26.0225 8.80086C26.413 8.41034 26.413 7.77717 26.0225 7.38665L19.6586 1.02268C19.268 0.63216 18.6349 0.63216 18.2443 1.02268C17.8538 1.41321 17.8538 2.04637 18.2443 2.4369L23.9012 8.09375L18.2443 13.7506C17.8538 14.1411 17.8538 14.7743 18.2443 15.1648C18.6349 15.5553 19.268 15.5553 19.6586 15.1648L26.0225 8.80086ZM0.855469 9.09375L25.3154 9.09375L25.3154 7.09375L0.855469 7.09375L0.855469 9.09375Z" fill="black"/%3E%3C/svg%3E%0A');
       transition: all 0.2s linear;
     }
   }
