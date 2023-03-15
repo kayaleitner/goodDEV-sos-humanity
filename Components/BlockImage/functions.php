@@ -40,6 +40,7 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getTheme(),
+                    FieldVariables\getNavStyle(),
                     [
                         'label' => __('Size', 'flynt'),
                         'name' => 'size',

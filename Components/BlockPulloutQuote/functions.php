@@ -74,6 +74,22 @@ function getACFLayout()
                     ],
                 ]
             ],
+            [
+                'label' => __('Options', 'flynt'),
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    FieldVariables\getNavStyle(),
+                ]
+            ]
         ]
     ];
 }

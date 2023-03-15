@@ -39,6 +39,7 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getTheme(),
+                    FieldVariables\getNavStyle(),
                     [
                         'label' => __('Max Width', 'flynt'),
                         'name' => 'maxWidth',

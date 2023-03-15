@@ -81,7 +81,8 @@ function getACFLayout()
                             ]
                         ],
                     ],
-                    FieldVariables\getTheme()
+                    FieldVariables\getTheme(),
+                    FieldVariables\getNavStyle()
                 ]
             ]
         ]

@@ -1,4 +1,7 @@
-<flynt-component load:on="visible" name="BlockImage" class="w-full lg:w-2/3 py-lg">
+<flynt-component load:on="visible" name="BlockImage"
+  class="w-full lg:w-2/3 py-lg"
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+>
   <figure class="figure">
     <img class="figure-image lazyload h-full w-full object-cover"
         src="{{ image.src | resize(32) }}"

@@ -1,4 +1,7 @@
-<flynt-component load:on="idle" name="BlockWysiwyg" class="w-full lg:w-2/3 py-lg">
+<flynt-component
+  load:on="idle" name="BlockWysiwyg" class="w-full lg:w-2/3 py-lg"
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+>
   <div class="">
     {{ contentHtml|e('wp_kses_post') }}
   </div>

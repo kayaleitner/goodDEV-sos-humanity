@@ -1,4 +1,8 @@
-<flynt-component load:on="idle" name="BlockPulloutQuote" class="w-full py-lg">
+<flynt-component
+  load:on="idle" name="BlockPulloutQuote"
+  class="w-full py-lg"
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+>
   <div class="flex flex-col">
     {% for item in quotes %}
       <div class="item w-full py-md flex flex-col md:flex-row gap-md md:gap-md justify-center items-start fade-in move-up {% if item.borderTop %} border-t-[4px] border-dotted border-cbegreen{% endif %}">

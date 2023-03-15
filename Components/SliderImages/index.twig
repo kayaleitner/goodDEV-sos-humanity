@@ -1,4 +1,7 @@
-<flynt-component load:on="idle" name="SliderImages" class="max-w-screen-md py-md md:py-lg">
+<flynt-component load:on="idle" name="SliderImages"
+  class="max-w-screen-md py-md md:py-lg"
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+>
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div>
     {% if blockTitle %}
