@@ -1,16 +1,16 @@
-flynt-component[name="NavigationMain"] {
-
+flynt-component[name='NavigationMain'] {
   .submenu-wrapper {
     display: block !important;
     transform: translateX(100vw);
+    
     &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: -50vw;
-      width: 50vw;
-      height: 100%;
       background-color: var(--secondary);
+      content: '';
+      height: 100%;
+      position: absolute;
+      right: -50vw;
+      top: 0;
+      width: 50vw;
     }
 
     &.open {

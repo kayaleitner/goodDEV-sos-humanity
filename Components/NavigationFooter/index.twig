@@ -12,11 +12,11 @@
       <div class="grow flex flex-row lg:flex-row align-top items-start justify-between lg:justify-end flex-wrap gap-sm lg:gap-md">
         {% for panelOuter in repeaterOuter %}
           <div class="w-1/3 lg:w-auto flex flex-col align-top items-start justify-start gap-sm" id="content-{{ loop.index }}">
-            <div class="font-bold">
-              {{ panelOuter.title }}
+            <div class="h6">
+              <div class="font-bold">{{ panelOuter.title }}</div>
             </div>
             {% for panelInner in panelOuter.repeaterInner %}
-              <a class="inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200" href="{{ panelInner.pageLink.url|e }}" alt="{{ panelInner.pageLink.alt|e }}" {% if panelInner.pageLink.target %} target="{{ panelInner.pageLink.target }}" rel="noreferrer noopener"{% endif %}>
+              <a class="h6 inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200" href="{{ panelInner.pageLink.url|e }}" alt="{{ panelInner.pageLink.alt|e }}" {% if panelInner.pageLink.target %} target="{{ panelInner.pageLink.target }}" rel="noreferrer noopener"{% endif %}>
                 {{ panelInner.pageLink.title|e }}
               </a>
             {% endfor %}

@@ -3,6 +3,8 @@
 namespace Flynt\Components\BlockVideoOembed;
 
 use Flynt\FieldVariables;
+use Flynt\Utils\Options;
+use Timber\Timber;
 
 function getACFLayout()
 {
@@ -49,38 +51,34 @@ function getACFLayout()
                 'tabs' => 'visual',
                 'media_upload' => 0,
                 'delay' => 1,
-              ],
-            // [
-            //     'label' => __('Options', 'flynt'),
-            //     'name' => 'optionsTab',
-            //     'type' => 'tab',
-            //     'placement' => 'top',
-            //     'endpoint' => 0
-            // ],
-            // [
-            //     'label' => '',
-            //     'name' => 'options',
-            //     'type' => 'group',
-            //     'layout' => 'row',
-            //     'sub_fields' => [
-            //         FieldVariables\getTheme(),
-            //         [
-            //             'label' => __('Size', 'flynt'),
-            //             'name' => 'size',
-            //             'type' => 'radio',
-            //             'other_choice' => 0,
-            //             'save_other_choice' => 0,
-            //             'layout' => 'horizontal',
-            //             'choices' => [
-            //                 'small' => __('Small', 'flynt'),
-            //                 'medium' => __('Medium (Default)', 'flynt'),
-            //                 'large' => __('Large', 'flynt'),
-            //                 'full' => __('Full', 'flynt'),
-            //             ],
-            //             'default_value' => 'medium',
-            //         ],
-            //     ]
-            // ]
+            ],
         ]
     ];
 }
+
+Options::addTranslatable('BlockVideoOembed', [
+    [
+        'label' => __('Labels', 'flynt'),
+        'name' => 'labelsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => '',
+        'name' => 'labels',
+        'type' => 'group',
+        'sub_fields' => [
+            [
+                'label' => __('Play Button Text', 'flynt'),
+                'name' => 'playButtonText',
+                'type' => 'text',
+                'default_value' => __('Play Video', 'flynt'),
+                'required' => 0,
+                'wrapper' => [
+                    'width' => 100
+                ],
+            ],
+        ],
+    ]
+]);

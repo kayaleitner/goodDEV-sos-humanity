@@ -8,7 +8,7 @@
         <div class="video-content absolute w-full h-full flex flex-col justify-center align-middle items-center">
           <div class="max-w-screen-md mx-auto flex flex-col justify-center align-middle items-center gap-md">
             <div class="video-title h1 text-white text-center">{{ contentHtml|e('wp_kses_post') }}</div>
-            <button data-ref="playButton" class="video-playButton px-sm py-xs cursor-pointer block relative z-2 border border-white rounded-full hover:bg-black hover:border-black text-white text-button transition-all" type="button" aria-label="Play Video">Play Video</button>
+            <button data-ref="playButton" class="video-playButton button button--outlineBlackWhite" type="button" aria-label="{{ labels.playButtonText }}">{{ labels.playButtonText }}</button>
           </div>
         </div>
       </div>
