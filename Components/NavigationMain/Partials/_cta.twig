@@ -1,12 +1,10 @@
 <div class="flex justify-center items-start relative z-[9999]">
   <a class="
     rounded-full px-sm py-xs lg:px-md
-    bg-white hover:bg-black hover:no-underline
+    bg-white hover:bg-green hover:no-underline
     inline-flex justify-center items-center
     text-button text-center font-bold 
-    text-black hover:text-white 
-    border border-white 
-    hover:border hover:border-white
+    text-black
     ease-linear duration-200
   " href="{{ ctaLink.url }}" {% if ctaLink.target %} target="{{ ctaLink.target }}" rel="noreferrer noopener"{% endif %}>{{ ctaLink.title|e }}</a>
 </div>
