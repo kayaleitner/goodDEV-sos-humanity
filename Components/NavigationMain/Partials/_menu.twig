@@ -24,8 +24,8 @@
       <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }}" >
         <button
           @click="activeSubmenu = {{loop.index}}"
-          class="tab-control text-button font-bold link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" 
-          :class="{ 'open': activeSubmenu === {{loop.index}} }" 
+          class="tab-control text-button font-bold link inline-block hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" 
+          :class="{ 'open': activeSubmenu === {{loop.index}}, 'underline': activeSubmenu === {{loop.index}} }" 
           >
           {{ item.title }}
         </button>
@@ -49,7 +49,12 @@
           >
             {% for subitem in item.children %}
               <li class="h-fit mb-sm item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
-                <a class="link h2 font-normal inline-block no-underline text-currentColor transition-all duration-200" href="{{ subitem.link }}">{{ subitem.title }}</a>
+                <a
+                  class="link h2 font-normal inline-block no-underline text-currentColor transition-all duration-200 hover:text-lightgreen"
+                  href="{{ subitem.link }}"
+                >
+                  {{ subitem.title }}
+                </a>
               </li>
             {% endfor %}
           </ul>
