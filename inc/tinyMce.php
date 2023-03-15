@@ -145,7 +145,7 @@ function getConfig()
                     ],
                     [
                         'title' => __('Button Outlined', 'flynt'),
-                        'classes' => 'button--outlined',
+                        'classes' => 'button--outlineWhite',
                         'selector' => '.button'
                     ],
                     [
