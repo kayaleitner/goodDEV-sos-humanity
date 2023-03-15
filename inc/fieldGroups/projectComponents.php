@@ -34,21 +34,32 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'endpoint' => 0,
             ],
             [
-                'label' => __('Latitude', 'flynt'),
-                'name' => 'latitude',
-                'type' => 'text',
+                'label' => __('Coordinates', 'flynt'),
+                'name' => 'coordinates',
+                'type' => 'google_map',
+                'center_lat' => '',
+                'center_lng' => '',
+                'zoom' => '',
                 'wrapper' => [
-                    'width' => 50
+                    'width' => 100
                 ]
             ],
-            [
-                'label' => __('Longitude', 'flynt'),
-                'name' => 'longitude',
-                'type' => 'text',
-                'wrapper' => [
-                    'width' => 50
-                ]
-            ]
+            // [
+            //     'label' => __('Latitude', 'flynt'),
+            //     'name' => 'latitude',
+            //     'type' => 'text',
+            //     'wrapper' => [
+            //         'width' => 50
+            //     ]
+            // ],
+            // [
+            //     'label' => __('Longitude', 'flynt'),
+            //     'name' => 'longitude',
+            //     'type' => 'text',
+            //     'wrapper' => [
+            //         'width' => 50
+            //     ]
+            // ]
         ],
         'location' => [
             [

@@ -28,8 +28,8 @@
                 "
                 :class="{ 'active': activeProject === {{loop.index}} }"
                 data-ref="pin"
-                data-latitude="{{ post.latitude }}" 
-                data-longitude="{{ post.longitude }}"
+                data-latitude="{{ post.coordinates.lat }}" 
+                data-longitude="{{ post.coordinates.lng }}"
               ></button>
               {% endfor %}
           </div>

@@ -3,33 +3,33 @@
   <div class="w-full md:w-1/2 lg:w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
     <div class="w-full border border-black p-sm flex flex-col">
       <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
-        <span class="">Commission date</span>
+        <span class="h6">Commission date</span>
         <span class="h5 text-right">Feb 2021</span>
       </div>
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
-        <span class="">Size of installation</span>
+        <span class="h6">Size of installation</span>
         <span class="h5 text-right">28,250 kW</span>
       </div>
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
-        <span class="">Mounting type</span>
+        <span class="h6">Mounting type</span>
         <span class="h5 text-right">Hybrid system</span>
       </div>
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
-        <span class="">Agreement</span>
+        <span class="h6">Agreement</span>
         <span class="h5 text-right">15-year</span>
       </div>
       <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
-        <span class="">Partners</span>
+        <span class="h6">Partners</span>
         <span class="h5 text-right">Ghana</span>
       </div>
     </div>
   </div>
   {# Map #}
   <div class="relative md:w-1/2 lg:w-full">
-      <div data-ref="mapWrapper" class="h-auto aspect-video relative" id="dottedMap"></div>
+    <div data-ref="mapWrapper" class="h-auto aspect-video relative" id="dottedMap"></div>
       <div class="pin bg-cbegreen rounded-full w-lg h-lg absolute"
         data-ref="pin"
-        data-latitude="{{ post.latitude }}" 
-        data-longitude="{{ post.longitude }}"></div>
+        data-latitude="{{ post.coordinates.lat }}" 
+        data-longitude="{{ post.coordinates.lng }}"></div>
     </div>
 </flynt-component>
