@@ -5,7 +5,7 @@
   --color-background-secondary: hsla(0, 0%, 19%, 0.08);
   --color-border: hsl(0, 0%, 90%);
   --color-border-secondary: hsl(0, 0%, 19%, 0.68);
-  --color-text: hsl(0, 0%, 19%, 1);
+  --color-text: #000;
   --color-text-muted: hsla(0, 0%, 19%, 0.8);
   --color-error: hsl(343, 98%, 46%);
 }
@@ -30,7 +30,7 @@
   --secondary: #f06c00;
 }
 
-$breakpoint-mobile-horizontal: 480px;
+$breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
 $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;

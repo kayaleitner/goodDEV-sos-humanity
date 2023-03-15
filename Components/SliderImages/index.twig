@@ -1,38 +1,29 @@
-<flynt-component load:on="idle" name="SliderImages" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+<flynt-component load:on="idle" name="SliderImages" class="py-md md:py-lg">
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="centerMaxWidthContainer">
-    {% if preContentHtml %}
-      <div class="preContent">
-        {{ preContentHtml|e('wp_kses_post') }}
-      </div>
+  <div>
+    {% if blockTitle %}
+    <div class="h4 text-white pb-xl z-50">{{ blockTitle }}</div>
     {% endif %}
-    <div data-ref="slider" class="slider swiper-container centerContentMaxWidthLarge" data-theme="reset">
+    <div data-ref="slider" class="slider swiper-container">
       <div class="swiper-wrapper">
         {% for image in images %}
           <div class="slider-item swiper-slide">
             <figure class="figure">
-              <img class="figure-image lazyload"
-                src="{{ image.src|resizeDynamic(0, 540) }}"
-                width="{{ (540 * image.aspect )|round }}"
-                height="{{ 540 }}"
-                srcset="{{ placeholderImage((540 * image.aspect)|round, 540, 'rgba(125, 125, 125, 0.1)') }}"
-                data-srcset="
-                  {{ image.src|resizeDynamic(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
-                  {{ image.src|resizeDynamic(0, 860) }} {{ (image.aspect * 860)|round }}w,
-                  {{ image.src|resizeDynamic(0, 540) }} {{ (image.aspect * 540)|round }}w,
-                  {{ image.src|resizeDynamic(0, 385) }} {{ (image.aspect * 385)|round }}w,
-                  {{ image.src|resizeDynamic(0, 250) }} {{ (image.aspect * 250)|round }}w"
+              <img class="figure-image lazyload w-full h-full mx-auto object-cover"
+                src="{{ image.src | resize(32) }}"
+                data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
                 data-sizes="auto"
                 alt="{{ image.alt|e }}">
-              {% if image.caption %}
-                <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
-              {% endif %}
+                {% if image.caption %}
+                  <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+                {% endif %}
             </figure>
           </div>
         {% endfor %}
       </div>
-      <button type="button" data-ref="prev" class="slider-button slider-button--prev"></button>
-      <button type="button" data-ref="next" class="slider-button slider-button--next"></button>
+      <div data-slider-pagination data-ref="pagination" class="slider-pagination swiper-pagination-fraction"></div>
+      {# <button type="button" data-ref="prev" class="slider-button slider-button--prev"></button>
+      <button type="button" data-ref="next" class="slider-button slider-button--next"></button> #}
     </div>
   </div>
 </flynt-component>

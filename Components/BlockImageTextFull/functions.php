@@ -43,9 +43,22 @@ function getACFLayout()
                     'left' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
                     'right' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
                 ],
-                // 'wrapper' => [
-                //     'width' => 50,
-                // ]
+                'wrapper' => [
+                    'width' => 50,
+                ]
+            ],
+            [
+                'label' => __('Image Overlay', 'flynt'),
+                'instructions' => __('Add overlay to the image', 'flynt'),
+                'name' => 'imageOverlay',
+                'type' => 'true_false',
+                'ui' => 1,
+                'ui_on_text' => 'Yes',
+                'ui_off_text' => 'No',
+                'default_value' => 1,
+                'wrapper' => [
+                    'width' => 50,
+                ]
             ],
             [
                 'label' => __('Image', 'flynt'),

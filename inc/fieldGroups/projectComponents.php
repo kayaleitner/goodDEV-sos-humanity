@@ -12,6 +12,28 @@ add_action('Flynt/afterRegisterComponents', function () {
         'position' => 'acf_after_title',
         'fields' => [
             [
+                'label' => __('Intro', 'flynt'),
+                'name' => 'introTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
+                'label' => __('Intro', 'flynt'),
+                'name' => 'intro',
+                'type' => 'textarea',
+                'wrapper' => [
+                    'width' => 100
+                ]
+            ],
+            [
+                'label' => __('Coordinates', 'flynt'),
+                'name' => 'coordinatesTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
                 'label' => __('Latitude', 'flynt'),
                 'name' => 'latitude',
                 'type' => 'text',

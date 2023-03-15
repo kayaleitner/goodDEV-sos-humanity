@@ -12,13 +12,23 @@
     "src": "Components/BlockImageTextFull/Assets/suitcase.svg"
   },
   "Components/BlockImageTextFull/script.js": {
-    "file": "assets/script-6bc0188a.js",
+    "file": "assets/script-1233d600.js",
     "imports": [
       "assets/main.js",
       "__commonjsHelpers-87174ba5.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/BlockImageTextFull/script.js"
+  },
+  "Components/BlockProjectBox/script.js": {
+    "file": "assets/script-36b3911d.js",
+    "imports": [
+      "_index-b9ca5473.js",
+      "_helpers-0bb72b7a.js",
+      "__commonjsHelpers-87174ba5.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "Components/BlockProjectBox/script.js"
   },
   "Components/BlockVideoOembed/script.js": {
     "file": "assets/script-fdef6c29.js",
@@ -46,7 +56,7 @@
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-56ac5845.js",
+    "file": "assets/script-70efdaa7.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -63,10 +73,11 @@
     "src": "Components/ListComponents/script.js"
   },
   "Components/ListingMap/script.js": {
-    "file": "assets/script-2306b716.js",
+    "file": "assets/script-2a0c6bf9.js",
     "imports": [
-      "__commonjsHelpers-87174ba5.js",
-      "_helpers-0bb72b7a.js"
+      "_index-b9ca5473.js",
+      "_helpers-0bb72b7a.js",
+      "__commonjsHelpers-87174ba5.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/ListingMap/script.js"
@@ -93,7 +104,7 @@
     "src": "Components/NavigationFooter/Assets/twitter.svg"
   },
   "Components/NavigationMain/script.js": {
-    "file": "assets/script-df571636.js",
+    "file": "assets/script-35529231.js",
     "imports": [
       "assets/main.js"
     ],
@@ -104,9 +115,9 @@
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-3f90b04b.js",
+    "file": "assets/script-2ffa3bfb.js",
     "imports": [
-      "_autoplay-cba721e1.js",
+      "_autoplay-fb669258.js",
       "_helpers-0bb72b7a.js"
     ],
     "isDynamicEntry": true,
@@ -116,9 +127,9 @@
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-87a17065.js",
+    "file": "assets/script-d9e0acac.js",
     "imports": [
-      "_autoplay-cba721e1.js",
+      "_autoplay-fb669258.js",
       "_helpers-0bb72b7a.js"
     ],
     "isDynamicEntry": true,
@@ -127,8 +138,8 @@
   "__commonjsHelpers-87174ba5.js": {
     "file": "assets/_commonjsHelpers-87174ba5.js"
   },
-  "_autoplay-cba721e1.js": {
-    "file": "assets/autoplay-cba721e1.js"
+  "_autoplay-fb669258.js": {
+    "file": "assets/autoplay-fb669258.js"
   },
   "_helpers-0bb72b7a.js": {
     "file": "assets/helpers-0bb72b7a.js"
@@ -136,13 +147,19 @@
   "_index-2a8ce3c2.js": {
     "file": "assets/index-2a8ce3c2.js"
   },
+  "_index-b9ca5473.js": {
+    "file": "assets/index-b9ca5473.js",
+    "imports": [
+      "__commonjsHelpers-87174ba5.js"
+    ]
+  },
   "assets/admin.js": {
     "file": "assets/admin-02f88806.js",
     "isEntry": true,
     "src": "assets/admin.js"
   },
   "assets/admin.scss": {
-    "file": "assets/admin-cd323e77.css",
+    "file": "assets/admin-68420948.css",
     "isEntry": true,
     "src": "assets/admin.scss"
   },
@@ -162,6 +179,7 @@
     "dynamicImports": [
       "node_modules/@webreflection/custom-elements-builtin/esm/index.js",
       "Components/BlockImageTextFull/script.js",
+      "Components/BlockProjectBox/script.js",
       "Components/BlockVideoOembed/script.js",
       "Components/GridPostsArchive/script.js",
       "Components/HeroLottieAnimation/script.js",
@@ -173,12 +191,12 @@
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-c71e9add.js",
+    "file": "assets/main-4564e0e9.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-93f79975.css",
+    "file": "assets/main-cc098e9e.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -188,7 +206,7 @@
     "src": "assets/print.scss"
   },
   "assets/tinyMce.scss": {
-    "file": "assets/tinyMce-1b7bc007.css",
+    "file": "assets/tinyMce-2969c067.css",
     "isEntry": true,
     "src": "assets/tinyMce.scss"
   },

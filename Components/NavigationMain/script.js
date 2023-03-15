@@ -9,25 +9,25 @@ export default function (el) {
 
   onBreakpointChange()
 
-  function onBreakpointChange() {
+  function onBreakpointChange () {
     if (isDesktopMediaQuery.matches) {
       setScrollPaddingTop()
     }
   }
 
-  function setScrollPaddingTop() {
+  function setScrollPaddingTop () {
     const scrollPaddingTop = document.getElementById('wpadminbar')
       ? navigationHeight + document.getElementById('wpadminbar').offsetHeight
       : navigationHeight
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
 
-  var sections = gsap.utils.toArray('#mainContent flynt-component');
+  const sections = gsap.utils.toArray('#mainContent flynt-component')
   sections.forEach((section) => {
     gsap.to(section, {
       scrollTrigger: {
         trigger: section,
-        start: 'top top+=100',
+        // start: 'top top+=100',
         start: "top top",
         end: "bottom top+=70",
         onToggle: (self) => {
@@ -41,7 +41,7 @@ export default function (el) {
           }
         }
       }
-    });
+    })
   })
 
   // hide/show navigation on scroll
