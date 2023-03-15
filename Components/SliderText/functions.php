@@ -96,6 +96,7 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
+                    FieldVariables\getNavStyle(),
                     [
                         'label' => __('Enable Autoplay', 'flynt'),
                         'name' => 'autoplay',

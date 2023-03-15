@@ -1,4 +1,10 @@
-<flynt-component load:on="idle" name="HeroIllustration" class="" style="background-color: var(--secondary);" data-navStyle="dark-blur">
+<flynt-component
+  load:on="idle"
+  name="HeroIllustration"
+  class=""
+  style="background-color: var(--secondary);"
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+>
   <div class="w-full mx-auto px-sm py-sm md:px-lg md:py-lg">
     {% if blockTitle %}
       <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg flex flex-row justify-between align-bottom items-end content-end">

@@ -1,5 +1,11 @@
 {% if posts|length > 0 %}
-  <flynt-component load:on="visible" name="ListingMap" class="pb-lg lg:py-xxl" data-navStyle="light-blur">
+  <flynt-component
+    load:on="visible"
+    name="ListingMap"
+    class="pb-lg lg:py-xxl"
+    {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+
+  >
     <div class="">
       {% if blockTitle %}
         <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg flex flex-col gap-sm justify-between align-start items-start content-start">

@@ -2,7 +2,7 @@
   load:on="idle" name="HeroScrollySplit"
   class="h-[150vh] w-full"
   {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
-  data-navStyle="dark"
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <section

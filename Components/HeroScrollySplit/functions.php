@@ -11,6 +11,13 @@ function getACFLayout()
         'label' => __('Hero: Scrolly Split', 'flynt'),
         'sub_fields' => [
             [
+                'label' => __('Slides', 'flynt'),
+                'name' => 'slidesTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
                 'label' => 'Slides',
                 'name' => 'slides',
                 'aria-label' => '',
@@ -90,9 +97,25 @@ function getACFLayout()
                         'prepend' => '',
                         'append' => '',
                         'parent_repeater' => 'field_63f4adae8cef0',
-                    ),
-                    FieldVariables\getTheme()
+                    )
                 ),
+            ],
+            [
+                'label' => __('Options', 'flynt'),
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    FieldVariables\getTheme(),
+                    FieldVariables\getNavStyle('dark-clear'),
+                ]
             ]
         ]
 
