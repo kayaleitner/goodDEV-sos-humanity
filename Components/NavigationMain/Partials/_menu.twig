@@ -2,13 +2,15 @@
   x-data="{ activeSubmenu: 0 }"
   class="menu grow list-none flex flex-row align-top gap-md justify-between w-1/2 h-fit"
   x-init="$watch('activeSubmenu', value => {
-    console.log('moin')
     if (value) {
       document.querySelector('#blur-overlay').style.display = 'block';
     } else {
       document.querySelector('#blur-overlay').style.display = 'none';
     }
   })"
+  :class="{
+    'text-white': activeSubmenu > 0,
+  }" 
 >
   {% for item in items %}
     {# regular menu item #}
@@ -24,8 +26,14 @@
       <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }}" >
         <button
           @click="activeSubmenu = {{loop.index}}"
-          class="tab-control text-button font-bold link inline-block hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" 
-          :class="{ 'open': activeSubmenu === {{loop.index}}, 'underline': activeSubmenu === {{loop.index}} }" 
+          class="
+          tab-control text-button font-bold link inline-block
+          hover:underline underline-offset-8 text-currentColor
+          transition-all duration-200 relative z-[9999]" 
+          :class="{
+            'open': activeSubmenu === {{loop.index}},
+            'underline': activeSubmenu === {{loop.index}} },
+          }" 
           >
           {{ item.title }}
         </button>
@@ -39,7 +47,7 @@
           x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
           x-transition:leave-start="opacity-100" 
           x-transition:leave-end="opacity-0" 
-          class="submenu-wrapper absolute -top-[48px] right-0 h-screen w-[calc(100%_+_75px)] z-50"
+          class="submenu-wrapper absolute -top-[48px] right-0 h-screen w-[calc(100%_+_75px)] z-50 drop-shadow-lg"
           :class="{ 'open': activeSubmenu === {{loop.index}} }"
           @click.away="activeSubmenu = 0"
         >
@@ -50,8 +58,14 @@
             {% for subitem in item.children %}
               <li class="h-fit mb-sm item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
                 <a
-                  class="link h2 font-normal inline-block no-underline text-currentColor transition-all duration-200 hover:text-lightgreen"
+                  class="
+                    link h2 font-normal inline-block no-underline
+                    text-currentColor hover:text-lightgreen
+                    transition-all duration-200
+                    opacity-0
+                  "
                   href="{{ subitem.link }}"
+                  :class="{ 'opacity-100': activeSubmenu === {{loop.parent.loop.index}} }"
                 >
                   {{ subitem.title }}
                 </a>

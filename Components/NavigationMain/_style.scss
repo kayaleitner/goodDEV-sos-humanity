@@ -18,6 +18,10 @@ flynt-component[name='NavigationMain'] {
     }
   }
 
+  button.open {
+    text-decoration: underline;
+  }
+
   .navigation {
     .admin-bar & {
       inset-block-start: var(--wp-admin--admin-bar--height);
