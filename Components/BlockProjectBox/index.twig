@@ -1,4 +1,4 @@
-<flynt-component load:on="visible" name="BlockProjectBox" class="w-full md:w-full lg:max-w-[420px] flex flex-col md:flex-row lg:flex-col gap-lg">
+<flynt-component load:on="visible" name="BlockProjectBox" class="w-full md:w-full lg:max-w-[420px] flex flex-col md:flex-row lg:flex-col gap-md lg:gap-lg">
   {# Box #}
   <div class="w-full md:w-1/2 lg:w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
     <div class="w-full border border-black p-sm flex flex-col">
@@ -31,5 +31,5 @@
         data-ref="pin"
         data-latitude="{{ post.coordinates.lat }}" 
         data-longitude="{{ post.coordinates.lng }}"></div>
-    </div>
+  </div>
 </flynt-component>
