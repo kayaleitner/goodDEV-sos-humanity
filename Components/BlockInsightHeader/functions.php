@@ -1,15 +1,15 @@
 <?php
 
-namespace Flynt\Components\BlockPostHeader;
+namespace Flynt\Components\BlockInsightHeader;
 
 use Flynt\Utils\Options;
 
-add_filter('Flynt/addComponentData?name=BlockPostHeader', function ($data) {
+add_filter('Flynt/addComponentData?name=BlockInsightHeader', function ($data) {
     $data['dateFormat'] = get_option('date_format');
     return $data;
 });
 
-Options::addTranslatable('BlockPostHeader', [
+Options::addTranslatable('BlockInsightHeader', [
     [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',

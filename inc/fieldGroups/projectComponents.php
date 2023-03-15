@@ -44,22 +44,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'width' => 100
                 ]
             ],
-            // [
-            //     'label' => __('Latitude', 'flynt'),
-            //     'name' => 'latitude',
-            //     'type' => 'text',
-            //     'wrapper' => [
-            //         'width' => 50
-            //     ]
-            // ],
-            // [
-            //     'label' => __('Longitude', 'flynt'),
-            //     'name' => 'longitude',
-            //     'type' => 'text',
-            //     'wrapper' => [
-            //         'width' => 50
-            //     ]
-            // ]
         ],
         'location' => [
             [
@@ -86,6 +70,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
+                    Components\BlockPulloutQuote\getACFLayout(),
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
