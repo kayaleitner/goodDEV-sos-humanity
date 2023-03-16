@@ -12,6 +12,13 @@ add_action('Flynt/afterRegisterComponents', function () {
         'position' => 'acf_after_title',
         'fields' => [
             [
+                'label' => __('External Resource', 'flynt'),
+                'instructions' => __('Use this link to link an external resource.', 'flynt'),
+                'name' => 'externalResourceLink',
+                'type' => 'link',
+                'return_format' => 'array'
+            ],
+            [
                 'label' => __('Facts', 'flynt'),
                 'name' => 'factsTab',
                 'type' => 'tab',
@@ -62,6 +69,64 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'return_format' => 'array',
                 'wrapper' =>  [
                     'width' => 50,
+                ]
+            ],
+            [
+                'label' => __('Authors', 'flynt'),
+                'name' => 'authorsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => __('Authors Box Title', 'flynt'),
+                'name' => 'authorsBoxTitle',
+                'type' => 'text'
+            ],
+            [
+                'label' => __('Authors', 'flynt'),
+                'name' => 'authorz',
+                'type' => 'repeater',
+                'collapsed' => '',
+                'layout' => 'block',
+                'button_label' => __('Add Author', 'flynt'),
+                'min' => 1,
+                'sub_fields' => [
+                    [
+                        'label' => __('Profile Picture', 'flynt'),
+                        'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
+                        'name' => 'authorImage',
+                        'type' => 'image',
+                        'preview_size' => 'medium',
+                        'mime_types' => 'jpg,jpeg,png',
+                        'wrapper' => [
+                            'width' => 25
+                        ],
+                    ],
+                    [
+                        'label' => __('Name', 'flynt'),
+                        'name' => 'authorName',
+                        'type' => 'text',
+                        'wrapper' =>  [
+                            'width' => 25,
+                        ]
+                    ],
+                    [
+                        'label' => __('Position', 'flynt'),
+                        'name' => 'authorPosition',
+                        'type' => 'text',
+                        'wrapper' =>  [
+                            'width' => 25,
+                        ]
+                    ],
+                    [
+                        'label' => __('Link', 'flynt'),
+                        'name' => 'authorLink',
+                        'type' => 'url',
+                        'wrapper' =>  [
+                            'width' => 25,
+                        ]
+                    ]
                 ]
             ],
         ],
