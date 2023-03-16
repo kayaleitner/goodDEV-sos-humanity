@@ -2,10 +2,10 @@
 
 {% block content %}
   <article class="
-      post mt-[134px] 
-      w-full max-w-screen-xl mx-auto 
-      p-sm lg:p-lg "
-     data-navStyle="light-blur"
+    post mt-[134px] 
+    w-full max-w-screen-xl mx-auto 
+    px-sm lg:px-lg "
+    data-navStyle="light-blur"
     >
     <section class="flex flex-col">
       <section class="post-header">
@@ -13,7 +13,7 @@
       </section>
       <section class="post-main mt-lg">
         {% if post.post_excerpt %}
-          <div class="w-full lg:w-2/3">
+          <div class="block md:hidden w-full">
             <div class="h3">{{ post.post_excerpt }}</div>
           </div>
         {% endif %}
@@ -23,7 +23,7 @@
       </section>
     </section>
     <section class="post-related">
-      {{ renderComponent('ListingInsights,', {'preContentHtml': '<h2>' ~ __('Related Posts') ~ '</h2>','taxonomies': post.categories(), 'options': {'maxColumns': 3}}) }}
+      {{ renderComponent('ListingInsights,', {'preContentHtml': '<h2>' ~ __('Related Posts') ~ '</h2>','taxonomies': post.categories(), 'options': {'maxPosts': 3}}) }}
     </section>
   </article>
 {% endblock %}
