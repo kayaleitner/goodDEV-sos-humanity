@@ -2,7 +2,8 @@
   load:on="visible" 
   name="BlockInsightHeader" 
   class="w-full mx-auto flex flex-col md:flex-row gap-lg" 
-  data-navStyle="dark-blur">
+  data-navStyle="light-blur">
+  {# Left Column #}
   <section class="w-full md:w-2/3 flex flex-col gap-lg">
     {% if post.thumbnail %}
       <div class="featuredImage w-full">
@@ -18,10 +19,16 @@
         <div class="h6"><span class="font-bold underline">{{ post.category }}</span></div>
       </div>
       <h1 class="h2 font-bold">{{ post.title }}</h1>
+      {% if post.post_excerpt %}
+        <div class="hidden md:block w-full">
+          <div class="h3">{{ post.post_excerpt }}</div>
+        </div>
+      {% endif %}
     </div>
   </section>
+  {# Right Column #}
   <section class="w-full md:w-1/3 flex flex-col gap-md">
-    <div class="facts w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
+    <div class="facts w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center"> {# Facts Box #}
       <div class="h6 w-full border border-black p-sm flex flex-col">
         <span class="pb-sm font-bold border-b">{{ post.factBoxTitle }}</span>
         <div class="factsflex flex-col">
@@ -38,26 +45,52 @@
         </div>
       </div>
     </div>
-    <div class="authors w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
+    <div class="authors w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center"> {# Authors Section #}
       <div class="w-full flex flex-col">
         <span class="h3 pb-sm font-bold">{{ post.authorsBoxTitle }}</span>
-        <div class="facts flex flex-col">
+        <div class="flex flex-col">
+        {# {{ renderComponent('BlockAuthorSelector') }} #}
+            {# ACF Author Selector #}
+            {% for post in posts %}
+              <div class="w-full pb-xs">
+                <div class="w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
+                  <img
+                    class="aspect-square object-cover w-1/3 grayscale"
+                    src="{{ post.thumbnail.src }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                    data-sizes="auto">
+                  <div class="h6 w-2/3 flex flex-col">
+                    <div class="font-bold">{{ post.title }}</div>
+                    <div>Position</div>
+                  </div>
+                </div>
+                <div class="flex justify-end items-center">
+                  <a href="{{ post.link }}" class="button button--arrow" target="_blank" rel="noreferrer noopener"></a>
+                </div>
+              </div>
+            {% endfor %}
           {% for item in post.authorz %}
             <div class="w-full pb-xs">
               <div class="w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
+                {% if item.authorImage %}
                 <img
                   class="aspect-square object-cover w-1/3 grayscale"
                   src="{{ item.authorImage.src }}"
                   data-srcset="{{function('wp_get_attachment_image_srcset', item.authorImage.id)}}"
                   data-sizes="auto">
+                {% endif %}
+                {% if item.authorName or item.authorPosition %}
                 <div class="h6 w-2/3 flex flex-col">
                   <div class="font-bold">{{ item.authorName }}</div>
                   <div>{{ item.authorPosition }}</div>
                 </div>
+                {% endif %}
               </div>
+              {% if item.authorLink %}
               <div class="flex justify-end items-center">
                 <a href="{{ item.authorLink }}" class="button button--arrow" target="_blank" rel="noreferrer noopener"></a>
               </div>
+              {% endif %}
             </div>
           {% endfor %}
         </div>

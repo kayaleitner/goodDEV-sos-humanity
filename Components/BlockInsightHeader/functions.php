@@ -2,7 +2,24 @@
 
 namespace Flynt\Components\BlockInsightHeader;
 
+use Flynt\FieldVariables;
 use Flynt\Utils\Options;
+use Timber\Timber;
+
+// const POST_TYPE = 'team';
+
+// add_filter('Flynt/addComponentData?name=BlockAuthorSelector', function ($data) {
+//     $postType = POST_TYPE;
+
+//     $data['taxonomies'] = $data['taxonomies'] ?: [];
+
+//     $data['posts'] = Timber::get_posts([
+//         'post_status' => 'publish',
+//         'post_type' => $postType,
+//     ]);
+
+//     return $data;
+// });
 
 add_filter('Flynt/addComponentData?name=BlockInsightHeader', function ($data) {
     $data['dateFormat'] = get_option('date_format');
