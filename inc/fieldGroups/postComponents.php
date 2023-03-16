@@ -84,6 +84,22 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'text'
             ],
             [
+                'label' => __('Internal Author', 'flynt'),
+                'name' => 'posts',
+                'type' => 'relationship',
+                'post_type' => [
+                    'team'
+                ],
+                'allow_null' => 0,
+                'multiple' => 0,
+                'return_format' => 'post_object',
+                'ui' => 1,
+                'required' => 0,
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ],
+            [
                 'label' => __('Authors', 'flynt'),
                 'name' => 'authorz',
                 'type' => 'repeater',
@@ -92,6 +108,22 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'button_label' => __('Add Author', 'flynt'),
                 'min' => 1,
                 'sub_fields' => [
+                    // [
+                    //     'label' => __('Internal Author', 'flynt'),
+                    //     'name' => 'internalAuthor',
+                    //     'type' => 'post_object',
+                    //     'post_type' => [
+                    //         'team'
+                    //     ],
+                    //     'allow_null' => 0,
+                    //     'multiple' => 0,
+                    //     'return_format' => 'post_object',
+                    //     'ui' => 1,
+                    //     'required' => 0,
+                    //     'wrapper' => [
+                    //         'width' => '100',
+                    //     ],
+                    // ],
                     [
                         'label' => __('Profile Picture', 'flynt'),
                         'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
@@ -152,9 +184,11 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'button_label' => __('Add Component', 'flynt'),
                 'layouts' => [
                     Components\BlockAnchor\getACFLayout(),
+                    Components\BlockAuthorSelector\getACFLayout(),
                     Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
+                    Components\ListingProjects\getACFLayout(),
                     Components\BlockPulloutQuote\getACFLayout(),
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
