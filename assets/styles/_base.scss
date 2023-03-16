@@ -105,10 +105,20 @@ h6,
   }
 }
 
-// a {
-//   color: var(--color-accent);
-//   text-underline-offset: 0.25em;
-// }
+body,
+p
+.paragraph {
+  a {
+    color: currentColor;
+    text-decoration: underline;
+    text-decoration-color: var(--black);
+
+    &:hover,
+    &:focus {
+      text-decoration-color: var(--green);
+    }
+  }
+}
 
 hr {
   border: 1px solid currentColor;
@@ -212,6 +222,7 @@ table {
   @apply transition-all;
   @apply ease-linear;
   @apply duration-200;
+  @apply h-fit;
   @apply w-fit;
   @apply z-50;
 
@@ -226,8 +237,8 @@ table {
     @apply border-white;
     @apply hover:border-transparent;
     @apply active:border-transparent;
-    @apply hover:bg-cbegreen;
-    @apply active:bg-cbegreen;
+    @apply hover:bg-green;
+    @apply active:bg-green;
     @apply text-white;
     @apply border;
     @apply bg-transparent;    
@@ -237,7 +248,7 @@ table {
     @apply border-black;
     @apply hover:border-transparent;
     @apply active:border-black;
-    @apply hover:bg-cbegreen;
+    @apply hover:bg-green;
     @apply text-black;
     @apply border;
     @apply bg-transparent;
