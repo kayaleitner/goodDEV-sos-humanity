@@ -71,6 +71,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'flexible_content',
                 'button_label' => __('Add Component', 'flynt'),
                 'layouts' => [
+                    Components\ArchiveInsights\getACFLayout(),
                     Components\BlockAnchor\getACFLayout(),
                     Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
@@ -87,6 +88,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\ListingInsights\getACFLayout(),
                     Components\ListingMap\getACFLayout(),
                     Components\ListingProjects\getACFLayout(),
+                    Components\ListingTeam\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
                     Components\ReusableComponent\getACFLayout(),
                     Components\SliderText\getACFLayout(),
@@ -104,6 +106,11 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'param' => 'post_type',
                     'operator' => '!=',
                     'value' => 'project'
+                ],
+                [
+                    'param' => 'post_type',
+                    'operator' => '!=',
+                    'value' => 'team'
                 ],
                 [
                     'param' => 'post_type',
