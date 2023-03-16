@@ -1,5 +1,5 @@
 {% if posts|length > 0 %}
-  <flynt-component load:on="visible" name="ListingInsights" class="pb-lg lg:pb-xl">
+  <flynt-component load:on="visible" name="ListingInsights" data-type="listing" class="pb-lg lg:pb-xl">
     <div class="">
       {% if blockTitle %}
         <div class="max-w-screen-max w-full mx-auto p-sm md:p-lg flex flex-row justify-between align-bottom items-end content-end">
@@ -39,7 +39,11 @@
                   <h2 class="h5 mb-0 w-3/4 lg:w-full grow">{{ post.title }}</h2>
                 </div>
                 <span class="aspect-square h-lg w-lg">
-                  <a class="link button button--arrow" href="{{ post.link }}" aria-label="{{ post.title }}"></a>
+                  {% if post.externalResourceLink %}
+                    <a class="button button--link" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>{{ post.externalResourceLink.title|e }}</a>
+                  {% else %}
+                    <a class="button button--arrow" href="{{ post.link }}" aria-label="{{ post.title }}"></a>
+                  {% endif %}
                 </span>
               </div>
             </div>

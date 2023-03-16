@@ -120,3 +120,12 @@ sup {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Fix Safari bug on column width in listings */
+[data-type='listing'] {
+  .post {
+    .content {
+      width: fill-available;
+    }
+  }
+}
