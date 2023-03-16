@@ -1,0 +1,46 @@
+{% if posts|length > 0 %}
+  <flynt-component load:on="visible" name="ListingTeam" data-type="listing" class="py-lg lg:py-xl">
+    <div class="">
+      {% if blockTitle %}
+        <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg flex flex-row justify-between align-bottom items-end content-end">
+          <div class="h4">{{ blockTitle }}</div>
+          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
+        </div>
+      {% endif %}
+      <ul class="max-w-screen-max mx-auto px-sm lg:px-lg flex flex-col lg:flex-row gap-sm lg:gap-md justify-between">
+        {% for post in posts %}
+          <li class="post lg:w-1/3 grow">
+            <div class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
+              {% if post.thumbnail %}
+                <figure class="figure block">
+                  <img class="image lazyload h-[400px] object-cover"
+                    src="{{  post.thumbnail.src | resize(32) }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                    data-sizes="auto"
+                    data-src="{{ post.thumbnail.src }}"
+                    alt="{{ post.thumbnail.alt|e }}">
+                </figure>
+              {% endif %}
+              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
+                <div class="flex flex-col gap-sm">
+                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border h6">
+                    <div class="font-mono font-bold">{{ post.category }}</div>
+                  </div>
+                  <div class="w-full flex flex-col gap-xs justify-between align-start items-start">
+                    <div class="paragraph">{{ post.category }}</div>
+                    <div class="">{{ post.position }}</div>
+                    <h2 class="h3 w-full grow">{{ post.title }}</h2>
+                    <div class="w-full grow">{{ post.bio }}</div>
+                  </div>
+                </div>
+                <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
+                  <a class="link button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </flynt-component>
+{% endif %}
