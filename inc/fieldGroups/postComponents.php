@@ -79,13 +79,14 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'endpoint' => 0
             ],
             [
-                'label' => __('Authors Box Title', 'flynt'),
+                'label' => __('Authors Section Title', 'flynt'),
                 'name' => 'authorsBoxTitle',
                 'type' => 'text'
             ],
             [
-                'label' => __('Internal Author', 'flynt'),
-                'name' => 'posts',
+                'label' => __('Author (part of CB team)', 'flynt'),
+                'name' => 'relationship_field',
+                'instructions' => __('Use this field to add authors that are part of the CB team.', 'flynt'),
                 'type' => 'relationship',
                 'post_type' => [
                     'team'
@@ -100,8 +101,9 @@ add_action('Flynt/afterRegisterComponents', function () {
                 ],
             ],
             [
-                'label' => __('Authors', 'flynt'),
+                'label' => __('Authors (not part of CB team)', 'flynt'),
                 'name' => 'authorz',
+                'instructions' => __('Use this field to add authors that are external to the CB team.', 'flynt'),
                 'type' => 'repeater',
                 'collapsed' => '',
                 'layout' => 'block',

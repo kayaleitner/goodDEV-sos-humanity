@@ -45,30 +45,31 @@
         </div>
       </div>
     </div>
-    <div class="authors w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center"> {# Authors Section #}
+    {# Authors Section #}
+    <div class="authors w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
       <div class="w-full flex flex-col">
         <span class="h3 pb-sm font-bold">{{ post.authorsBoxTitle }}</span>
         <div class="flex flex-col">
-        {# {{ renderComponent('BlockAuthorSelector') }} #}
-            {# ACF Author Selector #}
-            {% for post in posts %}
-              <div class="w-full pb-xs">
-                <div class="w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
-                  <img
-                    class="aspect-square object-cover w-1/3 grayscale"
-                    src="{{ item.thumbnail.src }}"
-                    data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
-                    data-sizes="auto">
-                  <div class="h6 w-2/3 flex flex-col">
-                    <div class="font-bold">{{ item.title }}</div>
-                    <div>Position</div>
-                  </div>
-                </div>
-                <div class="flex justify-end items-center">
-                  <a href="{{ item.link }}" class="button button--arrow" target="_blank" rel="noreferrer noopener"></a>
+          {# Internal Author #}
+          {% for item in Post(post.relationship_field) %}
+            <div class="w-full pb-xs">
+              <div class="w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
+                <img
+                  class="aspect-square object-cover w-1/3 grayscale"
+                  src="{{ item.thumbnail.src }}"
+                  data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
+                  data-sizes="auto">
+                <div class="h6 w-2/3 flex flex-col">
+                  <div class="font-bold">{{ item.title }}</div>
+                  <div>Position</div>
                 </div>
               </div>
-            {% endfor %}
+              <div class="flex justify-end items-center">
+                <a href="{{ item.link }}" class="button button--arrow"></a>
+              </div>
+            </div>
+          {% endfor %}
+          {# External Author #}
           {% for item in post.authorz %}
             <div class="w-full pb-xs">
               <div class="w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
