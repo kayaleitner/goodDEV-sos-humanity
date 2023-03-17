@@ -8,7 +8,7 @@
     <header class="post-header">
       {{ renderComponent('BlockProjectHeader', { post: post }) }}
     </header>
-    <section class="post-main max-w-screen-xl mx-auto p-sm sm:p-md md:p-lg flex flex-col lg:flex-row-reverse gap-lg justify-between items-start">
+    <section class="post-main max-w-screen-max mx-auto p-sm sm:p-md md:p-lg flex flex-col lg:flex-row-reverse gap-lg justify-between items-start">
       {{ renderComponent('BlockProjectBox', { post: post }) }}
       <div class="max-w-screen-md">
         {% if post.intro %}
