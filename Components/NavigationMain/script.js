@@ -31,12 +31,23 @@ export default function (el) {
         end: 'bottom top+=70',
         onToggle: (self) => {
           if (self.isActive) {
-            el.classList.remove('bg-white/40', 'backdrop-blur-md', 'text-grey', 'text-white')
+
+            const button = el.querySelector('#ctaMenu')
+
             el.querySelectorAll('.logo').forEach((logo) => logo.classList.remove('flex', 'hidden'))
+            el.classList.remove('bg-white/50', 'backdrop-blur-md', 'text-grey', 'text-white')
+            button.classList.remove(
+              '[&_a]:bg-green', '[&_a]:hover:bg-cbegreen', '[&_a]:hover:text-white',
+              '[&_a]:bg-white', '[&_a]:hover:bg-green'
+            )
+            
+            self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-md')
+
             self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_dark').classList.add('hidden') : el.querySelector('.logo_dark').classList.add('flex')
             !self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_light').classList.add('hidden') : el.querySelector('.logo_light').classList.add('flex')
-            self.trigger.dataset?.navstyle?.includes('dark') ? el.classList.add('text-white') : el.classList.add('bg-white/40', 'text-grey')
-            self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-md')
+
+            self.trigger.dataset?.navstyle?.includes('dark') ? el.classList.add('text-white') : el.classList.add('bg-white/50', 'text-grey')
+            self.trigger.dataset?.navstyle?.includes('dark') ? button.classList.add('[&_a]:bg-white', '[&_a]:hover:bg-green') : button.classList.add('[&_a]:bg-green', '[&_a]:hover:bg-cbegreen', '[&_a]:hover:text-white')
           }
         }
       }
@@ -49,13 +60,27 @@ export default function (el) {
     paused: true,
     duration: 0.4,
     // scrub: 0.5,
-    markers: true
   }).progress(1)
   ScrollTrigger.create({
     start: 'center top-=100',
     end: 99999,
     onUpdate: (self) => {
       self.direction === -1 ? showAnim.play() : showAnim.reverse()
+    }
+  })
+  // hide/show cta on scroll
+  const showCtaAnim = gsap.from('#ctaMain', {
+    yPercent: 300,
+    paused: true,
+    duration: 0.4,
+    // scrub: 0.5,
+    markers: true
+  }).progress(1)
+  ScrollTrigger.create({
+    start: 'center top-=100',
+    end: 99999,
+    onUpdate: (self) => {
+      self.direction === -1 ? showCtaAnim.play() : showCtaAnim.reverse()
     }
   })
 }

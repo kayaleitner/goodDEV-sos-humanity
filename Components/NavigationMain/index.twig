@@ -2,7 +2,7 @@
   load:on="idle"
   load:onmedia="(min-width: 1024px)"
   name="NavigationMain"
-  class="hidden md:block text-white backdrop-blur-md"
+  class="hidden md:block text-white backdrop-blur-md relative"
 >
   <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
     <div class="max-w-screen-max mx-auto px-lg py-md flex items-center justify-between flex-row">
@@ -11,10 +11,22 @@
         {% if menu %}
           {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
         {% endif %}
-        {% include 'Partials/_cta.twig' %}
+        <div
+          id="ctaMenu"
+          class="hidden xl:flex justify-center items-start relative z-[9999]
+          [&_a]:bg-white [&_a]:hover:bg-green [&_a]:text-black
+        ">
+          {% include 'Partials/_cta.twig' %}
+        </div>
       </div>
     </div>
     {# this is just for tailwind blabla #}
-    <div class="hidden bg-white/40 backdrop-blur-md text-grey text-white"></div>
+    <div class="hidden bg-white/50 backdrop-blur-md text-grey text-white text-black bg-white bg-green bg-cbegreen"></div>
   </nav>
 </flynt-component>
+<div id="ctaMain"
+  class="fixed xl:hidden z-[9999] bottom-lg right-lg
+  [&>a]:bg-green [&>a]:text-black [&>a]:hover:bg-cbegreen [&>a]:hover:text-white
+">
+  {% include 'Partials/_cta.twig' %}
+</div>
