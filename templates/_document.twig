@@ -17,11 +17,11 @@
             {{ renderComponent('NavigationBurger') }}
           {% endblock %}
         </header>
-          <div
+          {# <div
             id="blur-overlay"
             class="fixed w-screen h-screen top-0 left-0 backdrop-blur-md z-20"
             style="display: none;"
-          ></div>
+          ></div> #}
         <main id="mainContent" class="mainContent" aria-label="{{ __('Content', 'flynt') }}">
           {% if function('post_password_required') %}
             {{ function('get_the_password_form') }}
