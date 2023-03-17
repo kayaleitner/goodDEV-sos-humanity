@@ -42,7 +42,6 @@ export default function (el) {
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
 
-
   console.log('NavigationBurger', el)
 
   const sections = gsap.utils.toArray(['#mainContent flynt-component', '#mainContent article'])
@@ -54,12 +53,11 @@ export default function (el) {
         end: 'bottom top+=70',
         onToggle: (self) => {
           if (self.isActive) {
-
             console.log('blur', self.trigger.dataset?.navstyle?.includes('blur'), el.classList)
 
             el.querySelectorAll('.logo').forEach((logo) => logo.classList.remove('flex', 'hidden'))
             el.classList.remove('bg-white/50', 'backdrop-blur-md', 'text-grey', 'text-white')
-            
+
             self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-md')
 
             self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_dark').classList.add('hidden') : el.querySelector('.logo_dark').classList.add('flex')
@@ -76,7 +74,7 @@ export default function (el) {
   const showAnim = gsap.from('[name="NavigationBurger"]', {
     yPercent: -150,
     paused: true,
-    duration: 0.4,
+    duration: 0.4
     // scrub: 0.5,
   }).progress(1)
   ScrollTrigger.create({
@@ -90,7 +88,7 @@ export default function (el) {
   const showCtaAnim = gsap.from('#ctaMain', {
     yPercent: 300,
     paused: true,
-    duration: 0.4,
+    duration: 0.4
     // scrub: 0.5,
   }).progress(1)
   ScrollTrigger.create({

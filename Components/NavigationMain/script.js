@@ -31,7 +31,6 @@ export default function (el) {
         end: 'bottom top+=70',
         onToggle: (self) => {
           if (self.isActive) {
-
             const button = el.querySelector('#ctaMenu')
 
             el.querySelectorAll('.logo').forEach((logo) => logo.classList.remove('flex', 'hidden'))
@@ -40,7 +39,7 @@ export default function (el) {
               '[&_a]:bg-green', '[&_a]:hover:bg-cbegreen', '[&_a]:hover:text-white',
               '[&_a]:bg-white', '[&_a]:hover:bg-green'
             )
-            
+
             self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-md')
 
             self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_dark').classList.add('hidden') : el.querySelector('.logo_dark').classList.add('flex')
@@ -58,7 +57,7 @@ export default function (el) {
   const showAnim = gsap.from('[name="NavigationMain"]', {
     yPercent: -100,
     paused: true,
-    duration: 0.4,
+    duration: 0.4
     // scrub: 0.5,
   }).progress(1)
   ScrollTrigger.create({
@@ -72,7 +71,7 @@ export default function (el) {
   const showCtaAnim = gsap.from('#ctaMain', {
     yPercent: 300,
     paused: true,
-    duration: 0.4,
+    duration: 0.4
     // scrub: 0.5,
   }).progress(1)
   ScrollTrigger.create({
