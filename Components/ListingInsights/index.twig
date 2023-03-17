@@ -11,16 +11,16 @@
         class="
           w-full
           mx-auto
-          grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4
-          gap-sm lg:gap-md
+          grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+          gap-0 sm:gap-md
         "
       >
         {% for post in posts %}
           <li
-            class="post w-full">
+            class="post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
             <div class="link" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
-                <figure class="figure aspect-square">
+                <figure class="figure aspect-square hidden lg:block">
                   <img class="image lazyload object-cover w-full h-full"
                     src="{{  post.thumbnail.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
@@ -29,15 +29,22 @@
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
-              <div class="content aspect-square border p-sm flex flex-col gap-0 lg:gap-sm justify-between items-stretch">
+              <div class="content lg:aspect-square lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
                 <div class="w-full flex flex-row justify-between align-middle items-center">
-                  <div class="h6"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
-                  <div class="h6"><span class="font-bold underline">{{ post.category }}</span></div>
+                  <div class="h6 text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
+                  <div class="h6 text-right"><span class="font-bold underline">{{ post.category }}</span></div>
                 </div>
-                <div class="flex flex-row lg:flex-col gap-sm justify-between items-between lg:items-stretch h-full">
-                  <h2 class="h5 mb-0 w-3/4 lg:w-full grow">{{ post.title }}</h2>
+                <div class="flex flex-row lg:flex-col gap-sm justify-between items-between lg:items-stretch w-full lg:h-full">
+                  <h2 class="h3 mb-0 lg:w-full md:grow">{{ post.title }}</h2>
+                  <span class="flex lg:hidden flex-col justify-end items-end">
+                    {% if post.externalResourceLink %}
+                      <a class="button button--link" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>{{ post.externalResourceLink.title|e }}</a>
+                    {% else %}
+                      <a class="button button--arrow" href="{{ post.link }}" aria-label="{{ post.title }}"></a>
+                    {% endif %}
+                  </span>
                 </div>
-                <span class="aspect-square h-lg w-lg">
+                <span class="hidden lg:block">
                   {% if post.externalResourceLink %}
                     <a class="button button--link" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>{{ post.externalResourceLink.title|e }}</a>
                   {% else %}
