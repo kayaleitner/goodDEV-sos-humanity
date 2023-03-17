@@ -51,7 +51,7 @@
         <span class="h3 pb-sm font-bold">{{ post.authorsBoxTitle }}</span>
         <div class="flex flex-col">
           {# Internal Author #}
-          {% for item in Post(post.relationship_field) %}
+          {% for item in Post(post.internalAuthorz) %}
             <div class="w-full pb-xs">
               <div class="w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
                 <img

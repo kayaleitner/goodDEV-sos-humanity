@@ -85,7 +85,7 @@ add_action('Flynt/afterRegisterComponents', function () {
             ],
             [
                 'label' => __('Author (part of CB team)', 'flynt'),
-                'name' => 'relationship_field',
+                'name' => 'internalAuthorz',
                 'instructions' => __('Use this field to add authors that are part of the CB team.', 'flynt'),
                 'type' => 'relationship',
                 'post_type' => [
