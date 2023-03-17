@@ -25,7 +25,8 @@
     {% if item.children %}
       <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }}" >
         <button
-          @click="activeSubmenu = {{loop.index}}"
+          @click="activeSubmenu === {{loop.index}} ? activeSubmenu = 0 : activeSubmenu = {{loop.index}}"
+          {# @click="activeSubmenu = {{loop.index}} : activeSubmenu = 0" #}
           class="
           tab-control text-button font-bold link inline-block
           hover:underline underline-offset-8 text-currentColor
@@ -49,7 +50,7 @@
           x-transition:leave-end="opacity-0" 
           class="submenu-wrapper absolute -top-[48px] right-0 h-screen w-[calc(100%_+_75px)] z-50 drop-shadow-lg"
           :class="{ 'open': activeSubmenu === {{loop.index}} }"
-          @click.away="activeSubmenu = 0"
+          {# @click.away="activeSubmenu = 0" #}
         >
           <ul
             class="submenu rounded-l-[30px] h-full pt-xxl pr-md pb-auto pl-xl"
@@ -76,4 +77,10 @@
       </li>
     {% endif %}
   {% endfor %}
+  <div
+    @click="activeSubmenu = 0"
+    id="blur-overlay"
+    class="fixed w-screen h-screen top-0 left-0 backdrop-blur-md z-20"
+    style="display: none;"
+  ></div>
 </ul>
