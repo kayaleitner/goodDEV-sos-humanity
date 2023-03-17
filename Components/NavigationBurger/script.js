@@ -1,6 +1,8 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import delegate from 'delegate-event-listener'
 import { buildRefs } from '@/assets/scripts/helpers.js'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 export default function (el) {
   let isMenuOpen
@@ -39,4 +41,63 @@ export default function (el) {
       : navigationHeight
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
+
+
+  console.log('NavigationBurger', el)
+
+  const sections = gsap.utils.toArray(['#mainContent flynt-component', '#mainContent article'])
+  sections.forEach((section) => {
+    gsap.to(section, {
+      scrollTrigger: {
+        trigger: section,
+        start: 'top-=135 top',
+        end: 'bottom top+=70',
+        onToggle: (self) => {
+          if (self.isActive) {
+
+            console.log('blur', self.trigger.dataset?.navstyle?.includes('blur'), el.classList)
+
+            el.querySelectorAll('.logo').forEach((logo) => logo.classList.remove('flex', 'hidden'))
+            el.classList.remove('bg-white/50', 'backdrop-blur-md', 'text-grey', 'text-white')
+            
+            self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-md')
+
+            self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_dark').classList.add('hidden') : el.querySelector('.logo_dark').classList.add('flex')
+            !self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_light').classList.add('hidden') : el.querySelector('.logo_light').classList.add('flex')
+
+            self.trigger.dataset?.navstyle?.includes('dark') ? el.classList.add('text-white') : el.classList.add('bg-white/50', 'text-grey')
+          }
+        }
+      }
+    })
+  })
+
+  // hide/show navigation on scroll
+  const showAnim = gsap.from('[name="NavigationBurger"]', {
+    yPercent: -150,
+    paused: true,
+    duration: 0.4,
+    // scrub: 0.5,
+  }).progress(1)
+  ScrollTrigger.create({
+    start: 'center top-=100',
+    end: 99999,
+    onUpdate: (self) => {
+      self.direction === -1 ? showAnim.play() : showAnim.reverse()
+    }
+  })
+  // hide/show cta on scroll
+  const showCtaAnim = gsap.from('#ctaMain', {
+    yPercent: 300,
+    paused: true,
+    duration: 0.4,
+    // scrub: 0.5,
+  }).progress(1)
+  ScrollTrigger.create({
+    start: 'center top-=100',
+    end: 99999,
+    onUpdate: (self) => {
+      self.direction === -1 ? showCtaAnim.play() : showCtaAnim.reverse()
+    }
+  })
 }

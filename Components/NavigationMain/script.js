@@ -74,7 +74,6 @@ export default function (el) {
     paused: true,
     duration: 0.4,
     // scrub: 0.5,
-    markers: true
   }).progress(1)
   ScrollTrigger.create({
     start: 'center top-=100',

@@ -40,6 +40,19 @@
     {% endif %}
   {% endfor %}
   <div class="absolute bottom-0 left-0 w-full p-sm flex justify-center">
-    <a class="rounded-full w-full p-sm lg:py-sm lg:px-md bg-white hover:bg-black hover:no-underline inline-flex justify-center items-center text-button text-center text-black hover:text-white ease-linear duration-200" href="{{ ctaLink.url }}" {% if ctaLink.target %} target="{{ ctaLink.target }}" rel="noreferrer noopener"{% endif %}>{{ ctaLink.title|e }}</a>
+    <a
+      class="
+        sm:hidden
+        rounded-full w-full p-sm lg:py-sm lg:px-md
+        bg-white hover:bg-black no-underline
+        inline-flex justify-center items-center
+        text-button text-center text-black hover:text-white
+        ease-linear duration-200
+      "
+      href="{{ ctaLink.url }}"
+      {% if ctaLink.target %} target="{{ ctaLink.target }}" rel="noreferrer noopener"{% endif %}
+    >
+      {{ ctaLink.title|e }}
+    </a>
   </div>
 </ul>

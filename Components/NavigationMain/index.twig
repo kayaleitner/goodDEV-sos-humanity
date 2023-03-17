@@ -1,13 +1,13 @@
 <flynt-component
   load:on="idle"
-  load:onmedia="(min-width: 1024px)"
+  load:onmedia="(min-width: 780px)"
   name="NavigationMain"
   class="hidden md:block text-white backdrop-blur-md relative"
 >
   <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
     <div class="max-w-screen-max mx-auto px-lg py-md flex items-center justify-between flex-row">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'logo_dark': logo_dark, 'site': site } only %}
-      <div class="menu-wrapper flex items-center justify-start gap-md w-fit h-fit pl-xl relative">
+      <div class="menu-wrapper flex items-center justify-start gap-md w-fit h-fit pl-lg relative">
         {% if menu %}
           {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
         {% endif %}
@@ -21,11 +21,11 @@
       </div>
     </div>
     {# this is just for tailwind blabla #}
-    <div class="hidden bg-white/50 backdrop-blur-md text-grey text-white text-black bg-white bg-green bg-cbegreen"></div>
+    <div class="hidden bg-white/50 backdrop-blur-md text-grey text-white text-black bg-white bg-green bg-cbegreen [&_a]:bg-green [&_a]:hover:bg-cbegreen [&_a]:hover:text-white"></div>
   </nav>
 </flynt-component>
 <div id="ctaMain"
-  class="fixed xl:hidden z-[9999] bottom-lg right-lg
+  class="fixed hidden sm:block xl:hidden z-[9999] bottom-lg right-lg
   [&>a]:bg-green [&>a]:text-black [&>a]:hover:bg-cbegreen [&>a]:hover:text-white
 ">
   {% include 'Partials/_cta.twig' %}

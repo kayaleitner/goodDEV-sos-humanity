@@ -2,7 +2,7 @@ flynt-component[name='NavigationBurger'] {
   --navigation-height: 64px;
   height: var(--navigation-height);
 
-  @media (min-width: $breakpoint-tablet-horizontal) {
+  @media (min-width: $breakpoint-tablet) {
     display: none;
   }
 
