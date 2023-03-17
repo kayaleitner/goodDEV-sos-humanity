@@ -4,8 +4,19 @@ flynt-component[name='ListingMap'] {
       @apply bg-cbegreen;
       @apply w-lg;
       @apply h-lg;
-      outline: 2px solid var(--secondary);
-      outline-offset: 4px;
+      // outline: 2px solid var(--secondary);
+      // outline-offset: 4px;
+
+      &::before {
+        border: 3px solid var(--white);
+        border-radius: 100%;
+        bottom: 3px;
+        content: '';
+        left: 3px;
+        position: absolute;
+        right: 3px;
+        top: 3px;
+      }
     }
   }
 }
