@@ -1,4 +1,4 @@
-import Swiper, { Navigation, A11y, Autoplay } from 'swiper'
+import Swiper, { Navigation, A11y, Autoplay, Pagination } from 'swiper'
 import 'swiper/css/bundle'
 import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
 
@@ -12,13 +12,18 @@ export default function (sliderText) {
 function initSlider (refs, data) {
   const { options } = data
   const config = {
-    modules: [Navigation, A11y, Autoplay],
+    modules: [Navigation, A11y, Autoplay, Pagination],
     a11y: options.a11y,
     slidesPerView: 'auto',
     spaceBetween: 35,
     navigation: {
       nextEl: refs.next,
       prevEl: refs.prev
+    },
+    pagination: {
+      el: refs.dots,
+      type: 'bullets',
+      clickable: true
     },
     breakpoints: {
       640: {

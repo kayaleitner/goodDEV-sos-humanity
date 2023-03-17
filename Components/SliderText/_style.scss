@@ -20,24 +20,13 @@ flynt-component[name='SliderText'] {
         // width: 400px;
       }
     }
-
-    .button-wrapper {
-      transform: translateY(-50px);
-
-      @media (min-width: $breakpoint-desktop) {
-        transform: translateY(-80px);
-      }
-    }
-
+    
     &-button {
       align-items: center;
       cursor: pointer;
       display: flex;
       height: 48px;
-      // inset-block-start: 50%;
       justify-content: center;
-      // position: absolute;
-      // transform: translateY(-50%);
       width: 48px;
       z-index: 10;
 
@@ -46,5 +35,38 @@ flynt-component[name='SliderText'] {
         pointer-events: none;
       }
     }
+  }
+}
+
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  align-items: center;
+  bottom: 35px !important;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  position: absolute;
+  top: auto !important;
+  z-index: 9999;
+
+  @media (min-width: $breakpoint-tablet) {
+    display: none !important;
+  }
+}
+
+.swiper-pagination-bullet {
+  background: transparent !important;
+  border: 2px solid var(--white);
+  border-radius: 100%;
+  display: inline-block;
+  height: 15px !important;
+  opacity: 1 !important;
+  width: 15px !important;
+
+  &-active {
+    background: var(--white) !important;
+    opacity: 1 !important;
   }
 }
