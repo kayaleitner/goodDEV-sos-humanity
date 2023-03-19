@@ -18,7 +18,11 @@
         <div class="h6"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
         <div class="h6"><span class="font-bold underline">{{ post.category }}</span></div>
       </div>
-      <h1 class="h2 font-bold">{{ post.title }}</h1>
+      {% if post.specialTitle %}
+        <h1 class="h2 font-bold">{{ post.specialTitle }}</h1>
+      {% else %}
+        <h1 class="h2 font-bold">{{ post.title }}</h1>
+      {% endif %}
       {% if post.post_excerpt %}
         <div class="hidden md:block w-full">
           <div class="h3">{{ post.post_excerpt }}</div>
