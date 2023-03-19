@@ -66,7 +66,7 @@ function getACFLayout()
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'required' => 1,
+                'required' => 0,
                 'mime_types' => 'jpg,jpeg,png,svg'
             ],
             [
@@ -99,7 +99,7 @@ function getACFLayout()
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
-                'required' => 1,
+                'required' => 0,
             ],
             [
                 'label' => __('Icon', 'flynt'),

@@ -75,7 +75,7 @@ Options::addTranslatable('NavigationMain', [
                 'name' => 'ariaLabel',
                 'type' => 'text',
                 'default_value' => __('Main', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],

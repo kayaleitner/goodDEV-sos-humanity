@@ -32,7 +32,7 @@ function getACFLayout()
                 'label' => __('Video', 'flynt'),
                 'name' => 'oembed',
                 'type' => 'oembed',
-                'required' => 1,
+                'required' => 0,
                 'videoParams' => [
                     'autoplay' => 1,
                 ]

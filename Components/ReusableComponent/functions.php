@@ -18,7 +18,7 @@ function getACFLayout()
                 'allow_null' => 0,
                 'multiple' => 0,
                 'ui' => 1,
-                'required' => 1,
+                'required' => 0,
                 'return_format' => 'object',
             ],
         ],

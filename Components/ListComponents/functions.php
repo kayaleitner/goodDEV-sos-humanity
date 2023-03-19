@@ -151,7 +151,7 @@ Options::addTranslatable('ListComponents', [
                 'name' => 'code',
                 'type' => 'text',
                 'default_value' =>  __('Code', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -161,7 +161,7 @@ Options::addTranslatable('ListComponents', [
                 'name' => 'preview',
                 'type' => 'text',
                 'default_value' =>  __('Preview', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],

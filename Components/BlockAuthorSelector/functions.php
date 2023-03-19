@@ -102,7 +102,7 @@ Options::addTranslatable('BlockAuthorSelector', [
                 'name' => 'allPosts',
                 'type' => 'text',
                 'default_value' => __('View all', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],
@@ -111,7 +111,7 @@ Options::addTranslatable('BlockAuthorSelector', [
                 'label' => __('All Posts Link', 'flynt'),
                 'name' => 'allPostsLink',
                 'type' => 'link',
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],
@@ -121,7 +121,7 @@ Options::addTranslatable('BlockAuthorSelector', [
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => __('Read More', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],
@@ -132,7 +132,7 @@ Options::addTranslatable('BlockAuthorSelector', [
                 'name' => 'readingTime',
                 'type' => 'text',
                 'default_value' => __('%d min read', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],

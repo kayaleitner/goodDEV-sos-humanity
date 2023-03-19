@@ -24,7 +24,7 @@ function getACFLayout()
                     'instructions' => __('Enter a unique name to create an anchor link.', 'flynt'),
                     'name' => 'anchor',
                     'type' => 'text',
-                    'required' => 1,
+                    'required' => 0,
                 ],
                 [
                     'label' => __('Anchor link', 'flynt'),

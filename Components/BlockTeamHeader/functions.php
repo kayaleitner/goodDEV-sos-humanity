@@ -29,7 +29,7 @@ Options::addTranslatable('BlockTeamHeader', [
                 'name' => 'backButton',
                 'type' => 'text',
                 'default_value' => __('Go back to Our Team', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],
@@ -38,7 +38,7 @@ Options::addTranslatable('BlockTeamHeader', [
                 'label' => __('Back Button Link', 'flynt'),
                 'name' => 'backButtonLink',
                 'type' => 'link',
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],

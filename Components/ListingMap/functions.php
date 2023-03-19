@@ -98,7 +98,7 @@ function getACFLayout()
                         'min' => 2000,
                         'step' => 1,
                         'default_value' => 4000,
-                        'required' => 1,
+                        'required' => 0,
                         'conditional_logic' => [
                             [
                                 [
@@ -133,7 +133,7 @@ Options::addTranslatable('ListingMap', [
                 'name' => 'allPosts',
                 'type' => 'text',
                 'default_value' => __('View all', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],
@@ -142,7 +142,7 @@ Options::addTranslatable('ListingMap', [
                 'label' => __('All Posts Link', 'flynt'),
                 'name' => 'allPostsLink',
                 'type' => 'link',
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],
@@ -152,7 +152,7 @@ Options::addTranslatable('ListingMap', [
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => __('Read More', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],
@@ -163,7 +163,7 @@ Options::addTranslatable('ListingMap', [
                 'name' => 'readingTime',
                 'type' => 'text',
                 'default_value' => __('%d min read', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],

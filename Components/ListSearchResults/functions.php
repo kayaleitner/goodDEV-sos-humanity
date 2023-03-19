@@ -17,7 +17,7 @@ Options::addTranslatable('ListSearchResults', [
         'instructions' => __('Title of the search Page.', 'flynt'),
         'name' => 'preContentHtml',
         'type' => 'wysiwyg',
-        'required' => 1,
+        'required' => 0,
         'default_value' => __('Search Result', 'flynt'),
         'media_upload' => 0,
         'delay' => 1,
@@ -39,7 +39,7 @@ Options::addTranslatable('ListSearchResults', [
                 'name' => 'previous',
                 'type' => 'text',
                 'default_value' => __('Prev', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -49,7 +49,7 @@ Options::addTranslatable('ListSearchResults', [
                 'name' => 'next',
                 'type' => 'text',
                 'default_value' => __('Next', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -59,7 +59,7 @@ Options::addTranslatable('ListSearchResults', [
                 'instructions' => __('The text for the input field.', 'flynt'),
                 'name' => 'searchPlaceholder',
                 'type' => 'text',
-                'required' => 1,
+                'required' => 0,
                 'default_value' => __('Search …', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
@@ -71,7 +71,7 @@ Options::addTranslatable('ListSearchResults', [
                 'name' => 'search',
                 'type' => 'text',
                 'default_value' => __('Search', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -81,7 +81,7 @@ Options::addTranslatable('ListSearchResults', [
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => __('Read More', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -91,7 +91,7 @@ Options::addTranslatable('ListSearchResults', [
                 'name' => 'noResults',
                 'type' => 'text',
                 'default_value' => __('No results found.', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],

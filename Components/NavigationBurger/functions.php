@@ -56,7 +56,7 @@ Options::addTranslatable('NavigationBurger', [
                 'name' => 'ariaLabel',
                 'type' => 'text',
                 'default_value' => __('Main', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -66,7 +66,7 @@ Options::addTranslatable('NavigationBurger', [
                 'name' => 'toggleMenu',
                 'type' => 'text',
                 'default_value' => __('Toggle Menu', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],

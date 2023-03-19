@@ -70,7 +70,7 @@ function getACFLayout()
                         'min' => 2000,
                         'step' => 1,
                         'default_value' => 4000,
-                        'required' => 1,
+                        'required' => 0,
                         'conditional_logic' => [
                             [
                                 [

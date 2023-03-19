@@ -29,7 +29,7 @@ function getACFLayout()
             //     'name' => 'animation',
             //     'type' => 'image',
             //     'preview_size' => 'medium',
-            //     'required' => 1,
+            //     'required' => 0,
             //     'mime_types' => 'jpg,jpeg,png,svg'
             // ],
             // [

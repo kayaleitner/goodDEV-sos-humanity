@@ -88,7 +88,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'name' => 'filterBy',
                 'type' => 'text',
                 'default_value' => __('Filter by', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -98,7 +98,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'name' => 'previous',
                 'type' => 'text',
                 'default_value' => __('Prev', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -108,7 +108,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'name' => 'next',
                 'type' => 'text',
                 'default_value' => __('Next', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -118,7 +118,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'name' => 'loadMore',
                 'type' => 'text',
                 'default_value' => __('Load More', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -128,7 +128,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'name' => 'noPostsFound',
                 'type' => 'text',
                 'default_value' => __('No post found.', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -138,7 +138,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'name' => 'allPosts',
                 'type' => 'text',
                 'default_value' => __('All', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -149,7 +149,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'name' => 'readingTime',
                 'type' => 'text',
                 'default_value' => __('%d min read', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],
@@ -159,7 +159,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => __('Read More', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
