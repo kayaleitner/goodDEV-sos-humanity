@@ -14,7 +14,7 @@ Options::addTranslatable('SliderOptions', [
                 'name' => 'nextSlideMessage',
                 'type' => 'text',
                 'default_value' => __('Next Slide', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -24,7 +24,7 @@ Options::addTranslatable('SliderOptions', [
                 'name' => 'prevSlideMessage',
                 'type' => 'text',
                 'default_value' => __('Previous Slide', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -35,7 +35,7 @@ Options::addTranslatable('SliderOptions', [
                 'name' => 'firstSlideMessage',
                 'type' => 'text',
                 'default_value' => __('This is the first slide', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -46,7 +46,7 @@ Options::addTranslatable('SliderOptions', [
                 'name' => 'lastSlideMessage',
                 'type' => 'text',
                 'default_value' => __('This is the last slide', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -57,7 +57,7 @@ Options::addTranslatable('SliderOptions', [
                 'name' => 'paginationBulletMessage',
                 'type' => 'text',
                 'default_value' => __('Go to slide {{index}}', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
