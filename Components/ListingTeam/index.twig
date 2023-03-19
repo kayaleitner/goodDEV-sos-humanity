@@ -24,10 +24,18 @@
               <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
                 <div class="flex flex-col gap-sm">
                   <div class="w-full p-sm flex flex-row justify-between align-middle items-center border h6">
-                    <div class="font-mono font-bold">{{ post.category }}</div>
+                    <div>
+                      <div class="font-mono font-bold">City, Country</div>
+                      <div class="paragraph">Department</div>
+                    </div>
+                    <div class="icon">
+                      <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.2916 1.34375H1.91775L1.85547 9.82204C1.85547 16.6605 5.8829 22.3948 11.3064 23.9413C16.3082 22.5154 20.1209 17.5294 20.6852 11.4004" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.84375 7.73632L11.3706 14.9667L23.6995 2.26953" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
                   </div>
                   <div class="w-full flex flex-col gap-xs justify-between align-start items-start">
-                    <div class="paragraph">{{ post.category }}</div>
                     <div class="">{{ post.position }}</div>
                     <h2 class="h3 w-full grow">{{ post.title }}</h2>
                     <div class="w-full grow">{{ post.bio }}</div>
