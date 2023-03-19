@@ -144,13 +144,28 @@ function getConfig()
                         'selector' => 'a,button'
                     ],
                     [
-                        'title' => __('Button Outlined', 'flynt'),
+                        'title' => __('Button Outline White', 'flynt'),
                         'classes' => 'button--outlineWhite',
                         'selector' => '.button'
                     ],
                     [
-                        'title' => __('Button Text', 'flynt'),
-                        'classes' => 'button--text',
+                        'title' => __('Button Outline Black', 'flynt'),
+                        'classes' => 'button--outlineBlack',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => __('Button Outline Black/White', 'flynt'),
+                        'classes' => 'button--outlineBlackWhite',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => __('Button Arrow', 'flynt'),
+                        'classes' => 'button--arrow',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => __('Button Link', 'flynt'),
+                        'classes' => 'button--link',
                         'selector' => '.button'
                     ]
                 ]
