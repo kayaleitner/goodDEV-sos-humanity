@@ -98,7 +98,7 @@ h6,
 .h6 {
   font-size: 0.938rem;
   font-weight: 400;
-  line-height: normal;
+  line-height: 140%;
 
   @media (min-width: $breakpoint-desktop) {
     font-size: 1.125rem;
