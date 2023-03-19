@@ -104,12 +104,16 @@
     "file": "assets/facebook-58a940a6.svg",
     "src": "Components/NavigationFooter/Assets/facebook.svg"
   },
+  "Components/NavigationFooter/Assets/linkedin.svg": {
+    "file": "assets/linkedin-d3365d89.svg",
+    "src": "Components/NavigationFooter/Assets/linkedin.svg"
+  },
   "Components/NavigationFooter/Assets/logo.svg": {
     "file": "assets/logo-eeb7436e.svg",
     "src": "Components/NavigationFooter/Assets/logo.svg"
   },
   "Components/NavigationFooter/Assets/twitter.svg": {
-    "file": "assets/twitter-b6176d81.svg",
+    "file": "assets/twitter-b3b81b24.svg",
     "src": "Components/NavigationFooter/Assets/twitter.svg"
   },
   "Components/NavigationMain/script.js": {
@@ -206,7 +210,7 @@
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-33bb79f3.css",
+    "file": "assets/main-7bd3cc08.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -216,7 +220,7 @@
     "src": "assets/print.scss"
   },
   "assets/tinyMce.scss": {
-    "file": "assets/tinyMce-0e54730a.css",
+    "file": "assets/tinyMce-5a69296f.css",
     "isEntry": true,
     "src": "assets/tinyMce.scss"
   },
