@@ -35,7 +35,7 @@ function getRawSvg()
         ),
         'name' => 'rawSvg',
         'type' => 'textarea',
-        'required' => 1,
+        'required' => 0,
         'rows' => 1,
         'new_lines' => '',
     ];
