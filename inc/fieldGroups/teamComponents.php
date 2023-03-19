@@ -58,6 +58,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                         'ajax' => 0,
                         'return_format' => 'array',
                         'choices' => [
+                            'linkedin' => 'Linkedin',
                             'facebook' => 'Facebook',
                             'twitter' => 'Twitter'
                         ]

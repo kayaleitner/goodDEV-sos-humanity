@@ -53,6 +53,26 @@ Options::addTranslatable('NavigationFooter', [
         'mime_types' => 'jpg,jpeg,png,svg'
     ],
     [
+        'label' => __('Address', 'flynt'),
+        'name' => 'addressTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Address Column Title', 'flynt'),
+        'name' => 'addressColumnTitle',
+        'type' => 'text'
+    ],
+    [
+        'label' => __('Address', 'flynt'),
+        'name' => 'addressHtml',
+        'type' => 'wysiwyg',
+        'media_upload' => 0,
+        'delay' => 1,
+        'toolbar' => 'basic',
+    ],
+    [
         'label' => __('Menus', 'flynt'),
         'name' => 'menusTab',
         'type' => 'tab',
@@ -93,15 +113,15 @@ Options::addTranslatable('NavigationFooter', [
         ]
     ],
     [
-        'label' => __('Content', 'flynt'),
-        'name' => 'contentTab',
+        'label' => __('Copyrights', 'flynt'),
+        'name' => 'copyrightsTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0
     ],
     [
-        'label' => __('Content', 'flynt'),
-        'name' => 'contentHtml',
+        'label' => __('Copyrights', 'flynt'),
+        'name' => 'copyrightsHtml',
         'type' => 'wysiwyg',
         'media_upload' => 0,
         'delay' => 1,
@@ -114,6 +134,11 @@ Options::addTranslatable('NavigationFooter', [
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0
+    ],
+    [
+        'label' => __('Social Media Title', 'flynt'),
+        'name' => 'socialMediaTitle',
+        'type' => 'text'
     ],
     [
         'label' => __('Social Platform', 'flynt'),
@@ -132,6 +157,7 @@ Options::addTranslatable('NavigationFooter', [
                 'ajax' => 0,
                 'return_format' => 'array',
                 'choices' => [
+                    'linkedin' => 'Linkedin',
                     'facebook' => 'Facebook',
                     'twitter' => 'Twitter'
                 ]
@@ -144,46 +170,46 @@ Options::addTranslatable('NavigationFooter', [
             ],
         ]
     ],
-    [
-        'label' => __('Content Examples', 'flynt'),
-        'name' => 'templateTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0,
-    ],
-    [
-        'label' => __('Content Examples', 'flynt'),
-        'instructions' => __('Want some content inspiration? Here they are!', 'flynt'),
-        'name' => 'groupContentExamples',
-        'type' => 'group',
-        'sub_fields' => [
-            [
-                /* translators: %s: Placeholder for the current year */
-                'label' => sprintf(__('© %s Website Name', 'flynt'), date_i18n('Y')),
-                'name' => 'messageShortcodeCopyrightYearWebsiteName',
-                'type' => 'message',
-                'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle]</code>',
-                'new_lines' => 'wpautop',
-                'esc_html' => 0,
-                'wrapper' => [
-                    'width' => 50
-                ],
-            ],
-            [
-                /* translators: %s: Placeholder for the current year */
-                'label' => sprintf(__('© %s Website Name — Subtitle', 'flynt'), date_i18n('Y')),
-                'name' => 'messageShortcodeCopyrightYearWebsiteNameTagLine',
-                'type' => 'message',
-                'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle] ' . htmlspecialchars('&mdash;') . ' [tagline]</code>',
-                'new_lines' => 'wpautop',
-                'esc_html' => 0,
-                'wrapper' => [
-                    'width' => 50
-                ]
-            ]
-        ]
-    ],
-    Shortcodes\getShortcodeReference(),
+    // [
+    //     'label' => __('Content Examples', 'flynt'),
+    //     'name' => 'templateTab',
+    //     'type' => 'tab',
+    //     'placement' => 'top',
+    //     'endpoint' => 0,
+    // ],
+    // [
+    //     'label' => __('Content Examples', 'flynt'),
+    //     'instructions' => __('Want some content inspiration? Here they are!', 'flynt'),
+    //     'name' => 'groupContentExamples',
+    //     'type' => 'group',
+    //     'sub_fields' => [
+    //         [
+    //             /* translators: %s: Placeholder for the current year */
+    //             'label' => sprintf(__('© %s Website Name', 'flynt'), date_i18n('Y')),
+    //             'name' => 'messageShortcodeCopyrightYearWebsiteName',
+    //             'type' => 'message',
+    //             'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle]</code>',
+    //             'new_lines' => 'wpautop',
+    //             'esc_html' => 0,
+    //             'wrapper' => [
+    //                 'width' => 50
+    //             ],
+    //         ],
+    //         [
+    //             /* translators: %s: Placeholder for the current year */
+    //             'label' => sprintf(__('© %s Website Name — Subtitle', 'flynt'), date_i18n('Y')),
+    //             'name' => 'messageShortcodeCopyrightYearWebsiteNameTagLine',
+    //             'type' => 'message',
+    //             'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle] ' . htmlspecialchars('&mdash;') . ' [tagline]</code>',
+    //             'new_lines' => 'wpautop',
+    //             'esc_html' => 0,
+    //             'wrapper' => [
+    //                 'width' => 50
+    //             ]
+    //         ]
+    //     ]
+    // ],
+    // Shortcodes\getShortcodeReference(),
     [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
@@ -201,7 +227,7 @@ Options::addTranslatable('NavigationFooter', [
                 'name' => 'ariaLabel',
                 'type' => 'text',
                 'default_value' => __('Footer', 'flynt'),
-                'required' => 1,
+                'required' => 0,
                 'wrapper' => [
                     'width' => '50',
                 ],
