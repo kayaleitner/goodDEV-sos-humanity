@@ -194,6 +194,7 @@ function getConfig()
                     'bold',
                     'italic',
                     'blockquote',
+                    'forecolor',
                     '|',
                     'alignleft',
                     'aligncenter',

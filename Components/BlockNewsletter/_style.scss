@@ -40,9 +40,9 @@ flynt-component[name='BlockNewsletter'] {
       @apply border-white;
       @apply cursor-pointer;
       @apply rounded-r-full;
-      @apply hover:bg-black;
-      @apply hover:border-black;
+      @apply hover:bg-white;
       @apply text-white;
+      @apply hover:text-black;
       @apply transition-all;
     }
   }
