@@ -4,7 +4,7 @@
       {% if blockTitle %}
         <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg flex flex-row justify-between align-bottom items-end content-end">
           <div class="h4">{{ blockTitle }}</div>
-          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
+          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
       <ul class="max-w-screen-max mx-auto px-sm lg:px-lg flex flex-col lg:flex-row gap-sm lg:gap-md justify-between">
@@ -23,7 +23,7 @@
               {% endif %}
               <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
                 <div class="flex flex-col gap-sm">
-                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border h6">
+                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
                     <div>
                       <div class="font-mono font-bold">City, Country</div>
                       <div class="paragraph">Department</div>
@@ -37,7 +37,7 @@
                   </div>
                   <div class="w-full flex flex-col gap-xs justify-between align-start items-start">
                     <div class="">{{ post.position }}</div>
-                    <h2 class="h3 w-full grow">{{ post.title }}</h2>
+                    <h2 class="subtitle w-full grow">{{ post.title }}</h2>
                     <div class="w-full grow">{{ post.bio }}</div>
                   </div>
                 </div>

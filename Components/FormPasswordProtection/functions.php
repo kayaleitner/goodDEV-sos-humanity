@@ -34,7 +34,7 @@ Options::addTranslatable('FormPasswordProtection', [
     'media_upload' => 0,
     'delay' => 1,
     'default_value' => sprintf(
-        '<h1 class="h3">%1$s</h1><p>%2$s %3$s</p>',
+        '<h1 class="subtitle">%1$s</h1><p>%2$s %3$s</p>',
         __('Enter Password', 'flynt'),
         __('This content is password protected.', 'flynt'),
         __('To view it please enter your password below:', 'flynt')

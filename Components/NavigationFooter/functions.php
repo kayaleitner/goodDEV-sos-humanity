@@ -72,6 +72,54 @@ Options::addTranslatable('NavigationFooter', [
         'delay' => 1,
         'toolbar' => 'basic',
     ],
+    // [
+    //     'label' => __('Address Line 1', 'flynt'),
+    //     'name' => 'addressLine1',
+    //     'type' => 'text',
+    //     'wrapper' => [
+    //         'width' => 50
+    //     ],
+    // ],
+    // [
+    //     'label' => __('Address Line 2', 'flynt'),
+    //     'name' => 'addressLine2',
+    //     'type' => 'text',
+    //     'wrapper' => [
+    //         'width' => 50
+    //     ],
+    // ],
+    // [
+    //     'label' => __('City', 'flynt'),
+    //     'name' => 'addressCity',
+    //     'type' => 'text',
+    //     'wrapper' => [
+    //         'width' => 50
+    //     ],
+    // ],
+    // [
+    //     'label' => __('Country', 'flynt'),
+    //     'name' => 'addressCountry',
+    //     'type' => 'text',
+    //     'wrapper' => [
+    //         'width' => 50
+    //     ],
+    // ],
+    // [
+    //     'label' => __('Email', 'flynt'),
+    //     'name' => 'addressEmail',
+    //     'type' => 'text',
+    //     'wrapper' => [
+    //         'width' => 50
+    //     ],
+    // ],
+    // [
+    //     'label' => __('Phone', 'flynt'),
+    //     'name' => 'addressPhone',
+    //     'type' => 'text',
+    //     'wrapper' => [
+    //         'width' => 50
+    //     ],
+    // ],
     [
         'label' => __('Menus', 'flynt'),
         'name' => 'menusTab',

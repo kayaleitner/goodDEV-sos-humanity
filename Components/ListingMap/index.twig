@@ -10,7 +10,7 @@
       {% if blockTitle %}
         <div class="w-full mx-auto pb-sm lg:pb-lg flex flex-col gap-sm justify-between align-start items-start content-start">
           <div class="h4">{{ blockTitle }}</div>
-          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
+          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
 
@@ -49,7 +49,7 @@
                 class="
                   tab-control
                   bg-[#7CD3B9]
-                  flex w-md h-md mx-2
+                  flex w-md h-md
                   rounded-full
                   overflow-hidden
                   transition-all duration-100 linear
@@ -118,12 +118,12 @@
               {% endif %}
               <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
                 <div class="flex flex-col gap-sm">
-                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border h6">
+                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
                     <div class="font-mono font-bold">{{ post.category }}</div>
                   </div>
                   <div class="w-full flex flex-col gap-xs justify-between align-start items-start">
                     <div>{{ post.category }}</div>
-                    <h2 class="h3 w-full grow">{{ post.title }}</h2>
+                    <h2 class="subtitle w-full grow">{{ post.title }}</h2>
                   </div>
                 </div>
                 <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">

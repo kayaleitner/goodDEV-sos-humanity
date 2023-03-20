@@ -99,37 +99,27 @@ function getConfig()
         ],
         'styleformats' => [
             [
-                'title' => __('Headings', 'flynt'),
+                'title' => __('Text', 'flynt'),
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => __('Heading 1', 'flynt'),
-                        'classes' => 'h1',
+                        'title' => __('Title Large', 'flynt'),
+                        'classes' => 'titleLarge',
                         'selector' => '*'
                     ],
                     [
-                        'title' => __('Heading 2', 'flynt'),
-                        'classes' => 'h2',
+                        'title' => __('Title Small', 'flynt'),
+                        'classes' => 'titleSmall',
                         'selector' => '*'
                     ],
                     [
-                        'title' => __('Heading 3', 'flynt'),
-                        'classes' => 'h3',
+                        'title' => __('Subtitle', 'flynt'),
+                        'classes' => 'subtitle',
                         'selector' => '*'
                     ],
                     [
-                        'title' => __('Heading 4', 'flynt'),
-                        'classes' => 'h4',
-                        'selector' => '*'
-                    ],
-                    [
-                        'title' => __('Heading 5', 'flynt'),
-                        'classes' => 'h5',
-                        'selector' => '*'
-                    ],
-                    [
-                        'title' => __('Heading 6', 'flynt'),
-                        'classes' => 'h6',
+                        'title' => __('Caption', 'flynt'),
+                        'classes' => 'caption',
                         'selector' => '*'
                     ],
                 ]
@@ -139,41 +129,36 @@ function getConfig()
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => __('Button', 'flynt'),
-                        'classes' => 'button',
-                        'selector' => 'a,button'
+                        'title' => __('Button Primary', 'flynt'),
+                        'classes' => 'button button--primary',
+                        'selector' => 'a'
                     ],
                     [
                         'title' => __('Button Outline White', 'flynt'),
-                        'classes' => 'button--outlineWhite',
-                        'selector' => '.button'
+                        'classes' => 'button button--outlineWhite',
+                        'selector' => 'a'
                     ],
                     [
                         'title' => __('Button Outline Black', 'flynt'),
-                        'classes' => 'button--outlineBlack',
-                        'selector' => '.button'
+                        'classes' => 'button button--outlineBlack',
+                        'selector' => 'a'
                     ],
                     [
                         'title' => __('Button Outline Black/White', 'flynt'),
-                        'classes' => 'button--outlineBlackWhite',
-                        'selector' => '.button'
+                        'classes' => 'button button--outlineBlackWhite',
+                        'selector' => 'a'
                     ],
                     [
                         'title' => __('Button Arrow', 'flynt'),
-                        'classes' => 'button--arrow',
-                        'selector' => '.button'
+                        'classes' => 'button button--arrow',
+                        'selector' => 'a'
                     ],
                     [
                         'title' => __('Button Link', 'flynt'),
-                        'classes' => 'button--link',
-                        'selector' => '.button'
+                        'classes' => 'button button--link',
+                        'selector' => 'a'
                     ]
                 ]
-            ],
-            [
-                'title' => __('Paragraph', 'flynt'),
-                'classes' => 'paragraph',
-                'selector' => '*'
             ],
         ],
         'toolbars' => [

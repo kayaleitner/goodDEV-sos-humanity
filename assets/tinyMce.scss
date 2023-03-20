@@ -1,5 +1,4 @@
 @import
-  'styles/tailwind',
   'styles/mixins',
   'styles/variables',
   'styles/base';
@@ -17,6 +16,5 @@ html {
   
   .mce-content-body {
     background-color: #cdcdcd;
-    margin: 10px;
   }
 }

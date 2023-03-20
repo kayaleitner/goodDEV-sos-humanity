@@ -20,11 +20,10 @@ html {
 
 body,
 p
-.paragraph {
+.paragraph,
+.body {
   font-size: 1.25rem;
-  font-weight: 400;
   line-height: normal;
-  margin-bottom: 1.2rem;
 
   @media (min-width: $breakpoint-desktop) {
     font-size: 1.563rem;
@@ -34,9 +33,8 @@ p
 
 // Title Large
 h1,
-.h1 {
+.titleLarge {
   font-size: 2.813rem;
-  font-weight: 400;
   line-height: normal;
   margin-bottom: 1.2rem;
 
@@ -47,23 +45,21 @@ h1,
 
 // Title Small
 h2,
-.h2 {
+.titleSmall {
   font-size: 2.188rem;
-  font-weight: 400;
-  line-height: 110%;
+  line-height: normal;
   margin-bottom: 1.2rem;
 
   @media (min-width: $breakpoint-desktop) {
     font-size: 3.438rem;
-    line-height: normal;
+    line-height: 110%;
   }
 }
 
 // Subtitle
 h3,
-.h3 {
+.subtitle {
   font-size: 1.875rem;
-  font-weight: 400;
   line-height: normal;
 
   @media (min-width: $breakpoint-desktop) {
@@ -71,43 +67,52 @@ h3,
   }
 }
 
-h4,
-.h4 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: normal;
+// Glance
+.glance {
+  font-size: 1.5rem;
+  line-height: 110%;
 
   @media (min-width: $breakpoint-desktop) {
-    font-size: 2rem;
-  }
-}
-
-h5,
-.h5 {
-  font-size: 0.938rem;
-  font-weight: 400;
-  line-height: 140%;
-
-  @media (min-width: $breakpoint-desktop) {
-    font-size: 1.563rem;
+    font-size: 2.813rem;
   }
 }
 
 // Caption
 h6,
-.h6 {
+.caption {
   font-size: 0.938rem;
-  font-weight: 400;
-  line-height: 140%;
+  line-height: normal;
 
   @media (min-width: $breakpoint-desktop) {
     font-size: 1.125rem;
   }
 }
 
+// h4,
+// .h4 {
+//   font-size: 1.25rem;
+//   font-weight: 700;
+//   line-height: normal;
+
+//   @media (min-width: $breakpoint-desktop) {
+//     font-size: 2rem;
+//   }
+// }
+
+// h5,
+// .h5 {
+//   font-size: 0.938rem;
+//   line-height: 140%;
+
+//   @media (min-width: $breakpoint-desktop) {
+//     font-size: 1.563rem;
+//   }
+// }
+
 body,
 p
-.paragraph {
+.paragraph,
+.body {
   a {
     color: currentColor;
     text-decoration: underline;
@@ -231,6 +236,13 @@ table {
     @apply cursor-default;
     @apply opacity-5;
     @apply pointer-events-none;
+  }
+
+  &--primary {
+    @apply bg-green;
+    @apply hover:bg-cbegreen;
+    @apply text-black;
+    @apply hover:text-white;
   }
 
   &--outlineWhite {
