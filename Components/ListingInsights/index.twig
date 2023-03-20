@@ -3,8 +3,8 @@
     <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
       {% if blockTitle %}
         <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between align-bottom items-end content-end">
-          <div class="h4">{{ blockTitle }}</div>
-          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
+          <div class="subtitle font-bold">{{ blockTitle }}</div>
+          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
       <ul
@@ -31,15 +31,11 @@
               {% endif %}
               <div class="content lg:aspect-square lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
                 <div class="w-full flex flex-row justify-between align-middle items-center">
-                  <div class="h6 text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
-                  <div class="h6 text-right"><span class="font-bold underline">{{ post.category }}</span></div>
+                  <div class="caption text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
+                  <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>
                 </div>
                 <div class="flex flex-row lg:flex-col gap-sm justify-between items-between lg:items-stretch w-full lg:h-full">
-                  {% if post.specialTitle %}
-                    <h2 class="h3 mb-0 lg:w-full md:grow">{{ post.specialTitle }}</h2>
-                  {% else %}
-                    <h2 class="h3 mb-0 lg:w-full md:grow">{{ post.title }}</h2>
-                  {% endif %}
+                  <h2 class="text-subtitleMobile md:text-body mb-0 lg:w-full md:grow">{{ post.title }}</h2>
                   <span class="flex lg:hidden flex-col justify-end items-end">
                     {% if post.externalResourceLink %}
                       <a class="button button--link" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>{{ post.externalResourceLink.title|e }}</a>
