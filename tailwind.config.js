@@ -25,45 +25,44 @@ module.exports = {
       transparent: 'transparent'
     },
     fontSize: {
-      small: ['0.938rem', {
-        lineHeight: 'normal',
-        fontWeight: '400'
+      body: ['1.563rem', {
+        lineHeight: '140%'
       }],
-      base: ['1rem', {
-        lineHeight: 'normal',
-        fontWeight: '400'
-      }],
-      large: ['1.25rem', {
-        lineHeight: 'normal',
-        fontWeight: '400'
+      bodyMobile: ['1.25rem', {
+        lineHeight: 'normal'
       }],
       button: ['1.125rem', {
-        lineHeight: '1.125rem',
-        fontWeight: '400'
+        lineHeight: '1.125rem'
       }],
-      h1: ['4.813rem', {
-        lineHeight: 'normal',
-        fontWeight: '400'
+      titleLarge: ['4.813rem', {
+        lineHeight: 'normal'
       }],
-      h2: ['3.438rem', {
-        lineHeight: '110%',
-        fontWeight: '700'
+      titleLargeMobile: ['2.813rem', {
+        lineHeight: 'normal'
       }],
-      h3: ['2.188rem', {
-        lineHeight: 'normal',
-        fontWeight: '400'
+      titleSmall: ['3.438rem', {
+        lineHeight: '110%'
       }],
-      h4: ['2rem', {
-        lineHeight: 'normal',
-        fontWeight: '700'
+      titleSmallMobile: ['2.188rem', {
+        lineHeight: 'normal'
       }],
-      h5: ['1.563rem', {
-        lineHeight: '140%',
-        fontWeight: '400'
+      subtitle: ['2.188rem', {
+        lineHeight: 'normal'
       }],
-      h6: ['1.563rem', {
-        lineHeight: 'normal',
-        fontWeight: '400'
+      subtitleMobile: ['1.875rem', {
+        lineHeight: 'normal'
+      }],
+      glance: ['2.813rem', {
+        lineHeight: '110%'
+      }],
+      glanceMobile: ['1.5rem', {
+        lineHeight: '110%'
+      }],
+      caption: ['1.125rem', {
+        lineHeight: 'normal'
+      }],
+      captionMobile: ['0.938rem', {
+        lineHeight: 'normal'
       }]
     },
     screens: {
@@ -105,5 +104,7 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/typography')
+  ]
 }
