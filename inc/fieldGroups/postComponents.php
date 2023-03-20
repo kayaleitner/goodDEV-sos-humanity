@@ -19,11 +19,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'return_format' => 'array'
             ],
             [
-                'label' => __('Special Title', 'flynt'),
-                'name' => 'specialTitle',
-                'type' => 'text'
-            ],
-            [
                 'label' => __('Facts', 'flynt'),
                 'name' => 'factsTab',
                 'type' => 'tab',
