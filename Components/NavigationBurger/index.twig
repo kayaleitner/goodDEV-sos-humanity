@@ -4,7 +4,7 @@
 >
   <nav aria-label="{{ labels.ariaLabel|e }}">
     <div class="fixed left-0 top-0 z-[49] flex items-center justify-between p-sm w-full">
-      {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
+      {% include 'Partials/_logo.twig'with { 'logo': logo, 'logo_dark': logo_dark, 'site': site } only %}
       {% if menu %}
         {% include 'Partials/_hamburger.twig' with { 'labels': labels } only %}
       {% endif %}

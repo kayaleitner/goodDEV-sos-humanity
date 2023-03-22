@@ -18,6 +18,10 @@ add_filter('Flynt/addComponentData?name=NavigationBurger', function ($data) {
         'src' => get_theme_mod('custom_header_logo') ? get_theme_mod('custom_header_logo') : Asset::requireUrl('assets/images/logo.svg'),
         'alt' => get_bloginfo('name')
     ];
+    $data['logo_dark'] = [
+        'src' => get_theme_mod('logo_dark') ? get_theme_mod('logo_dark') : Asset::requireUrl('assets/images/logo.svg'),
+        'alt' => get_bloginfo('name')
+    ];
 
     return $data;
 });

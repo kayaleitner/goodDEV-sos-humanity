@@ -20,8 +20,10 @@
 
   .current-menu-item {
     .link {
-      color: var(--color-accent);
       text-decoration: underline;
+      text-decoration-color: var(--white);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 6px;
     }
   }
 }
@@ -40,4 +42,12 @@
   &.open {
     transform: translateX(0);
   }
+}
+
+.button--primary {
+  @apply p-sm;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
