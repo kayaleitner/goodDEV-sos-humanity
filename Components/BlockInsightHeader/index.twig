@@ -18,7 +18,7 @@
         <div class="caption"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
         <div class="caption"><span class="font-bold underline">{{ post.category }}</span></div>
       </div>
-      <h1 class="titleSmall font-bold">{{ post.title }}</h1>
+      <h1 class="titleSmall font-bold mb-md">{{ post.title }}</h1>
       {% if post.post_excerpt %}
         <div class="hidden md:block w-full">
           <div class="h3">{{ post.post_excerpt }}</div>
@@ -61,7 +61,7 @@
                   data-sizes="auto">
                 <div class="caption w-2/3 flex flex-col">
                   <div class="font-bold">{{ item.title }}</div>
-                  <div>Position</div>
+                  <div>{{ item.position }}</div>
                 </div>
               </div>
               <div class="flex justify-end items-center">
