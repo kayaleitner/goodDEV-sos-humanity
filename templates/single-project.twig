@@ -10,7 +10,7 @@
     </header>
     <section class="post-main max-w-screen-max mx-auto p-sm sm:p-md md:p-lg flex flex-col lg:flex-row-reverse gap-lg justify-between items-start">
       {{ renderComponent('BlockProjectBox', { post: post }) }}
-      <div class="max-w-screen-md">
+      <div class="w-full md:w-full lg:w-2/3">
         {% if post.intro %}
           <div class="h3">{{ post.intro }}</div>
         {% endif %}
