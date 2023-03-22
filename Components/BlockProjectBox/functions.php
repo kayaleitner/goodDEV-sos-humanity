@@ -23,33 +23,84 @@ Options::addTranslatable('BlockProjectBox', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => __('Posted by', 'flynt'),
-                'name' => 'postedBy',
+                'label' => __('Location', 'flynt'),
+                'name' => 'boxLocation',
                 'type' => 'text',
-                'default_value' => __('Posted by', 'flynt'),
+                'default_value' => __('Location', 'flynt'),
                 'wrapper' => [
-                    'width' => '50',
+                    'width' => 25,
                 ],
             ],
             [
-                'label' => __('(Posted) in', 'flynt'),
-                'name' => 'postedIn',
+                'label' => __('Generation Size', 'flynt'),
+                'name' => 'boxGenerationSize',
                 'type' => 'text',
-                'default_value' => __('in', 'flynt'),
+                'default_value' => __('Generation Size', 'flynt'),
                 'wrapper' => [
-                    'width' => '50',
+                    'width' => 25,
                 ],
             ],
             [
-                'label' => __('Reading Time - (20) min read', 'flynt'),
-                /* translators: %d: Placeholder for a number */
-                'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
-                'name' => 'readingTime',
+                'label' => __('Customer Segment', 'flynt'),
+                'name' => 'boxCustomerSegment',
                 'type' => 'text',
-                /* translators: %d: Placeholder for a number */
-                'default_value' => __('%d min read', 'flynt'),
+                'default_value' => __('Customer Segment', 'flynt'),
                 'wrapper' => [
-                    'width' => '50',
+                    'width' => 25,
+                ],
+            ],
+            [
+                'label' => __('Mounting type', 'flynt'),
+                'name' => 'boxMountingType',
+                'type' => 'text',
+                'default_value' => __('Mounting type', 'flynt'),
+                'wrapper' => [
+                    'width' => 25,
+                ],
+            ],
+            [
+                'label' => __('Storage size', 'flynt'),
+                'name' => 'boxStorageSize',
+                'type' => 'text',
+                'default_value' => __('Storage size', 'flynt'),
+                'wrapper' => [
+                    'width' => 25,
+                ],
+            ],
+            [
+                'label' => __('Panel count', 'flynt'),
+                'name' => 'boxPanelCount',
+                'type' => 'text',
+                'default_value' => __('Panel count', 'flynt'),
+                'wrapper' => [
+                    'width' => 25,
+                ],
+            ],
+            [
+                'label' => __('Commission date', 'flynt'),
+                'name' => 'boxCommissionDate',
+                'type' => 'text',
+                'default_value' => __('Commission date', 'flynt'),
+                'wrapper' => [
+                    'width' => 25,
+                ],
+            ],
+            [
+                'label' => __('Partners', 'flynt'),
+                'name' => 'boxPartners',
+                'type' => 'text',
+                'default_value' => __('Partners', 'flynt'),
+                'wrapper' => [
+                    'width' => 25,
+                ],
+            ],
+            [
+                'label' => __('Estimated overall renewable energy contribution (%)', 'flynt'),
+                'name' => 'boxReEnContr',
+                'type' => 'text',
+                'default_value' => __('Estimated overall renewable energy contribution (%)', 'flynt'),
+                'wrapper' => [
+                    'width' => 25,
                 ],
             ],
         ],

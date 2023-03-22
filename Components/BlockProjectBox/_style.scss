@@ -3,4 +3,15 @@ flynt-component[name='BlockProjectBox'] {
     outline: 2px solid var(--secondary);
     outline-offset: 4px;
   }
+
+  .button--link {
+    font-size: 1.563rem;
+    text-decoration: underline;
+    text-decoration-color: var(--black);
+    text-underline-offset: 6px;
+
+    &:hover {
+      text-decoration-color: var(--white);
+    }
+  }
 }
