@@ -88,7 +88,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\ListingInsights\getACFLayout(),
                     Components\ListingMap\getACFLayout(),
                     Components\ListingProjects\getACFLayout(),
-                    Components\ListingTeam\getACFLayout(),
+                    Components\ListingPeople\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
                     Components\ReusableComponent\getACFLayout(),
                     Components\SliderText\getACFLayout(),
@@ -110,7 +110,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 [
                     'param' => 'post_type',
                     'operator' => '!=',
-                    'value' => 'team'
+                    'value' => 'people'
                 ],
                 [
                     'param' => 'post_type',

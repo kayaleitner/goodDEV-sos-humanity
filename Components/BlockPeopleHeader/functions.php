@@ -1,17 +1,17 @@
 <?php
 
-namespace Flynt\Components\BlockTeamHeader;
+namespace Flynt\Components\BlockPeopleHeader;
 
 use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=BlockTeamHeader', function ($data) {
+add_filter('Flynt/addComponentData?name=BlockPeopleHeader', function ($data) {
     $data['dateFormat'] = get_option('date_format');
     return $data;
 });
 
-Options::addTranslatable('BlockTeamHeader', [
+Options::addTranslatable('BlockPeopleHeader', [
     [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',

@@ -1,0 +1,24 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  <article class="
+    post mt-[134px] 
+    w-full max-w-screen-max mx-auto 
+    px-sm lg:px-lg"
+    data-navStyle="light-blur"
+    >
+    <header class="post-header">
+      {{ renderComponent('BlockPeopleHeader', { post: post }) }}
+    </header>
+    <section class="post-main max-w-screen-xl mx-auto p-sm sm:p-md md:p-lg flex flex-col lg:flex-row-reverse gap-lg justify-between items-start">
+      <div class="max-w-screen-md">
+        {% for component in post.meta('peopleComponents') %}
+          {{ renderComponent(component) }}
+        {% endfor %}
+      </div>
+    </section>
+    <section class="post-related">
+      {{ renderComponent('ListingProjects,', {'preContentHtml': '<h2>' ~ __('Related Posts') ~ '</h2>','taxonomies': post.categories(), 'options': {'maxPosts': 3}}) }}
+    </section>
+  </article>
+{% endblock %}
