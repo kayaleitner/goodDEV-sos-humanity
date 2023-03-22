@@ -12,13 +12,21 @@
     "src": "Components/BlockImageTextFull/Assets/suitcase.svg"
   },
   "Components/BlockImageTextFull/script.js": {
-    "file": "assets/script-7e623c05.js",
+    "file": "assets/script-2586f952.js",
     "imports": [
       "assets/main.js",
       "__commonjsHelpers-87174ba5.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/BlockImageTextFull/script.js"
+  },
+  "Components/BlockProjectBox/Assets/agriculture.svg": {
+    "file": "assets/agriculture-cf41cafc.svg",
+    "src": "Components/BlockProjectBox/Assets/agriculture.svg"
+  },
+  "Components/BlockProjectBox/Assets/ground.svg": {
+    "file": "assets/ground-8c873b91.svg",
+    "src": "Components/BlockProjectBox/Assets/ground.svg"
   },
   "Components/BlockProjectBox/script.js": {
     "file": "assets/script-36b3911d.js",
@@ -48,7 +56,7 @@
     "src": "Components/GridPostsArchive/script.js"
   },
   "Components/HeroIllustration/script.js": {
-    "file": "assets/script-915957bf.js",
+    "file": "assets/script-b9b75e8e.js",
     "imports": [
       "assets/main.js"
     ],
@@ -64,7 +72,7 @@
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-a58da99a.js",
+    "file": "assets/script-32f5efe5.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -91,7 +99,7 @@
     "src": "Components/ListingMap/script.js"
   },
   "Components/NavigationBurger/script.js": {
-    "file": "assets/script-41333df3.js",
+    "file": "assets/script-011431a2.js",
     "imports": [
       "_index-2a8ce3c2.js",
       "_helpers-0bb72b7a.js",
@@ -117,7 +125,7 @@
     "src": "Components/NavigationFooter/Assets/twitter.svg"
   },
   "Components/NavigationMain/script.js": {
-    "file": "assets/script-f9ba3cc7.js",
+    "file": "assets/script-292e7835.js",
     "imports": [
       "assets/main.js"
     ],
@@ -172,7 +180,7 @@
     "src": "assets/admin.js"
   },
   "assets/admin.scss": {
-    "file": "assets/admin-0be6de50.css",
+    "file": "assets/admin-8c697529.css",
     "isEntry": true,
     "src": "assets/admin.scss"
   },
@@ -183,6 +191,10 @@
   "assets/fonts/AeonikTRIAL-Regular.woff2": {
     "file": "assets/AeonikTRIAL-Regular-396bfd80.woff2",
     "src": "assets/fonts/AeonikTRIAL-Regular.woff2"
+  },
+  "assets/icons/arrow-next.svg": {
+    "file": "assets/arrow-next-ac60e070.svg",
+    "src": "assets/icons/arrow-next.svg"
   },
   "assets/images/logo.svg": {
     "file": "assets/logo-26c0c58f.svg",
@@ -205,12 +217,12 @@
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-372b094b.js",
+    "file": "assets/main-9908f7ec.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-6641b1c1.css",
+    "file": "assets/main-8fa6ea6c.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -220,7 +232,7 @@
     "src": "assets/print.scss"
   },
   "assets/tinyMce.scss": {
-    "file": "assets/tinyMce-beaaf030.css",
+    "file": "assets/tinyMce-f800ba82.css",
     "isEntry": true,
     "src": "assets/tinyMce.scss"
   },
