@@ -13,7 +13,7 @@ function registerCountryTaxonomy()
     $labels = [
         'name'                       => _x('Countries', 'Taxonomy General Name', 'flynt'),
         'singular_name'              => _x('Country', 'Taxonomy Singular Name', 'flynt'),
-        'menu_name'                  => __('Country', 'flynt'),
+        'menu_name'                  => __('Countries', 'flynt'),
         'all_items'                  => __('All Items', 'flynt'),
         'parent_item'                => __('Parent Item', 'flynt'),
         'parent_item_colon'          => __('Parent Item:', 'flynt'),
