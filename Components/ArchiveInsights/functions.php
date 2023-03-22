@@ -85,6 +85,19 @@ function getACFLayout()
                         'min' => -1,
                         // 'max' => 4,
                         'step' => 1
+                    ],
+                    [
+                        'label' => __('First item larger', 'flynt'),
+                        'instructions' => __('If "Yes" is selected, the first item spans two columns.', 'flynt'),
+                        'name' => 'firstItemLarger',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                        'ui_on_text' => 'Yes',
+                        'ui_off_text' => 'No',
+                        'default_value' => 0,
+                        'wrapper' => [
+                            'width' => 100,
+                        ]
                     ]
                 ]
             ],

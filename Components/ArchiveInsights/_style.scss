@@ -30,4 +30,21 @@ flynt-component[name='ArchiveInsights'] {
       }
     }
   }
+
+  @media (min-width: $breakpoint-desktop) {
+    .firstItemLarger {
+      .post {
+        min-height: auto;
+        
+        &:first-child {
+          grid-column-end: 3;
+          grid-column-start: 1;
+    
+          figure {
+            aspect-ratio: 16/7;
+          }
+        }
+      }
+    }
+  }
 }
