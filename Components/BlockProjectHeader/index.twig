@@ -16,7 +16,9 @@
   <div class="w-full max-w-screen-xl mx-auto flex flex-row justify-center items-center md:absolute md:left-1/2 md:-translate-x-1/2">
     <div class="w-full md:w-1/2 p-sm sm:p-md lg:p-lg grow text-white" style="background: var(--secondary);">
       <h1 class="titleSmall font-bold mb-md">{{ post.title }}</h1>
-      <div class="subtitle">(Country)</div> {# Country Name #}
+      {% for term in post.terms('country')  %}
+        <div class="subtitle">{{ term }}</div>
+      {% endfor %}
     </div>
     <div class="w-full md:w-1/2 grow hidden md:block"></div>
   </div>

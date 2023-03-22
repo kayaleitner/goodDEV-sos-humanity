@@ -20,7 +20,11 @@
       </div>
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="caption">{{ labels.boxCustomerSegment }}</span>
-        <span class="body text-right">{{ post.boxCustomerSegment.label }}</span>
+        <span class="body text-right">
+          {% for term in post.terms('customer_segment')  %}
+            <div class="paragraph">{{ term }}</div>
+          {% endfor %}
+        </span>
       </div>
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="caption">{{ labels.boxMountingType }}</span>
