@@ -25,45 +25,19 @@ module.exports = {
       transparent: 'transparent'
     },
     fontSize: {
-      body: ['1.563rem', {
-        lineHeight: '140%'
-      }],
-      bodyMobile: ['1.25rem', {
-        lineHeight: 'normal'
-      }],
-      button: ['1.125rem', {
-        lineHeight: '1.125rem'
-      }],
-      titleLarge: ['4.813rem', {
-        lineHeight: 'normal'
-      }],
-      titleLargeMobile: ['2.813rem', {
-        lineHeight: 'normal'
-      }],
-      titleSmall: ['3.438rem', {
-        lineHeight: '110%'
-      }],
-      titleSmallMobile: ['2.188rem', {
-        lineHeight: 'normal'
-      }],
-      subtitle: ['2.188rem', {
-        lineHeight: 'normal'
-      }],
-      subtitleMobile: ['1.875rem', {
-        lineHeight: 'normal'
-      }],
-      glance: ['2.813rem', {
-        lineHeight: '110%'
-      }],
-      glanceMobile: ['1.5rem', {
-        lineHeight: '110%'
-      }],
-      caption: ['1.125rem', {
-        lineHeight: 'normal'
-      }],
-      captionMobile: ['0.938rem', {
-        lineHeight: 'normal'
-      }]
+      body: ['1.563rem', '140%'],
+      bodyMobile: ['1.25rem', 'normal'],
+      button: ['1.25rem', 'normal'],
+      titleLarge: ['4.813rem', 'normal'],
+      titleLargeMobile: ['2.813rem', 'normal'],
+      titleSmall: ['3.438rem', '110%'],
+      titleSmallMobile: ['2.188rem', 'normal'],
+      subtitle: ['2.188rem', 'normal'],
+      subtitleMobile: ['1.875rem', 'normal'],
+      glance: ['2.813rem', '110%'],
+      glanceMobile: ['1.5rem', '110%'],
+      caption: ['1.125rem', 'normal'],
+      captionMobile: ['0.938rem', 'normal']
     },
     screens: {
       sm: '640px',
@@ -94,6 +68,9 @@ module.exports = {
         xxl: '125px',
         max: '200px'
       },
+      prose: {
+        xxl: '25px'
+      },
       spacing: {
         xs: '10px',
         sm: '20px',
@@ -103,20 +80,28 @@ module.exports = {
         xxl: '120px',
         max: '200px'
       },
-      typography: {
+      typography: (theme) => ({
         DEFAULT: {
           css: {
             color: 'currentColor',
-            fontSize: '16px'
-            // a: {
-            //   color: '#currentColor',
-            //   '&:hover': {
-            //     color: '#currentColor',
-            //   },
-            // },
+            fontSize: '1.25rem',
+            lineHeight: 'normal'
+            // '@media (min-width: 1280px)': {
+            //   fontSize: '1.563rem'
+            // }
+          }
+        },
+        lg: {
+          css: {
+            color: 'currentColor',
+            fontSize: '1.563rem',
+            lineHeight: '140%'
+            // '@media (min-width: 1280px)': {
+            //   fontSize: '1.563rem'
+            // }
           }
         }
-      }
+      })
     }
   },
   plugins: [
