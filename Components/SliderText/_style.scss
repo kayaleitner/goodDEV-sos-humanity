@@ -49,7 +49,7 @@ flynt-component[name='SliderText'] {
   justify-content: center;
   position: absolute;
   top: auto !important;
-  z-index: 9999;
+  z-index: 50;
 
   @media (min-width: $breakpoint-tablet) {
     display: none !important;

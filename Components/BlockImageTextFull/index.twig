@@ -8,7 +8,7 @@
   <div class="md:h-[600px] lg:h-[900px] flex flex-col md:flex-row" {{ imagePosition ? 'data-image-position="' ~ imagePosition ~ '"' }}  style="background: {{ bgcolor }};">
     <figure class="w-full md:w-1/2 overflow-hidden">
       {% if image %}
-        <img class="lazyload w-full md:h-[650px] lg:h-[950px] mt-[-10px] object-cover aspect-square lg:aspect-3/4 {% if imageOverlay %}brightness-75{% endif %}"
+        <img class="lazyload w-full md:h-[650px] lg:h-[950px] mt-[-2vw] object-cover aspect-square lg:aspect-3/4 {% if imageOverlay %}brightness-75{% endif %}"
           src="{{ image.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
           data-sizes="auto"
