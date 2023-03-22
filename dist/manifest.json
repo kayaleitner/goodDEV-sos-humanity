@@ -192,10 +192,6 @@
     "file": "assets/AeonikTRIAL-Regular-396bfd80.woff2",
     "src": "assets/fonts/AeonikTRIAL-Regular.woff2"
   },
-  "assets/icons/arrow-next.svg": {
-    "file": "assets/arrow-next-ac60e070.svg",
-    "src": "assets/icons/arrow-next.svg"
-  },
   "assets/images/logo.svg": {
     "file": "assets/logo-26c0c58f.svg",
     "src": "assets/images/logo.svg"
@@ -222,7 +218,7 @@
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-8fa6ea6c.css",
+    "file": "assets/main-2a6e6248.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
