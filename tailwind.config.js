@@ -75,7 +75,8 @@ module.exports = {
     extend: {
       aspectRatio: {
         '4/3': '4 / 3',
-        '3/4': '3 / 4'
+        '3/4': '3 / 4',
+        '2/1': '2 / 1'
       },
       borderWidth: {
         DEFAULT: '1px',
@@ -101,6 +102,20 @@ module.exports = {
         xl: '75px',
         xxl: '120px',
         max: '200px'
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: 'currentColor',
+            fontSize: '16px'
+            // a: {
+            //   color: '#currentColor',
+            //   '&:hover': {
+            //     color: '#currentColor',
+            //   },
+            // },
+          }
+        }
       }
     }
   },

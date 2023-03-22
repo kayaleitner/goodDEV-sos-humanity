@@ -121,6 +121,27 @@ sup {
   }
 }
 
+/* Exceptions */
+
+.single-project {
+  [name='SliderImages'],
+  [name='BlockWysiwyg'],
+  [name='BlockImage'] {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+}
+
+.single-post {
+  [name='SliderImages'],
+  [name='BlockWysiwyg'],
+  [name='BlockImage'] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 /* Fix Safari bug on column width in listings */
 [data-type='listing'] {
   .post {
