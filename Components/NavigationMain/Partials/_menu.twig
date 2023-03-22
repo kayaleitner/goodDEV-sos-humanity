@@ -1,6 +1,6 @@
 <ul
   x-data="{ activeSubmenu: 0 }"
-  class="menu grow list-none flex flex-row align-top gap-md justify-between w-1/2 h-fit"
+  class="menu grow list-none flex flex-row align-top gap-sm lg:gap-md justify-between w-1/2 h-fit"
   x-init="$watch('activeSubmenu', value => {
     if (value) {
       document.querySelector('#blur-overlay').style.display = 'block';
@@ -16,7 +16,14 @@
     {# regular menu item #}
     {% if not item.children %}
       <li data-item="{{loop.index}}" class="h-fit item {{- item.current ? ' current-menu-item underline underline-offset-8' }}">
-        <a class="text-button font-bold link inline-block no-underline hover:underline underline-offset-8 text-currentColor transition-all duration-200 relative z-[9999]" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+        <a 
+          class="text-button font-bold 
+          link inline-block 
+          no-underline hover:underline underline-offset-8 text-currentColor decoration-white 
+          text-currentColor 
+          transition-all duration-200 
+          relative z-[9999]" 
+          href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
       </li>
@@ -29,7 +36,7 @@
           {# @click="activeSubmenu = {{loop.index}} : activeSubmenu = 0" #}
           class="
           tab-control text-button font-bold link inline-block
-          hover:underline underline-offset-8 text-currentColor
+          hover:underline underline-offset-8 text-currentColor decoration-white 
           transition-all duration-200 relative z-[9999]" 
           :class="{
             'open': activeSubmenu === {{loop.index}},
@@ -48,7 +55,7 @@
           x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
           x-transition:leave-start="opacity-100" 
           x-transition:leave-end="opacity-0" 
-          class="submenu-wrapper absolute -top-[48px] right-0 h-screen w-[calc(100%_+_75px)] z-50 drop-shadow-lg"
+          class="submenu-wrapper absolute -top-[40px] right-0 h-screen w-[calc(100%_+_75px)] z-50 drop-shadow-lg"
           :class="{ 'open': activeSubmenu === {{loop.index}} }"
           {# @click.away="activeSubmenu = 0" #}
         >
@@ -60,8 +67,9 @@
               <li class="h-fit mb-sm item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
                 <a
                   class="
-                    link titleSmall font-normal inline-block no-underline
-                    text-currentColor hover:text-lightgreen
+                    link titleSmall font-normal inline-block no-underline 
+                    decoration-white decoration-4 underline-offset-8 
+                    text-currentColor hover:underline
                     transition-all duration-200
                     opacity-0
                   "
