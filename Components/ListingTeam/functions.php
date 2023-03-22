@@ -1,14 +1,14 @@
 <?php
 
-namespace Flynt\Components\ListingTeam;
+namespace Flynt\Components\ListingPeople;
 
 use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-const POST_TYPE = 'team';
+const POST_TYPE = 'people';
 
-add_filter('Flynt/addComponentData?name=ListingTeam', function ($data) {
+add_filter('Flynt/addComponentData?name=ListingPeople', function ($data) {
     $postType = POST_TYPE;
 
     $data['taxonomies'] = $data['taxonomies'] ?: [];
@@ -32,8 +32,8 @@ add_filter('Flynt/addComponentData?name=ListingTeam', function ($data) {
 function getACFLayout()
 {
     return [
-        'name' => 'ListingTeam',
-        'label' => __('Listing: Team', 'flynt'),
+        'name' => 'ListingPeople',
+        'label' => __('Listing: People', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -91,7 +91,7 @@ function getACFLayout()
     ];
 }
 
-Options::addTranslatable('ListingTeam', [
+Options::addTranslatable('ListingPeople', [
     [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
