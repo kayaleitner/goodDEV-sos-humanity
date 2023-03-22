@@ -129,7 +129,10 @@ sup {
   [name='BlockImage'] {
     padding-left: 0;
     padding-right: 0;
-    width: 100%;
+
+    .wrapper {
+      width: 100%;
+    }
   }
 }
 
