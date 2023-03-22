@@ -89,7 +89,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'instructions' => __('Use this field to add authors that are part of the CB team.', 'flynt'),
                 'type' => 'relationship',
                 'post_type' => [
-                    'team'
+                    'people'
                 ],
                 'allow_null' => 0,
                 'multiple' => 0,
@@ -115,7 +115,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     //     'name' => 'internalAuthor',
                     //     'type' => 'post_object',
                     //     'post_type' => [
-                    //         'team'
+                    //         'people'
                     //     ],
                     //     'allow_null' => 0,
                     //     'multiple' => 0,
