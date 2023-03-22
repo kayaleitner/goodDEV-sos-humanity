@@ -1,5 +1,5 @@
 flynt-component[name='NavigationBurger'] {
-  --navigation-height: 64px;
+  --navigation-height: 88px;
   height: var(--navigation-height);
 
   @media (min-width: $breakpoint-tablet) {
@@ -18,6 +18,36 @@ flynt-component[name='NavigationBurger'] {
 
     .admin-bar & {
       inset-block-start: var(--wp-admin--admin-bar--height);
+    }
+  }
+
+  &.hamburger-grey {
+    .hamburger-lines {
+      &::before,
+      &::after,
+      &--primary,
+      &--text {
+        background-color: var(--cbegreen);
+      }
+    }
+  }
+
+  &[data-status='menuIsOpen'] {
+    .logo_dark {
+      img {
+        filter: invert(1) brightness(10);
+      }
+    }
+    
+    &.hamburger-grey {
+      .hamburger-lines {
+        &::before,
+        &::after,
+        &--primary,
+        &--text {
+          background-color: var(--white);
+        }
+      }
     }
   }
 
