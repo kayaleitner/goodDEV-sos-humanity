@@ -6,7 +6,7 @@ use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-const POST_TYPE = 'team';
+const POST_TYPE = 'people';
 
 add_filter('Flynt/addComponentData?name=BlockAuthorSelector', function ($data) {
     $postType = POST_TYPE;
@@ -46,7 +46,7 @@ function getACFLayout()
                 'name' => 'internalAuthor',
                 'type' => 'relationship',
                 'post_type' => [
-                    'team',
+                    'people',
                 ],
                 'allow_null' => 1,
                 'multiple' => 1,
