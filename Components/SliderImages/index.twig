@@ -3,7 +3,7 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="w-full lg:w-2/3">
+  <div class="wrapper w-full lg:w-2/3">
     {% if blockTitle %}
     <div class="subtitle font-bold text-white pb-xl z-50">{{ blockTitle }}</div>
     {% endif %}

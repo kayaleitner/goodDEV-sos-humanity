@@ -2,7 +2,7 @@
   load:on="idle" name="BlockWysiwyg" class="w-full max-w-screen-max mx-auto p-sm md:p-lg"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   >
-  <div class="w-full lg:w-2/3 prose lg:prose-lg max-w-none">
+  <div class="wrapper w-full lg:w-2/3 prose lg:prose-lg max-w-none">
     {{ contentHtml|e('wp_kses_post') }}
   </div>
 </flynt-component>
