@@ -72,6 +72,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'button_label' => __('Add Component', 'flynt'),
                 'layouts' => [
                     Components\ArchiveInsights\getACFLayout(),
+                    Components\ArchivePeople\getACFLayout(),
                     Components\BlockAnchor\getACFLayout(),
                     Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
