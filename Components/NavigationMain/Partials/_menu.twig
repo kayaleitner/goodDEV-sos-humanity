@@ -15,11 +15,12 @@
   {% for item in items %}
     {# regular menu item #}
     {% if not item.children %}
-      <li data-item="{{loop.index}}" class="h-fit item {{- item.current ? ' current-menu-item underline underline-offset-8' }}">
+      <li data-item="{{loop.index}}" class="h-fit item {{- item.current ? ' current-menu-item' }}">
         <a 
           class="text-button font-bold 
           link inline-block 
-          no-underline hover:underline underline-offset-8 text-currentColor decoration-white 
+          no-underline text-currentColor 
+          hover:underline underline-offset-4 
           text-currentColor 
           transition-all duration-200 
           relative z-[9999]" 
@@ -36,7 +37,7 @@
           {# @click="activeSubmenu = {{loop.index}} : activeSubmenu = 0" #}
           class="
           tab-control text-button font-bold link inline-block
-          hover:underline underline-offset-8 text-currentColor decoration-white 
+          hover:underline underline-offset-4 
           transition-all duration-200 relative z-[9999]" 
           :class="{
             'open': activeSubmenu === {{loop.index}},
