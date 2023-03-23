@@ -1,0 +1,71 @@
+{% if posts|length > 0 %}
+  <flynt-component load:on="visible" name="ArchiveInsights" data-type="listing" class="" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
+    <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+      {% if blockTitle %}
+        <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between align-bottom items-end content-end">
+          <div class="subtitle">{{ blockTitle }}</div>
+          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
+        </div>
+      {% endif %}
+      <ul
+        class="
+          w-full
+          mx-auto
+          grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4
+          gap-sm lg:gap-md
+          {% if options.firstItemLarger %} firstItemLarger {% endif %}
+        "
+      >
+        {% for post in posts %}
+          <li class="post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
+            <div class="link h-full" href="{{ post.link }}" aria-label="{{ post.title }}">
+              {% if post.thumbnail %}
+                <figure class="figure block">
+                  <img class="image lazyload h-[400px] object-cover"
+                    src="{{  post.thumbnail.src | resize(32) }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                    data-sizes="auto"
+                    data-src="{{ post.thumbnail.src }}"
+                    alt="{{ post.thumbnail.alt|e }}">
+                </figure>
+              {% endif %}
+              <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+                <div class="w-full flex flex-col gap-sm">
+                  <div class="w-full h-full p-sm flex flex-row justify-between align-middle items-center border caption">
+                    <div>
+                      <div class="font-mono font-bold">
+                        <span>City,</span>
+                        {% for term in post.terms('country')  %}
+                          <span class="caption">{{ term }}</span>
+                        {% endfor %}
+                      </div>
+                      {% for term in post.terms('division')  %}
+                        <div class="caption">{{ term }}</div>
+                      {% endfor %}
+                    </div>
+                    <div class="icon">
+                      <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.2916 1.34375H1.91775L1.85547 9.82204C1.85547 16.6605 5.8829 22.3948 11.3064 23.9413C16.3082 22.5154 20.1209 17.5294 20.6852 11.4004" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.84375 7.73632L11.3706 14.9667L23.6995 2.26953" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full h-full grow flex flex-col gap-xs justify-between align-start items-start">
+                  <div class="body">{{ post.position }}</div>
+                  <div class="flex flex-col gap-xs">
+                    <h2 class="subtitle w-full grow">{{ post.title }}</h2>
+                    <div class="body w-full grow">{{ post.bio|truncate(18)  }}</div>
+                    <div class="mt-md flex flex-row lg:flex-col gap-sm justify-start items-start">
+                      <a class="link button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </flynt-component>
+{% endif %}
