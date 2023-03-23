@@ -18,10 +18,10 @@
         {% for post in posts %}
           <li
             class="post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
-            <div class="link" aria-label="{{ post.title }}">
+            <div class="link h-full" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
                 <figure class="figure aspect-square hidden lg:block">
-                  <img class="image lazyload object-cover w-full h-full"
+                  <img class="image lazyload object-cover w-full h-full lg:h-[22vw] lg:max-h-[360px]"
                     src="{{  post.thumbnail.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
                     data-sizes="auto"
@@ -29,13 +29,13 @@
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
-              <div class="content lg:aspect-square lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+              <div class="content lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
                 <div class="w-full flex flex-row justify-between align-middle items-center">
                   <div class="caption text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
                   <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>
                 </div>
                 <div class="flex flex-row lg:flex-col gap-sm justify-between items-between lg:items-stretch w-full lg:h-full">
-                  <h2 class="text-subtitleMobile md:text-body mb-0 lg:w-full md:grow">{{ post.title }}</h2>
+                  <h2 class="text-bodyMobile mb-0 lg:w-full md:grow">{{ post.title }}</h2>
                   <span class="flex lg:hidden flex-col justify-end items-end">
                     {% if post.externalResourceLink %}
                       <a class="button button--link" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>{{ post.externalResourceLink.title|e }}</a>
