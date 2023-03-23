@@ -77,7 +77,7 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => __('Max Columns', 'flynt'),
+                        'label' => __('Max Number of Items', 'flynt'),
                         'name' => 'maxPosts',
                         'type' => 'number',
                         'default_value' => 3,

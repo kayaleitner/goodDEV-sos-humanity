@@ -1,16 +1,23 @@
 {% if posts|length > 0 %}
-  <flynt-component load:on="visible" name="ListingPeople" data-type="listing" class="py-lg lg:py-xl">
-    <div class="">
+  <flynt-component load:on="visible" name="ListingInsights" data-type="listing" class="">
+    <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
       {% if blockTitle %}
-        <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg flex flex-row justify-between align-bottom items-end content-end">
-          <div class="h4">{{ blockTitle }}</div>
+        <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between align-bottom items-end content-end">
+          <div class="subtitle font-bold">{{ blockTitle }}</div>
           <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
-      <ul class="max-w-screen-max mx-auto px-sm lg:px-lg flex flex-col lg:flex-row gap-sm lg:gap-md justify-between">
+      <ul
+        class="
+          w-full
+          mx-auto
+          grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+          gap-0 sm:gap-md
+        "
+      >
         {% for post in posts %}
-          <li class="post lg:w-1/3 grow">
-            <div class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
+          <li class="post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
+            <div class="link h-full" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
                 <figure class="figure block">
                   <img class="image lazyload h-[400px] object-cover"
@@ -21,12 +28,19 @@
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
-              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
+              <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
                 <div class="flex flex-col gap-sm">
-                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
+                  <div class="w-full h-full p-sm flex flex-row justify-between align-middle items-center border caption">
                     <div>
-                      <div class="font-mono font-bold">City, Country</div>
-                      <div class="paragraph">Department</div>
+                      <div class="font-mono font-bold">
+                        <span>City,</span>
+                        {% for term in post.terms('country')  %}
+                          <span class="caption">{{ term }}</span>
+                        {% endfor %}
+                      </div>
+                      {% for term in post.terms('division')  %}
+                        <div class="caption">{{ term }}</div>
+                      {% endfor %}
                     </div>
                     <div class="icon">
                       <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,14 +49,16 @@
                       </svg>
                     </div>
                   </div>
-                  <div class="w-full flex flex-col gap-xs justify-between align-start items-start">
-                    <div class="">{{ post.position }}</div>
-                    <h2 class="subtitle w-full grow">{{ post.title }}</h2>
-                    <div class="w-full grow">{{ post.bio }}</div>
-                  </div>
                 </div>
-                <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
-                  <a class="link button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
+                <div class="w-full h-full grow flex flex-col gap-xs justify-between align-start items-start">
+                  <div class="body">{{ post.position }}</div>
+                  <div class="w-full flex flex-col gap-xs">
+                    <h2 class="subtitle w-full grow">{{ post.title }}</h2>
+                    <div class="body w-full grow">{{ post.bio|truncate(18)  }}</div>
+                    <div class="mt-md flex flex-row lg:flex-col gap-sm justify-start items-start">
+                      <a class="link button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
