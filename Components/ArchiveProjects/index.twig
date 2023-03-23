@@ -1,0 +1,62 @@
+{% if posts|length > 0 %}
+  <flynt-component load:on="visible" name="ArchiveProjects" data-type="listing" class="" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
+    <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+      {% if blockTitle %}
+        <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between align-bottom items-end content-end">
+          <div class="subtitle">{{ blockTitle }}</div>
+          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline font-bold">{{ labels.allPosts }}</a>
+        </div>
+      {% endif %}
+      <ul
+        class="
+          w-full
+          mx-auto
+          grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4
+          gap-sm lg:gap-md
+          {% if options.firstItemLarger %} firstItemLarger {% endif %}
+        "
+      >
+        {% for post in posts %}
+          <li
+            class="post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
+            <div class="link h-full" href="{{ post.link }}" aria-label="{{ post.title }}">
+              {% if post.thumbnail %}
+                <figure class="figure block">
+                  <img class="image lazyload h-[400px] object-cover"
+                    src="{{  post.thumbnail.src | resize(32) }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                    data-sizes="auto"
+                    data-src="{{ post.thumbnail.src }}"
+                    alt="{{ post.thumbnail.alt|e }}">
+                </figure>
+              {% endif %}
+              <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+                <div class="w-full h-full flex flex-col gap-sm">
+                  <div class="w-full h-fit p-sm grow-0 flex flex-row justify-between align-middle items-center border caption">
+                    <div class="w-1/2">
+                      <div class="caption font-mono font-bold">{{ post.boxGenerationSize }} kWp</div>
+                      <div class="caption">{{ post.boxMountingType.label }}</div>
+                    </div>
+                    <div class="w-1/2">
+                    </div>
+                  </div>
+                  <div class="w-full h-full grow flex flex-col gap-xs justify-between align-start items-start">
+                    <div class="flex flex-col gap-xs">
+                      {% for term in post.terms('country')  %}
+                        <div class="paragraph">{{ term }}</div>
+                      {% endfor %}
+                      <h2 class="subtitle w-full grow">{{ post.title }}</h2>
+                    </div>
+                    <div class="mt-md flex flex-row lg:flex-col gap-sm justify-start items-start">
+                      <a class="button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </flynt-component>
+{% endif %}

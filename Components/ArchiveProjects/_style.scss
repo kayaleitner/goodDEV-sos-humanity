@@ -1,0 +1,50 @@
+flynt-component[name='ArchiveProjects'] {
+  .post {
+    .link {
+      @include reset-link;
+      color: currentColor;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content {
+      color: var(--color-text);
+      flex-grow: 1;
+
+      #{$heading-selectors} {
+        color: var(--color-headline);
+      }
+    }
+
+    .footer {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 var(--box-padding) var(--box-padding);
+      position: relative;
+      width: 100%;
+
+      .readingTime {
+        color: var(--color-text-muted);
+        font-size: var(--body-font-size-small);
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    .firstItemLarger {
+      .post {
+        min-height: auto;
+        
+        &:first-child {
+          grid-column-end: 3;
+          grid-column-start: 1;
+    
+          figure {
+            aspect-ratio: 16/7;
+          }
+        }
+      }
+    }
+  }
+}

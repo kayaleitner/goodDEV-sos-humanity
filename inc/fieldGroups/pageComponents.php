@@ -37,11 +37,6 @@ add_action('Flynt/afterRegisterComponents', function () {
         ],
         'location' => [
             [
-                // [
-                //     'param' => 'post_type',
-                //     'operator' => '==',
-                //     'value' => 'page'
-                // ],
                 [
                     'param' => 'post_type',
                     'operator' => '!=',
@@ -51,6 +46,11 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'param' => 'post_type',
                     'operator' => '!=',
                     'value' => 'project'
+                ],
+                [
+                    'param' => 'post_type',
+                    'operator' => '!=',
+                    'value' => 'people'
                 ],
                 [
                     'param' => 'post_type',
@@ -73,6 +73,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'layouts' => [
                     Components\ArchiveInsights\getACFLayout(),
                     Components\ArchivePeople\getACFLayout(),
+                    Components\ArchiveProjects\getACFLayout(),
                     Components\BlockAnchor\getACFLayout(),
                     Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
@@ -82,6 +83,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\GridImageText\getACFLayout(),
+                    Components\HeroContactForm\getACFLayout(),
                     Components\HeroIllustration\getACFLayout(),
                     Components\HeroLottieAnimation\getACFLayout(),
                     Components\HeroScrollySplit\getACFLayout(),
