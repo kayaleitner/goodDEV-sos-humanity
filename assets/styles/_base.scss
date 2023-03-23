@@ -109,18 +109,20 @@ h6,
 //   }
 // }
 
-body,
-p
-.paragraph,
-.body {
-  a {
-    color: currentColor;
-    text-decoration: underline;
-    text-decoration-color: var(--black);
-
-    &:hover,
-    &:focus {
-      text-decoration-color: var(--white);
+:not(nav) {
+  body,
+  p
+  .paragraph,
+  .body {
+    a {
+      color: currentColor;
+      text-decoration: underline;
+      text-decoration-color: var(--black);
+  
+      &:hover,
+      &:focus {
+        text-decoration-color: var(--white);
+      }
     }
   }
 }
