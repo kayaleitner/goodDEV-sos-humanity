@@ -25,12 +25,12 @@
                 <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>
               </div>
               {% if post.thumbnail %}
-                <figure class="figure aspect-square block py-xs lg:py-0">
+                <figure class="figure block py-xs lg:py-0">
                   <img 
                     class="
                     image lazyload 
-                    object-cover w-full h-full 
-                    {# lg:h-[22vw] lg:max-h-[360px] #}"
+                    object-cover w-full h-full
+                    aspect-square"
                     src="{{  post.thumbnail.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
                     data-sizes="auto"

@@ -35,6 +35,15 @@ flynt-component[name='ArchiveInsights'] {
     .firstItemLarger {
       .post {
         min-height: auto;
+
+        figure {
+          aspect-ratio: 16/7;
+
+          img {
+            @apply lg:h-[30vw];
+            @apply lg:max-h-[380px];
+          }
+        }
         
         &:first-child {
           grid-column-end: 3;
@@ -42,6 +51,8 @@ flynt-component[name='ArchiveInsights'] {
     
           figure {
             aspect-ratio: 16/7;
+
+            
           }
         }
       }
