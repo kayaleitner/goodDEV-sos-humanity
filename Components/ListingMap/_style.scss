@@ -1,11 +1,16 @@
 flynt-component[name='ListingMap'] {
-  button {    
+  // stylelint-disable selector-max-id
+  #dottedMap {
+    svg {
+      clip-path: polygon(3% 1%, 98% 1%, 98% 99%, 3% 98%);
+    }
+  }
+
+  button {
     &.active {
       @apply bg-cbegreen;
       @apply w-lg;
       @apply h-lg;
-      // outline: 2px solid var(--secondary);
-      // outline-offset: 4px;
 
       &::before {
         border: 3px solid var(--white);

@@ -14,7 +14,7 @@
         </div>
       {% endif %}
 
-      <div x-data="{ activeProject:  1, projects: [1, 2, 3] }" class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-center">
+      <div x-data="{ activeProject:  1, projects: [1, 2, 3] }" class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-start">
         
         <!-- Prev/Next Arrows Mobile -->
         <div class="button-wrapper absolute right-sm top-sm flex lg:hidden align-middle justify-end z-50">
@@ -23,8 +23,8 @@
             data-ref="prev" 
             class="slider-button slider-button--prev" 
             @click="activeProject = activeProject === 1 ? projects.length : activeProject - 1">
-            <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path class="fill-black" d="M3.93801 13.9393C3.35222 14.5251 3.35222 15.4749 3.93801 16.0607L13.4839 25.6066C14.0697 26.1924 15.0195 26.1924 15.6053 25.6066C16.1911 25.0208 16.1911 24.0711 15.6053 23.4853L7.11999 15L15.6053 6.51472C16.1911 5.92893 16.1911 4.97918 15.6053 4.3934C15.0195 3.80761 14.0697 3.80761 13.484 4.3934L3.93801 13.9393ZM34.3438 13.5L4.99867 13.5L4.99867 16.5L34.3437 16.5L34.3438 13.5Z"/>
+            <svg width="41" height="30" viewBox="0 0 41 30" fill="none">
+              <path d="M4.93801 13.9393C4.35222 14.5251 4.35222 15.4749 4.93801 16.0607L14.4839 25.6066C15.0697 26.1924 16.0195 26.1924 16.6053 25.6066C17.1911 25.0208 17.1911 24.0711 16.6053 23.4853L8.11999 15L16.6053 6.51472C17.1911 5.92893 17.1911 4.97918 16.6053 4.3934C16.0195 3.80761 15.0697 3.80761 14.484 4.3934L4.93801 13.9393ZM35.3438 13.5L5.99867 13.5L5.99867 16.5L35.3437 16.5L35.3438 13.5Z" fill="black"/>
             </svg>
           </button>
           <button 
@@ -32,8 +32,8 @@
             data-ref="next" 
             class="slider-button slider-button--next" 
             @click="activeProject = activeProject === projects.length ? 1 : activeProject + 1">
-            <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path class="fill-black" d="M30.7182 12.631C31.304 12.0452 31.304 11.0954 30.7182 10.5097L21.1723 0.963714C20.5865 0.377927 19.6368 0.377927 19.051 0.963713C18.4652 1.5495 18.4652 2.49925 19.051 3.08503L27.5363 11.5703L19.051 20.0556C18.4652 20.6414 18.4652 21.5911 19.051 22.1769C19.6368 22.7627 20.5865 22.7627 21.1723 22.1769L30.7182 12.631ZM0.3125 13.0703L29.6576 13.0703L29.6576 10.0703L0.3125 10.0703L0.3125 13.0703Z"/>
+            <svg width="40" height="30" viewBox="0 0 40 30" fill="none">
+              <path d="M35.4331 16.0607C36.0189 15.4749 36.0189 14.5251 35.4331 13.9393L25.8871 4.3934C25.3014 3.80761 24.3516 3.80761 23.7658 4.3934C23.18 4.97919 23.18 5.92893 23.7658 6.51472L32.2511 15L23.7658 23.4853C23.18 24.0711 23.18 25.0208 23.7658 25.6066C24.3516 26.1924 25.3014 26.1924 25.8871 25.6066L35.4331 16.0607ZM5.02734 16.5L34.3724 16.5L34.3724 13.5L5.02734 13.5L5.02734 16.5Z" fill="black"/>
             </svg>
           </button>
         </div>
@@ -48,8 +48,9 @@
                 @click="activeProject = {{loop.index}}"
                 class="
                   tab-control
-                  bg-[#7CD3B9]
-                  flex w-md h-md
+                  bg-lightgreen
+                  flex
+                  w-[35px] h-[35px] 
                   rounded-full
                   overflow-hidden
                   transition-all duration-100 linear
@@ -68,7 +69,7 @@
           class="w-full md:w-1/3 lg:w-1/4 mx-auto relative"
         >
           <!-- Prev/Next Arrows Desktop -->
-          <div class="button-wrapper absolute right-sm top-0 sm:right-0 hidden lg:flex align-middle justify-end z-50 lg:-translate-y-[135px]">
+          <div class="button-wrapper absolute right-sm top-0 sm:right-0 hidden lg:flex align-middle justify-end z-50 lg:-translate-y-[125px]">
             <button 
               type="button" 
               data-ref="prev" 
@@ -107,8 +108,8 @@
             data-longitude="{{ post.longitude }}">
             <div class="post w-full grow">
               {% if post.thumbnail %}
-                <figure class="figure hidden md:block">
-                  <img class="image lazyload md:h-[200px] lg:h-[400px] object-cover"
+                <figure class="figure hidden md:block aspect-square">
+                  <img class="image lazyload h-full w-full object-cover"
                     src="{{  post.thumbnail.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
                     data-sizes="auto"
