@@ -12,7 +12,7 @@
     "src": "Components/BlockImageTextFull/Assets/suitcase.svg"
   },
   "Components/BlockImageTextFull/script.js": {
-    "file": "assets/script-2586f952.js",
+    "file": "assets/script-06e30dcb.js",
     "imports": [
       "assets/main.js",
       "__commonjsHelpers-87174ba5.js"
@@ -56,7 +56,7 @@
     "src": "Components/GridPostsArchive/script.js"
   },
   "Components/HeroIllustration/script.js": {
-    "file": "assets/script-b9b75e8e.js",
+    "file": "assets/script-a61f1416.js",
     "imports": [
       "assets/main.js"
     ],
@@ -72,7 +72,7 @@
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-32f5efe5.js",
+    "file": "assets/script-86aa92cf.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -99,7 +99,7 @@
     "src": "Components/ListingMap/script.js"
   },
   "Components/NavigationBurger/script.js": {
-    "file": "assets/script-011431a2.js",
+    "file": "assets/script-c36a59fa.js",
     "imports": [
       "_index-2a8ce3c2.js",
       "_helpers-0bb72b7a.js",
@@ -125,12 +125,28 @@
     "src": "Components/NavigationFooter/Assets/twitter.svg"
   },
   "Components/NavigationMain/script.js": {
-    "file": "assets/script-292e7835.js",
+    "file": "assets/script-2d5dbae1.js",
     "imports": [
       "assets/main.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/NavigationMain/script.js"
+  },
+  "Components/Scrollytelling/script.js": {
+    "file": "assets/script-f4a29c12.js",
+    "imports": [
+      "assets/main.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "Components/Scrollytelling/script.js"
+  },
+  "Components/ScrollytellingImage/script.js": {
+    "file": "assets/script-0221de2f.js",
+    "imports": [
+      "assets/main.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "Components/ScrollytellingImage/script.js"
   },
   "Components/SliderImages/script.js": {
     "css": [
@@ -210,15 +226,17 @@
       "Components/ListingMap/script.js",
       "Components/NavigationBurger/script.js",
       "Components/NavigationMain/script.js",
+      "Components/Scrollytelling/script.js",
+      "Components/ScrollytellingImage/script.js",
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-9908f7ec.js",
+    "file": "assets/main-4382d7ed.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-50b502ab.css",
+    "file": "assets/main-31256673.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
