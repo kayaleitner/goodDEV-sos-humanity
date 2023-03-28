@@ -11,7 +11,7 @@ document.addEventListener('resize', () => {
   ScrollTrigger.refresh()
 })
 
-mm.add('(min-width: 1080px)', () => {
+mm.add('(min-width: 1280px)', () => {
   gsap.set('.fade-in',
     { opacity: 0 }
   )
