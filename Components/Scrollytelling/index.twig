@@ -1,0 +1,34 @@
+<flynt-component
+  load:on="idle"
+  name="Scrollytelling"
+  class=""
+  style="background-color: var(--grey);"
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+>
+  <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+    <div id="scrollytelling" class="max-w-screen-max mx-auto h-full relative">
+      <div class="wrapper h-auto lg:h-screen w-full">
+        {% if blockTitle %}
+          <div class="w-full mx-auto">
+            <div class="subtitle font-bold text-white">{{ blockTitle }}</div>
+          </div>
+        {% endif %}
+        {% for item in scrollytelling %}
+          <div class="point h-auto lg:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl lg:m-0 grid grid-cols-1 md:grid-cols-2 gap-sm md:gap-lg items-center">
+            {% if item.image %}
+              <img class="w-full max-w-[600px] mx-auto"
+                src="{{ item.image.src | resize(32) }}"
+                data-srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}"
+                data-sizes="auto">
+            {% endif %}
+            {% if item.contentHtml %}
+              <article class="max-w-[600px] mx-auto">
+                {{ item.contentHtml|e('wp_kses_post') }}
+              </article>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</flynt-component>
