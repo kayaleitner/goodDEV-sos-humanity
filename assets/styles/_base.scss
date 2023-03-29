@@ -117,7 +117,7 @@ h6,
     a {
       color: currentColor;
       text-decoration: underline;
-      text-decoration-color: var(--black);
+      text-decoration-color: currentColor;
   
       &:hover,
       &:focus {

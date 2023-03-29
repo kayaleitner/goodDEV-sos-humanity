@@ -85,10 +85,16 @@ module.exports = {
           css: {
             color: 'currentColor',
             fontSize: '1.25rem',
-            lineHeight: 'normal'
+            lineHeight: 'normal',
             // '@media (min-width: 1280px)': {
             //   fontSize: '1.563rem'
             // }
+            a: {
+              color: 'currentColor',
+              '&:hover': {
+                color: 'currentColor'
+              }
+            }
           }
         },
         lg: {
