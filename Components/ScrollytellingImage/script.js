@@ -1,7 +1,6 @@
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
-// Fade-in Animation
 gsap.registerPlugin(ScrollTrigger)
 
 // Responsive
@@ -22,7 +21,7 @@ mm.add('(min-width: 1280px)', () => {
     duration: points.length,
     scrollTrigger: {
       trigger: '#scrollytellingImage',
-      start: 'top bottom',
+      start: 'top center',
       end: '200%',
       scrub: true,
       markers: false,
@@ -35,7 +34,7 @@ mm.add('(min-width: 1280px)', () => {
     scrollTrigger: {
       trigger: '#scrollytellingImage .wrapper',
       start: 'top top',
-      end: '300%',
+      end: '200%',
       scrub: true,
       pin: '#scrollytellingImage .wrapper',
       pinSpacing: true,
@@ -60,10 +59,10 @@ mm.add('(min-width: 1280px)', () => {
     gsap.set(elem, { position: 'absolute', top: 0 })
 
     tl.from(elem.querySelector('img'), { autoAlpha: 0 }, i)
-    tl.from(elem.querySelector('article'), { autoAlpha: 0, translateY: 100 }, i)
+    tl.from(elem.querySelector('article'), { autoAlpha: 1, translateY: '100vh' }, i)
 
     if (i !== points.length - 1) {
-      tl.to(elem.querySelector('article'), { autoAlpha: 0, translateY: -100 }, i + 0.75)
+      tl.to(elem.querySelector('article'), { autoAlpha: 1, translateY: '-100vh' }, i + 0.75)
       tl.to(elem.querySelector('img'), { autoAlpha: 0 }, i + 0.75)
     }
   })
