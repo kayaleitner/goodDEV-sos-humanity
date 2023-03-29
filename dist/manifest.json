@@ -12,7 +12,7 @@
     "src": "Components/BlockImageTextFull/Assets/suitcase.svg"
   },
   "Components/BlockImageTextFull/script.js": {
-    "file": "assets/script-194b1ac2.js",
+    "file": "assets/script-f2a5859c.js",
     "imports": [
       "assets/main.js",
       "__commonjsHelpers-87174ba5.js"
@@ -56,7 +56,7 @@
     "src": "Components/GridPostsArchive/script.js"
   },
   "Components/HeroIllustration/script.js": {
-    "file": "assets/script-44d540e2.js",
+    "file": "assets/script-bdd69fd8.js",
     "imports": [
       "assets/main.js"
     ],
@@ -72,7 +72,7 @@
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-5d0e705c.js",
+    "file": "assets/script-633775b8.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -99,7 +99,7 @@
     "src": "Components/ListingMap/script.js"
   },
   "Components/NavigationBurger/script.js": {
-    "file": "assets/script-c1452f6d.js",
+    "file": "assets/script-48031512.js",
     "imports": [
       "_index-2a8ce3c2.js",
       "_helpers-0bb72b7a.js",
@@ -125,7 +125,7 @@
     "src": "Components/NavigationFooter/Assets/twitter.svg"
   },
   "Components/NavigationMain/script.js": {
-    "file": "assets/script-c3970de6.js",
+    "file": "assets/script-39dc3b92.js",
     "imports": [
       "assets/main.js"
     ],
@@ -133,7 +133,7 @@
     "src": "Components/NavigationMain/script.js"
   },
   "Components/Scrollytelling/script.js": {
-    "file": "assets/script-68f39bce.js",
+    "file": "assets/script-4fda9ad2.js",
     "imports": [
       "assets/main.js"
     ],
@@ -141,12 +141,20 @@
     "src": "Components/Scrollytelling/script.js"
   },
   "Components/ScrollytellingImage/script.js": {
-    "file": "assets/script-bfa90af5.js",
+    "file": "assets/script-e3ffcac8.js",
     "imports": [
       "assets/main.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/ScrollytellingImage/script.js"
+  },
+  "Components/ScrollytellingImageV2/script.js": {
+    "file": "assets/script-87117ef8.js",
+    "imports": [
+      "assets/main.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "Components/ScrollytellingImageV2/script.js"
   },
   "Components/SliderImages/script.js": {
     "css": [
@@ -228,15 +236,16 @@
       "Components/NavigationMain/script.js",
       "Components/Scrollytelling/script.js",
       "Components/ScrollytellingImage/script.js",
+      "Components/ScrollytellingImageV2/script.js",
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-b759869d.js",
+    "file": "assets/main-c8a2af13.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-ed983cfe.css",
+    "file": "assets/main-2c89fea8.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
