@@ -15,7 +15,7 @@ export default function (listingMap) {
 
   const svgMap = map.getSVG({
     radius: 0.36,
-    color: '#7b838d',
+    color: '#aaaaaa',
     shape: 'circle'
   })
 

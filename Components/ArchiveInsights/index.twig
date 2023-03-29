@@ -25,7 +25,7 @@
                 <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>
               </div>
               {% if post.thumbnail %}
-                <figure class="figure block py-xs lg:py-0">
+                <figure class="figure block py-sm lg:py-0">
                   <img 
                     class="
                     image lazyload 
@@ -38,14 +38,14 @@
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
-              <div class="content aspect-square lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+              <div class="content lg:aspect-square lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
                 <div class="w-full hidden lg:flex flex-row justify-between align-middle items-center">
                   <div class="caption text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
                   <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>
                 </div>
-                <div class="flex flex-row lg:flex-col gap-sm justify-between items-between lg:items-stretch w-full lg:h-full">
+                <div class="flex flex-col gap-sm justify-between items-between lg:items-stretch w-full lg:h-full">
                   <h2 class="text-bodyMobile mb-0 lg:w-full md:grow">{{ post.title }}</h2>
-                  <span class="flex lg:hidden flex-col justify-end items-end">
+                  <span class="flex lg:hidden flex-col justify-start items-start">
                     {% if post.externalResourceLink %}
                       <a class="button button--link" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>{{ post.externalResourceLink.title|e }}</a>
                     {% else %}

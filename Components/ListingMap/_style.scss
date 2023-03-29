@@ -11,6 +11,9 @@ flynt-component[name='ListingMap'] {
       @apply bg-cbegreen;
       @apply w-lg;
       @apply h-lg;
+      @apply -translate-x-[25px];
+      @apply -translate-y-[25px];
+      z-index: 9999;
 
       &::before {
         border: 3px solid var(--white);

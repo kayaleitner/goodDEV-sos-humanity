@@ -21,7 +21,7 @@
             <div class="link h-full" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
                 <figure class="figure aspect-square hidden lg:block">
-                  <img class="image lazyload object-cover w-full h-full lg:h-[22vw] lg:max-h-[360px]"
+                  <img class="image lazyload object-cover w-full h-full"
                     src="{{  post.thumbnail.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
                     data-sizes="auto"
@@ -29,7 +29,7 @@
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
-              <div class="content lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+              <div class="content lg:aspect-square lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
                 <div class="w-full flex flex-row justify-between align-middle items-center">
                   <div class="caption text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
                   <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>
