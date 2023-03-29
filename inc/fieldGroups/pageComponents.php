@@ -96,6 +96,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\ReusableComponent\getACFLayout(),
                     Components\Scrollytelling\getACFLayout(),
                     Components\ScrollytellingImage\getACFLayout(),
+                    Components\ScrollytellingImageV2\getACFLayout(),
                     Components\SliderText\getACFLayout(),
                 ],
             ],
