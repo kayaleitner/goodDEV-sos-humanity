@@ -1,0 +1,26 @@
+<flynt-component
+  load:on="idle"
+  name="ScrollytellingImageV2"
+  class=""
+  style="background-color: var(--secondary);"
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+>
+  {% if blockTitle %}
+    <div class="w-full lg:absolute z-50">
+      <div class="lg:w-full lg:max-w-screen-max mx-auto p-sm lg:p-lg subtitle font-bold text-black lg:text-white">{{ blockTitle }}</div>
+    </div>
+  {% endif %}
+  <div class="w-full mx-auto">
+    {% for item in scrollytelling %}
+      <section class="flex justify-center items-center h-screen relative">
+        <div class="bg w-full h-full absolute top-0 left-0 bg-cover bg-center bg-no-repeat" {% if item.image %} style="background-image: url({{ item.image.src }});" {% endif %}></div>
+        {% if item.contentHtml %}
+          <article class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-lg">
+            <div></div>
+            <div class="max-w-[600px] mx-auto py-sm lg:p-0">{{ item.contentHtml|e('wp_kses_post') }}</div>
+          </article>
+        {% endif %}
+      </section>
+    {% endfor %}
+  </div>
+</flynt-component>
