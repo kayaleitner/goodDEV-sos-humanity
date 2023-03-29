@@ -38,7 +38,7 @@
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
-              <div class="content lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+              <div class="content aspect-square lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
                 <div class="w-full hidden lg:flex flex-row justify-between align-middle items-center">
                   <div class="caption text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
                   <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>

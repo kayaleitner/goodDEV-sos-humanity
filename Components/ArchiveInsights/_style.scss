@@ -40,8 +40,8 @@ flynt-component[name='ArchiveInsights'] {
           aspect-ratio: 16/7;
 
           img {
-            @apply lg:h-[30vw];
-            @apply lg:max-h-[380px];
+            @apply lg:h-[33vw];
+            @apply lg:max-h-[430px];
           }
         }
         
@@ -50,9 +50,11 @@ flynt-component[name='ArchiveInsights'] {
           grid-column-start: 1;
     
           figure {
-            aspect-ratio: 16/7;
+            aspect-ratio: 2/1;
+          }
 
-            
+          .content {
+            aspect-ratio: 2/1;
           }
         }
       }
