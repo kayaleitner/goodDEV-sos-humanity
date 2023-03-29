@@ -22,7 +22,7 @@ mm.add('(min-width: 1280px)', () => {
     duration: points.length,
     scrollTrigger: {
       trigger: '#scrollytellingImage',
-      start: 'top center',
+      start: 'top bottom',
       end: '200%',
       scrub: true,
       markers: false,
