@@ -2,7 +2,7 @@
   {# Map #}
   <div class="relative md:w-1/2 lg:w-full">
     <div data-ref="mapWrapper" class="h-auto aspect-video relative" id="dottedMap"></div>
-      <div class="pin bg-cbegreen rounded-full w-lg h-lg absolute"
+      <div class="pin bg-cbegreen rounded-full absolute"
         data-ref="pin"
         data-latitude="{{ post.coordinates.lat }}" 
         data-longitude="{{ post.coordinates.lng }}"></div>
@@ -12,7 +12,14 @@
     <div class="w-full border border-black p-sm flex flex-col">
       <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="caption">{{ labels.boxLocation }}</span>
-        <a href="{{ post.boxLocation }}" class="text-right button button--link" target="_blank" rel="noreferrer noopener">{{ post.coordinates.city }}, {{ post.coordinates.country }}</a>
+        <a href="{{ post.boxLocation }}" class="text-right button button--link" target="_blank" rel="noreferrer noopener">
+          {% if post.coordinates.city %}
+            {{ post.coordinates.city }},
+          {% endif %}
+          {% if post.coordinates.country %}
+            {{ post.coordinates.country }}
+          {% endif %}
+        </a>
       </div>
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="caption">{{ labels.boxGenerationSize }}</span>

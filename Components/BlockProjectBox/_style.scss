@@ -1,7 +1,32 @@
 flynt-component[name='BlockProjectBox'] {
+  // stylelint-disable selector-max-id
+  #dottedMap {
+    svg {
+      clip-path: polygon(4% 2%, 100% 3%, 100% 99%, 3% 98%);
+      
+      @media (min-width: $breakpoint-desktop) {
+        clip-path: polygon(1% 2%, 129% 1%, 107% 96%, 3% 98%);
+      }
+    }
+  }
+
   .pin {
-    outline: 2px solid var(--secondary);
-    outline-offset: 4px;
+    @apply bg-cbegreen;
+    @apply w-lg;
+    @apply h-lg;
+    @apply -translate-x-[25px];
+    @apply -translate-y-[25px];
+    
+    &::before {
+      border: 3px solid var(--white);
+      border-radius: 100%;
+      bottom: 3px;
+      content: '';
+      left: 3px;
+      position: absolute;
+      right: 3px;
+      top: 3px;
+    }
   }
 
   .button--link {
