@@ -18,7 +18,6 @@ const points = gsap.utils.toArray('.point')
 
 mm.add('(min-width: 1280px)', () => {
   const tl = gsap.timeline({
-    duration: points.length,
     scrollTrigger: {
       trigger: '#scrollytellingImage',
       start: 'top center',

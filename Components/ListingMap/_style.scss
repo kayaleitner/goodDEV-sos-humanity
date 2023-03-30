@@ -2,7 +2,11 @@ flynt-component[name='ListingMap'] {
   // stylelint-disable selector-max-id
   #dottedMap {
     svg {
-      clip-path: polygon(3% 1%, 98% 1%, 98% 99%, 3% 98%);
+      clip-path: polygon(4% 2%, 100% 3%, 100% 99%, 3% 98%);
+      
+      @media (min-width: $breakpoint-desktop) {
+        clip-path: polygon(3% 1%, 98% 1%, 98% 99%, 3% 98%);
+      }
     }
   }
 
@@ -24,6 +28,20 @@ flynt-component[name='ListingMap'] {
         position: absolute;
         right: 3px;
         top: 3px;
+      }
+    }
+  }
+
+  .post {
+    &:hover,
+    &:focus {
+      .image {
+        transform: scale(1.2);
+      }
+
+      .button--outlineBlack {
+        @apply border-transparent;
+        @apply bg-green;
       }
     }
   }

@@ -19,14 +19,16 @@
           <li class="post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
             <div class="link h-full" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
-                <figure class="figure block">
-                  <img class="image lazyload h-[400px] object-cover"
-                    src="{{  post.thumbnail.src | resize(32) }}"
-                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-                    data-sizes="auto"
-                    data-src="{{ post.thumbnail.src }}"
-                    alt="{{ post.thumbnail.alt|e }}">
-                </figure>
+                <a class="no-underlina" href="{{ post.link }}" aria-label="{{ post.title }}">
+                  <figure class="figure block overflow-hidden">
+                    <img class="image lazyload aspect-ratio object-cover transition duration-200 ease-linear"
+                      src="{{  post.thumbnail.src | resize(32) }}"
+                      data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                      data-sizes="auto"
+                      data-src="{{ post.thumbnail.src }}"
+                      alt="{{ post.thumbnail.alt|e }}">
+                  </figure>
+                </a>
               {% endif %}
               <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
                 <div class="flex flex-col gap-sm">

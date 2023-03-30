@@ -1,4 +1,10 @@
 flynt-component[name='ScrollytellingImage'] {
+  .point:last-child {
+    img {
+      border: 0;
+    }
+  }
+  
   article {
     z-index: 2;
   }

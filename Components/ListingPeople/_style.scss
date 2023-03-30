@@ -30,6 +30,18 @@ flynt-component[name='ListingPeople'] {
   }
 
   .post {
+    &:hover,
+    &:focus {
+      .image {
+        transform: scale(1.2);
+      }
+
+      .button--outlineBlack {
+        @apply border-transparent;
+        @apply bg-green;
+      }
+    }
+    
     .link {
       @include reset-link;
       color: currentColor;

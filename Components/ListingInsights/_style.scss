@@ -1,5 +1,27 @@
 flynt-component[name='ListingInsights'] {
   .post {
+    &:hover,
+    &:focus {
+      .image {
+        transform: scale(1.2);
+      }
+
+      .button--arrow {
+        @apply border-transparent;
+        @apply bg-white;
+        @apply bg-green;
+      }
+
+      .button--link {
+        @apply bg-transparent;
+        @apply text-black;
+
+        &::after {
+          @apply ml-[5px];
+        }
+      }
+    }
+
     .link {
       @include reset-link;
       color: currentColor;

@@ -2,7 +2,7 @@
   load:on="idle"
   name="ScrollytellingImage"
   class=""
-  style="background-color: var(--secondary);"
+  style="background-color: var(--white);"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   {% if blockTitle %}
@@ -24,7 +24,7 @@
               {% endif %}
             </div>
             {% if item.image %}
-              <img class="w-full h-full absolute top-0 left-0 object-cover py-sm lg:p-0 border-b-4 border-dotted border-black lg:border-0"
+              <img class="w-full h-full lg:absolute top-0 left-0 object-cover py-sm lg:p-0 border-b-4 border-dotted border-black lg:border-0"
                 src="{{ item.image.src }}"
                 data-srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}"
                 data-sizes="auto">

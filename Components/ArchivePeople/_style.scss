@@ -1,35 +1,17 @@
 flynt-component[name='ArchivePeople'] {
-  .grid {
-    --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
-    --grid-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
-    @include reset-list;
-    @include grid(1, center);
-    margin-inline: auto;
-    max-width: var(--grid-max-width);
-
-    &[data-max-columns='2'],
-    &[data-max-columns='3'],
-    &[data-max-columns='4'] {
-      @media (min-width: $breakpoint-tablet) {
-        --grid-columns: 2;
-      }
-    }
-
-    &[data-max-columns='3'],
-    &[data-max-columns='4'] {
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        --grid-columns: 3;
-      }
-    }
-
-    &[data-max-columns='4'] {
-      @media (min-width: $breakpoint-desktop) {
-        --grid-columns: 4;
-      }
-    }
-  }
-
   .post {
+    &:hover,
+    &:focus {
+      .image {
+        transform: scale(1.2);
+      }
+
+      .button--outlineBlack {
+        @apply border-transparent;
+        @apply bg-green;
+      }
+    }
+
     .link {
       @include reset-link;
       color: currentColor;

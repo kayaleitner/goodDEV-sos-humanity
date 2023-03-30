@@ -109,14 +109,16 @@
             data-longitude="{{ post.longitude }}">
             <div class="post w-full grow">
               {% if post.thumbnail %}
-                <figure class="figure hidden md:block aspect-square">
-                  <img class="image lazyload h-full w-full object-cover"
-                    src="{{  post.thumbnail.src | resize(32) }}"
-                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-                    data-sizes="auto"
-                    data-src="{{ post.thumbnail.src }}"
-                    alt="{{ post.thumbnail.alt|e }}">
-                </figure>
+                <a class="no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
+                  <figure class="figure hidden md:block aspect-square overflow-hidden">
+                    <img class="image lazyload h-full w-full aspect-square object-cover transition duration-200 ease-linear"
+                      src="{{  post.thumbnail.src | resize(32) }}"
+                      data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                      data-sizes="auto"
+                      data-src="{{ post.thumbnail.src }}"
+                      alt="{{ post.thumbnail.alt|e }}">
+                  </figure>
+                </a>
               {% endif %}
               <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
                 <div class="flex flex-col gap-sm">
