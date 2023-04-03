@@ -14,7 +14,7 @@
           gap-sm lg:gap-md
         ">
         {% for post in posts %}
-          <li class="post lg:w-1/3 grow">
+          <li class="post w-full">
             <div class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
                 <a class="no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">

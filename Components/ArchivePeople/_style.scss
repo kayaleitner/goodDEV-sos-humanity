@@ -3,7 +3,8 @@ flynt-component[name='ArchivePeople'] {
     &:hover,
     &:focus {
       .image {
-        transform: scale(1.2);
+        @apply lg:scale-[1.03];
+        @apply lg:origin-center;
       }
 
       .button--outlineBlack {
