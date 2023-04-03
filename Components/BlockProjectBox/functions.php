@@ -2,10 +2,27 @@
 
 namespace Flynt\Components\BlockProjectBox;
 
+use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
+use Flynt\ComponentManager;
+use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=BlockProjectBox', function ($data) {
     $data['dateFormat'] = get_option('date_format');
+    return $data;
+});
+
+add_filter('Flynt/addComponentData?name=BlockProjectBox', function ($data) {
+    $componentManager = ComponentManager::getInstance();
+    $componentPathFull = $componentManager->getComponentDirPath('BlockProjectBox');
+    $componentPath = str_replace(trailingslashit(get_template_directory()), '', $componentPathFull);
+
+    if (!empty($data['boxMountingType'])) {
+        $data['boxMountingType'] = array_map(function ($item) use ($componentPath) {
+            $item['icon'] = Asset::getContents("{$componentPath}Assets/['boxMountingType']['value']}.svg");
+            return $item;
+        }, $data['boxMountingType']);
+    }
     return $data;
 });
 

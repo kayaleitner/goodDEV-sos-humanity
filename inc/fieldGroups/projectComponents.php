@@ -83,41 +83,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'width' => 25
                 ]
             ],
-            // [
-            //     'label' => __('Customer Segment', 'flynt'),
-            //     'name' => 'boxCustomerSegment',
-            //     'type' => 'select',
-            //     'allow_null' => 0,
-            //     'multiple' => 0,
-            //     'ui' => 1,
-            //     'ajax' => 0,
-            //     'return_format' => 'array',
-            //     'choices' => [
-            //         'agriculture' => 'Agriculture',
-            //         'beverages' => 'Beverages',
-            //         'cement/concrete' => 'Cement/Concrete',
-            //         'chemical' => 'Chemical',
-            //         'consumer' => 'Consumer',
-            //         'appliances' => 'Appliances',
-            //         'energy' => 'Energy',
-            //         'food' => 'Food',
-            //         'forestry' => 'Forestry',
-            //         'hotel' => 'Hotel',
-            //         'humanitarian' => 'Humanitarian',
-            //         'it/software' => 'IT/Software',
-            //         'manufacturing' => 'Manufacturing',
-            //         'metal' => 'Metal',
-            //         'mining' => 'Mining',
-            //         'oil/petrochemical' => 'Oil/Petrochemical',
-            //         'paper' => 'Paper',
-            //         'quarries' => 'Quarries',
-            //         'realestate' => 'Real Estate',
-            //         'telecom' => 'Telecom'
-            //     ],
-            //     'wrapper' => [
-            //         'width' => 25
-            //     ]
-            // ],
             [
                 'label' => __('Mounting Type', 'flynt'),
                 'name' => 'boxMountingType',

@@ -12,7 +12,7 @@
       {{ renderComponent('BlockProjectBox', { post: post }) }}
       <div class="w-full md:w-full lg:w-2/3">
         {% if post.intro %}
-          <div class="h3">{{ post.intro }}</div>
+          <div class="subtitle">{{ post.intro }}</div>
         {% endif %}
         {% for component in post.meta('projectComponents') %}
           {{ renderComponent(component) }}

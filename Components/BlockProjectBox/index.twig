@@ -29,13 +29,13 @@
         <span class="caption">{{ labels.boxCustomerSegment }}</span>
         <span class="body text-right">
           {% for term in post.terms('customer_segment')  %}
-            <div class="paragraph">{{ term }}</div>
+            <div class="body flex items-center" data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}">{{ term }}</div>
           {% endfor %}
         </span>
       </div>
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="caption">{{ labels.boxMountingType }}</span>
-        <span class="body text-right">{{ post.boxMountingType.label }}</span>
+        <span class="body text-right flex items-center" data-icon="{{ post.boxMountingType.label|lower }}">{{ post.boxMountingType.label }}</span>
       </div>
       <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
         <span class="caption">{{ labels.boxStorageSize }}</span>
