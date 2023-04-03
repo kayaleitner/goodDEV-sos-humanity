@@ -20,14 +20,6 @@
     "isDynamicEntry": true,
     "src": "Components/BlockImageTextFull/script.js"
   },
-  "Components/BlockProjectBox/Assets/agriculture.svg": {
-    "file": "assets/agriculture-cf41cafc.svg",
-    "src": "Components/BlockProjectBox/Assets/agriculture.svg"
-  },
-  "Components/BlockProjectBox/Assets/ground.svg": {
-    "file": "assets/ground-8c873b91.svg",
-    "src": "Components/BlockProjectBox/Assets/ground.svg"
-  },
   "Components/BlockProjectBox/script.js": {
     "file": "assets/script-36b3911d.js",
     "imports": [
@@ -110,10 +102,14 @@
   },
   "Components/NavigationFooter/Assets/facebook.svg": {
     "file": "assets/facebook-58a940a6.svg",
-    "src": "Components/NavigationFooter/Assets/facebook.svg"
+    "src": "Components/NavigationFooter/Assets/linkedin.svg"
+  },
+  "Components/NavigationFooter/Assets/linkedin-old.svg": {
+    "file": "assets/linkedin-old-d3365d89.svg",
+    "src": "Components/NavigationFooter/Assets/linkedin-old.svg"
   },
   "Components/NavigationFooter/Assets/linkedin.svg": {
-    "file": "assets/linkedin-d3365d89.svg",
+    "file": "assets/facebook-58a940a6.svg",
     "src": "Components/NavigationFooter/Assets/linkedin.svg"
   },
   "Components/NavigationFooter/Assets/logo.svg": {
@@ -245,7 +241,7 @@
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-e9a4f5af.css",
+    "file": "assets/main-b4b0b059.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -255,7 +251,7 @@
     "src": "assets/print.scss"
   },
   "assets/tinyMce.scss": {
-    "file": "assets/tinyMce-4348ca54.css",
+    "file": "assets/tinyMce-a8c05918.css",
     "isEntry": true,
     "src": "assets/tinyMce.scss"
   },
