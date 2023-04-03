@@ -14,7 +14,7 @@
           </div>
         {% endif %}
         {% for item in scrollytelling %}
-          <div class="point h-auto lg:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl lg:m-0 grid grid-cols-1 md:grid-cols-2 gap-sm md:gap-lg items-center">
+          <div class="point h-auto lg:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl lg:m-0 grid grid-cols-1 md:grid-cols-2 gap-sm md:gap-lg items-center  {% if item.hideOnMobile %}hidden lg:block{% endif %}">
             {% if item.image %}
               <img class="w-full max-w-[600px] mx-auto"
                 src="{{ item.image.src | resize(32) }}"

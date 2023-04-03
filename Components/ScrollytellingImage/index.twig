@@ -14,7 +14,7 @@
     <div id="scrollytellingImage" class="h-full relative">
       <div class="wrapper h-auto lg:h-screen w-full">
         {% for item in scrollytelling %}
-          <div class="point h-auto lg:h-screen w-full m-0 px-sm lg:p-0 relative">
+          <div class="point h-auto lg:h-screen w-full m-0 px-sm lg:p-0 relative {% if item.hideOnMobile %}hidden lg:block{% endif %}">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-lg lg:absolute top-0 left-0 w-full h-full justify-center items-center">
               <div></div>
               {% if item.contentHtml %}

@@ -39,7 +39,7 @@ function getACFLayout()
                         'preview_size' => 'medium',
                         'mime_types' => 'jpg,jpeg,png,svg',
                         'wrapper' => [
-                            'width' => 40
+                            'width' => 30
                         ],
                     ],
                     [
@@ -50,8 +50,21 @@ function getACFLayout()
                         'media_upload' => 0,
                         'delay' => 1,
                         'wrapper' => [
-                            'width' => 60
+                            'width' => 50
                         ],
+                    ],
+                    [
+                        'label' => __('Hide on Mobile', 'flynt'),
+                        'instructions' => __('If "Yes" is selected, this element will be hidden on mobile.', 'flynt'),
+                        'name' => 'hideOnMobile',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                        'ui_on_text' => 'Yes',
+                        'ui_off_text' => 'No',
+                        'default_value' => 0,
+                        'wrapper' => [
+                            'width' => 20,
+                        ]
                     ]
                 ]
             ],
