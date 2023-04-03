@@ -14,7 +14,7 @@
       <section class="post-main mt-lg">
         {% if post.post_excerpt %}
           <div class="block md:hidden w-full">
-            <div class="h3">{{ post.post_excerpt }}</div>
+            <div class="bodyMobile md:body">{{ post.post_excerpt }}</div>
           </div>
         {% endif %}
         {% for component in post.meta('postComponents') %}

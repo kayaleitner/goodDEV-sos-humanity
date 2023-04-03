@@ -21,7 +21,7 @@
       <h1 class="titleSmall font-bold mb-md">{{ post.title }}</h1>
       {% if post.post_excerpt %}
         <div class="hidden md:block w-full">
-          <div class="h3">{{ post.post_excerpt }}</div>
+          <div class="bodyMobile md:body">{{ post.post_excerpt }}</div>
         </div>
       {% endif %}
     </div>
@@ -53,45 +53,53 @@
           {# Internal Author #}
           {% for item in Post(post.internalAuthorz) %}
             <div class="w-full pb-xs">
-              <div class="w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
-                <img
-                  class="aspect-square object-cover w-1/3 grayscale"
-                  src="{{ item.thumbnail.src }}"
-                  data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
-                  data-sizes="auto">
-                <div class="caption w-2/3 flex flex-col">
-                  <div class="font-bold">{{ item.title }}</div>
-                  <div>{{ item.position }}</div>
+              <a href="{{ item.link }}" class="item w-full py-xs flex flex-row gap-sm border-t border-lightgrey no-underline">
+                <figure class="figure w-1/3 aspect-square overflow-hidden">
+                  <img
+                    class="aspect-square object-cover grayscale transition duration-200 ease-linear"
+                    src="{{ item.thumbnail.src }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
+                    data-sizes="auto">
+                </figure>
+                <div class="caption w-2/3 flex flex-col justify-between">
+                  <div>
+                    <div class="font-bold">{{ item.title }}</div>
+                    <div>{{ item.position }}</div>
+                  </div>
+                  <div class="flex justify-end items-center">
+                    <div class="button button--arrow"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="flex justify-end items-center">
-                <a href="{{ item.link }}" class="button button--arrow"></a>
-              </div>
+              </a>
             </div>
           {% endfor %}
           {# External Author #}
           {% for item in post.authorz %}
             <div class="w-full pb-xs">
-              <div class="w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
+              <a href="{{ item.authorLink }}" class="item w-full py-xs flex flex-row gap-sm border-t border-lightgrey no-underline" target="_blank" rel="noreferrer noopener">
                 {% if item.authorImage %}
-                <img
-                  class="aspect-square object-cover w-1/3 grayscale"
-                  src="{{ item.authorImage.src }}"
-                  data-srcset="{{function('wp_get_attachment_image_srcset', item.authorImage.id)}}"
-                  data-sizes="auto">
+                <figure class="figure w-1/3 aspect-square overflow-hidden">
+                  <img
+                    class="aspect-square object-cover grayscale transition duration-200 ease-linear"
+                    src="{{ item.authorImage.src }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', item.authorImage.id)}}"
+                    data-sizes="auto">
+                </figure>
                 {% endif %}
                 {% if item.authorName or item.authorPosition %}
-                <div class="caption w-2/3 flex flex-col">
-                  <div class="font-bold">{{ item.authorName }}</div>
-                  <div>{{ item.authorPosition }}</div>
+                <div class="caption w-2/3 flex flex-col justify-between">
+                  <div>
+                    <div class="font-bold">{{ item.authorName }}</div>
+                    <div>{{ item.authorPosition }}</div>
+                  </div>
+                  {% if item.authorLink %}
+                    <div class="flex justify-end items-center">
+                      <div class="button button--arrow"></div>
+                    </div>
+                  {% endif %}
                 </div>
                 {% endif %}
-              </div>
-              {% if item.authorLink %}
-              <div class="flex justify-end items-center">
-                <a href="{{ item.authorLink }}" class="button button--arrow" target="_blank" rel="noreferrer noopener"></a>
-              </div>
-              {% endif %}
+              </a>
             </div>
           {% endfor %}
         </div>
