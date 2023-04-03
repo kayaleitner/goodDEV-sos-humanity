@@ -121,7 +121,7 @@ h6,
   
       &:hover,
       &:focus {
-        text-decoration-color: var(--white);
+        text-decoration-color: var(--green);
       }
     }
   }
@@ -262,8 +262,9 @@ table {
     @apply border-black;
     @apply hover:border-transparent;
     @apply active:border-black;
-    @apply hover:bg-green;
+    @apply hover:bg-cbegreen;
     @apply text-black;
+    @apply hover:text-white;
     @apply border;
     @apply bg-transparent;
   }
