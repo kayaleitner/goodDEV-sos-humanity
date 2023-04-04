@@ -27,12 +27,12 @@
       <div data-ref="dots" class="block sm:hidden slider-pagination swiper-pagination-fraction"></div>
       <div class="swiper-wrapper">
         {% for box in contentBoxes %}
-          <div class="slider-item swiper-slide p-sm lg:p-md lg:mr-md text-white flex flex-col justify-between" style="background: {{ box.panelTextboxbgcolor }};">
+          <div class="slider-item swiper-slide p-sm lg:p-md lg:mr-md flex flex-col justify-between" style="background: {{ box.colorBackground }}; color: {{ box.colorText }};">
             <div class="block sm:hidden py-sm"></div>
-            {% if box.panelTextbox %}<div class="h5">{{ box.panelTextbox|e('wp_kses_post') }}</div>{% endif %}
+            {% if box.panelTextbox %}<div class="h5">{{ box.panelTextbox|e }}</div>{% endif %}
             {% if box.panelLogo %}
               <div class="">
-                <img class="logo lazyload w-auto max-w-[w00px]"
+                <img class="logo lazyload w-auto max-w-[100px]"
                 src="{{ box.panelLogo.src | resize(32) }}"
                 data-srcset="{{function('wp_get_attachment_image_srcset', box.panelLogo.id)}}"
                 data-sizes="auto">

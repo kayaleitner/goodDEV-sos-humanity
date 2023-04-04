@@ -2,13 +2,13 @@
   load:on="idle"
   name="HeroIllustration"
   class=""
-  style="background-color: var(--secondary);"
+  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% endif %}; color:{% if options.colorText %}{{ options.colorText }}{% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
->
+  >
   <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
     {% if blockTitle %}
       <div class="max-w-screen-max w-full mx-auto pb-sm lg:pb-lg flex flex-row justify-between align-bottom items-end content-end">
-        <div class="subtitle font-bold text-white">{{ blockTitle }}</div>
+        <div class="subtitle font-bold">{{ blockTitle }}</div>
       </div>
     {% endif %}
     <div class="max-w-screen-max mx-auto px-sm lg:px-lg h-full flex flex-col gap-xl md:flex-row items-center md:items-start justify-around p-lg md:py-xl">
@@ -23,7 +23,7 @@
           </figure>
         {% endif %}
         {% if item.contentHtml %}
-          <div class="text-white">
+          <div class="">
             {{ item.contentHtml|e('wp_kses_post') }}
           </div>
         {% endif %}

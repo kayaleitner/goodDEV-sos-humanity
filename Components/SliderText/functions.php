@@ -40,32 +40,29 @@ function getACFLayout()
                 'min' => 1,
                 'button_label' => __('Add Box', 'flynt'),
                 'sub_fields' => [
-                    [
-                    'label' => __('Box Background Color', 'flynt'),
-                    'name' => 'panelTextboxbgcolor',
-                    'type' => 'select',
-                    'allow_null' => 0,
-                    'multiple' => 0,
-                    'ui' => 0,
-                    'ajax' => 0,
-                    'choices' => [
-                        'var(--primary)' => __('Primary', 'flynt'),
-                        'var(--secondary)' => __('Secondary', 'flynt')
-                    ],
-                    'return_format' => 'value',
-                    ],
                     // [
-                    //     'label' => __('Box Background Color', 'flynt'),
-                    //     'name' => 'panelTextboxbgcolor',
-                    //     'type' => 'color_picker',
+                    // 'label' => __('Box Background Color', 'flynt'),
+                    // 'name' => 'panelTextboxbgcolor',
+                    // 'type' => 'select',
+                    // 'allow_null' => 0,
+                    // 'multiple' => 0,
+                    // 'ui' => 0,
+                    // 'ajax' => 0,
+                    // 'choices' => [
+                    //     'var(--primary)' => __('Primary', 'flynt'),
+                    //     'var(--secondary)' => __('Secondary', 'flynt')
                     // ],
+                    // 'return_format' => 'value',
+                    // ],
+                    FieldVariables\getColorBackground(),
+                    FieldVariables\getColorText(),
                     [
                         'label' => __('Content', 'flynt'),
                         'name' => 'panelTextbox',
-                        'type' => 'wysiwyg',
-                        'tabs' => 'visual',
-                        'media_upload' => 0,
-                        'delay' => 1,
+                        'type' => 'textarea',
+                        // 'tabs' => 'visual',
+                        // 'media_upload' => 0,
+                        // 'delay' => 1,
                     ],
                     [
                         'label' => __('Logo/Icon', 'flynt'),
