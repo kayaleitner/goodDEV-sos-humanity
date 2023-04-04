@@ -5,10 +5,7 @@ import Alpine from 'alpinejs'
 import FlyntComponent from './scripts/FlyntComponent'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import * as eva from 'eva-icons'
 import 'lazysizes'
-
-global.eva = eva
 
 if (import.meta.env.DEV) {
   import('@vite/client')
