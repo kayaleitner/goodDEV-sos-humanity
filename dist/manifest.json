@@ -101,16 +101,16 @@
     "src": "Components/NavigationBurger/script.js"
   },
   "Components/NavigationFooter/Assets/facebook.svg": {
-    "file": "assets/facebook-58a940a6.svg",
-    "src": "Components/NavigationFooter/Assets/linkedin.svg"
+    "file": "assets/linkedin-58a940a6.svg",
+    "src": "Components/NavigationFooter/Assets/facebook.svg"
   },
   "Components/NavigationFooter/Assets/linkedin-old.svg": {
     "file": "assets/linkedin-old-d3365d89.svg",
     "src": "Components/NavigationFooter/Assets/linkedin-old.svg"
   },
   "Components/NavigationFooter/Assets/linkedin.svg": {
-    "file": "assets/facebook-58a940a6.svg",
-    "src": "Components/NavigationFooter/Assets/linkedin.svg"
+    "file": "assets/linkedin-58a940a6.svg",
+    "src": "Components/NavigationFooter/Assets/facebook.svg"
   },
   "Components/NavigationFooter/Assets/logo.svg": {
     "file": "assets/logo-eeb7436e.svg",
@@ -212,6 +212,42 @@
     "file": "assets/AeonikTRIAL-Regular-396bfd80.woff2",
     "src": "assets/fonts/AeonikTRIAL-Regular.woff2"
   },
+  "assets/icons/icon-agriculture.svg": {
+    "file": "assets/icon-agriculture-739ded9c.svg",
+    "src": "assets/icons/icon-agriculture.svg"
+  },
+  "assets/icons/icon-beverages.svg": {
+    "file": "assets/icon-beverages-98993174.svg",
+    "src": "assets/icons/icon-beverages.svg"
+  },
+  "assets/icons/icon-carport.svg": {
+    "file": "assets/icon-carport-910dd8f1.svg",
+    "src": "assets/icons/icon-carport.svg"
+  },
+  "assets/icons/icon-chemical.svg": {
+    "file": "assets/icon-chemical-62d333c0.svg",
+    "src": "assets/icons/icon-chemical.svg"
+  },
+  "assets/icons/icon-energy.svg": {
+    "file": "assets/icon-energy-340ba1a0.svg",
+    "src": "assets/icons/icon-energy.svg"
+  },
+  "assets/icons/icon-food.svg": {
+    "file": "assets/icon-food-8902d0ac.svg",
+    "src": "assets/icons/icon-food.svg"
+  },
+  "assets/icons/icon-forestry.svg": {
+    "file": "assets/icon-forestry-7ef6eed3.svg",
+    "src": "assets/icons/icon-forestry.svg"
+  },
+  "assets/icons/icon-ground.svg": {
+    "file": "assets/icon-ground-d2d8651f.svg",
+    "src": "assets/icons/icon-ground.svg"
+  },
+  "assets/icons/icon-roof.svg": {
+    "file": "assets/icon-roof-4a0fc37c.svg",
+    "src": "assets/icons/icon-roof.svg"
+  },
   "assets/images/logo.svg": {
     "file": "assets/logo-26c0c58f.svg",
     "src": "assets/images/logo.svg"
@@ -241,7 +277,7 @@
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-b4b0b059.css",
+    "file": "assets/main-82b7e6c9.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
