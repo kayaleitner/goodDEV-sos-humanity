@@ -61,8 +61,8 @@ flynt-component[name='ArchiveInsights'] {
 
         figure {
           img {
-            // @apply lg:h-[30vw];
-            @apply lg:max-h-[380px];
+            @apply max-h-[33vh];
+            // @apply max-h-[380px];
           }
         }
         
