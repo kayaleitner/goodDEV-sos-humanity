@@ -1,7 +1,6 @@
 <flynt-component load:on="visible" name="BlockImage"
   class="w-full max-w-screen-max mx-auto p-sm md:p-lg"
-  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
->
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
   <figure class="figure w-full lg:w-2/3">
     <img class="figure-image lazyload h-full w-full object-cover aspect-4/3"
         src="{{ image.src | resize(32) }}"

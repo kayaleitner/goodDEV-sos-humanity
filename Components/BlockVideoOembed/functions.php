@@ -13,8 +13,8 @@ function getACFLayout()
         'label' =>  __('Block: Video', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Imagery', 'flynt'),
+                'name' => 'imageryTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
@@ -26,7 +26,10 @@ function getACFLayout()
                 'type' => 'image',
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg,png',
-                'required' => 1
+                'required' => 1,
+                'wrapper' => [
+                    'width' => 30,
+                ]
             ],
             [
                 'label' => __('Video', 'flynt'),
@@ -35,14 +38,10 @@ function getACFLayout()
                 'required' => 0,
                 'videoParams' => [
                     'autoplay' => 1,
+                ],
+                'wrapper' => [
+                    'width' => 70,
                 ]
-            ],
-            [
-                'label' => __('Content', 'flynt'),
-                'name' => 'contentTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0
             ],
             [
                 'label' => __('Content', 'flynt'),
@@ -52,6 +51,23 @@ function getACFLayout()
                 'media_upload' => 0,
                 'delay' => 1,
             ],
+            [
+                'label' => __('Options', 'flynt'),
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    FieldVariables\getTheme(),
+                    FieldVariables\getNavStyle(),
+                ]
+            ]
         ]
     ];
 }

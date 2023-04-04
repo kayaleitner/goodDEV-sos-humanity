@@ -40,23 +40,6 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     FieldVariables\getNavStyle(),
-                    [
-                        'label' => __('Max Width', 'flynt'),
-                        'name' => 'maxWidth',
-                        'type' => 'radio',
-                        'other_choice' => 0,
-                        'save_other_choice' => 0,
-                        'layout' => 'horizontal',
-                        'choices' => [
-                            '' => __('Default', 'flynt'),
-                            'large' => __('Large', 'flynt)'),
-                            'full' => __('Full', 'flynt)'),
-                        ],
-                        'default_value' => '',
-                        'wrapper' =>  [
-                            'width' => '100',
-                        ],
-                    ],
                 ]
             ]
         ]

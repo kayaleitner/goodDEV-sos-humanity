@@ -1,4 +1,7 @@
-<flynt-component load:on="visible" name="BlockVideoOembed" data-navStyle="dark">
+<flynt-component 
+  load:on="visible" 
+  name="BlockVideoOembed" 
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
   <div class="">
     <div class="video">
       {% include 'Partials/_figure.twig' ignore missing with {image: posterImage} only %}
