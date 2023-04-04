@@ -75,40 +75,6 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     FieldVariables\getNavStyle(),
-                    [
-                        'label' => __('Max Columns', 'flynt'),
-                        'name' => 'maxColumns',
-                        'type' => 'number',
-                        'default_value' => 3,
-                        'min' => 1,
-                        'max' => 4,
-                        'step' => 1
-                    ],
-                    [
-                        'label' => __('Enable Autoplay', 'flynt'),
-                        'name' => 'autoplay',
-                        'type' => 'true_false',
-                        'default_value' => 0,
-                        'ui' => 1
-                    ],
-                    [
-                        'label' => __('Autoplay Speed (in milliseconds)', 'flynt'),
-                        'name' => 'autoplaySpeed',
-                        'type' => 'number',
-                        'min' => 2000,
-                        'step' => 1,
-                        'default_value' => 4000,
-                        'required' => 0,
-                        'conditional_logic' => [
-                            [
-                                [
-                                    'fieldPath' => 'autoplay',
-                                    'operator' => '==',
-                                    'value' => 1
-                                ]
-                            ]
-                        ],
-                    ]
                 ]
             ],
         ]

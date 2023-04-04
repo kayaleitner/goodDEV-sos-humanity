@@ -18,18 +18,18 @@
       >
         {% for post in posts %}
           <li class="post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
-            <div class="link h-full" href="{{ post.link }}" aria-label="{{ post.title }}">
+            <a class="link flex flex-col h-full no-underlinel" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
-                <a class="no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
-                  <figure class="figure block overflow-hidden">
-                    <img class="image lazyload aspect-ratio object-cover transition duration-200 ease-linear"
-                      src="{{  post.thumbnail.src | resize(32) }}"
-                      data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-                      data-sizes="auto"
-                      data-src="{{ post.thumbnail.src }}"
-                      alt="{{ post.thumbnail.alt|e }}">
+                <div class="block">
+                  <figure class="figure overflow-hidden">
+                  <img class="image lazyload object-cover transition duration-200 ease-linear"
+                    src="{{  post.thumbnail.src | resize(32) }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                    data-sizes="auto"
+                    data-src="{{ post.thumbnail.src }}"
+                    alt="{{ post.thumbnail.alt|e }}">
                   </figure>
-                </a>
+                </div>
               {% endif %}
               <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
                 <div class="w-full flex flex-col gap-sm">
@@ -53,18 +53,18 @@
                     </div>
                   </div>
                 </div>
-                <div class="w-full h-full grow flex flex-col gap-xs justify-between align-start items-start">
+                <div class="w-full lg:aspect-square grow flex flex-col gap-xs justify-between align-start items-start">
                   <div class="body">{{ post.position }}</div>
-                  <div class="flex flex-col gap-xs">
+                  <div class="w-full flex flex-col gap-xs">
                     <h2 class="subtitle w-full grow">{{ post.title }}</h2>
                     <div class="body w-full grow">{{ post.bio|truncate(18)  }}</div>
                     <div class="mt-md flex flex-row lg:flex-col gap-sm justify-start items-start">
-                      <a class="link button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
+                      <div class="link button button--outlineBlack">{{ labels.readMore }}</div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </li>
         {% endfor %}
       </ul>

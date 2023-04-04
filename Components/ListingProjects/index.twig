@@ -15,20 +15,18 @@
         ">
         {% for post in posts %}
           <li class="post w-full">
-            <div class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
+            <a class="link flex flex-col h-full no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
-                <a class="no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
-                  <figure class="figure block overflow-hidden">
-                    <img class="image lazyload aspect-square object-cover transition duration-200 ease-linear"
-                      src="{{  post.thumbnail.src | resize(32) }}"
-                      data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-                      data-sizes="auto"
-                      data-src="{{ post.thumbnail.src }}"
-                      alt="{{ post.thumbnail.alt|e }}">
-                  </figure>
-                </a>
+                <figure class="figure block overflow-hidden">
+                  <img class="image lazyload aspect-square object-cover transition duration-200 ease-linear"
+                    src="{{  post.thumbnail.src | resize(32) }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                    data-sizes="auto"
+                    data-src="{{ post.thumbnail.src }}"
+                    alt="{{ post.thumbnail.alt|e }}">
+                </figure>
               {% endif %}
-              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
+              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch grow">
                 <div class="flex flex-col gap-sm">
                   <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
                     <div class="w-1/2">
@@ -46,10 +44,10 @@
                   </div>
                 </div>
                 <div class="flex flex-row lg:flex-col gap-sm justify-end items-start h-full">
-                  <a class="button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
+                  <div class="button button--outlineBlack">{{ labels.readMore }}</div>
                 </div>
               </div>
-            </div>
+            </a>
           </li>
         {% endfor %}
       </ul>

@@ -1,5 +1,9 @@
 flynt-component[name='ArchiveInsights'] {
   .post {
+    .link {
+      text-decoration: none !important;
+    }
+
     &:hover,
     &:focus {
       .image {
@@ -22,36 +26,6 @@ flynt-component[name='ArchiveInsights'] {
         }
       }
     }
-    
-    .link {
-      @include reset-link;
-      color: currentColor;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .content {
-      color: var(--color-text);
-      flex-grow: 1;
-
-      #{$heading-selectors} {
-        color: var(--color-headline);
-      }
-    }
-
-    .footer {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 var(--box-padding) var(--box-padding);
-      position: relative;
-      width: 100%;
-
-      .readingTime {
-        color: var(--color-text-muted);
-        font-size: var(--body-font-size-small);
-      }
-    }
   }
 
   @media (min-width: $breakpoint-desktop) {
@@ -61,8 +35,9 @@ flynt-component[name='ArchiveInsights'] {
 
         figure {
           img {
-            @apply max-h-[33vh];
-            // @apply max-h-[380px];
+            @apply max-h-[370px];
+            @apply xl:max-h-[345px];
+            @apply max:max-h-[330px];
           }
         }
         

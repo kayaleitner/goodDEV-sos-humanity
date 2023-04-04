@@ -48,6 +48,10 @@ flynt-component[name='ListingMap'] {
   }
 
   .post {
+    .link {
+      text-decoration: none !important;
+    }
+    
     &:hover,
     &:focus {
       .image {

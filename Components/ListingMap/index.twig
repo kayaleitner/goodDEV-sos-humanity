@@ -4,7 +4,6 @@
     name="ListingMap"
     class=""
     {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
-
   >
     <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
       {% if blockTitle %}
@@ -110,8 +109,8 @@
             data-latitude="{{ post.latitude }}" 
             data-longitude="{{ post.longitude }}">
             <div class="post w-full grow">
-              {% if post.thumbnail %}
-                <a class="no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
+              <a class="link flex flex-col h-full no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
+                {% if post.thumbnail %}
                   <figure class="figure hidden md:block aspect-square overflow-hidden">
                     <img class="image lazyload h-full w-full aspect-square object-cover transition duration-200 ease-linear"
                       src="{{  post.thumbnail.src | resize(32) }}"
@@ -120,29 +119,29 @@
                       data-src="{{ post.thumbnail.src }}"
                       alt="{{ post.thumbnail.alt|e }}">
                   </figure>
-                </a>
-              {% endif %}
-              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch">
-                <div class="flex flex-col gap-sm">
-                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
-                    <div class="w-1/2">
-                      <div class="caption font-mono font-bold">{{ post.boxGenerationSize }} kWp</div>
-                      <div class="caption">{{ post.boxMountingType.label }}</div>
+                {% endif %}
+                <div class="content py-sm flex flex-col gap-sm justify-between items-stretch grow">
+                  <div class="flex flex-col gap-sm">
+                    <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
+                      <div class="w-1/2">
+                        <div class="caption font-mono font-bold">{{ post.boxGenerationSize }} kWp</div>
+                        <div class="caption">{{ post.boxMountingType.label }}</div>
+                      </div>
+                      <div class="w-1/2">
+                      </div>
                     </div>
-                    <div class="w-1/2">
+                    <div class="w-full flex flex-col justify-between align-start items-start">
+                      {% for term in post.terms('country')  %}
+                        <div class="paragraph">{{ term }}</div>
+                      {% endfor %}
+                      <h2 class="subtitle w-full grow">{{ post.title }}</h2>
                     </div>
                   </div>
-                  <div class="w-full flex flex-col justify-between align-start items-start">
-                    {% for term in post.terms('country')  %}
-                      <div class="paragraph">{{ term }}</div>
-                    {% endfor %}
-                    <h2 class="subtitle w-full grow">{{ post.title }}</h2>
+                  <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
+                    <a class="button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
                   </div>
                 </div>
-                <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
-                  <a class="button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
           {% endfor %}
