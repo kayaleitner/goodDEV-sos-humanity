@@ -60,7 +60,8 @@
           {% endif %}
           {% for socials in social %}
             <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
-              <i class="lni lni-{{ socials.platform.label|lower }}-fill"></i>
+              <i class="eva eva-{{ socials.platform.label|lower }}"></i>
+              {# <i class="lni lni-{{ socials.platform.label|lower }}-fill"></i> #}
               {# {{ socials.icon }} #}
             </a>
           {% endfor %}
