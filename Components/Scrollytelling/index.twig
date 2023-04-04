@@ -22,9 +22,9 @@
                 data-sizes="auto">
             {% endif %}
             {% if item.contentHtml %}
-              <article class="max-w-[600px] mx-auto">
+              <div class="row max-w-[600px] mx-auto">
                 {{ item.contentHtml|e('wp_kses_post') }}
-              </article>
+              </div>
             {% endif %}
           </div>
         {% endfor %}

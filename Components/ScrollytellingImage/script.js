@@ -58,10 +58,10 @@ mm.add('(min-width: 1280px)', () => {
     gsap.set(elem, { position: 'absolute', top: 0 })
 
     tl.from(elem.querySelector('img'), { autoAlpha: 0 }, i)
-    tl.from(elem.querySelector('article'), { autoAlpha: 1, translateY: '100vh' }, i)
+    tl.from(elem.querySelector('.row'), { autoAlpha: 1, translateY: '100vh' }, i)
 
     if (i !== points.length - 1) {
-      tl.to(elem.querySelector('article'), { autoAlpha: 1, translateY: '-100vh' }, i + 0.75)
+      tl.to(elem.querySelector('.row'), { autoAlpha: 1, translateY: '-100vh' }, i + 0.75)
       tl.to(elem.querySelector('img'), { autoAlpha: 0 }, i + 0.75)
     }
   })
