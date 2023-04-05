@@ -36,9 +36,8 @@
                   <div class="w-full h-full p-sm flex flex-row justify-between align-middle items-center border caption">
                     <div>
                       <div class="font-mono font-bold">
-                        <span>City,</span>
                         {% for term in post.terms('country')  %}
-                          <span class="caption">{{ term }}</span>
+                          <div class="caption">{{ term }}</div>
                         {% endfor %}
                       </div>
                       {% for term in post.terms('division')  %}
