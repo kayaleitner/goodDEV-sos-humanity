@@ -14,31 +14,31 @@ ScrollTrigger.defaults({
   markers: false
 })
 
-const points = gsap.utils.toArray('.point')
+const points = gsap.utils.toArray('.panel')
+
+const height = 100 * points.length
 
 mm.add('(min-width: 1280px)', () => {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '#scrollytellingImage',
-      start: 'top center',
-      end: '200%',
-      scrub: true,
-      markers: false,
-      id: 'points'
-    }
-  })
-
   // eslint-disable-next-line no-unused-vars
   const pinner = gsap.timeline({
     scrollTrigger: {
       trigger: '#scrollytellingImage .wrapper',
       start: 'top top',
-      end: '200%',
+      end: '+=' + height + '%',
       scrub: true,
-      pin: '#scrollytellingImage .wrapper',
-      pinSpacing: true,
+      pin: true,
       id: 'pinning',
       markers: false
+    }
+  })
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#scrollytellingImage',
+      start: 'top bottom',
+      end: '+=' + height + '%',
+      scrub: true,
+      id: 'points'
     }
   })
 
@@ -57,12 +57,12 @@ mm.add('(min-width: 1280px)', () => {
   points.forEach(function (elem, i) {
     gsap.set(elem, { position: 'absolute', top: 0 })
 
-    tl.from(elem.querySelector('img'), { autoAlpha: 0 }, i)
-    tl.from(elem.querySelector('.row'), { autoAlpha: 1, translateY: '100vh' }, i)
+    tl.from(elem.querySelector('img'), { opacity: 0, display: 'none' }, i)
+    tl.from(elem.querySelector('.row'), { opacity: 0, display: 'none', translateY: '75vh' }, i)
 
     if (i !== points.length - 1) {
-      tl.to(elem.querySelector('.row'), { autoAlpha: 1, translateY: '-100vh' }, i + 0.75)
-      tl.to(elem.querySelector('img'), { autoAlpha: 0 }, i + 0.75)
+      tl.to(elem.querySelector('.row'), { opacity: 1, display: 'block', translateY: '-75vh' }, i + 0.75)
+      tl.to(elem.querySelector('img'), { opacity: 1, display: 'block' }, i + 0.75)
     }
   })
 })

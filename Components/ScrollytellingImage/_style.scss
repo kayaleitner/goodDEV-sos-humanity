@@ -1,5 +1,12 @@
 flynt-component[name='ScrollytellingImage'] {
-  .point:last-child {
+  .panel:first-child {
+    img {
+      display: block !important;
+      opacity: 1 !important;
+    }
+  }
+
+  .panel:last-child {
     img {
       border: 0;
     }

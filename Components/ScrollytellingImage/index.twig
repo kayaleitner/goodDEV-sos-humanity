@@ -5,16 +5,17 @@
   style="background-color: var(--white);"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
-  {% if blockTitle %}
-    <div class="w-full lg:absolute z-50">
-      <div class="lg:w-full lg:max-w-screen-max mx-auto p-sm lg:p-lg subtitle font-bold text-black lg:text-white">{{ blockTitle }}</div>
-    </div>
-  {% endif %}
+  
   <div class="w-full mx-auto">
     <div id="scrollytellingImage" class="h-full relative">
       <div class="wrapper h-auto lg:h-screen w-full">
+        {% if blockTitle %}
+          <div class="w-full lg:absolute z-50">
+            <div class="lg:w-full lg:max-w-screen-max mx-auto p-sm lg:p-lg subtitle font-bold text-black lg:text-white">{{ blockTitle }}</div>
+          </div>
+        {% endif %}
         {% for item in scrollytelling %}
-          <div class="point h-auto lg:h-screen w-full m-0 px-sm lg:p-0 relative {% if item.hideOnMobile %}hidden lg:block{% endif %}">
+          <section class="panel h-auto lg:h-screen w-full m-0 px-sm lg:p-0 {% if item.hideOnMobile %}hidden lg:block{% endif %}">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-lg lg:absolute top-0 left-0 w-full h-full justify-center items-center">
               <div></div>
               {% if item.contentHtml %}
@@ -29,7 +30,7 @@
                 data-srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}"
                 data-sizes="auto">
             {% endif %}
-          </div>
+          </section>
         {% endfor %}
       </div>
     </div>
