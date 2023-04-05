@@ -1,29 +1,83 @@
-{% if posts|length > 0 %}
-  <flynt-component
-    load:on="visible"
-    name="ListingMap"
-    class=""
-    {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
-  >
-    <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
-      {% if blockTitle %}
-        <div class="w-full mx-auto pb-sm lg:pb-lg flex flex-col gap-sm justify-between align-start items-start content-start">
-          <div class="subtitle font-bold">{{ blockTitle }}</div>
-          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
-        </div>
-      {% endif %}
+<flynt-component
+  load:on="visible"
+  name="ListingMap"
+  class=""
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+>
+  <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+    {% if blockTitle %}
+      <div class="w-full mx-auto pb-sm lg:pb-lg flex flex-col gap-sm justify-between align-start items-start content-start">
+        <div class="subtitle font-bold">{{ blockTitle }}</div>
+        <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
+      </div>
+    {% endif %}
 
-      <div x-data="{ activeProject:  1, projects: [1, 2, 3] }" class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-start">
+    <div x-data="{ activeProject:  1, projects: [1, 2, 3, 4] }" class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-start">
+      
+      <!-- Prev/Next Arrows Mobile -->
+      <div class="button-wrapper absolute right-sm top-sm flex lg:hidden align-middle justify-end z-50">
+        <button 
+          type="button" 
+          data-ref="prev" 
+          class="slider-button slider-button--prev" 
+          @click="activeProject = activeProject === 1 ? projects.length : activeProject - 1">
+          <svg width="41" height="30" viewBox="0 0 41 30" fill="none">
+            <path d="M4.93801 13.9393C4.35222 14.5251 4.35222 15.4749 4.93801 16.0607L14.4839 25.6066C15.0697 26.1924 16.0195 26.1924 16.6053 25.6066C17.1911 25.0208 17.1911 24.0711 16.6053 23.4853L8.11999 15L16.6053 6.51472C17.1911 5.92893 17.1911 4.97918 16.6053 4.3934C16.0195 3.80761 15.0697 3.80761 14.484 4.3934L4.93801 13.9393ZM35.3438 13.5L5.99867 13.5L5.99867 16.5L35.3437 16.5L35.3438 13.5Z" fill="black"/>
+          </svg>
+        </button>
+        <button 
+          type="button" 
+          data-ref="next" 
+          class="slider-button slider-button--next" 
+          @click="activeProject = activeProject === projects.length ? 1 : activeProject + 1">
+          <svg width="40" height="30" viewBox="0 0 40 30" fill="none">
+            <path d="M35.4331 16.0607C36.0189 15.4749 36.0189 14.5251 35.4331 13.9393L25.8871 4.3934C25.3014 3.80761 24.3516 3.80761 23.7658 4.3934C23.18 4.97919 23.18 5.92893 23.7658 6.51472L32.2511 15L23.7658 23.4853C23.18 24.0711 23.18 25.0208 23.7658 25.6066C24.3516 26.1924 25.3014 26.1924 25.8871 25.6066L35.4331 16.0607ZM5.02734 16.5L34.3724 16.5L34.3724 13.5L5.02734 13.5L5.02734 16.5Z" fill="black"/>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="w-full md:w-2/3 lg:w-3/4 flex justify-center items-center mx-auto relative">
+        <div data-ref="mapWrapper" class="w-full h-auto aspect-video" id="dottedMap"></div>
         
-        <!-- Prev/Next Arrows Mobile -->
-        <div class="button-wrapper absolute right-sm top-sm flex lg:hidden align-middle justify-end z-50">
+        <!-- Dots -->
+        <div class="absolute top-0 w-full flex items-center justify-center px-4">
+          {% for item in projects %}
+            <button
+              @click="activeProject = {{loop.index}}"
+              class="
+                tab-control
+                bg-lightgreen
+                flex
+                w-[17.5px] h-[17.5px] 
+                -translate-x-[8.75px] -translate-y-[8.75px] 
+                md:w-[35px] md:h-[35px] 
+                md:-translate-x-[17.5px] md:-translate-y-[17.5px] 
+                rounded-full
+                overflow-hidden
+                transition-all duration-100 linear
+                absolute
+              "
+              :class="{ 'active': activeProject === {{loop.index}} }"
+              data-ref="pin"
+              data-latitude="{{ item.coordinates.lat }}" 
+              data-longitude="{{ item.coordinates.lng }}"
+            ></button>
+            {% endfor %}
+        </div>
+      </div>
+
+      <div 
+        class="w-full md:w-1/3 lg:w-1/4 mx-auto relative"
+      >
+        <!-- Prev/Next Arrows Desktop -->
+        <div class="button-wrapper absolute right-sm top-0 sm:right-0 hidden lg:flex align-middle justify-end z-50 lg:-translate-y-[120px]">
           <button 
             type="button" 
             data-ref="prev" 
             class="slider-button slider-button--prev" 
             @click="activeProject = activeProject === 1 ? projects.length : activeProject - 1">
-            <svg width="41" height="30" viewBox="0 0 41 30" fill="none">
-              <path d="M4.93801 13.9393C4.35222 14.5251 4.35222 15.4749 4.93801 16.0607L14.4839 25.6066C15.0697 26.1924 16.0195 26.1924 16.6053 25.6066C17.1911 25.0208 17.1911 24.0711 16.6053 23.4853L8.11999 15L16.6053 6.51472C17.1911 5.92893 17.1911 4.97918 16.6053 4.3934C16.0195 3.80761 15.0697 3.80761 14.484 4.3934L4.93801 13.9393ZM35.3438 13.5L5.99867 13.5L5.99867 16.5L35.3437 16.5L35.3438 13.5Z" fill="black"/>
+            <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="fill-black" d="M3.93801 13.9393C3.35222 14.5251 3.35222 15.4749 3.93801 16.0607L13.4839 25.6066C14.0697 26.1924 15.0195 26.1924 15.6053 25.6066C16.1911 25.0208 16.1911 24.0711 15.6053 23.4853L7.11999 15L15.6053 6.51472C16.1911 5.92893 16.1911 4.97918 15.6053 4.3934C15.0195 3.80761 14.0697 3.80761 13.484 4.3934L3.93801 13.9393ZM34.3438 13.5L4.99867 13.5L4.99867 16.5L34.3437 16.5L34.3438 13.5Z"/>
             </svg>
           </button>
           <button 
@@ -31,125 +85,73 @@
             data-ref="next" 
             class="slider-button slider-button--next" 
             @click="activeProject = activeProject === projects.length ? 1 : activeProject + 1">
-            <svg width="40" height="30" viewBox="0 0 40 30" fill="none">
-              <path d="M35.4331 16.0607C36.0189 15.4749 36.0189 14.5251 35.4331 13.9393L25.8871 4.3934C25.3014 3.80761 24.3516 3.80761 23.7658 4.3934C23.18 4.97919 23.18 5.92893 23.7658 6.51472L32.2511 15L23.7658 23.4853C23.18 24.0711 23.18 25.0208 23.7658 25.6066C24.3516 26.1924 25.3014 26.1924 25.8871 25.6066L35.4331 16.0607ZM5.02734 16.5L34.3724 16.5L34.3724 13.5L5.02734 13.5L5.02734 16.5Z" fill="black"/>
+            <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="fill-black" d="M30.7182 12.631C31.304 12.0452 31.304 11.0954 30.7182 10.5097L21.1723 0.963714C20.5865 0.377927 19.6368 0.377927 19.051 0.963713C18.4652 1.5495 18.4652 2.49925 19.051 3.08503L27.5363 11.5703L19.051 20.0556C18.4652 20.6414 18.4652 21.5911 19.051 22.1769C19.6368 22.7627 20.5865 22.7627 21.1723 22.1769L30.7182 12.631ZM0.3125 13.0703L29.6576 13.0703L29.6576 10.0703L0.3125 10.0703L0.3125 13.0703Z"/>
             </svg>
           </button>
         </div>
-        
-        <div class="w-full md:w-2/3 lg:w-3/4 flex justify-center items-center mx-auto relative">
-          <div data-ref="mapWrapper" class="w-full h-auto aspect-video" id="dottedMap"></div>
-          
-          <!-- Dots -->
-          <div class="absolute top-0 w-full flex items-center justify-center px-4">
-            {% for post in posts %}
-              <button
-                @click="activeProject = {{loop.index}}"
-                class="
-                  tab-control
-                  bg-lightgreen
-                  flex
-                  w-[17.5px] h-[17.5px] 
-                  -translate-x-[8.75px] -translate-y-[8.75px] 
-                  md:w-[35px] md:h-[35px] 
-                  md:-translate-x-[17.5px] md:-translate-y-[17.5px] 
-                  rounded-full
-                  overflow-hidden
-                  transition-all duration-100 linear
-                  absolute
-                "
-                :class="{ 'active': activeProject === {{loop.index}} }"
-                data-ref="pin"
-                data-latitude="{{ post.coordinates.lat }}" 
-                data-longitude="{{ post.coordinates.lng }}"
-              ></button>
-              {% endfor %}
-          </div>
-        </div>
-
-        <div 
-          class="w-full md:w-1/3 lg:w-1/4 mx-auto relative"
-        >
-          <!-- Prev/Next Arrows Desktop -->
-          <div class="button-wrapper absolute right-sm top-0 sm:right-0 hidden lg:flex align-middle justify-end z-50 lg:-translate-y-[125px]">
-            <button 
-              type="button" 
-              data-ref="prev" 
-              class="slider-button slider-button--prev" 
-              @click="activeProject = activeProject === 1 ? projects.length : activeProject - 1">
-              <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path class="fill-black" d="M3.93801 13.9393C3.35222 14.5251 3.35222 15.4749 3.93801 16.0607L13.4839 25.6066C14.0697 26.1924 15.0195 26.1924 15.6053 25.6066C16.1911 25.0208 16.1911 24.0711 15.6053 23.4853L7.11999 15L15.6053 6.51472C16.1911 5.92893 16.1911 4.97918 15.6053 4.3934C15.0195 3.80761 14.0697 3.80761 13.484 4.3934L3.93801 13.9393ZM34.3438 13.5L4.99867 13.5L4.99867 16.5L34.3437 16.5L34.3438 13.5Z"/>
-              </svg>
-            </button>
-            <button 
-              type="button" 
-              data-ref="next" 
-              class="slider-button slider-button--next" 
-              @click="activeProject = activeProject === projects.length ? 1 : activeProject + 1">
-              <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path class="fill-black" d="M30.7182 12.631C31.304 12.0452 31.304 11.0954 30.7182 10.5097L21.1723 0.963714C20.5865 0.377927 19.6368 0.377927 19.051 0.963713C18.4652 1.5495 18.4652 2.49925 19.051 3.08503L27.5363 11.5703L19.051 20.0556C18.4652 20.6414 18.4652 21.5911 19.051 22.1769C19.6368 22.7627 20.5865 22.7627 21.1723 22.1769L30.7182 12.631ZM0.3125 13.0703L29.6576 13.0703L29.6576 10.0703L0.3125 10.0703L0.3125 13.0703Z"/>
-              </svg>
-            </button>
-          </div>
-          <!-- Project -->
-          {% for post in posts %}
-          <div
-            x-cloak 
-            x-show="activeProject === {{loop.index}}" 
-            x-for="project in projects" :key="project" 
-            data-item="{{loop.index}}"
-            x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
-            x-transition:enter-start="opacity-0 hidden" 
-            x-transition:enter-end="opacity-100 block" 
-            x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
-            x-transition:leave-start="opacity-100 block" 
-            x-transition:leave-end="opacity-0 hidden" 
-            class="project flex items-start" 
-            :class="{ 'active': activeProject === {{loop.index}} }"
-            data-latitude="{{ post.latitude }}" 
-            data-longitude="{{ post.longitude }}">
-            <div class="post w-full grow">
-              <a class="link flex flex-col h-full no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
-                {% if post.thumbnail %}
-                  <figure class="figure hidden md:block aspect-square overflow-hidden">
-                    <img class="image lazyload h-full w-full aspect-square object-cover transition duration-200 ease-linear"
-                      src="{{  post.thumbnail.src | resize(32) }}"
-                      data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-                      data-sizes="auto"
-                      data-src="{{ post.thumbnail.src }}"
-                      alt="{{ post.thumbnail.alt|e }}">
-                  </figure>
-                {% endif %}
-                <div class="content py-sm flex flex-col gap-sm justify-between items-stretch grow">
-                  <div class="flex flex-col gap-sm">
-                    <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
-                      <div class="w-1/2">
-                        <div class="caption font-mono font-bold">{{ post.boxGenerationSize }} kWp</div>
-                        <div class="caption">{{ post.boxMountingType.label }}</div>
-                      </div>
-                      <div class="w-1/2">
-                      </div>
+        <!-- Project -->
+        {% for item in projects %}
+        <div
+          x-cloak 
+          x-show="activeProject === {{loop.index}}" 
+          x-for="project in projects" :key="project" 
+          data-item="{{loop.index}}"
+          x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
+          x-transition:enter-start="opacity-0 hidden" 
+          x-transition:enter-end="opacity-100 block" 
+          x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
+          x-transition:leave-start="opacity-100 block" 
+          x-transition:leave-end="opacity-0 hidden" 
+          class="project flex items-start" 
+          :class="{ 'active': activeProject === {{loop.index}} }"
+          data-latitude="{{ item.latitude }}" 
+          data-longitude="{{ item.longitude }}">
+          <div class="post w-full grow">
+            <a class="link flex flex-col h-full no-underline" href="{{ item.link }}" aria-label="{{ item.title }}">
+              {% if item.thumbnail %}
+                <figure class="figure hidden md:block aspect-square overflow-hidden">
+                  <img class="image lazyload h-full w-full aspect-square object-cover transition duration-200 ease-linear"
+                    src="{{  item.thumbnail.src | resize(32) }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
+                    data-sizes="auto"
+                    data-src="{{ post.thumbnail.src }}"
+                    alt="{{ item.thumbnail.alt|e }}">
+                </figure>
+              {% endif %}
+              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch grow">
+                <div class="flex flex-col gap-sm">
+                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
+                    <div class="w-1/2">
+                      <div class="caption font-mono font-bold">{{ item.boxGenerationSize }} kWp</div>
+                      <div class="caption">{{ item.boxMountingType.label }}</div>
                     </div>
-                    <div class="w-full flex flex-col justify-between align-start items-start">
-                      {% for term in post.terms('country')  %}
-                        <div class="paragraph">{{ term }}</div>
+                    <div class="w-1/2 flex flex-row justify-end">
+                      <span data-icon="{{ item.boxMountingType.label|lower }}"></span>
+                      {% for term in item.terms('customer_segment')  %}
+                        <span data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></span>
                       {% endfor %}
-                      <h2 class="subtitle w-full grow">{{ post.title }}</h2>
                     </div>
                   </div>
-                  <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
-                    <a class="button button--outlineBlack" href="{{ post.link }}" aria-label="{{ post.title }}">{{ labels.readMore }}</a>
+                  <div class="w-full flex flex-col justify-between align-start items-start">
+                    {% for term in item.terms('country')  %}
+                      <div class="paragraph">{{ term }}</div>
+                    {% endfor %}
+                    <h2 class="subtitle w-full grow">{{ item.title }}</h2>
                   </div>
                 </div>
-              </a>
-            </div>
+                <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
+                  <a class="button button--outlineBlack" href="{{ item.link }}" aria-label="{{ item.title }}">{{ labels.readMore }}</a>
+                </div>
+              </div>
+            </a>
           </div>
-          {% endfor %}
-
         </div>
+        {% endfor %}
 
       </div>
 
     </div>
-  </flynt-component>
-{% endif %}
+
+  </div>
+</flynt-component>
