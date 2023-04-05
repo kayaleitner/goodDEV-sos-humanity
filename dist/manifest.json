@@ -244,9 +244,25 @@
     "file": "assets/icon-ground-d2d8651f.svg",
     "src": "assets/icons/icon-ground.svg"
   },
+  "assets/icons/icon-linkedin-black.svg": {
+    "file": "assets/icon-linkedin-black-1717d900.svg",
+    "src": "assets/icons/icon-linkedin-black.svg"
+  },
+  "assets/icons/icon-linkedin-white.svg": {
+    "file": "assets/icon-linkedin-white-54325326.svg",
+    "src": "assets/icons/icon-linkedin-white.svg"
+  },
   "assets/icons/icon-roof.svg": {
     "file": "assets/icon-roof-4a0fc37c.svg",
     "src": "assets/icons/icon-roof.svg"
+  },
+  "assets/icons/icon-twitter-black.svg": {
+    "file": "assets/icon-twitter-black-794a2c02.svg",
+    "src": "assets/icons/icon-twitter-black.svg"
+  },
+  "assets/icons/icon-twitter-white.svg": {
+    "file": "assets/icon-twitter-white-f7991566.svg",
+    "src": "assets/icons/icon-twitter-white.svg"
   },
   "assets/images/logo.svg": {
     "file": "assets/logo-26c0c58f.svg",
@@ -277,7 +293,7 @@
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-926cec51.css",
+    "file": "assets/main-9c3a03bc.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
