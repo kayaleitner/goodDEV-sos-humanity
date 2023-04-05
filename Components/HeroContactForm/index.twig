@@ -2,7 +2,7 @@
   load:on="idle"
   name="HeroContactForm"
   class=""
-  style="background-color: var(--green);"
+  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   <div class="max-w-screen-max w-full mx-auto px-sm py-lg lg:p-lg">

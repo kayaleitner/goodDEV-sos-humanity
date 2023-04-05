@@ -2,7 +2,7 @@
   load:on="idle"
   name="HeroIllustration"
   class=""
-  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% endif %}; color:{% if options.colorText %}{{ options.colorText }}{% endif %};"
+  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %}; color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   >
   <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">

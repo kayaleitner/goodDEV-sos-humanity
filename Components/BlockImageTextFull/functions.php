@@ -76,23 +76,24 @@ function getACFLayout()
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
-            [
-                'label' => __('Background Color', 'flynt'),
-                'name' => 'bgcolor',
-                'type' => 'select',
-                'allow_null' => 0,
-                'multiple' => 0,
-                'ui' => 0,
-                'ajax' => 0,
-                'choices' => [
-                    'var(--primary)' => __('Primary', 'flynt'),
-                    'var(--secondary)' => __('Secondary', 'flynt')
-                ],
-                'return_format' => 'value',
-                // 'wrapper' => [
-                //     'width' => 50,
-                // ]
-            ],
+            FieldVariables\getColorBackground(),
+            // [
+            //     'label' => __('Background Color', 'flynt'),
+            //     'name' => 'bgcolor',
+            //     'type' => 'select',
+            //     'allow_null' => 0,
+            //     'multiple' => 0,
+            //     'ui' => 0,
+            //     'ajax' => 0,
+            //     'choices' => [
+            //         'var(--primary)' => __('Primary', 'flynt'),
+            //         'var(--secondary)' => __('Secondary', 'flynt')
+            //     ],
+            //     'return_format' => 'value',
+            //     // 'wrapper' => [
+            //     //     'width' => 50,
+            //     // ]
+            // ],
             [
                 'label' => __('Content', 'flynt'),
                 'name' => 'contentHtml',
