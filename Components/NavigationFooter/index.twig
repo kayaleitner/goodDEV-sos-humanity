@@ -3,7 +3,7 @@
     <div class="flex flex-col lg:flex-row align-top justify-between gap-lg w-full mb-xxl">
       {% if logoFooter %}
         <a href="{{ site.link }}">
-          <img class="logo lazyload max-w-[230px]"
+          <img class="logo lazyload w-[185px] lg:w-[250px]"
           src="{{ logoFooter.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', logoFooter.id)}}"
           data-sizes="auto">
@@ -40,7 +40,7 @@
             <div class="flex flex-row gap-xs">
               {% for socials in social %}
                 <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
-                  {{ socials.icon }}
+                  <span data-icon="{{ socials.platform.label|lower }}-white"></span>
                 </a>
               {% endfor %}
             </div>
