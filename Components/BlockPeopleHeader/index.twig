@@ -15,8 +15,7 @@
     <div class="social lg:w-1/2 flex flex-row gap-sm items-start justify-start">
       {% for item in post.socials %}
         <a class="no-underline text-subtitleMobile lg:text-subtitle" href="{{ item.url }}" target="_blank" aria-label="{{ item.platform.label }}">
-          <i class="eva eva-{{ item.platform.label|lower }}"></i>
-          {# {{ item.platform.label }} #}
+          <span data-icon="{{ item.platform.label|lower }}-black"></span>
         </a>
       {% endfor %}
       </ul>

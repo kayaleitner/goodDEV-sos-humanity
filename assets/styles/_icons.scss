@@ -1,4 +1,3 @@
-@import url('https://cdn.lineicons.com/4.0/lineicons.css');
 @import url('https://cdn.jsdelivr.net/npm/eva-icons@1.1.3/style/eva-icons.css');
 
 // Customer Segment
@@ -221,6 +220,68 @@
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-carport.svg');
     @apply ml-xs;
     @apply lg:ml-sm;
+    @apply scale-75;
+    @apply lg:scale-100;
+  }
+}
+
+// Social Media
+
+[data-icon='linkedin-white'] {
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-linkedin-white.svg');
+    @apply ml-xs;
+    @apply lg:ml-sm;
+    @apply scale-75;
+    @apply lg:scale-100;
+  }
+}
+
+[data-icon='linkedin-black'] {
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-linkedin-black.svg');
+    @apply mr-xs;
+    @apply lg:mr-sm;
+    @apply scale-75;
+    @apply lg:scale-100;
+  }
+}
+
+[data-icon='twitter-white'] {
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-twitter-white.svg');
+    @apply ml-xs;
+    @apply lg:ml-sm;
+    @apply scale-75;
+    @apply lg:scale-100;
+  }
+}
+
+[data-icon='twitter-black'] {
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-twitter-black.svg');
+    @apply mr-xs;
+    @apply lg:mr-sm;
+    @apply scale-75;
+    @apply lg:scale-100;
+  }
+}
+
+[data-icon='facebook-white'] {
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-facebook-white.svg');
+    @apply ml-xs;
+    @apply lg:ml-sm;
+    @apply scale-75;
+    @apply lg:scale-100;
+  }
+}
+
+[data-icon='facebook-black'] {
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-facebook-black.svg');
+    @apply mr-xs;
+    @apply lg:mr-sm;
     @apply scale-75;
     @apply lg:scale-100;
   }
