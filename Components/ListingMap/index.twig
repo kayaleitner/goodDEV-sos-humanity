@@ -12,7 +12,9 @@
       </div>
     {% endif %}
 
-    <div x-data="{ activeProject:  1, projects: [1, 2, 3, 4] }" class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-start">
+    <div 
+      x-data="{ activeProject:  1, projects: [1, 2, 3, 4] }" 
+      class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-start">
       
       <!-- Prev/Next Arrows Mobile -->
       <div class="button-wrapper absolute right-sm top-sm flex lg:hidden align-middle justify-end z-50">
@@ -76,7 +78,7 @@
             data-ref="prev" 
             class="slider-button slider-button--prev" 
             @click="activeProject = activeProject === 1 ? projects.length : activeProject - 1">
-            <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="40" height="30" viewBox="0 0 40 30" fill="none">
               <path class="fill-black" d="M3.93801 13.9393C3.35222 14.5251 3.35222 15.4749 3.93801 16.0607L13.4839 25.6066C14.0697 26.1924 15.0195 26.1924 15.6053 25.6066C16.1911 25.0208 16.1911 24.0711 15.6053 23.4853L7.11999 15L15.6053 6.51472C16.1911 5.92893 16.1911 4.97918 15.6053 4.3934C15.0195 3.80761 14.0697 3.80761 13.484 4.3934L3.93801 13.9393ZM34.3438 13.5L4.99867 13.5L4.99867 16.5L34.3437 16.5L34.3438 13.5Z"/>
             </svg>
           </button>
@@ -85,7 +87,7 @@
             data-ref="next" 
             class="slider-button slider-button--next" 
             @click="activeProject = activeProject === projects.length ? 1 : activeProject + 1">
-            <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="32" height="23" viewBox="0 0 32 23" fill="none">
               <path class="fill-black" d="M30.7182 12.631C31.304 12.0452 31.304 11.0954 30.7182 10.5097L21.1723 0.963714C20.5865 0.377927 19.6368 0.377927 19.051 0.963713C18.4652 1.5495 18.4652 2.49925 19.051 3.08503L27.5363 11.5703L19.051 20.0556C18.4652 20.6414 18.4652 21.5911 19.051 22.1769C19.6368 22.7627 20.5865 22.7627 21.1723 22.1769L30.7182 12.631ZM0.3125 13.0703L29.6576 13.0703L29.6576 10.0703L0.3125 10.0703L0.3125 13.0703Z"/>
             </svg>
           </button>
@@ -141,7 +143,7 @@
                   </div>
                 </div>
                 <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
-                  <a class="button button--outlineBlack" href="{{ item.link }}" aria-label="{{ item.title }}">{{ labels.readMore }}</a>
+                  <a class="button button--card" href="{{ item.link }}" aria-label="{{ item.title }}">{{ labels.readMore }}</a>
                 </div>
               </div>
             </a>

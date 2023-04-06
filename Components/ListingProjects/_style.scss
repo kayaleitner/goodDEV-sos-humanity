@@ -10,7 +10,7 @@ flynt-component[name='ListingProjects'] {
         transform: scale(1.1);
       }
 
-      .button--outlineBlack {
+      .button--card {
         @apply border-transparent;
         @apply bg-green;
       }
