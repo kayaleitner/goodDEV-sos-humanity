@@ -1,7 +1,6 @@
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
-// Fade-in Animation
 gsap.registerPlugin(ScrollTrigger)
 
 // Responsive
