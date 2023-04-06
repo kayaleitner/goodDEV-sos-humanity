@@ -6,27 +6,6 @@ use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-// const POST_TYPE = 'project';
-
-// add_filter('Flynt/addComponentData?name=ListingMap', function ($data) {
-//     $postType = POST_TYPE;
-
-//     $data['taxonomies'] = $data['taxonomies'] ?: [];
-
-//     $data['posts'] = Timber::get_posts([
-//         'post_status' => 'publish',
-//         'post_type' => $postType,
-//         'category' => join(',', array_map(function ($taxonomy) {
-//             return $taxonomy->term_id;
-//         }, $data['taxonomies'])),
-//         'posts_per_page' => $data['options']['maxColumns'],
-//         'ignore_sticky_posts' => 1,
-//         'post__not_in' => array(get_the_ID())
-//     ]);
-
-//     return $data;
-// });
-
 function getACFLayout()
 {
     return [
