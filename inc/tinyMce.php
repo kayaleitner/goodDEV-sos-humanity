@@ -11,12 +11,12 @@ namespace Flynt\TinyMce;
 
 use Flynt\Utils\Asset;
 
-// Add tinyMce styles to editor
+// Add tinyMce styles to editor.
 add_action('admin_init', function () {
-    add_editor_style(Asset::requireUrl('assets/tinymce.scss'));
+    add_editor_style(Asset::requireUrl('assets/tinyMce.scss'));
 });
 
-// First Toolbar
+// First Toolbar.
 add_filter('mce_buttons', function ($buttons) {
     $config = getConfig();
     if ($config && isset($config['toolbars'])) {

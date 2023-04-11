@@ -40,3 +40,8 @@ add_action('admin_enqueue_scripts', function () {
 
     wp_enqueue_style('Flynt/assets/admin', Asset::requireUrl('assets/admin.scss'), [], null);
 });
+
+// Add tinyMce styles to editor.
+add_action('admin_init', function () {
+    add_editor_style(Asset::requireUrl('assets/tinyMce.scss'));
+});
