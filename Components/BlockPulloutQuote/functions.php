@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'BlockPulloutQuote',
-        'label' => __('Block: Pullout Quote', 'flynt'),
+        'label' => __('Pullout Quote', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),

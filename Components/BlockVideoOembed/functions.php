@@ -10,7 +10,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockVideoOembed',
-        'label' =>  __('Block: Video', 'flynt'),
+        'label' =>  __('Video', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('Imagery', 'flynt'),

@@ -10,7 +10,7 @@ function getACFLayout()
 {
     return [
         'name' => 'ListingMap',
-        'label' => __('Listing: Map', 'flynt'),
+        'label' => __('Interactive Projects Map', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),

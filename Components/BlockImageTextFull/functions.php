@@ -26,7 +26,7 @@ function getACFLayout()
 {
     return [
         'name' => 'BlockImageTextFull',
-        'label' => __('Block: Image/Text Full', 'flynt'),
+        'label' => __('At a Glance (Image+Text)', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('Image', 'flynt'),

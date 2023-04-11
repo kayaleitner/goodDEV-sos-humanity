@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'HeroIllustration',
-        'label' => __('Hero: Illustration', 'flynt'),
+        'label' => __('Banner: 3 Illustrations', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),

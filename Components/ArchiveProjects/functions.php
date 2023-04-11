@@ -33,7 +33,7 @@ function getACFLayout()
 {
     return [
         'name' => 'ArchiveProjects',
-        'label' => __('Archive: Projects', 'flynt'),
+        'label' => __('Archive: Projects (filters)', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),

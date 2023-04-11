@@ -17,7 +17,7 @@ function getACFLayout()
 {
     return [
         'name' => 'sliderText',
-        'label' => 'Slider: Text',
+        'label' => 'Carousel: Boxes',
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),

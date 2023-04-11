@@ -8,7 +8,7 @@ function projects_default_components($value, $post_id, $field)
     }
     $value = array(
         array(
-            'acf_fc_layout' => 'BlockWysiwyg',
+            'acf_fc_layout' => 'BlockCta',
         )
     );
     return $value;

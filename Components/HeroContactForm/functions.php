@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'HeroContactForm',
-        'label' => __('Hero: Contact Form', 'flynt'),
+        'label' => __('Contact Form', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General/ContactForm', 'flynt'),

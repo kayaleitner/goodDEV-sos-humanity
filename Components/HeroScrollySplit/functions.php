@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'heroScrollySplit',
-        'label' => __('Hero: Scrolly Split', 'flynt'),
+        'label' => __('Scrollytelling: Hero', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('Slides', 'flynt'),

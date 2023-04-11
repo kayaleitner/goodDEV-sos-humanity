@@ -17,7 +17,7 @@ function getACFLayout()
 {
     return [
         'name' => 'sliderImages',
-        'label' => __('Slider: Images', 'flynt'),
+        'label' => __('Carousel: Images', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
