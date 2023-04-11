@@ -18,6 +18,7 @@
   src: url('../assets/fonts/AeonikTRIAL-Bold.woff2') format('woff2');
 }
 
+
 html {
   color: var(--black);
   font-family: 'Aeonik', Verdana, sans-serif;
@@ -31,10 +32,14 @@ html {
   // }
 }
 
-body,
+body {
+  font-family: 'Aeonik', Verdana, sans-serif;
+}
+
 p
 .paragraph,
 .body {
+  font-family: 'Aeonik', Verdana, sans-serif;
   font-size: 1.25rem;
   line-height: normal;
 
