@@ -94,6 +94,10 @@ module.exports = {
               '&:hover': {
                 color: 'currentColor'
               }
+            },
+            hr: {
+              marginBottom: '1.3em',
+              marginTop: '0'
             }
           }
         },
@@ -101,10 +105,14 @@ module.exports = {
           css: {
             color: 'currentColor',
             fontSize: '1.563rem',
-            lineHeight: '140%'
+            lineHeight: '140%',
             // '@media (min-width: 1280px)': {
             //   fontSize: '1.563rem'
             // }
+            hr: {
+              marginBottom: '1.3em',
+              marginTop: '0'
+            }
           }
         }
       })
