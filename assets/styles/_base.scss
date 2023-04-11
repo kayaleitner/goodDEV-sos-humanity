@@ -2,8 +2,21 @@
 *  Typography
 */
 
-@include font-face('Aeonik', 'AeonikTRIAL-Regular', '400', 'normal');
-@include font-face('Aeonik', 'AeonikTRIAL-Bold', '700', 'normal');
+@font-face {
+  font-display: swap;
+  font-family: 'Aeonik';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/AeonikTRIAL-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Aeonik';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/AeonikTRIAL-Bold.woff2') format('woff2');
+}
 
 html {
   color: var(--black);
