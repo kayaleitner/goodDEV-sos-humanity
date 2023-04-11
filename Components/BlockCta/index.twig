@@ -1,0 +1,9 @@
+<flynt-component
+  load:on="idle" name="BlockCta" class="w-full max-w-screen-max mx-auto p-sm md:p-lg"
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+  >
+  <div class="wrapper w-full lg:w-2/3 prose lg:prose-lg max-w-none">
+    {{ contentHtml|e('wp_kses_post') }}
+    <a class="button button--primary" href="{{buttonLink.url}}">{{buttonLink.title}}</a>
+  </div>
+</flynt-component>
