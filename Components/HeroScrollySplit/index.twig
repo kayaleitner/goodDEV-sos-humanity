@@ -13,8 +13,8 @@
       grid grid-cols-3 scrollygridcontainer
       h-screen w-full
       overflow-hidden
-      bg-cbegreen
     "
+    style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};"
   >
     {% set images = [slides[1], slides[0], slides[1]] %}
     {% for slide in images %}
@@ -58,8 +58,9 @@
             top-0 left-0 right-0
             items-end md:items-center
             md:opacity-0
-            text-white bg-cbegreen md:bg-transparent
-          ">
+            md:bg-transparent
+          "
+          style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
             <h1 class="md:text-[3.438rem] md:w-1/2 p-4 md:pr-24 text-8xl md:text-right font-light w-full {% if loop.index == 2 %} hidden md:block {% endif %}">
               <span class="block">{{ slide.text_1 }}</span>
               <span class="block md:hidden">{{ slide.text_2 }}</span>
@@ -95,8 +96,9 @@
             top-0 left-0 right-0
             md:items-center md:justify-end
             md:opacity-0 {% if loop.index != 2 %} opacity-0 {% endif %}
-            text-white bg-cbegreen md:bg-transparent
-          ">
+            md:bg-transparent
+          "
+          style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
             <h1 class="md:text-[3.438rem] md:w-1/2 p-4 md:pl-24 text-8xl font-light h-1/2 md:h-auto {% if loop.index != 2 %} hidden md:block {% endif %}">
               <span class="block md:hidden">{{ slide.text_1 }}</span>
               <span class="block">{{ slide.text_2 }}</span>
@@ -125,8 +127,8 @@
         {% endif %}
         <div
           id="dot-{{i}}"
-          class="scrollyDot rounded-full bg-white m-2 aspect-square"
-          style="width:{{s}}px;"
+          class="scrollyDot rounded-full m-2 aspect-square"
+          style="width:{{s}}px; background:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};"
         ></div>
       {% endfor %}
     </div>

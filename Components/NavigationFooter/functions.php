@@ -4,6 +4,7 @@ namespace Flynt\Components\NavigationFooter;
 
 use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
+use Flynt\FieldVariables;
 use Flynt\Shortcodes;
 use Flynt\ComponentManager;
 use Timber\Timber;
@@ -186,46 +187,6 @@ Options::addTranslatable('NavigationFooter', [
             ],
         ]
     ],
-    // [
-    //     'label' => __('Content Examples', 'flynt'),
-    //     'name' => 'templateTab',
-    //     'type' => 'tab',
-    //     'placement' => 'top',
-    //     'endpoint' => 0,
-    // ],
-    // [
-    //     'label' => __('Content Examples', 'flynt'),
-    //     'instructions' => __('Want some content inspiration? Here they are!', 'flynt'),
-    //     'name' => 'groupContentExamples',
-    //     'type' => 'group',
-    //     'sub_fields' => [
-    //         [
-    //             /* translators: %s: Placeholder for the current year */
-    //             'label' => sprintf(__('© %s Website Name', 'flynt'), date_i18n('Y')),
-    //             'name' => 'messageShortcodeCopyrightYearWebsiteName',
-    //             'type' => 'message',
-    //             'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle]</code>',
-    //             'new_lines' => 'wpautop',
-    //             'esc_html' => 0,
-    //             'wrapper' => [
-    //                 'width' => 50
-    //             ],
-    //         ],
-    //         [
-    //             /* translators: %s: Placeholder for the current year */
-    //             'label' => sprintf(__('© %s Website Name — Subtitle', 'flynt'), date_i18n('Y')),
-    //             'name' => 'messageShortcodeCopyrightYearWebsiteNameTagLine',
-    //             'type' => 'message',
-    //             'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle] ' . htmlspecialchars('&mdash;') . ' [tagline]</code>',
-    //             'new_lines' => 'wpautop',
-    //             'esc_html' => 0,
-    //             'wrapper' => [
-    //                 'width' => 50
-    //             ]
-    //         ]
-    //     ]
-    // ],
-    // Shortcodes\getShortcodeReference(),
     [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
@@ -250,4 +211,14 @@ Options::addTranslatable('NavigationFooter', [
             ],
         ],
     ],
+    [
+        'label' => __('Options', 'flynt'),
+        'name' => 'optionsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    // FieldVariables\getTheme(),
+    FieldVariables\getColorBackground(),
+    FieldVariables\getColorText(),
 ]);

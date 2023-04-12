@@ -1,4 +1,8 @@
-<flynt-component load:on="visible" name="NavigationFooter" class="text-white w-full left-0 bottom-0" style="background: var(--secondary);">
+<flynt-component 
+  load:on="visible" 
+  name="NavigationFooter" 
+  class="w-full left-0 bottom-0" 
+  style="background: {% if colorBackground %}{{ colorBackground }}{% else %}var(--secondary){% endif %}; color:{% if colorText %}{{ colorText }}{% else %}var(--white){% endif %};">
   <div class="max-w-screen-max mx-auto flex flex-col px-sm py-lg lg:p-lg">
     <div class="flex flex-col lg:flex-row align-top justify-between gap-lg w-full mb-xxl">
       {% if logoFooter %}
