@@ -75,7 +75,7 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    FieldVariables\getTheme(),
+                    // FieldVariables\getTheme(),
                     FieldVariables\getNavStyle(),
                     [
                         'label' => __('Max Number of Items', 'flynt'),

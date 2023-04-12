@@ -81,7 +81,7 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    FieldVariables\getTheme(),
+                    // FieldVariables\getTheme(),
                     FieldVariables\getColorBackground(),
                     FieldVariables\getNavStyle('dark-blur'),
                 ]

@@ -48,7 +48,7 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    FieldVariables\getTheme(),
+                    // FieldVariables\getTheme(),
                     FieldVariables\getNavStyle(),
                 ]
             ]
