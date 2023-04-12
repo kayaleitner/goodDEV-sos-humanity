@@ -29,7 +29,7 @@
         {% for box in contentBoxes %}
           <div class="slider-item swiper-slide p-sm lg:p-md lg:mr-md flex flex-col justify-between" style="background-color: {% if box.colorBackground %}{{ box.colorBackground }}{% else %}var(--secondary){% endif %}; color:{% if box.colorText %}{{ box.colorText }}{% else %}var(--white){% endif %};">
             <div class="block sm:hidden py-sm"></div>
-            {% if box.panelTextbox %}<div class="h5">{{ box.panelTextbox|e }}</div>{% endif %}
+            {% if box.panelTextbox %}<div class="body">{{ box.panelTextbox|e }}</div>{% endif %}
             {% if box.panelLogo %}
               <div class="">
                 <img class="logo lazyload w-auto max-w-[100px]"
@@ -38,7 +38,7 @@
                 data-sizes="auto">
               </div>
             {% endif %}
-            {% if box.panelAuthor %}<div class="h6">{{ box.panelAuthor }}</div>{% endif %}
+            {% if box.panelAuthor %}<div class="caption">{{ box.panelAuthor }}</div>{% endif %}
             <div class="block sm:hidden py-xs"></div>
           </div>
         {% endfor %}
