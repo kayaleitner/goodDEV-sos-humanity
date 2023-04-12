@@ -12,7 +12,7 @@
     "src": "Components/BlockImageTextFull/Assets/suitcase.svg"
   },
   "Components/BlockImageTextFull/script.js": {
-    "file": "assets/script-96859963.js",
+    "file": "assets/script-987c1829.js",
     "imports": [
       "assets/main.js",
       "__commonjsHelpers-87174ba5.js"
@@ -38,17 +38,8 @@
     "isDynamicEntry": true,
     "src": "Components/BlockVideoOembed/script.js"
   },
-  "Components/GridPostsArchive/script.js": {
-    "file": "assets/script-a317b759.js",
-    "imports": [
-      "_index-2a8ce3c2.js",
-      "_helpers-0bb72b7a.js"
-    ],
-    "isDynamicEntry": true,
-    "src": "Components/GridPostsArchive/script.js"
-  },
   "Components/HeroIllustration/script.js": {
-    "file": "assets/script-f4812e32.js",
+    "file": "assets/script-f5b163dd.js",
     "imports": [
       "assets/main.js"
     ],
@@ -59,7 +50,7 @@
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-fd691f36.js",
+    "file": "assets/script-df3b21d7.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -86,9 +77,8 @@
     "src": "Components/ListingMap/script.js"
   },
   "Components/NavigationBurger/script.js": {
-    "file": "assets/script-4eadc785.js",
+    "file": "assets/script-ec8a16df.js",
     "imports": [
-      "_index-2a8ce3c2.js",
       "_helpers-0bb72b7a.js",
       "assets/main.js"
     ],
@@ -116,7 +106,7 @@
     "src": "Components/NavigationFooter/Assets/twitter.svg"
   },
   "Components/NavigationMain/script.js": {
-    "file": "assets/script-b12c2dbb.js",
+    "file": "assets/script-e0260206.js",
     "imports": [
       "assets/main.js"
     ],
@@ -124,7 +114,7 @@
     "src": "Components/NavigationMain/script.js"
   },
   "Components/Scrollytelling/script.js": {
-    "file": "assets/script-7b93ac9e.js",
+    "file": "assets/script-ca0f7d22.js",
     "imports": [
       "assets/main.js"
     ],
@@ -132,7 +122,7 @@
     "src": "Components/Scrollytelling/script.js"
   },
   "Components/ScrollytellingImage/script.js": {
-    "file": "assets/script-466068a0.js",
+    "file": "assets/script-ee55d0d8.js",
     "imports": [
       "assets/main.js"
     ],
@@ -171,9 +161,6 @@
   },
   "_helpers-0bb72b7a.js": {
     "file": "assets/helpers-0bb72b7a.js"
-  },
-  "_index-2a8ce3c2.js": {
-    "file": "assets/index-2a8ce3c2.js"
   },
   "_index-b9ca5473.js": {
     "file": "assets/index-b9ca5473.js",
@@ -261,7 +248,6 @@
       "Components/BlockImageTextFull/script.js",
       "Components/BlockProjectBox/script.js",
       "Components/BlockVideoOembed/script.js",
-      "Components/GridPostsArchive/script.js",
       "Components/HeroIllustration/script.js",
       "Components/HeroScrollySplit/script.js",
       "Components/ListComponents/script.js",
@@ -273,12 +259,12 @@
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-ade33cc1.js",
+    "file": "assets/main-d4f2b8bf.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-92577de5.css",
+    "file": "assets/main-1b50f54f.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
