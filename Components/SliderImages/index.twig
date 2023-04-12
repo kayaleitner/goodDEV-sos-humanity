@@ -1,32 +1,37 @@
-<flynt-component load:on="idle" name="SliderImages"
-  class="w-full max-w-screen-max mx-auto p-sm md:p-lg"
+<flynt-component 
+  load:on="idle" 
+  name="SliderImages"
+  class="w-full"
+  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
->
+  >
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="wrapper w-full lg:w-2/3">
-    {% if blockTitle %}
-    <div class="subtitle font-bold text-white pb-xl z-50">{{ blockTitle }}</div>
-    {% endif %}
-    <div data-ref="slider" class="slider swiper-container">
-      <div class="swiper-wrapper">
-        {% for image in images %}
-          <div class="slider-item swiper-slide">
-            <figure class="figure">
-              <img class="figure-image lazyload w-full h-full mx-auto object-cover"
-                src="{{ image.src | resize(32) }}"
-                data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
-                data-sizes="auto"
-                alt="{{ image.alt|e }}">
-                {% if image.caption %}
-                  <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
-                {% endif %}
-            </figure>
-          </div>
-        {% endfor %}
+  <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-lg">
+    <div class="wrapper w-full lg:w-2/3">
+      {% if blockTitle %}
+      <div class="subtitle font-bold text-white pb-xl z-50">{{ blockTitle }}</div>
+      {% endif %}
+      <div data-ref="slider" class="slider swiper-container">
+        <div class="swiper-wrapper">
+          {% for image in images %}
+            <div class="slider-item swiper-slide">
+              <figure class="figure">
+                <img class="figure-image lazyload w-full h-full mx-auto object-cover"
+                  src="{{ image.src | resize(32) }}"
+                  data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
+                  data-sizes="auto"
+                  alt="{{ image.alt|e }}">
+                  {% if image.caption %}
+                    <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+                  {% endif %}
+              </figure>
+            </div>
+          {% endfor %}
+        </div>
+        <div data-slider-pagination data-ref="pagination" class="slider-pagination swiper-pagination-fraction"></div>
+        {# <button type="button" data-ref="prev" class="slider-button slider-button--prev"></button>
+        <button type="button" data-ref="next" class="slider-button slider-button--next"></button> #}
       </div>
-      <div data-slider-pagination data-ref="pagination" class="slider-pagination swiper-pagination-fraction"></div>
-      {# <button type="button" data-ref="prev" class="slider-button slider-button--prev"></button>
-      <button type="button" data-ref="next" class="slider-button slider-button--next"></button> #}
     </div>
   </div>
 </flynt-component>

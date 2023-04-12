@@ -40,6 +40,8 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     // FieldVariables\getTheme(),
+                    FieldVariables\getColorBackground(),
+                    FieldVariables\getColorText(),
                     FieldVariables\getNavStyle(),
                 ]
             ]

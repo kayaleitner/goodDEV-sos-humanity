@@ -1,8 +1,13 @@
 <flynt-component
-  load:on="idle" name="BlockWysiwyg" class="w-full max-w-screen-max mx-auto p-sm md:p-lg"
+  load:on="idle" 
+  name="BlockWysiwyg" 
+  class="w-full"
+  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   >
-  <div class="wrapper w-full lg:w-2/3 prose lg:prose-lg max-w-none">
-    {{ contentHtml|e('wp_kses_post') }}
+  <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-lg">
+    <div class="wrapper lg:w-2/3 prose lg:prose-lg">
+      {{ contentHtml|e('wp_kses_post') }}
+    </div>
   </div>
 </flynt-component>
