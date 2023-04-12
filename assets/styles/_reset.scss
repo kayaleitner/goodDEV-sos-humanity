@@ -128,8 +128,10 @@ sup {
   [name='BlockWysiwyg'],
   [name='BlockCta'],
   [name='BlockImage'] {
-    padding-left: 0;
-    padding-right: 0;
+    .outer {
+      padding-left: 0;
+      padding-right: 0;
+    }
 
     .wrapper {
       width: 100%;
@@ -140,9 +142,13 @@ sup {
 .single-post {
   [name='SliderImages'],
   [name='BlockWysiwyg'],
+  [name='BlockCta'],
+  [name='BlockPulloutQuote'],
   [name='BlockImage'] {
-    padding-left: 0;
-    padding-right: 0;
+    .outer {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 

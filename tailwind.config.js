@@ -95,6 +95,12 @@ module.exports = {
                 color: 'currentColor'
               }
             },
+            strong: {
+              color: 'currentColor',
+              '&:hover': {
+                color: 'currentColor'
+              }
+            },
             hr: {
               marginBottom: '1.3em',
               marginTop: '0'
