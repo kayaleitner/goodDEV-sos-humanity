@@ -302,6 +302,14 @@ add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
 });
 ```
 
+### Comments
+
+All comments are disabled globally for security purposes in `inc/disableComments.php`
+
+### Rest API
+
+The Rest API is disabled for security purposes in `inc/disableRestApi.php`
+
 ## Maintainers
 
 This project is maintained by [bleech](https://github.com/bleech).
