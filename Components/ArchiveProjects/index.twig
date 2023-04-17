@@ -1,6 +1,10 @@
-{% if posts|length > 0 %}
-  <flynt-component load:on="visible" name="ArchiveProjects" data-type="listing" class="" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
-    <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+<flynt-component load:on="visible" name="ArchiveProjects" data-type="listing" class="" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
+  <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+    {% if terms %}
+      {% include 'Partials/_filter.twig' %}
+    {% endif %}
+
+    {% if posts|length > 0 %}
       <ul
         class="
           w-full
@@ -13,6 +17,13 @@
           {% include 'Partials/_post.twig' with {post: post} %}
         {% endfor %}
       </ul>
-    </div>
+      {% else %}
+        <p class="posts-empty">{{ labels.noPostsFound }}</p>
+      {% endif %}
+
+      {% set pagination = posts.pagination %}
+      {% if pagination.pages %}
+        {% include 'Partials/_pagination.twig' %}
+      {% endif %}
+  </div>
   </flynt-component>
-{% endif %}
