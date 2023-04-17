@@ -11,23 +11,100 @@ const POST_TYPE = 'project';
 add_filter('Flynt/addComponentData?name=ListingProjects', function ($data) {
     $postType = POST_TYPE;
 
-    $data['taxonomies'] = $data['taxonomies'] ?: [];
+    $customerSegments = $data['customerSegments'] ?: [];
+    $country = $data['country'] ?: [];
 
-    $data['posts'] = Timber::get_posts([
-        'post_status' => 'publish',
-        'post_type' => $postType,
-        'category' => join(',', array_map(function ($taxonomy) {
-            return $taxonomy->term_id;
-        }, $data['taxonomies'])),
-        'posts_per_page' => $data['options']['maxPosts'],
-        'ignore_sticky_posts' => 1,
-        'post__not_in' => array(get_the_ID())
-    ]);
-
-    $data['postTypeArchiveLink'] = get_post_type_archive_link($postType);
+    if (empty($customerSegments) && empty($country)) {
+        $data['posts'] = Timber::get_posts([
+            'post_status' => 'publish',
+            'post_type' => $postType,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'posts_per_page' => 4,
+            'ignore_sticky_posts' => 1,
+            'post__not_in' => array(get_the_ID()),
+        ]);
+    } else {
+        $data['posts'] = Timber::get_posts([
+            'post_status' => 'publish',
+            'post_type' => $postType,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'tax_query' => array(
+                'relation' => 'OR',
+                array(
+                    'taxonomy' => 'customer_segment',
+                    'field' => 'slug',
+                    'terms' => $customerSegments,
+                ),
+                array(
+                    'taxonomy' => 'country',
+                    'field' => 'slug',
+                    'terms' => $country,
+                )
+            ),
+            'posts_per_page' => $data['options']['maxPosts'],
+            'ignore_sticky_posts' => 1,
+            'post__not_in' => array(get_the_ID())
+        ]);
+    }
 
     return $data;
 });
+
+// ajax
+add_action('wp_ajax_get_posts', 'Flynt\Components\ListingProjects\get_posts');
+add_action('wp_ajax_nopriv_get_posts', 'Flynt\Components\ListingProjects\get_posts');
+
+function get_posts()
+{
+
+    $context = Timber::get_context();
+
+    $customerSegments = $data['customerSegments'] ?: [];
+    $country = $data['country'] ?: [];
+
+    if (empty($customerSegments) && empty($country)) {
+        $data['items'] = Timber::get_posts([
+            'post_status' => 'publish',
+            'post_type' => 'project',
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'posts_per_page' => $_POST['count'],
+            'offset' => $_POST['offset'],
+            'post__not_in' => array(get_the_ID()),
+        ]);
+    } else {
+        $data['posts'] = Timber::get_posts([
+            'post_status' => 'publish',
+            'post_type' => 'project',
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'tax_query' => array(
+                'relation' => 'OR',
+                array(
+                    'taxonomy' => 'customer_segment',
+                    'field' => 'slug',
+                    'terms' => $customerSegments,
+                ),
+                array(
+                    'taxonomy' => 'country',
+                    'field' => 'slug',
+                    'terms' => $country,
+                )
+            ),
+            'posts_per_page' => $_POST['count'],
+            'offset' => $_POST['offset'],
+            'post__not_in' => array(get_the_ID())
+        ]);
+    }
+
+    foreach ($context['posts'] as $post) {
+        Timber::render('/Partials/_post.twig', array('post' => $post));
+    }
+
+    wp_die();
+}
 
 function getACFLayout()
 {
@@ -49,18 +126,38 @@ function getACFLayout()
                 'type' => 'text',
             ],
             [
-                'label' => __('Categories', 'flynt'),
+                'label' => __('Customer Segment', 'flynt'),
                 'instructions' => __('Select 1 or more categories or leave empty to show from all posts.', 'flynt'),
-                'name' => 'taxonomies',
+                'name' => 'customerSegments',
                 'type' => 'taxonomy',
-                'taxonomy' => 'category',
+                'taxonomy' => 'customer_segment',
                 'field_type' => 'multi_select',
                 'allow_null' => 1,
                 'multiple' => 1,
                 'add_term' => 0,
                 'save_terms' => 0,
                 'load_terms' => 0,
-                'return_format' => 'object'
+                'return_format' => 'object',
+                'wrapper' => [
+                    'width' => 50
+                ]
+            ],
+            [
+                'label' => __('Country', 'flynt'),
+                'instructions' => __('Select 1 or more categories or leave empty to show from all posts.', 'flynt'),
+                'name' => 'country',
+                'type' => 'taxonomy',
+                'taxonomy' => 'country',
+                'field_type' => 'multi_select',
+                'allow_null' => 1,
+                'multiple' => 1,
+                'add_term' => 0,
+                'save_terms' => 0,
+                'load_terms' => 0,
+                'return_format' => 'object',
+                'wrapper' => [
+                    'width' => 50
+                ]
             ],
             [
                 'label' => __('Options', 'flynt'),
@@ -77,12 +174,12 @@ function getACFLayout()
                 'sub_fields' => [
                     // FieldVariables\getTheme(),
                     [
-                        'label' => __('Max Columns', 'flynt'),
+                        'label' => __('Max Posts', 'flynt'),
                         'name' => 'maxPosts',
                         'type' => 'number',
                         'default_value' => 3,
-                        'min' => 1,
-                        'max' => 4,
+                        'min' => -1,
+                        'max' => 16,
                         'step' => 1
                     ]
                 ]
