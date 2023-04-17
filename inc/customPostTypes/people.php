@@ -44,7 +44,7 @@ function registerPeoplePostType()
         'description'           => __('People Description', 'flynt'),
         'labels'                => $labels,
         'supports'              => ['title', 'thumbnail'],
-        'taxonomies'            => ['category', 'post_tag'],
+        'taxonomies'            => [],
         'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,
