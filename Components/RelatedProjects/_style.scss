@@ -1,0 +1,19 @@
+flynt-component[name='RelatedProjects'] {
+  .post {
+    .link {
+      text-decoration: none !important;
+    }
+
+    &:hover,
+    &:focus {
+      .image {
+        transform: scale(1.1);
+      }
+
+      .button--card {
+        @apply border-transparent;
+        @apply bg-green;
+      }
+    }
+  }
+}
