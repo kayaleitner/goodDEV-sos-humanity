@@ -17,7 +17,7 @@
             <div class="caption font-mono font-bold">{{ post.boxGenerationSize }} kWp</div>
             <div class="caption">{{ post.boxMountingType.label }}</div>
           </div>
-          <div class="w-1/2 flex flex-row justify-end">
+          <div class="w-1/2 flex flex-row justify-end items-center">
             <span data-icon="{{ post.boxMountingType.label|lower }}"></span>
             {% for term in post.terms('customer_segment')  %}
               <span data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></span>
