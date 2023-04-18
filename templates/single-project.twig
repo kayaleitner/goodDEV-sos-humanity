@@ -20,8 +20,10 @@
       </div>
     </section>
     <section class="post-related">
-      {# {{ function('getRelatedPosts') }} #}
-      {{ renderComponent('RelatedProjects', {'blockTitle': __('Related Projects'), 'customerSegments': post.terms('customer_segment'), 'options': {'maxPosts': 3}}) }}
+      {{ renderComponent('RelatedInsights', {'blockTitle': __('Related Insights')}) }}
+      {% for component in post.meta('relatedProjectComponents') %}
+        {{ renderComponent(component) }}
+      {% endfor %}
     </section>
   </article>
 {% endblock %}

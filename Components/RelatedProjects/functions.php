@@ -6,34 +6,34 @@ use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-const POST_TYPE = 'project';
+// const POST_TYPE = 'project';
 
-add_filter('Flynt/addComponentData?name=RelatedProjects', function ($data) {
-    $postType = POST_TYPE;
+// add_filter('Flynt/addComponentData?name=RelatedProjects', function ($data) {
+//     $postType = POST_TYPE;
 
-    $data['customerSegments'] = $data['customerSegments'] ?: [];
+//     $data['customerSegments'] = $data['customerSegments'] ?: [];
 
-    $data['posts'] = Timber::get_posts([
-        'post_status' => 'publish',
-        'post_type' => $postType,
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'customer_segment',
-                'field' => 'slug',
-                'terms' => $data['customerSegments'],
-            )
-        ),
-        'posts_per_page' => $data['options']['maxPosts'],
-        'ignore_sticky_posts' => 1,
-        'post__not_in' => array(get_the_ID())
-    ]);
+//     $data['posts'] = Timber::get_posts([
+//         'post_status' => 'publish',
+//         'post_type' => $postType,
+//         'orderby' => 'date',
+//         'order' => 'DESC',
+//         'tax_query' => array(
+//             array(
+//                 'taxonomy' => 'customer_segment',
+//                 'field' => 'slug',
+//                 'terms' => $data['customerSegments'],
+//             )
+//         ),
+//         'posts_per_page' => $data['options']['maxPosts'],
+//         'ignore_sticky_posts' => 1,
+//         'post__not_in' => array(get_the_ID())
+//     ]);
 
-    $data['postTypeArchiveLink'] = get_post_type_archive_link($postType);
+//     // $data['posts'] = relevanssi_get_related_post_objects($post);
 
-    return $data;
-});
+//     return $data;
+// });
 
 function getACFLayout()
 {
@@ -55,19 +55,41 @@ function getACFLayout()
                 'type' => 'text',
             ],
             [
-                'label' => __('Categories', 'flynt'),
-                'instructions' => __('Select 1 or more categories or leave empty to show from all posts.', 'flynt'),
-                'name' => 'customerSegments',
-                'type' => 'taxonomy',
-                'taxonomy' => 'customer_segment',
-                'field_type' => 'multi_select',
-                'allow_null' => 1,
+                'label' => __('Related Project', 'flynt'),
+                'instructions' => __('Select a maximum of 3 related projects.', 'flynt'),
+                'name' => 'relatedProjects',
+                'type' => 'relationship',
+                'post_type' => [
+                    'project'
+                ],
+                'filters' => [
+                    0 => 'search',
+                    1 => 'taxonomy'
+                ],
+                'allow_null' => 0,
                 'multiple' => 1,
-                'add_term' => 0,
-                'save_terms' => 0,
-                'load_terms' => 0,
-                'return_format' => 'object'
+                'max' => 3,
+                'return_format' => 'object',
+                'ui' => 1,
+                'required' => 0,
+                'wrapper' => [
+                    'width' => 100,
+                ]
             ],
+            // [
+            //     'label' => __('Categories', 'flynt'),
+            //     'instructions' => __('Select 1 or more categories or leave empty to show from all posts.', 'flynt'),
+            //     'name' => 'customerSegments',
+            //     'type' => 'taxonomy',
+            //     'taxonomy' => 'customer_segment',
+            //     'field_type' => 'multi_select',
+            //     'allow_null' => 1,
+            //     'multiple' => 1,
+            //     'add_term' => 0,
+            //     'save_terms' => 0,
+            //     'load_terms' => 0,
+            //     'return_format' => 'object'
+            // ],
             [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
