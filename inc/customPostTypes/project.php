@@ -43,7 +43,7 @@ function registerProjectPostType()
         'label'                 => __('Project', 'flynt'),
         'description'           => __('Project Description', 'flynt'),
         'labels'                => $labels,
-        'supports'              => ['title', 'thumbnail'],
+        'supports'              => ['title', 'thumbnail', 'revisions'],
         'taxonomies'            => ['post_tag'],
         'hierarchical'          => false,
         'public'                => true,
