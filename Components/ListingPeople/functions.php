@@ -16,6 +16,8 @@ add_filter('Flynt/addComponentData?name=ListingPeople', function ($data) {
     $data['posts'] = Timber::get_posts([
         'post_status' => 'publish',
         'post_type' => $postType,
+        'orderby' => 'title',
+        'order' => 'ASC',
         'category' => join(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
