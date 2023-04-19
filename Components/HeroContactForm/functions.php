@@ -44,7 +44,6 @@ function getACFLayout()
                 'collapsed' => '',
                 'layout' => 'block',
                 'button_label' => __('Add Column', 'flynt'),
-                'min' => 1,
                 'max' => 3,
                 'sub_fields' => [
                     [
