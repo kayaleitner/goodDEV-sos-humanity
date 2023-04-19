@@ -58,12 +58,12 @@ mm.add('(min-width: 1280px)', () => {
   points.forEach(function (elem, i) {
     gsap.set(elem, { position: 'absolute', top: 0 })
 
-    tl.from(elem.querySelector('img'), { opacity: 0 }, i)
+    tl.from(elem.querySelector('img'), { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, i)
     tl.from(elem.querySelector('.row'), { opacity: 1, translateY: '100vh' }, i)
 
     if (i !== points.length - 1) {
       tl.to(elem.querySelector('.row'), { opacity: 1, translateY: '-100vh' }, i + 0.5)
-      tl.to(elem.querySelector('img'), { opacity: 1 }, i + 0.5)
+      tl.to(elem.querySelector('img'), { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, i + 0.5)
     }
   })
 })
