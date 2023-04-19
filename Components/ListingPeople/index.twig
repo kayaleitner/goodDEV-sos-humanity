@@ -51,15 +51,15 @@
                     </div>
                   </div>
                 </div>
-                <div class="w-full aspect-square grow flex flex-col gap-xs justify-between align-start items-start">
+                <div class="w-full grow flex flex-col gap-sm justify-start align-start items-start">
                   <div class="body">{{ post.position }}</div>
-                  <div class="w-full flex flex-col gap-xs">
+                  <div class="w-full flex flex-col">
                     <h2 class="subtitle w-full grow">{{ post.title }}</h2>
-                    <div class="body w-full grow">{{ post.bio|truncate(18)  }}</div>
-                    <div class="mt-md flex flex-row lg:flex-col gap-sm justify-start items-start">
-                      <div class="link button button--card">{{ labels.readMore }}</div>
-                    </div>
+                    <div class="body w-full grow">{{ post.bio|truncate(10) }}</div>
                   </div>
+                </div>
+                <div class="mt-sm flex flex-row lg:flex-col gap-sm justify-start items-start">
+                  <div class="link button button--card">{{ labels.readMore }}</div>
                 </div>
               </div>
             </a>
