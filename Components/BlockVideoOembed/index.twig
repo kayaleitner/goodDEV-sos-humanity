@@ -6,7 +6,7 @@
     <div class="video">
       {% include 'Partials/_figure.twig' ignore missing with {image: posterImage} only %}
       <div data-ref="videoPlayer" class="video-player">
-        {{ oembed }}
+        {{ video }}
         <div class="video-loader"></div>
         <div class="video-content absolute w-full h-full flex flex-col justify-center align-middle items-center">
           <div class="max-w-screen-md mx-auto flex flex-col justify-center align-middle items-center gap-md">
