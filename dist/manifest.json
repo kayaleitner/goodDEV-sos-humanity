@@ -17,7 +17,7 @@
     "src": "Components/BlockImageTextFull/Assets/suitcase.svg"
   },
   "Components/BlockImageTextFull/script.js": {
-    "file": "assets/script-647ec43c.js",
+    "file": "assets/script-ec4b778f.js",
     "imports": [
       "assets/main.js",
       "__commonjsHelpers-87174ba5.js"
@@ -36,7 +36,7 @@
     "src": "Components/BlockProjectBox/script.js"
   },
   "Components/BlockVideoOembed/script.js": {
-    "file": "assets/script-fdef6c29.js",
+    "file": "assets/script-ecbf5980.js",
     "imports": [
       "_helpers-0bb72b7a.js"
     ],
@@ -44,7 +44,7 @@
     "src": "Components/BlockVideoOembed/script.js"
   },
   "Components/HeroIllustration/script.js": {
-    "file": "assets/script-25136ae1.js",
+    "file": "assets/script-62382455.js",
     "imports": [
       "assets/main.js"
     ],
@@ -55,7 +55,7 @@
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-a39ae6dd.js",
+    "file": "assets/script-7b1a229a.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -90,7 +90,7 @@
     "src": "Components/ListingProjects/script.js"
   },
   "Components/NavigationBurger/script.js": {
-    "file": "assets/script-65d22967.js",
+    "file": "assets/script-c0327846.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -99,16 +99,16 @@
     "src": "Components/NavigationBurger/script.js"
   },
   "Components/NavigationFooter/Assets/facebook.svg": {
-    "file": "assets/linkedin-58a940a6.svg",
-    "src": "Components/NavigationFooter/Assets/facebook.svg"
+    "file": "assets/facebook-58a940a6.svg",
+    "src": "Components/NavigationFooter/Assets/linkedin.svg"
   },
   "Components/NavigationFooter/Assets/linkedin-old.svg": {
     "file": "assets/linkedin-old-d3365d89.svg",
     "src": "Components/NavigationFooter/Assets/linkedin-old.svg"
   },
   "Components/NavigationFooter/Assets/linkedin.svg": {
-    "file": "assets/linkedin-58a940a6.svg",
-    "src": "Components/NavigationFooter/Assets/facebook.svg"
+    "file": "assets/facebook-58a940a6.svg",
+    "src": "Components/NavigationFooter/Assets/linkedin.svg"
   },
   "Components/NavigationFooter/Assets/logo.svg": {
     "file": "assets/logo-eeb7436e.svg",
@@ -119,7 +119,7 @@
     "src": "Components/NavigationFooter/Assets/twitter.svg"
   },
   "Components/NavigationMain/script.js": {
-    "file": "assets/script-8a6bb6af.js",
+    "file": "assets/script-22135204.js",
     "imports": [
       "assets/main.js"
     ],
@@ -127,7 +127,7 @@
     "src": "Components/NavigationMain/script.js"
   },
   "Components/Scrollytelling/script.js": {
-    "file": "assets/script-83124aed.js",
+    "file": "assets/script-772b09b2.js",
     "imports": [
       "assets/main.js"
     ],
@@ -135,7 +135,7 @@
     "src": "Components/Scrollytelling/script.js"
   },
   "Components/ScrollytellingImage/script.js": {
-    "file": "assets/script-dc633a8a.js",
+    "file": "assets/script-aed85138.js",
     "imports": [
       "assets/main.js"
     ],
@@ -274,12 +274,12 @@
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-5642c9ee.js",
+    "file": "assets/main-e51c56c0.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-1eeeb89d.css",
+    "file": "assets/main-7e2f9d7f.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -289,7 +289,7 @@
     "src": "assets/print.scss"
   },
   "assets/tinyMce.scss": {
-    "file": "assets/tinyMce-4cdddd49.css",
+    "file": "assets/tinyMce-50770738.css",
     "isEntry": true,
     "src": "assets/tinyMce.scss"
   },
