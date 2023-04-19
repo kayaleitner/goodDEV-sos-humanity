@@ -4,8 +4,10 @@
   x-init="$watch('activeSubmenu', value => {
     if (value) {
       document.querySelector('#blur-overlay').style.display = 'block';
+      document.querySelector('body').style.overflow = 'hidden';
     } else {
       document.querySelector('#blur-overlay').style.display = 'none';
+      document.querySelector('body').style.overflow = 'auto';
     }
   })"
   :class="{
@@ -54,7 +56,7 @@
           x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
           x-transition:leave-start="opacity-100" 
           x-transition:leave-end="opacity-0" 
-          class="submenu-wrapper absolute -top-[40px] right-0 h-screen w-[calc(100%_+_75px)] z-50 drop-shadow-lg"
+          class="submenu-wrapper absolute -top-[47px] right-0 h-screen w-[calc(100%_+_75px)] z-50 drop-shadow-lg"
           :class="{ 'open': activeSubmenu === {{loop.index}} }"
           {# @click.away="activeSubmenu = 0" #}
         >
