@@ -1,60 +1,58 @@
-{% if posts|length > 0 %}
-  <flynt-component load:on="visible" name="RelatedProjects" data-type="listing" class="">
-    <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
-      {% if blockTitle %}
-        <div class="max-w-screen-max w-full mx-auto pb-sm lg:pb-lg flex flex-row justify-between align-bottom items-end content-end">
-          <div class="subtitle font-bold">{{ blockTitle }}</div>
-          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
-        </div>
-      {% endif %}
-      <ul class="
-          w-full
-          mx-auto
-          grid sm:grid-cols-2 md:grid-cols-3 
-          gap-sm lg:gap-md
-        ">
-        {% for post in posts %}
-          <li class="post w-full">
-            <a class="link flex flex-col h-full no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
-              {% if post.thumbnail %}
-                <figure class="figure block overflow-hidden">
-                  <img class="image lazyload aspect-square object-cover transition duration-200 ease-linear"
-                    src="{{  post.thumbnail.src | resize(32) }}"
-                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-                    data-sizes="auto"
-                    data-src="{{ post.thumbnail.src }}"
-                    alt="{{ post.thumbnail.alt|e }}">
-                </figure>
-              {% endif %}
-              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch grow">
-                <div class="flex flex-col gap-sm">
-                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
-                    <div class="w-1/2">
-                      <div class="caption font-mono font-bold">{{ post.boxGenerationSize }} kWp</div>
-                      <div class="caption">{{ post.boxMountingType.label }}</div>
-                    </div>
-                    <div class="w-1/2 flex flex-row justify-end">
-                      <span data-icon="{{ post.boxMountingType.label|lower }}"></span>
-                      {% for term in post.terms('customer_segment')  %}
-                        <span data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></span>
-                      {% endfor %}
-                    </div>
+<flynt-component load:on="visible" name="RelatedProjects" data-type="listing" class="">
+  <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+    {% if blockTitle %}
+      <div class="max-w-screen-max w-full mx-auto pb-sm lg:pb-lg flex flex-row justify-between align-bottom items-end content-end">
+        <div class="subtitle font-bold">{{ blockTitle }}</div>
+        <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
+      </div>
+    {% endif %}
+    <ul class="
+        w-full
+        mx-auto
+        grid sm:grid-cols-2 md:grid-cols-3 
+        gap-sm lg:gap-md
+      ">
+      {% for post in relatedProjects %}
+        <li class="post w-full">
+          <a class="link flex flex-col h-full no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
+            {% if post.thumbnail %}
+              <figure class="figure block overflow-hidden">
+                <img class="image lazyload aspect-square object-cover transition duration-200 ease-linear"
+                  src="{{  post.thumbnail.src | resize(32) }}"
+                  data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                  data-sizes="auto"
+                  data-src="{{ post.thumbnail.src }}"
+                  alt="{{ post.thumbnail.alt|e }}">
+              </figure>
+            {% endif %}
+            <div class="content py-sm flex flex-col gap-sm justify-between items-stretch grow">
+              <div class="flex flex-col gap-sm">
+                <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
+                  <div class="w-1/2">
+                    <div class="caption font-mono font-bold">{{ post.boxGenerationSize }} kWp</div>
+                    <div class="caption">{{ post.boxMountingType.label }}</div>
                   </div>
-                  <div class="w-full flex flex-col justify-between align-start items-start">
-                    {% for term in post.terms('country')  %}
-                      <div class="paragraph">{{ term }}</div>
+                  <div class="w-1/2 flex flex-row justify-end">
+                    <span data-icon="{{ post.boxMountingType.label|lower }}"></span>
+                    {% for term in post.terms('customer_segment')  %}
+                      <span data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></span>
                     {% endfor %}
-                    <h2 class="subtitle w-full grow">{{ post.title }}</h2>
                   </div>
                 </div>
-                <div class="flex flex-row lg:flex-col gap-sm justify-end items-start h-full">
-                  <div class="button button--card">{{ labels.readMore }}</div>
+                <div class="w-full flex flex-col justify-between align-start items-start">
+                  {% for term in post.terms('country')  %}
+                    <div class="paragraph">{{ term }}</div>
+                  {% endfor %}
+                  <h2 class="subtitle w-full grow">{{ post.title }}</h2>
                 </div>
               </div>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </flynt-component>
-{% endif %}
+              <div class="flex flex-row lg:flex-col gap-sm justify-end items-start h-full">
+                <div class="button button--card">{{ labels.readMore }}</div>
+              </div>
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</flynt-component>

@@ -8,12 +8,12 @@
 
 namespace Flynt\CustomTaxonomies;
 
-function registerCountryTaxonomy()
+function registerLocationTaxonomy()
 {
     $labels = [
-        'name'                       => _x('Countries', 'Taxonomy General Name', 'flynt'),
-        'singular_name'              => _x('Country', 'Taxonomy Singular Name', 'flynt'),
-        'menu_name'                  => __('Countries', 'flynt'),
+        'name'                       => _x('Locations', 'Taxonomy General Name', 'flynt'),
+        'singular_name'              => _x('Location', 'Taxonomy Singular Name', 'flynt'),
+        'menu_name'                  => __('Locations', 'flynt'),
         'all_items'                  => __('All Items', 'flynt'),
         'parent_item'                => __('Parent Item', 'flynt'),
         'parent_item_colon'          => __('Parent Item:', 'flynt'),
@@ -42,7 +42,7 @@ function registerCountryTaxonomy()
         'show_tagcloud'              => true,
     ];
 
-    register_taxonomy('country', ['project'], $args);
+    register_taxonomy('location', ['people'], $args);
 }
 
-add_action('init', 'Flynt\\CustomTaxonomies\\registerCountryTaxonomy');
+add_action('init', 'Flynt\\CustomTaxonomies\\registerLocationTaxonomy');

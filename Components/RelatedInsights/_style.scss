@@ -1,0 +1,30 @@
+flynt-component[name='RelatedInsights'] {
+  .post {
+    .link {
+      text-decoration: none !important;
+    }
+
+    &:hover,
+    &:focus {
+      .image {
+        @apply lg:scale-[1.03];
+        @apply lg:origin-center;
+      }
+
+      .button--arrow {
+        @apply border-transparent;
+        @apply bg-white;
+        @apply bg-green;
+      }
+
+      .button--link {
+        @apply bg-transparent;
+        @apply text-black;
+
+        &::after {
+          @apply ml-[5px];
+        }
+      }
+    }
+  }
+}

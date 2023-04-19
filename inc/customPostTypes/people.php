@@ -43,7 +43,7 @@ function registerPeoplePostType()
         'label'                 => __('People', 'flynt'),
         'description'           => __('People Description', 'flynt'),
         'labels'                => $labels,
-        'supports'              => ['title', 'thumbnail'],
+        'supports'              => ['title', 'thumbnail', 'revisions'],
         'taxonomies'            => [],
         'hierarchical'          => false,
         'public'                => true,

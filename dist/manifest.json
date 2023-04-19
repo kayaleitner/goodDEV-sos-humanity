@@ -99,16 +99,16 @@
     "src": "Components/NavigationBurger/script.js"
   },
   "Components/NavigationFooter/Assets/facebook.svg": {
-    "file": "assets/facebook-58a940a6.svg",
-    "src": "Components/NavigationFooter/Assets/linkedin.svg"
+    "file": "assets/linkedin-58a940a6.svg",
+    "src": "Components/NavigationFooter/Assets/facebook.svg"
   },
   "Components/NavigationFooter/Assets/linkedin-old.svg": {
     "file": "assets/linkedin-old-d3365d89.svg",
     "src": "Components/NavigationFooter/Assets/linkedin-old.svg"
   },
   "Components/NavigationFooter/Assets/linkedin.svg": {
-    "file": "assets/facebook-58a940a6.svg",
-    "src": "Components/NavigationFooter/Assets/linkedin.svg"
+    "file": "assets/linkedin-58a940a6.svg",
+    "src": "Components/NavigationFooter/Assets/facebook.svg"
   },
   "Components/NavigationFooter/Assets/logo.svg": {
     "file": "assets/logo-eeb7436e.svg",
@@ -279,7 +279,7 @@
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-3d813292.css",
+    "file": "assets/main-1eeeb89d.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -289,7 +289,7 @@
     "src": "assets/print.scss"
   },
   "assets/tinyMce.scss": {
-    "file": "assets/tinyMce-4029c7ed.css",
+    "file": "assets/tinyMce-4cdddd49.css",
     "isEntry": true,
     "src": "assets/tinyMce.scss"
   },
