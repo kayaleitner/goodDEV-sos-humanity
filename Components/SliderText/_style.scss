@@ -10,8 +10,10 @@ flynt-component[name='SliderText'] {
     &-item {
       display: flex;
       flex-flow: column wrap;
-      height: 450px;
+      gap: 40px;
+      height: auto;
       justify-content: space-between;
+      min-height: 450px;
       overflow: hidden;
       position: relative;
       width: 100%;
