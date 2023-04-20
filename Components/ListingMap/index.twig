@@ -1,5 +1,5 @@
 <flynt-component
-  load:on="visible"
+  load:on="idle"
   name="ListingMap"
   class=""
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
@@ -13,7 +13,8 @@
     {% endif %}
 
     <div 
-      x-data="{ activeProject:  1, projects: [1, 2, 3, 4] }" 
+      x-data="{ activeProject:  1, projects: [0, 1, 2, 3] }"
+      data-ref="mapAndProjects"
       class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-start">
       
       <!-- Prev/Next Arrows Mobile -->
@@ -93,63 +94,65 @@
           </button>
         </div>
         <!-- Project -->
-        {% for item in projects %}
-        <div
-          x-cloak 
-          x-show="activeProject === {{loop.index}}" 
-          x-for="project in projects" :key="project" 
-          data-item="{{loop.index}}"
-          x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
-          x-transition:enter-start="opacity-0 hidden" 
-          x-transition:enter-end="opacity-100 block" 
-          x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
-          x-transition:leave-start="opacity-100 block" 
-          x-transition:leave-end="opacity-0 hidden" 
-          class="project flex items-start" 
-          :class="{ 'active': activeProject === {{loop.index}} }"
-          data-latitude="{{ item.latitude }}" 
-          data-longitude="{{ item.longitude }}">
-          <div class="post w-full grow">
-            <a class="link flex flex-col h-full no-underline" href="{{ item.link }}" aria-label="{{ item.title }}">
-              {% if item.thumbnail %}
-                <figure class="figure hidden md:block aspect-square overflow-hidden">
-                  <img class="image lazyload h-full w-full aspect-square object-cover transition duration-200 ease-linear"
-                    src="{{  item.thumbnail.src | resize(32) }}"
-                    data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
-                    data-sizes="auto"
-                    data-src="{{ post.thumbnail.src }}"
-                    alt="{{ item.thumbnail.alt|e }}">
-                </figure>
-              {% endif %}
-              <div class="content py-sm flex flex-col gap-sm justify-between items-stretch grow">
-                <div class="flex flex-col gap-sm">
-                  <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
-                    <div class="w-1/2">
-                      <div class="caption font-mono font-bold">{{ item.boxGenerationSize }} kWp</div>
-                      <div class="caption">{{ item.boxMountingType.label }}</div>
+        <div class="overflow-hidden w-100 h-100">
+          {% for item in projects %}
+          <div
+            x-cloak 
+            x-show="activeProject === {{ loop.index0 }}"
+            {# x-for="project in projects" :key="project"  #}
+            data-item="{{loop.index}}"
+            x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
+            x-transition:enter-start="opacity-0" 
+            x-transition:enter-end="opacity-100" 
+            x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
+            x-transition:leave-start="opacity-100" 
+            x-transition:leave-end="opacity-0 " 
+            class="project flex items-start absolute" 
+            :class="{ 'active': activeProject === {{loop.index}} }"
+            data-latitude="{{ item.latitude }}" 
+            data-longitude="{{ item.longitude }}">
+            <div class="post w-full grow">
+              <a class="link flex flex-col h-full no-underline" href="{{ item.link }}" aria-label="{{ item.title }}">
+                {% if item.thumbnail %}
+                  <figure class="figure hidden md:block aspect-square overflow-hidden">
+                    <img class="image lazyload h-full w-full aspect-square object-cover transition duration-200 ease-linear"
+                      src="{{  item.thumbnail.src | resize(32) }}"
+                      data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
+                      data-sizes="auto"
+                      data-src="{{ item.thumbnail.src }}"
+                      alt="{{ item.thumbnail.alt|e }}">
+                  </figure>
+                {% endif %}
+                <div class="content py-sm flex flex-col gap-sm justify-between items-stretch grow">
+                  <div class="flex flex-col gap-sm">
+                    <div class="w-full p-sm flex flex-row justify-between align-middle items-center border caption">
+                      <div class="w-1/2">
+                        <div class="caption font-mono font-bold">{{ item.boxGenerationSize }} kWp</div>
+                        <div class="caption">{{ item.boxMountingType.label }}</div>
+                      </div>
+                      <div class="w-1/2 flex flex-row justify-end items-center">
+                        <span data-icon="{{ item.boxMountingType.label|lower }}"></span>
+                        {% for term in item.terms('customer_segment')  %}
+                          <span data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></span>
+                        {% endfor %}
+                      </div>
                     </div>
-                    <div class="w-1/2 flex flex-row justify-end items-center">
-                      <span data-icon="{{ item.boxMountingType.label|lower }}"></span>
-                      {% for term in item.terms('customer_segment')  %}
-                        <span data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></span>
+                    <div class="w-full flex flex-col justify-between align-start items-start">
+                      {% for term in item.terms('country')  %}
+                        <div class="paragraph">{{ term }}</div>
                       {% endfor %}
+                      <h2 class="subtitle w-full grow">{{ item.title }}</h2>
                     </div>
                   </div>
-                  <div class="w-full flex flex-col justify-between align-start items-start">
-                    {% for term in item.terms('country')  %}
-                      <div class="paragraph">{{ term }}</div>
-                    {% endfor %}
-                    <h2 class="subtitle w-full grow">{{ item.title }}</h2>
+                  <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
+                    <a class="button button--card" href="{{ item.link }}" aria-label="{{ item.title }}">{{ labels.readMore }}</a>
                   </div>
                 </div>
-                <div class="flex flex-row lg:flex-col gap-sm justify-start items-start h-full">
-                  <a class="button button--card" href="{{ item.link }}" aria-label="{{ item.title }}">{{ labels.readMore }}</a>
-                </div>
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
 
       </div>
 
