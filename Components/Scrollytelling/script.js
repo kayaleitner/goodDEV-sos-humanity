@@ -28,7 +28,7 @@ mm.add('(min-width: 1280px)', () => {
       end: 'bottom bottom',
       pin: true,
       id: 'pinning',
-      markers: true
+      markers: false
     }
   })
 
