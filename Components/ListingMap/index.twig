@@ -13,7 +13,7 @@
     {% endif %}
 
     <div 
-      x-data="{ activeProject:  1, projects: [0, 1, 2, 3] }"
+      x-data="{ activeProject:  1, projects: [1, 2, 3, 4] }"
       data-ref="mapAndProjects"
       class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-start">
       
@@ -94,7 +94,7 @@
           </button>
         </div>
         <!-- Project -->
-        <div class="overflow-hidden w-100 h-100">
+        <div class="project-list overflow-hidden w-100 h-100">
           {% for item in projects %}
           <div
             x-cloak 
@@ -107,7 +107,7 @@
             x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
             x-transition:leave-start="opacity-100" 
             x-transition:leave-end="opacity-0 " 
-            class="project flex items-start absolute" 
+            class="project flex items-start md:absolute" 
             :class="{ 'active': activeProject === {{loop.index}} }"
             data-latitude="{{ item.latitude }}" 
             data-longitude="{{ item.longitude }}">
