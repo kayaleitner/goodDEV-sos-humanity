@@ -27,7 +27,7 @@
         ml-[-100vw] md:ml-0
         {% if loop.index == 1 %} md:mt-[-100vh] {% endif %}
       ">
-        <div data-refs="left" class="md:absolute w-[100vw] md:w-full h-1/2 md:h-full md:[clip-path:inset(0_50%_0_0)] left">
+        <div data-refs="left" class="md:absolute w-[100vw] md:w-full h-1/2 md:h-full md:[clip-path:inset(0_49.9%_0_0)] left">
           <picture class="h-full {% if loop.index != 2 %} hidden md:block {% endif %}">
             <source srcset="
               {{function('wp_get_attachment_image_srcset', slide.image.id)}}"

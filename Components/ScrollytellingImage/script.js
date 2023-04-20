@@ -40,7 +40,7 @@ mm.add('(min-width: 1280px)', () => {
       end: '+=' + height + '%',
       scrub: true,
       id: 'points',
-      markers: true,
+      markers: false,
     }
   })
 
