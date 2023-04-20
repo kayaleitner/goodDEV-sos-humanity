@@ -13,7 +13,16 @@
     {% endif %}
 
     <div 
-      x-data="{ activeProject:  1, projects: [1, 2, 3, 4] }"
+      x-data="{ 
+        activeProject:  1, 
+        projects: [
+          {% for item in projects %}
+            { 
+              'index': {{ loop.index - 1 }}
+            }{{ loop.last ? '' : ',' }}
+          {% endfor %}
+        ] 
+      }"
       data-ref="mapAndProjects"
       class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-start fade-in move-up">
       
@@ -94,7 +103,9 @@
           </button>
         </div>
         <!-- Project -->
-        <div class="project-list overflow-hidden w-100 h-100">
+        <div class="project-list overflow-hidden w-100 h-100" 
+          x-for="(project, index) in projects" 
+          :key="project.index">
           {% for item in projects %}
           <div
             x-cloak 
