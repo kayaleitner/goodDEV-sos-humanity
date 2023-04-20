@@ -6,9 +6,9 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   
-  <div class="w-full mx-auto">
-    <div id="scrollytellingImage" class="h-full relative">
-      <div class="wrapper h-auto lg:h-screen w-full">
+  <div class="w-full mx-auto" id="scrollytellingImage">
+    <div id="scrollytellingImage-inner" class="h-full relative">
+      <div class="wrapper h-auto lg:h-screen w-full lg:absolute">
         {% if blockTitle %}
           <div class="w-full lg:absolute z-50">
             <div class="lg:w-full lg:max-w-screen-max mx-auto p-sm lg:p-lg subtitle font-bold text-black lg:text-white">{{ blockTitle }}</div>
@@ -16,23 +16,32 @@
         {% endif %}
         {% for item in scrollytelling %}
           <section class="panel h-auto lg:h-screen w-full m-0 px-sm lg:p-0 {% if item.hideOnMobile %}hidden lg:block{% endif %}">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-lg lg:absolute top-0 left-0 w-full h-full justify-center items-center">
-              <div></div>
-              {% if item.contentHtml %}
-                <div class="row lg:max-w-[600px] mx-auto py-sm lg:p-0 z-50">
-                  {{ item.contentHtml|e('wp_kses_post') }}
-                </div>
-              {% endif %}
-            </div>
             {% if item.image %}
               <img class="w-full h-full lg:absolute top-0 left-0 object-cover py-sm lg:p-0 border-b-4 border-dotted border-black lg:border-0"
                 src="{{ item.image.src }}"
                 data-srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}"
                 data-sizes="auto">
             {% endif %}
+            {% if item.contentHtml %}
+              <div class="lg:hidden row lg:max-w-[600px] mx-auto py-sm lg:pl-0 lg:pr-sm z-50">
+                {{ item.contentHtml|e('wp_kses_post') }}
+              </div>
+            {% endif %}
           </section>
         {% endfor %}
       </div>
     </div>
+    {% for item in scrollytelling %}
+      <section class="relative hidden lg:block panel h-auto lg:h-screen w-full m-0 px-sm lg:p-0">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-lg lg:absolute top-0 left-0 w-full h-full justify-center items-center">
+          <div></div>
+          {% if item.contentHtml %}
+            <div class="row lg:max-w-[600px] mx-auto py-sm lg:pl-0 lg:pr-sm z-50">
+              {{ item.contentHtml|e('wp_kses_post') }}
+            </div>
+          {% endif %}
+        </div>
+      </section>
+    {% endfor %}
   </div>
 </flynt-component>

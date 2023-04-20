@@ -22,10 +22,10 @@ mm.add('(min-width: 1280px)', () => {
   // eslint-disable-next-line no-unused-vars
   const pinner = gsap.timeline({
     scrollTrigger: {
-      trigger: '#scrollytellingImage .wrapper',
+      trigger: '#scrollytellingImage-inner .wrapper',
+      endTrigger: '#scrollytellingImage',
       start: 'top top',
-      end: '+=' + height + '%',
-      scrub: true,
+      end: 'bottom bottom',
       pin: true,
       id: 'pinning',
       markers: false
@@ -34,16 +34,18 @@ mm.add('(min-width: 1280px)', () => {
 
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: '#scrollytellingImage',
+      trigger: '#scrollytellingImage-inner',
+      endTrigger: '#scrollytellingImage',
       start: 'top bottom',
       end: '+=' + height + '%',
       scrub: true,
-      id: 'points'
+      id: 'points',
+      markers: true,
     }
   })
 
   // eslint-disable-next-line no-unused-vars
-  function fullscreenListener () {
+  function fullscreenListener() {
     const state =
       document.fullScreen ||
       document.mozFullScreen ||
@@ -55,13 +57,11 @@ mm.add('(min-width: 1280px)', () => {
   }
 
   points.forEach(function (elem, i) {
-    gsap.set(elem, { position: 'absolute', top: 0 })
 
-    tl.from(elem.querySelector('img'), { opacity: 0, display: 'none' }, i)
-    tl.from(elem.querySelector('.row'), { opacity: 0, display: 'none', translateY: '75vh' }, i)
-
+    if (i !== 0) {
+      tl.from(elem.querySelector('img'), { opacity: 0, display: 'none' }, i)
+    }
     if (i !== points.length - 1) {
-      tl.to(elem.querySelector('.row'), { opacity: 1, display: 'block', translateY: '-75vh' }, i + 0.75)
       tl.to(elem.querySelector('img'), { opacity: 1, display: 'block' }, i + 0.75)
     }
   })

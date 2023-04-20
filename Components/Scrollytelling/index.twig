@@ -5,16 +5,16 @@
   style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--grey){% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
-  <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
-    <div id="scrollytelling" class="max-w-screen-max mx-auto h-full relative">
-      <div class="wrapper h-auto lg:h-screen w-full">
+  <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg" id="scrollytelling">
+    <div id="scrollytelling-inner" class="max-w-screen-max mx-auto h-full relative">
+      <div class="wrapper h-auto lg:h-screen w-full lg:absolute">
         {% if blockTitle %}
           <div class="w-full mx-auto">
             <div class="subtitle font-bold text-white">{{ blockTitle }}</div>
           </div>
         {% endif %}
         {% for item in scrollytelling %}
-          <div class="panel h-auto lg:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl lg:m-0 grid grid-cols-1 md:grid-cols-2 gap-sm md:gap-lg items-center {% if item.hideOnMobile %}hidden lg:grid{% endif %}">
+          <div class="panel lg:absolute h-auto lg:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl lg:m-0 grid grid-cols-1 md:grid-cols-2 gap-sm md:gap-lg items-center {% if item.hideOnMobile %}hidden lg:grid{% endif %}">
             {% if item.image %}
               <img class="w-full max-w-[600px] mx-auto"
                 src="{{ item.image.src | resize(32) }}"
@@ -22,7 +22,7 @@
                 data-sizes="auto">
             {% endif %}
             {% if item.contentHtml %}
-              <div class="row max-w-[600px] mx-auto">
+              <div class="lg:hidden row max-w-[600px] mx-auto">
                 {{ item.contentHtml|e('wp_kses_post') }}
               </div>
             {% endif %}
@@ -30,5 +30,14 @@
         {% endfor %}
       </div>
     </div>
+    {% for item in scrollytelling %}
+      <div class="relative hidden lg:grid panel h-auto lg:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl lg:m-0 grid-cols-1 md:grid-cols-2 gap-sm md:gap-lg items-center">
+        {% if item.contentHtml %}
+          <div class="row max-w-[600px] mx-auto col-start-2">
+            {{ item.contentHtml|e('wp_kses_post') }}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
   </div>
 </flynt-component>
