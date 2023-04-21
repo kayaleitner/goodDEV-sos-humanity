@@ -21,13 +21,13 @@ mm.add('(min-width: 1280px)', () => {
 })
 
 ScrollTrigger.batch('.fade-in', {
-  onEnter: (elements) => gsap.to(elements, { opacity: 1, stagger: 0.1, duration: .5 }),
+  onEnter: (elements) => gsap.to(elements, { opacity: 1, stagger: 0.1, duration: 0.5 }),
   start: '100px bottom',
   end: 'top top'
 })
 
 ScrollTrigger.batch('.move-up', {
-  onEnter: (elements) => gsap.to(elements, { y: 0, stagger: 0.1, duration: .3 }),
+  onEnter: (elements) => gsap.to(elements, { y: 0, stagger: 0.1, duration: 0.3 }),
   start: '100px bottom',
   end: 'top top'
 })
