@@ -40,12 +40,12 @@ mm.add('(min-width: 1280px)', () => {
       end: '+=' + height + '%',
       scrub: true,
       id: 'points',
-      markers: false,
+      markers: false
     }
   })
 
   // eslint-disable-next-line no-unused-vars
-  function fullscreenListener() {
+  function fullscreenListener () {
     const state =
       document.fullScreen ||
       document.mozFullScreen ||
@@ -57,7 +57,6 @@ mm.add('(min-width: 1280px)', () => {
   }
 
   points.forEach(function (elem, i) {
-
     if (i !== 0) {
       tl.from(elem.querySelector('img'), { opacity: 0, display: 'none' }, i)
     }

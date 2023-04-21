@@ -56,7 +56,6 @@ mm.add('(min-width: 1280px)', () => {
   }
 
   points.forEach(function (elem, i) {
-
     if (i !== 0) {
       tl.from(elem.querySelector('img'), { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, i)
     }
