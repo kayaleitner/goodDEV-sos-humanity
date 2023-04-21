@@ -14,7 +14,7 @@
       <section class="post-main mt-lg">
         {% if post.post_excerpt %}
           <div class="block md:hidden w-full">
-            <div class="bodyMobile md:body">{{ post.post_excerpt }}</div>
+            <div class="text-bodyMobile text-md:body">{{ post.post_excerpt }}</div>
           </div>
         {% endif %}
         {% for component in post.meta('postComponents') %}
@@ -23,7 +23,7 @@
       </section>
     </section>
     <section class="post-related">
-      {{ renderComponent('RelatedInsights', {'blockTitle': __('Related Insights')}) }}
+      {# {{ renderComponent('RelatedInsights', {'blockTitle': __('Related Insights')}) }} #}
     </section>
   </article>
 {% endblock %}
