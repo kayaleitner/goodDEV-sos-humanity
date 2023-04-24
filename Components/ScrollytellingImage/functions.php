@@ -32,6 +32,19 @@ function getACFLayout()
                 'min' => 1,
                 'sub_fields' => [
                     [
+                        'label' => __('Image Overlay', 'flynt'),
+                        'instructions' => __('Add overlay to the image', 'flynt'),
+                        'name' => 'imageOverlay',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                        'ui_on_text' => 'Yes',
+                        'ui_off_text' => 'No',
+                        'default_value' => 1,
+                        'wrapper' => [
+                            'width' => 50,
+                        ]
+                    ],
+                    [
                         'label' => __('Image', 'flynt'),
                         'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
                         'name' => 'image',
@@ -39,7 +52,7 @@ function getACFLayout()
                         'preview_size' => 'medium',
                         'mime_types' => 'jpg,jpeg,png,svg',
                         'wrapper' => [
-                            'width' => 30
+                            'width' => 50
                         ],
                     ],
                     [
@@ -50,7 +63,7 @@ function getACFLayout()
                         'media_upload' => 0,
                         'delay' => 1,
                         'wrapper' => [
-                            'width' => 50
+                            'width' => 70
                         ],
                     ],
                     [
@@ -63,7 +76,7 @@ function getACFLayout()
                         'ui_off_text' => 'No',
                         'default_value' => 0,
                         'wrapper' => [
-                            'width' => 20,
+                            'width' => 30,
                         ]
                     ]
                 ]
@@ -82,6 +95,8 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     // FieldVariables\getTheme(),
+                    FieldVariables\getColorBackground(),
+                    FieldVariables\getColorText(),
                     FieldVariables\getNavStyle('dark-blur'),
                 ]
             ]

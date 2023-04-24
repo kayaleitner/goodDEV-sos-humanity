@@ -2,7 +2,7 @@
   load:on="idle"
   name="ScrollytellingImage"
   class=""
-  style="background-color: var(--white);"
+  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   
@@ -11,13 +11,18 @@
       <div class="wrapper h-auto lg:h-screen w-full lg:absolute">
         {% if blockTitle %}
           <div class="w-full lg:absolute z-50">
-            <div class="lg:w-full lg:max-w-screen-max mx-auto p-sm lg:p-lg subtitle font-bold text-black lg:text-white">{{ blockTitle }}</div>
+            <div 
+            class="lg:w-full lg:max-w-screen-max mx-auto p-sm lg:p-lg subtitle font-bold" 
+            style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
+              {{ blockTitle }}
+            </div>
           </div>
         {% endif %}
         {% for item in scrollytelling %}
           <section class="panel h-auto lg:h-screen w-full m-0 px-sm lg:p-0 {% if item.hideOnMobile %}hidden lg:block{% endif %}">
             {% if item.image %}
-              <img class="w-full h-full lg:absolute top-0 left-0 object-cover py-sm lg:p-0 border-b-4 border-dotted border-black lg:border-0"
+              <img 
+                class="w-full h-full lg:absolute top-0 left-0 object-cover py-sm lg:p-0 border-b-4 border-dotted border-black lg:border-0 {% if item.imageOverlay %}brightness-75{% endif %}"
                 src="{{ item.image.src }}"
                 data-srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}"
                 data-sizes="auto">
