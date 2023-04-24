@@ -86,7 +86,8 @@ function getConfig()
             'fff', 'White',
             '169b83', 'Blue',
             '272a5f', 'CBEgreen',
-            '52b756', 'Green'
+            '52b756', 'Green',
+            '6ff69d', 'Fluo Green'
         ],
         'blockformats' => [
             __('Paragraph', 'flynt') => 'p',
