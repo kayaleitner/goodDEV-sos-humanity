@@ -1,4 +1,4 @@
-{% if posts|length > 0 %}
+{% if relatedInsights|length > 0 %}
   <flynt-component load:on="visible" name="RelatedInsights" data-type="listing" class="">
     <div class="outer max-w-screen-max w-full mx-auto p-sm lg:p-lg">
       {% if blockTitle %}
@@ -15,7 +15,7 @@
           gap-0 sm:gap-md
         "
       > 
-        {% for post in posts %}
+        {% for post in relatedInsights %}
           <li
             class="fade-in move-up post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
             {% if post.externalResourceLink %}

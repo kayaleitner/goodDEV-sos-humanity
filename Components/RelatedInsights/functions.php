@@ -8,15 +8,15 @@ use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=RelatedInsights', function ($data) {
 
-    $related_posts = relevanssi_get_related_post_ids($post_id);
-    $data['related_posts'] = $related_posts;
+    $related_posts_insights = relevanssi_get_related_post_ids($post_id);
+    $data['related_posts_insights'] = $related_posts;
 
-    $data['posts'] = Timber::get_posts([
+    $data['relatedInsights'] = Timber::get_posts([
         'post_status' => 'publish',
         'post_type' => 'post',
         'posts_per_page' => 3,
         'ignore_sticky_posts' => 1,
-        'post__in' => $data['related_posts']
+        'post__in' => $data['related_posts_insights']
     ]);
 
     return $data;

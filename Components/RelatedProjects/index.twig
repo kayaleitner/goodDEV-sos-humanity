@@ -1,3 +1,4 @@
+{% if relatedProjects|length > 0 %}
 <flynt-component load:on="visible" name="RelatedProjects" data-type="listing" class="">
   <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
     {% if blockTitle %}
@@ -56,3 +57,4 @@
     </ul>
   </div>
 </flynt-component>
+{% endif %}

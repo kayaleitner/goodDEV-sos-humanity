@@ -21,9 +21,10 @@
     </section>
     <section class="post-related">
       {{ renderComponent('RelatedInsights', {'blockTitle': __('Related Insights')}) }}
-      {% for component in post.meta('relatedProjectComponents') %}
+      {{ renderComponent('RelatedProjects', {'blockTitle': __('Related Projects')}) }}
+      {# {% for component in post.meta('relatedProjectComponents') %}
         {{ renderComponent(component) }}
-      {% endfor %}
+      {% endfor %} #}
     </section>
   </article>
 {% endblock %}
