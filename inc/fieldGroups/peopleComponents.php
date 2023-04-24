@@ -84,14 +84,14 @@ add_action('Flynt/afterRegisterComponents', function () {
     ]);
     // ACFComposer::registerFieldGroup([
     //     'name' => 'peopleComponents',
-    //     'title' => __('People Components', 'flynt'),
+    //     'title' => __('People Blocks', 'flynt'),
     //     'style' => 'seamless',
     //     'fields' => [
     //         [
     //             'name' => 'peopleComponents',
-    //             'label' => __('People Components', 'flynt'),
+    //             'label' => __('People Blocks', 'flynt'),
     //             'type' => 'flexible_content',
-    //             'button_label' => __('Add Component', 'flynt'),
+    //             'button_label' => __('Add Block', 'flynt'),
     //             'layouts' => [
     //                 Components\BlockAnchor\getACFLayout(),
     //                 Components\BlockCollapse\getACFLayout(),

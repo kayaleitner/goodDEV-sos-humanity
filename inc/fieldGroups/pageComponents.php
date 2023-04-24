@@ -62,14 +62,14 @@ add_action('Flynt/afterRegisterComponents', function () {
     ]);
     ACFComposer::registerFieldGroup([
         'name' => 'pageComponents',
-        'title' => __('Page Components', 'flynt'),
+        'title' => __('Page Blocks', 'flynt'),
         'style' => 'seamless',
         'fields' => [
             [
                 'name' => 'pageComponents',
-                'label' => __('Page Components', 'flynt'),
+                'label' => __('Page Blocks', 'flynt'),
                 'type' => 'flexible_content',
-                'button_label' => __('Add Component', 'flynt'),
+                'button_label' => __('Add Block', 'flynt'),
                 'layouts' => [
                     Components\ArchiveInsights\getACFLayout(),
                     Components\ArchivePeople\getACFLayout(),

@@ -68,7 +68,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'endpoint' => 0,
             ],
             [
-                'label' => __('Location', 'flynt'),
+                'label' => __('Location URL', 'flynt'),
                 'name' => 'boxLocation',
                 'type' => 'url',
                 'wrapper' => [
@@ -154,14 +154,14 @@ add_action('Flynt/afterRegisterComponents', function () {
     ]);
     ACFComposer::registerFieldGroup([
         'name' => 'projectComponents',
-        'title' => __('Project Components', 'flynt'),
+        'title' => __('Project Blocks', 'flynt'),
         'style' => 'seamless',
         'fields' => [
             [
                 'name' => 'projectComponents',
-                'label' => __('Project Components', 'flynt'),
+                'label' => __('Project Blocks', 'flynt'),
                 'type' => 'flexible_content',
-                'button_label' => __('Add Component', 'flynt'),
+                'button_label' => __('Add Block', 'flynt'),
                 'layouts' => [
                     Components\BlockCta\getACFLayout(),
                     Components\BlockImage\getACFLayout(),

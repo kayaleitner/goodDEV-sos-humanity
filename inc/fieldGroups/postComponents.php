@@ -26,7 +26,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'endpoint' => 0
             ],
             [
-                'label' => __('Fact Box Title', 'flynt'),
+                'label' => __('Fact-box Title', 'flynt'),
+                'instructions' => __('The fact-box will not show until a title is added.', 'flynt'),
                 'name' => 'factBoxTitle',
                 'type' => 'text'
             ],
@@ -37,7 +38,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'collapsed' => '',
                 'layout' => 'block',
                 'button_label' => __('Add Fact', 'flynt'),
-                'min' => 1,
+                'min' => 0,
                 'sub_fields' => [
                     [
                         'label' => __('Fact', 'flynt'),
@@ -160,14 +161,14 @@ add_action('Flynt/afterRegisterComponents', function () {
     ]);
     ACFComposer::registerFieldGroup([
         'name' => 'postComponents',
-        'title' => __('Post Components', 'flynt'),
+        'title' => __('Post Blocks', 'flynt'),
         'style' => 'seamless',
         'fields' => [
             [
                 'name' => 'postComponents',
-                'label' => __('Post Components', 'flynt'),
+                'label' => __('Post Blocks', 'flynt'),
                 'type' => 'flexible_content',
-                'button_label' => __('Add Component', 'flynt'),
+                'button_label' => __('Add Block', 'flynt'),
                 'layouts' => [
                     Components\BlockImage\getACFLayout(),
                     // Components\ListingProjects\getACFLayout(),
