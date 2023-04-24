@@ -40,10 +40,10 @@ Options::addTranslatable('BlockProjectBox', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => __('Location', 'flynt'),
+                'label' => __('Location URL', 'flynt'),
                 'name' => 'boxLocation',
                 'type' => 'text',
-                'default_value' => __('Location', 'flynt'),
+                'default_value' => __('Location URL', 'flynt'),
                 'wrapper' => [
                     'width' => 25,
                 ],
