@@ -6,11 +6,22 @@
     <div class="video">
       {% include 'Partials/_figure.twig' ignore missing with {image: posterImage} only %}
       <div data-ref="videoPlayer" class="video-player">
-        {{ video }}
+
+        {# {% if function('is_plugin_active', 'wp-content/plugins/borlabs-cookie/borlabs-cookie.php') %}
+        {% endif %} #}
+
+        {# {{ function('do_shortcode', '[borlabs-cookie id="youtube" type="content-blocker"]https://youtu.be/5q5xmXCn6rU[/borlabs-cookie]') }} #}
+        
+        {# {{ function('do_shortcode', '[borlabs-cookie id="youtube" type="content-blocker"]' ~ video_url ~ '[/borlabs-cookie]') }} #}
+        
+        {{ oembed|raw }}
+        
+        {# {{ oembed|replace({'<iframe ': '<iframe data-src="'})|raw }} #}
+
         <div class="video-loader"></div>
         <div class="video-content absolute w-full h-full flex flex-col justify-center align-middle items-center">
           <div class="max-w-screen-md mx-auto flex flex-col justify-center align-middle items-center gap-md">
-            <div class=" fade-in move-up video-title titleLarge text-white text-center">{{ contentHtml|e('wp_kses_post') }}</div>
+            <div class="video-title titleLarge text-white text-center">{{ contentHtml|e('wp_kses_post') }}</div>
             <button data-ref="playButton" class="video-playButton button button--outlineBlackWhite" type="button" aria-label="{{ labels.playButtonText }}">{{ labels.playButtonText }}</button>
           </div>
         </div>
