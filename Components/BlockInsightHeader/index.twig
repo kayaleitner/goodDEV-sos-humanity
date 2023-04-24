@@ -7,7 +7,7 @@
   <section class="w-full md:w-2/3 flex flex-col gap-lg">
     {% if post.thumbnail %}
       <div class="featuredImage w-full">
-        <img class="figure-image lazyload h-full w-full object-cover"
+        <img class="figure-image lazyload h-full w-full object-cover aspect-video"
           src="{{ post.thumbnail.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
           data-sizes="auto">
@@ -28,6 +28,7 @@
   </section>
   {# Right Column #}
   <section class="w-full md:w-1/3 flex flex-col gap-md">
+    {% if post.factBoxTitle %}
     <div class="facts w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center"> {# Facts Box #}
       <div class="caption w-full border border-black p-sm flex flex-col">
         <span class="pb-sm font-bold border-b">{{ post.factBoxTitle }}</span>
@@ -45,6 +46,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
     {# Authors Section #}
     <div class="authors w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
       <div class="w-full flex flex-col">
