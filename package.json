@@ -84,7 +84,8 @@
       "selector-class-pattern": null,
       "max-nesting-depth": null,
       "selector-max-compound-selectors": 6,
-      "selector-no-qualifying-type": null
+      "selector-no-qualifying-type": null,
+      "selector-max-id": null
     },
     "ignoreFiles": [
       "dist/**",
