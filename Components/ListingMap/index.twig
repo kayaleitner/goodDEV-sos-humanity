@@ -55,7 +55,7 @@
         <div data-ref="mapWrapper" class="w-full h-auto aspect-video" id="dottedMap"></div>
         
         <!-- Dots -->
-        <div class="absolute top-0 w-full flex items-center justify-center px-4">
+        <div class="absolute top-0 w-full h-full flex items-center justify-center px-4">
           {% for item in projects %}
             <button
               @click="activeProject = {{loop.index}}"
