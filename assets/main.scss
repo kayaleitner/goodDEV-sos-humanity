@@ -4,7 +4,8 @@
   'styles/variables',
   'styles/reset',
   'styles/icons',
-  'styles/base';
+  'styles/base',
+  'styles/borlabs-cookie';
 
 // stylelint-disable-next-line scss/at-import-no-partial-leading-underscore, scss/at-import-partial-extension-blacklist
 @import '../Components/**/_style.scss';
