@@ -10,7 +10,7 @@
     data-longitude="{{ post.longitude }}">
     <div class="w-full md:w-1/2 grow hidden md:block"></div>
     {% if post.thumbnail %}
-      <div class="w-full md:w-1/2 grow md:h-[650px] lg:h-[950px] overflow-hidden">
+      <div class="w-full md:w-1/2 grow aspect-square overflow-hidden">
         <img class="lazyload w-full h-full object-cover aspect-square brightness-75"
           src="{{ post.thumbnail.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
@@ -19,7 +19,7 @@
     {% endif %}
   </div>
   <div class="w-full max-w-screen-max mx-auto flex flex-row justify-center items-center md:absolute md:left-1/2 md:-translate-x-1/2">
-    <div class="w-full md:w-1/2 p-sm sm:p-md lg:p-lg grow text-white" style="background: var(--secondary);">
+    <div class="w-full md:w-1/2 p-sm sm:p-md lg:p-lg grow text-white aspect-square flex flex-col justify-start md:justify-center" style="background: var(--secondary);">
       <h1 class="titleSmall font-bold mb-md">{{ post.title }}</h1>
       {% for term in post.terms('country')  %}
         <div class="subtitle">{{ term }}</div>
