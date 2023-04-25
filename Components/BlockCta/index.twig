@@ -2,13 +2,13 @@
   load:on="idle" 
   name="BlockCta" 
   class="w-full"
-  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %};"
-  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+  style="background-color: {% if labels.options.colorBackground %}{{ labels.options.colorBackground }}{% else %}var(--white){% endif %};"
+  {{ labels.options.navStyle ? 'data-navStyle="' ~ labels.options.navStyle ~ '"' }}
   >
   <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-lg">
     <div class="wrapper lg:w-2/3 prose lg:prose-lg">
-      {{ contentHtml|e('wp_kses_post') }}
-      <a class="button button--primary" href="{{buttonLink.url}}">{{buttonLink.title}}</a>
+      {{ labels.contentHtml|e('wp_kses_post') }}
+      <a class="button button--primary" href="{{labels.buttonLink.url}}">{{labels.buttonLink.title}}</a>
     </div>
   </div>
 </flynt-component>

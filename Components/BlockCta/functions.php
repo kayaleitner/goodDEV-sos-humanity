@@ -3,12 +3,40 @@
 namespace Flynt\Components\BlockCta;
 
 use Flynt\FieldVariables;
+use Flynt\Utils\Options;
+use Timber\Timber;
 
 function getACFLayout()
 {
     return [
         'name' => 'BlockCta',
         'label' => __('CTA Buy', 'flynt'),
+        'sub_fields' => [
+            [
+                [
+                    'label' => __('Use this block to automatically show a CTA button leading to the "Buy Solar" page. You can edit this block from the "Blocks Settings" in the Wordpress sidebar.', 'flynt'),
+                    'name' => 'blockCtaMessage',
+                    'type' => 'message',
+                    'new_lines' => '',
+                    'esc_html' => 0,
+                ],
+            ],
+        ]
+    ];
+}
+
+Options::addTranslatable('BlockCta', [
+    [
+        'label' => __('Default Content', 'flynt'),
+        'name' => 'labelsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => '',
+        'name' => 'labels',
+        'type' => 'group',
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -34,25 +62,7 @@ function getACFLayout()
                 'wrapper' => [
                     'width' => 100
                 ],
-            ],
-            [
-                'label' => __('Options', 'flynt'),
-                'name' => 'optionsTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0
-            ],
-            [
-                'label' => '',
-                'name' => 'options',
-                'type' => 'group',
-                'layout' => 'row',
-                'sub_fields' => [
-                    // FieldVariables\getTheme(),
-                    FieldVariables\getColorBackground(),
-                    FieldVariables\getNavStyle(),
-                ]
             ]
-        ]
-    ];
-}
+        ],
+    ]
+]);
