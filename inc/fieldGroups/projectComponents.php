@@ -61,8 +61,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                 ]
             ],
             [
-                'label' => __('Box', 'flynt'),
-                'name' => 'boxTab',
+                'label' => __('Data', 'flynt'),
+                'name' => 'dataTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
