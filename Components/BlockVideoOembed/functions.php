@@ -13,14 +13,24 @@ add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
         ['autoplay' => 'true']
     );
 
-    if (in_array('wp-content/plugins/borlabs-cookie/borlabs-cookie.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-        $data['oembed'] = '[borlabs-cookie id="youtube" type="content-blocker"]' . $data['oembed'] . '[/borlabs-cookie]';
-    } else {
-        $data['oembed'] = $data['oembed'];
-    }
-
     return $data;
 });
+
+// WIP Solution (autoplay not working)
+// add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
+//     $oembed = Oembed::setSrcAsDataAttribute(
+//         $oembed,
+//         ['autoplay' => 'true']
+//     );
+
+//     if (in_array('wp-content/plugins/borlabs-cookie/borlabs-cookie.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+//         $oembed = '[borlabs-cookie id="youtube" type="content-blocker"]' . $oembed . '[/borlabs-cookie]';
+//     } else {
+//         $oembed = $data['oembed'];
+//     }
+
+//     return $data;
+// });
 
 function getACFLayout()
 {
