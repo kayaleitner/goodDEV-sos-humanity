@@ -84,10 +84,12 @@ function getConfig()
         'textcolor_map' => [
             '000', 'Black',
             'fff', 'White',
-            '169b83', 'Blue',
             '272a5f', 'CBEgreen',
-            '52b756', 'Green',
-            '6ff69d', 'Fluo Green'
+            '169b83', 'Blue',
+            '6ff69d', 'Green',
+            '7cd3b9', 'Light Green',
+            'd1d5db', 'Light Grey',
+            '7b838d', 'Grey'
         ],
         'blockformats' => [
             __('Paragraph', 'flynt') => 'p',
@@ -166,6 +168,47 @@ function getConfig()
                     ]
                 ]
             ],
+            // [
+            //     'title' => __('Horizontal Line', 'flynt'),
+            //     'icon' => '',
+            //     'items' => [
+            //         [
+            //             'title' => __('Black', 'flynt'),
+            //             'classes' => 'text-black',
+            //             'selector' => 'hr'
+            //         ],
+            //         [
+            //             'title' => __('Brand Green', 'flynt'),
+            //             'classes' => 'text-cbegreen',
+            //             'selector' => 'hr'
+            //         ],
+            //         [
+            //             'title' => __('Blue', 'flynt'),
+            //             'classes' => 'text-blue',
+            //             'selector' => 'hr'
+            //         ],
+            //         [
+            //             'title' => __('Green', 'flynt'),
+            //             'classes' => 'text-green',
+            //             'selector' => 'hr'
+            //         ],
+            //         [
+            //             'title' => __('Light Green', 'flynt'),
+            //             'classes' => 'text-lightgreen',
+            //             'selector' => 'hr'
+            //         ],
+            //         [
+            //             'title' => __('Light Grey', 'flynt'),
+            //             'classes' => 'text-lightgrey',
+            //             'selector' => 'hr'
+            //         ],
+            //         [
+            //             'title' => __('Grey', 'flynt'),
+            //             'classes' => 'text-grey',
+            //             'selector' => 'hr'
+            //         ]
+            //     ]
+            // ],
         ],
         'toolbars' => [
             'default' => [

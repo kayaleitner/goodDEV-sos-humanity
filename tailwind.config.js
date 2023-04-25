@@ -86,9 +86,6 @@ module.exports = {
             color: 'currentColor',
             fontSize: '1.25rem',
             lineHeight: 'normal',
-            // '@media (min-width: 1280px)': {
-            //   fontSize: '1.563rem'
-            // }
             a: {
               color: 'currentColor',
               '&:hover': {
@@ -102,6 +99,7 @@ module.exports = {
               }
             },
             hr: {
+              borderColor: 'currentColor',
               marginBottom: '1.3em',
               marginTop: '0'
             }
@@ -112,10 +110,8 @@ module.exports = {
             color: 'currentColor',
             fontSize: '1.563rem',
             lineHeight: '140%',
-            // '@media (min-width: 1280px)': {
-            //   fontSize: '1.563rem'
-            // }
             hr: {
+              borderColor: 'currentColor',
               marginBottom: '1.3em',
               marginTop: '0'
             }
