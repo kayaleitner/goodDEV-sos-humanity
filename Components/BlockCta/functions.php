@@ -14,7 +14,7 @@ function getACFLayout()
         'sub_fields' => [
             [
                 [
-                    'label' => __('Use this block to automatically show a CTA button leading to the "Buy Solar" page. You can edit this block from the "Blocks Settings" in the Wordpress sidebar.', 'flynt'),
+                    'label' => __('Use this block to automatically show a CTA button leading to the "Buy Energy" page. You can edit this block from the "Blocks Settings" in the Wordpress sidebar.', 'flynt'),
                     'name' => 'blockCtaMessage',
                     'type' => 'message',
                     'new_lines' => '',
