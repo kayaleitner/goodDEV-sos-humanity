@@ -74,6 +74,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\ArchiveInsights\getACFLayout(),
                     Components\ArchivePeople\getACFLayout(),
                     Components\ArchiveProjects\getACFLayout(),
+                    Components\BlockAnchor\getACFLayout(),
                     Components\BlockCta\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
                     Components\BlockImageTextFull\getACFLayout(),

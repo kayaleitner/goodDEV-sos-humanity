@@ -170,6 +170,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'flexible_content',
                 'button_label' => __('Add Block', 'flynt'),
                 'layouts' => [
+                    Components\BlockAnchor\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
                     // Components\ListingProjects\getACFLayout(),
                     Components\BlockPulloutQuote\getACFLayout(),

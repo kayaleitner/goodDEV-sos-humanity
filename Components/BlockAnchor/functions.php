@@ -16,12 +16,12 @@ function getACFLayout()
 {
     return [
         'name' => 'blockAnchor',
-        'label' => __('Block: Anchor', 'flynt'),
+        'label' => __('Anchor Scroll Link', 'flynt'),
         'sub_fields' => [
             [
                 [
-                    'label' => __('Enter unique anchor name', 'flynt'),
-                    'instructions' => __('Enter a unique name to create an anchor link.', 'flynt'),
+                    'label' => __('Anchor scroll link unique name', 'flynt'),
+                    'instructions' => __('Add this Block above the section you would like to link with an anchor scroll. Enter a unique name to create an anchor link.', 'flynt'),
                     'name' => 'anchor',
                     'type' => 'text',
                     'required' => 0,
