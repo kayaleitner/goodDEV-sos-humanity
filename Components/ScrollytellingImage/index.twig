@@ -41,7 +41,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-lg lg:absolute top-0 left-0 w-full h-full justify-center items-center">
           <div></div>
           {% if item.contentHtml %}
-            <div class="row lg:max-w-[600px] mx-auto py-sm lg:pl-0 lg:pr-sm z-50 fade-in move-up">
+            <div class="row lg:max-w-[800px] ml-0 mr-auto py-sm lg:pl-0 lg:pr-lg z-50 fade-in move-up">
               {{ item.contentHtml|e('wp_kses_post') }}
             </div>
           {% endif %}
