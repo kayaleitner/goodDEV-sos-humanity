@@ -57,7 +57,23 @@ function getACFLayout()
                         'preview_size' => 'small',
                         'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
                         'required' => 0,
-                        'mime_types' => 'jpg,jpeg,png,svg'
+                        'mime_types' => 'jpg,jpeg,png,svg',
+                        'wrapper' => [
+                            'width' => 50
+                        ],
+                    ],
+                    [
+                        'label' => __('Logo Filter', 'flynt'),
+                        'instructions' => __('Add a filter to turn the logo white.', 'flynt'),
+                        'name' => 'logoFilter',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                        'ui_on_text' => 'Yes',
+                        'ui_off_text' => 'No',
+                        'default_value' => 1,
+                        'wrapper' => [
+                            'width' => 50,
+                        ]
                     ],
                     [
                         'label' => __('Author', 'flynt'),
