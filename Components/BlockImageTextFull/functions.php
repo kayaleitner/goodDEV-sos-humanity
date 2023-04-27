@@ -26,8 +26,30 @@ function getACFLayout()
 {
     return [
         'name' => 'BlockImageTextFull',
-        'label' => __('At a Glance (Image+Text)', 'flynt'),
+        'label' => __('Text/Image', 'flynt'),
         'sub_fields' => [
+            [
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentHtml',
+                'type' => 'wysiwyg',
+                'delay' => 1,
+                'media_upload' => 0,
+                'required' => 0,
+            ],
+            [
+                'label' => __('Link Button', 'flynt'),
+                'name' => 'link',
+                'type' => 'link',
+                'return_format' => 'array',
+                'required' => 0,
+            ],
             [
                 'label' => __('Image', 'flynt'),
                 'name' => 'imageTab',
@@ -68,39 +90,6 @@ function getACFLayout()
                 'preview_size' => 'medium',
                 'required' => 0,
                 'mime_types' => 'jpg,jpeg,png,svg'
-            ],
-            [
-                'label' => __('Content', 'flynt'),
-                'name' => 'contentTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0,
-            ],
-            FieldVariables\getColorBackground(),
-            // [
-            //     'label' => __('Background Color', 'flynt'),
-            //     'name' => 'bgcolor',
-            //     'type' => 'select',
-            //     'allow_null' => 0,
-            //     'multiple' => 0,
-            //     'ui' => 0,
-            //     'ajax' => 0,
-            //     'choices' => [
-            //         'var(--primary)' => __('Primary', 'flynt'),
-            //         'var(--secondary)' => __('Secondary', 'flynt')
-            //     ],
-            //     'return_format' => 'value',
-            //     // 'wrapper' => [
-            //     //     'width' => 50,
-            //     // ]
-            // ],
-            [
-                'label' => __('Content', 'flynt'),
-                'name' => 'contentHtml',
-                'type' => 'wysiwyg',
-                'delay' => 1,
-                'media_upload' => 0,
-                'required' => 0,
             ],
             [
                 'label' => __('Icon', 'flynt'),
@@ -149,6 +138,7 @@ function getACFLayout()
                 'sub_fields' => [
                     // FieldVariables\getTheme(),
                     FieldVariables\getNavStyle('dark-clear'),
+                    FieldVariables\getColorBackground(),
                 ]
             ]
         ]
