@@ -1,16 +1,16 @@
 import $ from 'jquery'
 
 $(document).ready(function () {
-  const headerHeight = $('header').outerHeight() // Target your header navigation here
-  $('a').click(function (e) {
-    let targetHref = $(this).attr('href')
-
-    targetHref = targetHref.substring(targetHref.indexOf('#'))
-
-    $('html, body').animate({
-      scrollTop: $(targetHref).offset().top - headerHeight // Add it to the calculation here
-    }, 500)
-
+  $('a[href^="#"]').on('click', function (e) {
     e.preventDefault()
+
+    const target = this.hash
+    const $target = $(target)
+
+    $('html, body').stop().animate({
+      scrollTop: $target.offset().top
+    }, 900, 'swing', function () {
+      window.location.hash = target
+    })
   })
 })
