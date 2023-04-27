@@ -21,13 +21,22 @@ export default function (listingMap) {
   // find the project which is the highest and set the min height of the map to that
   const projectList = listingMap.getElementsByClassName('project-list')[0]
   const projects = listingMap.getElementsByClassName('project')
-  const maxHeight = Math.max(...Array.from(projects).map(project => project.offsetHeight))
+  const projectArray = Array.from(projects)
+
+  const heightArray = []
+  heightArray.push(projectArray[0].offsetHeight)
+  for (let i = 1; i < projects.length; i++) {
+    projectArray[i].style.display = 'block'
+    heightArray.push(projectArray[i].offsetHeight)
+    projectArray[i].style.display = 'none'
+  }
+
+  const maxHeight = Math.max(...heightArray)
+
   projectList.style.height = maxHeight + 'px'
 
   // TODO: on resize, update the height of the map
   // possibly reload complete component or js on resize, because dots on map are not responsive
-
-  
 
   // const map = new DottedMap({
   //   height: wrapper.offsetHeight / resolution,
@@ -37,14 +46,9 @@ export default function (listingMap) {
 
   const isMobile = window.innerWidth < 1025
 
-  console.log('isMobile', isMobile, window.innerWidth)
-
   const map = new DottedMap(JSON.parse(isMobile ? mapMobile : mapDesktop))
   const mapWidth = isMobile ? 72 : 108
   const mapHeight = isMobile ? 72 * 9 / 16 : 108 * 9 / 16
-
-  console.log('wrapper', wrapper.offsetWidth, wrapper.offsetHeight)
-  console.log(map)
 
   const svgMap = map.getSVG({
     radius: 0.36,
@@ -55,7 +59,6 @@ export default function (listingMap) {
   document.getElementById('dottedMap').innerHTML = svgMap
 
   const pinRefs = document.querySelectorAll('[data-ref="pin"]')
-  console.log(pinRefs)
 
   pinRefs.forEach(pin => {
     const { latitude, longitude } = pin.dataset
