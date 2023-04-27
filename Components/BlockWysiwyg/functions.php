@@ -18,6 +18,11 @@ function getACFLayout()
                 'endpoint' => 0,
             ],
             [
+                'label' => __('Title', 'flynt'),
+                'name' => 'blockTitle',
+                'type' => 'text'
+            ],
+            [
                 'label' => __('Content', 'flynt'),
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
@@ -41,6 +46,7 @@ function getACFLayout()
                 'sub_fields' => [
                     // FieldVariables\getTheme(),
                     FieldVariables\getColorBackground(),
+                    FieldVariables\getColorText(),
                     FieldVariables\getNavStyle(),
                 ]
             ]
