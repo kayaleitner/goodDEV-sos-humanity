@@ -1,21 +1,21 @@
-import DottedMap from 'dotted-map'
+import DottedMap, { getMapJSON } from 'dotted-map'
 import { buildRefs } from '@/assets/scripts/helpers.js'
-import { getMapJSON } from 'dotted-map'
 
 const mapDesktop = getMapJSON({
-  height: 108  * 9 / 16,
+  height: 108 * 9 / 16,
   width: 108,
   grid: 'vertical'
 })
 
 const mapMobile = getMapJSON({
-  height: 72  * 9 / 16,
+  height: 72 * 9 / 16,
   width: 72,
   grid: 'vertical'
 })
 
 export default function (listingMap) {
   const refs = buildRefs(listingMap)
+  // eslint-disable-next-line no-unused-vars
   const wrapper = refs.mapWrapper
 
   // find the project which is the highest and set the min height of the map to that
@@ -62,18 +62,16 @@ export default function (listingMap) {
 
   pinRefs.forEach(pin => {
     const { latitude, longitude } = pin.dataset
-    
+
     if (latitude && longitude) {
+      const pinCoords = map.getPin({
+        lat: parseFloat(latitude),
+        lng: parseFloat(longitude)
+      })
 
-    const pinCoords = map.getPin({
-      lat: parseFloat(latitude),
-      lng: parseFloat(longitude)
-    })
-
-    pin.style.left = pinCoords.x * 100 / mapWidth + '%'
-    pin.style.top = pinCoords.y * 100 / mapHeight + '%'
-    }
-    else {
+      pin.style.left = pinCoords.x * 100 / mapWidth + '%'
+      pin.style.top = pinCoords.y * 100 / mapHeight + '%'
+    } else {
       pin.style.opacity = 0
     }
   })
