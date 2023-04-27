@@ -18,7 +18,7 @@ const points = gsap.utils.toArray('.panel')
 
 const height = 100 * points.length
 
-mm.add('(min-width: 1280px)', () => {
+mm.add('(min-width: 780px)', () => {
   // eslint-disable-next-line no-unused-vars
   const pinner = gsap.timeline({
     scrollTrigger: {
