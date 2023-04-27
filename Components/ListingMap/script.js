@@ -59,15 +59,19 @@ export default function (listingMap) {
 
   pinRefs.forEach(pin => {
     const { latitude, longitude } = pin.dataset
-    console.log(latitude, longitude)
+    
+    if (latitude && longitude) {
+
     const pinCoords = map.getPin({
       lat: parseFloat(latitude),
       lng: parseFloat(longitude)
     })
 
-    console.log(pinCoords)
-
     pin.style.left = pinCoords.x * 100 / mapWidth + '%'
     pin.style.top = pinCoords.y * 100 / mapHeight + '%'
+    }
+    else {
+      pin.style.opacity = 0
+    }
   })
 }

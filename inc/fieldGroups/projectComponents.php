@@ -55,6 +55,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'google_map',
                 'center_lat' => '',
                 'center_lng' => '',
+                'required' => 1,
                 'zoom' => '',
                 'wrapper' => [
                     'width' => 100
