@@ -22,7 +22,7 @@
           class="text-button font-bold 
           link inline-block 
           no-underline text-currentColor 
-          hover:text-green underline-offset-4 
+          hover:text-lightgreen underline-offset-4 
           text-currentColor 
           transition-all duration-200 
           relative z-[9999]" 
@@ -38,7 +38,7 @@
           @click="activeSubmenu === {{loop.index}} ? activeSubmenu = 0 : activeSubmenu = {{loop.index}}"
           class="
           tab-control text-button font-bold link inline-block
-          hover:text-green no-underline underline-offset-4 
+          hover:text-lightgreen no-underline underline-offset-4 
           transition-all duration-200 relative z-[9999]" 
           :class="{
             'open': activeSubmenu === {{loop.index}},
@@ -70,7 +70,7 @@
                   class="
                     link titleSmall font-normal inline-block no-underline 
                     decoration-white decoration-4 underline-offset-8 
-                    text-currentColor hover:text-green
+                    text-currentColor hover:text-lightgreen
                     transition-all duration-200
                     opacity-0
                   "
