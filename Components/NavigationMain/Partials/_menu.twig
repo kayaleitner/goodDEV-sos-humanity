@@ -89,7 +89,11 @@
   <div
     @click="activeSubmenu = 0"
     id="blur-overlay"
-    class="fixed w-screen h-screen top-0 left-0 backdrop-blur-md z-20"
+    class="
+      fixed w-screen h-screen top-0 left-0 
+      backdrop-blur-md 
+      {# bg-grey opacity-80 transition-all  #}
+      z-20"
     style="display: none;"
   ></div>
 </ul>

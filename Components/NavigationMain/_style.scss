@@ -32,11 +32,18 @@ flynt-component[name='NavigationMain'] {
 
   .button {
     &.button--outlineWhite {
+      &:hover {
+        @apply hover:bg-lightgreen;
+        @apply active:bg-lightgreen;
+      }
+
       a {
         @apply m-0;
   
         &:hover {
           @apply text-white;
+          @apply hover:bg-transparent;
+          @apply active:bg-transparent;
         }
   
         &::after {
