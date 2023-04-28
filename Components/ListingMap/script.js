@@ -1,5 +1,4 @@
 import DottedMap, { getMapJSON } from 'dotted-map'
-import { buildRefs } from '@/assets/scripts/helpers.js'
 
 const mapDesktop = getMapJSON({
   height: 108 * 9 / 16,
@@ -14,9 +13,6 @@ const mapMobile = getMapJSON({
 })
 
 export default function (listingMap) {
-  const refs = buildRefs(listingMap)
-  // eslint-disable-next-line no-unused-vars
-  const wrapper = refs.mapWrapper
 
   // find the project which is the highest and set the min height of the map to that
   const projectList = listingMap.getElementsByClassName('project-list')[0]
