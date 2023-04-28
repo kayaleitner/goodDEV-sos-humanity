@@ -35,7 +35,7 @@
             <div>
               {% if box.panelLogo %}
                 <div class="">
-                  <img class="logo lazyload w-[200px] h-auto object-contain {% if box.logoFilter %}grayscale brightness-[50]{% endif %}"
+                  <img class="logo lazyload w-[200px] h-auto object-contain {% if box.logoFilter %} brightness-0 invert {% endif %}"
                   src="{{ box.panelLogo.src | resize(32) }}"
                   data-srcset="{{function('wp_get_attachment_image_srcset', box.panelLogo.id)}}"
                   data-sizes="auto">
