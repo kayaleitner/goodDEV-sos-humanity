@@ -7,7 +7,7 @@ html {
   box-sizing: border-box;
   height: 100%;
   overflow-wrap: break-word;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
   text-size-adjust: none;
 
   *,
@@ -103,24 +103,24 @@ sup {
   @include normalize-outline;
 }
 
-/* Disable animations and transitions for users that prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
+// /* Disable animations and transitions for users that prefer reduced motion */
+// @media (prefers-reduced-motion: reduce) {
 
-  /* Disable smooth scrolling for html element when focused within */
-  html:focus-within {
-    scroll-behavior: auto;
-  }
+//   /* Disable smooth scrolling for html element when focused within */
+//   html:focus-within {
+//     scroll-behavior: auto;
+//   }
 
-  /* Disable animations and transitions for all elements, including pseudo-elements */
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+//   /* Disable animations and transitions for all elements, including pseudo-elements */
+//   *,
+//   *::before,
+//   *::after {
+//     animation-duration: 0.01ms !important;
+//     animation-iteration-count: 1 !important;
+//     scroll-behavior: auto !important;
+//     transition-duration: 0.01ms !important;
+//   }
+// }
 
 /* Exceptions */
 

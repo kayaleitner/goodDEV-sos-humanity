@@ -1,7 +1,6 @@
 import 'vite/modulepreload-polyfill'
 import './scripts/loadCustomElements'
 import './scripts/custom'
-import './scripts/scroll'
 import Alpine from 'alpinejs'
 import FlyntComponent from './scripts/FlyntComponent'
 import gsap from 'gsap'

@@ -1,5 +1,10 @@
 {% if posts|length > 0 %}
-  <flynt-component load:on="visible" name="ListingInsights" data-type="listing" class="">
+  <flynt-component 
+    load:on="load" 
+    name="ListingInsights" 
+    {# id="{{ blockTitle|lower|replace({' ': ''}) }}"  #}
+    data-type="listing" 
+    class="">
     <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
       {% if blockTitle %}
         <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between items-center content-center">

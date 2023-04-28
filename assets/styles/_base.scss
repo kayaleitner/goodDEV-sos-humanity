@@ -25,7 +25,7 @@ html {
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
   text-rendering: optimizeSpeed;
 
   // @media (max-width: $breakpoint-desktop) {
