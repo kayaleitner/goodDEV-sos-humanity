@@ -2,6 +2,7 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 export default function (el) {
+
   const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
 
   const isDesktopMediaQuery = window.matchMedia('(min-width: 1024px)')
@@ -62,9 +63,21 @@ export default function (el) {
   }).progress(1)
   ScrollTrigger.create({
     start: 'center top-=100',
-    end: 99999,
+    endTrigger: '.pageWrapper',
+    end: 'bottom bottom',
     onUpdate: (self) => {
       self.direction === -1 ? showAnim.play() : showAnim.reverse()
+    },
+    onRefresh: (self) => {
+        // scroll to element id on load
+        const url = window.location.href
+        const hash = url.substring(url.indexOf('#') + 1)
+        if (hash) {
+          const element = document.getElementById(hash)
+          if (element) {
+            element.scrollIntoView()
+          }
+        }
     }
   })
   // hide/show cta on scroll
@@ -76,7 +89,8 @@ export default function (el) {
   }).progress(1)
   ScrollTrigger.create({
     start: 'center top-=100',
-    end: 99999,
+    end: 'bottom bottom',
+    endTrigger: '.pageWrapper',
     onUpdate: (self) => {
       self.direction === -1 ? showCtaAnim.play() : showCtaAnim.reverse()
     }
