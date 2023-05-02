@@ -61,12 +61,18 @@ export default function (el) {
     duration: 0.4
     // scrub: 0.5,
   }).progress(1)
+
   ScrollTrigger.create({
     start: 'center top-=100',
     endTrigger: '.pageWrapper',
     end: 'bottom bottom',
     onUpdate: (self) => {
-      self.direction === -1 ? showAnim.play() : showAnim.reverse()
+      const submenuWrapper = document.querySelector('.submenu-wrapper')
+      if (self.direction === -1 && !submenuWrapper.classList.contains('open')) {
+        showAnim.play()
+      } else if (self.direction === 1 && !submenuWrapper.classList.contains('open')) {
+        showAnim.reverse()
+      }
     },
     onRefresh: (self) => {
         // scroll to element id on load

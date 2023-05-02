@@ -21,7 +21,7 @@ export default function (projectMap) {
 
   pinRefs.forEach(pin => {
     const { latitude, longitude } = pin.dataset
-    
+
     if (latitude && longitude) {
       const pinCoords = map.getPin({
         lat: parseFloat(latitude),
@@ -30,6 +30,6 @@ export default function (projectMap) {
 
       pin.style.left = pinCoords.x * 100 / 72 + '%'
       pin.style.top = pinCoords.y * 100 / 72 / 9 * 16 + '%'
-    } 
+    }
   })
 }

@@ -19,7 +19,7 @@
           </div>
         {% endif %}
         {% for item in scrollytelling %}
-          <section class="panel h-auto md:h-screen w-full m-0 px-sm md:p-0 {% if item.hideOnMobile %}hidden md:block{% endif %}">
+          <section class="panel md:absolute h-auto md:h-screen w-full m-0 px-sm md:p-0 {% if item.hideOnMobile %}hidden md:block{% endif %}">
             {% if item.image %}
               <img 
                 class="w-full h-full md:absolute top-0 left-0 object-cover py-sm md:p-0 border-b-4 border-dotted border-black md:border-0 {% if item.imageOverlay %}brightness-75{% endif %}"

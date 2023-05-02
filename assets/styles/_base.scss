@@ -7,7 +7,7 @@
   font-family: 'Aeonik';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/AeonikTRIAL-Regular.woff2') format('woff2');
+  src: url('../assets/fonts/AeonikPro-Regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -15,7 +15,15 @@
   font-family: 'Aeonik';
   font-style: normal;
   font-weight: 700;
-  src: url('../assets/fonts/AeonikTRIAL-Bold.woff2') format('woff2');
+  src: url('../assets/fonts/AeonikPro-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Aeonik Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/AeonikMono-Bold.woff2') format('woff2');
 }
 
 
@@ -145,6 +153,10 @@ h6,
       }
     }
   }
+}
+
+.font-mono {
+  font-family: 'Aeonik Mono', Courier, monospace;
 }
 
 hr {

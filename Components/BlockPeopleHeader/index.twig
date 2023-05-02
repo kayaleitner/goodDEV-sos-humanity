@@ -32,6 +32,12 @@
           data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
           data-sizes="auto">
       </div>
+      {% else %}
+      <div class="w-full md:w-1/2 grow aspect-square overflow-hidden">
+        <div class="w-full h-full relative">
+          <div class="titleSmall font-bold text-[orange] absolute top-0 left-0 h-full w-full flex justify-center items-center">Please set a featured image.</div>
+        </div>
+      </div>
     {% endif %}
     <div class="facts w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
       <div class="w-full border border-black p-sm flex flex-col">

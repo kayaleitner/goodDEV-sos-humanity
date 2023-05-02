@@ -13,7 +13,6 @@ const mapMobile = getMapJSON({
 })
 
 export default function (listingMap) {
-
   // find the project which is the highest and set the min height of the map to that
   const projectList = listingMap.getElementsByClassName('project-list')[0]
   const projects = listingMap.getElementsByClassName('project')
