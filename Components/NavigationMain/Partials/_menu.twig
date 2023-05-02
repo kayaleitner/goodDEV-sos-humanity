@@ -5,11 +5,9 @@
     if (value) {
       document.querySelector('#blur-overlay').style.display = 'block';
       document.querySelector('body').style.overflow = 'hidden';
-      document.querySelector('nav').classList.add('blockNav');
     } else {
       document.querySelector('#blur-overlay').style.display = 'none';
       document.querySelector('body').style.overflow = 'auto';
-      document.querySelector('nav').classList.remove('blockNav');
     }
   })"
   :class="{

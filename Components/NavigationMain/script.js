@@ -68,10 +68,8 @@ export default function (el) {
       const submenuWrapper = document.querySelector('.submenu-wrapper')
       if (self.direction === -1 && !submenuWrapper.classList.contains('open')) {
         showAnim.play()
-        // document.querySelector('[name="NavigationMain"]').classList.remove('hide-nav');
       } else if (self.direction === 1 && !submenuWrapper.classList.contains('open')) {
         showAnim.reverse()
-        // document.querySelector('[name="NavigationMain"]').classList.remove('hide-nav');
       }
     }
   })
