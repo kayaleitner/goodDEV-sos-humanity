@@ -130,6 +130,11 @@ function getConfig()
                         'classes' => 'caption',
                         'selector' => '*'
                     ],
+                    [
+                        'title' => __('Mono', 'flynt'),
+                        'classes' => 'font-mono',
+                        'selector' => '*'
+                    ],
                 ]
             ],
             [

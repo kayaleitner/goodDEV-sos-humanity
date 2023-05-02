@@ -59,6 +59,9 @@ module.exports = {
         3: '3px',
         4: '4px'
       },
+      fontFamily: {
+        mono: ['Aeonik Mono']
+      },
       height: {
         xs: '10px',
         sm: '15px',
