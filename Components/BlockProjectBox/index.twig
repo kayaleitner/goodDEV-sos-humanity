@@ -10,53 +10,65 @@
   {# Box #}
   <div class="w-full md:w-1/2 lg:w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
     <div class="w-full border border-black p-sm flex flex-col">
+      {% if post.coordinates.city or post.coordinates.country %}
       <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="caption">{{ labels.boxLocation }}</span>
         <a href="{{ post.boxLocation }}" class="text-right button button--link" target="_blank" rel="noreferrer noopener">
-          {% if post.coordinates.city %}
-            {{ post.coordinates.city }},
-          {% endif %}
-          {% if post.coordinates.country %}
-            {{ post.coordinates.country }}
-          {% endif %}
+          {{ post.coordinates.city }},
+          {{ post.coordinates.country }}
         </a>
       </div>
+      {% endif %}
+      {% if post.boxGenerationSize %}
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="caption">{{ labels.boxGenerationSize }}</span>
         <span class="body text-right">{{ post.boxGenerationSize }} kWp</span>
       </div>
+      {% endif %}
+      {% for term in post.terms('customer_segment')  %}
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="caption">{{ labels.boxCustomerSegment }}</span>
         <span class="body text-right">
-          {% for term in post.terms('customer_segment')  %}
-            <div class="body flex items-center" data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}">{{ term }}</div>
-          {% endfor %}
+          <div class="body flex items-center" data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}">{{ term }}</div>
         </span>
       </div>
+      {% endfor %}
+      {% if post.boxMountingType %}
       <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="caption">{{ labels.boxMountingType }}</span>
         <span class="body text-right flex items-center" data-icon="{{ post.boxMountingType.label|lower }}">{{ post.boxMountingType.label }}</span>
       </div>
+      {% endif %}
+      {% if post.boxStorageSize %}
       <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
         <span class="caption">{{ labels.boxStorageSize }}</span>
         <span class="body text-right">{{ post.boxStorageSize }} kWh</span>
       </div>
+      {% endif %}
+      {% if post.boxPanelCount %}
       <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
         <span class="caption">{{ labels.boxPanelCount }}</span>
         <span class="body text-right">{{ post.boxPanelCount }}</span>
       </div>
+      {% endif %}
+      {% if post.boxCommissionDate %}
       <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
         <span class="caption">{{ labels.boxCommissionDate }}</span>
         <span class="body text-right">{{ post.boxCommissionDate }}</span>
       </div>
+      {% endif %}
+      {% if post.boxPartners %}
       <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
         <span class="caption">{{ labels.boxPartners }}</span>
         <span class="body text-right">{{ post.boxPartners }}</span>
       </div>
+      {% endif %}
+      {% if post.boxReEnContr %}
       <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
         <span class="caption">{{ labels.boxReEnContr }}</span>
         <span class="body text-right">{{ post.boxReEnContr }}</span>
       </div>
+      {% endif %}
     </div>
   </div>
 </flynt-component>
