@@ -1,4 +1,14 @@
 flynt-component[name='NavigationMain'] {
+  // &.hide-nav {
+  //   .submenu-wrapper {
+  //     top: 88px;
+  //   }
+  // }
+
+  .blockNav {
+    display: block !important;
+  }
+
   .submenu-wrapper {
     display: block !important;
     transform: translateX(100vw);

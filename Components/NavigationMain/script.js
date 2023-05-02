@@ -60,11 +60,19 @@ export default function (el) {
     duration: 0.4
     // scrub: 0.5,
   }).progress(1)
+
   ScrollTrigger.create({
     start: 'center top-=100',
     end: 99999,
     onUpdate: (self) => {
-      self.direction === -1 ? showAnim.play() : showAnim.reverse()
+      const submenuWrapper = document.querySelector('.submenu-wrapper')
+      if (self.direction === -1 && !submenuWrapper.classList.contains('open')) {
+        showAnim.play()
+        // document.querySelector('[name="NavigationMain"]').classList.remove('hide-nav');
+      } else if (self.direction === 1 && !submenuWrapper.classList.contains('open')) {
+        showAnim.reverse()
+        // document.querySelector('[name="NavigationMain"]').classList.remove('hide-nav');
+      }
     }
   })
   // hide/show cta on scroll
