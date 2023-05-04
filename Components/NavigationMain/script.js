@@ -34,13 +34,13 @@ export default function (el) {
             const button = el.querySelector('#ctaMenu')
 
             el.querySelectorAll('.logo').forEach((logo) => logo.classList.remove('flex', 'hidden'))
-            el.classList.remove('bg-white/50', 'backdrop-blur-sm', 'text-black', 'text-white')
+            el.classList.remove('bg-white/50', 'backdrop-blur-lg', 'text-black', 'text-white')
             button.classList.remove(
               '[&_a]:bg-green', '[&_a]:hover:bg-cbegreen', '[&_a]:hover:text-white',
               '[&_a]:bg-white', '[&_a]:hover:bg-green'
             )
 
-            self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-sm')
+            self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-lg')
 
             self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_dark').classList.add('hidden') : el.querySelector('.logo_dark').classList.add('flex')
             !self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_light').classList.add('hidden') : el.querySelector('.logo_light').classList.add('flex')
