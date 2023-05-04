@@ -24,10 +24,10 @@
         <div class="caption"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
         <div class="caption"><span class="font-bold underline">{{ post.category }}</span></div>
       </div>
-      <h1 class="titleSmall mb-md">{{ post.title }}</h1>
+      <h1 class="titleSmallMobile lg:titleSmall mb-md">{{ post.title }}</h1>
       {% if post.post_excerpt %}
         <div class="hidden md:block w-full">
-          <div class="text-subtitleMobile md:text-subtitle">{{ post.post_excerpt }}</div>
+          <div class="text-subtitleMobile lg:text-subtitle">{{ post.post_excerpt }}</div>
         </div>
       {% endif %}
     </div>
@@ -56,7 +56,7 @@
     {# Authors Section #}
     <div class="authors w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
       <div class="w-full flex flex-col">
-        <span class="text-subtitleMobile md:text-subtitle pb-sm font-bold">{{ post.authorsBoxTitle }}</span>
+        <span class="text-subtitleMobile lg:text-subtitle pb-sm font-bold">{{ post.authorsBoxTitle }}</span>
         <div class="flex flex-col">
           {# Internal Author #}
           {% for item in Post(post.internalAuthorz) %}
@@ -71,8 +71,8 @@
                 </figure>
                 <div class="caption w-2/3 flex flex-col justify-between">
                   <div>
-                    <div class="text-bodyMobile md:text-body font-bold">{{ item.title }}</div>
-                    <div class="text-bodyMobile md:text-body">{{ item.position }}</div>
+                    <div class="text-bodyMobile lg:text-body font-bold">{{ item.title }}</div>
+                    <div class="text-bodyMobile lg:text-body">{{ item.position }}</div>
                   </div>
                   <div class="flex justify-end items-center">
                     <div class="button button--arrow"></div>
@@ -97,8 +97,8 @@
                 {% if item.authorName or item.authorPosition %}
                 <div class="caption w-2/3 flex flex-col justify-between">
                   <div>
-                    <div class="text-bodyMobile md:text-body font-bold">{{ item.authorName }}</div>
-                    <div class="text-bodyMobile md:text-body">{{ item.authorPosition }}</div>
+                    <div class="text-bodyMobile lg:text-body font-bold">{{ item.authorName }}</div>
+                    <div class="text-bodyMobile lg:text-body">{{ item.authorPosition }}</div>
                   </div>
                   {% if item.authorLink %}
                     <div class="flex justify-end items-center">
