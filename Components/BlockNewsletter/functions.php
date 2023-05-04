@@ -86,6 +86,7 @@ Options::addTranslatable('BlockNewsletter', [
         'sub_fields' => [
             // // FieldVariables\getTheme(),
             FieldVariables\getColorBackground(),
+            FieldVariables\getColorText(),
             FieldVariables\getNavStyle('dark-blur'),
         ]
     ]
