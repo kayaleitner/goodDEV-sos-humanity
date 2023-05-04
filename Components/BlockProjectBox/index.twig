@@ -1,6 +1,6 @@
-<flynt-component load:on="visible" name="BlockProjectBox" class="w-full md:w-full lg:w-1/3 flex flex-col md:flex-row lg:flex-col gap-md lg:gap-lg">
+<flynt-component load:on="visible" name="BlockProjectBox" class="">
   {# Map #}
-  <div class="relative md:w-1/2 lg:w-full">
+  <div class="relative md:w-full mb-md">
     <div data-ref="mapWrapper" class="h-auto aspect-video relative" id="dottedMap"></div>
       <div class="pin bg-cbegreen rounded-full absolute"
         data-ref="pin"
@@ -8,7 +8,7 @@
         data-longitude="{{ post.coordinates.lng }}"></div>
   </div>
   {# Box #}
-  <div class="w-full md:w-1/2 lg:w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
+  <div class="w-full md:w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
     <div class="w-full border border-black p-sm flex flex-col">
       {% if post.coordinates.city or post.coordinates.country %}
       <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
