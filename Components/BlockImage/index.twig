@@ -2,9 +2,11 @@
   load:on="visible" 
   name="BlockImage"
   class="w-full"
-  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %}; color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};"
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %}; 
+    color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
-  <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-lg">
+  <div class="outer w-full max-w-screen-max mx-auto px-sm md:px-lg">
     <figure class="wrapper figure w-full lg:w-2/3">
       <img class="figure-image lazyload h-full w-full object-cover aspect-4/3"
           src="{{ image.src | resize(32) }}"
