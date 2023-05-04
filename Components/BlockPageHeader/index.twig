@@ -9,7 +9,7 @@
     <div class="w-full md:w-1/2 grow hidden md:block"></div>
     {% if post.thumbnail %}
       <div class="w-full md:w-1/2 md:min-h-[720px] grow aspect-square sm:aspect-2/1 overflow-hidden">
-        <img class="lazyload w-full h-full object-cover aspect-2/1 brightness-75"
+        <img class="lazyload w-full h-full object-cover aspect-2/1 brightness-70"
           src="{{ post.thumbnail.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
           data-sizes="auto">
