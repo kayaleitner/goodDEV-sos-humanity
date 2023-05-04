@@ -2,7 +2,6 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 export default function (el) {
-
   const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
 
   const isDesktopMediaQuery = window.matchMedia('(min-width: 1024px)')
@@ -75,15 +74,15 @@ export default function (el) {
       }
     },
     onRefresh: (self) => {
-        // scroll to element id on load
-        const url = window.location.href
-        const hash = url.substring(url.indexOf('#') + 1)
-        if (hash) {
-          const element = document.getElementById(hash)
-          if (element) {
-            element.scrollIntoView()
-          }
+      // scroll to element id on load
+      const url = window.location.href
+      const hash = url.substring(url.indexOf('#') + 1)
+      if (hash) {
+        const element = document.getElementById(hash)
+        if (element) {
+          element.scrollIntoView()
         }
+      }
     }
   })
   // hide/show cta on scroll
