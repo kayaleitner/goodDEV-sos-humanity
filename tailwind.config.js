@@ -62,6 +62,9 @@ module.exports = {
         3: '3px',
         4: '4px'
       },
+      brightness: {
+        70: '.70'
+      },
       fontFamily: {
         mono: ['Aeonik Mono']
       },
