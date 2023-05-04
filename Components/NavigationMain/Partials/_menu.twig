@@ -65,7 +65,7 @@
             style="background: var(--secondary);"
           >
             {% for subitem in item.children %}
-              <li class="h-fit mb-sm item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
+              <li class="h-fit item {{- subitem.current ? ' current-menu-item' }} {{ subitem.classes|join(' ') }}">
                 <a
                   class="
                     link titleSmall font-normal inline-block no-underline 
