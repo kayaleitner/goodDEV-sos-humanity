@@ -7,8 +7,9 @@ module.exports = {
   ],
   theme: {
     borderWidth: {
-      DEFAULT: '1px',
+      DEFAULT: '2px',
       0: '0',
+      1: '1px',
       2: '2px',
       3: '3px'
     },
@@ -42,6 +43,7 @@ module.exports = {
     screens: {
       sm: '640px',
       md: '780px',
+      mdLarge: '1080px',
       lg: '1280px',
       xl: '1440px',
       max: '1600px'
@@ -53,8 +55,9 @@ module.exports = {
         '2/1': '2 / 1'
       },
       borderWidth: {
-        DEFAULT: '1px',
+        DEFAULT: '2px',
         0: '0',
+        1: '1px',
         2: '2px',
         3: '3px',
         4: '4px'
@@ -70,9 +73,6 @@ module.exports = {
         xl: '75px',
         xxl: '125px',
         max: '200px'
-      },
-      prose: {
-        xxl: '25px'
       },
       spacing: {
         xs: '10px',

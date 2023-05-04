@@ -6,9 +6,9 @@
   {{ labels.options.navStyle ? 'data-navStyle="' ~ labels.options.navStyle ~ '"' }}
   >
   <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-lg">
-    <div class="wrapper lg:w-2/3 prose lg:prose-lg">
+    <div class="wrapper hidden sm:block lg:w-2/3 not-prose">
       {{ labels.contentHtml|e('wp_kses_post') }}
-      <a class="button button--primary" href="{{labels.buttonLink.url}}">{{labels.buttonLink.title}}</a>
     </div>
+    <a class="button button--primary sm:mt-lg" href="{{labels.buttonLink.url}}">{{labels.buttonLink.title}}</a>
   </div>
 </flynt-component>

@@ -8,7 +8,7 @@
     {% for item in quotes %}
       <div class="item w-full py-md flex flex-col md:flex-row gap-md md:gap-md justify-center items-start fade-in move-up {% if item.borderTop %} border-t-[4px] border-dotted border-cbegreen{% endif %}">
         {% if item.contentHtml %}
-          <div class="w-full md:w-2/3 prose lg:prose-lg">
+          <div class="w-full md:w-2/3 not-prose  ">
             {{ item.contentHtml|e('wp_kses_post') }}
           </div>
         {% endif %}

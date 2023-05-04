@@ -4,11 +4,13 @@
   class="w-full"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
   <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-lg">
-    <h2 class="wrapper lg:w-2/3 prose subtitle font-bold pb-sm md:pb-md" 
-        style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %};">
+    {% if blockTitle %}
+    <h2 class="wrapper lg:w-2/3 not-prose subtitle font-bold pb-sm md:pb-md" 
+      style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %};">
       {{ blockTitle }}
     </h2>
-    <div class="wrapper lg:w-2/3 prose lg:prose-lg">
+    {% endif %}
+    <div class="wrapper lg:w-2/3 not-prose  ">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>
