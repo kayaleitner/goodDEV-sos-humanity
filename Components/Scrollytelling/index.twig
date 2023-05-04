@@ -13,7 +13,7 @@
       <div class="wrapper h-auto md:h-screen w-full md:absolute">
         {% if blockTitle %}
           <div class="w-full mx-auto">
-            <h2 class="subtitle font-bold" style="color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">{{ blockTitle }}</h2>
+            <h2 class="subtitle block-title font-bold" style="color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">{{ blockTitle }}</h2>
           </div>
         {% endif %}
         {% for item in scrollytelling %}

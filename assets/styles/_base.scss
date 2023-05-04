@@ -592,3 +592,9 @@ flynt-component {
   background-color: var(--color-background);
   color: var(--color-text);
 }
+
+flynt-component {
+  .block-title.subtitle {
+    margin-bottom: 0;
+  }
+}
