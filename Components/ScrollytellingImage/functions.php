@@ -97,6 +97,7 @@ function getACFLayout()
                     // FieldVariables\getTheme(),
                     FieldVariables\getColorBackground(),
                     FieldVariables\getColorText(),
+                    FieldVariables\getColorSecondary(),
                     FieldVariables\getNavStyle('dark-blur'),
                 ]
             ]

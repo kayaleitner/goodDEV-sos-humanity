@@ -6,7 +6,7 @@
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div class="max-w-screen-max w-full mx-auto p-0 sm:p-sm lg:p-lg">
     {% if blockTitle %}
-      <h2 class="hidden sm:block pb-sm lg:pb-md subtitle font-bold">{{ blockTitle }}</h2>
+      <h2 class="hidden sm:block pb-sm lg:pb-md subtitle font-bold" style="color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--black){% endif %};">{{ blockTitle }}</h2>
     {% else %}
       <div class="hidden sm:block pb-sm lg:pb-md subtitle h-[75px]"></div>
     {% endif %}
@@ -30,7 +30,7 @@
       <div data-ref="dots" class="block sm:hidden slider-pagination swiper-pagination-fraction"></div>
       <div class="swiper-wrapper">
         {% for box in contentBoxes %}
-          <div class=" fade-in move-up slider-item swiper-slide p-sm lg:p-md lg:mr-md flex flex-col justify-between" style="background-color: {% if box.colorBackground %}{{ box.colorBackground }}{% else %}var(--secondary){% endif %};">
+          <div class=" fade-in move-up slider-item swiper-slide p-sm lg:p-md lg:mr-md flex flex-col justify-between" style="background-color: {% if box.colorBackground %}{{ box.colorBackground }}{% else %}var(--secondary){% endif %}; color:{% if box.colorText %}{{ box.colorText }}{% else %}var(--white){% endif %};">
             <div class="block sm:hidden py-sm"></div>
             {% if box.panelTextbox %}
               <div>{{ box.panelTextbox|e('wp_kses_post') }}</div>

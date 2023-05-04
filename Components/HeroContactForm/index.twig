@@ -2,13 +2,16 @@
   load:on="idle"
   name="HeroContactForm"
   class=""
-  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};"
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %};
+  "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
-  <div class="max-w-screen-max w-full mx-auto px-sm py-lg lg:p-lg">
+  <div class="max-w-screen-max w-full mx-auto px-sm pb-lg lg:px-lg lg:pb-lg">
     {% if blockTitle %}
-      <div class="max-w-screen-max w-full mx-auto pb-sm lg:pb-lg flex flex-row justify-between align-bottom items-end content-end">
-        <h2 class="subtitle font-bold text-black">{{ blockTitle }}</h2>
+      <div class="max-w-screen-max w-full mx-auto py-sm lg:py-lg flex flex-row justify-between align-bottom items-end content-end border-t" style="border-color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}transparent{% endif %};">
+        <h2 class="subtitle font-bold">{{ blockTitle }}</h2>
       </div>
     {% endif %}
     <div class="max-w-screen-max mx-auto">
@@ -16,7 +19,7 @@
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-md sm:flex-row justify-between gap-sm md:gap-lg mt-md sm:mt-xl">
       {% for item in contactInfo %}
-        <div class="item w-full pt-sm sm:pt-md first:border-t-0 sm:first:border-t border-t border-black">
+        <div class="item w-full pt-sm sm:pt-md first:border-t-0 sm:first:border-t border-t" style="border-color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--black){% endif %};">
           {% if item.textEditorHtml %}
             <div>{{ item.textEditorHtml|e('wp_kses_post') }}</div>
           {% endif %}

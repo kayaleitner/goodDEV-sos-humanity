@@ -6,6 +6,7 @@ flynt-component[name='HeroContactForm'] {
 
     label {
       color: var(--black);
+      @apply mb-[5px];
     }
 
     form {
@@ -44,7 +45,7 @@ flynt-component[name='HeroContactForm'] {
     #{$input-selectors} {
       appearance: none;
       background-color: var(--white);
-      border: 0;
+      border: 2px solid var(--black);
       border-radius: 0;
       caret-color: var(--black);
       color: var(--black);
@@ -97,8 +98,8 @@ flynt-component[name='HeroContactForm'] {
       @apply h-fit;
       @apply w-fit;
       @apply z-50;
-      @apply bg-green;
-      @apply hover:bg-cbegreen;
+      @apply bg-white;
+      @apply hover:bg-black;
       @apply text-black;
       @apply hover:text-white;
       @apply border;

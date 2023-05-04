@@ -74,6 +74,8 @@ function getACFLayout()
                 'sub_fields' => [
                     // FieldVariables\getTheme(),
                     FieldVariables\getColorBackground(),
+                    FieldVariables\getColorText(),
+                    FieldVariables\getColorSecondary(),
                     FieldVariables\getNavStyle('dark-blur'),
                 ]
             ]

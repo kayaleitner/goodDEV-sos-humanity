@@ -65,7 +65,21 @@ function getColorBackground()
 {
     return [
         'label' => __('Color Background', 'flynt'),
+        'instructions' => __('Used for block background.', 'flynt'),
         'name' => 'colorBackground',
+        'type' => 'color_picker',
+        'wrapper' => [
+            'width' => 100,
+        ],
+    ];
+}
+
+function getColorSecondary()
+{
+    return [
+        'label' => __('Color Secondary', 'flynt'),
+        'instructions' => __('Generally used for Block Titles and borders (if present). If not selected the default fallback color depends on the Block design.', 'flynt'),
+        'name' => 'colorSecondary',
         'type' => 'color_picker',
         'wrapper' => [
             'width' => 100,
@@ -77,6 +91,7 @@ function getColorText()
 {
     return [
         'label' => __('Color Text', 'flynt'),
+        'instructions' => __('Used for texts except Block Titles. If not selected the default fallback color depends on the Block design.', 'flynt'),
         'name' => 'colorText',
         'type' => 'color_picker',
         'wrapper' => [
