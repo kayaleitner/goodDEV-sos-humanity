@@ -58,7 +58,7 @@ export default function (el) {
             el.querySelectorAll('.logo').forEach((logo) => logo.classList.remove('flex', 'hidden'))
             el.classList.remove('bg-white/50', 'backdrop-blur-md', 'text-grey', 'text-white', 'hamburger-grey')
 
-            self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-md')
+            self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-sm')
 
             self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_dark').classList.add('hidden') : el.querySelector('.logo_dark').classList.add('flex')
             !self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_light').classList.add('hidden') : el.querySelector('.logo_light').classList.add('flex')
