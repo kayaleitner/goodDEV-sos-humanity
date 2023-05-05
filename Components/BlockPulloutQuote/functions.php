@@ -40,6 +40,12 @@ function getACFLayout()
                         ]
                     ],
                     [
+                        'label' => __('Title', 'flynt'),
+                        'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
+                        'name' => 'blockTitle',
+                        'type' => 'text',
+                    ],
+                    [
                         'label' => __('Text', 'flynt'),
                         'name' => 'contentHtml',
                         'type' => 'wysiwyg',
@@ -88,6 +94,8 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getColorBackground(),
+                    FieldVariables\getColorText(),
+                    FieldVariables\getColorSecondary(),
                     FieldVariables\getNavStyle(),
                 ]
             ]

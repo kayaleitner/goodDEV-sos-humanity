@@ -1,29 +1,33 @@
-<flynt-component
-  load:on="idle" name="BlockPulloutQuote"
-  class="w-full py-lg"
-  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %};"
-  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
-  >
-  <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-lg flex flex-col">
-    {% for item in quotes %}
-      <div class="item w-full py-md flex flex-col md:flex-row gap-md md:gap-md justify-center items-start fade-in move-up {% if item.borderTop %} border-t-[4px] border-dotted border-cbegreen{% endif %}">
-        {% if item.contentHtml %}
-          <div class="w-full md:w-2/3 not-prose  ">
-            {{ item.contentHtml|e('wp_kses_post') }}
-          </div>
-        {% endif %}
-        {% if item.image %}
-          <figure class="figure w-full md:w-1/3">
-            <img class="figure-image"
-              src="{{ item.image.src }}"
-              data-srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}"
-              data-sizes="auto">
-            {% if item.imageCaptionHtml %}
-              <figcaption class="caption mt-sm">{{ item.imageCaptionHtml|e('wp_kses_post') }}</figcaption>
-            {% endif %}
-          </figure>
-        {% endif %}
-      </div>
-    {% endfor %}
-  </div>
+<flynt-component load:on="idle" name="BlockPulloutQuote" class="w-full py-lg" style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %};" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
+	<div class="outer w-full max-w-screen-max mx-auto px-sm md:px-lg flex flex-col">
+		{% for item in quotes %}
+			<div class="fade-in move-up pb-md sm:pb-lg">
+				{% if item.borderTop %}
+					<div class="h-[4px] w-full pb-sm md:pb-md" style="border-top: 4px dotted {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--black){% endif %};"></div>
+				{% endif %}
+				{% if item.blockTitle %}
+					<h2 class="not-prose subtitle block-title font-bold pb-sm md:pb-md" style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %};">
+						{{ item.blockTitle }}
+					</h2>
+					{# {% else %}
+					  <div class="pb-sm md:pb-md"></div> #}
+				{% endif %}
+				<div class="item w-full flex flex-col md:flex-row gap-md md:gap-md justify-center items-start">
+					{% if item.contentHtml %}
+						<div class="w-full md:w-2/3 not-prose" {% if options.colorText %} style="color:{{ options.colorText }};" {% endif %}>
+							{{ item.contentHtml|e('wp_kses_post') }}
+						</div>
+					{% endif %}
+					{% if item.image %}
+						<figure class="figure w-full md:w-1/3">
+							<img class="figure-image" src="{{ item.image.src }}" data-srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}" data-sizes="auto">
+							{% if item.imageCaptionHtml %}
+								<figcaption class="caption mt-sm">{{ item.imageCaptionHtml|e('wp_kses_post') }}</figcaption>
+							{% endif %}
+						</figure>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 </flynt-component>
