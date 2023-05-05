@@ -11,11 +11,8 @@ flynt-component[name='BlockCta'] {
     }
   }
 
-  [data-text-align='left'] {
-    text-align: start;
-  }
-
-  [data-text-align='center'] {
-    text-align: center;
+  .button--primary {
+    @apply text-bodyMobile;
+    @apply lg:text-body;
   }
 }
