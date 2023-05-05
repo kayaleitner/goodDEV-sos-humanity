@@ -1,6 +1,6 @@
 <flynt-component
   load:on="idle"
-  name="FormContactForm7"
+  name="HeroContactFormOld"
   class=""
   style="
     background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};
@@ -15,8 +15,7 @@
       </div>
     {% endif %}
     <div class="max-w-screen-max mx-auto">
-      {% set formShortcode = '[contact-form-7 id="' ~ formId ~ '"]' %}
-      {{ formShortcode|shortcodes }}
+      {{ contactForm }}
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-md sm:flex-row justify-between gap-sm md:gap-lg mt-md sm:mt-xl">
       {% for item in contactInfo %}

@@ -1,3 +1,3 @@
 # Hero Contact Form
 
-Simple formatted text from a „What You See Is What You Get“ editor, wrapped in a max width container for a convenient reading experience. Includes an option to center the text, instead of the classical inline center of the editor itself, to allow for additional custom styling.
+A Contact Form 7 wrapper with customization to only load scripts when needed, specific form styles with grid helper classes and theme options.

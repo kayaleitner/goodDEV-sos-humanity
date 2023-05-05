@@ -1,4 +1,4 @@
-flynt-component[name='FormContactForm7'] {
+flynt-component[name='HeroContactFormOld'] {
   .wpcf7 {
     align-items: flex-start;
     display: flex;
@@ -87,6 +87,7 @@ flynt-component[name='FormContactForm7'] {
       @apply no-underline;
       @apply px-sm;
       @apply py-xs;
+      @apply lg:px-md;
       @apply lg:px-md;
       @apply relative;
       @apply rounded-full;
