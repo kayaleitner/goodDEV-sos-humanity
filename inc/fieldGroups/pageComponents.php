@@ -82,6 +82,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\HeroContactForm\getACFLayout(),
+                    Components\FormContactForm7\getACFLayout(),
                     Components\HeroIllustration\getACFLayout(),
                     Components\HeroScrollySplit\getACFLayout(),
                     Components\ListComponents\getACFLayout(),
