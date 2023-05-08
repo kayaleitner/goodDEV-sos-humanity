@@ -1,0 +1,50 @@
+          <li
+            class="fade-in move-up post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
+            {% if post.externalResourceLink %}
+            <a class="link h-full no-unerline" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>
+            {% else %}
+            <a class="link h-full no-unerline" href="{{ post.link }}" aria-label="{{ post.title }}">
+            {% endif %}
+              <div class="h-full" aria-label="{{ post.title }}">
+                {% if post.thumbnail %}
+                  <figure class="figure aspect-square hidden lg:block overflow-hidden">
+                    <img class="image lazyload object-cover w-full h-full transition duration-200 ease-linear"
+                      src="{{  post.thumbnail.src | resize(32) }}"
+                      data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
+                      data-sizes="auto"
+                      data-src="{{ post.thumbnail.src }}"
+                      alt="{{ post.thumbnail.alt|e }}">
+                  </figure>
+                {% endif %}
+                <div class="content lg:aspect-square lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+                  <div class="w-full flex flex-col justify-start align-start items-start gap-sm">
+                    <div class="w-full flex flex-row justify-between align-middle items-center">
+                      <div class="caption text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
+                      <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>
+                    </div>
+                    <h2 class="text-bodyMobile mb-0 lg:w-full md:grow">{{ post.title }}</h2>
+                  </div>
+                  <div class="flex flex-row lg:flex-col gap-sm justify-between items-between md:items-stretch w-full">
+                    <span class="flex lg:hidden flex-col justify-end items-end">
+                      {% if post.externalResourceLink %}
+                        <div class="button button--link">{{ post.externalResourceLink.title|e }}</div>
+                      {% else %}
+                        <div class="button button--arrow"></div>
+                      {% endif %}
+                    </span>
+                  </div>
+                  <span class="hidden lg:block">
+                    {% if post.externalResourceLink %}
+                      <div class="button button--link">{{ post.externalResourceLink.title|e }}</div>
+                    {% else %}
+                      <div class="button button--arrow"></div>
+                    {% endif %}
+                  </span>
+                </div>
+              </div>
+            {% if post.externalResourceLink %}
+            </a>
+            {% else %}
+            </a>
+            {% endif %}
+          </li>

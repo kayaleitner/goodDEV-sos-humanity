@@ -7,6 +7,9 @@ function init () {
 
     if (typeof target === 'object' && target !== null && 'getAttribute' in target && target.matches('a[data-layout]')) {
       const layout = target.dataset.layout
+      if (document.getElementById('flexTaxonomiesSelector')?.innerHTML.includes(layout)) {
+        return
+      }
       showComponentScreenshot(layout, target)
     }
   }, true)
@@ -37,7 +40,7 @@ function showComponentScreenshot (layout, wrapper) {
 
 function hideComponentScreenshot (wrapper) {
   const wrapperContainer = wrapper.querySelector('.flyntComponentScreenshot-imageWrapper')
-  wrapperContainer.remove()
+  wrapperContainer?.remove()
 }
 
 function firstToUpperCase (str) {

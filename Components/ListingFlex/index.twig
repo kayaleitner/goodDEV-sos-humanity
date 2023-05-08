@@ -1,0 +1,38 @@
+{% if posts|length > 0 %}
+  <flynt-component load:on="visible" name="ListingFlex" data-type="listing" class="" data-navStyle="light-blur">
+    <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+      {% if blockTitle %}
+        <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between align-bottom items-end content-end">
+          <div class="subtitle block-title font-bold">{{ blockTitle }}</div>
+          {% if viewAllLink %}
+            <a href="{{ viewAllLink.url }}" class="underline hover:no-underline caption font-bold">{{ viewAllLink.title }}</a>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% for flexFilter in flexFilters %}
+        <h1>{{ flexFilter.label }}</h1>
+        <h1>{{ flexFilter.value }}</h1>
+      {% endfor %}
+      <ul
+        class="
+          w-full
+          mx-auto
+          grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+          gap-0 sm:gap-md
+        "
+      >
+        {% for post in posts %}
+          {% if post.type == 'post' %}
+            {% include 'Atoms/Cards/insight.twig' with { 'post': post, 'labels': labels } only %}
+          {% endif %}
+          {% if post.type == 'people' %}
+            {% include 'Atoms/Cards/people.twig' with { 'post': post, 'labels': labels } only %}
+          {% endif %}
+          {% if post.type == 'project' %}
+            {% include 'Atoms/Cards/project.twig' with { 'post': post, 'labels': labels } only %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </flynt-component>
+{% endif %}
