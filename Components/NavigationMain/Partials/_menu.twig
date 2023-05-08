@@ -1,11 +1,13 @@
 <ul
-  x-data="{ activeSubmenu: 0 }"
+  x-data="{ activeSubmenu: 0, scrollTrigger }"
   class="menu grow list-none flex flex-row align-top gap-sm lg:gap-md justify-between w-1/2 h-fit"
   x-init="$watch('activeSubmenu', value => {
     if (value) {
+      scrollTrigger().removeBackdropBlur();
       document.querySelector('#blur-overlay').style.display = 'block';
       document.querySelector('body').style.overflow = 'hidden';
     } else {
+      scrollTrigger().addBackdropBlur();
       document.querySelector('#blur-overlay').style.display = 'none';
       document.querySelector('body').style.overflow = 'auto';
     }
