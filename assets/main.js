@@ -6,6 +6,7 @@ import FlyntComponent from './scripts/FlyntComponent'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import 'lazysizes'
+import scrollTrigger from './scripts/scrollTrigger'
 
 if (import.meta.env.DEV) {
   import('@vite/client')
@@ -17,6 +18,7 @@ window.customElements.define(
 )
 
 window.Alpine = Alpine
+Alpine.data('scrollTrigger', scrollTrigger)
 Alpine.start()
 
 gsap.registerPlugin(ScrollTrigger)

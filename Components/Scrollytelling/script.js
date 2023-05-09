@@ -57,11 +57,11 @@ mm.add('(min-width: 780px)', () => {
 
   points.forEach(function (elem, i) {
     if (i !== 0) {
-      tl.from(elem.querySelector('img'), { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, i)
+      tl.from(elem.querySelector('img'), { autoAlpha: 0 }, i)
     }
 
     if (i !== points.length - 1) {
-      tl.to(elem.querySelector('img'), { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, i + 0.5)
+      tl.to(elem.querySelector('img'), { autoAlpha: 0 }, i + 1)
     }
   })
 })

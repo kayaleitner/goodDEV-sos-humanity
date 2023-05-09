@@ -225,15 +225,16 @@
   }
 }
 
-// Social Media
+// Social Media Footer
 
 [data-icon='linkedin-white'] {
   &::after {
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-linkedin-white.svg');
     @apply ml-xs;
     @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    @apply block;
+    @apply w-[28px];
+    @apply h-[28px];
   }
 }
 
@@ -242,8 +243,9 @@
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-linkedin-black.svg');
     @apply mr-xs;
     @apply lg:mr-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    @apply block;
+    @apply w-[28px];
+    @apply h-[28px];
   }
 }
 
@@ -252,8 +254,9 @@
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-twitter-white.svg');
     @apply ml-xs;
     @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    @apply block;
+    @apply w-[28px];
+    @apply h-[28px];
   }
 }
 
@@ -262,8 +265,9 @@
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-twitter-black.svg');
     @apply mr-xs;
     @apply lg:mr-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    @apply block;
+    @apply w-[28px];
+    @apply h-[28px];
   }
 }
 
@@ -272,8 +276,9 @@
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-facebook-white.svg');
     @apply ml-xs;
     @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    @apply block;
+    @apply w-[28px];
+    @apply h-[28px];
   }
 }
 
@@ -282,7 +287,21 @@
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-facebook-black.svg');
     @apply mr-xs;
     @apply lg:mr-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    @apply block;
+    @apply w-[28px];
+    @apply h-[28px];
+  }
+}
+
+// Social Media People
+
+[data-icon='linkedin-outline'] {
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-linkedin-outline.svg');
+    @apply mr-xs;
+    @apply lg:mr-sm;
+    @apply block;
+    @apply w-[40px];
+    @apply h-[40px];
   }
 }

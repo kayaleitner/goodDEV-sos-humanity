@@ -30,8 +30,13 @@
   --secondary: #f06c00;
 }
 
-$breakpoint-mobile: 640px;
-$breakpoint-tablet: 780px;
+// $breakpoint-mobile: 640px;
+// $breakpoint-tablet: 780px;
+// $breakpoint-tablet-horizontal: 1024px;
+// $breakpoint-desktop: 1280px;
+
+$breakpoint-mobile: 780px;
+$breakpoint-tablet: 1024px;
 $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
 

@@ -6,7 +6,7 @@
   >
   <section class="w-full md:w-2/3 flex flex-col gap-md">
     <div class="w-full flex flex-col">
-      <h1 class="text-titleSmallMobile lg:text-titleSmall mb-0">{{ post.title }}</h1>
+      <h1 class="text-titleSmallMobile lg:text-titleSmall mb-sm">{{ post.title }}</h1>
       <div class="text-bodyMobile lg:text-body">{{ post.position }}</div>
     </div>
     {% if post.bio %}
@@ -15,7 +15,7 @@
     <div class="social lg:w-1/2 flex flex-row gap-sm items-start justify-start">
       {% for item in post.socials %}
         <a class="no-underline text-subtitleMobile lg:text-subtitle" href="{{ item.url }}" target="_blank" aria-label="{{ item.platform.label }}">
-          <span data-icon="{{ item.platform.label|lower }}-black"></span>
+          <span data-icon="{{ item.platform.label|lower }}-outline"></span>
         </a>
       {% endfor %}
       </ul>

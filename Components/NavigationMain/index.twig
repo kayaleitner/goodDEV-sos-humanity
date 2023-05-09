@@ -2,18 +2,18 @@
   load:on="load"
   load:onmedia="(min-width: 780px)"
   name="NavigationMain"
-  class="mainNavBlock hidden md:block text-white backdrop-blur-lg relative"
+  class="mainNavBlock hidden md:block text-white backdrop-blur-xl relative"
 >
   <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
     <div class="max-w-screen-max mx-auto px-sm lg:px-lg py-md flex items-center justify-between flex-row">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'logo_dark': logo_dark, 'site': site } only %}
-      <div class="menu-wrapper flex items-center justify-start gap-md w-fit h-fit pl-lg relative">
+      <div class="menu-wrapper flex items-center justify-start gap-sm xl:gap-md w-fit h-fit pl-lg relative">
         {% if menu %}
           {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
         {% endif %}
         <div
           id="ctaMenu"
-          class="hidden xl:flex justify-center items-start relative z-[9999]
+          class="hidden [@media(min-width:1160px)]:flex justify-center items-start relative z-[9999]
           [&_a]:bg-white [&_a]:hover:bg-green [&_a]:text-black
         ">
           {% include 'Partials/_cta.twig' %}
@@ -21,11 +21,11 @@
       </div>
     </div>
     {# this is just for tailwind blabla #}
-    <div class="hidden bg-white/50 backdrop-blur-lg text-grey text-white text-black bg-white bg-green bg-cbegreen [&_a]:bg-green [&_a]:hover:bg-cbegreen [&_a]:hover:text-white"></div>
+    <div class="hidden bg-white/50 backdrop-blur-xl text-grey text-white text-black bg-white bg-green bg-cbegreen [&_a]:bg-green [&_a]:hover:bg-cbegreen [&_a]:hover:text-white"></div>
   </nav>
 </flynt-component>
 <div id="ctaMain"
-  class="fixed hidden sm:block xl:hidden z-[9999] bottom-lg right-lg
+  class="fixed hidden sm:block [@media(min-width:1160px)]:hidden z-[9999] bottom-lg right-lg
   [&>a]:bg-green [&>a]:text-black [&>a]:hover:bg-cbegreen [&>a]:hover:text-white
 ">
   {% include 'Partials/_cta.twig' %}
