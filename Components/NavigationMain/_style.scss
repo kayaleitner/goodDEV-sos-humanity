@@ -18,6 +18,31 @@ flynt-component[name='NavigationMain'] {
     }
   }
 
+  .item {
+    &.current-menu-item {
+      a {
+        text-decoration: underline;
+        text-decoration-color: var(--white);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 8px;
+
+        &:hover {
+          text-decoration-color: var(--green);
+        }
+      }
+    }
+  }
+
+  .submenu {
+    .item {
+      &.no-underline {
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
   button {
     &.open {
       text-decoration: underline;
