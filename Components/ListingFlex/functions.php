@@ -23,6 +23,15 @@ add_filter('Flynt/addComponentData?name=ListingFlex', function ($data) {
         'post__not_in' => array(get_the_ID())
     ]);
 
+    // get all terms for taxonomies in flexFilters array
+    $data['filters'] = [];
+    foreach ($data['flexFilters'] as $filter) {
+        $data['filters'][$filter->value] = get_terms([
+            'taxonomy' => $filter->value,
+            'hide_empty' => true,
+        ]);
+    }
+
     return $data;
 });
 

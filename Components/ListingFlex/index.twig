@@ -10,6 +10,7 @@
         </div>
       {% endif %}
       {% for flexFilter in flexFilters %}
+        {{dump(flexFilter)}}
         <h1>{{ flexFilter.label }}</h1>
         <h1>{{ flexFilter.value }}</h1>
       {% endfor %}
@@ -23,7 +24,7 @@
       >
         {% for post in posts %}
           {% if post.type == 'post' %}
-            {% include 'Atoms/Cards/insight.twig' with { 'post': post, 'labels': labels } only %}
+            {% include 'Atoms/Cards/post.twig' with { 'post': post, 'labels': labels } only %}
           {% endif %}
           {% if post.type == 'people' %}
             {% include 'Atoms/Cards/people.twig' with { 'post': post, 'labels': labels } only %}
