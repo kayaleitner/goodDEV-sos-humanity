@@ -1,4 +1,19 @@
 flynt-component[name='NavigationMain'] {
+  .item {
+    &.current-page-ancestor {
+      button {
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 8px;
+
+        &:hover {
+          text-decoration-color: var(--lightgreen);
+        }
+      }
+    }
+  }
+
   .submenu-wrapper {
     display: block !important;
     transform: translateX(100vw);
@@ -22,7 +37,7 @@ flynt-component[name='NavigationMain'] {
     &.current-menu-item {
       a {
         text-decoration: underline;
-        text-decoration-color: var(--white);
+        text-decoration-color: currentColor;
         text-decoration-thickness: 2px;
         text-underline-offset: 8px;
 
@@ -35,7 +50,7 @@ flynt-component[name='NavigationMain'] {
 
   .submenu {
     .item {
-      &.no-underline {
+      &.current-menu-item {
         a {
           text-decoration: none;
         }
@@ -46,8 +61,8 @@ flynt-component[name='NavigationMain'] {
   button {
     &.open {
       text-decoration: underline;
-      text-decoration-color: var(--white);
-      text-decoration-thickness: 1px;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 2px;
       text-underline-offset: 8px;
 
       &:hover {
@@ -70,7 +85,9 @@ flynt-component[name='NavigationMain'] {
       }
 
       a {
+        @apply leading-none;
         @apply m-0;
+        @apply -translate-y-[2px];
   
         &:hover {
           @apply text-white;

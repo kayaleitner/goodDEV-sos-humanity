@@ -19,7 +19,7 @@
   {% for item in items %}
     {# regular menu item #}
     {% if not item.children %}
-      <li data-item="{{loop.index}}" class="h-fit item {{- item.current ? ' current-menu-item' }}">
+      <li data-item="{{loop.index}}" class="h-fit item {{- item.current ? ' current-menu-item' }}" {{ item.classes|join(' ') }}>
         <a 
           class="
           text-buttonSmall
@@ -38,7 +38,7 @@
     {% endif %}
     {# menu with submenu item #}
     {% if item.children %}
-      <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }}" >
+      <li data-item="{{loop.index}}" class="h-fit item open-submenu {{- item.current ? ' current-menu-item' }} {{ item.classes|join(' ') }}">
         <button
           @click="activeSubmenu === {{loop.index}} ? activeSubmenu = 0 : activeSubmenu = {{loop.index}}"
           class="
