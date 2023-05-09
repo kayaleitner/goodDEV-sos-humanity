@@ -61,7 +61,7 @@ mm.add('(min-width: 780px)', () => {
     }
 
     if (i !== points.length - 1) {
-      tl.to(elem.querySelector('img'), { autoAlpha: 0 }, i + 1)
+      tl.to(elem.querySelector('img'), { autoAlpha: 0 }, i + 0.75)
     }
   })
 })
