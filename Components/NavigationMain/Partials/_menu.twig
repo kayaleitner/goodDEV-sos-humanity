@@ -1,6 +1,6 @@
 <ul
   x-data="{ activeSubmenu: 0, scrollTrigger }"
-  class="menu grow list-none flex flex-row align-top gap-sm lg:gap-md justify-between w-1/2 h-fit"
+  class="menu grow list-none flex flex-row align-top gap-xs lg:gap-sm xl:gap-md justify-between w-1/2 h-fit"
   x-init="$watch('activeSubmenu', value => {
     if (value) {
       scrollTrigger().removeBackdropBlur();
@@ -21,7 +21,10 @@
     {% if not item.children %}
       <li data-item="{{loop.index}}" class="h-fit item {{- item.current ? ' current-menu-item' }}">
         <a 
-          class="text-button font-bold 
+          class="
+          text-buttonSmall
+          max:text-button
+          font-bold 
           link inline-block 
           no-underline text-currentColor 
           hover:text-lightgreen underline-offset-4 
@@ -39,7 +42,10 @@
         <button
           @click="activeSubmenu === {{loop.index}} ? activeSubmenu = 0 : activeSubmenu = {{loop.index}}"
           class="
-          tab-control text-button font-bold link inline-block
+          tab-control 
+          text-buttonSmall
+          max:text-button
+          font-bold link inline-block
           hover:text-lightgreen no-underline underline-offset-4 
           transition-all duration-200 relative z-[9999]" 
           :class="{

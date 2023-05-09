@@ -29,6 +29,7 @@ module.exports = {
       body: ['1.563rem', '140%'],
       bodyMobile: ['1.25rem', 'normal'],
       button: ['1.25rem', 'normal'],
+      buttonSmall: ['1.125rem', 'normal'],
       titleLarge: ['4.813rem', 'normal'],
       titleLargeMobile: ['2.813rem', 'normal'],
       titleSmall: ['3.438rem', '110%'],
@@ -41,9 +42,9 @@ module.exports = {
       captionMobile: ['0.938rem', 'normal']
     },
     screens: {
-      sm: '640px',
-      md: '780px',
-      mdLarge: '1024px',
+      xs: '640px',
+      sm: '780px',
+      md: '1024px',
       lg: '1280px',
       xl: '1440px',
       max: '1600px'
@@ -79,7 +80,7 @@ module.exports = {
       },
       spacing: {
         xs: '10px',
-        sm: '20px',
+        sm: '18px',
         md: '35px',
         lg: '50px',
         xl: '75px',
