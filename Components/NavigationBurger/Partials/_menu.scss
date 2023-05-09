@@ -20,7 +20,24 @@
 
   .current-menu-item {
     .link {
-      @apply text-green;
+      text-decoration: underline;
+      text-decoration-color: var(--white);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 8px;
+
+      &:hover {
+        text-decoration-color: var(--lightgreen);
+      }
+    }
+  }
+
+  .submenu {
+    .item {
+      &.no-underline {
+        a {
+          text-decoration: none;
+        }
+      }
     }
   }
 }

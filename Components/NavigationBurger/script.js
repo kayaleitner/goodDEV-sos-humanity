@@ -22,9 +22,11 @@ export default function (el) {
 
     if (isMenuOpen) {
       el.setAttribute('data-status', 'menuIsOpen')
+      el.classList.add('burgerMenuOpen')
       disableBodyScroll(refs.menu)
     } else {
       el.removeAttribute('data-status')
+      el.classList.remove('burgerMenuOpen')
       enableBodyScroll(refs.menu)
     }
   }
@@ -81,7 +83,12 @@ export default function (el) {
     start: 'center top-=100',
     end: 99999,
     onUpdate: (self) => {
-      self.direction === -1 ? showAnim.play() : showAnim.reverse()
+      const menuWrapper = document.querySelector('[name="NavigationBurger"]')
+      if (self.direction === -1 && !menuWrapper.classList.contains('burgerMenuOpen')) {
+        showAnim.play()
+      } else if (self.direction === 1 && !menuWrapper.classList.contains('burgerMenuOpen')) {
+        showAnim.reverse()
+      }
     }
   })
   // hide/show cta on scroll

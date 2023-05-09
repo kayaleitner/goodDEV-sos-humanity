@@ -1,4 +1,9 @@
-<ul x-data="{ activeSubmenu:  '' }" data-ref="menu" class="menu pt-[80px]" style="background: var(--secondary);">
+<ul 
+  x-data="{ activeSubmenu:  '' }" 
+  data-ref="menu" 
+  class="menu pt-[80px]" 
+  style="background: var(--secondary);"
+  >
   {% for item in items %}
     {# regular menu item #}
     {% if not item.children %}
