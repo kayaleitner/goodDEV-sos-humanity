@@ -33,7 +33,7 @@ html {
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  scroll-behavior: smooth !important;
+  scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
 
   // @media (max-width: $breakpoint-desktop) {
