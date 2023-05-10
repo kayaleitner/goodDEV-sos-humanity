@@ -6,7 +6,7 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   >
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-lg">
+  <div class="outer w-full max-w-screen-max mx-auto p-sm sm:p-lg">
     <div class="wrapper w-full lg:w-2/3">
       {% if blockTitle %}
       <h2 class="subtitle block-title font-bold text-white pb-xl z-50">{{ blockTitle }}</h2>

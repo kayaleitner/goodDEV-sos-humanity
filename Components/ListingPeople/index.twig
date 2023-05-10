@@ -2,7 +2,7 @@
   <flynt-component load:on="visible" name="ListingInsights" data-type="listing" class="">
     <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
       {% if blockTitle %}
-        <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between items-center content-center">
+        <div class="w-full mx-auto pb-sm sm:pb-lg flex flex-row justify-between items-center content-center">
           <h2 class="subtitle block-title font-bold">{{ blockTitle }}</h2>
           <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
         </div>
@@ -11,8 +11,8 @@
         class="
           w-full
           mx-auto
-          grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
-          gap-0 sm:gap-md
+          grid xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+          gap-0 xs:gap-md
         "
       >
         {% for post in posts %}
@@ -30,7 +30,7 @@
                   </figure>
                 </div>
               {% endif %}
-              <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+              <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start sm:items-stretch">
                 <div class="w-full flex flex-col gap-sm">
                   <div class="w-full h-full p-sm flex flex-row justify-between align-middle items-center border caption">
                     <div>

@@ -13,8 +13,8 @@
       </section>
       <section class="post-main">
         {% if post.post_excerpt %}
-          <div class="block md:hidden w-full">
-            <div class="text-bodyMobile text-md:body">{{ post.post_excerpt }}</div>
+          <div class="block sm:hidden w-full">
+            <div class="text-bodyMobile text-sm:body">{{ post.post_excerpt }}</div>
           </div>
         {% endif %}
         {% for component in post.meta('postComponents') %}

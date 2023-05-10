@@ -1,10 +1,10 @@
 <flynt-component 
   load:on="visible" 
   name="BlockInsightHeader" 
-  class="w-full mx-auto flex flex-col md:flex-row gap-lg" 
+  class="w-full mx-auto flex flex-col sm:flex-row gap-lg" 
   data-navStyle="light-blur">
   {# Left Column #}
-  <section class="w-full md:w-2/3 flex flex-col gap-lg">
+  <section class="w-full sm:w-2/3 flex flex-col gap-lg">
     {% if post.thumbnail %}
       <div class="featuredImage w-full">
         <img class="figure-image lazyload h-full w-full object-cover aspect-video"
@@ -13,7 +13,7 @@
           data-sizes="auto">
       </div>
       {% else %}
-      <div class="w-full md:w-1/2 grow aspect-square overflow-hidden">
+      <div class="w-full sm:w-1/2 grow aspect-square overflow-hidden">
         <div class="w-full h-full relative">
           <div class="text-titleSmallMobile lg:text-titleSmall font-bold text-[orange] absolute top-0 left-0 h-full w-full flex justify-center items-center">Please set a featured image.</div>
         </div>
@@ -26,16 +26,16 @@
       </div>
       <h1 class="titleSmallMobile lg:titleSmall mb-md">{{ post.title }}</h1>
       {% if post.post_excerpt %}
-        <div class="hidden md:block w-full">
+        <div class="hidden sm:block w-full">
           <div class="text-subtitleMobile lg:text-subtitle">{{ post.post_excerpt }}</div>
         </div>
       {% endif %}
     </div>
   </section>
   {# Right Column #}
-  <section class="w-full md:w-1/3 flex flex-col gap-md">
+  <section class="w-full sm:w-1/3 flex flex-col gap-md">
     {% if post.factBoxTitle %}
-    <div class="facts w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center"> {# Facts Box #}
+    <div class="facts w-full flex flex-col sm:flex-row lg:flex-col gap-lg items-center"> {# Facts Box #}
       <div class="caption w-full border border-black p-sm flex flex-col">
         <span class="pb-sm font-bold border-b">{{ post.factBoxTitle }}</span>
         <div class="factsflex flex-col">
@@ -54,7 +54,7 @@
     </div>
     {% endif %}
     {# Authors Section #}
-    <div class="authors w-full flex flex-col md:flex-row lg:flex-col gap-lg items-center">
+    <div class="authors w-full flex flex-col sm:flex-row lg:flex-col gap-lg items-center">
       <div class="w-full flex flex-col">
         <span class="text-subtitleMobile lg:text-subtitle pb-sm font-bold">{{ post.authorsBoxTitle }}</span>
         <div class="flex flex-col">
