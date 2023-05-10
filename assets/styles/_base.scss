@@ -52,10 +52,12 @@ p,
   font-size: 1.25rem;
   letter-spacing: 0.75px;
   line-height: normal;
+  margin-block-end: 1em;
 
   @media (min-width: $breakpoint-desktop) {
     font-size: 1.563rem;
     line-height: 140%;
+    // margin-block-end: 1.563rem;
   }
 }
 
