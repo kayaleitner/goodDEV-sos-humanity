@@ -64,8 +64,8 @@
               <a href="{{ item.link }}" class="item w-full py-xs flex flex-row gap-sm border-t border-lightgrey no-underline">
                 <figure class="figure w-1/3 aspect-square overflow-hidden">
                   <img
-                    class="aspect-square object-cover grayscale transition duration-200 ease-linear"
-                    src="{{ item.thumbnail.src }}"
+                    class="lazyload aspect-square object-cover grayscale transition duration-200 ease-linear"
+                    src="{{ item.thumbnail.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
                     data-sizes="auto">
                 </figure>
@@ -88,8 +88,8 @@
                 {% if item.authorImage %}
                 <figure class="figure w-1/3 aspect-square overflow-hidden">
                   <img
-                    class="aspect-square object-cover grayscale transition duration-200 ease-linear"
-                    src="{{ item.authorImage.src }}"
+                    class="lazyload aspect-square object-cover grayscale transition duration-200 ease-linear"
+                    src="{{ item.authorImage.src | resize(32) }}"
                     data-srcset="{{function('wp_get_attachment_image_srcset', item.authorImage.id)}}"
                     data-sizes="auto">
                 </figure>
