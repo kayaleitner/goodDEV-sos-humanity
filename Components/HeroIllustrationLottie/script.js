@@ -47,7 +47,8 @@ export default function (heroIllustrationLottie) {
             })
             ScrollTrigger.refresh()
           })
-        return
+        break
+
       default:
     }
   })
