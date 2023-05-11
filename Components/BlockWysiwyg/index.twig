@@ -3,7 +3,7 @@
   name="BlockWysiwyg" 
   class="w-full"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
-  <div class="outer w-full max-w-screen-max mx-auto p-sm sm:p-lg">
+  <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-md sm:p-lg">
     {% if blockTitle %}
     <h2 class="wrapper lg:w-2/3 not-prose subtitle block-title font-bold pb-sm sm:pb-md" 
       style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %};">

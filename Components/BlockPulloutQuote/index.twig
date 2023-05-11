@@ -1,5 +1,5 @@
 <flynt-component load:on="idle" name="BlockPulloutQuote" class="w-full py-lg" style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %};" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
-	<div class="outer w-full max-w-screen-max mx-auto px-sm md:px-lg flex flex-col">
+	<div class="outer w-full max-w-screen-max mx-auto px-sm md:px-md lg:px-lg flex flex-col">
 		{% for item in quotes %}
 			<div class="fade-in move-up pb-md xs:pb-lg">
 				{% if item.borderTop %}

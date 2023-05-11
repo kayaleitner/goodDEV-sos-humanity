@@ -5,7 +5,7 @@
     background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--grey){% endif %};
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};"
   >
-  <div class="max-w-screen-max mx-auto px-sm py-lg lg:px-lg lg:py-lg flex flex-col lg:flex-row justify-between items-stretch gap-lg">
+  <div class="max-w-screen-max mx-auto px-sm md:px-md py-lg lg:px-lg lg:py-lg flex flex-col lg:flex-row justify-between items-stretch gap-lg">
     <div class="w-full lg:w-1/2 not-prose">{{ contentHtml|e('wp_kses_post') }}</div>
     <div class="w-full lg:w-1/2 flex items-center justify-end">
       {{ contactForm }}

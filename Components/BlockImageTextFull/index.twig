@@ -20,7 +20,7 @@
         <figcaption>{{ image.caption|e }}</figcaption>
       {% endif %}
     </figure>
-    <div class="w-full sm:w-1/2 max-w-[800px] aspect-square lg:aspect-3/4 h-full flex flex-col gap-md justify-between p-md sm:p-sm lg:p-lg" style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
+    <div class="w-full sm:w-1/2 max-w-[800px] aspect-square lg:aspect-3/4 h-full flex flex-col gap-md justify-between p-md sm:p-sm md:p-md lg:p-lg" style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
       <div class="sm:h-1/2 text-white">
       {% for icons in icon %}
         <div>{{ icons.icon }}</div>

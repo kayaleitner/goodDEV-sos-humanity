@@ -4,7 +4,7 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="max-w-screen-max w-full mx-auto p-0 xs:p-sm lg:p-lg">
+  <div class="max-w-screen-max w-full mx-auto p-0 xs:p-sm md:p-md lg:p-lg">
     {% if blockTitle %}
       <h2 class="hidden xs:block pb-sm lg:pb-md subtitle block-title font-bold" style="color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--black){% endif %};">{{ blockTitle }}</h2>
     {% else %}
