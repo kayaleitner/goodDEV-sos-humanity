@@ -1,5 +1,5 @@
 <flynt-component
-  load:on="idle"
+  load:on="visible"
   name="HeroIllustrationLottie"
   class=""
   style="
@@ -18,7 +18,7 @@
     {% for item in illustrations %}
       <div class="item w-full sm:w-1/3 max-w-[400px] flex flex-col gap-md sm:gap-lg justify-center items-center">
         {% if item.lottieAnimationLink %}
-          <lottie-player class="lottieAnimation" src="{{ item.lottieAnimationLink.url }}" speed="1" style="width: 200px; height: auto;" autoplay></lottie-player>
+          <lottie-player class="lottieAnimation"  data-animationtype="{{ item.animationType }}" src="{{ item.lottieAnimationLink.url }}" speed="1" style="width: 200px; height: auto;"></lottie-player>
         {% endif %}
         {% if item.contentHtml %}
           <div class="">
