@@ -3,10 +3,8 @@ import { create } from '@lottiefiles/lottie-interactivity'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 export default function (heroIllustrationLottie) {
-
-    const players = heroIllustrationLottie.querySelectorAll("lottie-player")
+    const players = heroIllustrationLottie.querySelectorAll('lottie-player')
     Array.from(players).forEach(player => {
-
         const animationType = player.dataset.animationtype
         // switch case for animationType
         switch (animationType) {
@@ -31,19 +29,19 @@ export default function (heroIllustrationLottie) {
                 return
 
             case 'scrubbed':
-                fetch(player.src)
+                fetch(player.src) // eslint-diable-line
                     .then(response => response.json())
                     .then(data => {
                         // Get the number of frames in the animation
-                        const numFrames = data.op - data.ip;
+                        const numFrames = data.op - data.ip
                         create({
                             mode: 'scroll',
-                            player: player,
+                            player,
                             actions: [
                                 {
                                     type: 'seek',
                                     visibility: [0, 1],
-                                    frames: [0, numFrames],
+                                    frames: [0, numFrames]
                                 }
                             ]
                         })
@@ -51,57 +49,52 @@ export default function (heroIllustrationLottie) {
                     })
                 return
             default:
-                return
         }
     })
 
     ScrollTrigger.refresh()
 }
 
+// Autoplay on scroll --. not working
+// create({
+//     mode: 'scroll',
+//     player: player,
+//     actions: [
+//         {
+//             visibility: [0.50, 1.0],
+//             type: 'play'
+//         }
+//     ]
+// })
 
-        // Autoplay on scroll --. not working
-        // create({
-        //     mode: 'scroll',
-        //     player: player,
-        //     actions: [
-        //         {
-        //             visibility: [0.50, 1.0],
-        //             type: 'play'
-        //         }
-        //     ]
-        // })
-        
-        // Play on hover
-        // create({
-        //     mode: "cursor",
-        //     player: player,
-        //     actions: [
-        //         {
-        //             type: "hover",
-        //             forceFlag: false,
-        //         }
-        //     ]
-        // })
-        // toggle on click
-        // create({
-        //     mode: 'cursor',
-        //     player: player,
-        //     actions: [
-        //         {
-        //             type: 'toggle',
-        //         }
-        //     ]
-        // })
-        // play on click
-        // create({
-        //     mode: 'cursor',
-        //     player: player,
-        //     actions: [
-        //         {
-        //             type: 'click',
-        //         }
-        //     ]
-        // })
-   
-
-
+// Play on hover
+// create({
+//     mode: "cursor",
+//     player: player,
+//     actions: [
+//         {
+//             type: "hover",
+//             forceFlag: false,
+//         }
+//     ]
+// })
+// toggle on click
+// create({
+//     mode: 'cursor',
+//     player: player,
+//     actions: [
+//         {
+//             type: 'toggle',
+//         }
+//     ]
+// })
+// play on click
+// create({
+//     mode: 'cursor',
+//     player: player,
+//     actions: [
+//         {
+//             type: 'click',
+//         }
+//     ]
+// })
