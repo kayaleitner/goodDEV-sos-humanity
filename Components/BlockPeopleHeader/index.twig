@@ -35,17 +35,17 @@
       {% else %}
       <div class="w-full sm:w-1/2 grow aspect-square overflow-hidden">
         <div class="w-full h-full relative">
-          <div class="titleSmall font-bold text-[orange] absolute top-0 left-0 h-full w-full flex justify-center items-center">Please set a featured image.</div>
+          <div class="text-titleSmallMobile lg:text-titleSmall font-bold text-[orange] absolute top-0 left-0 h-full w-full flex justify-center items-center">Please set a featured image.</div>
         </div>
       </div>
     {% endif %}
     <div class="facts w-full flex flex-col sm:flex-row lg:flex-col gap-lg items-center">
       <div class="w-full border border-black p-sm flex flex-col">
         <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
-          <span class="caption">Location</span>
-          <span class="caption text-right">
+          <span class="text-captionMobile lg:text-caption">Location</span>
+          <span class="text-captionMobile lg:text-caption text-right">
           {% for term in post.terms('country')  %}
-            <div class="body">{{ term }}</div>
+            <div class="botext-bodyMobile lg:text-body">{{ term }}</div>
           {% endfor %}
           </span>
         </div>
@@ -54,10 +54,10 @@
           <span class="caption text-right">---</span>
         </div> #}
         <div class="pt-sm flex flex-row gap-lg justify-between items-center">
-          <span class="caption">Division</span>
-          <span class="caption text-right">
+          <span class="text-captionMobile lg:text-caption">Division</span>
+          <span class="text-captionMobile lg:text-caption text-right">
           {% for term in post.terms('division')  %}
-            <div class="body">{{ term }}</div>
+            <div class="text-bodyMobile lg:text-body">{{ term }}</div>
           {% endfor %}
           </span>
         </div>
