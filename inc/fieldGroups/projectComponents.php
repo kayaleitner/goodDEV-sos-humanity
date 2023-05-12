@@ -79,7 +79,7 @@ add_action('Flynt/afterRegisterComponents', function () {
             [
                 'label' => __('Generation Size', 'flynt'),
                 'name' => 'boxGenerationSize',
-                'type' => 'text',
+                'type' => 'number',
                 'wrapper' => [
                     'width' => 25
                 ]
@@ -87,11 +87,12 @@ add_action('Flynt/afterRegisterComponents', function () {
             [
                 'label' => __('Mounting Type', 'flynt'),
                 'name' => 'boxMountingType',
-                'type' => 'select',
+                'type' => 'checkbox',
                 'allow_null' => 0,
                 'multiple' => 0,
                 'ui' => 1,
-                'ajax' => 0,
+                'allow_custom' => 1,
+                'layout' => 'horizontal',
                 'return_format' => 'array',
                 'choices' => [
                     'roof' => 'Roof',
@@ -105,7 +106,7 @@ add_action('Flynt/afterRegisterComponents', function () {
             [
                 'label' => __('Storage Size', 'flynt'),
                 'name' => 'boxStorageSize',
-                'type' => 'text',
+                'type' => 'number',
                 'wrapper' => [
                     'width' => 25
                 ]
@@ -113,7 +114,7 @@ add_action('Flynt/afterRegisterComponents', function () {
             [
                 'label' => __('Panel Count', 'flynt'),
                 'name' => 'boxPanelCount',
-                'type' => 'text',
+                'type' => 'number',
                 'wrapper' => [
                     'width' => 25
                 ]

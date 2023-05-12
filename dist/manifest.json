@@ -17,19 +17,17 @@
     "src": "Components/BlockImageTextFull/Assets/suitcase.svg"
   },
   "Components/BlockImageTextFull/script.js": {
-    "file": "assets/script-ec4b778f.js",
+    "file": "assets/script-2f390176.js",
     "imports": [
-      "assets/main.js",
       "__commonjsHelpers-87174ba5.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/BlockImageTextFull/script.js"
   },
   "Components/BlockProjectBox/script.js": {
-    "file": "assets/script-36b3911d.js",
+    "file": "assets/script-bda677cb.js",
     "imports": [
-      "_index-b9ca5473.js",
-      "_helpers-0bb72b7a.js",
+      "_index-31156d8c.js",
       "__commonjsHelpers-87174ba5.js"
     ],
     "isDynamicEntry": true,
@@ -43,19 +41,19 @@
     "isDynamicEntry": true,
     "src": "Components/BlockVideoOembed/script.js"
   },
-  "Components/HeroIllustration/script.js": {
-    "file": "assets/script-62382455.js",
+  "Components/HeroIllustrationLottie/script.js": {
+    "file": "assets/script-fd26d452.js",
     "imports": [
       "assets/main.js"
     ],
     "isDynamicEntry": true,
-    "src": "Components/HeroIllustration/script.js"
+    "src": "Components/HeroIllustrationLottie/script.js"
   },
   "Components/HeroScrollySplit/script.js": {
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-7b1a229a.js",
+    "file": "assets/script-a65d55e1.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -72,10 +70,9 @@
     "src": "Components/ListComponents/script.js"
   },
   "Components/ListingMap/script.js": {
-    "file": "assets/script-cc35fa90.js",
+    "file": "assets/script-98115182.js",
     "imports": [
-      "_index-b9ca5473.js",
-      "_helpers-0bb72b7a.js",
+      "_index-31156d8c.js",
       "__commonjsHelpers-87174ba5.js"
     ],
     "isDynamicEntry": true,
@@ -90,7 +87,7 @@
     "src": "Components/ListingProjects/script.js"
   },
   "Components/NavigationBurger/script.js": {
-    "file": "assets/script-c0327846.js",
+    "file": "assets/script-eaa664f5.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -119,7 +116,7 @@
     "src": "Components/NavigationFooter/Assets/twitter.svg"
   },
   "Components/NavigationMain/script.js": {
-    "file": "assets/script-22135204.js",
+    "file": "assets/script-c57c2dd6.js",
     "imports": [
       "assets/main.js"
     ],
@@ -127,7 +124,7 @@
     "src": "Components/NavigationMain/script.js"
   },
   "Components/Scrollytelling/script.js": {
-    "file": "assets/script-772b09b2.js",
+    "file": "assets/script-946bf2f5.js",
     "imports": [
       "assets/main.js"
     ],
@@ -135,7 +132,7 @@
     "src": "Components/Scrollytelling/script.js"
   },
   "Components/ScrollytellingImage/script.js": {
-    "file": "assets/script-aed85138.js",
+    "file": "assets/script-76d80005.js",
     "imports": [
       "assets/main.js"
     ],
@@ -175,8 +172,8 @@
   "_helpers-0bb72b7a.js": {
     "file": "assets/helpers-0bb72b7a.js"
   },
-  "_index-b9ca5473.js": {
-    "file": "assets/index-b9ca5473.js",
+  "_index-31156d8c.js": {
+    "file": "assets/index-31156d8c.js",
     "imports": [
       "__commonjsHelpers-87174ba5.js"
     ]
@@ -191,6 +188,18 @@
     "isEntry": true,
     "src": "assets/admin.scss"
   },
+  "assets/fonts/AeonikMono-Bold.woff2": {
+    "file": "assets/AeonikMono-Bold-14cfbd84.woff2",
+    "src": "assets/fonts/AeonikMono-Bold.woff2"
+  },
+  "assets/fonts/AeonikPro-Bold.woff2": {
+    "file": "assets/AeonikPro-Bold-bc8aedc1.woff2",
+    "src": "assets/fonts/AeonikPro-Bold.woff2"
+  },
+  "assets/fonts/AeonikPro-Regular.woff2": {
+    "file": "assets/AeonikPro-Regular-4a470b7f.woff2",
+    "src": "assets/fonts/AeonikPro-Regular.woff2"
+  },
   "assets/fonts/AeonikTRIAL-Bold.woff2": {
     "file": "assets/AeonikTRIAL-Bold-953ec054.woff2",
     "src": "assets/fonts/AeonikTRIAL-Bold.woff2"
@@ -199,57 +208,197 @@
     "file": "assets/AeonikTRIAL-Regular-396bfd80.woff2",
     "src": "assets/fonts/AeonikTRIAL-Regular.woff2"
   },
-  "assets/icons/icon-agriculture.svg": {
-    "file": "assets/icon-agriculture-739ded9c.svg",
-    "src": "assets/icons/icon-agriculture.svg"
+  "assets/icons/CustomerSegments/icon-agriculture.svg": {
+    "file": "assets/icon-agriculture-ba685400.svg",
+    "src": "assets/icons/CustomerSegments/icon-agriculture.svg"
   },
-  "assets/icons/icon-beverages.svg": {
-    "file": "assets/icon-beverages-98993174.svg",
-    "src": "assets/icons/icon-beverages.svg"
+  "assets/icons/CustomerSegments/icon-beverages.svg": {
+    "file": "assets/icon-beverages-e7f0dfee.svg",
+    "src": "assets/icons/CustomerSegments/icon-beverages.svg"
   },
-  "assets/icons/icon-carport.svg": {
-    "file": "assets/icon-carport-910dd8f1.svg",
-    "src": "assets/icons/icon-carport.svg"
+  "assets/icons/CustomerSegments/icon-cementconcrete.svg": {
+    "file": "assets/icon-cementconcrete-b19c4549.svg",
+    "src": "assets/icons/CustomerSegments/icon-cementconcrete.svg"
   },
-  "assets/icons/icon-chemical.svg": {
-    "file": "assets/icon-chemical-62d333c0.svg",
-    "src": "assets/icons/icon-chemical.svg"
+  "assets/icons/CustomerSegments/icon-chemical.svg": {
+    "file": "assets/icon-chemical-8f429790.svg",
+    "src": "assets/icons/CustomerSegments/icon-chemical.svg"
   },
-  "assets/icons/icon-energy.svg": {
-    "file": "assets/icon-energy-340ba1a0.svg",
-    "src": "assets/icons/icon-energy.svg"
+  "assets/icons/CustomerSegments/icon-consumergoods.svg": {
+    "file": "assets/icon-consumergoods-2ccd0cae.svg",
+    "src": "assets/icons/CustomerSegments/icon-consumergoods.svg"
   },
-  "assets/icons/icon-food.svg": {
-    "file": "assets/icon-food-8902d0ac.svg",
-    "src": "assets/icons/icon-food.svg"
+  "assets/icons/CustomerSegments/icon-developersepcs.svg": {
+    "file": "assets/icon-developersepcs-869b942f.svg",
+    "src": "assets/icons/CustomerSegments/icon-developersepcs.svg"
   },
-  "assets/icons/icon-forestry.svg": {
-    "file": "assets/icon-forestry-7ef6eed3.svg",
-    "src": "assets/icons/icon-forestry.svg"
+  "assets/icons/CustomerSegments/icon-energy.svg": {
+    "file": "assets/icon-energy-b30f4e46.svg",
+    "src": "assets/icons/CustomerSegments/icon-energy.svg"
   },
-  "assets/icons/icon-ground.svg": {
-    "file": "assets/icon-ground-d2d8651f.svg",
-    "src": "assets/icons/icon-ground.svg"
+  "assets/icons/CustomerSegments/icon-food.svg": {
+    "file": "assets/icon-food-25cef0b7.svg",
+    "src": "assets/icons/CustomerSegments/icon-food.svg"
   },
-  "assets/icons/icon-linkedin-black.svg": {
+  "assets/icons/CustomerSegments/icon-forestry.svg": {
+    "file": "assets/icon-forestry-a1238906.svg",
+    "src": "assets/icons/CustomerSegments/icon-forestry.svg"
+  },
+  "assets/icons/CustomerSegments/icon-heavyindustrial.svg": {
+    "file": "assets/icon-heavyindustrial-8f13902a.svg",
+    "src": "assets/icons/CustomerSegments/icon-heavyindustrial.svg"
+  },
+  "assets/icons/CustomerSegments/icon-hotel.svg": {
+    "file": "assets/icon-hotel-2fe78cf4.svg",
+    "src": "assets/icons/CustomerSegments/icon-hotel.svg"
+  },
+  "assets/icons/CustomerSegments/icon-humanitarian.svg": {
+    "file": "assets/icon-humanitarian-5276c79a.svg",
+    "src": "assets/icons/CustomerSegments/icon-humanitarian.svg"
+  },
+  "assets/icons/CustomerSegments/icon-investors.svg": {
+    "file": "assets/icon-investors-6d0b07c1.svg",
+    "src": "assets/icons/CustomerSegments/icon-investors.svg"
+  },
+  "assets/icons/CustomerSegments/icon-itsoftware.svg": {
+    "file": "assets/icon-itsoftware-8fb5756c.svg",
+    "src": "assets/icons/CustomerSegments/icon-itsoftware.svg"
+  },
+  "assets/icons/CustomerSegments/icon-manufacturing.svg": {
+    "file": "assets/icon-manufacturing-9d0575e7.svg",
+    "src": "assets/icons/CustomerSegments/icon-manufacturing.svg"
+  },
+  "assets/icons/CustomerSegments/icon-metal.svg": {
+    "file": "assets/icon-metal-1d2cddc6.svg",
+    "src": "assets/icons/CustomerSegments/icon-metal.svg"
+  },
+  "assets/icons/CustomerSegments/icon-mining.svg": {
+    "file": "assets/icon-mining-f0d7269c.svg",
+    "src": "assets/icons/CustomerSegments/icon-mining.svg"
+  },
+  "assets/icons/CustomerSegments/icon-oilpetrochemical.svg": {
+    "file": "assets/icon-oilpetrochemical-d7a95961.svg",
+    "src": "assets/icons/CustomerSegments/icon-oilpetrochemical.svg"
+  },
+  "assets/icons/CustomerSegments/icon-paper.svg": {
+    "file": "assets/icon-paper-135bbe0b.svg",
+    "src": "assets/icons/CustomerSegments/icon-paper.svg"
+  },
+  "assets/icons/CustomerSegments/icon-policymakers.svg": {
+    "file": "assets/icon-policymakers-c6e2524b.svg",
+    "src": "assets/icons/CustomerSegments/icon-policymakers.svg"
+  },
+  "assets/icons/CustomerSegments/icon-quarries.svg": {
+    "file": "assets/icon-quarries-0ccf20ea.svg",
+    "src": "assets/icons/CustomerSegments/icon-quarries.svg"
+  },
+  "assets/icons/CustomerSegments/icon-realestate.svg": {
+    "file": "assets/icon-realestate-d6d0a261.svg",
+    "src": "assets/icons/CustomerSegments/icon-realestate.svg"
+  },
+  "assets/icons/CustomerSegments/icon-telecom.svg": {
+    "file": "assets/icon-telecom-1c10ded1.svg",
+    "src": "assets/icons/CustomerSegments/icon-telecom.svg"
+  },
+  "assets/icons/Divisions/icon-assetmanagement.svg": {
+    "file": "assets/icon-assetmanagement-246558e4.svg",
+    "src": "assets/icons/Divisions/icon-assetmanagement.svg"
+  },
+  "assets/icons/Divisions/icon-batterystorage.svg": {
+    "file": "assets/icon-batterystorage-b01e7dbe.svg",
+    "src": "assets/icons/Divisions/icon-batterystorage.svg"
+  },
+  "assets/icons/Divisions/icon-businessdevelopment.svg": {
+    "file": "assets/icon-businessdevelopment-4cf4aef7.svg",
+    "src": "assets/icons/Divisions/icon-businessdevelopment.svg"
+  },
+  "assets/icons/Divisions/icon-construction.svg": {
+    "file": "assets/icon-construction-90f36240.svg",
+    "src": "assets/icons/Divisions/icon-construction.svg"
+  },
+  "assets/icons/Divisions/icon-engineering.svg": {
+    "file": "assets/icon-engineering-8e781ee9.svg",
+    "src": "assets/icons/Divisions/icon-engineering.svg"
+  },
+  "assets/icons/Divisions/icon-esg.svg": {
+    "file": "assets/icon-esg-f55f72a7.svg",
+    "src": "assets/icons/Divisions/icon-esg.svg"
+  },
+  "assets/icons/Divisions/icon-gridintegration.svg": {
+    "file": "assets/icon-gridintegration-f4de0aba.svg",
+    "src": "assets/icons/Divisions/icon-gridintegration.svg"
+  },
+  "assets/icons/Divisions/icon-hydroelectric.svg": {
+    "file": "assets/icon-hydroelectric-784272ea.svg",
+    "src": "assets/icons/Divisions/icon-hydroelectric.svg"
+  },
+  "assets/icons/Divisions/icon-investment.svg": {
+    "file": "assets/icon-investment-901172c8.svg",
+    "src": "assets/icons/Divisions/icon-investment.svg"
+  },
+  "assets/icons/Divisions/icon-management.svg": {
+    "file": "assets/icon-management-581a1b24.svg",
+    "src": "assets/icons/Divisions/icon-management.svg"
+  },
+  "assets/icons/Divisions/icon-operations.svg": {
+    "file": "assets/icon-operations-b1f9a1bd.svg",
+    "src": "assets/icons/Divisions/icon-operations.svg"
+  },
+  "assets/icons/Divisions/icon-projectdevelopment.svg": {
+    "file": "assets/icon-projectdevelopment-53875613.svg",
+    "src": "assets/icons/Divisions/icon-projectdevelopment.svg"
+  },
+  "assets/icons/Divisions/icon-regulatory.svg": {
+    "file": "assets/icon-regulatory-27ad4062.svg",
+    "src": "assets/icons/Divisions/icon-regulatory.svg"
+  },
+  "assets/icons/Divisions/icon-supplychain.svg": {
+    "file": "assets/icon-supplychain-aeb46651.svg",
+    "src": "assets/icons/Divisions/icon-supplychain.svg"
+  },
+  "assets/icons/Divisions/icon-telecom.svg": {
+    "file": "assets/icon-telecom-d2cc138b.svg",
+    "src": "assets/icons/Divisions/icon-telecom.svg"
+  },
+  "assets/icons/Divisions/icon-wind.svg": {
+    "file": "assets/icon-wind-83dfaace.svg",
+    "src": "assets/icons/MountingTypes/icon-wind.svg"
+  },
+  "assets/icons/MountingTypes/icon-carport.svg": {
+    "file": "assets/icon-carport-a96205f6.svg",
+    "src": "assets/icons/MountingTypes/icon-carport.svg"
+  },
+  "assets/icons/MountingTypes/icon-ground.svg": {
+    "file": "assets/icon-ground-4a98736f.svg",
+    "src": "assets/icons/MountingTypes/icon-ground.svg"
+  },
+  "assets/icons/MountingTypes/icon-roof.svg": {
+    "file": "assets/icon-roof-744896b1.svg",
+    "src": "assets/icons/MountingTypes/icon-roof.svg"
+  },
+  "assets/icons/MountingTypes/icon-wind.svg": {
+    "file": "assets/icon-wind-83dfaace.svg",
+    "src": "assets/icons/MountingTypes/icon-wind.svg"
+  },
+  "assets/icons/SocialMedia/icon-linkedin-black.svg": {
     "file": "assets/icon-linkedin-black-1717d900.svg",
-    "src": "assets/icons/icon-linkedin-black.svg"
+    "src": "assets/icons/SocialMedia/icon-linkedin-black.svg"
   },
-  "assets/icons/icon-linkedin-white.svg": {
-    "file": "assets/icon-linkedin-white-54325326.svg",
-    "src": "assets/icons/icon-linkedin-white.svg"
+  "assets/icons/SocialMedia/icon-linkedin-outline.svg": {
+    "file": "assets/icon-linkedin-outline-f137de2b.svg",
+    "src": "assets/icons/SocialMedia/icon-linkedin-outline.svg"
   },
-  "assets/icons/icon-roof.svg": {
-    "file": "assets/icon-roof-4a0fc37c.svg",
-    "src": "assets/icons/icon-roof.svg"
+  "assets/icons/SocialMedia/icon-linkedin-white.svg": {
+    "file": "assets/icon-linkedin-white-29eef81c.svg",
+    "src": "assets/icons/SocialMedia/icon-linkedin-white.svg"
   },
-  "assets/icons/icon-twitter-black.svg": {
+  "assets/icons/SocialMedia/icon-twitter-black.svg": {
     "file": "assets/icon-twitter-black-794a2c02.svg",
-    "src": "assets/icons/icon-twitter-black.svg"
+    "src": "assets/icons/SocialMedia/icon-twitter-black.svg"
   },
-  "assets/icons/icon-twitter-white.svg": {
-    "file": "assets/icon-twitter-white-f7991566.svg",
-    "src": "assets/icons/icon-twitter-white.svg"
+  "assets/icons/SocialMedia/icon-twitter-white.svg": {
+    "file": "assets/icon-twitter-white-1db570f5.svg",
+    "src": "assets/icons/SocialMedia/icon-twitter-white.svg"
   },
   "assets/images/logo.svg": {
     "file": "assets/logo-26c0c58f.svg",
@@ -262,7 +411,7 @@
       "Components/BlockImageTextFull/script.js",
       "Components/BlockProjectBox/script.js",
       "Components/BlockVideoOembed/script.js",
-      "Components/HeroIllustration/script.js",
+      "Components/HeroIllustrationLottie/script.js",
       "Components/HeroScrollySplit/script.js",
       "Components/ListComponents/script.js",
       "Components/ListingMap/script.js",
@@ -274,12 +423,12 @@
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-e51c56c0.js",
+    "file": "assets/main-a632c0d0.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-7e2f9d7f.css",
+    "file": "assets/main-be3e4e87.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -289,7 +438,7 @@
     "src": "assets/print.scss"
   },
   "assets/tinyMce.scss": {
-    "file": "assets/tinyMce-50770738.css",
+    "file": "assets/tinyMce-97f725e6.css",
     "isEntry": true,
     "src": "assets/tinyMce.scss"
   },
