@@ -87,12 +87,12 @@ add_action('Flynt/afterRegisterComponents', function () {
             [
                 'label' => __('Mounting Type', 'flynt'),
                 'name' => 'boxMountingType',
-                'type' => 'checkbox',
+                'type' => 'select',
                 'allow_null' => 0,
                 'multiple' => 0,
                 'ui' => 1,
-                'allow_custom' => 1,
-                'layout' => 'horizontal',
+                // 'allow_custom' => 1,
+                // 'layout' => 'horizontal',
                 'return_format' => 'array',
                 'choices' => [
                     'roof' => 'Roof',
@@ -166,7 +166,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'button_label' => __('Add Block', 'flynt'),
                 'layouts' => [
                     Components\BlockAnchor\getACFLayout(),
-                    Components\BlockCta\getACFLayout(),
+                    // Components\BlockCta\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
                     Components\BlockPulloutQuote\getACFLayout(),
                     // Components\BlockVideoOembed\getACFLayout(),

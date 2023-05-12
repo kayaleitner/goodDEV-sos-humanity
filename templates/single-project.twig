@@ -19,6 +19,7 @@
         {% for component in post.meta('projectComponents') %}
           {{ renderComponent(component) }}
         {% endfor %}
+      {{ renderComponent('BlockCta') }}
       </div>
     </section>
     <section class="post-related">
