@@ -26,10 +26,14 @@ add_filter('Flynt/addComponentData?name=ListingFlex', function ($data) {
     // get all terms for taxonomies in flexFilters array
     $data['filters'] = [];
     foreach ($data['flexFilters'] as $filter) {
-        $data['filters'][$filter->value] = get_terms([
-            'taxonomy' => $filter->value,
-            'hide_empty' => true,
-        ]);
+        $data['filters'][] = [
+            'name' => $filter['value'],
+            'label' => $filter['label'],
+            'terms' => get_terms([
+                'taxonomy' => $filter['value'],
+                'hide_empty' => true,
+            ]),
+        ];
     }
 
     return $data;

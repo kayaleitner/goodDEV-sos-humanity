@@ -1,24 +1,32 @@
 {% if posts|length > 0 %}
   <flynt-component load:on="visible" name="ListingFlex" data-type="listing" class="" data-navStyle="light-blur">
     <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
-      {% if blockTitle %}
+      {% if (blockTitle or viewAllLink or filters) %}
         <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between align-bottom items-end content-end">
-          <div class="subtitle block-title font-bold">{{ blockTitle }}</div>
+          {% if blockTitle %}
+            <div class="subtitle block-title font-bold">{{ blockTitle }}</div>
+          {% endif %}
+          <div class="filters inline-flex gap-sm">
+            {% for flexFilter in filters %}
+              <label for="{{ flexFilter.name }}" class="sr-only">{{ flexFilter.label }}:</label>
+              <select name="{{ flexFilter.name }}" id="{{ flexFilter.name }}" class="border-2 w-96 text-body">
+                <option value="*" selected>{{ flexFilter.label }}</option>
+                {% for val in flexFilter.terms %}
+                  <option value="{{ val.slug }}">{{ val.name }}</option>
+                {% endfor %}
+              </select>
+            {% endfor %}
+          </div>
           {% if viewAllLink %}
             <a href="{{ viewAllLink.url }}" class="underline hover:no-underline caption font-bold">{{ viewAllLink.title }}</a>
           {% endif %}
         </div>
       {% endif %}
-      {% for flexFilter in flexFilters %}
-        {{dump(flexFilter)}}
-        <h1>{{ flexFilter.label }}</h1>
-        <h1>{{ flexFilter.value }}</h1>
-      {% endfor %}
       <ul
         class="
           w-full
           mx-auto
-          grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+          grid xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-3
           gap-0 sm:gap-md
         "
       >
