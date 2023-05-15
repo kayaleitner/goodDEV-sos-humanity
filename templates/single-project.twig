@@ -8,11 +8,11 @@
     <header class="post-header">
       {{ renderComponent('BlockProjectHeader', { post: post }) }}
     </header>
-    <section class="post-main max-w-screen-max mx-auto p-sm sm:p-md sm:p-lg flex flex-col sm:flex-row-reverse gap-md sm:gap-sm lg:gap-md justify-between items-start">
-      <div class="w-full sm:w-1/2 mdLarge:w-1/3 lg:w-1/3 flex flex-col sm:flex-row lg:flex-col gap-md lg:gap-lg">
+    <section class="post-main max-w-screen-max mx-auto p-sm sm:p-md md:p-lg flex flex-col xs:flex-row-reverse gap-md xs:gap-sm lg:gap-md justify-between items-start">
+      <div class="w-full xs:w-1/2 sm:w-1/2 mdLarge:w-1/3 lg:w-1/3 flex flex-col sm:flex-row lg:flex-col gap-md lg:gap-lg">
         {{ renderComponent('BlockProjectBox', { post: post }) }}
       </div>
-      <div class="w-full sm:w-1/2 mdLarge:w-2/3 lg:w-2/3">
+      <div class="w-full xs:w-1/2 sm:w-1/2 mdLarge:w-2/3 lg:w-2/3">
         {% if post.intro %}
           <div class="subtitle">{{ post.intro }}</div>
         {% endif %}

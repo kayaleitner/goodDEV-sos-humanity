@@ -48,9 +48,9 @@
 
     <div 
       data-ref="mapAndProjects"
-      class="max-w-screen-max w-full mx-auto flex flex-col md:flex-row gap-lg justify-between items-start fade-in move-up">
+      class="max-w-screen-max w-full mx-auto flex flex-col xs:flex-row gap-lg justify-between items-start fade-in move-up">
 
-      <div class="w-full md:w-2/3 lg:w-3/4 flex justify-center items-center mx-auto relative">
+      <div class="w-full xs:w-1/2 sm:w-2/3 lg:w-3/4 flex justify-center items-center mx-auto relative">
         <div data-ref="mapWrapper" class="w-full h-auto aspect-video" id="dottedMap"></div>
         
         <!-- Dots -->
@@ -81,7 +81,7 @@
       </div>
 
       <div 
-        class="w-full md:w-1/3 lg:w-1/4 mx-auto relative"
+        class="w-full xs:w-1/2 sm:w-1/3 lg:w-1/4 mx-auto relative"
       >
         <!-- Prev/Next Arrows Desktop -->
         <div class="button-wrapper absolute right-sm top-0 sm:right-0 hidden lg:flex align-middle justify-end z-50 lg:-translate-y-[117px]">
@@ -129,7 +129,7 @@
             <div class="post w-full grow">
               <a class="link flex flex-col h-full no-underline" href="{{ item.link }}" aria-label="{{ item.title }}">
                 {% if item.thumbnail %}
-                  <figure class="figure hidden md:block aspect-square overflow-hidden">
+                  <figure class="figure hidden xs:block aspect-square overflow-hidden">
                     <img class="image lazyload h-full w-full aspect-square object-cover transition duration-200 ease-linear"
                       src="{{  item.thumbnail.src | resize(32) }}"
                       data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
