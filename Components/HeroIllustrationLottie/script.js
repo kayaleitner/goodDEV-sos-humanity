@@ -29,7 +29,7 @@ export default function (heroIllustrationLottie) {
         return
 
       case 'scrubbed':
-        fetch(player.src) // eslint-diable-line
+        fetch(player.src) // eslint-disable-line
           .then(response => response.json())
           .then(data => {
             // Get the number of frames in the animation
