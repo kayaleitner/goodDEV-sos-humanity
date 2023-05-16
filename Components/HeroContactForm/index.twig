@@ -8,7 +8,7 @@
   "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
-  <div class="max-w-screen-max w-full mx-auto px-sm md:px-md pb-lg lg:px-lg lg:pb-lg">
+  <div class="max-w-screen-max w-full mx-auto px-sm py-md md:px-md md:pb-md md:pt-0 lg:px-lg lg:pb-lg lg:pt-0">
     {% if blockTitle %}
       <div class="max-w-screen-max w-full mx-auto py-sm lg:py-lg flex flex-row justify-between align-bottom items-end content-end border-t" style="border-color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}transparent{% endif %};">
         <h2 class="subtitle block-title font-bold">{{ blockTitle }}</h2>
