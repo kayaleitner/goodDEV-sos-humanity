@@ -48,26 +48,10 @@ flynt-component[name='BlockVideoOembed'] {
       width: 100%;
     }
 
-    &[data-video-size='small'] {
-      max-width: 375px;
-    }
-
-    &[data-video-size='medium'] {
-      max-width: var(--content-max-width);
-    }
-
-    &[data-video-size='large'] {
-      max-width: var(--content-max-width-large);
-    }
-
-    &[data-video-size='full'] {
-      max-width: 100%;
-
-      .figure-caption {
-        margin-inline: auto;
-        max-width: var(--container-max-width);
-        padding-inline: var(--container-padding);
-      }
+    .figure-caption {
+      margin-inline: auto;
+      max-width: var(--container-max-width);
+      padding-inline: var(--container-padding);
     }
   }
 
