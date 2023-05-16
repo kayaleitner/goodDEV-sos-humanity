@@ -12,14 +12,14 @@
         {% if blockTitle %}
           <div class="w-full sm:absolute z-50">
             <h2 
-            class="sm:w-full sm:max-w-screen-max mx-auto p-sm sm:p-lg subtitle block-title font-bold" 
-            style="color:{% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">
-              {{ blockTitle }}
+              class="sm:w-full sm:max-w-screen-max mx-auto px-sm py-md sm:p-lg subtitle block-title font-bold" 
+              style="color:{% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">
+                {{ blockTitle }}
             </h2>
           </div>
         {% endif %}
         {% for item in scrollytelling %}
-          <section class="panel sm:absolute h-auto sm:h-screen w-full m-0 px-sm sm:p-0 {% if item.hideOnMobile %}hidden sm:block{% endif %}">
+          <section class="panelImage sm:absolute h-auto sm:h-screen w-full m-0 px-sm sm:p-0 {% if item.hideOnMobile %}hidden sm:block{% endif %}">
             {% if item.image %}
               <img 
                 class="w-full h-full sm:absolute top-0 left-0 object-cover py-sm sm:p-0 border-b-4 border-dotted sm:border-0 {% if item.imageOverlay %}brightness-50{% endif %}"

@@ -17,9 +17,9 @@
           </div>
         {% endif %}
         {% for item in scrollytelling %}
-          <div class="panel sm:absolute h-auto sm:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl sm:m-0 grid grid-cols-1 sm:grid-cols-2 gap-sm sm:gap-lg items-center {% if item.hideOnMobile %}hidden sm:grid{% endif %}">
+          <div class="panelIllustration sm:absolute h-auto sm:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl sm:m-0 grid grid-cols-1 sm:grid-cols-2 gap-sm sm:gap-lg items-center {% if item.hideOnMobile %}hidden sm:grid{% endif %}">
             {% if item.image %}
-              <img class="w-full max-w-[600px] mx-auto"
+              <img class="w-full max-w-[600px] mx-auto px-md py-lg sm:p-0"
                 src="{{ item.image.src | resize(32) }}"
                 data-srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}"
                 data-sizes="auto">
