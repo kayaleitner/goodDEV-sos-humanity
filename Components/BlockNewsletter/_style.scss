@@ -33,17 +33,20 @@ flynt-component[name='BlockNewsletter'] {
       @apply py-xs;
     }
 
-    input[type='submit'] {
-      @apply px-sm;
-      @apply py-xs;
-      @apply border-l;
-      @apply border-white;
-      @apply cursor-pointer;
-      @apply rounded-r-full;
-      @apply hover:bg-white;
-      @apply text-white;
-      @apply hover:text-black;
-      @apply transition-all;
+    button {
+      &.wpcf7-submit {
+        @apply px-sm;
+        @apply py-xs;
+        @apply border-l;
+        @apply border-white;
+        @apply cursor-pointer;
+        @apply rounded-r-full;
+        @apply rounded-l-none;
+        @apply hover:bg-white;
+        @apply text-white;
+        @apply hover:text-black;
+        @apply transition-all;
+      }
     }
   }
 }

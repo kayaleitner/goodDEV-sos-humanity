@@ -96,6 +96,7 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getNavStyle(),
+                    FieldVariables\getColorSecondary(),
                     [
                         'label' => __('Enable Autoplay', 'flynt'),
                         'name' => 'autoplay',

@@ -3,7 +3,11 @@ flynt-component[name='ListingMap'] {
   
   #dottedMap {
     svg {
-      clip-path: polygon(4% 2%, 100% 3%, 100% 99%, 3% 98%);
+      clip-path: polygon(0.5% 1%, 100% 1%, 100% 100%, 0% 100%);
+
+      @media (min-width: $breakpoint-mobile) {
+        clip-path: polygon(0.5% 1%, 100% 1%, 100% 100%, 2.5% 100%);
+      }
       
       @media (min-width: $breakpoint-desktop) {
         clip-path: polygon(3% 1%, 98% 1%, 98% 99%, 3% 98%);

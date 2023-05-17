@@ -2,7 +2,14 @@
   {# Map #}
   <div class="relative md:w-full mb-md">
     <div data-ref="mapWrapper" class="h-auto aspect-video relative" id="dottedMap"></div>
-      <div class="pin bg-cbegreen rounded-full absolute"
+      <div 
+        class="pin 
+          bg-cbegreen 
+          w-[25px] h-[25px] 
+          -translate-x-[12.5px] -translate-y-[12.5px] 
+          rounded-full 
+          absolute 
+          before:rounded-full before:content-none before:absolute"
         data-ref="pin"
         data-latitude="{{ post.coordinates.lat }}" 
         data-longitude="{{ post.coordinates.lng }}"></div>
@@ -20,13 +27,13 @@
       </div>
       {% endif %}
       {% if post.boxGenerationSize %}
-      <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
+      <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="text-captionMobile lg:text-caption">{{ labels.boxGenerationSize }}</span>
         <span class="text-bodyMobile lg:text-body text-right">{{ post.boxGenerationSize }} kWp</span>
       </div>
       {% endif %}
       {% for term in post.terms('customer_segment')  %}
-      <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
+      <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="text-captionMobile lg:text-caption">{{ labels.boxCustomerSegment }}</span>
         <span class="text-bodyMobile lg:text-body text-right">
           <div class="flex items-center gap-[10px]" data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}">
@@ -36,7 +43,7 @@
       </div>
       {% endfor %}
       {% if post.boxMountingType %}
-      <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
+      <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="text-captionMobile lg:text-caption">{{ labels.boxMountingType }}</span>
         <div class="text-right flex items-center gap-[10px]" data-icon="{{ post.boxMountingType.label|lower }}">
           <span class="text-bodyMobile lg:text-body scale-100">{{ post.boxMountingType.label }}</span>
@@ -44,13 +51,13 @@
       </div>
       {% endif %}
       {% if post.boxStorageSize %}
-      <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
+      <div class="py-sm first:pt-0 last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
         <span class="text-captionMobile lg:text-caption">{{ labels.boxStorageSize }}</span>
         <span class="text-bodyMobile lg:text-body text-right">{{ post.boxStorageSize }} kWh</span>
       </div>
       {% endif %}
       {% if post.boxPanelCount %}
-      <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
+      <div class="py-sm first:pt-0 last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
         <span class="text-captionMobile lg:text-caption">{{ labels.boxPanelCount }}</span>
         <span class="text-bodyMobile lg:text-body text-right">{{ post.boxPanelCount }}</span>
       </div>
@@ -62,7 +69,7 @@
       </div>
       {% endif %}
       {% if post.boxPartners %}
-      <div class="py-sm last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
+      <div class="py-sm first:pt-0 last:pb-0 flex flex-row gap-lg justify-between items-center border-b border-black last:border-b-0">
         <span class="text-captionMobile lg:text-caption">{{ labels.boxPartners }}</span>
         <span class="text-bodyMobile lg:text-body text-right">{{ post.boxPartners }}</span>
       </div>

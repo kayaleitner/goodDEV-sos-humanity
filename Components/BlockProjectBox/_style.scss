@@ -10,21 +10,6 @@ flynt-component[name='BlockProjectBox'] {
     }
   }
 
-  .pin {
-    @apply bg-cbegreen;
-    @apply w-[25px];
-    @apply h-[25px];
-    @apply -translate-x-[12.5px];
-    @apply -translate-y-[12.5px];
-    
-    &::before {
-      border: 2px solid var(--white);
-      border-radius: 100%;
-      content: '';
-      position: absolute;
-    }
-  }
-
   .button--link {
     @apply text-bodyMobile;
     @apply lg:text-body;

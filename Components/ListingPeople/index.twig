@@ -36,19 +36,16 @@
                     <div>
                       <div class="font-mono font-bold">
                         {% for term in post.terms('location')  %}
-                          <div class="caption">{{ term }}</div>
+                          <div class="text-captionMobile lg:text-caption">{{ term }}</div>
                         {% endfor %}
                       </div>
                       {% for term in post.terms('division')  %}
-                        <div class="caption">{{ term }}</div>
+                        <div data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></div>
                       {% endfor %}
                     </div>
-                    <div class="icon">
-                      <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.2916 1.34375H1.91775L1.85547 9.82204C1.85547 16.6605 5.8829 22.3948 11.3064 23.9413C16.3082 22.5154 20.1209 17.5294 20.6852 11.4004" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M6.84375 7.73632L11.3706 14.9667L23.6995 2.26953" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
+                    {% for term in post.terms('division')  %}
+                      <div data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></div>
+                    {% endfor %}
                   </div>
                 </div>
                 <div class="w-full grow flex flex-col gap-sm justify-start align-start items-start">

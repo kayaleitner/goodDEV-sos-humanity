@@ -168,8 +168,9 @@ h6,
 }
 
 hr {
-  border: 1px solid currentColor;
-  color: currentColor;
+  background-color: inherit;
+  border: 0;
+  height: 2px;
   margin: 1.25rem auto;
 
   @media (min-width: $breakpoint-desktop) {
