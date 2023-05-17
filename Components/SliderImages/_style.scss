@@ -124,7 +124,7 @@ flynt-component[name='SliderImages'] {
     width: 12px;
 
     &-active {
-      background: var(--white);
+      background: var(--white) !important;
       opacity: 1;
     }
   }
