@@ -345,7 +345,7 @@
 [data-icon='linkedin-white'] {
   &::after {
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-linkedin-white.svg');
-    @apply ml-xs;
+    @apply ml-0;
     @apply lg:ml-sm;
     @apply block;
     @apply w-[28px];
@@ -367,7 +367,7 @@
 [data-icon='twitter-white'] {
   &::after {
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-twitter-white.svg');
-    @apply ml-xs;
+    @apply ml-0;
     @apply lg:ml-sm;
     @apply block;
     @apply w-[28px];
@@ -389,7 +389,7 @@
 [data-icon='facebook-white'] {
   &::after {
     content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-facebook-white.svg');
-    @apply ml-xs;
+    @apply ml-0;
     @apply lg:ml-sm;
     @apply block;
     @apply w-[28px];
