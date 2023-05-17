@@ -1,5 +1,6 @@
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import $ from 'jquery'
 
 export default function (el) {
   const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
@@ -101,3 +102,16 @@ export default function (el) {
     }
   })
 }
+
+$(document).ready(function () {
+  $('.submenuItemLink').on('click', function () {
+    $('.mainNavBlock').removeClass('backdrop-blur-xl')
+    $('.menu').removeClass('text-white')
+    $('.submenu-wrapper').removeClass('open')
+    $('.submenu-wrapper').css('display', 'none')
+    $('.tab-control').removeClass('open')
+    $('.tab-control').removeClass('underline')
+    $('#blur-overlay').css('display', 'none')
+    $('body').css('overflow', 'auto')
+  })
+})
