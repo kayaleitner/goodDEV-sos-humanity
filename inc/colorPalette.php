@@ -8,7 +8,7 @@ function theme_add_color_palette()
         '#000',
         '#fff',
         '#169b83',
-        '#0C2569',
+        '#0c2569',
         '#52b756',
         '#6ff69d',
     );
