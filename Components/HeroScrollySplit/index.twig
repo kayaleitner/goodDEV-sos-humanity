@@ -61,7 +61,7 @@
             sm:bg-transparent
           "
           style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
-            <h1 class="sm:text-[3.438rem] sm:w-1/2 p-4 sm:pr-24 text-8xl sm:text-right font-light w-full {% if loop.index == 2 %} hidden sm:block {% endif %}">
+            <h1 class="sm:text-[3.438rem] sm:w-1/2 p-4 sm:pr-24 text-8xl sm:text-right font-light w-full {% if loop.index == 2 %} hidden sm:block {% endif %} leading-[95%]">
               <span class="block">{{ slide.text_1 }}</span>
               <span class="block sm:hidden">{{ slide.text_2 }}</span>
             </h1>
@@ -99,7 +99,7 @@
             sm:bg-transparent
           "
           style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
-            <h1 class="sm:text-[3.438rem] sm:w-1/2 p-4 sm:pl-24 text-8xl font-light h-1/2 sm:h-auto {% if loop.index != 2 %} hidden sm:block {% endif %}">
+            <h1 class="sm:text-[3.438rem] sm:w-1/2 p-4 sm:pl-24 text-8xl font-light h-1/2 sm:h-auto {% if loop.index != 2 %} hidden sm:block {% endif %} leading-[95%]">
               <span class="block sm:hidden">{{ slide.text_1 }}</span>
               <span class="block">{{ slide.text_2 }}</span>
             </h1>

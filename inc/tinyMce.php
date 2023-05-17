@@ -84,8 +84,8 @@ function getConfig()
         'textcolor_map' => [
             '000', 'Black',
             'fff', 'White',
-            '272a5f', 'CBEgreen',
-            '169b83', 'Blue',
+            '0C2569', 'Blue',
+            '169b83', 'CBEgreen',
             '6ff69d', 'Green',
             '7cd3b9', 'Light Green',
             'd1d5db', 'Light Grey',
