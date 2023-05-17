@@ -24,7 +24,7 @@
         <div class="caption"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
         <div class="caption"><span class="font-bold underline">{{ post.category }}</span></div>
       </div>
-      <h1 class="titleSmallMobile lg:titleSmall mb-md">{{ post.title }}</h1>
+      <h2 class="titleSmallMobile lg:titleSmall md:mb-md">{{ post.title }}</h2>
       {% if post.post_excerpt %}
         <div class="hidden sm:block w-full">
           <div class="text-subtitleMobile lg:text-subtitle">{{ post.post_excerpt }}</div>
