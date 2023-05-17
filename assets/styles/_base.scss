@@ -59,6 +59,10 @@ p,
     line-height: 140%;
     // margin-block-end: 1.563rem;
   }
+
+  &:last-child {
+    margin-block-end: 0;
+  }
 }
 
 // Title Large
