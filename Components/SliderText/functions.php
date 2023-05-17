@@ -80,6 +80,34 @@ function getACFLayout()
                         'name' => 'panelAuthor',
                         'type' => 'text'
                     ],
+                    // [
+                    //     'label' => __('Icon', 'flynt'),
+                    //     'name' => 'icon',
+                    //     'type' => 'repeater',
+                    //     'layout' => 'table',
+                    //     'max' => 1,
+                    //     'button_label' => __('Add Icon', 'flynt'),
+                    //     'sub_fields' => [
+                    //         [
+                    //             'label' => __('Label', 'flynt'),
+                    //             'name' => 'label',
+                    //             'type' => 'select',
+                    //             'allow_null' => 0,
+                    //             'multiple' => 0,
+                    //             'ui' => 1,
+                    //             'ajax' => 0,
+                    //             'return_format' => 'array',
+                    //             'choices' => [
+                    //                 'developersepcs' => 'Developers EPCs',
+                    //                 'heavyindustrial' => 'Heavy Industrials',
+                    //                 'investors' => 'Investors',
+                    //                 'mining' => 'Mining',
+                    //                 'policymakers' => 'Policymakers',
+                    //                 'telecom' => 'Telecom'
+                    //             ]
+                    //         ]
+                    //     ]
+                    // ],
                 ],
             ],
             [
