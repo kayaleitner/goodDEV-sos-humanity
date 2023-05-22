@@ -143,7 +143,7 @@ function getConfig()
                 'items' => [
                     [
                         'title' => __('Button Primary', 'flynt'),
-                        'classes' => 'button button--primary',
+                        'classes' => 'button button--green',
                         'selector' => 'a'
                     ],
                     [

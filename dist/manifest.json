@@ -4,17 +4,29 @@
     "isDynamicEntry": true,
     "src": "Components/ArchiveProjects/script.js"
   },
-  "Components/BlockImageTextFull/Assets/check.svg": {
-    "file": "assets/check-b1c86ee5.svg",
-    "src": "Components/BlockImageTextFull/Assets/check.svg"
+  "Components/BlockImageTextFull/Assets/developersepcs.svg": {
+    "file": "assets/developersepcs-8ba09fe9.svg",
+    "src": "Components/BlockImageTextFull/Assets/developersepcs.svg"
   },
-  "Components/BlockImageTextFull/Assets/goal.svg": {
-    "file": "assets/goal-058cb5ab.svg",
-    "src": "Components/BlockImageTextFull/Assets/goal.svg"
+  "Components/BlockImageTextFull/Assets/heavyindustrial.svg": {
+    "file": "assets/heavyindustrial-b63a1558.svg",
+    "src": "Components/BlockImageTextFull/Assets/heavyindustrial.svg"
   },
-  "Components/BlockImageTextFull/Assets/suitcase.svg": {
-    "file": "assets/suitcase-dc2d1aef.svg",
-    "src": "Components/BlockImageTextFull/Assets/suitcase.svg"
+  "Components/BlockImageTextFull/Assets/investors.svg": {
+    "file": "assets/investors-d8b49488.svg",
+    "src": "Components/BlockImageTextFull/Assets/investors.svg"
+  },
+  "Components/BlockImageTextFull/Assets/mining.svg": {
+    "file": "assets/mining-3979d64d.svg",
+    "src": "Components/BlockImageTextFull/Assets/mining.svg"
+  },
+  "Components/BlockImageTextFull/Assets/policymakers.svg": {
+    "file": "assets/policymakers-cb920acf.svg",
+    "src": "Components/BlockImageTextFull/Assets/policymakers.svg"
+  },
+  "Components/BlockImageTextFull/Assets/telecom.svg": {
+    "file": "assets/telecom-eab5264b.svg",
+    "src": "Components/BlockImageTextFull/Assets/telecom.svg"
   },
   "Components/BlockImageTextFull/script.js": {
     "file": "assets/script-2f390176.js",
@@ -42,7 +54,7 @@
     "src": "Components/BlockVideoOembed/script.js"
   },
   "Components/HeroIllustrationLottie/script.js": {
-    "file": "assets/script-fd26d452.js",
+    "file": "assets/script-594be2df.js",
     "imports": [
       "assets/main.js"
     ],
@@ -53,7 +65,7 @@
     "css": [
       "assets/swiper-bundle-6c3c321b.css"
     ],
-    "file": "assets/script-a65d55e1.js",
+    "file": "assets/script-c6a4342c.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -79,15 +91,16 @@
     "src": "Components/ListingMap/script.js"
   },
   "Components/ListingProjects/script.js": {
-    "file": "assets/script-ac30cd74.js",
+    "file": "assets/script-21032170.js",
     "imports": [
+      "_jquery-203754bb.js",
       "__commonjsHelpers-87174ba5.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/ListingProjects/script.js"
   },
   "Components/NavigationBurger/script.js": {
-    "file": "assets/script-eaa664f5.js",
+    "file": "assets/script-74c8fbca.js",
     "imports": [
       "_helpers-0bb72b7a.js",
       "assets/main.js"
@@ -96,16 +109,16 @@
     "src": "Components/NavigationBurger/script.js"
   },
   "Components/NavigationFooter/Assets/facebook.svg": {
-    "file": "assets/facebook-58a940a6.svg",
-    "src": "Components/NavigationFooter/Assets/linkedin.svg"
+    "file": "assets/linkedin-58a940a6.svg",
+    "src": "Components/NavigationFooter/Assets/facebook.svg"
   },
   "Components/NavigationFooter/Assets/linkedin-old.svg": {
     "file": "assets/linkedin-old-d3365d89.svg",
     "src": "Components/NavigationFooter/Assets/linkedin-old.svg"
   },
   "Components/NavigationFooter/Assets/linkedin.svg": {
-    "file": "assets/facebook-58a940a6.svg",
-    "src": "Components/NavigationFooter/Assets/linkedin.svg"
+    "file": "assets/linkedin-58a940a6.svg",
+    "src": "Components/NavigationFooter/Assets/facebook.svg"
   },
   "Components/NavigationFooter/Assets/logo.svg": {
     "file": "assets/logo-eeb7436e.svg",
@@ -116,15 +129,17 @@
     "src": "Components/NavigationFooter/Assets/twitter.svg"
   },
   "Components/NavigationMain/script.js": {
-    "file": "assets/script-c57c2dd6.js",
+    "file": "assets/script-7a1d41da.js",
     "imports": [
-      "assets/main.js"
+      "assets/main.js",
+      "_jquery-203754bb.js",
+      "__commonjsHelpers-87174ba5.js"
     ],
     "isDynamicEntry": true,
     "src": "Components/NavigationMain/script.js"
   },
   "Components/Scrollytelling/script.js": {
-    "file": "assets/script-946bf2f5.js",
+    "file": "assets/script-2624a37d.js",
     "imports": [
       "assets/main.js"
     ],
@@ -132,7 +147,7 @@
     "src": "Components/Scrollytelling/script.js"
   },
   "Components/ScrollytellingImage/script.js": {
-    "file": "assets/script-76d80005.js",
+    "file": "assets/script-adab80bd.js",
     "imports": [
       "assets/main.js"
     ],
@@ -178,13 +193,19 @@
       "__commonjsHelpers-87174ba5.js"
     ]
   },
+  "_jquery-203754bb.js": {
+    "file": "assets/jquery-203754bb.js",
+    "imports": [
+      "__commonjsHelpers-87174ba5.js"
+    ]
+  },
   "assets/admin.js": {
     "file": "assets/admin-02f88806.js",
     "isEntry": true,
     "src": "assets/admin.js"
   },
   "assets/admin.scss": {
-    "file": "assets/admin-8c697529.css",
+    "file": "assets/admin-ccd739f0.css",
     "isEntry": true,
     "src": "assets/admin.scss"
   },
@@ -423,12 +444,12 @@
       "Components/SliderImages/script.js",
       "Components/SliderText/script.js"
     ],
-    "file": "assets/main-a632c0d0.js",
+    "file": "assets/main-1bc6a51e.js",
     "isEntry": true,
     "src": "assets/main.js"
   },
   "assets/main.scss": {
-    "file": "assets/main-be3e4e87.css",
+    "file": "assets/main-9e7a2980.css",
     "isEntry": true,
     "src": "assets/main.scss"
   },
@@ -438,7 +459,7 @@
     "src": "assets/print.scss"
   },
   "assets/tinyMce.scss": {
-    "file": "assets/tinyMce-97f725e6.css",
+    "file": "assets/tinyMce-78458756.css",
     "isEntry": true,
     "src": "assets/tinyMce.scss"
   },
