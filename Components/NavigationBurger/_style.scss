@@ -25,7 +25,6 @@ flynt-component[name='NavigationBurger'] {
     .hamburger-lines {
       &::before,
       &::after,
-      &,
       &--text {
         background-color: var(--cbegreen);
       }
