@@ -150,6 +150,13 @@ function getACFFields()
             'type' => 'group',
             'layout' => 'row',
             'sub_fields' => [
+                [
+                    'label' => __('Add Top Border', 'flynt'),
+                    'name' => 'topBorder',
+                    'type' => 'true_false',
+                    'default_value' => 0,
+                    'ui' => 1
+                ],
                 FieldVariables\getColorBackground(),
                 FieldVariables\getColorText(),
                 FieldVariables\getColorSecondary(),
