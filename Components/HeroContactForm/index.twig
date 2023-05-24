@@ -8,9 +8,9 @@
   "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
-  <div class="max-w-screen-max w-full mx-auto px-sm pb-lg lg:px-lg lg:pb-lg">
+  <div class="max-w-screen-max w-full mx-auto px-sm py-md md:px-md md:pb-md md:pt-0 {% if options.topBorder %}md:pt-md{% endif %} lg:px-lg lg:pb-lg lg:pt-0 {% if options.topBorder %}lg:pt-lg{% endif %}">
     {% if blockTitle %}
-      <div class="max-w-screen-max w-full mx-auto py-sm lg:py-lg flex flex-row justify-between align-bottom items-end content-end border-t" style="border-color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}transparent{% endif %};">
+      <div class="max-w-screen-max w-full mx-auto py-sm lg:py-lg flex flex-row justify-between align-bottom items-end content-end {% if options.topBorder %}border-t{% endif %}" style="border-color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}transparent{% endif %};">
         <h2 class="subtitle block-title font-bold">{{ blockTitle }}</h2>
       </div>
     {% endif %}
@@ -18,9 +18,9 @@
       {% set formShortcode = '[contact-form-7 id="' ~ formId ~ '"]' %}
       {{ formShortcode|shortcodes }}
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-md sm:flex-row justify-between gap-sm md:gap-lg mt-md sm:mt-xl">
+    <div class="grid xs:grid-cols-2 lg:grid-cols-3 xs:gap-md xs:flex-row justify-between gap-sm sm:gap-lg mt-md xs:mt-xl">
       {% for item in contactInfo %}
-        <div class="item w-full pt-sm sm:pt-md first:border-t-0 sm:first:border-t border-t" style="border-color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--black){% endif %};">
+        <div class="item w-full pt-sm xs:pt-md first:border-t-0 xs:first:border-t border-t" style="border-color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--black){% endif %};">
           {% if item.textEditorHtml %}
             <div>{{ item.textEditorHtml|e('wp_kses_post') }}</div>
           {% endif %}

@@ -14,7 +14,7 @@ ScrollTrigger.defaults({
   markers: false
 })
 
-const points = gsap.utils.toArray('.panel')
+const points = gsap.utils.toArray('.panelIllustration')
 
 const height = 100 * points.length
 
@@ -57,11 +57,11 @@ mm.add('(min-width: 780px)', () => {
 
   points.forEach(function (elem, i) {
     if (i !== 0) {
-      tl.from(elem.querySelector('img'), { autoAlpha: 0 }, i)
+      tl.from(elem.querySelector('.panelIllustration img'), { autoAlpha: 0 }, i)
     }
 
     if (i !== points.length - 1) {
-      tl.to(elem.querySelector('img'), { autoAlpha: 0 }, i + 1)
+      tl.to(elem.querySelector('.panelIllustration img'), { autoAlpha: 0 }, i + 0.75)
     }
   })
 })

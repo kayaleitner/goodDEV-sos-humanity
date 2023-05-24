@@ -9,7 +9,7 @@
     data-refs="section"
     class="
       HeroScrollySplit
-      md:block relative
+      sm:block relative
       grid grid-cols-3 scrollygridcontainer
       h-screen w-full
       overflow-hidden
@@ -22,13 +22,13 @@
         img-{{loop.index}}
         w-full h-screen
         flex flex-col
-        md:grid md:grid-cols-2
-        md:overflow-hidden
-        ml-[-100vw] md:ml-0
-        {% if loop.index == 1 %} md:mt-[-100vh] {% endif %}
+        sm:grid sm:grid-cols-2
+        sm:overflow-hidden
+        ml-[-100vw] sm:ml-0
+        {% if loop.index == 1 %} sm:mt-[-100vh] {% endif %}
       ">
-        <div data-refs="left" class="md:absolute w-[100vw] md:w-full h-1/2 md:h-full md:[clip-path:inset(0_49.9%_0_0)] left">
-          <picture class="h-full {% if loop.index != 2 %} hidden md:block {% endif %}">
+        <div data-refs="left" class="sm:absolute w-[100vw] sm:w-full h-1/2 sm:h-full sm:[clip-path:inset(0_49.9%_0_0)] left">
+          <picture class="h-full {% if loop.index != 2 %} hidden sm:block {% endif %}">
             <source srcset="
               {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               media="(min-width: 768px)"
@@ -44,31 +44,31 @@
             />
           </picture>
           <div id="overlay" class="
-            absolute top-0 left-0 hidden md:block 
+            absolute top-0 left-0 block 
             h-full w-full
             bg-black/40
             z-10
           "></div>
           <div data-refs="text_{{loop.index}}" class="
             max-w-screen-lg mx-auto w-full
-            h-full md:h-screen
+            h-full sm:h-screen
             absolute z-20
             {% if loop.index == 2 %} hidden {% endif %}
-            flex md:flex
+            flex sm:flex
             top-0 left-0 right-0
-            items-end md:items-center
-            md:opacity-0
-            md:bg-transparent
+            items-end sm:items-center
+            sm:opacity-0
+            sm:bg-transparent
           "
           style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
-            <h1 class="md:text-[3.438rem] md:w-1/2 p-4 md:pr-24 text-8xl md:text-right font-light w-full {% if loop.index == 2 %} hidden md:block {% endif %}">
+            <h1 class="sm:text-[3.438rem] sm:w-1/2 p-4 sm:pr-24 text-8xl sm:text-right font-light w-full {% if loop.index == 2 %} hidden sm:block {% endif %} leading-[95%]">
               <span class="block">{{ slide.text_1 }}</span>
-              <span class="block md:hidden">{{ slide.text_2 }}</span>
+              <span class="block sm:hidden">{{ slide.text_2 }}</span>
             </h1>
           </div>
         </div>
-        <div data-refs="right" class="md:absolute w-full h-1/2 md:h-full md:[clip-path:inset(0_0_0_50%)] translate-y-0">
-          <picture class="h-full {% if loop.index == 2 %} hidden md:block {% endif %}">
+        <div data-refs="right" class="sm:absolute w-full h-1/2 sm:h-full sm:[clip-path:inset(0_0_0_50%)] translate-y-0">
+          <picture class="h-full {% if loop.index == 2 %} hidden sm:block {% endif %}">
             <source srcset="
               {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               media="(min-width: 768px)"
@@ -84,7 +84,7 @@
             />
           </picture>
           <div id="overlay" class="
-            absolute top-0 left-0 hidden md:block 
+            absolute top-0 left-0 hidden sm:block 
             h-full w-full
             bg-black/40
             z-10
@@ -94,13 +94,13 @@
             absolute z-20
             flex
             top-0 left-0 right-0
-            md:items-center md:justify-end
-            md:opacity-0 {% if loop.index != 2 %} opacity-0 {% endif %}
-            md:bg-transparent
+            sm:items-center sm:justify-end
+            sm:opacity-0 {% if loop.index != 2 %} opacity-0 {% endif %}
+            sm:bg-transparent
           "
           style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
-            <h1 class="md:text-[3.438rem] md:w-1/2 p-4 md:pl-24 text-8xl font-light h-1/2 md:h-auto {% if loop.index != 2 %} hidden md:block {% endif %}">
-              <span class="block md:hidden">{{ slide.text_1 }}</span>
+            <h1 class="sm:text-[3.438rem] sm:w-1/2 p-4 sm:pl-24 text-8xl font-light h-1/2 sm:h-auto {% if loop.index != 2 %} hidden sm:block {% endif %} leading-[95%]">
+              <span class="block sm:hidden">{{ slide.text_1 }}</span>
               <span class="block">{{ slide.text_2 }}</span>
             </h1>
           </div>
@@ -113,8 +113,8 @@
       class="
         absolute flex flex-col
         items-center
-        bottom-0 top-auto md:bottom-auto md:top-1/2 left-1/2
-        -translate-x-1/2 translate-y-1/4 md:-translate-y-1/2 -rotate-90 md:rotate-0
+        bottom-0 top-auto sm:bottom-auto sm:top-1/2 left-1/2
+        -translate-x-1/2 translate-y-1/4 sm:-translate-y-1/2 -rotate-90 sm:rotate-0
       "
     >
       <div class="spacer h-[40px] w-4"></div>

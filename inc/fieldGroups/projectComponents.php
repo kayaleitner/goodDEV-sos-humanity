@@ -79,7 +79,7 @@ add_action('Flynt/afterRegisterComponents', function () {
             [
                 'label' => __('Generation Size', 'flynt'),
                 'name' => 'boxGenerationSize',
-                'type' => 'text',
+                'type' => 'number',
                 'wrapper' => [
                     'width' => 25
                 ]
@@ -91,7 +91,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'allow_null' => 0,
                 'multiple' => 0,
                 'ui' => 1,
-                'ajax' => 0,
+                // 'allow_custom' => 1,
+                // 'layout' => 'horizontal',
                 'return_format' => 'array',
                 'choices' => [
                     'roof' => 'Roof',
@@ -105,7 +106,7 @@ add_action('Flynt/afterRegisterComponents', function () {
             [
                 'label' => __('Storage Size', 'flynt'),
                 'name' => 'boxStorageSize',
-                'type' => 'text',
+                'type' => 'number',
                 'wrapper' => [
                     'width' => 25
                 ]
@@ -113,7 +114,7 @@ add_action('Flynt/afterRegisterComponents', function () {
             [
                 'label' => __('Panel Count', 'flynt'),
                 'name' => 'boxPanelCount',
-                'type' => 'text',
+                'type' => 'number',
                 'wrapper' => [
                     'width' => 25
                 ]
@@ -165,7 +166,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'button_label' => __('Add Block', 'flynt'),
                 'layouts' => [
                     Components\BlockAnchor\getACFLayout(),
-                    Components\BlockCta\getACFLayout(),
+                    // Components\BlockCta\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
                     Components\BlockPulloutQuote\getACFLayout(),
                     // Components\BlockVideoOembed\getACFLayout(),

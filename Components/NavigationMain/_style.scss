@@ -1,4 +1,19 @@
 flynt-component[name='NavigationMain'] {
+  .item {
+    &.current-page-ancestor {
+      button {
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 8px;
+
+        &:hover {
+          text-decoration-color: var(--lightgreen);
+        }
+      }
+    }
+  }
+
   .submenu-wrapper {
     display: block !important;
     transform: translateX(100vw);
@@ -22,7 +37,7 @@ flynt-component[name='NavigationMain'] {
     &.current-menu-item {
       a {
         text-decoration: underline;
-        text-decoration-color: var(--white);
+        text-decoration-color: currentColor;
         text-decoration-thickness: 2px;
         text-underline-offset: 8px;
 
@@ -35,7 +50,7 @@ flynt-component[name='NavigationMain'] {
 
   .submenu {
     .item {
-      &.no-underline {
+      &.current-menu-item {
         a {
           text-decoration: none;
         }
@@ -46,8 +61,8 @@ flynt-component[name='NavigationMain'] {
   button {
     &.open {
       text-decoration: underline;
-      text-decoration-color: var(--white);
-      text-decoration-thickness: 1px;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 2px;
       text-underline-offset: 8px;
 
       &:hover {
@@ -63,23 +78,42 @@ flynt-component[name='NavigationMain'] {
   }
 
   .button {
-    &.button--outlineWhite {
-      &:hover {
-        @apply hover:bg-lightgreen;
-        @apply active:bg-lightgreen;
-      }
+    &.button--external {
+      @apply border;
+      @apply border-white;
+      @apply bg-transparent;
+      @apply hover:bg-white;
+      @apply hover:border-white;
+      @apply active:border-white;
+      @apply text-white;
+      @apply hover:text-lightgreen;
+      @apply focus:text-lightgreen;
+      @apply active:text-lightgreen;
 
-      a {
-        @apply m-0;
-  
-        &:hover {
-          @apply text-white;
-          @apply hover:bg-transparent;
-          @apply active:bg-transparent;
+      &:hover,
+      &:focus,
+      &:active {
+        a {
+          @apply text-lightgreen;
+
+          &::after {
+            content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="49" height="29" viewBox="0 0 49 29" fill="none"%3E%3Cpath d="M0 14.1504H47.0278" stroke="%237CD3B9" stroke-width="2"/%3E%3Cpath d="M34.2695 1L47.5354 14.2658L34.2695 27.5317" stroke="%237CD3B9" stroke-width="2"/%3E%3C/svg%3E');
+          }
         }
+      }
+      
+      a {
+        @apply leading-none;
+        @apply m-0;
+        @apply -translate-y-[2px];
+        @apply hover:text-lightgreen;
+        @apply focus:text-lightgreen;
+        @apply active:text-lightgreen;
+        @apply hover:bg-transparent;
+        @apply active:bg-transparent;
   
         &::after {
-          content: url('data:image/svg+xml,%3Csvg width="49" height="28" viewBox="0 0 49 28" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cline y1="14.3281" x2="47.0278" y2="14.3281" stroke="white"/%3E%3Cpath d="M34.2695 1L47.5354 14.2658L34.2695 27.5317" stroke="white"/%3E%3C/svg%3E%0A');
+          content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="49" height="29" viewBox="0 0 49 29" fill="none"%3E%3Cpath d="M0 14.1504H47.0278" stroke="%23fff" stroke-width="2"/%3E%3Cpath d="M34.2695 1L47.5354 14.2658L34.2695 27.5317" stroke="%23fff" stroke-width="2"/%3E%3C/svg%3E');
         }
       }
     }

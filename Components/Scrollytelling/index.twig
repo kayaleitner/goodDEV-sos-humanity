@@ -8,24 +8,24 @@
   "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
-  <div class="max-w-screen-max w-full mx-auto p-sm md:p-lg" id="scrollytelling">
+  <div class="max-w-screen-max w-full mx-auto p-sm md:p-md sm:p-lg" id="scrollytelling">
     <div id="scrollytelling-inner" class="max-w-screen-max mx-auto h-full relative">
-      <div class="wrapper h-auto md:h-screen w-full md:absolute">
+      <div class="wrapper h-auto sm:h-screen w-full sm:absolute">
         {% if blockTitle %}
           <div class="w-full mx-auto">
             <h2 class="subtitle block-title font-bold" style="color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">{{ blockTitle }}</h2>
           </div>
         {% endif %}
         {% for item in scrollytelling %}
-          <div class="panel md:absolute h-auto md:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl md:m-0 grid grid-cols-1 md:grid-cols-2 gap-sm md:gap-lg items-center {% if item.hideOnMobile %}hidden md:grid{% endif %}">
+          <div class="panelIllustration sm:absolute h-auto sm:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl sm:m-0 grid grid-cols-1 sm:grid-cols-2 gap-sm sm:gap-lg items-center {% if item.hideOnMobile %}hidden sm:grid{% endif %}">
             {% if item.image %}
-              <img class="w-full max-w-[600px] mx-auto"
+              <img class="w-full max-w-[600px] mx-auto px-md py-lg sm:p-0"
                 src="{{ item.image.src | resize(32) }}"
                 data-srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}"
                 data-sizes="auto">
             {% endif %}
             {% if item.contentHtml %}
-              <div class="md:hidden row max-w-[600px] mx-auto">
+              <div class="sm:hidden row max-w-[600px] mx-auto">
                 {{ item.contentHtml|e('wp_kses_post') }}
               </div>
             {% endif %}
@@ -34,7 +34,7 @@
       </div>
     </div>
     {% for item in scrollytelling %}
-      <div class="relative hidden md:grid panel h-auto md:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl md:m-0 grid-cols-1 md:grid-cols-2 gap-sm md:gap-lg items-center">
+      <div class="relative hidden sm:grid panel h-auto sm:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl sm:m-0 grid-cols-1 sm:grid-cols-2 gap-sm sm:gap-lg items-center">
         {% if item.contentHtml %}
           <div class="row max-w-[600px] mx-auto col-start-2">
             {{ item.contentHtml|e('wp_kses_post') }}

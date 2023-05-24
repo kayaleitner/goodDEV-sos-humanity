@@ -1,11 +1,20 @@
 flynt-component[name='BlockImageTextFull'] {
   [data-image-position='right'] {
-    @apply flex-col;
-    @apply md:flex-row-reverse;
+    @apply flex-col-reverse;
+    @apply sm:flex-row-reverse;
   }
 
   [data-image-position='left'] {
-    @apply flex-col;
-    @apply md:flex-row;
+    @apply flex-col-reverse;
+    @apply sm:flex-row;
+  }
+
+  .icon {
+    svg {
+      @apply scale-75;
+      @apply -translate-x-[10px];
+      @apply lg:scale-110;
+      @apply lg:-translate-x-0;
+    }
   }
 }

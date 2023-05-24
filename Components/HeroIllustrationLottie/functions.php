@@ -53,6 +53,17 @@ function getACFLayout()
                         ],
                     ],
                     [
+                        'label' => __('Animation Type', 'flynt'),
+                        'name' => 'animationType',
+                        'type' => 'select',
+                        'choices' => [
+                            'playOnce' => __('Play Once', 'flynt'),
+                            'loop' => __('Loop', 'flynt'),
+                            'scrubbed' => __('Scrubbed', 'flynt'),
+                        ],
+                        'default_value' => 'playOnce',
+                    ],
+                    [
                         'label' => __('Text', 'flynt'),
                         'name' => 'contentHtml',
                         'type' => 'wysiwyg',

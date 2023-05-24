@@ -5,9 +5,9 @@
     {# id="{{ blockTitle|lower|replace({' ': ''}) }}"  #}
     data-type="listing" 
     class="">
-    <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+    <div class="max-w-screen-max w-full mx-auto p-sm md:p-md lg:p-lg">
       {% if blockTitle %}
-        <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between items-center content-center">
+        <div class="w-full mx-auto pb-sm sm:pb-lg flex flex-row justify-between items-center content-center">
           <h2 class="subtitle block-title font-bold">{{ blockTitle }}</h2>
           <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
         </div>
@@ -16,13 +16,13 @@
         class="
           w-full
           mx-auto
-          grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3
+          grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3
           gap-0 sm:gap-md
         "
       >
         {% for post in posts %}
           <li
-            class="fade-in move-up post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
+            class="fade-in move-up post w-full py-sm md:py-0 border-b border-lightgrey md:border-b-0">
             {% if post.externalResourceLink %}
             <a class="link h-full no-unerline" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>
             {% else %}
@@ -30,7 +30,7 @@
             {% endif %}
               <div class="h-full" aria-label="{{ post.title }}">
                 {% if post.thumbnail %}
-                  <figure class="figure aspect-square hidden lg:block overflow-hidden">
+                  <figure class="figure aspect-square hidden md:block overflow-hidden">
                     <img class="image lazyload object-cover w-full h-full transition duration-200 ease-linear"
                       src="{{  post.thumbnail.src | resize(32) }}"
                       data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
@@ -39,16 +39,16 @@
                       alt="{{ post.thumbnail.alt|e }}">
                   </figure>
                 {% endif %}
-                <div class="content lg:aspect-square lg:border lg:p-sm flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+                <div class="content md:aspect-square md:border md:p-sm flex flex-col gap-sm justify-start md:justify-between items-start sm:items-stretch">
                   <div class="w-full flex flex-col justify-start align-start items-start gap-sm">
                     <div class="w-full flex flex-row justify-between align-middle items-center">
                       <div class="caption text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
                       <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>
                     </div>
-                    <h2 class="text-bodyMobile md:text-body xl:text-subtitle mb-0 lg:w-full md:grow">{{ post.title }}</h2>
+                    <h2 class="text-bodyMobile lg:text-body xl:text-subtitle mb-0 md:w-full sm:grow">{{ post.title }}</h2>
                   </div>
-                  <div class="flex flex-row lg:flex-col gap-sm justify-between items-between md:items-stretch w-full">
-                    <span class="flex lg:hidden flex-col justify-end items-end">
+                  <div class="flex flex-row md:flex-col gap-sm justify-between items-between sm:items-stretch w-full">
+                    <span class="flex md:hidden flex-col justify-end items-end">
                       {% if post.externalResourceLink %}
                         <div class="button button--link">{{ post.externalResourceLink.title|e }}</div>
                       {% else %}
@@ -56,7 +56,7 @@
                       {% endif %}
                     </span>
                   </div>
-                  <span class="hidden lg:block">
+                  <span class="hidden md:block">
                     {% if post.externalResourceLink %}
                       <div class="button button--link">{{ post.externalResourceLink.title|e }}</div>
                     {% else %}

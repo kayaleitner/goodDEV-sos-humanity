@@ -31,3 +31,11 @@ ScrollTrigger.batch('.move-up', {
   start: '100px bottom',
   end: 'top top'
 })
+
+document.querySelectorAll('hr').forEach(item => {
+  let color = item.previousElementSibling.lastChild.style !== undefined
+    ? item.previousElementSibling.lastChild.style.color
+    : item.previousElementSibling.style.color
+  color = color.length ? color : 'black'
+  item.style.backgroundColor = color
+})

@@ -1,227 +1,342 @@
-@import url('https://cdn.jsdelivr.net/npm/eva-icons@1.1.3/style/eva-icons.css');
+// Customer Segments
 
-// Customer Segment
-
-[data-icon='agriculture'] {
+[data-icon='agriculture'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-agriculture.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-agriculture.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='appliances'] {
+[data-icon='beverages'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-beverages.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='beverages'] {
+[data-icon='cementconcrete'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-beverages.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-cementconcrete.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='cementconcrete'] {
+[data-icon='chemical'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-chemical.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='chemical'] {
+[data-icon='consumergoods'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-chemical.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-consumergoods.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='consumer'] {
+[data-icon='developersepcs'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-developersepcs.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='energy'] {
+[data-icon='energy'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-energy.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-energy.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='food'] {
+[data-icon='food'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-food.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-food.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='forestry'] {
+[data-icon='forestry'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-forestry.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-forestry.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='hotel'] {
+[data-icon='heavyindustrial'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-heavyindustrial.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='humanitarian'] {
+[data-icon='hotel'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/hotel.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='itsoftware'] {
+[data-icon='humanitarian'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/humanitarian.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='metal'] {
+[data-icon='itsoftware'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-itsoftware.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='manufacturing'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-manufacturing.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='metal'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-metal.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
 [data-icon='mining'] {
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-mining.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
 [data-icon='oilpetrochemical'] {
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-oilpetrochemical.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='paper'] {
+[data-icon='paper'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-paper.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='quarries'] {
+[data-icon='policymakers'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-policymakers.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='realestate'] {
+[data-icon='quarries'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-quarries.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='telecom'] {
+[data-icon='realestate'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-realestate.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='telecom'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/CustomerSegments/icon-telecom.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
 
-// Mounting Type
+// Mounting Types
 
-[data-icon='roof'] {
+[data-icon='roof'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-roof.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/MountingTypes/icon-roof.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='ground'] {
+[data-icon='ground'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-ground.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/MountingTypes/icon-ground.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
-[data-icon='carport'] {
+[data-icon='carport'] {  
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-carport.svg');
-    @apply ml-xs;
-    @apply lg:ml-sm;
-    @apply scale-75;
-    @apply lg:scale-100;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/MountingTypes/icon-carport.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='wind'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/MountingTypes/icon-wind.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+// Divisions
+
+[data-icon='assetmanagement'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-assetmanagement.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='batterystorage'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-batterystorage.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='businessdevelopment'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-businessdevelopment.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='construction'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-construction.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='engineering'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-engineering.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='esg'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-esg.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='gridintegration'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-gridintegration.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='hydroelectric'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-hydroelectric.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='investment'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-investment.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='management'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-management.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='operations'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-operations.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='projectdevelopment'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-projectdevelopment.svg');
+    @apply block;
+  }
+}
+
+[data-icon='regulatory'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-regulatory.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='supplychain'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-supplychain.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='telecom'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-telecom.svg');
+    transform: scale(0.75);
+    @apply block;
+  }
+}
+
+[data-icon='wind'] {  
+  &::after {
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/Divisions/icon-wind.svg');
+    transform: scale(0.75);
+    @apply block;
   }
 }
 
@@ -229,8 +344,8 @@
 
 [data-icon='linkedin-white'] {
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-linkedin-white.svg');
-    @apply ml-xs;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-linkedin-white.svg');
+    @apply ml-0;
     @apply lg:ml-sm;
     @apply block;
     @apply w-[28px];
@@ -240,7 +355,7 @@
 
 [data-icon='linkedin-black'] {
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-linkedin-black.svg');
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-linkedin-black.svg');
     @apply mr-xs;
     @apply lg:mr-sm;
     @apply block;
@@ -251,8 +366,8 @@
 
 [data-icon='twitter-white'] {
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-twitter-white.svg');
-    @apply ml-xs;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-twitter-white.svg');
+    @apply ml-0;
     @apply lg:ml-sm;
     @apply block;
     @apply w-[28px];
@@ -262,7 +377,7 @@
 
 [data-icon='twitter-black'] {
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-twitter-black.svg');
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-twitter-black.svg');
     @apply mr-xs;
     @apply lg:mr-sm;
     @apply block;
@@ -273,8 +388,8 @@
 
 [data-icon='facebook-white'] {
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-facebook-white.svg');
-    @apply ml-xs;
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-facebook-white.svg');
+    @apply ml-0;
     @apply lg:ml-sm;
     @apply block;
     @apply w-[28px];
@@ -284,7 +399,7 @@
 
 [data-icon='facebook-black'] {
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-facebook-black.svg');
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-facebook-black.svg');
     @apply mr-xs;
     @apply lg:mr-sm;
     @apply block;
@@ -297,7 +412,7 @@
 
 [data-icon='linkedin-outline'] {
   &::after {
-    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/icon-linkedin-outline.svg');
+    content: url('/wp-content/themes/boilerplate-flynt-next/assets/icons/SocialMedia/icon-linkedin-outline.svg');
     @apply mr-xs;
     @apply lg:mr-sm;
     @apply block;

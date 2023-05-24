@@ -52,10 +52,15 @@ p,
   font-size: 1.25rem;
   letter-spacing: 0.75px;
   line-height: normal;
+  margin-block-end: 1em;
 
   @media (min-width: $breakpoint-desktop) {
     font-size: 1.563rem;
     line-height: 140%;
+  }
+
+  &:last-child {
+    margin-block-end: 0;
   }
 }
 
@@ -117,27 +122,6 @@ h6,
   }
 }
 
-// h4,
-// .h4 {
-//   font-size: 1.25rem;
-//   font-weight: 700;
-//   line-height: normal;
-
-//   @media (min-width: $breakpoint-desktop) {
-//     font-size: 2rem;
-//   }
-// }
-
-// h5,
-// .h5 {
-//   font-size: 0.938rem;
-//   line-height: 140%;
-
-//   @media (min-width: $breakpoint-desktop) {
-//     font-size: 1.563rem;
-//   }
-// }
-
 :not(nav) {
   body,
   p
@@ -162,8 +146,9 @@ h6,
 }
 
 hr {
-  border: 1px solid currentColor;
-  color: currentColor;
+  background-color: inherit;
+  border: 0;
+  height: 2px;
   margin: 1.25rem auto;
 
   @media (min-width: $breakpoint-desktop) {
@@ -279,11 +264,16 @@ table {
     @apply pointer-events-none;
   }
 
-  &--primary {
+  &--green {
     @apply bg-green;
     @apply hover:bg-cbegreen;
     @apply text-black;
     @apply hover:text-white;
+
+    &Big {
+      @apply text-bodyMobile;
+      @apply lg:text-body;
+    }
   }
 
   &--outlineWhite {

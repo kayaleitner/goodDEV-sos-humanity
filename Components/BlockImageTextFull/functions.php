@@ -116,9 +116,12 @@ function getACFLayout()
                         'ajax' => 0,
                         'return_format' => 'array',
                         'choices' => [
-                            'suitcase' => 'Suitcase',
-                            'goal' => 'Goal',
-                            'check' => 'Check'
+                            'developersepcs' => 'Developers EPCs',
+                            'heavyindustrial' => 'Heavy Industrials',
+                            'investors' => 'Investors',
+                            'mining' => 'Mining',
+                            'policymakers' => 'Policymakers',
+                            'telecom' => 'Telecom'
                         ]
                     ]
                 ]
