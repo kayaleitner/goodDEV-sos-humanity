@@ -22,12 +22,15 @@
           {% endif %}
         </div>
       {% endif %}
+      <div class="hidden xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"></div>
       <ul
         class="
           w-full
           mx-auto
-          grid xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-3
+          grid
+          xs:grid-cols-{{ maxCols - 2 }} md:grid-cols-{{ maxCols - 1 }} xl:grid-cols-{{ maxCols }}
           gap-0 sm:gap-md
+          {% if highlightFirst %} firstItemLarger {% endif %}
         "
       >
         {% for post in posts %}
