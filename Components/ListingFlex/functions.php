@@ -8,7 +8,6 @@ use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=ListingFlex', function ($data) {
 
-
     $data['flexTaxonomies'] = $data['flexTaxonomies'] ?: [];
 
     // Create an empty array to store the tax query parameters
@@ -41,6 +40,8 @@ add_filter('Flynt/addComponentData?name=ListingFlex', function ($data) {
         'ignore_sticky_posts' => 1,
         'post__not_in' => array(get_the_ID())
     ]);
+
+    $data['found_posts'] = $data['posts']->found_posts;
 
     // get all terms for taxonomies in flexFilters array
     $data['filters'] = [];
@@ -186,7 +187,6 @@ function load_more_posts() {
     $labels = $_POST['labels'];
     $count = $_POST['count'];
 
-
     $pt = $_POST['post_types'];
     $post_types = json_decode(stripslashes($pt), true);
 
@@ -210,7 +210,6 @@ function load_more_posts() {
         'posts_per_page' => $maxPosts,
         'offset' => $count,
     ]);
-
 
     Timber::render('Partials/_items.twig',
      array('posts' => $posts, 'labels' => json_decode(stripslashes($labels), true)));
