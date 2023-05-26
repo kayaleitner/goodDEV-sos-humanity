@@ -43,11 +43,13 @@
       > 
         {% include 'Partials/_items.twig' with {posts: posts, 'labels': labels } %}
       </ul>
+      {% if (show_load_more and found_posts > posts|length ) %}
+        <div class="w-full flex justify-center align-center">
+        <a class="btn btn-primary hover:cursor-pointer text-buttonSmall font-bold my-8" data-refs="loadMore">
+          View More
+        </a>
+        </div>
+      {% endif %}
     </div>
-    <script type="application/json">{
-        "post_types": "{{ post_types|json_encode()|e }}",
-        "labels": '{{ labels|json_encode()|e }}',
-    }
-    </script> 
   </flynt-component>
 {% endif %}

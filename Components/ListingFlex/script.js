@@ -14,8 +14,7 @@ function initComponent(refs, data) {
   console.log(refs, data)
 
   const d = {
-    taxonomies: [],
-    query: refs.listing[0].dataset.query,
+    filterQuery: refs.listing[0].dataset.query,
     post_types: refs.listing[0].dataset.postTypes,
     order: refs.listing[0].dataset.order,
     orderby: refs.listing[0].dataset.orderby,
@@ -28,12 +27,10 @@ function initComponent(refs, data) {
     select.addEventListener('change', e => {
 
       select.dataset.value = e.target.value
-
-
-      const t = []
+      const userQuery = []
 
       Array.from(refs.select).forEach(select => {
-        select.dataset.value && (select.dataset.value != '*') && t.push({
+        select.dataset.value && (select.dataset.value != '*') && userQuery.push({
           "taxonomy": select.name,
           "field": "term_id",
           "terms": [select.dataset.value],
@@ -46,8 +43,8 @@ function initComponent(refs, data) {
         dataType: 'html',
         data: {
           action: 'apply_filters_posts',
-          taxonomies: t,
-          tax_query: t,
+          tax_query: userQuery.length ? userQuery : [],
+          filter_query: d.filterQuery,
           post_types: d.post_types,
           order: d.order,
           orderby: d.orderby,
@@ -61,6 +58,46 @@ function initComponent(refs, data) {
         },
         err => {
           console.log(err);
+        }
+      );
+    })
+  })
+
+  Array.from(refs.loadMore).forEach(loadMore => {
+    loadMore.addEventListener('click', e => {
+
+      const userQuery = []
+
+      Array.from(refs.select).forEach(select => {
+        select.dataset.value && (select.dataset.value != '*') && userQuery.push({
+          "taxonomy": select.name,
+          "field": "term_id",
+          "terms": [select.dataset.value],
+        })
+      })
+
+      jQuery.ajax({
+        type: 'POST',
+        url: '/wp-admin/admin-ajax.php',
+        dataType: 'html',
+        data: {
+          action: 'load_more_posts',
+          tax_query: userQuery.length ? userQuery : 'null',
+          filter_query: d.filterQuery,
+          post_types: d.post_types,
+          order: d.order,
+          orderby: d.orderby,
+          maxPosts: d.maxPosts,
+          labels: d.labels,
+          count: refs.listing[0].querySelectorAll('li').length,
+        },
+      }).then(
+        res => {
+          refs.listing[0].innerHTML =  refs.listing[0].innerHTML + res;
+          if ((res.match(/<li /g) || []).length < d.maxPosts ) {
+            loadMore.style.display = 'none';
+          }
+          ScrollTrigger && ScrollTrigger.refresh()
         }
       );
     })
