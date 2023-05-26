@@ -3,8 +3,8 @@ flynt-component[name='ListingFlex'] {
     &:hover,
     &:focus {
       .image {
-        @apply lg:scale-[1.13];
-        @apply lg:origin-center;
+        @apply scale-[1.15];
+        @apply origin-center;
       }
 
       .button--card {

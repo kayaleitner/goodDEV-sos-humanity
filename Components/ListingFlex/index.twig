@@ -30,7 +30,7 @@
           mx-auto
           grid
           xs:grid-cols-{{ maxCols - 2 }} md:grid-cols-{{ maxCols - 1 }} xl:grid-cols-{{ maxCols }}
-          gap-0 sm:gap-md
+          gap-xs sm:gap-md
           {% if highlightFirst %} firstItemLarger {% endif %}
         "
         data-post-types="{{post_types|json_encode|e}}"
