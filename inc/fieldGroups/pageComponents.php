@@ -96,6 +96,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\SliderImages\getACFLayout(),
                     Components\SliderText\getACFLayout(),
                     Components\ListingFlex\getACFLayout(),
+                    Components\ListingManual\getACFLayout(),
                 ],
             ],
         ],
