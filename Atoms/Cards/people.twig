@@ -1,9 +1,9 @@
-<li class="fade-in move-up post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
+<li class="fade-in move-up post w-full py-sm lg:py-0">
   <a class="link flex flex-col h-full no-underlinel" href="{{ post.link }}" aria-label="{{ post.title }}">
     {% if post.thumbnail %}
       <div class="block">
         <figure class="figure overflow-hidden">
-          <img class="image lazyload object-cover transition duration-200 ease-linear" src="{{ post.thumbnail.src|resize(32) }}" data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" data-sizes="auto" data-src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt|e }}" />
+          <img class="aspect-square grayscale image lazyload object-cover transition duration-200 ease-linear" src="{{ post.thumbnail.src|resize(32) }}" data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" data-sizes="auto" data-src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt|e }}" />
         </figure>
       </div>
     {% endif %}
