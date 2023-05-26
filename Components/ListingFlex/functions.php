@@ -8,16 +8,33 @@ use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=ListingFlex', function ($data) {
 
-    $data['taxonomies'] = $data['taxonomies'] ?: [];
+
+    $data['flexTaxonomies'] = $data['flexTaxonomies'] ?: [];
+
+    // Create an empty array to store the tax query parameters
+    $tax_query = array();
+
+    // if data['post_types'] is array and longer than 1, set relation to OR else to AND
+    if (is_array($data['post_types']) && count($data['post_types']) > 1) {
+        $tax_query['relation'] = 'OR';
+    } else {
+        $tax_query['relation'] = 'AND';
+    }
+
+    foreach ($data['flexTaxonomies'] as $tax) {
+        $tax_query[] = array(
+            'taxonomy' => $tax["acf_fc_layout"],
+            'field'    => 'term_id',
+            'terms'    => $tax[""],
+        );
+    }
 
     $data['posts'] = Timber::get_posts([
         'post_status' => 'publish',
         'post_type' => $data['post_types'],
         'orderby' => $data['orderby'],
         'order' => $data['order'],
-        'category' => join(',', array_map(function ($taxonomy) {
-            return $taxonomy->term_id;
-        }, $data['taxonomies'])),
+        'tax_query' => $tax_query,
         'posts_per_page' => $data['maxPosts'],
         'ignore_sticky_posts' => 1,
         'post__not_in' => array(get_the_ID())
@@ -116,6 +133,53 @@ add_filter('acf/load_field/name=flexTaxonomies', function ($field) {
     // return the field
     return $field;
 });
+
+// ajax action with a parameter
+add_action('wp_ajax_nopriv_apply_filters_posts', 'Flynt\Components\ListingFlex\apply_filters_posts');
+add_action('wp_ajax_apply_filters_posts', 'Flynt\Components\ListingFlex\apply_filters_posts');
+
+
+function apply_filters_posts() {
+
+    // get the submitted parameters
+    $taxonomies = $_POST['taxonomies'];
+    $post_types = $_POST['post_types'];
+    $orderby = $_POST['orderby'];
+    $order = $_POST['order'];
+    $maxPosts = $_POST['maxPosts'];
+    $labels = $_POST['labels'];
+    $tax_query = $_POST['tax_query'];
+
+    // // if data['post_types'] is array and longer than 1, set relation to OR else to AND
+    if (is_array($post_types) && count($post_types) > 1) {
+            $tax_query['relation'] = 'OR';
+    } else {
+        $tax_query['relation'] = 'AND';
+    }
+
+    $taxonomies['relation'] = 'AND';
+    $pt = json_decode(stripslashes($post_types), true);
+
+    $p = Timber::get_posts([
+        'post_status' => 'publish',
+        'post_type' => $pt,
+        'tax_query' => $taxonomies,
+        'orderby' => $orderby,
+        'order' => $order,
+        'posts_per_page' => -1,
+        'ignore_sticky_posts' => $maxPosts,
+    ]);
+
+    
+    Timber::render('Partials/_items.twig', array('posts' => $p, 'labels' => json_decode(stripslashes($labels), true)));
+    
+
+    // return the result in JSON format
+    // echo $post_types;
+
+    // IMPORTANT: don't forget to "exit"
+    wp_die();
+}
 
 function getACFLayout()
 {

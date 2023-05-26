@@ -6,13 +6,13 @@
           {% if blockTitle %}
             <div class="subtitle block-title font-bold">{{ blockTitle }}</div>
           {% endif %}
-          <div class="filters inline-flex gap-sm">
-            {% for flexFilter in filters %}
+          <div class="filters inline-flex gap-sm" x-data="{filters: [] }">
+            {% for index, flexFilter in filters %}
               <label for="{{ flexFilter.name }}" class="sr-only">{{ flexFilter.label }}:</label>
-              <select name="{{ flexFilter.name }}" id="{{ flexFilter.name }}" class="border-2 w-96 text-body">
+              <select name="{{ flexFilter.name }}" id="{{ flexFilter.name }}" class="border-2 w-96 text-body" data-refs="select" data-value="">
                 <option value="*" selected>{{ flexFilter.label }}</option>
                 {% for val in flexFilter.terms %}
-                  <option value="{{ val.slug }}">{{ val.name }}</option>
+                  <option value="{{ val.term_id }}">{{ val.name }}</option>
                 {% endfor %}
               </select>
             {% endfor %}
@@ -24,6 +24,7 @@
       {% endif %}
       <div class="hidden xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"></div>
       <ul
+        data-refs="listing"
         class="
           w-full
           mx-auto
@@ -32,19 +33,21 @@
           gap-0 sm:gap-md
           {% if highlightFirst %} firstItemLarger {% endif %}
         "
-      >
-        {% for post in posts %}
-          {% if post.type == 'post' %}
-            {% include 'Atoms/Cards/post.twig' with { 'post': post, 'labels': labels } only %}
-          {% endif %}
-          {% if post.type == 'people' %}
-            {% include 'Atoms/Cards/people.twig' with { 'post': post, 'labels': labels } only %}
-          {% endif %}
-          {% if post.type == 'project' %}
-            {% include 'Atoms/Cards/project.twig' with { 'post': post, 'labels': labels } only %}
-          {% endif %}
-        {% endfor %}
+        data-post-types="{{post_types|json_encode|e}}"
+        data-orderby='{{ orderby }}'
+        data-order='{{ order }}'
+        data-max-posts='{{ maxPosts }}'
+        data-labels='{{ labels|json_encode()|e }}'
+        data-query='{{ tax_query|json_encode()|e }}'
+
+      > 
+        {% include 'Partials/_items.twig' with {posts: posts, 'labels': labels } %}
       </ul>
     </div>
+    <script type="application/json">{
+        "post_types": "{{ post_types|json_encode()|e }}",
+        "labels": '{{ labels|json_encode()|e }}',
+    }
+    </script> 
   </flynt-component>
 {% endif %}
