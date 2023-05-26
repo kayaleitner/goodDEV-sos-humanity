@@ -1,0 +1,11 @@
+{% for post in posts %}
+	{% if post.type == 'post' %}
+		{% include 'Atoms/Cards/post.twig' with { 'post': post, 'labels': labels } only %}
+	{% endif %}
+	{% if post.type == 'people' %}
+		{% include 'Atoms/Cards/people.twig' with { 'post': post, 'labels': labels } only %}
+	{% endif %}
+	{% if post.type == 'project' %}
+		{% include 'Atoms/Cards/project.twig' with { 'post': post, 'labels': labels } only %}
+	{% endif %}
+{% endfor %}
