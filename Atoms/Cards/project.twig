@@ -12,15 +12,15 @@
     {% endif %}
     <div class="content py-md xs:py-sm flex flex-col gap-sm justify-between items-stretch grow">
       <div class="flex flex-col gap-sm">
-        <div class="w-full px-sm py-[5px] flex flex-row justify-between align-middle items-center border caption">
+        <div class="w-full px-sm py-sm flex flex-row justify-between align-middle items-center border caption">
           <div class="w-1/2">
-            <div class="caption font-mono font-bold">{{ post.boxGenerationSize }} kWp</div>
+            <div class="caption font-mono font-bold mb-1">{{ post.boxGenerationSize }} kWp</div>
             <div class="caption">{{ post.boxMountingType.label }}</div>
           </div>
           <div class="w-1/2 flex flex-row justify-end items-center">
-            <span data-icon="{{ post.boxMountingType.label|lower }}"></span>
+            <div class="w-12 h-12" data-icon="{{ post.boxMountingType.label|lower }}"></div>
             {% for term in post.terms('customer_segment')  %}
-              <div data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></div>
+              <div class="w-12 h-12" data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></div>
             {% endfor %}
           </div>
         </div>

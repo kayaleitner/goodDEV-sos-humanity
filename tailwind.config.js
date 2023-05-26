@@ -3,7 +3,8 @@ module.exports = {
   content: [
     '*.php',
     'templates/**/*.{php,twig}',
-    './Components/**/*.{php,twig}'
+    './Components/**/*.{php,twig}',
+    './Atoms/**/*.{php,twig}'
   ],
   theme: {
     borderWidth: {

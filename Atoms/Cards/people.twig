@@ -1,4 +1,4 @@
-<li class="post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
+<li class="fade-in move-up post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
   <a class="link flex flex-col h-full no-underlinel" href="{{ post.link }}" aria-label="{{ post.title }}">
     {% if post.thumbnail %}
       <div class="block">
@@ -9,7 +9,7 @@
     {% endif %}
     <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
       <div class="w-full flex flex-col gap-sm">
-        <div class="w-full h-full p-sm flex flex-row justify-between align-middle items-center border caption">
+        <div class="w-full h-full p-sm flex flex-row justify-between gap-sm align-middle items-center border caption">
           <div>
             <div class="font-mono font-bold">
               {% for term in post.terms('location') %}
@@ -20,12 +20,9 @@
               <div class="caption">{{ term }}</div>
             {% endfor %}
           </div>
-          <div class="icon">
-            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18.2916 1.34375H1.91775L1.85547 9.82204C1.85547 16.6605 5.8829 22.3948 11.3064 23.9413C16.3082 22.5154 20.1209 17.5294 20.6852 11.4004" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M6.84375 7.73632L11.3706 14.9667L23.6995 2.26953" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
+          {% for term in post.terms('division') %}
+            <div class="w-10 h-10" data-icon="{{ term|lower|replace({ '/': '', ' ': '' }) }}"></div>
+          {% endfor %}
         </div>
       </div>
       <div class="w-full grow flex flex-col gap-sm justify-start align-start items-start">
