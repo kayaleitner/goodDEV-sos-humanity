@@ -1,24 +1,26 @@
 {% if posts|length > 0 %}
   <flynt-component load:on="visible" name="ListingFlex" data-type="listing" class="" data-navStyle="light-blur">
-    <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+    <div class="max-w-screen-max w-full mx-auto p-sm sm:p-md lg:p-lg">
       {% if (blockTitle or viewAllLink or filters) %}
-        <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between align-bottom items-end content-end">
-          {% if blockTitle %}
+        <div class="w-full mx-auto pb-md md:pb-lg flex flex-col justify-between align-bottom items-end gap-md">
+          {% if blockTitle or viewAllLink %}
+          <div class="w-full mx-auto flex flex-row justify-between items-center content-center">
             <div class="subtitle block-title font-bold">{{ blockTitle }}</div>
-          {% endif %}
-          <div class="filters inline-flex gap-sm" x-data="{filters: [] }">
-            {% for index, flexFilter in filters %}
-              <label for="{{ flexFilter.name }}" class="sr-only">{{ flexFilter.label }}:</label>
-              <select name="{{ flexFilter.name }}" id="{{ flexFilter.name }}" class="border-2 w-96 text-body" data-refs="select" data-value="">
-                <option value="*" selected>{{ flexFilter.label }}</option>
-                {% for val in flexFilter.terms %}
-                  <option value="{{ val.term_id }}">{{ val.name }}</option>
-                {% endfor %}
-              </select>
-            {% endfor %}
-          </div>
-          {% if viewAllLink %}
             <a href="{{ viewAllLink.url }}" class="underline hover:no-underline caption font-bold">{{ viewAllLink.title }}</a>
+          </div>
+          {% endif %}
+          {% if filters %}
+            <div class="filters w-full flex flex-col md:flex-row gap-sm" x-data="{filters: [] }">
+              {% for index, flexFilter in filters %}
+                <label for="{{ flexFilter.name }}" class="sr-only">{{ flexFilter.label }}:</label>
+                <select name="{{ flexFilter.name }}" id="{{ flexFilter.name }}" class="border-2 max-w-full xs:max-w-[330px] text-bodyMobile lg:text-body" data-refs="select" data-value="">
+                  <option value="*" selected>{{ flexFilter.label }}</option>
+                  {% for val in flexFilter.terms %}
+                    <option value="{{ val.term_id }}">{{ val.name }}</option>
+                  {% endfor %}
+                </select>
+              {% endfor %}
+            </div>
           {% endif %}
         </div>
       {% endif %}
@@ -29,7 +31,7 @@
           w-full
           mx-auto
           grid
-          xs:grid-cols-{{ maxCols - 2 }} md:grid-cols-{{ maxCols - 1 }} xl:grid-cols-{{ maxCols }}
+          xs:grid-cols-{{ maxCols - 2 }} sm:grid-cols-{{ maxCols - 1 }} xl:grid-cols-{{ maxCols }}
           gap-xs sm:gap-md
           {% if highlightFirst %} firstItemLarger {% endif %}
         "
