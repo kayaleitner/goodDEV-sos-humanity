@@ -15,7 +15,8 @@
           gap-0 xs:gap-md
         "
       > 
-        {% for post in relatedInsights %}
+        {% include 'Partials/_items.twig' with {posts: posts, 'labels': labels } %}
+        {# {% for post in relatedInsights %}
           <li
             class="fade-in move-up post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
             {% if post.externalResourceLink %}
@@ -66,7 +67,7 @@
             </a>
             {% endif %}
           </li>
-        {% endfor %}
+        {% endfor %} #}
       </ul>
     </div>
   </flynt-component>
