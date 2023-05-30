@@ -141,7 +141,8 @@ add_filter('acf/load_field/name=flexTaxonomies', function ($field) {
 add_action('wp_ajax_nopriv_apply_filters_posts', 'Flynt\Components\ListingFlex\apply_filters_posts');
 add_action('wp_ajax_apply_filters_posts', 'Flynt\Components\ListingFlex\apply_filters_posts');
 
-function apply_filters_posts() {
+function apply_filters_posts()
+{
 
     // get the submitted parameters
     $tax_query = $_POST['tax_query'];
@@ -171,7 +172,7 @@ function apply_filters_posts() {
     ]);
 
     Timber::render('Partials/_items.twig', array('posts' => $p, 'labels' => json_decode(stripslashes($labels), true)));
-    
+
     wp_die();
 }
 
@@ -179,7 +180,8 @@ function apply_filters_posts() {
 add_action('wp_ajax_nopriv_load_more_posts', 'Flynt\Components\ListingFlex\load_more_posts');
 add_action('wp_ajax_load_more_posts', 'Flynt\Components\ListingFlex\load_more_posts');
 
-function load_more_posts() {
+function load_more_posts()
+{
 
     $orderby = $_POST['orderby'];
     $order = $_POST['order'];
@@ -201,18 +203,19 @@ function load_more_posts() {
 
     $labels = $_POST['labels'];
 
-    $posts = Timber::get_posts([
-        'post_status' => 'publish',
-        'post_type' => $post_types,
-        'tax_query' => $tax_query,
-        'orderby' => $orderby,
-        'order' => $order,
-        'posts_per_page' => $maxPosts,
-        'offset' => $count,
-    ]);
+    $posts = Timber::get_posts(
+        [
+            'post_status' => 'publish',
+            'post_type' => $post_types,
+            'tax_query' => $tax_query,
+            'orderby' => $orderby,
+            'order' => $order,
+            'posts_per_page' => $maxPosts,
+            'offset' => $count,
+        ]
+    );
 
-    Timber::render('Partials/_items.twig',
-     array('posts' => $posts, 'labels' => json_decode(stripslashes($labels), true)));
+    Timber::render('Partials/_items.twig', array('posts' => $posts, 'labels' => json_decode(stripslashes($labels), true)));
 
     wp_die();
 }

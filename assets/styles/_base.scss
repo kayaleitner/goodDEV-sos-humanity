@@ -394,13 +394,13 @@ label {
 select {
   appearance: none;
   background-color: transparent;
-  caret-color: black;
-  color: black;
+  caret-color: var(--black);
+  color: var(--black);
   max-width: 300px;
   outline: none;
+  padding: 0.55rem 0.75rem;
   transition: border-color 0.3s ease-in-out;
   width: 100%;
-  padding: 0.55rem 0.75rem;
 
   &::placeholder {
     color: var(--white);

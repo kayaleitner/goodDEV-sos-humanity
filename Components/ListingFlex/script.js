@@ -1,16 +1,15 @@
-import { buildRefs, getJSON } from "../../assets/scripts/helpers"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import jQuery from "jquery"
+import { buildRefs, getJSON } from '../../assets/scripts/helpers'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import jQuery from 'jquery'
 
 export default function (component) {
   const refs = buildRefs(component, true)
   const data = getJSON(component)
   const c = initComponent(refs, data)
-  return () => c.destroy && c.destroy() 
+  return () => c.destroy && c.destroy()
 }
 
-function initComponent(refs, data) {
-
+function initComponent (refs, data) {
   console.log(refs, data)
 
   const d = {
@@ -19,21 +18,19 @@ function initComponent(refs, data) {
     order: refs.listing[0].dataset.order,
     orderby: refs.listing[0].dataset.orderby,
     maxPosts: refs.listing[0].dataset.maxPosts,
-    labels: refs.listing[0].dataset.labels,
+    labels: refs.listing[0].dataset.labels
   }
 
   Array.from(refs.select).forEach(select => {
-
     select.addEventListener('change', e => {
-
       select.dataset.value = e.target.value
       const userQuery = []
 
       Array.from(refs.select).forEach(select => {
-        select.dataset.value && (select.dataset.value != '*') && userQuery.push({
-          "taxonomy": select.name,
-          "field": "term_id",
-          "terms": [select.dataset.value],
+        select.dataset.value && (select.dataset.value !== '*') && userQuery.push({
+          taxonomy: select.name,
+          field: 'term_id',
+          terms: [select.dataset.value]
         })
       })
 
@@ -49,30 +46,29 @@ function initComponent(refs, data) {
           order: d.order,
           orderby: d.orderby,
           maxPosts: d.maxPosts,
-          labels: d.labels,
-        },
+          labels: d.labels
+        }
       }).then(
         res => {
           refs.listing[0].innerHTML = res
           ScrollTrigger && ScrollTrigger.refresh()
         },
         err => {
-          console.log(err);
+          console.log(err)
         }
-      );
+      )
     })
   })
 
   Array.from(refs.loadMore).forEach(loadMore => {
     loadMore.addEventListener('click', e => {
-
       const userQuery = []
 
       Array.from(refs.select).forEach(select => {
-        select.dataset.value && (select.dataset.value != '*') && userQuery.push({
-          "taxonomy": select.name,
-          "field": "term_id",
-          "terms": [select.dataset.value],
+        select.dataset.value && (select.dataset.value !== '*') && userQuery.push({
+          taxonomy: select.name,
+          field: 'term_id',
+          terms: [select.dataset.value]
         })
       })
 
@@ -89,17 +85,17 @@ function initComponent(refs, data) {
           orderby: d.orderby,
           maxPosts: d.maxPosts,
           labels: d.labels,
-          count: refs.listing[0].querySelectorAll('li').length,
-        },
+          count: refs.listing[0].querySelectorAll('li').length
+        }
       }).then(
         res => {
-          refs.listing[0].innerHTML =  refs.listing[0].innerHTML + res;
-          if ((res.match(/<li /g) || []).length < d.maxPosts ) {
-            loadMore.style.display = 'none';
+          refs.listing[0].innerHTML = refs.listing[0].innerHTML + res
+          if ((res.match(/<li /g) || []).length < d.maxPosts) {
+            loadMore.style.display = 'none'
           }
           ScrollTrigger && ScrollTrigger.refresh()
         }
-      );
+      )
     })
   })
 }
