@@ -53,6 +53,8 @@ flynt-component[name='ListingMap'] {
   }
 
   .post {
+    @apply list-none;
+
     .link {
       text-decoration: none !important;
     }
