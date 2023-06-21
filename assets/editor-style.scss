@@ -1,9 +1,14 @@
 @import
-  'styles/mixins',
   'styles/variables',
+  'styles/fonts',
   'styles/base';
 
-html {
+/**
+ * Classic editor styles
+ */
+
+// stylelint-disable selector-max-id
+#tinymce.wp-editor {
   box-sizing: border-box;
   overflow-wrap: break-word;
   text-size-adjust: none;
@@ -17,4 +22,12 @@ html {
   .mce-content-body {
     background-color: #cdcdcd;
   }
+}
+
+/**
+ * Gutenberg editor styles
+ */
+
+.block-editor-inserter {
+  margin: 0;
 }

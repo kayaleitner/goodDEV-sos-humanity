@@ -15,16 +15,16 @@ add_filter('Flynt/addComponentData?name=ListingInsights', function ($data) {
 
     $data['posts'] = Timber::get_posts([
         'post_status' => 'publish',
-        'post_type' => $postType,
+        'post_type' => POST_TYPE,
         'category' => join(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
         'posts_per_page' => $data['options']['maxPosts'],
         'ignore_sticky_posts' => 1,
-        'post__not_in' => array(get_the_ID())
+        'post__not_in' => [get_the_ID()]
     ]);
 
-    $data['postTypeArchiveLink'] = get_post_type_archive_link($postType);
+    $data['postTypeArchiveLink'] = get_permalink(get_option('page_for_posts')) ?? get_post_type_archive_link(POST_TYPE);
 
     return $data;
 });
@@ -91,6 +91,23 @@ function getACFLayout()
     ];
 }
 
+    [
+        'label' => __('General', 'flynt'),
+        'name' => 'generalTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Title', 'flynt'),
+        'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
+        'name' => 'preContentHtml',
+        'type' => 'wysiwyg',
+        'default_value' => '<h2>' . __('Related Posts', 'flynt') . '</h2>',
+        'tabs' => 'visual,text',
+        'media_upload' => 0,
+        'delay' => 1,
+    ],
 Options::addTranslatable('ListingInsights', [
     [
         'label' => __('Labels', 'flynt'),

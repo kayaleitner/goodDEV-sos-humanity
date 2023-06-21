@@ -7,7 +7,7 @@ use Flynt\FieldVariables;
 function getACFLayout()
 {
     return [
-        'name' => 'GridImageText',
+        'name' => 'gridImageText',
         'label' => __('Grid: Image Text', 'flynt'),
         'sub_fields' => [
             [
@@ -16,6 +16,16 @@ function getACFLayout()
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
+            ],
+            [
+                'label' => __('Title Alignment', 'flynt'),
+                'name' => 'titleAlignment',
+                'type' => 'button_group',
+                'choices' => [
+                    'left' => sprintf('<i class="dashicons dashicons-editor-alignleft" title="%1$s"></i>', __('Align items left', 'flynt')),
+                    'center' => sprintf('<i class="dashicons dashicons-editor-aligncenter" title="%1$s"></i>', __('Align items center', 'flynt'))
+                ],
+                'default_value' => 'left'
             ],
             [
                 'label' => __('Title', 'flynt'),

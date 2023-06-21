@@ -1,11 +1,16 @@
 flynt-component[name='GridPostsArchive'] {
   .posts {
-    --post-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
-    --posts-max-width: calc(var(--post-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
-    @include reset-list;
-    @include grid;
-    margin-inline: auto;
-    max-width: var(--posts-max-width);
+    --grid-columns: 1;
+    --grid-gap: var(--flow-space);
+    --grid-item-width: calc((100% / var(--grid-columns)) - ((var(--grid-columns) - 1) / var(--grid-columns) * var(--grid-gap)));
+    --grid-item-max-width: calc(((var(--container-max-width) - ((var(--container-spacing) * 2))) / 3) - (2 / 3 * var(--grid-gap)));
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--grid-gap);
+    justify-content: center;
+    list-style: none;
+    padding: 0;
 
     @media (min-width: $breakpoint-tablet) {
       --grid-columns: 2;
@@ -21,19 +26,22 @@ flynt-component[name='GridPostsArchive'] {
   }
 
   .post {
-    margin-inline: auto;
+    inline-size: var(--grid-item-width);
+    max-inline-size: var(--grid-item-max-width);
 
     .link {
-      @include reset-link;
+      block-size: 100%;
       color: currentColor;
       display: flex;
       flex-direction: column;
-      height: 100%;
+      font-weight: initial;
+      text-decoration: none;
     }
 
     .content {
       color: var(--color-text);
       flex-grow: 1;
+      margin-block-start: 0;
 
       #{$heading-selectors} {
         color: var(--color-headline);
@@ -43,14 +51,13 @@ flynt-component[name='GridPostsArchive'] {
     .footer {
       align-items: center;
       display: flex;
+      inline-size: 100%;
       justify-content: space-between;
-      padding: 0 var(--box-padding) var(--box-padding);
+      padding: 0 var(--box-spacing) var(--box-spacing);
       position: relative;
-      width: 100%;
 
       .readingTime {
         color: var(--color-text-muted);
-        font-size: var(--body-font-size-small);
       }
     }
   }

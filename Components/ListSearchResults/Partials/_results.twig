@@ -1,12 +1,12 @@
 {% if posts|length > 0 %}
-  <ul role="list" class="results flowContent">
+  <ul role="list" class="results">
     {% for post in posts  %}
       <li class="result boxBorder boxPadding" data-theme="reset">
         <article>
           <h2 class="body">{{ post.title }}</h2>
           <p>{{ post.excerpt.read_more(false) }}</p>
           <footer>
-            <a href="{{ post.link }}" aria-label="{{ post.title }}" class="link">{{ labels.readMore }}</a>
+            <a href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}" class="link">{{ labels.readMore }}</a>
           </footer>
         </article>
       </li>

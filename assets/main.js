@@ -12,17 +12,6 @@ if (import.meta.env.DEV) {
   import('@vite/client')
 }
 
-window.customElements.define(
-  'flynt-component',
-  FlyntComponent
-)
-
-window.Alpine = Alpine
-Alpine.data('scrollTrigger', scrollTrigger)
-Alpine.start()
-
-gsap.registerPlugin(ScrollTrigger)
-
 import.meta.glob([
   '../Components/**',
   '../assets/**',
@@ -33,3 +22,14 @@ import.meta.glob([
   '!**/screenshot.png',
   '!**/*.md'
 ])
+
+window.customElements.define(
+  'flynt-component',
+  FlyntComponent
+)
+
+window.Alpine = Alpine
+Alpine.data('scrollTrigger', scrollTrigger)
+Alpine.start()
+
+gsap.registerPlugin(ScrollTrigger)

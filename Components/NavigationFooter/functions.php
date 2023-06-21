@@ -143,7 +143,7 @@ Options::addTranslatable('NavigationFooter', [
         'media_upload' => 0,
         'delay' => 1,
         'toolbar' => 'basic',
-        'default_value' => '©&nbsp;[year] [sitetitle]'
+        'default_value' => '©&nbsp;' . date_i18n('Y') . ' ' . get_bloginfo('name'),
     ],
     [
         'label' => __('Social Media', 'flynt'),

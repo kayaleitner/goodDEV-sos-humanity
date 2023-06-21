@@ -30,12 +30,12 @@ function getRawSvg()
     return [
         'label' => __('Raw SVG', 'flynt'),
         'instructions' => sprintf(
-            'Insert raw svg e. g. from <a ref="%1$s" target="_blank">%1$s</a>',
+            'Insert raw svg e. g. from <a href="%1$s" target="_blank">%1$s</a>',
             'https://heroicons.com/'
         ),
         'name' => 'rawSvg',
-        'type' => 'textarea',
-        'required' => 0,
+        'type' => 'text',
+        'required' => 1,
         'rows' => 1,
         'new_lines' => '',
     ];

@@ -4,7 +4,6 @@
  * Moves most relevant editor buttons to the first toolbar
  * and provides config for creating new toolbars, block formats, and style formats.
  * See the TinyMce documentation for more information: https://www.tiny.cloud/docs/
- *
  */
 
 namespace Flynt\TinyMce;
@@ -28,7 +27,7 @@ add_filter('mce_buttons', function ($buttons) {
     return $buttons;
 });
 
-// Second Toolbar
+// Second Toolbar.
 add_filter('mce_buttons_2', '__return_empty_array');
 
 add_filter('tiny_mce_before_init', function ($init) {
@@ -52,7 +51,7 @@ add_filter('tiny_mce_before_init', function ($init) {
 });
 
 add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
-    // Load Toolbars and parse them into TinyMCE
+    // Load Toolbars and parse them into TinyMCE.
     $config = getConfig();
     if ($config && !empty($config['toolbars'])) {
         $toolbars = array_map(function ($toolbar) {

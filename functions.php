@@ -16,7 +16,6 @@ if (!defined('WP_ENV')) {
 // If they aren't, this function redirects the template rendering to use
 // plugin-inactive.php instead and shows a warning in the admin backend.
 if (Init::checkRequiredPlugins()) {
-    FileLoader::loadPhpFiles('assets/styles');
     FileLoader::loadPhpFiles('inc');
     add_action('after_setup_theme', ['Flynt\Init', 'initTheme']);
     add_action('after_setup_theme', ['Flynt\Init', 'loadComponents'], 101);
@@ -24,12 +23,10 @@ if (Init::checkRequiredPlugins()) {
 
 // Remove the admin-bar inline-CSS as it isn't compatible with the sticky footer CSS.
 // This prevents unintended scrolling on pages with few content, when logged in.
-add_theme_support('admin-bar', array('callback' => '__return_false'));
+add_theme_support('admin-bar', ['callback' => '__return_false']);
 
 add_action('after_setup_theme', function () {
-    /**
-     * Make theme available for translation.
-     * Translations can be filed in the /languages/ directory.
-     */
+    // Make theme available for translation.
+    // Translations can be filed in the /languages/ directory.
     load_theme_textdomain('flynt', get_template_directory() . '/languages');
 });

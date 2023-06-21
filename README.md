@@ -1,30 +1,19 @@
-# Flynt
+![Flynt – WordPress Starter Theme for Developers](.github/assets/banner.png 'Flynt – WordPress Starter Theme for Developers')
+
+# Flynt – WordPress Starter Theme for Developers
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Build Status](https://travis-ci.org/flyntwp/flynt.svg?branch=master)](https://travis-ci.org/flyntwp/flynt)
 [![Code Quality](https://img.shields.io/scrutinizer/g/flyntwp/flynt.svg)](https://scrutinizer-ci.com/g/flyntwp/flynt/?branch=master)
 
-## Short Description
-
 [Flynt](https://flyntwp.com/) is a WordPress theme for component-based development using [Timber](#page-templates) and [Advanced Custom Fields](#advanced-custom-fields).
 
-## Table of Contents
+## Dependencies
 
-* [Install](#install)
-  * [Dependencies](#dependencies)
-* [Usage](#usage)
-  * [Assets](#assets)
-  * [Lib & Inc](#lib--inc)
-  * [Page Templates](#page-templates)
-  * [Components](#components)
-  * [Advanced Custom Fields](#advanced-custom-fields)
-  * [Field Groups](#field-groups)
-  * [ACF Option Pages](#acf-option-pages)
-  * [Timber Dynamic Resize](#timber-dynamic-resize)
-  * [Twig Extensions](#twig-extensions)
-* [Maintainers](#maintainers)
-* [Contributing](#contributing)
-* [License](#license)
+* [WordPress](https://wordpress.org/) >= 6.1
+* [Node](https://nodejs.org/en/) = 18
+* [Composer](https://getcomposer.org/download/) >= 2.4
+* [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 6.0
 
 ## Install
 
@@ -50,18 +39,13 @@ npm run build
 6. Open the WordPress back-end and activate the Flynt theme.
 7. Run `npm run start` and start developing.
 
-### Dependencies
-
-* [WordPress](https://wordpress.org/) >= 6.1
-* [Node](https://nodejs.org/en/) = 18
-* [Composer](https://getcomposer.org/download/) >= 2.4
-* [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 6.0
-
 ## Usage
 
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start the webpack dev server.
 
 All files in `assets` and `Components` will now be watched for changes and compiled to the `dist` folder. Happy coding!
+
+### Base Style
 
 Flynt comes with a ready to use Base Style built according to our best practices for building simple, maintainable components. Go to `domain/BaseStyle` to see it in action.
 
@@ -91,7 +75,7 @@ After the files from `./lib` and `./inc` are loaded, all [components](#component
 
 Flynt uses [Timber](https://www.upstatement.com/timber/) to structure its page templates and [Twig](https://twig.symfony.com/) for rendering them. [Timber's documentation](https://timber.github.io/docs/) is extensive and up to date, so be sure to get familiar with it.
 
-There is one Twig function added in Flynt to render components into templates:
+As part of the [Twig Extension](#twig-extensions) the theme uses a Twig function in to render components into templates:
 
 * `renderComponent(componentName, data)` renders a single component. [For example, in the `index.twig` template](https://github.com/flyntwp/flynt/tree/master/templates/index.twig).
 
@@ -115,9 +99,54 @@ The `functions.php` file for every component in the `./Components` folder is exe
 
 To render components into a template, see [Page Templates](#page-templates).
 
+#### Web Components
+
+Web components provide a standard component model for encapsulation and interoperability HTML elements. Most [components](#components) are based on an autonomous custom element called `flynt-component`.
+
+To define the name of a specific component use the `name` attribute, which should match the component’s folder name, to be ensure that its JavaScript is loaded as specified (see [JavaScript modules](#javascript-modules) for more details).
+
+For example:
+
+```twig
+<flynt-component name="BlockWysiwyg" …></flynt-component>
+```
+
+#### JavaScript modules
+
+Using a module based approach, allows to breaks JavaScript into separate files and keep them encapsuled inside [Components](#components) itself.
+
+Different loading strategies can be defined for each component independently when using the custom element `flynt-component`:
+
+* `load:on="idle"`<br>
+Initialises after full page load, when the browser enters idle state.<br>
+Usage example: Elements that don’t need to be interactive immediately.
+* `load:on="visible"`<br>
+Initialises after the element get visible in the viewport.<br>
+Usage example: Elements that go “below the fold” or if you want to load it when the user sees it.
+* `load:on="load"` (default)<br>
+Initialises immediately when the page loads.<br>
+Usage example: Elements that need to be interactive as soon as possible.
+* `load:on:media="(min-width: 1024px)"`<br>
+Initialises when the specified media query matches.<br>
+Usage example: Elements which may only be visible on certain screen sizes.
+
+Example:
+
+```twig
+<flynt-component name="BlockWysiwyg" load:on="visible"></flynt-component>
+```
+
+If it makes logical sense, loading strategies can be combined:
+
+```twig
+<flynt-component name="NavigationMain" load:on="idle" load:on:media="(min-width: 1024px)">
+```
+
+With nested components the loading strategy is waiting for parents. If you have a component with `load:on="idle"` nested inside a component with `load:on="visible"`, the child component will only be loaded on visible of the parent component.
+
 ### Advanced Custom Fields
 
-Defining Advanced Custom Fields (ACF) can be done in `functions.php` for each component. As a best practise, we recommend defining your fields inside a function named `getACFLayout()` which you can then call in a [field group](#field-groups).
+Defining Advanced Custom Fields (ACF) can be done in `functions.php` for each component. As a best practice, we recommend defining your fields inside a function named `getACFLayout()` which you can then call in a [field group](#field-groups).
 
 For example:
 
@@ -206,22 +235,6 @@ Timber provides [a `resize` filter to resize images](https://timber.github.io/do
 
 To enable Dynamic Resize, go to **Global Options -> Timber Dynamic Resize**.
 
-#### Troubleshooting
-
-​
-If `resizedDynamic` is enabled and image requests result in 404 errors, try the following solutions:
-​
-
-1. If you're using nginx and the server (not WordPress) responds with a 404 error, check your server configuration against [the recommended standard](https://wordpress.org/support/article/nginx/#general-wordpress-rules). If the standard configuration cannot be used, resolve the image requests correctly by adding the following rule to your configuration:
-
-```nginx
-location ~ "^(.*)/wp-content/uploads/(.*)$" {
-  try_files $uri $uri/ /index.php$is_args$args;
-}
-```
-
-2. Some plugins (like WPML) manipulate the `home_url` in such a way that `resizeDynamic` cannot resolve the path to images correctly. In that case, set the relative upload path manually in **Global Options -> Timber Dynamic Resize**. Example: The relative upload path in Bedrock installs with WPML needs to bet set to `app/uploads`.
-
 ### Twig Extensions
 
 #### `readingTime` (Type: Filter)
@@ -247,8 +260,6 @@ Renders a component. [See Page Templates](#page-templates).
 ```
 
 _Example from [templates/page.twig](./templates/page.twig)_
-
----
 
 #### `placeholderImage($width, $height, $color = null)` (Type: Function)
 
@@ -280,7 +291,7 @@ _Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.t
 
 In some setups images may not show up, returning a 404 by the server.
 
-The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
+The most common reason for this is that you are using nginx and your server is not set up in the [the recommended standard](https://wordpress.org/support/article/nginx/#general-wordpress-rules). You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
 
 In this case, please add something like
 
@@ -318,6 +329,7 @@ The main people in charge of this repo are:
 
 * [Steffen Bewersdorff](https://github.com/steffenbew)
 * [Dominik Tränklein](https://github.com/domtra)
+* [Timo Hubois](https://github.com/timohubois)
 
 ## Contributing
 

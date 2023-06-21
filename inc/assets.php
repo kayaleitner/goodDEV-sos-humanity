@@ -1,5 +1,7 @@
 <?php
 
+namespace Flynt\Assets;
+
 use Flynt\Utils\Asset;
 use Flynt\ComponentManager;
 use Flynt\Utils\ScriptAndStyleLoader;
@@ -8,6 +10,14 @@ call_user_func(function () {
     $loader = new ScriptAndStyleLoader();
     add_filter('script_loader_tag', [$loader, 'filterScriptLoaderTag'], 10, 3);
     add_filter('style_loader_tag', [$loader, 'filterStyleLoaderTag'], 10, 3);
+
+    // Preload jQuery if it is enqueued.
+    add_filter('script_loader_tag', function ($tag, $handle, $src) use ($loader) {
+        if ('jquery-core' === $handle) {
+            $tag = $loader->addPreloadLinkBeforeTag($tag, $src, 'script');
+        }
+        return $tag;
+    }, 10, 3);
 });
 
 add_action('wp_enqueue_scripts', function () {
@@ -25,6 +35,14 @@ add_action('wp_enqueue_scripts', function () {
 
     if (!Asset::isHotModuleReplacement()) {
         wp_style_add_data('Flynt/assets/main', 'preload', true);
+    }
+
+    // Remove Gutenberg block related styles on front-end, when a post has no blocks.
+    if (!has_blocks()) {
+        wp_dequeue_style('core-block-supports');
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('global-styles');
     }
 });
 
