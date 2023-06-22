@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
 import { dest, entries, host, watchFiles } from './build-config.js'
-import autoprefixer from 'autoprefixer'
 import flynt from './vite-plugin-flynt'
 import globImporter from 'node-sass-glob-importer'
 import FullReload from 'vite-plugin-full-reload'
@@ -18,7 +17,7 @@ export default defineConfig(({ mode }) => {
         scss: {
           importer: globImporter()
         }
-      },
+      }
     },
     resolve: {
       alias: {
