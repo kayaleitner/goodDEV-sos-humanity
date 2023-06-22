@@ -73,7 +73,6 @@ class Helper
     protected static function handle_transient_locking($slug, $callback, $transient_time, $lock_timeout, $force, $enable_transients)
     {
         if ($enable_transients && self::_is_transient_locked($slug)) {
-
             /**
              * Filters …
              *
@@ -680,7 +679,7 @@ class Helper
     }
 
     /**
-     * Converts a WP object (WP_Post, WP_Term) into his
+     * Converts a WP object (WP_Post, WP_Term) into its
      * equivalent Timber class (Timber\Post, Timber\Term).
      *
      * If no match is found the function will return the inital argument.
