@@ -45,8 +45,12 @@ function getACFLayout()
             [
                 'label' => __('Title', 'flynt'),
                 'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
-                'name' => 'blockTitle',
-                'type' => 'text',
+                'name' => 'preContentHtml',
+                'type' => 'wysiwyg',
+                'default_value' => '<h2>' . __('Related Posts', 'flynt') . '</h2>',
+                'tabs' => 'visual,text',
+                'media_upload' => 0,
+                'delay' => 1,
             ],
             [
                 'label' => __('Categories', 'flynt'),
@@ -91,23 +95,6 @@ function getACFLayout()
     ];
 }
 
-    [
-        'label' => __('General', 'flynt'),
-        'name' => 'generalTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0
-    ],
-    [
-        'label' => __('Title', 'flynt'),
-        'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
-        'name' => 'preContentHtml',
-        'type' => 'wysiwyg',
-        'default_value' => '<h2>' . __('Related Posts', 'flynt') . '</h2>',
-        'tabs' => 'visual,text',
-        'media_upload' => 0,
-        'delay' => 1,
-    ],
 Options::addTranslatable('ListingInsights', [
     [
         'label' => __('Labels', 'flynt'),
