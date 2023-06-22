@@ -19,9 +19,6 @@ export default defineConfig(({ mode }) => {
           importer: globImporter()
         }
       },
-      postcss: {
-        plugins: [autoprefixer()]
-      }
     },
     resolve: {
       alias: {
