@@ -6,11 +6,11 @@ function projects_default_components($value, $post_id, $field)
     if ($value !== null) {
         return $value;
     }
-    $value = array(
-        array(
+    $value = [
+        [
             'acf_fc_layout' => 'BlockCta',
-        )
-    );
+        ]
+    ];
     return $value;
 }
 
@@ -20,10 +20,10 @@ function related_projects_default_components($value, $post_id, $field)
     if ($value !== null) {
         return $value;
     }
-    $value = array(
-        array(
+    $value = [
+        [
             'acf_fc_layout' => 'RelatedProjects',
-        )
-    );
+        ]
+    ];
     return $value;
 }

@@ -9,7 +9,7 @@ add_filter('Flynt/addComponentData?name=ListingFlex', function ($data) {
     $data['flexTaxonomies'] = $data['flexTaxonomies'] ?: [];
 
     // Create an empty array to store the tax query parameters
-    $tax_query = array();
+    $tax_query = [];
 
     // if data['post_types'] is array and longer than 1, set relation to OR else to AND
     if (is_array($data['post_types']) && count($data['post_types']) > 1) {
@@ -19,11 +19,11 @@ add_filter('Flynt/addComponentData?name=ListingFlex', function ($data) {
     }
 
     foreach ($data['flexTaxonomies'] as $tax) {
-        $tax_query[] = array(
+        $tax_query[] = [
             'taxonomy' => $tax["acf_fc_layout"],
             'field'    => 'term_id',
             'terms'    => $tax[""],
-        );
+        ];
     }
 
     $data['tax_query'] = $tax_query;
@@ -36,7 +36,7 @@ add_filter('Flynt/addComponentData?name=ListingFlex', function ($data) {
         'tax_query' => $tax_query,
         'posts_per_page' => $data['maxPosts'],
         'ignore_sticky_posts' => 1,
-        'post__not_in' => array(get_the_ID())
+        'post__not_in' => [get_the_ID()]
     ]);
 
     $data['found_posts'] = $data['posts']->found_posts;

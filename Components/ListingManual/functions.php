@@ -23,54 +23,54 @@ function getACFLayout()
                 'name' => 'blockTitle',
                 'type' => 'text',
             ],
-            array(
+            [
                 'label' => 'Items to display',
                 'name' => 'items',
                 'aria-label' => '',
                 'type' => 'relationship',
                 'instructions' => '',
                 'required' => 0,
-                'wrapper' => array(
+                'wrapper' => [
                     'width' => '',
                     'class' => '',
                     'id' => '',
-                ),
+                ],
                 'relevanssi_exclude' => 0,
-                'post_type' => array(
+                'post_type' => [
                     0 => 'post',
                     1 => 'people',
                     2 => 'project',
-                ),
+                ],
                 'post_status' => '',
                 'taxonomy' => '',
-                'filters' => array(
+                'filters' => [
                     0 => 'search',
                     1 => 'post_type',
                     2 => 'taxonomy',
-                ),
+                ],
                 'return_format' => 'object',
                 'min' => '',
                 'max' => '',
                 'elements' => '',
-            ),
-            array(
+            ],
+            [
                 'label' => '"View All"-Link',
                 'name' => 'viewAllLink',
                 'aria-label' => '',
                 'type' => 'link',
                 'instructions' => '',
                 'required' => 0,
-                'wrapper' => array(
+                'wrapper' => [
                     'width' => '20%',
                     'class' => '',
                     'id' => '',
-                ),
+                ],
                 'relevanssi_exclude' => 0,
                 'message' => '',
                 'ui' => 1,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
-            ),
+            ],
         ]
     ];
 }

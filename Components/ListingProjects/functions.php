@@ -22,7 +22,7 @@ add_filter('Flynt/addComponentData?name=ListingProjects', function ($data) {
             'order' => 'DESC',
             'posts_per_page' => 4,
             'ignore_sticky_posts' => 1,
-            'post__not_in' => array(get_the_ID()),
+            'post__not_in' => [get_the_ID()],
         ]);
     } else {
         $data['posts'] = Timber::get_posts([
@@ -30,22 +30,22 @@ add_filter('Flynt/addComponentData?name=ListingProjects', function ($data) {
             'post_type' => $postType,
             'orderby' => 'date',
             'order' => 'DESC',
-            'tax_query' => array(
+            'tax_query' => [
                 'relation' => 'OR',
-                array(
+                [
                     'taxonomy' => 'customer_segment',
                     'field' => 'slug',
                     'terms' => $customerSegments,
-                ),
-                array(
+                ],
+                [
                     'taxonomy' => 'country',
                     'field' => 'slug',
                     'terms' => $country,
-                )
-            ),
+                ]
+            ],
             'posts_per_page' => $data['options']['maxPosts'],
             'ignore_sticky_posts' => 1,
-            'post__not_in' => array(get_the_ID())
+            'post__not_in' => [get_the_ID()]
         ]);
     }
 
@@ -72,7 +72,7 @@ function get_posts()
             'order' => 'DESC',
             'posts_per_page' => $_POST['count'],
             'offset' => $_POST['offset'],
-            'post__not_in' => array(get_the_ID()),
+            'post__not_in' => [get_the_ID()],
         ]);
     } else {
         $data['posts'] = Timber::get_posts([
@@ -80,27 +80,27 @@ function get_posts()
             'post_type' => 'project',
             'orderby' => 'date',
             'order' => 'DESC',
-            'tax_query' => array(
+            'tax_query' => [
                 'relation' => 'OR',
-                array(
+                [
                     'taxonomy' => 'customer_segment',
                     'field' => 'slug',
                     'terms' => $customerSegments,
-                ),
-                array(
+                ],
+                [
                     'taxonomy' => 'country',
                     'field' => 'slug',
                     'terms' => $country,
-                )
-            ),
+                ]
+            ],
             'posts_per_page' => $_POST['count'],
             'offset' => $_POST['offset'],
-            'post__not_in' => array(get_the_ID())
+            'post__not_in' => [get_the_ID()]
         ]);
     }
 
     foreach ($context['posts'] as $post) {
-        Timber::render('/Partials/_post.twig', array('post' => $post));
+        Timber::render('/Partials/_post.twig', ['post' => $post]);
     }
 
     wp_die();

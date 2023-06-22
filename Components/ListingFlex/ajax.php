@@ -8,7 +8,8 @@ use Timber\Timber;
 add_action('wp_ajax_nopriv_apply_filters_posts', 'Flynt\Components\ListingFlex\apply_filters_posts');
 add_action('wp_ajax_apply_filters_posts', 'Flynt\Components\ListingFlex\apply_filters_posts');
 
-function apply_filters_posts() {
+function apply_filters_posts()
+{
 
     // get the submitted parameters
     $tax_query = $_POST['tax_query'];
@@ -37,8 +38,8 @@ function apply_filters_posts() {
         'posts_per_page' => $maxPosts,
     ]);
 
-    Timber::render('Partials/_items.twig', array('posts' => $p, 'labels' => json_decode(stripslashes($labels), true)));
-    
+    Timber::render('Partials/_items.twig', ['posts' => $p, 'labels' => json_decode(stripslashes($labels), true)]);
+
     wp_die();
 }
 
@@ -46,7 +47,8 @@ function apply_filters_posts() {
 add_action('wp_ajax_nopriv_load_more_posts', 'Flynt\Components\ListingFlex\load_more_posts');
 add_action('wp_ajax_load_more_posts', 'Flynt\Components\ListingFlex\load_more_posts');
 
-function load_more_posts() {
+function load_more_posts()
+{
 
     $orderby = $_POST['orderby'];
     $order = $_POST['order'];
@@ -78,8 +80,10 @@ function load_more_posts() {
         'offset' => $count,
     ]);
 
-    Timber::render('Partials/_items.twig',
-     array('posts' => $posts, 'labels' => json_decode(stripslashes($labels), true)));
+    Timber::render(
+        'Partials/_items.twig',
+        ['posts' => $posts, 'labels' => json_decode(stripslashes($labels), true)]
+    );
 
     wp_die();
 }

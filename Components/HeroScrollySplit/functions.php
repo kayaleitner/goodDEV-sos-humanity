@@ -24,30 +24,30 @@ function getACFLayout()
                 'type' => 'repeater',
                 'instructions' => '',
                 'required' => 0,
-                'wrapper' => array(
+                'wrapper' => [
                     'width' => '',
                     'class' => '',
                     'id' => '',
-                ),
+                ],
                 'layout' => 'table',
                 'pagination' => 0,
                 'min' => 2,
                 'max' => 2,
                 'collapsed' => '',
                 'button_label' => 'Add Row',
-                'sub_fields' => array(
-                    array(
+                'sub_fields' => [
+                    [
                         'label' => 'Image',
                         'name' => 'image',
                         'aria-label' => '',
                         'type' => 'image',
                         'instructions' => '',
                         'required' => 0,
-                        'wrapper' => array(
+                        'wrapper' => [
                             'width' => '',
                             'class' => '',
                             'id' => '',
-                        ),
+                        ],
                         'return_format' => 'array',
                         'library' => 'all',
                         'min_width' => '',
@@ -59,46 +59,46 @@ function getACFLayout()
                         'mime_types' => '',
                         'preview_size' => 'medium',
                         'parent_repeater' => 'field_63f4adae8cef0',
-                    ),
-                    array(
+                    ],
+                    [
                         'label' => 'Text 1',
                         'name' => 'text_1',
                         'aria-label' => '',
                         'type' => 'text',
                         'instructions' => '',
                         'required' => 0,
-                        'wrapper' => array(
+                        'wrapper' => [
                             'width' => '',
                             'class' => '',
                             'id' => '',
-                        ),
+                        ],
                         'default_value' => '',
                         'maxlength' => '',
                         'placeholder' => '',
                         'prepend' => '',
                         'append' => '',
                         'parent_repeater' => 'field_63f4adae8cef0',
-                    ),
-                    array(
+                    ],
+                    [
                         'label' => 'Text 2',
                         'name' => 'text_2',
                         'aria-label' => '',
                         'type' => 'text',
                         'instructions' => '',
                         'required' => 0,
-                        'wrapper' => array(
+                        'wrapper' => [
                             'width' => '',
                             'class' => '',
                             'id' => '',
-                        ),
+                        ],
                         'default_value' => '',
                         'maxlength' => '',
                         'placeholder' => '',
                         'prepend' => '',
                         'append' => '',
                         'parent_repeater' => 'field_63f4adae8cef0',
-                    )
-                ),
+                    ]
+                ],
             ],
             [
                 'label' => __('Options', 'flynt'),

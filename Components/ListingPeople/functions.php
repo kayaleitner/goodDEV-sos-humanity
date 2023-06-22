@@ -23,7 +23,7 @@ add_filter('Flynt/addComponentData?name=ListingPeople', function ($data) {
         }, $data['taxonomies'])),
         'posts_per_page' => $data['maxPosts'],
         'ignore_sticky_posts' => 1,
-        'post__not_in' => array(get_the_ID())
+        'post__not_in' => [get_the_ID()]
     ]);
 
     $data['postTypeArchiveLink'] = get_post_type_archive_link($postType);
@@ -129,44 +129,44 @@ function getACFLayout()
                 'ajax' => 0,
                 'placeholder' => '',
             ],
-            array(
+            [
                 'label' => 'Order',
                 'name' => 'order',
                 'aria-label' => '',
                 'type' => 'button_group',
                 'instructions' => '',
-                'wrapper' => array(
+                'wrapper' => [
                     'width' => '25%',
                     'class' => '',
                     'id' => '',
-                ),
-                'choices' => array(
+                ],
+                'choices' => [
                     'ASC' => 'Ascending',
                     'DESC' => 'Descending',
-                ),
+                ],
                 'default_value' => 'ASC',
                 'return_format' => 'value',
                 'layout' => 'horizontal',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Show "Read More"',
                 'name' => 'show_read_more',
                 'aria-label' => '',
                 'type' => 'true_false',
                 'instructions' => '',
                 'required' => 0,
-                'wrapper' => array(
+                'wrapper' => [
                     'width' => '25%',
                     'class' => '',
                     'id' => '',
-                ),
+                ],
                 'relevanssi_exclude' => 0,
                 'message' => '',
                 'default_value' => 0,
                 'ui' => 0,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
-            ),
+            ],
         ]
     ];
 }

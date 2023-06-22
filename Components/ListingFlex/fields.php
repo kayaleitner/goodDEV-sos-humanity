@@ -5,9 +5,9 @@ namespace Flynt\Components\ListingFlex;
 use Flynt\Utils\Options;
 
 add_filter('acf/load_field/name=post_types', function ($field) {
-    $args = array(
+    $args = [
         'public' => true,
-    );
+    ];
 
     foreach (get_post_types($args, 'objects') as $post_type) {
         // don't list attachments or pages
@@ -22,9 +22,9 @@ add_filter('acf/load_field/name=post_types', function ($field) {
 });
 
 add_filter('acf/load_field/name=flexFilters', function ($field) {
-    $args = array(
+    $args = [
         'public' => true,
-    );
+    ];
 
     foreach (get_taxonomies($args, 'objects') as $tax) {
         if ($tax->name == 'post_format') {
@@ -38,9 +38,9 @@ add_filter('acf/load_field/name=flexFilters', function ($field) {
 });
 
 add_filter('acf/load_field/name=flexTaxonomies', function ($field) {
-    $args = array(
+    $args = [
         'public' => true,
-    );
+    ];
 
     foreach (get_taxonomies($args, 'objects') as $tax) {
         // don't list attachments or pages
@@ -51,7 +51,7 @@ add_filter('acf/load_field/name=flexTaxonomies', function ($field) {
             'name' => $tax->name,
             'label' => $tax->label,
             'sub_fields' => [
-                array(
+                [
                     'key' => 'flexTax_' . $tax->name,
                     'label' => '',
                     'name' => $tax->name,
@@ -59,11 +59,11 @@ add_filter('acf/load_field/name=flexTaxonomies', function ($field) {
                     'type' => 'taxonomy',
                     'instructions' => '',
                     'required' => 0,
-                    'wrapper' => array(
+                    'wrapper' => [
                         'width' => '',
                         'class' => '',
                         'id' => '',
-                    ),
+                    ],
                     'relevanssi_exclude' => 0,
                     'taxonomy' => $tax->name,
                     'add_term' => 0,
@@ -73,7 +73,7 @@ add_filter('acf/load_field/name=flexTaxonomies', function ($field) {
                     'field_type' => 'checkbox',
                     'multiple' => 1,
                     'allow_null' => 0,
-                ),
+                ],
             ]
         ];
     }
@@ -113,33 +113,33 @@ function getACFLayout()
                 'ajax' => 0,
                 'placeholder' => '',
             ],
-            array(
+            [
                 'label' => 'Taxonomies to display',
                 'name' => 'flexTaxonomies',
                 'aria-label' => '',
                 'type' => 'flexible_content',
                 'instructions' => '',
                 'required' => 0,
-                'conditional_logic' => array(
-                    array(
-                        array(
+                'conditional_logic' => [
+                    [
+                        [
                             'field' => 'field_pageComponents_pageComponents_ListingFlex_post_types',
                             'operator' => '<',
                             'value' => '2',
-                        ),
-                    ),
-                    array(
-                        array(
+                        ],
+                    ],
+                    [
+                        [
                             'field' => 'field_pageComponents_pageComponents_ListingFlex_flexFilters',
                             'operator' => '==empty',
-                        ),
-                    ),
-                ),
-                'wrapper' => array(
+                        ],
+                    ],
+                ],
+                'wrapper' => [
                     'width' => '',
                     'class' => '',
                     'id' => 'flexTaxonomiesSelector',
-                ),
+                ],
                 'relevanssi_exclude' => 0,
                 'hide_collapse' => 1,
                 'collapse_all_flexible' => 0,
@@ -147,28 +147,28 @@ function getACFLayout()
                 'min' => '',
                 'max' => '',
                 'button_label' => 'Add Pre-Filter',
-            ),
-            array(
+            ],
+            [
                 'label' => 'User Filters',
                 'name' => 'flexFilters',
                 'aria-label' => '',
                 'type' => 'select',
                 'required' => 0,
-                'conditional_logic' => array(
-                    array(
-                        array(
+                'conditional_logic' => [
+                    [
+                        [
                             'field' => 'field_pageComponents_pageComponents_ListingFlex_post_types',
                             'operator' => '<',
                             'value' => '2',
-                        ),
-                    ),
-                    array(
-                        array(
+                        ],
+                    ],
+                    [
+                        [
                             'field' => 'field_pageComponents_pageComponents_ListingFlex_flexTaxonomies',
                             'operator' => '==empty',
-                        ),
-                    ),
-                ),
+                        ],
+                    ],
+                ],
                 'wrapper' => [
                     'width' => '100%',
                     'class' => '',
@@ -181,7 +181,7 @@ function getACFLayout()
                 'ui' => 1,
                 'ajax' => 0,
                 'placeholder' => '',
-            ),
+            ],
             [
                 'label' => __('Max Number of Items', 'flynt'),
                 'instructions' => __('Set to -1 for unlimited', 'flynt'),
@@ -238,81 +238,81 @@ function getACFLayout()
                 'ajax' => 0,
                 'placeholder' => '',
             ],
-            array(
+            [
                 'label' => 'Order',
                 'name' => 'order',
                 'aria-label' => '',
                 'type' => 'button_group',
                 'instructions' => '',
-                'wrapper' => array(
+                'wrapper' => [
                     'width' => '33%',
                     'class' => '',
                     'id' => '',
-                ),
-                'choices' => array(
+                ],
+                'choices' => [
                     'ASC' => 'Asc.',
                     'DESC' => 'Desc.',
-                ),
+                ],
                 'default_value' => 'ASC',
                 'return_format' => 'value',
                 'layout' => 'horizontal',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Show "Load More"',
                 'name' => 'show_load_more',
                 'aria-label' => '',
                 'type' => 'true_false',
                 'instructions' => '',
                 'required' => 0,
-                'wrapper' => array(
+                'wrapper' => [
                     'width' => '20%',
                     'class' => '',
                     'id' => '',
-                ),
+                ],
                 'relevanssi_exclude' => 0,
                 'message' => '',
                 'default_value' => 0,
                 'ui' => 1,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
-            ),
-            array(
+            ],
+            [
                 'label' => '"View All"-Link',
                 'name' => 'viewAllLink',
                 'aria-label' => '',
                 'type' => 'link',
                 'instructions' => '',
                 'required' => 0,
-                'wrapper' => array(
+                'wrapper' => [
                     'width' => '20%',
                     'class' => '',
                     'id' => '',
-                ),
+                ],
                 'relevanssi_exclude' => 0,
                 'message' => '',
                 'ui' => 1,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Highlight first item',
                 'name' => 'highlightFirst',
                 'aria-label' => '',
                 'type' => 'true_false',
                 'instructions' => '',
                 'required' => 0,
-                'wrapper' => array(
+                'wrapper' => [
                     'width' => '33%',
                     'class' => '',
                     'id' => '',
-                ),
+                ],
                 'relevanssi_exclude' => 0,
                 'message' => '',
                 'default_value' => 0,
                 'ui' => 1,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
-            ),
+            ],
         ]
     ];
 }
