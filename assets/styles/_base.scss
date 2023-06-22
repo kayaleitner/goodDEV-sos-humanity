@@ -236,7 +236,7 @@ table {
 */
 
 .button {
-  @include reset-link;
+  // @include reset-link;
   @apply appearance-none;
   @apply cursor-pointer;
   @apply flex;
