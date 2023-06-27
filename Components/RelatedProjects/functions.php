@@ -8,8 +8,9 @@ use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=RelatedProjects', function ($data) {
 
+    $post_id = get_the_ID();
     $related_posts_projects = relevanssi_get_related_post_ids($post_id);
-    $data['related_posts_projects'] = $related_posts;
+    $data['related_posts_projects'] = $related_posts_projects;
 
     $data['relatedProjects'] = Timber::get_posts([
         'post_status' => 'publish',
