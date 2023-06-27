@@ -39,12 +39,12 @@ jobs:
     #   run: npm run lint:styles:fix lint:php:fix lint:scripts:fix
     - name: Run build
       run: npm run build
-    # - name: set composer plugin config
-    #   run: php8.0 $(which composer) config --no-plugins allow-plugins.composer/installers true
-    # - name: set CI config composer
-    #   run: php8.0 $(which composer) config --json extra.installer-paths '{"plugins/{$name}/":["type:wordpress-plugin"]}'
-    # - name: Install composer optimized
-    #   run: php8.0 $(which composer) install --no-dev --no-progress --optimize-autoloader
+    - name: set composer plugin config
+      run: php8.0 $(which composer) config --no-plugins allow-plugins.composer/installers true
+    - name: set CI config composer
+      run: php8.0 $(which composer) config --json extra.installer-paths '{"plugins/{$name}/":["type:wordpress-plugin"]}'
+    - name: Install composer optimized
+      run: php8.0 $(which composer) install --no-dev --no-progress --optimize-autoloader
 
     - name: Move theme files to Staging using SSH/rsync
       # if: github.ref == 'refs/heads/master'
