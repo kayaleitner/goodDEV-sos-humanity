@@ -1,6 +1,6 @@
 <?php
 
-add_filter('timber_context', 'mytheme_timber_context');
+add_filter('timber/context', 'mytheme_timber_context');
 
 function mytheme_timber_context($context)
 {
