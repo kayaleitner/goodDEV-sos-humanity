@@ -37,7 +37,7 @@ function getACFLayout()
                         'name' => 'illustration',
                         'type' => 'image',
                         'preview_size' => 'medium',
-                        'mime_types' => 'jpg,jpeg,png,svg',
+                        'mime_types' => 'svg',
                         'wrapper' => [
                             'width' => 40
                         ],
