@@ -6,11 +6,6 @@ flynt-component[name='ListingFlex'] {
         @apply scale-[1.15];
         @apply origin-center;
       }
-
-      .button--card {
-        @apply border-transparent;
-        @apply bg-green;
-      }
     }
     
     .link {

@@ -65,11 +65,6 @@ flynt-component[name='ListingMap'] {
         @apply lg:scale-[1.15];
         @apply lg:origin-center;
       }
-
-      .button--card {
-        @apply border-transparent;
-        @apply bg-green;
-      }
     }
   }
 }

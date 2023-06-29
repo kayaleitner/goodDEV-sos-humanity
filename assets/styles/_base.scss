@@ -308,14 +308,6 @@ table {
     @apply bg-transparent;
   }
 
-  &--card {
-    @apply border-black;
-    @apply hover:border-transparent;
-    @apply text-black;
-    @apply border;
-    @apply bg-transparent;
-  }
-
   &--arrow {
     @apply border-black;
     @apply hover:border-transparent;
