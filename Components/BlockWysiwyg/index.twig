@@ -5,12 +5,12 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
   <div class="outer w-full max-w-screen-max mx-auto p-sm xs:p-sm md:p-md lg:p-lg">
     {% if blockTitle %}
-    <h2 class="wrapper lg:w-2/3 not-prose subtitle block-title font-bold pb-sm sm:pb-md" 
+    <h2 class="wrapper lg:w-2/3  subtitle block-title font-bold pb-sm sm:pb-md" 
       style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %};">
       {{ blockTitle }}
     </h2>
     {% endif %}
-    <div class="wrapper lg:w-2/3 not-prose  ">
+    <div class="wrapper lg:w-2/3   ">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>
