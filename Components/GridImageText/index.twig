@@ -1,7 +1,7 @@
 <flynt-component load:on="visible" name="GridImageText" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
-      <div class="preContent ">
+      <div class="wysiwyg preContent">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
@@ -29,7 +29,7 @@
                 </figure>
               {% endif %}
               {% if item.contentHtml %}
-                <div class="{{ options.card == 'layoutCard' ? 'boxPadding' }}">
+                <div class="wysiwyg {{ options.card == 'layoutCard' ? 'boxPadding' }}">
                   {{ item.contentHtml|e('wp_kses_post') }}
                 </div>
               {% endif %}

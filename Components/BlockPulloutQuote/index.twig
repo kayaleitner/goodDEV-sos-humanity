@@ -14,7 +14,7 @@
 				{% endif %}
 				<div class="item w-full flex flex-col md:flex-row gap-md md:gap-md justify-center items-start">
 					{% if item.contentHtml %}
-						<div class="w-full md:w-2/3 " {% if options.colorText %} style="color:{{ options.colorText }};" {% endif %}>
+						<div class="wysiwyg w-full md:w-2/3 " {% if options.colorText %} style="color:{{ options.colorText }};" {% endif %}>
 							{{ item.contentHtml|e('wp_kses_post') }}
 						</div>
 					{% endif %}

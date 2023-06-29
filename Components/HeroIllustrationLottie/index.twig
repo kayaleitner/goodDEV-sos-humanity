@@ -21,7 +21,7 @@
           <lottie-player class="lottieAnimation"  data-animationtype="{{ item.animationType }}" src="{{ item.lottieAnimationLink.url }}" speed="1" style="width: 200px; height: auto;"></lottie-player>
         {% endif %}
         {% if item.contentHtml %}
-          <div class="">
+          <div class="wysiwyg">
             {{ item.contentHtml|e('wp_kses_post') }}
           </div>
         {% endif %}

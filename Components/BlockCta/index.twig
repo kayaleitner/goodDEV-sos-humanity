@@ -6,7 +6,7 @@
   {{ labels.options.navStyle ? 'data-navStyle="' ~ labels.options.navStyle ~ '"' }}
   >
 <div class="outer w-full max-w-screen-max mx-auto  p-sm md:p-md lg:p-lg">
-    <div class="wrapper hidden sm:block lg:w-2/3 ">
+    <div class="wysiwyg wrapper hidden sm:block lg:w-2/3 ">
       {{ labels.contentHtml|e('wp_kses_post') }}
     </div>
     <a class="button button--green button--greenBig sm:mt-lg" href="{{labels.buttonLink.url}}">{{labels.buttonLink.title}}</a>
