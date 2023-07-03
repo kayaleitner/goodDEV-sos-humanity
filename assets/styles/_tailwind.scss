@@ -239,5 +239,16 @@
       }
     }
   }
+
+  flynt-component[name='BlockProjectBox'] #dottedMap {
+    svg {
+      clip-path: polygon(4% 2%, 100% 3%, 100% 99%, 3% 98%);
+
+      @screen lg {
+        clip-path: polygon(1% 2%, 129% 1%, 107% 96%, 3% 98%);
+      }
+    }
+  }
+    
 }
 
