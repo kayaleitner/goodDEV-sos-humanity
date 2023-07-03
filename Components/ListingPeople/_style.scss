@@ -9,7 +9,8 @@ flynt-component[name='ListingPeople'] {
     }
     
     .link {
-      @include reset-link;
+      list-style: none;
+      padding: 0;
       color: currentColor;
       display: flex;
       flex-direction: column;

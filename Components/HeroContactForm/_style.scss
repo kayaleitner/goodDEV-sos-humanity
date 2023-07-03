@@ -78,7 +78,7 @@ flynt-component[name='HeroContactForm'] {
     }
 
     .wpcf7-submit {
-      @include reset-link;
+      @apply list-none;
       @apply appearance-none;
       @apply cursor-pointer;
       @apply flex;
