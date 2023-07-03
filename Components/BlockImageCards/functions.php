@@ -1,14 +1,14 @@
 <?php
 
-namespace Flynt\Components\GridImageText;
+namespace Flynt\Components\BlockGridCards;
 
 use Flynt\FieldVariables;
 
 function getACFLayout()
 {
     return [
-        'name' => 'gridImageText',
-        'label' => __('Grid: Image Text', 'flynt'),
+        'name' => 'blockGridCards',
+        'label' => __('Block: Grid Cards', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
