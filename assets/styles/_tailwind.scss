@@ -249,6 +249,13 @@
       }
     }
   }
+  
+  flynt-component[name='BlockWysiwyg'] .content  br {
+    content: '\00a0';
     
+    @screen lg {
+      content: '\0x0d'
+    }
+  }
 }
 

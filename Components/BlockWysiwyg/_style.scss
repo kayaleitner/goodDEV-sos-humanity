@@ -1,9 +1,0 @@
-flynt-component[name='BlockWysiwyg'] {
-  .content {
-    @media (max-width: $breakpoint-tablet) {
-      br {
-        content: '\00a0';
-      }
-    }
-  }
-}
