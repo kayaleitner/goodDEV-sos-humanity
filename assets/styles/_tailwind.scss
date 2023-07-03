@@ -180,13 +180,62 @@
     @apply focus:bg-green;
   }
 
-  flynt-component[name='BlockImageTextFull'] {
-    .icon {
-      svg {
-        @apply scale-75;
-        @apply -translate-x-[10px];
-        @apply lg:scale-110;
-        @apply lg:-translate-x-0;
+  flynt-component[name='BlockImageTextFull'] .icon svg {
+    @apply scale-75;
+    @apply -translate-x-[10px];
+    @apply lg:scale-110;
+    @apply lg:-translate-x-0;
+  }
+
+  flynt-component[name='BlockNewsletter'] {
+    .wpcf7 {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      
+      @screen md {
+        justify-content: space-between;
+      }
+
+      form {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      &-spinner {
+        display: none;
+      }
+
+      &-not-valid-tip {
+        position: absolute;
+        top: 50px;
+      }
+
+      &-response-output {
+        bottom: 0;
+        position: absolute;
+      }
+
+      input {
+        @apply px-sm;
+        @apply py-xs;
+      }
+
+      button {
+        &.wpcf7-submit {
+          @apply px-sm;
+          @apply py-xs;
+          @apply border-l;
+          @apply border-white;
+          @apply cursor-pointer;
+          @apply rounded-r-full;
+          @apply rounded-l-none;
+          @apply hover:bg-white;
+          @apply text-white;
+          @apply hover:text-black;
+          @apply transition-all;
+        }
       }
     }
   }
