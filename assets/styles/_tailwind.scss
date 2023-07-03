@@ -180,6 +180,15 @@
     @apply focus:bg-green;
   }
 
-
+  flynt-component[name='BlockImageTextFull'] {
+    .icon {
+      svg {
+        @apply scale-75;
+        @apply -translate-x-[10px];
+        @apply lg:scale-110;
+        @apply lg:-translate-x-0;
+      }
+    }
+  }
 }
 

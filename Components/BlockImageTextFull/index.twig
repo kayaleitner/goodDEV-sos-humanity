@@ -5,7 +5,7 @@
   {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
-  <div class="sm:h-[600px] lg:h-[900px] flex flex-col sm:flex-row" {{ imagePosition ? 'data-image-position="' ~ imagePosition ~ '"' }}  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
+<div class="sm:h-[600px] lg:h-[900px] flex {% set flexRowClass = (imagePosition is defined and imagePosition == 'left') ? 'flex-reverse sm:flex-row' : ((imagePosition is defined and imagePosition == 'right') ? 'flex-col-reverse sm:flex-row-reverse' : 'flex-col sm:flex-row') %}" style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
     <figure class="w-full sm:w-1/2 overflow-hidden">
       {% if image %}
         <img class="lazyload w-full sm:h-[650px] lg:h-[950px] mt-[-2vw] object-cover aspect-square lg:aspect-3/4 {% if imageOverlay %}brightness-70{% endif %}"
