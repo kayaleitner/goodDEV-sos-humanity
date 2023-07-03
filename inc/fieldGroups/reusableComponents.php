@@ -16,7 +16,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'flexible_content',
                 'button_label' => __('Add Block', 'flynt'),
                 'layouts' => [
-                    Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
                     Components\BlockVideoOembed\getACFLayout(),

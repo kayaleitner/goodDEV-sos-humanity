@@ -94,7 +94,6 @@ add_action('Flynt/afterRegisterComponents', function () {
     //             'button_label' => __('Add Block', 'flynt'),
     //             'layouts' => [
     //                 Components\BlockAnchor\getACFLayout(),
-    //                 Components\BlockCollapse\getACFLayout(),
     //                 Components\BlockImage\getACFLayout(),
     //                 Components\BlockImageText\getACFLayout(),
     //                 Components\BlockPulloutQuote\getACFLayout(),
