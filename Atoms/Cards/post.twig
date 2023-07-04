@@ -1,9 +1,9 @@
 <li
   class="fade-in move-up post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
   {% if post.externalResourceLink %}
-  <a class="flex flex-col h-full no-underline" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>
+  <a class="flex flex-col h-full no-underline group" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>
   {% else %}
-  <a class="flex flex-col h-full no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
+  <a class="flex flex-col h-full no-underline group" href="{{ post.link }}" aria-label="{{ post.title }}">
   {% endif %}
     <div class="flex flex-col grow" aria-label="{{ post.title }}">
       {% if post.thumbnail %}
