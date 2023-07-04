@@ -54,8 +54,4 @@ flynt-component[name='BlockVideoOembed'] {
       padding-inline: var(--container-padding);
     }
   }
-
-  @import 'Partials/figure';
-  @import 'Partials/videoPlayButton';
-  @import 'Partials/videoLoader';
 }
