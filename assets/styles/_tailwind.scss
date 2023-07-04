@@ -259,3 +259,9 @@
   }
 }
 
+@layer utilities {
+
+  .grid-cols-3-100vw {
+    grid-template-columns: repeat(3, 100vw);
+  }
+}
