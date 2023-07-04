@@ -3,7 +3,7 @@
 	<div class="outer w-full max-w-screen-max mx-auto p-sm xs:p-sm md:p-md lg:p-lg">
 		<div class="wrapper w-full lg:w-2/3">
 			{% if blockTitle %}
-				<h2 class="subtitle block-title font-bold text-white pb-xl z-50">{{ blockTitle }}</h2>
+				<h2 class="subtitle !leading-subtitle block-title font-bold text-white pb-xl z-50">{{ blockTitle }}</h2>
 			{% endif %}
 			<div data-ref="slider" class="slider overflow-hidden relative swiper-container">
 				<div class="swiper-wrapper">
@@ -12,14 +12,14 @@
 							<figure class="absolute inset-0 mb-0">
 								<img class="figure-image lazyload w-full h-full mx-auto object-cover" src="{{ image.src | resize(32) }}" data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}" data-sizes="auto" alt="{{ image.alt|e }}">
 								{% if image.caption %}
-<figcaption class="absolute bottom-0 right-0 max-w-[450px] overflow-hidden py-1 px-2 text-white bg-[#000000b3] z-[2]">{{ image.caption|e }}</figcaption>
-
+                  <figcaption class="absolute bottom-0 right-0 max-w-[450px] overflow-hidden py-1 px-2 text-white bg-[#000000b3] z-[2]">{{ image.caption|e }}</figcaption>
 								{% endif %}
 							</figure>
 						</div>
 					{% endfor %}
 				</div>
-				<div data-slider-pagination data-ref="pagination" class="absolute !bottom-[35px] !sm:bottom-[15px] z-[2] !flex items-center justify-center swiper-pagination-fraction"></div>
+<div data-slider-pagination data-ref="pagination" class="absolute !bottom-[35px] !sm:bottom-[15px] z-[2] !flex items-center justify-center swiper-pagination-fraction"></div>
+
 				</div>
 		</div>
 	</div>

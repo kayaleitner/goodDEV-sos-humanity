@@ -449,10 +449,19 @@ flynt-component[name='SliderText'] {
   }
 }
 
+
 @layer utilities {
+
+  .box-inherit {
+    box-sizing: inherit;
+  }
 
   .grid-cols-3-100vw {
     grid-template-columns: repeat(3, 100vw);
+  }
+
+  .leading-subtitle {
+    line-height: 0.7;
   }
 }
 
