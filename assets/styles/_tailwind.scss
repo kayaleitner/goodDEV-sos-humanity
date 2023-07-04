@@ -121,7 +121,7 @@
   html body .titleLarge {
     font-size: 2.813rem;
     line-height: normal;
-    @apply mb-sm;
+    
     @screen lg {
       font-size: 4.813rem;
     }
@@ -130,7 +130,7 @@
   html body .titleSmall {
     font-size: 2.188rem;
     line-height: normal;
-    @apply mb-sm;
+    
     @screen lg {
       font-size: 3.438rem;
       line-height: 110%;
@@ -149,7 +149,6 @@
   html body .subtitle {
     font-size: 1.875rem;
     line-height: normal;
-    @apply mb-sm;
     @screen lg{
       font-size: 2.188rem;
     }
@@ -375,21 +374,77 @@
     }
   }
 
-  flynt-component[name='SliderImages'] {
-    .swiper-pagination-bullet {
-      background: transparent;
-      border: 2px solid var(--white);
-      border-radius: 50%;
-      display: inline-block;
-      height: 15px !important;
-      margin: 0 7.5px !important;
-      opacity: 1;
-      width: 15px !important;
+}
 
-      &-active {
-        background: var(--white) !important;
-        opacity: 1;
+
+// Third party libraries
+
+flynt-component[name='SliderImages'] {
+  .swiper-pagination-bullet {
+    background: transparent;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    display: inline-block;
+    height: 15px !important;
+    margin: 0 7.5px !important;
+    opacity: 1;
+    width: 15px !important;
+
+    &-active {
+      background: var(--white) !important;
+      opacity: 1;
+    }
+  }
+}
+
+flynt-component[name='SliderText'] {
+  .slider {
+    &-button {
+      &.swiper-button-disabled {
+        opacity: 0.5;
+        pointer-events: none;
       }
+
+      @screen sm {
+        svg {
+          path {
+            fill: var(--black) !important;
+          }
+        }
+      }
+    }
+  }
+
+  .swiper-horizontal>.swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    align-items: center;
+    bottom: 35px !important;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    position: absolute;
+    top: auto !important;
+    z-index: 50;
+
+    @media (min-width: 640px) {
+      display: none !important;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    background: transparent !important;
+    border: 2px solid currentColor;
+    border-radius: 100%;
+    display: inline-block;
+    height: 15px !important;
+    opacity: 1 !important;
+    width: 15px !important;
+
+    &-active {
+      background: currentColor !important;
+      opacity: 1 !important;
     }
   }
 }
