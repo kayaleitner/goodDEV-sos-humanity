@@ -302,6 +302,22 @@
     }
   }
 
+
+  flynt-component[name='ScrollytellingImage'] {
+    // Do we need this?
+    .panel:first-child {
+      img {
+        display: block !important;
+        opacity: 1 !important;
+      }
+    }
+
+    .panel:last-child {
+      img {
+        border: 0;
+      }
+    }
+  }
 }
 
 @layer utilities {
