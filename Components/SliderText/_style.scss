@@ -44,37 +44,37 @@ flynt-component[name='SliderText'] {
       }
     }
   }
-}
 
-.swiper-horizontal>.swiper-pagination-bullets,
-.swiper-pagination-bullets.swiper-pagination-horizontal,
-.swiper-pagination-custom,
-.swiper-pagination-fraction {
-  align-items: center;
-  bottom: 35px !important;
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  position: absolute;
-  top: auto !important;
-  z-index: 50;
+  .swiper-horizontal>.swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    align-items: center;
+    bottom: 35px !important;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    position: absolute;
+    top: auto !important;
+    z-index: 50;
 
-  @media (min-width: 640px) {
-    display: none !important;
+    @media (min-width: 640px) {
+      display: none !important;
+    }
   }
-}
 
-.swiper-pagination-bullet {
-  background: transparent !important;
-  border: 2px solid currentColor;
-  border-radius: 100%;
-  display: inline-block;
-  height: 15px !important;
-  opacity: 1 !important;
-  width: 15px !important;
-
-  &-active {
-    background: currentColor !important;
+  .swiper-pagination-bullet {
+    background: transparent !important;
+    border: 2px solid currentColor;
+    border-radius: 100%;
+    display: inline-block;
+    height: 15px !important;
     opacity: 1 !important;
+    width: 15px !important;
+
+    &-active {
+      background: currentColor !important;
+      opacity: 1 !important;
+    }
   }
 }

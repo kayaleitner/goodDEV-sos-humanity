@@ -374,6 +374,24 @@
       }
     }
   }
+
+  flynt-component[name='SliderImages'] {
+    .swiper-pagination-bullet {
+      background: transparent;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      display: inline-block;
+      height: 15px !important;
+      margin: 0 7.5px !important;
+      opacity: 1;
+      width: 15px !important;
+
+      &-active {
+        background: var(--white) !important;
+        opacity: 1;
+      }
+    }
+  }
 }
 
 @layer utilities {
