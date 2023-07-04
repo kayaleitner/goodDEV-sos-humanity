@@ -16,51 +16,11 @@
         "
       >
         {% for post in posts %}
-          <li class="post w-full py-sm lg:py-0 border-b border-lightgrey lg:border-b-0">
-            <a class="link flex flex-col h-full no-underlinel" href="{{ post.link }}" aria-label="{{ post.title }}">
-              {% if post.thumbnail %}
-                <div class="block">
-                  <figure class="figure overflow-hidden">
-                  <img class="image lazyload object-cover transition duration-200 ease-linear"
-                    src="{{  post.thumbnail.src | resize(32) }}"
-                    data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-                    data-sizes="auto"
-                    data-src="{{ post.thumbnail.src }}"
-                    alt="{{ post.thumbnail.alt|e }}">
-                  </figure>
-                </div>
-              {% endif %}
-              <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start sm:items-stretch">
-                <div class="w-full flex flex-col gap-sm">
-                  <div class="w-full h-full p-sm flex flex-row justify-between align-middle items-center border caption">
-                    <div>
-                      <div class="font-mono font-bold">
-                        {% for term in post.terms('location')  %}
-                          <div class="text-captionMobile lg:text-caption">{{ term }}</div>
-                        {% endfor %}
-                      </div>
-                      {% for term in post.terms('division')  %}
-                        <div data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></div>
-                      {% endfor %}
-                    </div>
-                    {% for term in post.terms('division')  %}
-                      <div data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></div>
-                    {% endfor %}
-                  </div>
-                </div>
-                <div class="w-full grow flex flex-col gap-sm justify-start align-start items-start">
-                  <div class="body">{{ post.position }}</div>
-                  <div class="w-full flex flex-col">
-                    <h2 class="subtitle w-full grow">{{ post.title }}</h2>
-                    <div class="body w-full grow">{{ post.bio|truncate(10) }}</div>
-                  </div>
-                </div>
-                <div class="mt-sm flex flex-row lg:flex-col gap-sm justify-start items-start">
-                  <div class="link button button--card">{{ labels.readMore }}</div>
-                </div>
-              </div>
-            </a>
-          </li>
+          {% include 'Atoms/Cards/people.twig' with {
+            post: post,
+            labels: labels
+            options: options
+          } %}
         {% endfor %}
       </ul>
     </div>

@@ -175,9 +175,20 @@
     @apply border-black;
     @apply hover:border-transparent;
     @apply focus:border-transparent;
+    @apply group-hover:border-transparent;
+    @apply group-focus:border-transparent;
     @apply bg-transparent;
     @apply hover:bg-green;
     @apply focus:bg-green;
+    @apply group-hover:bg-green;
+    @apply group-focus:bg-green;
+  }
+
+  .button.button--link {
+    @apply hover:bg-green;
+    @apply focus:bg-green;
+    @apply group-hover:bg-green;
+    @apply group-focus:bg-green;
   }
 
   flynt-component[name='BlockImageTextFull'] .icon svg {
@@ -257,11 +268,78 @@
       content: '\0x0d'
     }
   }
+
+  flynt-component[name='ListingFlex'] {
+    @screen md {
+      .firstItemLarger {
+        .post {
+          min-height: auto;
+
+          figure {
+            img {
+              @apply max-h-[370px];
+              @apply xl:max-h-[345px];
+              @apply max:max-h-[330px];
+            }
+          }
+          
+          &:first-child {
+            grid-column-end: 3;
+            grid-column-start: 1;
+      
+            figure {
+              img {
+                aspect-ratio: 2/1;
+              }
+            }
+
+            .content {
+              aspect-ratio: 2/1;
+            }
+          }
+        }
+      }
+    }
+  }
+
 }
 
 @layer utilities {
 
   .grid-cols-3-100vw {
     grid-template-columns: repeat(3, 100vw);
+  }
+}
+
+@layer variants {
+
+  .group:hover .button--link {
+    @apply bg-transparent;
+    @apply text-black;
+  }
+
+  .group:focus .button--link {
+    @apply bg-transparent;
+    @apply text-black;
+  }
+
+  .group:hover .button--arrow {
+    @apply border-transparent;
+    @apply bg-white;
+    @apply bg-green;
+  }
+
+  .group:focus .button--arrow {
+    @apply border-transparent;
+    @apply bg-white;
+    @apply bg-green;
+  }
+
+  .group:hover .button--arrow::after {
+    @apply ml-[5px];
+  }
+
+  .group:focus .button--arrow::after {
+    @apply ml-[5px];
   }
 }

@@ -1,13 +1,13 @@
 <li class="fade-in move-up post w-full py-sm lg:py-0">
-  <a class="link flex flex-col h-full no-underlinel" href="{{ post.link }}" aria-label="{{ post.title }}">
+  <a class="flex flex-col h-full no-underline group" href="{{ post.link }}" aria-label="{{ post.title }}">
     {% if post.thumbnail %}
       <div class="block">
         <figure class="figure overflow-hidden">
-          <img class="aspect-square grayscale image lazyload object-cover transition duration-200 ease-linear" src="{{ post.thumbnail.src|resize(32) }}" data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" data-sizes="auto" data-src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt|e }}" />
+          <img class="aspect-square grayscale group-hover:scale-[1.15] group-hover:origin-center group-focus:scale-[1.15] group-focus:origin-center lazyload object-cover transition duration-200 ease-linear" src="{{ post.thumbnail.src|resize(32) }}" data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" data-sizes="auto" data-src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt|e }}" />
         </figure>
       </div>
     {% endif %}
-    <div class="content h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+    <div class="text-black h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
       <div class="w-full flex flex-col gap-sm">
         <div class="w-full h-full p-sm flex flex-row justify-between gap-sm align-middle items-center border caption">
           <div>

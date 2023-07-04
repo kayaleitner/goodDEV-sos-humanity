@@ -11,7 +11,7 @@
         "
       >
         {% for post in posts %}
-          {% include 'Partials/_post.twig' with {post: post} %}
+          {% include 'Atoms/Cards/post.twig' with {post: post} %}
         {% endfor %}
       </ul>
     </div>
