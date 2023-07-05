@@ -17,7 +17,7 @@
       {% else %}
       <div class="w-full sm:w-1/2 sm:min-h-[720px] grow aspect-square xs:aspect-2/1 overflow-hidden">
         <div class="w-full h-full relative">
-          <div class="titleSmall font-bold text-[orange] absolute top-0 left-0 h-full w-full flex justify-center items-center">Please set a featured image.</div>
+          <div class="titleSmall mb-sm font-bold text-[orange] absolute top-0 left-0 h-full w-full flex justify-center items-center">Please set a featured image.</div>
         </div>
       </div>
     {% endif %}
@@ -25,7 +25,7 @@
   <div class="w-full max-w-screen-max mx-auto aspect-square xs:aspect-2/1 sm:aspect-auto flex flex-row justify-center items-center sm:absolute sm:left-1/2 sm:-translate-x-1/2">
     <div class="w-full sm:w-1/2 h-full p-sm xs:p-md lg:p-lg grow text-white flex flex-col justify-between" style="background: var(--secondary);">
       {% if post.title %}<h1 class="titleSmall font-bold mb-md">{{ post.title }}</h1>{% endif %}
-      {% if post.intro %}<div class="subtitle mt-0 sm:mt-lg">{{ post.intro }}</div>{% endif %}
+      {% if post.intro %}<div class="subtitle mb-sm mt-0 sm:mt-lg">{{ post.intro }}</div>{% endif %}
     </div>
     <div class="w-full sm:w-1/2 grow hidden sm:block"></div>
   </div>
