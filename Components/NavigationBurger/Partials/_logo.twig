@@ -1,6 +1,6 @@
-<a class="logo logo_light" href="{{ site.link }}">
+<a class="logo logo_light" href="{{ site.link|e('esc_url') }}">
   <img class="logo-image w-[185px]" width="142" height="44" src="{{ logo.src }}" alt="{{ logo.alt }}">
 </a>
-<a class="logo logo_dark hidden" href="{{ site.link }}">
+<a class="logo logo_dark hidden" href="{{ site.link|e('esc_url') }}">
   <img class="logo-image w-[185px]" width="142" height="44" src="{{ logo_dark.src }}" alt="{{ logo.alt }}">
 </a>

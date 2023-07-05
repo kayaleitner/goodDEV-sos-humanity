@@ -61,7 +61,7 @@
           {# Internal Author #}
           {% for item in get_post(post.internalAuthorz) %}
             <div class="w-full pb-xs">
-              <a href="{{ item.link }}" class="item w-full py-xs flex flex-row gap-sm border-t border-lightgrey no-underline">
+              <a href="{{ item.link|e('esc_url') }}" class="item w-full py-xs flex flex-row gap-sm border-t border-lightgrey no-underline">
                 <figure class="figure w-1/3 aspect-square overflow-hidden">
                   <img
                     class="lazyload aspect-square object-cover grayscale transition duration-200 ease-linear hover:lg:scale-[1.15] focus:lg:scale-[1.15] hover:lg:origin-center focus:lg:origin-center"

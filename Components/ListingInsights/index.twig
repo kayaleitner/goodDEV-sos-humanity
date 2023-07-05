@@ -26,7 +26,7 @@
             {% if post.externalResourceLink %}
             <a class="h-full no-underline" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>
             {% else %}
-            <a class="h-full no-underline" href="{{ post.link }}" aria-label="{{ post.title }}">
+            <a class="h-full no-underline" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
             {% endif %}
               <div class="h-full" aria-label="{{ post.title }}">
                 {% if post.thumbnail %}

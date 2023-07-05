@@ -15,7 +15,7 @@
     {# regular menu item #}
     {% if not item.children %}
       <li data-item="{{loop.index}}" class="h-fit px-sm item {{- item.current ? ' current-menu-item text-green' }}">
-        <a class="link text-body block no-underline text-white py-sm border-b border-white font-normal"  href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+        <a class="link text-body block no-underline text-white py-sm border-b border-white font-normal"  href="{{ item.link|e('esc_url') }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
       </li>
@@ -48,7 +48,7 @@
             </div>
           {% for subitem in item.children %}
             <li class="h-fit px-sm item {{- subitem.current ? ' current-menu-item text-green' }} {{ subitem.classes|join(' ') }}">
-              <a class="link text-body w-full py-sm text-white font-normal border-b border-white inline-block no-underline text-currentColor transition-all duration-200" data-ref="menuButton" href="{{ subitem.link }}">{{ subitem.title }}</a>
+              <a class="link text-body w-full py-sm text-white font-normal border-b border-white inline-block no-underline text-currentColor transition-all duration-200" data-ref="menuButton" href="{{ subitem.link|e('esc_url') }}">{{ subitem.title }}</a>
             </li>
           {% endfor %}
         </ul>

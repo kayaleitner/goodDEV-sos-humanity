@@ -1,5 +1,5 @@
 <li class="fade-in move-up post w-full">
-  <a class="flex flex-col h-full no-underline group" href="{{ post.link }}" aria-label="{{ post.title }}">
+  <a class="flex flex-col h-full no-underline group" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
     {% if post.thumbnail %}
       <figure class="figure block overflow-hidden">
         <img class="hover:scale-[1.15] hover:origin-center focus:scale-[1.15] focus:origin-center lazyload aspect-square object-cover transition duration-200 ease-linear"

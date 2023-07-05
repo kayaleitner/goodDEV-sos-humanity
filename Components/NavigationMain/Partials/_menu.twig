@@ -31,7 +31,7 @@
           text-currentColor 
           transition-all duration-200 
           relative z-[9999]" 
-          href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+          href="{{ item.link|e('esc_url') }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
       </li>
@@ -84,7 +84,7 @@
                     opacity-0
                   "
                   @click="activeSubmenu === {{loop.index}} ? activeSubmenu = 0 : activeSubmenu = {{loop.index}}"
-                  href="{{ subitem.link }}"
+                  href="{{ subitem.link|e('esc_url') }}"
                   {{ subitem.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}
                   :class="{ 'opacity-100': activeSubmenu === {{loop.parent.loop.index}} }"
                 >

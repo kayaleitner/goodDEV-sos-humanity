@@ -1,5 +1,5 @@
 <li class="fade-in move-up post w-full py-sm lg:py-0">
-  <a class="flex flex-col h-full no-underline group" href="{{ post.link }}" aria-label="{{ post.title }}">
+  <a class="flex flex-col h-full no-underline group" href="{{ post.link|e('esc_url')|e('esc_url')|e('esc_url') }}" aria-label="{{ post.title }}">
     {% if post.thumbnail %}
       <div class="block">
         <figure class="figure overflow-hidden">
