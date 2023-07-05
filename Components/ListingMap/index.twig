@@ -127,7 +127,7 @@
             data-latitude="{{ item.latitude }}" 
             data-longitude="{{ item.longitude }}"
             >
-              {% include 'Atoms/Cards/project.twig' with { 'post': post, 'labels': labels } only %}
+              {% include 'Components/_Atoms/Cards/project.twig' with { 'post': post, 'labels': labels } only %}
           </div>
           {% endfor %}
         </div>

@@ -14,7 +14,7 @@
         gap-sm lg:gap-md
       ">
         {% for post in relatedProjects %}
-          {% include 'Atoms/Cards/project.twig' with { 'post': post, 'labels': labels } only %}
+          {% include 'Components/_Atoms/Cards/project.twig' with { 'post': post, 'labels': labels } only %}
         {% endfor %}
     </ul>
   </div>
