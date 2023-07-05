@@ -7,10 +7,10 @@
     <div class="max-w-screen-max mx-auto h-full relative" id="scrollytelling-inner">
       <div class="w-full mx-auto">
         {% if blockTitle %}
-          <h2 class="subtitle !leading-subtitle block-title font-bold" 
-            style="color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">
-            {{ blockTitle }}
-          </h2>
+          {% include 'Components/_Atoms/Titles/blockTitle.twig' with {
+            blockTitle: blockTitle,
+            blockTitleColor: options.colorSecondary ?? 'var(--white)'
+          } %}
         {% endif %}
       </div>
       <div class="wrapper h-auto sm:h-screen w-full sm:absolute">

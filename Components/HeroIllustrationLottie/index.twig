@@ -12,9 +12,10 @@
   <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
     {% if blockTitle %}
       <div class="max-w-screen-max w-full mx-auto pb-sm lg:pb-lg flex flex-row justify-between align-bottom items-end content-end">
-        <h2 class="subtitle !leading-subtitle block-title font-bold" style="color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">
-          {{ blockTitle }}
-        </h2>
+        {% include 'Components/_Atoms/Titles/blockTitle.twig' with {
+            blockTitle: blockTitle,
+            blockTitleColor: options.colorSecondary ?? 'var(--white)'
+        } %}
       </div>
     {% endif %}
     <div class="max-w-screen-max mx-auto px-sm lg:px-lg h-full flex flex-col gap-xl sm:flex-row items-center sm:items-start justify-around p-lg sm:py-xl">

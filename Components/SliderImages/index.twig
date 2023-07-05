@@ -3,7 +3,10 @@
   <div class="outer w-full max-w-screen-max mx-auto p-sm xs:p-sm md:p-md lg:p-lg">
     <div class="wrapper w-full lg:w-2/3">
       {% if blockTitle %}
-        <h2 class="subtitle !leading-subtitle block-title font-bold text-white pb-xl z-50">{{ blockTitle }}</h2>
+	  	{% include 'Components/_Atoms/Titles/blockTitle.twig' with { 
+			blockTitle: blockTitle,
+			blockTitleClasses: 'text-white pb-xl z-50',
+		 } %}
       {% endif %}
       <div class="swiper-container slider overflow-hidden relative" data-ref="slider">
         <div class="swiper-wrapper">
