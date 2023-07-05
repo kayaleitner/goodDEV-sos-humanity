@@ -1,7 +1,9 @@
 @import
+  'styles/tailwind',
   'styles/variables',
   'styles/fonts',
-  'styles/base';
+  'styles/base',
+  'styles/tinymce';
 
 /**
  * Classic editor styles
@@ -12,6 +14,7 @@
   box-sizing: border-box;
   overflow-wrap: break-word;
   text-size-adjust: none;
+  padding: 18px;
 
   *,
   *::before,
