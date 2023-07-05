@@ -23,10 +23,7 @@ import.meta.glob([
   '!**/*.md'
 ])
 
-window.customElements.define(
-  'flynt-component',
-  FlyntComponent
-)
+window.customElements.define('flynt-component', FlyntComponent)
 
 window.Alpine = Alpine
 Alpine.data('scrollTrigger', scrollTrigger)

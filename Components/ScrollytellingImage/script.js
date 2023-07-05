@@ -52,16 +52,26 @@ mm.add('(min-width: 780px)', () => {
       document.webkitIsFullScreen
 
     if (!state) {
-      ScrollTrigger.config({ autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load,resize' })
+      ScrollTrigger.config({
+        autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load,resize'
+      })
     }
   }
 
   points.forEach(function (elem, i) {
     if (i !== 0) {
-      tl.from(elem.querySelector('.panelImage img'), { opacity: 0, display: 'none' }, i)
+      tl.from(
+        elem.querySelector('.panelImage img'),
+        { opacity: 0, display: 'none' },
+        i
+      )
     }
     if (i !== points.length - 1) {
-      tl.to(elem.querySelector('.panelImage img'), { opacity: 1, display: 'block' }, i + 0.75)
+      tl.to(
+        elem.querySelector('.panelImage img'),
+        { opacity: 1, display: 'block' },
+        i + 0.75
+      )
     }
   })
 })

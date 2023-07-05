@@ -4,7 +4,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 export default function (heroIllustrationLottie) {
   const players = heroIllustrationLottie.querySelectorAll('lottie-player')
-  Array.from(players).forEach(player => {
+  Array.from(players).forEach((player) => {
     const animationType = player.dataset.animationtype
     // switch case for animationType
     switch (animationType) {
@@ -30,8 +30,8 @@ export default function (heroIllustrationLottie) {
 
       case 'scrubbed':
         fetch(player.src) // eslint-disable-line
-          .then(response => response.json())
-          .then(data => {
+          .then((response) => response.json())
+          .then((data) => {
             // Get the number of frames in the animation
             const numFrames = data.op - data.ip
             create({

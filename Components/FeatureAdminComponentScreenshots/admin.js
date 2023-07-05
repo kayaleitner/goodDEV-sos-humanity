@@ -2,25 +2,47 @@
 
 function init () {
   // Add delegated events.
-  document.addEventListener('mouseenter', (e) => {
-    const { target } = e
+  document.addEventListener(
+    'mouseenter',
+    (e) => {
+      const { target } = e
 
-    if (typeof target === 'object' && target !== null && 'getAttribute' in target && target.matches('a[data-layout]')) {
-      const layout = target.dataset.layout
-      if (document.getElementById('flexTaxonomiesSelector')?.innerHTML.includes(layout)) {
-        return
+      if (
+        typeof target === 'object' &&
+        target !== null &&
+        'getAttribute' in target &&
+        target.matches('a[data-layout]')
+      ) {
+        const layout = target.dataset.layout
+        if (
+          document
+            .getElementById('flexTaxonomiesSelector')
+            ?.innerHTML.includes(layout)
+        ) {
+          return
+        }
+        showComponentScreenshot(layout, target)
       }
-      showComponentScreenshot(layout, target)
-    }
-  }, true)
+    },
+    true
+  )
 
-  document.addEventListener('mouseleave', (e) => {
-    const { target } = e
+  document.addEventListener(
+    'mouseleave',
+    (e) => {
+      const { target } = e
 
-    if (typeof target === 'object' && target !== null && 'getAttribute' in target && target.matches('a[data-layout]')) {
-      hideComponentScreenshot(target)
-    }
-  }, true)
+      if (
+        typeof target === 'object' &&
+        target !== null &&
+        'getAttribute' in target &&
+        target.matches('a[data-layout]')
+      ) {
+        hideComponentScreenshot(target)
+      }
+    },
+    true
+  )
 }
 
 function showComponentScreenshot (layout, wrapper) {
@@ -39,7 +61,9 @@ function showComponentScreenshot (layout, wrapper) {
 }
 
 function hideComponentScreenshot (wrapper) {
-  const wrapperContainer = wrapper.querySelector('.flyntComponentScreenshot-imageWrapper')
+  const wrapperContainer = wrapper.querySelector(
+    '.flyntComponentScreenshot-imageWrapper'
+  )
   wrapperContainer?.remove()
 }
 

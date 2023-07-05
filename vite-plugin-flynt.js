@@ -37,12 +37,21 @@ export default function ({ dest, host }) {
           fs.writeFileSync(hotFile, viteDevServerUrl)
 
           setTimeout(() => {
-            const isSecure = host.indexOf('https://') === 0 && (server.httpServer.key || server.httpServer.cert)
+            const isSecure =
+              host.indexOf('https://') === 0 &&
+              (server.httpServer.key || server.httpServer.cert)
             if (!isSecure) {
-              server.config.logger.info('  ➜ Please define VITE_DEV_SERVER_KEY and VITE_DEV_SERVER_CERT inside a “.env” file in the theme folder to enable ssl support for the vite dev server.')
+              server.config.logger.info(
+                '  ➜ Please define VITE_DEV_SERVER_KEY and VITE_DEV_SERVER_CERT inside a “.env” file in the theme folder to enable ssl support for the vite dev server.'
+              )
             }
 
-            server.config.logger.info(`  ➜ APP_URL: ${appUrl.replace(/:(\d+)/, (_, port) => `:${port}`)}`)
+            server.config.logger.info(
+              `  ➜ APP_URL: ${appUrl.replace(
+                /:(\d+)/,
+                (_, port) => `:${port}`
+              )}`
+            )
           }, 100)
         }
       })
@@ -62,13 +71,14 @@ export default function ({ dest, host }) {
         exitHandlersBound = true
       }
 
-      return () => server.middlewares.use((req, res, next) => {
-        if (req.url === '/index.html') {
-          res.statusCode = 404
-          res.end(`please open ${appUrl}`)
-        }
-        next()
-      })
+      return () =>
+        server.middlewares.use((req, res, next) => {
+          if (req.url === '/index.html') {
+            res.statusCode = 404
+            res.end(`please open ${appUrl}`)
+          }
+          next()
+        })
     }
   }
 }
@@ -77,25 +87,37 @@ export default function ({ dest, host }) {
  * Resolve the dev server URL from the server address and configuration.
  */
 function resolveDevServerUrl (address, config) {
-  const configHmrProtocol = typeof config.server.hmr === 'object' ? config.server.hmr.protocol : null
-  const clientProtocol = configHmrProtocol ? (configHmrProtocol === 'wss' ? 'https' : 'http') : null
+  const configHmrProtocol =
+    typeof config.server.hmr === 'object' ? config.server.hmr.protocol : null
+  const clientProtocol = configHmrProtocol
+    ? configHmrProtocol === 'wss'
+      ? 'https'
+      : 'http'
+    : null
   const serverProtocol = config.server.https ? 'https' : 'http'
   const protocol = clientProtocol ?? serverProtocol
 
-  const configHmrHost = typeof config.server.hmr === 'object' ? config.server.hmr.host : null
-  const configHost = typeof config.server.host === 'string' ? config.server.host : null
-  const serverAddress = isIpv6(address) ? `[${address.address}]` : address.address
+  const configHmrHost =
+    typeof config.server.hmr === 'object' ? config.server.hmr.host : null
+  const configHost =
+    typeof config.server.host === 'string' ? config.server.host : null
+  const serverAddress = isIpv6(address)
+    ? `[${address.address}]`
+    : address.address
   const host = configHmrHost ?? configHost ?? serverAddress
 
-  const configHmrClientPort = typeof config.server.hmr === 'object' ? config.server.hmr.clientPort : null
+  const configHmrClientPort =
+    typeof config.server.hmr === 'object' ? config.server.hmr.clientPort : null
   const port = configHmrClientPort ?? address.port
 
   return `${protocol}://${host}:${port}`
 }
 function isIpv6 (address) {
-  return address.family === 'IPv6' ||
-      // In node >=18.0 <18.4 this was an integer value. This was changed in a minor version.
-      // See: https://github.com/laravel/vite-plugin/issues/103
-      // eslint-disable-next-line
-      address.family === 6
+  return (
+    address.family === 'IPv6' ||
+    // In node >=18.0 <18.4 this was an integer value. This was changed in a minor version.
+    // See: https://github.com/laravel/vite-plugin/issues/103
+    // eslint-disable-next-line
+    address.family === 6
+  )
 }

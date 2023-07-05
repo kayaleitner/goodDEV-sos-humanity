@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable semi */
 /* eslint-disable space-before-function-paren */
-import $ from 'jquery'
+import $ from 'jquery';
 
 $('#loadMore').on('click', function () {
   const $this = $(this);
@@ -11,7 +11,7 @@ $('#loadMore').on('click', function () {
 
   const offset = 4;
 
-  console.log('load more', $list)
+  console.log('load more', $list);
   $.ajax({
     type: 'POST',
     url: '/wp-admin/admin-ajax.php',
@@ -22,14 +22,14 @@ $('#loadMore').on('click', function () {
       offset,
     },
   }).then(
-    res => {
-      console.log('list', $list)
+    (res) => {
+      console.log('list', $list);
       $list.append(res);
       if ((res.match(/post/g) || []).length <= 4) {
         $this.hide();
       }
     },
-    err => {
+    (err) => {
       console.log(err);
     }
   );

@@ -5,7 +5,7 @@ const parallaxConfigs = new Map()
 
 export default function (el) {
   const multiRefs = buildRefs(el, true)
-  const delegatedToggleHoverScroll = e =>
+  const delegatedToggleHoverScroll = (e) =>
     e.target.matches('.componentLink') ? toggleHoverScroll(e) : null
 
   connect()
@@ -29,7 +29,9 @@ export default function (el) {
     el.removeEventListener('mouseleave', delegatedToggleHoverScroll, true)
     window.removeEventListener('resize', setParallaxConfig)
     document.removeEventListener('lazyloaded', setParallaxConfig)
-    window.removeEventListener('scroll', startParallaxScroll, { passive: true })
+    window.removeEventListener('scroll', startParallaxScroll, {
+      passive: true
+    })
   }
 
   function setParallaxConfig (e) {
@@ -37,7 +39,7 @@ export default function (el) {
     const { clientTop } = document.documentElement
 
     parallaxConfigs.clear()
-    multiRefs.images.forEach(image => {
+    multiRefs.images.forEach((image) => {
       const imageWrapper = image.parentElement
 
       const imageOverflow = image.offsetHeight - imageWrapper.offsetHeight

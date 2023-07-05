@@ -1,7 +1,7 @@
 import DottedMap, { getMapJSON } from 'dotted-map'
 
 const jsonMap = getMapJSON({
-  height: 72 * 9 / 16,
+  height: (72 * 9) / 16,
   width: 72,
   grid: 'vertical'
 })
@@ -19,7 +19,7 @@ export default function (projectMap) {
 
   const pinRefs = document.querySelectorAll('[data-ref="pin"]')
 
-  pinRefs.forEach(pin => {
+  pinRefs.forEach((pin) => {
     const { latitude, longitude } = pin.dataset
 
     if (latitude && longitude) {
@@ -28,8 +28,8 @@ export default function (projectMap) {
         lng: parseFloat(longitude)
       })
 
-      pin.style.left = pinCoords.x * 100 / 72 + '%'
-      pin.style.top = pinCoords.y * 100 / 72 / 9 * 16 + '%'
+      pin.style.left = (pinCoords.x * 100) / 72 + '%'
+      pin.style.top = ((pinCoords.y * 100) / 72 / 9) * 16 + '%'
     }
   })
 }

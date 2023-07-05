@@ -3,7 +3,10 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import $ from 'jquery'
 
 export default function (el) {
-  const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
+  const navigationHeight =
+    parseInt(
+      window.getComputedStyle(el).getPropertyValue('--navigation-height')
+    ) || 0
 
   const isDesktopMediaQuery = window.matchMedia('(min-width: 1024px)')
   isDesktopMediaQuery.addEventListener('change', onBreakpointChange)
@@ -23,7 +26,11 @@ export default function (el) {
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
 
-  const sections = gsap.utils.toArray(['#mainContent flynt-component', '.single-post #mainContent article', '.single-people #mainContent article'])
+  const sections = gsap.utils.toArray([
+    '#mainContent flynt-component',
+    '.single-post #mainContent article',
+    '.single-people #mainContent article'
+  ])
   sections.forEach((section) => {
     gsap.to(section, {
       scrollTrigger: {
@@ -34,20 +41,43 @@ export default function (el) {
           if (self.isActive) {
             const button = el.querySelector('#ctaMenu')
 
-            el.querySelectorAll('.logo').forEach((logo) => logo.classList.remove('flex', 'hidden'))
-            el.classList.remove('bg-white/50', 'backdrop-blur-xl', 'text-black', 'text-white')
+            el.querySelectorAll('.logo').forEach((logo) =>
+              logo.classList.remove('flex', 'hidden')
+            )
+            el.classList.remove(
+              'bg-white/50',
+              'backdrop-blur-xl',
+              'text-black',
+              'text-white'
+            )
             button.classList.remove(
-              '[&_a]:bg-green', '[&_a]:hover:bg-cbegreen', '[&_a]:hover:text-white',
-              '[&_a]:bg-white', '[&_a]:hover:bg-green'
+              '[&_a]:bg-green',
+              '[&_a]:hover:bg-cbegreen',
+              '[&_a]:hover:text-white',
+              '[&_a]:bg-white',
+              '[&_a]:hover:bg-green'
             )
 
-            self.trigger.dataset?.navstyle?.includes('blur') && el.classList.add('backdrop-blur-xl')
+            self.trigger.dataset?.navstyle?.includes('blur') &&
+              el.classList.add('backdrop-blur-xl')
 
-            self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_dark').classList.add('hidden') : el.querySelector('.logo_dark').classList.add('flex')
-            !self.trigger.dataset?.navstyle?.includes('dark') ? el.querySelector('.logo_light').classList.add('hidden') : el.querySelector('.logo_light').classList.add('flex')
+            self.trigger.dataset?.navstyle?.includes('dark')
+              ? el.querySelector('.logo_dark').classList.add('hidden')
+              : el.querySelector('.logo_dark').classList.add('flex')
+            !self.trigger.dataset?.navstyle?.includes('dark')
+              ? el.querySelector('.logo_light').classList.add('hidden')
+              : el.querySelector('.logo_light').classList.add('flex')
 
-            self.trigger.dataset?.navstyle?.includes('dark') ? el.classList.add('text-white') : el.classList.add('bg-white/50', 'text-black')
-            self.trigger.dataset?.navstyle?.includes('dark') ? button.classList.add('[&_a]:bg-white', '[&_a]:hover:bg-green') : button.classList.add('[&_a]:bg-green', '[&_a]:hover:bg-cbegreen', '[&_a]:hover:text-white')
+            self.trigger.dataset?.navstyle?.includes('dark')
+              ? el.classList.add('text-white')
+              : el.classList.add('bg-white/50', 'text-black')
+            self.trigger.dataset?.navstyle?.includes('dark')
+              ? button.classList.add('[&_a]:bg-white', '[&_a]:hover:bg-green')
+              : button.classList.add(
+                '[&_a]:bg-green',
+                '[&_a]:hover:bg-cbegreen',
+                '[&_a]:hover:text-white'
+              )
           }
         }
       }
@@ -55,12 +85,14 @@ export default function (el) {
   })
 
   // hide/show navigation on scroll
-  const showAnim = gsap.from('[name="NavigationMain"]', {
-    yPercent: -100,
-    paused: true,
-    duration: 0.4
-    // scrub: 0.5,
-  }).progress(1)
+  const showAnim = gsap
+    .from('[name="NavigationMain"]', {
+      yPercent: -100,
+      paused: true,
+      duration: 0.4
+      // scrub: 0.5,
+    })
+    .progress(1)
 
   ScrollTrigger.create({
     start: 'center top-=100',
@@ -70,7 +102,10 @@ export default function (el) {
       const submenuWrapper = document.querySelector('.submenu-wrapper')
       if (self.direction === -1 && !submenuWrapper.classList.contains('open')) {
         showAnim.play()
-      } else if (self.direction === 1 && !submenuWrapper.classList.contains('open')) {
+      } else if (
+        self.direction === 1 &&
+        !submenuWrapper.classList.contains('open')
+      ) {
         showAnim.reverse()
       }
     },
@@ -87,12 +122,14 @@ export default function (el) {
     }
   })
   // hide/show cta on scroll
-  const showCtaAnim = gsap.from('#ctaMain', {
-    yPercent: 300,
-    paused: true,
-    duration: 0.4
-    // scrub: 0.5,
-  }).progress(1)
+  const showCtaAnim = gsap
+    .from('#ctaMain', {
+      yPercent: 300,
+      paused: true,
+      duration: 0.4
+      // scrub: 0.5,
+    })
+    .progress(1)
   ScrollTrigger.create({
     start: 'center top-=100',
     end: 'bottom bottom',

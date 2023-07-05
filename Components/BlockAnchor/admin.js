@@ -7,24 +7,30 @@
       initialize: function () {
         const $blockAnchor = $('[data-layout="blockAnchor"]:not(.acf-clone)')
         if ($blockAnchor.length > 0) {
-          $blockAnchor.find('input[name*=blockAnchor_anchor]').each(function (i, el) {
-            const $el = $(el)
-            changeText($el, $el.val())
-          })
+          $blockAnchor
+            .find('input[name*=blockAnchor_anchor]')
+            .each(function (i, el) {
+              const $el = $(el)
+              changeText($el, $el.val())
+            })
         }
       }
     })
   }
 
   const onChangeText = function (e, $el) {
-    const $blockAnchor = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
+    const $blockAnchor = $el.closest(
+      '[data-layout="blockAnchor"]:not(.acf-clone)'
+    )
     if ($blockAnchor.length > 0) {
       changeText($(e.currentTarget), $el.val())
     }
   }
 
   const changeText = function ($el, val) {
-    const $blockAnchor = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
+    const $blockAnchor = $el.closest(
+      '[data-layout="blockAnchor"]:not(.acf-clone)'
+    )
     const $anchorLinkInput = $blockAnchor.find('.anchorLink-url')
     if ($anchorLinkInput) {
       const href = $anchorLinkInput.data('href')
@@ -41,7 +47,9 @@
 
   const copyToClipboard = function (e, $el) {
     e.preventDefault()
-    const $anchorField = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
+    const $anchorField = $el.closest(
+      '[data-layout="blockAnchor"]:not(.acf-clone)'
+    )
     if ($anchorField.length > 0) {
       const $anchorLinkInput = $anchorField.find('.anchorLink-url')
       const $copyMessage = $anchorField.find('.anchorLink-message')
@@ -49,14 +57,14 @@
       if (!navigator.clipboard) {
         document.execCommand('copy')
       } else {
-        navigator.clipboard.writeText($anchorLinkInput.text()).then(
-          function () {
+        navigator.clipboard
+          .writeText($anchorLinkInput.text())
+          .then(function () {
             $copyMessage.show().delay(5000).hide('fast')
           })
-          .catch(
-            function () {
-              alert('Oops! Something went wrong...')
-            })
+          .catch(function () {
+            alert('Oops! Something went wrong...')
+          })
       }
     }
   }

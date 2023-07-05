@@ -46,22 +46,32 @@ mm.add('(min-width: 780px)', () => {
   // eslint-disable-next-line no-unused-vars
   function fullscreenListener () {
     const state =
-    document.fullScreen ||
-    document.mozFullScreen ||
-    document.webkitIsFullScreen
+      document.fullScreen ||
+      document.mozFullScreen ||
+      document.webkitIsFullScreen
 
     if (!state) {
-      ScrollTrigger.config({ autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load,resize' })
+      ScrollTrigger.config({
+        autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load,resize'
+      })
     }
   }
 
   points.forEach(function (elem, i) {
     if (i !== 0) {
-      tl.from(elem.querySelector('.panelIllustration img'), { autoAlpha: 0 }, i)
+      tl.from(
+        elem.querySelector('.panelIllustration img'),
+        { autoAlpha: 0 },
+        i
+      )
     }
 
     if (i !== points.length - 1) {
-      tl.to(elem.querySelector('.panelIllustration img'), { autoAlpha: 0 }, i + 0.75)
+      tl.to(
+        elem.querySelector('.panelIllustration img'),
+        { autoAlpha: 0 },
+        i + 0.75
+      )
     }
   })
 })

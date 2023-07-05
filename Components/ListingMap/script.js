@@ -1,13 +1,13 @@
 import DottedMap, { getMapJSON } from 'dotted-map'
 
 const mapDesktop = getMapJSON({
-  height: 108 * 9 / 16,
+  height: (108 * 9) / 16,
   width: 108,
   grid: 'vertical'
 })
 
 const mapMobile = getMapJSON({
-  height: 72 * 9 / 16,
+  height: (72 * 9) / 16,
   width: 72,
   grid: 'vertical'
 })
@@ -43,7 +43,7 @@ export default function (listingMap) {
 
   const map = new DottedMap(JSON.parse(isMobile ? mapMobile : mapDesktop))
   const mapWidth = isMobile ? 72 : 108
-  const mapHeight = isMobile ? 72 * 9 / 16 : 108 * 9 / 16
+  const mapHeight = isMobile ? (72 * 9) / 16 : (108 * 9) / 16
 
   const svgMap = map.getSVG({
     radius: 0.36,
@@ -55,7 +55,7 @@ export default function (listingMap) {
 
   const pinRefs = document.querySelectorAll('[data-ref="pin"]')
 
-  pinRefs.forEach(pin => {
+  pinRefs.forEach((pin) => {
     const { latitude, longitude } = pin.dataset
 
     if (latitude && longitude) {
@@ -64,8 +64,8 @@ export default function (listingMap) {
         lng: parseFloat(longitude)
       })
 
-      pin.style.left = pinCoords.x * 100 / mapWidth + '%'
-      pin.style.top = pinCoords.y * 100 / mapHeight + '%'
+      pin.style.left = (pinCoords.x * 100) / mapWidth + '%'
+      pin.style.top = (pinCoords.y * 100) / mapHeight + '%'
     } else {
       pin.style.opacity = 0
     }
