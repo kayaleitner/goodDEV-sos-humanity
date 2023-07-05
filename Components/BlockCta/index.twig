@@ -1,14 +1,10 @@
-<flynt-component
-  load:on="idle" 
-  name="BlockCta" 
-  class="w-full"
+<flynt-component load:on="idle" name="BlockCta" class="w-full"
   style="background-color: {% if labels.options.colorBackground %}{{ labels.options.colorBackground }}{% else %}var(--white){% endif %};"
-  {{ labels.options.navStyle ? 'data-navStyle="' ~ labels.options.navStyle ~ '"' }}
-  >
-<div class="outer w-full max-w-screen-max mx-auto  p-sm md:p-md lg:p-lg">
-    <div class="wysiwyg wrapper hidden sm:block lg:w-2/3 ">
+  {{ labels.options.navStyle ? 'data-navStyle="' ~ labels.options.navStyle ~ '"' }}>
+  <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-md lg:p-lg">
+    <div class="wysiwyg wrapper hidden sm:block lg:w-2/3">
       {{ labels.contentHtml|e('wp_kses_post') }}
     </div>
-    <a class="button button--green button--greenBig sm:mt-lg" href="{{labels.buttonLink.url}}">{{labels.buttonLink.title}}</a>
+    <a class="button button--green button--greenBig sm:mt-lg" href="{{ labels.buttonLink.url }}">{{ labels.buttonLink.title }}</a>
   </div>
 </flynt-component>

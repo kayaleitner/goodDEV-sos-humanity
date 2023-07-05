@@ -1,18 +1,15 @@
-<flynt-component 
-  load:on="visible" 
-  name="BlockImage"
-  class="w-full"
+<flynt-component load:on="visible" name="BlockImage" class="w-full"
   style="
-    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %}; 
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %};
     color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
   <div class="outer w-full max-w-screen-max mx-auto px-sm xs:px-sm md:px-md lg:px-lg">
     <figure class="wrapper lg:w-2/3">
       <img class="figure-image lazyload h-full w-full object-cover aspect-4/3"
-          src="{{ image.src | resize(32) }}"
-          data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
-          data-sizes="auto"
-          alt="{{ image.alt|e }}">
+        src="{{ image.src | resize(32) }}"
+        data-srcset="{{ function('wp_get_attachment_image_srcset', image.id) }}"
+        data-sizes="auto"
+        alt="{{ image.alt|e }}">
       {% if image.caption %}
         <figcaption class="caption pt-xs text-current">{{ image.caption|e }}</figcaption>
       {% endif %}

@@ -1,24 +1,17 @@
 {% if posts|length > 0 %}
-  <flynt-component load:on="visible" name="ListingInsights" data-type="listing" class="">
-    <div class="max-w-screen-max w-full mx-auto p-sm md:p-md lg:p-lg">
+  <flynt-component class="" data-type="listing" load:on="visible" name="ListingPeople">
+    <div class="w-full max-w-screen-max mx-auto p-sm md:p-md lg:p-lg">
       {% if blockTitle %}
-        <div class="w-full mx-auto pb-sm sm:pb-lg flex flex-row justify-between items-center content-center">
-          <h2 class="subtitle !leading-subtitle block-title font-bold">{{ blockTitle }}</h2>
-          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
+        <div class="w-full mx-auto flex flex-row justify-between items-center content-center pb-sm sm:pb-lg">
+          <h2 class="font-bold subtitle !leading-subtitle block-title">{{ blockTitle }}</h2>
+          <a href="{{ labels.allPostsLink.url }}" class="font-bold underline hover:no-underline caption">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
-      <ul
-        class="
-          w-full
-          mx-auto
-          grid xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
-          gap-0 xs:gap-md
-        "
-      >
+      <ul class="w-full mx-auto grid gap-0 xs:gap-md xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {% for post in posts %}
           {% include 'Components/_Atoms/Cards/people.twig' with {
             post: post,
-            labels: labels
+            labels: labels,
             options: options
           } %}
         {% endfor %}

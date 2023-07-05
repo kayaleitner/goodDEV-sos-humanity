@@ -1,8 +1,11 @@
-<flynt-component load:on="visible" name="BlockImageText" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
-<div class="container centerMaxWidthContainer md:flex md:gap-8 md:justify-around md:items-center {% set flexRowClass = (imagePosition is defined and imagePosition == 'left') ? 'flex-row' : ((imagePosition is defined and imagePosition == 'right') ? 'flex-row-reverse' : '') %}">
+<flynt-component load:on="visible" name="BlockImageText" class="componentSpacing"
+  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  <div class="container centerMaxWidthContainer md:flex md:gap-8 md:justify-around md:items-center
+    {% set flexRowClass = (imagePosition is defined and imagePosition == 'left') ? 'flex-row' :
+      ((imagePosition is defined and imagePosition == 'right') ? 'flex-row-reverse' : '') %}">
     <figure class="figure centerContentMaxWidth md:basis-1/2">
-      {% if image.post_mime_type == 'image/svg+xml'%}
-        <img class="image lazyload "
+      {% if image.post_mime_type == 'image/svg+xml' %}
+        <img class="image lazyload"
           src="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
           width="{{ 768 }}"
           height="{{ (768 / image.aspect)|round }}"

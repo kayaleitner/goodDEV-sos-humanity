@@ -1,54 +1,53 @@
 {% if posts|length > 0 %}
-  <flynt-component 
-    load:on="load" 
-    name="ListingInsights" 
+  <flynt-component
+    class=""
+    data-type="listing"
+    load:on="load"
+    name="ListingInsights"
     {# id="{{ blockTitle|lower|replace({' ': ''}) }}"  #}
-    data-type="listing" 
-    class="">
-    <div class="max-w-screen-max w-full mx-auto p-sm md:p-md lg:p-lg">
+  >
+    <div class="max-w-screen-max mx-auto p-sm md:p-md lg:p-lg w-full">
       {% if blockTitle %}
         <div class="w-full mx-auto pb-sm sm:pb-lg flex flex-row justify-between items-center content-center">
-          <h2 class="subtitle !leading-subtitle block-title font-bold">{{ blockTitle }}</h2>
-          <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
+          <h2 class="block-title font-bold !leading-subtitle">{{ blockTitle }}</h2>
+          <a href="{{ labels.allPostsLink.url }}" class="caption font-bold underline hover:no-underline">{{ labels.allPosts }}</a>
         </div>
       {% endif %}
-      <ul
-        class="
-          w-full
-          mx-auto
-          grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3
-          gap-0 sm:gap-md
-        "
-      >
+      <ul class="w-full mx-auto gap-0 sm:gap-md grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
         {% for post in posts %}
-          <li
-            class="fade-in move-up post w-full py-sm md:py-0 border-b border-lightgrey md:border-b-0">
+          <li class="border-b border-lightgrey fade-in move-up post py-sm md:py-0 w-full">
             {% if post.externalResourceLink %}
-            <a class="h-full no-underline" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>
+              <a class="h-full no-underline" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>
             {% else %}
-            <a class="h-full no-underline" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
+              <a class="h-full no-underline" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
             {% endif %}
               <div class="h-full" aria-label="{{ post.title }}">
                 {% if post.thumbnail %}
-                  <figure class="figure aspect-square hidden md:block overflow-hidden">
-                    <img class="hover:scale-[1.15] hover:origin-center focus:scale-[1.15] focus:origin-center lazyload object-cover w-full h-full transition duration-200 ease-linear"
-                      src="{{  post.thumbnail.src | resize(32) }}"
+                  <figure class="hidden md:block aspect-square figure overflow-hidden">
+                    <img
+                      alt="{{ post.thumbnail.alt|e }}"
+                      class="hover:scale-[1.15] hover:origin-center focus:scale-[1.15] focus:origin-center lazyload transition duration-200 ease-linear object-cover w-full h-full"
+                      data-src="{{ post.thumbnail.src }}"
                       data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
                       data-sizes="auto"
-                      data-src="{{ post.thumbnail.src }}"
-                      alt="{{ post.thumbnail.alt|e }}">
+                      src="{{ post.thumbnail.src | resize(32) }}"
+                    />
                   </figure>
                 {% endif %}
-                <div class="no-underline text-black md:border md:p-sm flex flex-col gap-sm justify-start md:justify-between items-start sm:items-stretch">
-                  <div class="w-full flex flex-col justify-start align-start items-start gap-sm">
-                    <div class="w-full flex flex-row justify-between align-middle items-center">
-                      <div class="caption text-left"><span class="font-bold">{{ post.date("d.m.Y") }}</span></div>
-                      <div class="caption text-right"><span class="font-bold underline">{{ post.category }}</span></div>
+                <div class="flex flex-col gap-sm items-start justify-start md:border md:p-sm no-underline text-black md:p-sm w-full">
+                  <div class="flex flex-row items-center justify-between">
+                    <div class="caption text-left">
+                      <span class="font-bold">{{ post.date("d.m.Y") }}</span>
                     </div>
-                    <h2 class="text-bodyMobile lg:text-body xl:text-subtitle mb-0 md:w-full sm:grow">{{ post.title }}</h2>
+                    <div class="caption text-right">
+                      <span class="font-bold underline">{{ post.category }}</span>
+                    </div>
                   </div>
-                  <div class="flex flex-row md:flex-col gap-sm justify-between items-between sm:items-stretch w-full">
-                    <span class="flex md:hidden flex-col justify-end items-end">
+                  <div class="flex flex-col gap-sm justify-start items-start w-full">
+                    <h2 class="lg:text-body xl:text-subtitle md:w-full mb-0 sm:grow text-bodyMobile">{{ post.title }}</h2>
+                  </div>
+                  <div class="flex flex-row gap-sm items-between justify-between md:flex-col sm:items-stretch w-full">
+                    <span class="md:hidden flex flex-col items-end justify-end">
                       {% if post.externalResourceLink %}
                         <div class="button button--link">{{ post.externalResourceLink.title|e }}</div>
                       {% else %}
@@ -66,9 +65,9 @@
                 </div>
               </div>
             {% if post.externalResourceLink %}
-            </a>
+              </a>
             {% else %}
-            </a>
+              </a>
             {% endif %}
           </li>
         {% endfor %}

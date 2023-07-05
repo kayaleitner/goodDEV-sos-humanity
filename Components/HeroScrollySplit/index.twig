@@ -1,105 +1,110 @@
 <flynt-component
-  load:on="idle" name="HeroScrollySplit"
-  class="h-[150vh] w-full"
+  class="w-full h-[150vh]"
+  load:on="idle"
+  name="HeroScrollySplit"
   {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <section
-    data-refs="section"
     class="
-      HeroScrollySplit
-      sm:block relative
-      grid grid-cols-3 grid-cols-3-100vw
       h-screen w-full
+      relative sm:block
+      grid grid-cols-3 grid-cols-3-100vw
       overflow-hidden
     "
     style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};"
+    data-refs="section"
   >
     {% set images = [slides[1], slides[0], slides[1]] %}
     {% for slide in images %}
       <div class="
-        img-{{loop.index}}
-        w-full h-screen
         flex flex-col
+        w-full h-screen
+        ml-[-100vw] sm:ml-0
+        {% if loop.index == 1 %}sm:mt-[-100vh]{% endif %}
         sm:grid sm:grid-cols-2
         sm:overflow-hidden
-        ml-[-100vw] sm:ml-0
-        {% if loop.index == 1 %} sm:mt-[-100vh] {% endif %}
       ">
-        <div data-refs="left" class="sm:absolute w-[100vw] sm:w-full h-1/2 sm:h-full sm:[clip-path:inset(0_49.9%_0_0)] left">
-          <picture class="h-full {% if loop.index != 2 %} hidden sm:block {% endif %}">
-            <source srcset="
-              {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+        <div class="sm:absolute w-full h-1/2 sm:h-full sm:left-[100vw] sm:[clip-path:inset(0_49.9%_0_0)]" data-refs="left">
+          <picture class="h-full {% if loop.index != 2 %}hidden sm:block{% endif %}">
+            <source
+              srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               media="(min-width: 768px)"
               sizes="100vw"
             />
-            <img class="object-cover h-full w-full"
-              srcset="
-                {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+            <img
+              class="object-cover h-full w-full"
+              srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               src="{{ slide.image.src | resize(32) }}"
               sizes="100vw"
               data-object-fit="cover"
               alt="{{ slide.image.alt|e }}"
             />
           </picture>
-          <div id="overlay" class="
-            absolute top-0 left-0 block 
-            h-full w-full
-            bg-black/40
-            z-10
-          "></div>
-          <div data-refs="text_{{loop.index}}" class="
-            max-w-screen-lg mx-auto w-full
-            h-full sm:h-screen
-            absolute z-20
-            {% if loop.index == 2 %} hidden {% endif %}
-            flex sm:flex
-            top-0 left-0 right-0
-            items-end sm:items-center
-            sm:opacity-0
-            sm:bg-transparent
-          "
-          style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
-            <h1 class="sm:text-[3.438rem] sm:w-1/2 p-4 sm:pr-24 text-8xl sm:text-right font-light w-full {% if loop.index == 2 %} hidden sm:block {% endif %} leading-[95%]">
+          <div id="overlay" class="absolute top-0 left-0 block w-full h-full bg-black/40 z-10"></div>
+          <div
+            class="
+              absolute z-20
+              top-0 left-0 right-0
+              w-full h-full sm:h-screen
+              flex sm:flex
+              items-end sm:items-center
+              sm:opacity-0
+              sm:bg-transparent
+            "
+            data-refs="text_{{loop.index}}"
+            style="color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};"
+          >
+            <h1
+              class="
+                w-full {% if loop.index == 2 %}hidden sm:block{% endif %}
+                p-4 sm:pr-24 sm:text-right sm:w-1/2
+                text-8xl sm:text-[3.438rem] font-light leading-[95%]
+              "
+            >
               <span class="block">{{ slide.text_1 }}</span>
               <span class="block sm:hidden">{{ slide.text_2 }}</span>
             </h1>
           </div>
         </div>
-        <div data-refs="right" class="sm:absolute w-full h-1/2 sm:h-full sm:[clip-path:inset(0_0_0_50%)] translate-y-0">
-          <picture class="h-full {% if loop.index == 2 %} hidden sm:block {% endif %}">
-            <source srcset="
-              {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+        <div class="sm:absolute w-full h-1/2 sm:h-full sm:[clip-path:inset(0_0_0_50%)] translate-y-0" data-refs="right">
+          <picture class="h-full {% if loop.index == 2 %}hidden sm:block{% endif %}">
+            <source
+              srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               media="(min-width: 768px)"
               sizes="100vw"
             />
-            <img class="object-cover h-full w-full"
-              srcset="
-                {{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+            <img
+              class="object-cover h-full w-full"
+              srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               src="{{ slide.image.src | resize(32) }}"
               sizes="100vw"
               data-object-fit="cover"
               alt="{{ slide.image.alt|e }}"
             />
           </picture>
-          <div id="overlay" class="
-            absolute top-0 left-0 hidden sm:block 
-            h-full w-full
-            bg-black/40
-            z-10
-          "></div>
-          <div data-refs="text_{{loop.index}}" class="
-            max-w-screen-lg mx-auto w-full h-screen
-            absolute z-20
-            flex
-            top-0 left-0 right-0
-            sm:items-center sm:justify-end
-            sm:opacity-0 {% if loop.index != 2 %} opacity-0 {% endif %}
-            sm:bg-transparent
-          "
-          style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
-            <h1 class="sm:text-[3.438rem] sm:w-1/2 p-4 sm:pl-24 text-8xl font-light h-1/2 sm:h-auto {% if loop.index != 2 %} hidden sm:block {% endif %} leading-[95%]">
+          <div id="overlay" class="absolute top-0 left-0 hidden sm:block w-full h-full bg-black/40 z-10"></div>
+          <div
+            class="
+              absolute z-20
+              top-0 left-0 right-0
+              w-full h-screen sm:h-auto
+              flex
+              sm:items-center sm:justify-end
+              {% if loop.index != 2 %}opacity-0{% endif %}
+              sm:bg-transparent
+            "
+            data-refs="text_{{loop.index}}"
+            style="color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};"
+          >
+            <h1
+              class="
+                p-4 sm:pl-24 sm:text-[3.438rem] sm:w-1/2
+                text-8xl font-light sm:h-auto h-1/2 leading-[95%]
+                {% if loop.index != 2 %}hidden sm:block{% endif %}
+              "
+            >
               <span class="block sm:hidden">{{ slide.text_1 }}</span>
               <span class="block">{{ slide.text_2 }}</span>
             </h1>
@@ -108,16 +113,15 @@
       </div>
     {% endfor %}
     <div
-      data-refs="dots"
-      id="scrolly-intro-dots"
       class="
         absolute flex flex-col
-        items-center
-        bottom-0 top-auto sm:bottom-auto sm:top-1/2 left-1/2
-        -translate-x-1/2 translate-y-1/4 sm:-translate-y-1/2 -rotate-90 sm:rotate-0
+        left-1/2 bottom-0 top-auto sm:bottom-auto sm:top-1/2
+        translate-y-1/4 -translate-x-1/2 sm:-translate-y-1/2 sm:rotate-0
       "
+      data-refs="dots"
+      id="scrolly-intro-dots"
     >
-      <div class="spacer h-[40px] w-4"></div>
+      <div class="w-4 h-[40px] spacer"></div>
       {% set k = 10 %}
       {% for i in range(1, k) %}
         {% if i <= 4 %}
@@ -127,8 +131,8 @@
         {% endif %}
         <div
           id="dot-{{i}}"
-          class="scrollyDot rounded-full m-2 aspect-square"
-          style="width:{{s}}px; background:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};"
+          class="m-2 scrollyDot rounded-full aspect-square"
+          style="background: {% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %}; width:{{s}}px;"
         ></div>
       {% endfor %}
     </div>

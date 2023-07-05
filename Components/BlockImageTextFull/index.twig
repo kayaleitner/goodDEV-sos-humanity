@@ -5,26 +5,33 @@
   {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
-<div class="sm:h-[600px] lg:h-[900px] flex {% set flexRowClass = (imagePosition is defined and imagePosition == 'left') ? 'flex-reverse sm:flex-row' : ((imagePosition is defined and imagePosition == 'right') ? 'flex-col-reverse sm:flex-row-reverse' : 'flex-col sm:flex-row') %}" style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
+  <div class="sm:h-[600px] lg:h-[900px] flex
+    {% set flexRowClass = (imagePosition is defined and imagePosition == 'left') ?
+      'flex-reverse sm:flex-row' :
+      ((imagePosition is defined and imagePosition == 'right') ? 'flex-col-reverse sm:flex-row-reverse' :
+      'flex-col sm:flex-row') %}"
+    style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
     <figure class="w-full sm:w-1/2 overflow-hidden">
       {% if image %}
-        <img class="lazyload w-full sm:h-[650px] lg:h-[950px] mt-[-2vw] object-cover aspect-square lg:aspect-3/4 {% if imageOverlay %}brightness-70{% endif %}"
+        <img class="lazyload w-full sm:h-[650px] lg:h-[950px] mt-[-2vw] object-cover aspect-square lg:aspect-3/4
+          {% if imageOverlay %}brightness-70{% endif %}"
           src="{{ image.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
           data-sizes="auto"
           alt="{{ image.alt|e }}"
-          data-parallax
-          >
+          data-parallax>
       {% endif %}
       {% if image.caption %}
         <figcaption>{{ image.caption|e }}</figcaption>
       {% endif %}
     </figure>
-    <div class="w-full sm:w-1/2 max-w-[800px] aspect-square lg:aspect-3/4 h-full flex flex-col gap-md justify-between p-sm xs:p-sm md:p-md lg:p-lg" style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
+    <div class="w-full sm:w-1/2 max-w-[800px] aspect-square lg:aspect-3/4 h-full flex flex-col gap-md justify-between
+      p-sm xs:p-sm md:p-md lg:p-lg"
+      style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
       <div class="sm:h-1/2 text-white flex justify-start">
-      {% for icons in icon %}
-        <div class="icon flex justify-start">{{ icons.icon }}</div>
-      {% endfor %}
+        {% for icons in icon %}
+          <div class="icon flex justify-start">{{ icons.icon }}</div>
+        {% endfor %}
       </div>
       <div class="h-1/2 pb-0 lg:pb-lg flex flex-col gap-md justify-end items-start fade-in move-up">
         <div class="wysiwyg text-white">{{ contentHtml|e('wp_kses_post') }}</div>

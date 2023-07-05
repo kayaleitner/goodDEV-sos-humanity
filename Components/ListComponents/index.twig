@@ -1,4 +1,4 @@
-<flynt-component load:on="visible" name="ListComponents" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+<flynt-component class="componentSpacing" load:on="visible" name="ListComponents" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContent wysiwyg">
@@ -8,7 +8,7 @@
     <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
-          <li class="component boxBorder" data-theme="reset">
+          <li class="boxBorder component" data-theme="reset">
             {% if componentBlock.ctas.primary %}
               <a href="{{ componentBlock.ctas.primary }}" class="componentLink" aria-hidden="true" tabindex="-1">
             {% else %}
@@ -16,16 +16,17 @@
             {% endif %}
               {% if componentBlock.componentScreenshot %}
                 <div class="imageWrapper">
-                  <img data-refs="images" class="lazyload image {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }} "
-                      src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect, 'rgba(125, 125, 125, 0.1)') }}"
-                      width="{{ 760 }}"
-                      height="{{ (760 / componentBlock.componentScreenshot.aspect)|round }}"
-                      data-src="{{ componentBlock.componentScreenshot.src }}"
-                      data-sizes="auto"
-                      alt="{{ componentBlock.readme.title|e }}">
+                  <img class="image lazyload {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }}" data-refs="images"
+                    alt="{{ componentBlock.readme.title|e }}"
+                    data-src="{{ componentBlock.componentScreenshot.src }}"
+                    data-sizes="auto"
+                    height="{{ (760 / componentBlock.componentScreenshot.aspect)|round }}"
+                    src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect, 'rgba(125, 125, 125, 0.1)') }}"
+                    width="{{ 760 }}"
+                  />
                 </div>
               {% endif %}
-              <div class="content boxPadding">
+              <div class="boxPadding content">
                 <h3 class="h5">{{ componentBlock.readme.title }}</h3>
                 {{ componentBlock.readme.description }}
               </div>
@@ -37,14 +38,16 @@
             {% if componentBlock.ctas.primary or componentBlock.ctas.secondary %}
               <footer>
                 {% if componentBlock.ctas.secondary %}
-                  <a href="{{ componentBlock.ctas.secondary }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
+                  <a href="{{ componentBlock.ctas.secondary }}" class="component-ctaSecondary" rel="noreferrer noopener" target="_blank">
                     {{ labels.code }}
                     <span class="visuallyHidden">{{ componentBlock.readme.title ~ ' ' ~ labels.code }}</span>
                   </a>
                 {% endif %}
                 {% if componentBlock.ctas.primary %}
                   <a href="{{ componentBlock.ctas.primary }}" class="button button--text">
-                  {{ labels.preview }}<span class="visuallyHidden">{{ __(" of Component", "flynt")}} {{ componentBlock.readme.title }}</span></a>
+                    {{ labels.preview }}
+                    <span class="visuallyHidden">{{ __(" of Component", "flynt")}} {{ componentBlock.readme.title }}</span>
+                  </a>
                 {% endif %}
               </footer>
             {% endif %}

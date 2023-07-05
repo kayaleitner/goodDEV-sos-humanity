@@ -49,10 +49,6 @@
           {% endfor %}
           </span>
         </div>
-        {# <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
-          <span class="caption">Team</span>
-          <span class="caption text-right">---</span>
-        </div> #}
         <div class="pt-sm flex flex-row gap-lg justify-between items-center">
           <span class="text-captionMobile lg:text-caption">Division</span>
           <span class="text-captionMobile lg:text-caption text-right">
@@ -61,23 +57,7 @@
           {% endfor %}
           </span>
         </div>
-        {# <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">
-          <span class="caption"></span>
-          <span class="caption text-right">---</span>
-        </div> #}
       </div>
-      {# <div class="factsflex flex-col">
-        {% for item in post.facts %}
-          <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">{{ item.factTextarea }}</div>
-        {% endfor %}
-        {% if post.download %}
-          <div class="pt-sm">
-            <a class="download button button--outlineBlack" href="{{ post.download.url|e }}" alt="{{ post.download.alt|e }}" target="_blank" rel="noreferrer noopener">
-              {{ post.downloadLinkLabel|e }}
-            </a>
-          </div>
-        {% endif %}
-      </div> #}
     </div>
   </section>
 </flynt-component>

@@ -1,23 +1,29 @@
-<flynt-component load:on="visible" name="ListingManual" data-type="listing" class="" data-navStyle="light-blur">
-  <div class="max-w-screen-max w-full mx-auto p-sm lg:p-lg">
+<flynt-component
+  class=""
+  data-type="listing"
+  data-navStyle="light-blur"
+  load:on="visible"
+  name="ListingManual"
+>
+  <div class="max-w-screen-max mx-auto p-sm lg:p-lg w-full">
     {% if blockTitle or viewAllLink %}
       <div class="w-full mx-auto pb-sm md:pb-lg flex flex-row justify-between align-bottom items-end content-end">
         {% if blockTitle %}
-          <div class="subtitle block-title font-bold">{{ blockTitle }}</div>
+          <div class="block-title font-bold subtitle">{{ blockTitle }}</div>
         {% endif %}
         {% if viewAllLink %}
-          <a href="{{ viewAllLink.url }}" class="underline hover:no-underline caption font-bold">{{ viewAllLink.title }}</a>
+          <a href="{{ viewAllLink.url }}" class="caption font-bold underline hover:no-underline">{{ viewAllLink.title }}</a>
         {% endif %}
       </div>
     {% endif %}
     <div class="hidden xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"></div>
     <ul class="
-          w-full
-          mx-auto
-          grid
-          xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-3
-          gap-sm sm:gap-md
-        ">
+      w-full
+      mx-auto
+      grid
+      gap-sm sm:gap-md
+      xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-3
+    ">
       {% for post in items %}
         {% if post.type == 'post' %}
           {% include 'Components/_Atoms/Cards/post.twig' with { post: post, labels: labels } only %}
