@@ -12,9 +12,11 @@
     {% if blockTitle %}
       <div class="max-w-screen-max w-full mx-auto py-sm lg:py-lg flex flex-row justify-between align-bottom items-end content-end {% if options.topBorder %}border-t{% endif %}" 
         style="border-color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}transparent{% endif %};">
-        {% include 'Components/_Atoms/Titles/blockTitle.twig' with {
-          blockTitle: blockTitle
-        }%}
+        {% include 'Components/_Atoms/Titles/blockTitle.twig' 
+          with {
+            blockTitle: blockTitle
+          }
+        %}
       </div>
     {% endif %}
     <div class="max-w-screen-max mx-auto">

@@ -12,7 +12,10 @@
         {% for item in scrollytelling %}
           <section class="panelImage sm:absolute h-auto sm:h-screen w-full m-0 px-sm sm:p-0 {% if item.hideOnMobile %}hidden sm:block{% endif %}">
             {% if item.image %}
-              <img class="w-full h-full sm:absolute top-0 left-0 object-cover py-sm sm:p-0 border-b-4 border-dotted sm:border-0 {% if item.imageOverlay %}sm:brightness-50{% endif %}" style="border-color:{% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};" src="{{ item.image.src | resize(32) }}" srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}" data-sizes="auto">
+              <img class="w-full h-full sm:absolute top-0 left-0 object-cover py-sm sm:p-0 border-b-4 border-dotted sm:border-0 {% if item.imageOverlay %}sm:brightness-50{% endif %}" style="border-color:{% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};" 
+                src="{{ item.image.src | resize(32) }}" 
+                srcset="{{function('wp_get_attachment_image_srcset', item.image.id)}}" 
+                data-sizes="auto">
             {% endif %}
             {% if item.contentHtml %}
               <div class="wysiwyg sm:hidden row sm:max-w-[600px] mx-auto py-sm sm:pl-0 sm:pr-sm z-50" style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
