@@ -5,7 +5,7 @@ namespace Flynt\Components\NavigationFooter;
 use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
 use Flynt\FieldVariables;
-use Flynt\Shortcodes;
+// use Flynt\Shortcodes;
 use Flynt\ComponentManager;
 use Timber\Timber;
 
@@ -128,22 +128,6 @@ Options::addTranslatable('NavigationFooter', [
                 ]
             ],
         ]
-    ],
-    [
-        'label' => __('Copyrights', 'flynt'),
-        'name' => 'copyrightsTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0
-    ],
-    [
-        'label' => __('Copyrights', 'flynt'),
-        'name' => 'copyrightsHtml',
-        'type' => 'wysiwyg',
-        'media_upload' => 0,
-        'delay' => 1,
-        'toolbar' => 'basic',
-        'default_value' => '©&nbsp;' . date_i18n('Y') . ' ' . get_bloginfo('name'),
     ],
     [
         'label' => __('Social Media', 'flynt'),
