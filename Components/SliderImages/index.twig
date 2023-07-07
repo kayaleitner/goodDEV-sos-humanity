@@ -13,7 +13,12 @@
           {% for image in images %}
             <div class="swiper-slide h-0 relative pb-[66.6%]">
               <figure class="absolute inset-0 mb-0">
-                <img class="figure-image lazyload w-full h-full mx-auto object-cover" src="{{ image.src | resize(32) }}" data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}" data-sizes="auto" alt="{{ image.alt|e }}">
+                <img class="figure-image lazyload w-full h-full mx-auto object-cover" 
+                  src="{{ image.src | resize(32) }}" 
+                  data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}" 
+                  data-sizes="auto" 
+                  alt="{{ image.alt|e }}"
+                >
                 {% if image.caption %}
                   <figcaption class="absolute bottom-0 right-0 max-w-[450px] overflow-hidden py-1 px-2 text-white bg-[#000000b3] z-[2]">{{ image.caption|e }}</figcaption>
                 {% endif %}

@@ -34,7 +34,7 @@ flynt-component[name='BlockGridCards'] {
       }
     }
 
-    &[data-card='true']{
+    &[data-card='true'] {
       --column-gap: var(--flow-space);
     }
   }

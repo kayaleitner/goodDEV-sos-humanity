@@ -1,15 +1,9 @@
-flynt-component[name="GridPostsArchive"] {
+flynt-component[name='GridPostsArchive'] {
   .posts {
     --grid-columns: 1;
     --grid-gap: var(--flow-space);
-    --grid-item-width: calc(
-      (100% / var(--grid-columns)) -
-        ((var(--grid-columns) - 1) / var(--grid-columns) * var(--grid-gap))
-    );
-    --grid-item-max-width: calc(
-      ((var(--container-max-width) - ((var(--container-spacing) * 2))) / 3) -
-        (2 / 3 * var(--grid-gap))
-    );
+    --grid-item-width: calc((100% / var(--grid-columns)) - ((var(--grid-columns) - 1) / var(--grid-columns) * var(--grid-gap)));
+    --grid-item-max-width: calc(((var(--container-max-width) - ((var(--container-spacing) * 2))) / 3) - (2 / 3 * var(--grid-gap)));
 
     display: flex;
     flex-wrap: wrap;
@@ -68,6 +62,6 @@ flynt-component[name="GridPostsArchive"] {
     }
   }
 
-  @import "Partials/filter";
-  @import "Partials/pagination";
+  @import 'Partials/filter';
+  @import 'Partials/pagination';
 }

@@ -18,9 +18,19 @@
             <div class="caption">{{ post.boxMountingType.label }}</div>
           </div>
           <div class="w-1/2 flex flex-row justify-end items-center">
-            <div class="w-12 h-12" data-icon="{{ post.boxMountingType.label|lower }}"></div>
+            {% include 'Components/_Atoms/Images/icon.twig' with 
+              {
+                iconClasses: 'w-12 h-12',
+                icon: post.boxMountingType.label
+              } 
+            %}
             {% for term in post.terms('customer_segment')  %}
-              <div class="w-12 h-12" data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}"></div>
+              {% include 'Components/_Atoms/Images/icon.twig' with 
+                {
+                  iconClasses: 'w-12 h-12',
+                  icon: term
+                } 
+              %}
             {% endfor %}
           </div>
         </div>
