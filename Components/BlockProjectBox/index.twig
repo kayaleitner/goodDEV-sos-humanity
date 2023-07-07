@@ -29,7 +29,13 @@
       <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="text-captionMobile lg:text-caption">{{ labels.boxCustomerSegment }}</span>
         <span class="text-bodyMobile lg:text-body text-right">
-          <div class="flex items-center gap-[10px]" data-icon="{{ term|lower|replace({'/': "", ' ': ""}) }}">
+          <div class="text-right flex flex-row items-center gap-[10px]">
+            {% include 'Components/_Atoms/Images/icon.twig' with 
+              {
+                iconClasses: 'w-10 h-10',
+                icon: term
+              } 
+            %}
             <span class="text-bodyMobile lg:text-body scale-100">{{ term }}</span>
           </div>
         </span>
@@ -38,7 +44,13 @@
       {% if post.boxMountingType %}
       <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="text-captionMobile lg:text-caption">{{ labels.boxMountingType }}</span>
-        <div class="text-right flex items-center gap-[10px]" data-icon="{{ post.boxMountingType.label|lower }}">
+        <div class="text-right flex flex-row items-center gap-[10px]">
+          {% include 'Components/_Atoms/Images/icon.twig' with 
+            {
+              iconClasses: 'w-10 h-10',
+              icon: post.boxMountingType.label,
+            } 
+          %}
           <span class="text-bodyMobile lg:text-body scale-100">{{ post.boxMountingType.label }}</span>
         </div>
       </div>
