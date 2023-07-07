@@ -306,7 +306,6 @@
   }
 
   flynt-component[name='ListingMap'] {
-  
     #dottedMap {
       svg {
         clip-path: polygon(0.5% 1%, 100% 1%, 100% 100%, 0% 100%);
@@ -320,6 +319,7 @@
         }
       }
     }
+    
     button {
       &.active {
         @apply bg-cbegreen;
@@ -451,7 +451,6 @@ flynt-component[name='SliderText'] {
 
 
 @layer utilities {
-
   .box-inherit {
     box-sizing: inherit;
   }
@@ -466,7 +465,6 @@ flynt-component[name='SliderText'] {
 }
 
 @layer variants {
-
   .group:hover .button--link {
     @apply bg-transparent;
     @apply text-black;
