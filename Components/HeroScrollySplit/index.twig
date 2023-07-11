@@ -34,9 +34,9 @@
               media="(min-width: 768px)"
               sizes="100vw"
             />
-            <img class="object-cover h-full w-full"
+            <img class="lazyload object-cover h-full w-full"
               src="{{ slide.image.src | resize(32) }}"
-              srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               sizes="100vw"
               data-object-fit="cover"
               alt="{{ slide.image.alt|e }}"
@@ -73,9 +73,9 @@
               media="(min-width: 768px)"
               data-sizes="100vw"
             />
-            <img class="object-cover h-full w-full"
+            <img class="lazyload object-cover h-full w-full"
               src="{{ slide.image.src | resize(32) }}"
-              srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               sizes="100vw"
               data-object-fit="cover"
               alt="{{ slide.image.alt|e }}"
