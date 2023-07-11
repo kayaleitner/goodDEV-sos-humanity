@@ -18,7 +18,7 @@
     class="max-w-screen-max w-full mx-auto p-sm md:p-md lg:p-lg">
     
     <!-- Prev/Next Arrows Mobile -->
-    <div class="button-wrapper absolute right-sm md:right-md top-sm md:top-md flex lg:hidden align-middle justify-end z-50">
+    <div class="button-wrapper absolute right-sm md:right-md top-[22px] md:top-md flex lg:hidden align-middle justify-end z-50">
       <button 
         type="button" 
         data-ref="prev"
@@ -41,7 +41,13 @@
 
     {% if blockTitle %}
       <div class="w-full mx-auto pb-sm lg:pb-lg flex flex-col gap-sm justify-between align-start items-start content-start">
-        <h2 class="subtitle !leading-subtitle block-title font-bold">{{ blockTitle }}</h2>
+        {% include 'Components/_Atoms/Titles/blockTitle.twig' 
+          with {
+            blockTitleClasses: 'w-2/3 xs:w-full',
+            blockTitleColor: 'var(--black)',
+            blockTitle: blockTitle
+          }
+        %}
         <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
       </div>
     {% endif %}
@@ -84,7 +90,7 @@
         class="w-full xs:w-1/2 sm:w-1/3 lg:w-1/4 mx-auto relative"
       >
         <!-- Prev/Next Arrows Desktop -->
-        <div class="button-wrapper absolute right-sm top-0 sm:right-0 hidden lg:flex align-middle justify-end z-50 lg:-translate-y-[117px]">
+        <div class="button-wrapper absolute right-sm -top-[5px] sm:right-0 hidden lg:flex align-middle justify-end z-50 lg:-translate-y-[117px]">
           <button 
             type="button" 
             data-ref="prev"

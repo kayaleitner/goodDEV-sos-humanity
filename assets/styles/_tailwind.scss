@@ -450,7 +450,11 @@ flynt-component[name='SliderText'] {
   }
 
   .leading-subtitle {
-    line-height: 0.7;
+    line-height: 1;
+
+    @screen lg {
+      line-height: 1;
+    }
   }
 }
 

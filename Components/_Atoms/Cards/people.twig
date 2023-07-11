@@ -26,7 +26,13 @@
             {% endfor %}
           </div>
           {% for term in post.terms('division') %}
-            <div class="w-10 h-10" data-icon="{{ term|lower|replace({ '/': '', ' ': '' }) }}"></div>
+            {% include 'Components/_Atoms/Images/icon.twig' with 
+              {
+                iconClasses: 'w-10 h-10',
+                icon: term
+              } 
+            %}
+            {# <div class="w-10 h-10" data-icon="{{ term|lower|replace({ '/': '', ' ': '' }) }}"></div> #}
           {% endfor %}
         </div>
       </div>
