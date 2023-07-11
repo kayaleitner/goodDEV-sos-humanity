@@ -9,7 +9,7 @@
         {% if blockTitle %}
           {% include 'Components/_Atoms/Titles/blockTitle.twig' with {
             blockTitle: blockTitle,
-            blockTitleColor: 'var(--black)'
+            blockTitleColor: options.colorSecondary ?? 'var(--white)',
           } %}
         {% endif %}
       </div>
