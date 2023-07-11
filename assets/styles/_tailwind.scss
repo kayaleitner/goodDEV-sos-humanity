@@ -60,7 +60,8 @@
     }
   }
 
-  .wysiwyg h3 {
+  .wysiwyg h3,
+  .wysiwyg .subtitle {
     font-size: 1.875rem;
     line-height: normal;
     @apply mb-sm;
@@ -465,7 +466,11 @@ flynt-component[name='SliderText'] {
   }
 
   .leading-subtitle {
-    line-height: 0.7;
+    line-height: 1;
+
+    @screen lg {
+      line-height: 1;
+    }
   }
 }
 

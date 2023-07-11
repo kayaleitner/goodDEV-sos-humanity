@@ -2,7 +2,7 @@
 <flynt-component class="" data-type="listing" load:on="visible" name="RelatedProjects">
   <div class="max-w-screen-max w-full mx-auto p-sm md:p-md lg:p-lg">
     {% if blockTitle %}
-      <div class="max-w-screen-max w-full mx-auto pb-sm lg:pb-lg flex flex-row justify-between items-center content-center">
+      <div class="max-w-screen-max w-full mx-auto pb-sm lg:pb-lg flex flex-row justify-between items-baseline content-center">
         {% include 'Components/_Atoms/Titles/blockTitle.twig' with { blockTitle: blockTitle } %}
         <a href="{{ labels.allPostsLink.url }}" class="underline hover:no-underline caption font-bold">{{ labels.allPosts }}</a>
       </div>

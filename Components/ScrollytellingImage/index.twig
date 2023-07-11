@@ -4,9 +4,15 @@
       <div class="wrapper h-auto sm:h-screen w-full sm:absolute">
         {% if blockTitle %}
           <div class="w-full sm:absolute z-50">
-            <h2 class="sm:w-full sm:max-w-screen-max mx-auto px-sm py-md sm:p-lg subtitle block-title font-bold" style="color:{% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">
+            {% include 'Components/_Atoms/Titles/blockTitle.twig' with {
+                blockTitleClasses: 'sm:w-full sm:max-w-screen-max mx-auto px-sm py-md sm:p-lg',
+                blockTitle: blockTitle,
+                blockTitleColor: 'var(--white)'
+              } 
+            %}
+            {# <h2 class="sm:w-full sm:max-w-screen-max mx-auto px-sm py-md sm:p-lg subtitle block-title font-bold" style="color:{% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">
               {{ blockTitle }}
-            </h2>
+            </h2> #}
           </div>
         {% endif %}
         {% for item in scrollytelling %}

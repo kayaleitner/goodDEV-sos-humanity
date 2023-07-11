@@ -9,7 +9,7 @@
         {% if blockTitle %}
           {% include 'Components/_Atoms/Titles/blockTitle.twig' with {
             blockTitle: blockTitle,
-            blockTitleColor: options.colorSecondary ?? 'var(--white)'
+            blockTitleColor: 'var(--black)'
           } %}
         {% endif %}
       </div>
@@ -24,7 +24,7 @@
               >
             {% endif %}
             {% if item.contentHtml %}
-              <div class="wysiwyg sm:hidden row max-w-[600px] mx-auto">
+              <div class="wysiwyg sm:hidden row max-w-[600px] mx-auto font-bold">
                 {{ item.contentHtml|e('wp_kses_post') }}
               </div>
             {% endif %}
@@ -35,7 +35,7 @@
     {% for item in scrollytelling %}
       <div class="relative hidden sm:grid panel h-auto sm:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl sm:m-0 grid-cols-1 sm:grid-cols-2 gap-sm sm:gap-lg items-center">
         {% if item.contentHtml %}
-          <div class="wysiwyg row max-w-[600px] mx-auto col-start-2">
+          <div class="wysiwyg row max-w-[600px] mx-auto col-start-2 font-bold">
             {{ item.contentHtml|e('wp_kses_post') }}
           </div>
         {% endif %}
