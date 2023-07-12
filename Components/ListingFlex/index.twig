@@ -12,13 +12,13 @@
           {% if filters %}
             <div class="filters w-full flex flex-col md:flex-row gap-sm" x-data="{filters: [] }">
               {% for index, flexFilter in filters %}
-                <label for="{{ flexFilter.name }}" class="sr-only">{{ flexFilter.label }}:</label>
-                <select name="{{ flexFilter.name }}" id="{{ flexFilter.name }}" class="border-2 max-w-full xs:max-w-[330px] text-bodyMobile lg:text-body" data-refs="select" data-value="">
-                  <option value="*" selected>{{ flexFilter.label }}</option>
-                  {% for val in flexFilter.terms %}
-                    <option value="{{ val.term_id }}">{{ val.name }}</option>
-                  {% endfor %}
-                </select>
+                {% include 'Components/_Atoms/Other/filters.twig' 
+                  with {
+                    filterName: flexFilter.name,
+                    filterLabel: flexFilter.label,
+                    filterTerms: flexFilter.terms
+                  }
+                %}
               {% endfor %}
             </div>
           {% endif %}

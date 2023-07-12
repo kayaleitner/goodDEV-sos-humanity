@@ -10,7 +10,7 @@
       <div class="text-bodyMobile lg:text-body">{{ post.position }}</div>
     </div>
     {% if post.bio %}
-      <div>{{ post.bio }}</div>
+      <div class="wysiwyg">{{ post.bio }}</div>
     {% endif %}
     <div class="social lg:w-1/2 flex flex-row gap-sm items-start justify-start">
       {% for item in post.socials %}

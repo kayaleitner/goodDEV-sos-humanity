@@ -1,0 +1,7 @@
+<label for="{{ filterName }}" class="sr-only">{{ filterLabel }}:</label>
+<select name="{{ filterName }}" id="{{ filterName }}" class="border-2 max-w-full xs:max-w-[330px] text-bodyMobile lg:text-body" data-refs="select" data-value="">
+  <option value="*" selected>{{ filterLabel }}</option>
+  {% for val in filterTerms %}
+    <option value="{{ val.term_id }}">{{ val.name }}</option>
+  {% endfor %}
+</select>

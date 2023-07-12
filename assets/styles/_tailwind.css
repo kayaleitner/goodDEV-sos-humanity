@@ -91,6 +91,10 @@
   .wysiwyg {
     p {
       @apply font-body;
+
+      &:last-child {
+        margin-block-end: 0;
+      }
     }
 
     h1 {
@@ -103,6 +107,7 @@
 
     h3 {
       @apply font-subtitle;
+      @apply mb-sm;
     }
 
     h4 {
