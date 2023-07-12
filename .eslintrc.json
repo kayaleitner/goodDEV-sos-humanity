@@ -5,5 +5,8 @@
       "allowImportExportEverywhere": false,
       "codeFrame": true
     },
-    "extends": "airbnb-base"
+    "extends": "airbnb-base",
+    "rules": {
+      "no-console": "warn"
+    }
 }
