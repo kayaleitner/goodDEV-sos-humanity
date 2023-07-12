@@ -19,13 +19,6 @@
                     filterTerms: flexFilter.terms
                   }
                 %}
-                {# <label for="{{ flexFilter.name }}" class="sr-only">{{ flexFilter.label }}:</label>
-                <select name="{{ flexFilter.name }}" id="{{ flexFilter.name }}" class="border-2 max-w-full xs:max-w-[330px] text-bodyMobile lg:text-body" data-refs="select" data-value="">
-                  <option value="*" selected>{{ flexFilter.label }}</option>
-                  {% for val in flexFilter.terms %}
-                    <option value="{{ val.term_id }}">{{ val.name }}</option>
-                  {% endfor %}
-                </select> #}
               {% endfor %}
             </div>
           {% endif %}
