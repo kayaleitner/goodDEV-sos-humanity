@@ -42,7 +42,7 @@ flynt-component[name='HeroContactForm'] {
       position: absolute;
     }
 
-    #{$input-selectors} {
+    [type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea  {
       appearance: none;
       background-color: var(--white);
       border: 2px solid var(--black);

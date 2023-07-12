@@ -2,23 +2,16 @@
 *  Typography
 */
 
-
-// Glance
-
-
-// Caption
-
 :not(nav) {
   body,
-  p
-  .paragraph,
+  p .paragraph,
   .body {
     a {
       color: currentColor;
       letter-spacing: 0.5px;
       text-decoration: underline;
       text-decoration-color: currentColor;
-  
+
       &:hover,
       &:focus {
         text-decoration-color: var(--green);
@@ -27,15 +20,13 @@
   }
 }
 
-
-
 hr {
   background-color: inherit;
   border: 0;
   height: 2px;
   margin: 1.25rem auto;
 
-  @media (min-width: $breakpoint-desktop) {
+  @screen lg {
     margin: 1.563rem auto;
   }
 }
@@ -140,7 +131,6 @@ table {
   @apply w-fit;
   @apply z-50;
 
-
   &:disabled {
     @apply cursor-default;
     @apply opacity-5;
@@ -167,7 +157,7 @@ table {
     @apply active:bg-green;
     @apply text-white;
     @apply border;
-    @apply bg-transparent;    
+    @apply bg-transparent;
   }
 
   &--outlineBlack {
@@ -288,7 +278,15 @@ select {
   }
 }
 
-#{$input-selectors} {
+[type='tel'],
+[type='url'],
+[type='text'],
+[type='date'],
+[type='email'],
+[type='search'],
+[type='number'],
+[type='password'],
+textarea {
   appearance: none;
   background-color: transparent;
   border: 0;
@@ -436,7 +434,7 @@ flynt-component {
 .visuallyHidden {
   clip: rect(0, 0, 0, 0) !important;
   height: 1px !important;
-  margin: -1px !important; // Fix for https://github.com/twbs/bootstrap/issues/25686
+  margin: -1px !important; /* Fix for https://github.com/twbs/bootstrap/issues/25686 */
   overflow: hidden !important;
   padding: 0 !important;
   position: absolute !important;
@@ -479,4 +477,3 @@ flynt-component {
   background-color: var(--color-background);
   color: var(--color-text);
 }
-

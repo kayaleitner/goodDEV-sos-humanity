@@ -365,7 +365,7 @@
   }
 
   flynt-component[name='ScrollytellingImage'] {
-    // Do we need this?
+    /* // Do we need this? */
     .panel:first-child {
       img {
         display: block !important;
@@ -383,7 +383,7 @@
 }
 
 
-// Third party libraries
+/* Third party libraries */
 
 flynt-component[name='SliderImages'] {
   .swiper-pagination-bullet {

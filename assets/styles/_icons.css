@@ -1,4 +1,4 @@
-// Customer Segments
+/* Customer Segments */
 
 [data-icon] {
   @apply block;
@@ -152,7 +152,7 @@
   }
 }
 
-// Mounting Types
+ /* Mounting Types */
 
 [data-icon='roof'] {
   &::after {
@@ -178,7 +178,7 @@
   }
 }
 
-// Divisions
+/* Divisions */
 
 [data-icon='assetmanagement'] {
   &::after {
@@ -277,7 +277,7 @@
   }
 }
 
-// Social Media Footer
+/* Social Media Footer */
 
 [data-icon='linkedin-white'] {
   &::after {
@@ -345,7 +345,7 @@
   }
 }
 
-// Social Media People
+ /* Social Media People */
 
 [data-icon='linkedin-outline'] {
   &::after {

@@ -1,13 +1,13 @@
 :root,
 [data-theme='reset'] {
-  --color-accent: hsla(212, 100%, 45%, 1);
-  --color-background: hsla(0, 0%, 100%, 1);
-  --color-background-secondary: hsla(0, 0%, 19%, 0.08);
-  --color-border: hsl(0, 0%, 90%);
-  --color-border-secondary: hsl(0, 0%, 19%, 0.68);
+  --color-accent: hsl(212deg 100% 45% / 100%);
+  --color-background: hsl(0deg 0% 100% / 100%);
+  --color-background-secondary: hsl(0deg 0% 19% / 8%);
+  --color-border: hsl(0deg 0% 90%);
+  --color-border-secondary: hsl(0deg 0% 19% / 68%);
   --color-text: #000;
-  --color-text-muted: hsla(0, 0%, 19%, 0.8);
-  --color-error: hsl(343, 98%, 46%);
+  --color-text-muted: hsl(0deg 0% 19% / 80%);
+  --color-error: hsl(343deg 98% 46%);
 }
 
 [data-theme='cbenergy'] {
@@ -30,35 +30,29 @@
   --secondary: #f06c00;
 }
 
-// $breakpoint-mobile: 640px;
-// $breakpoint-tablet: 780px;
-// $breakpoint-tablet-horizontal: 1024px;
-// $breakpoint-desktop: 1280px;
 
-$breakpoint-mobile: 780px;
+/* $breakpoint-mobile: 780px;
 $breakpoint-tablet: 1024px;
 $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .titleLarge, .titleSmall, .subtitle';
-$input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea';
+$input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea'; */
 
 :root {
-  // --body-font-size: 1.125rem; // Always use rem. 1rem = 16px
+  /* // --body-font-size: 1.125rem; // Always use rem. 1rem = 16px
   // --body-font-size-small: 1rem;
-  // --flow-space: 1.5625rem;
+  // --flow-space: 1.5625rem; */
 
   --black: #000;
   --white: #fff;
   --green: #6ff79d;
   --cbegreen: #169b83;
   --grey: #7b838d;
-
   --content-max-width: 55ch;
   --content-max-width-large: 75ch;
   --container-max-width: calc(1200px + (var(--container-padding) * 2));
   --container-max-width-large: calc(1340px + (var(--container-padding) * 2));
-
   --box-padding: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);
   --container-padding: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);
   --component-spacing: clamp(3rem, 6vw + 1.2rem, 6rem);
