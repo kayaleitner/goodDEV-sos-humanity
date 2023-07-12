@@ -5,11 +5,11 @@ const host = `http://${domain}`
 
 const entries = [
   './assets/admin.js',
-  './assets/admin.scss',
+  './assets/admin.css',
   './assets/main.js',
-  './assets/main.scss',
-  './assets/print.scss',
-  './assets/editor-style.scss'
+  './assets/main.css',
+  './assets/print.css',
+  './assets/editor-style.css',
 ]
 
 const watchFiles = [
@@ -17,7 +17,7 @@ const watchFiles = [
   'templates/**/*',
   'lib/**/*',
   'inc/**/*',
-  './Components/**/*.{php,twig}'
+  './Components/**/*.{php,twig}',
 ]
 
 module.exports = {
@@ -25,5 +25,5 @@ module.exports = {
   host,
   domain,
   entries,
-  watchFiles
+  watchFiles,
 }
