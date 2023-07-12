@@ -7,7 +7,7 @@
             {% include 'Components/_Atoms/Titles/blockTitle.twig' with {
                 blockTitleClasses: 'sm:w-full sm:max-w-screen-max mx-auto px-sm py-md sm:p-lg',
                 blockTitle: blockTitle,
-                blockTitleColor: 'var(--white)'
+                blockTitleColor: options.colorSecondary ?? 'var(--white)',
               } 
             %}
             {# <h2 class="sm:w-full sm:max-w-screen-max mx-auto px-sm py-md sm:p-lg subtitle block-title font-bold" style="color:{% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};">

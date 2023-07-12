@@ -58,12 +58,14 @@ jobs:
         remote_key: ${{ secrets.KINSTA_SSH_KEY }}
         remote_port: ${{ secrets.KINSTA_SSH_PORT }}
 
-    - name: executing remote ssh commands using password
+    - name: executing remote ssh commands using ssh
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: ${{ secrets.KINSTA_SSH_HOST }}
         username: ${{ secrets.KINSTA_SSH_USER }}
-        password: ${{ secrets.KINSTA_SSH_KEY }}
+        key: ${{ secrets.KINSTA_SSH_KEY }}
         port: ${{ secrets.KINSTA_SSH_PORT }}
-        script: cd public & wp kinsta cache purge && wp cache flush
+        script: |
+          cd public 
+          wp kinsta cache purge && wp cache flush
 
