@@ -1,6 +1,9 @@
 <flynt-component
   load:on="idle" name="SliderText"
   class="pb-0 lg:pb-xl overflow-hidden"
+  style="
+    color: {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--white){% endif %};
+  "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   <script type="application/json">{{ jsonData|json_encode }}</script>
@@ -9,7 +12,6 @@
       {% include 'Components/_Atoms/Titles/blockTitle.twig' 
         with {
           blockTitleClasses: 'hidden xs:block pb-sm lg:pb-md text-black',
-          blockTitleColor: 'var(--black)',
           blockTitle: blockTitle
         }
       %}
@@ -22,7 +24,6 @@
         {% include 'Components/_Atoms/Titles/blockTitle.twig' 
           with {
             blockTitleClasses: 'block xs:hidden w-2/3 absolute left-sm top-md lg:pb-md z-50',
-            blockTitleColor: options.colorSecondary ?? 'var(--white)',
             blockTitle: blockTitle
           }
         %}
