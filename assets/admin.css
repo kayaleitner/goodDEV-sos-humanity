@@ -1,1 +1,3 @@
-@import url('../Components/**/_admin.css');
+@import '../Components/BlockAnchor/_admin.css';
+@import '../Components/FeatureAdminComponentScreenshots/_admin.css';
+@import '../Components/ReusableComponent/_admin.css';

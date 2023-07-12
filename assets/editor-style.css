@@ -1,15 +1,13 @@
-@import
-  'styles/tailwind',
-  'styles/variables',
-  'styles/fonts',
-  'styles/base',
-  'styles/tinymce';
+@import 'styles/_tailwind.css';
+@import 'styles/_variables.css';
+@import 'styles/_fonts.css';
+@import 'styles/_base.css';
+@import 'styles/_tinymce.css';
 
 /**
  * Classic editor styles
  */
 
-// stylelint-disable selector-max-id
 #tinymce.wp-editor {
   box-sizing: border-box;
   overflow-wrap: break-word;
@@ -21,7 +19,7 @@
   *::after {
     box-sizing: inherit;
   }
-  
+
   .mce-content-body {
     background-color: #cdcdcd;
   }

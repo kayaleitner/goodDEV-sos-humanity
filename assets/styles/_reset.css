@@ -98,7 +98,6 @@ sup {
   inset-block-start: -0.5em;
 }
 
-
 /* Exceptions */
 
 .single-project {
@@ -135,7 +134,7 @@ sup {
 [data-type='listing'] {
   .post {
     .content {
-      width: fill-available;
+      width: stretch;
     }
   }
 }

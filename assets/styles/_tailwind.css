@@ -92,32 +92,31 @@
     p {
       @apply font-body;
     }
-  
+
     h1 {
       @apply font-titleLarge;
     }
-  
+
     h2 {
       @apply font-titleSmall;
     }
-  
+
     h3 {
       @apply font-subtitle;
     }
-  
+
     h4 {
       @apply font-subtitle;
     }
-  
+
     h5 {
       @apply font-caption;
     }
-  
+
     h6 {
       @apply font-caption;
     }
-  
-  } 
+  }
 
   /* Fonts General  */
 
@@ -196,7 +195,7 @@
       align-items: center;
       display: flex;
       justify-content: center;
-      
+
       @screen md {
         justify-content: space-between;
       }
@@ -254,9 +253,9 @@
     }
   }
 
-  flynt-component[name='BlockWysiwyg'] .content  br {
+  flynt-component[name='BlockWysiwyg'] .content br {
     content: '\00a0';
-    
+
     @screen lg {
       content: '\0x0d';
     }
@@ -275,11 +274,11 @@
               @apply max:max-h-[330px];
             }
           }
-          
+
           &:first-child {
             grid-column-end: 3;
             grid-column-start: 1;
-      
+
             figure {
               img {
                 aspect-ratio: 2/1;
@@ -309,7 +308,7 @@
         }
       }
     }
-    
+
     button {
       &.active {
         @apply bg-cbegreen;
@@ -364,8 +363,126 @@
     }
   }
 
-}
+  flynt-component[name='HeroContactForm'] {
+    .wpcf7 {
+      align-items: flex-start;
+      display: flex;
+      justify-content: flex-start;
 
+      label {
+        color: var(--black);
+        @apply mb-[5px];
+      }
+
+      form {
+        align-items: flex-start;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      &-list-item {
+        margin: 0 20px 0 0;
+
+        label {
+          align-items: center;
+          display: flex;
+
+          input {
+            margin-block-start: 0;
+          }
+        }
+      }
+
+      &-spinner {
+        display: none;
+      }
+
+      &-not-valid-tip {
+        @apply font-caption;
+      }
+
+      &-response-output {
+        bottom: 0;
+        position: absolute;
+      }
+
+      [type='tel'],
+      [type='url'],
+      [type='text'],
+      [type='date'],
+      [type='email'],
+      [type='search'],
+      [type='number'],
+      [type='password'],
+      textarea {
+        appearance: none;
+        background-color: var(--white);
+        border: 2px solid var(--black);
+        border-radius: 0;
+        caret-color: var(--black);
+        color: var(--black);
+        font-size: var(--body-font-size-small);
+        max-width: 100%;
+        outline: none;
+        padding: 10px;
+        transition: border-color 0.3s ease-in-out;
+        width: 100%;
+
+        &::placeholder {
+          color: var(--black);
+          opacity: 0.5;
+        }
+
+        &:disabled {
+          cursor: default;
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        &:invalid {
+          border-color: var(--color-error);
+        }
+      }
+
+      input {
+        @apply px-sm;
+        @apply py-xs;
+      }
+
+      .wpcf7-submit {
+        @apply list-none;
+        @apply appearance-none;
+        @apply cursor-pointer;
+        @apply flex;
+        @apply gap-sm;
+        @apply items-center;
+        @apply no-underline;
+        @apply -mt-[10px];
+        @apply px-sm;
+        @apply py-xs;
+        @apply lg:px-md;
+        @apply relative;
+        @apply rounded-full;
+        @apply text-button;
+        @apply text-center;
+        @apply transition-all;
+        @apply ease-linear;
+        @apply duration-200;
+        @apply h-fit;
+        @apply w-fit;
+        @apply z-50;
+        @apply bg-white;
+        @apply hover:bg-black;
+        @apply text-black;
+        @apply hover:text-white;
+        @apply border;
+        @apply border-black;
+        @apply hover:border-transparent;
+      }
+    }
+  }
+}
 
 /* Third party libraries */
 
@@ -405,7 +522,7 @@ flynt-component[name='SliderText'] {
     }
   }
 
-  .swiper-horizontal>.swiper-pagination-bullets,
+  .swiper-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-bullets.swiper-pagination-horizontal,
   .swiper-pagination-custom,
   .swiper-pagination-fraction {
@@ -438,7 +555,6 @@ flynt-component[name='SliderText'] {
     }
   }
 }
-
 
 @layer utilities {
   .box-inherit {
