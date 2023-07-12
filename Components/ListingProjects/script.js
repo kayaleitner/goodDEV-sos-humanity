@@ -1,17 +1,14 @@
-/* eslint-disable comma-dangle */
-/* eslint-disable semi */
-/* eslint-disable space-before-function-paren */
-import $ from 'jquery';
+import $ from 'jquery'
 
 $('#loadMore').on('click', function () {
-  const $this = $(this);
-  const $list = $('#projects');
+  const $this = $(this)
+  const $list = $('#projects')
 
-  $this.text('Loading...');
+  $this.text('Loading...')
 
-  const offset = 4;
+  const offset = 4
 
-  console.log('load more', $list);
+  console.log('load more', $list)
   $.ajax({
     type: 'POST',
     url: '/wp-admin/admin-ajax.php',
@@ -23,14 +20,14 @@ $('#loadMore').on('click', function () {
     },
   }).then(
     (res) => {
-      console.log('list', $list);
-      $list.append(res);
+      console.log('list', $list)
+      $list.append(res)
       if ((res.match(/post/g) || []).length <= 4) {
-        $this.hide();
+        $this.hide()
       }
     },
     (err) => {
-      console.log(err);
+      console.log(err)
     }
-  );
-});
+  )
+})

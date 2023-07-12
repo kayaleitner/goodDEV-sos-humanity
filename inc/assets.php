@@ -30,8 +30,8 @@ add_action('wp_enqueue_scripts', function () {
         'templateDirectoryUri' => get_template_directory_uri(),
     ]);
 
-    wp_enqueue_style('Flynt/assets/main', Asset::requireUrl('assets/main.scss'), [], null);
-    wp_enqueue_style('Flynt/assets/print', Asset::requireUrl('assets/print.scss'), [], null, 'print');
+    wp_enqueue_style('Flynt/assets/main', Asset::requireUrl('assets/main.css'), [], null);
+    wp_enqueue_style('Flynt/assets/print', Asset::requireUrl('assets/print.css'), [], null, 'print');
 
     if (!Asset::isHotModuleReplacement()) {
         wp_style_add_data('Flynt/assets/main', 'preload', true);
@@ -56,10 +56,10 @@ add_action('admin_enqueue_scripts', function () {
         'templateDirectoryUri' => get_template_directory_uri(),
     ]);
 
-    wp_enqueue_style('Flynt/assets/admin', Asset::requireUrl('assets/admin.scss'), [], null);
+    wp_enqueue_style('Flynt/assets/admin', Asset::requireUrl('assets/admin.css'), [], null);
 });
 
 // Add tinyMce styles to editor.
 add_action('admin_init', function () {
-    add_editor_style(Asset::requireUrl('assets/tinyMce.scss'));
+    add_editor_style(Asset::requireUrl('assets/tinyMce.css'));
 });
