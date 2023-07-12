@@ -30,7 +30,7 @@
         <div data-refs="left" class="sm:absolute w-[100vw] sm:w-full h-1/2 sm:h-full sm:[clip-path:inset(0_49.9%_0_0)] left">
           <picture class="h-full {% if loop.index != 2 %} hidden sm:block {% endif %}">
             <source 
-              srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               media="(min-width: 768px)"
               sizes="100vw"
             />
@@ -69,7 +69,7 @@
         <div data-refs="right" class="sm:absolute w-full h-1/2 sm:h-full sm:[clip-path:inset(0_0_0_50%)] translate-y-0">
           <picture class="h-full {% if loop.index == 2 %} hidden sm:block {% endif %}">
             <source 
-              srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               media="(min-width: 768px)"
               data-sizes="100vw"
             />
