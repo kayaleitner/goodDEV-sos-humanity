@@ -1,6 +1,6 @@
-import { buildRefs, getJSON } from '../../assets/scripts/helpers'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import jQuery from 'jquery'
+import { buildRefs, getJSON } from '../../assets/scripts/helpers'
 
 export default function (component) {
   const refs = buildRefs(component, true)

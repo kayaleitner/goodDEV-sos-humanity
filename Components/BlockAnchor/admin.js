@@ -4,12 +4,12 @@
   const setUpInputVal = function () {
     return new acf.Model({
       wait: 'ready',
-      initialize: function () {
+      initialize () {
         const $blockAnchor = $('[data-layout="blockAnchor"]:not(.acf-clone)')
         if ($blockAnchor.length > 0) {
           $blockAnchor
             .find('input[name*=blockAnchor_anchor]')
-            .each(function (i, el) {
+            .each((i, el) => {
               const $el = $(el)
               changeText($el, $el.val())
             })
@@ -59,10 +59,10 @@
       } else {
         navigator.clipboard
           .writeText($anchorLinkInput.text())
-          .then(function () {
+          .then(() => {
             $copyMessage.show().delay(5000).hide('fast')
           })
-          .catch(function () {
+          .catch(() => {
             alert('Oops! Something went wrong...')
           })
       }

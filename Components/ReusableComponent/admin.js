@@ -2,7 +2,7 @@
 
 (function ($) {
   const select2init = function () {
-    acf.addAction('select2_init', function ($select, args, settings, field) {
+    acf.addAction('select2_init', ($select, args, settings, field) => {
       const $fieldEl = field.$el
 
       if ($fieldEl.data('name') === 'reusableComponent') {

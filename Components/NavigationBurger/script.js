@@ -1,8 +1,8 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import delegate from 'delegate-event-listener'
-import { buildRefs } from '@/assets/scripts/helpers.js'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import { buildRefs } from '@/assets/scripts/helpers.js'
 
 export default function (el) {
   let isMenuOpen

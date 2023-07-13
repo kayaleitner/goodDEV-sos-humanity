@@ -74,7 +74,7 @@ export default function (el) {
         (scrollY >= parallaxConfig.startOffset &&
           scrollY < parallaxConfig.endOffset)
       ) {
-        image.style.transform = 'translateY(' + move + 'px)'
+        image.style.transform = `translateY(${  move  }px)`
       }
     })
   }
@@ -97,16 +97,16 @@ function toggleHoverScroll (e) {
   if (imageHeight > imageWrapperHeight) {
     if (e.type === 'mouseenter') {
       image.style.transition =
-        'transform ' +
-        Math.max((imageHeight - imageWrapperHeight) / imageWrapperHeight, 0.3) +
-        's cubic-bezier(0.215, 0.61, 0.355, 1)'
+        `transform ${ 
+        Math.max((imageHeight - imageWrapperHeight) / imageWrapperHeight, 0.3) 
+        }s cubic-bezier(0.215, 0.61, 0.355, 1)`
       image.style.transform =
-        'translateY(-' + (imageHeight - imageWrapperHeight) + 'px)'
+        `translateY(-${  imageHeight - imageWrapperHeight  }px)`
     } else {
       image.style.transition =
-        'transform ' +
-        Math.max((imageHeight - imageWrapperHeight) / imageWrapperHeight, 0.3) +
-        's cubic-bezier(0.23, 1, 0.32, 1)'
+        `transform ${ 
+        Math.max((imageHeight - imageWrapperHeight) / imageWrapperHeight, 0.3) 
+        }s cubic-bezier(0.23, 1, 0.32, 1)`
       image.style.transform = 'translateY(0)'
     }
   }

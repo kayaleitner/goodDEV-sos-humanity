@@ -13,7 +13,7 @@ function init () {
         'getAttribute' in target &&
         target.matches('a[data-layout]')
       ) {
-        const layout = target.dataset.layout
+        const {layout} = target.dataset
         if (
           document
             .getElementById('flexTaxonomiesSelector')

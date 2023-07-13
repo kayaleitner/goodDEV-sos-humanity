@@ -140,8 +140,8 @@ export default function (el) {
   })
 }
 
-$(document).ready(function () {
-  $('.submenuItemLink').on('click', function () {
+$(document).ready(() => {
+  $('.submenuItemLink').on('click', () => {
     $('.mainNavBlock').removeClass('backdrop-blur-xl')
     $('.menu').removeClass('text-white')
     $('.submenu-wrapper').removeClass('open')

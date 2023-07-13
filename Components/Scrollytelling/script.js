@@ -37,7 +37,7 @@ mm.add('(min-width: 780px)', () => {
     scrollTrigger: {
       trigger: '#scrollytelling',
       start: '-50px center',
-      end: '+=' + height + '%',
+      end: `+=${  height  }%`,
       scrub: true,
       id: 'points'
     }
@@ -57,7 +57,7 @@ mm.add('(min-width: 780px)', () => {
     }
   }
 
-  points.forEach(function (elem, i) {
+  points.forEach((elem, i) => {
     if (i !== 0) {
       tl.from(
         elem.querySelector('.panelIllustration img'),

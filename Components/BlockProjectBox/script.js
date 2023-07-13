@@ -28,8 +28,8 @@ export default function (projectMap) {
         lng: parseFloat(longitude)
       })
 
-      pin.style.left = (pinCoords.x * 100) / 72 + '%'
-      pin.style.top = ((pinCoords.y * 100) / 72 / 9) * 16 + '%'
+      pin.style.left = `${(pinCoords.x * 100) / 72  }%`
+      pin.style.top = `${((pinCoords.y * 100) / 72 / 9) * 16  }%`
     }
   })
 }

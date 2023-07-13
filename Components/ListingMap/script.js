@@ -28,7 +28,7 @@ export default function (listingMap) {
 
   const maxHeight = Math.max(...heightArray)
 
-  projectList.style.height = maxHeight + 'px'
+  projectList.style.height = `${maxHeight  }px`
 
   // TODO: on resize, update the height of the map
   // possibly reload complete component or js on resize, because dots on map are not responsive
@@ -64,8 +64,8 @@ export default function (listingMap) {
         lng: parseFloat(longitude)
       })
 
-      pin.style.left = (pinCoords.x * 100) / mapWidth + '%'
-      pin.style.top = (pinCoords.y * 100) / mapHeight + '%'
+      pin.style.left = `${(pinCoords.x * 100) / mapWidth  }%`
+      pin.style.top = `${(pinCoords.y * 100) / mapHeight  }%`
     } else {
       pin.style.opacity = 0
     }

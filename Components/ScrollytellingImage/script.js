@@ -37,7 +37,7 @@ mm.add('(min-width: 780px)', () => {
       trigger: '#scrollytellingImage-inner',
       endTrigger: '#scrollytellingImage',
       start: 'top bottom',
-      end: '+=' + height + '%',
+      end: `+=${  height  }%`,
       scrub: true,
       id: 'points',
       markers: false
@@ -58,7 +58,7 @@ mm.add('(min-width: 780px)', () => {
     }
   }
 
-  points.forEach(function (elem, i) {
+  points.forEach((elem, i) => {
     if (i !== 0) {
       tl.from(
         elem.querySelector('.panelImage img'),

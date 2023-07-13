@@ -1,6 +1,6 @@
 import 'swiper/css/bundle'
-import { buildRefs } from '@/assets/scripts/helpers.js'
 import gsap from 'gsap'
+import { buildRefs } from '@/assets/scripts/helpers.js'
 
 export default function (heroScrollySplit) {
   const refs = buildRefs(heroScrollySplit, true)
