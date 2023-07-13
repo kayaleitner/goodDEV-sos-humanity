@@ -1,5 +1,6 @@
 /* global IntersectionObserver, requestIdleCallback */
 import './rIC.js'
+
 const componentsWithScripts = import.meta.glob('@/Components/**/script.js')
 
 const interactionEvents = new Set([
@@ -74,9 +75,9 @@ function hasParent (node) {
     const parent = node.parentElement.closest('flynt-component')
     parents.set(node, parent)
     return !!parent
-  } else {
+  } 
     return !!parents.get(node)
-  }
+  
 }
 
 function setComponentReady (node) {
@@ -85,8 +86,8 @@ function setComponentReady (node) {
 }
 
 function visible (node) {
-  return new Promise(function (resolve) {
-    const observer = new IntersectionObserver(function (entries) {
+  return new Promise((resolve) => {
+    const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
           observer.disconnect()
@@ -100,7 +101,7 @@ function visible (node) {
 }
 
 function mediaQueryMatches (query, node) {
-  return new Promise(function (resolve) {
+  return new Promise((resolve) => {
     const mediaQueryList = window.matchMedia(query)
     if (mediaQueryList.matches) {
       resolve(true)

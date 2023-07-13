@@ -14,7 +14,7 @@ export default function (heroScrollySplit) {
       isDesktop: `(min-width: ${breakPoint}px) and (prefers-reduced-motion: no-preference)`,
       isMobile: `(max-width: ${
         breakPoint - 1
-      }px) and (prefers-reduced-motion: no-preference)`
+      }px) and (prefers-reduced-motion: no-preference)`,
     },
     (context) => {
       const { isDesktop, isMobile } = context.conditions
@@ -33,20 +33,20 @@ export default function (heroScrollySplit) {
             delay: 0,
             ease: 'power1.in',
             inertia: true,
-            directional: true
-          }
-        }
+            directional: true,
+          },
+        },
       })
       timeline
         .from(refs.text_2, {
           opacity: isDesktop && 1,
-          duration: 0.2
+          duration: 0.2,
         })
         .to(
           refs.left,
           {
             y: isDesktop && '100vh',
-            x: isMobile && '-100vw'
+            x: isMobile && '-100vw',
           },
           0
         )
@@ -54,7 +54,7 @@ export default function (heroScrollySplit) {
           refs.right,
           {
             y: isDesktop && '-100vh',
-            x: isMobile && '100vw'
+            x: isMobile && '100vw',
           },
           0
         )
@@ -62,7 +62,7 @@ export default function (heroScrollySplit) {
           refs.text_2,
           {
             opacity: isDesktop && 0,
-            duration: 0.2
+            duration: 0.2,
           },
           0
         )
@@ -70,7 +70,7 @@ export default function (heroScrollySplit) {
           refs.text_3,
           {
             opacity: isDesktop && 1,
-            duration: 0.2
+            duration: 0.2,
           },
           0
         )
@@ -78,7 +78,7 @@ export default function (heroScrollySplit) {
           refs.text_1,
           {
             opacity: isDesktop && 1,
-            duration: 0.2
+            duration: 0.2,
           },
           0
         )
@@ -86,8 +86,7 @@ export default function (heroScrollySplit) {
           '.scrollyDot',
           {
             y: -40,
-            width: (i, target) =>
-              i <= 5 ? i * (i - 2) - 1 : (10 - i) * (i - 2) - 1
+            width: (i) => (i <= 5 ? i * (i - 2) - 1 : (10 - i) * (i - 2) - 1),
           },
           0
         )

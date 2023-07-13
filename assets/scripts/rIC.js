@@ -19,11 +19,11 @@
  */
 window.requestIdleCallback = window.requestIdleCallback ||
   function (cb) {
-    return setTimeout(function () {
+    return setTimeout(() => {
       const start = Date.now()
       const cbOptions = {
         didTimeout: false,
-        timeRemaining: function () {
+        timeRemaining () {
           return Math.max(0, 50 - (Date.now() - start))
         }
       }

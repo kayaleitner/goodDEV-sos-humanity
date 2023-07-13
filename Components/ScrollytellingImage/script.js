@@ -11,7 +11,7 @@ document.addEventListener('resize', () => {
 })
 
 ScrollTrigger.defaults({
-  markers: false
+  markers: false,
 })
 
 const points = gsap.utils.toArray('.panelImage')
@@ -28,8 +28,8 @@ mm.add('(min-width: 780px)', () => {
       end: 'bottom bottom',
       pin: true,
       id: 'pinning',
-      markers: false
-    }
+      markers: false,
+    },
   })
 
   const tl = gsap.timeline({
@@ -37,15 +37,15 @@ mm.add('(min-width: 780px)', () => {
       trigger: '#scrollytellingImage-inner',
       endTrigger: '#scrollytellingImage',
       start: 'top bottom',
-      end: `+=${  height  }%`,
+      end: `+=${height}%`,
       scrub: true,
       id: 'points',
-      markers: false
-    }
+      markers: false,
+    },
   })
 
   // eslint-disable-next-line no-unused-vars
-  function fullscreenListener () {
+  function fullscreenListener() {
     const state =
       document.fullScreen ||
       document.mozFullScreen ||
@@ -53,7 +53,7 @@ mm.add('(min-width: 780px)', () => {
 
     if (!state) {
       ScrollTrigger.config({
-        autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load,resize'
+        autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load,resize',
       })
     }
   }
