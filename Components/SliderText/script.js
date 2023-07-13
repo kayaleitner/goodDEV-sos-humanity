@@ -15,7 +15,7 @@ function initSlider (refs, data) {
     modules: [Navigation, A11y, Autoplay, Pagination],
     a11y: options.a11y,
     slidesPerView: 'auto',
-    spaceBetween: 35,
+    spaceBetween: 0,
     navigation: {
       nextEl: refs.next,
       prevEl: refs.prev
