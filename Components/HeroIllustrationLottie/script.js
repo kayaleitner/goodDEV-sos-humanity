@@ -41,9 +41,9 @@ export default function (heroIllustrationLottie) {
                 {
                   type: 'seek',
                   visibility: [0, 1],
-                  frames: [0, numFrames]
-                }
-              ]
+                  frames: [0, numFrames],
+                },
+              ],
             })
             ScrollTrigger.refresh()
           })
