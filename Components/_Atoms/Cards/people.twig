@@ -2,7 +2,8 @@
   <a class="flex flex-col h-full no-underline group" href="{{ post.link|e('esc_url')|e('esc_url')|e('esc_url') }}" aria-label="{{ post.title }}">
     {% if post.thumbnail %}
       <div class="block">
-        <figure class="figure overflow-hidden">
+        <figure class="figure overflow-hidden relative">
+          <div class="absolute w-full h-full z-10 opacity-5 bg-black"></div>
           <img class="aspect-square grayscale group-hover:scale-[1.15] group-hover:origin-center group-focus:scale-[1.15] group-focus:origin-center lazyload object-cover transition duration-200 ease-linear" 
             src="{{ post.thumbnail.src|resize(32) }}" 
             data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
