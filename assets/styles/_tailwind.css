@@ -577,6 +577,18 @@ flynt-component[name='SliderText'] {
       line-height: 1;
     }
   }
+
+  .svg-w-full {
+    svg {
+      width: 100%;
+    }
+  }
+
+  .svg-h-full {
+    svg {
+      height: 100%;
+    }
+  }
 }
 
 @layer variants {

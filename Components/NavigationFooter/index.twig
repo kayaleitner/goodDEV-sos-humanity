@@ -40,7 +40,9 @@
             <div class="flex flex-row gap-xs">
               {% for socials in social %}
                 <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
-                  <span data-icon="{{ socials.platform.label|lower }}-white"></span>
+                  {% include 'Components/_Atoms/icon.twig' with {
+                    icon: socials.platform.label|lower ~ '-white', color: 'text-white' }
+                  %}
                 </a>
               {% endfor %}
             </div>
@@ -57,7 +59,9 @@
           {% endif %}
           {% for socials in social %}
             <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
-              <span data-icon="{{ socials.platform.label|lower }}-white"></span>
+              {% include 'Components/_Atoms/icon.twig' with {
+                    icon: socials.platform.label|lower ~ '-white', color: 'text-white' }
+              %}
             </a>
           {% endfor %}
         </div>

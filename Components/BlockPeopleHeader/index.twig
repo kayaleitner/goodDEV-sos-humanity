@@ -15,7 +15,13 @@
     <div class="social lg:w-1/2 flex flex-row gap-sm items-start justify-start">
       {% for item in post.socials %}
         <a class="no-underline text-subtitleMobile lg:text-subtitle" href="{{ item.url }}" target="_blank" aria-label="{{ item.platform.label }}">
-          <span data-icon="{{ item.platform.label|lower }}-outline"></span>
+          {% include 'Components/_Atoms/icon.twig' with {
+            icon: item.platform.label|lower ~ '-outline', 
+            color: 'text-black',
+            height: 'h-[40px]',
+            width: 'w-[40px]',
+            iconClasses: 'mr-xs lg:mr-sm block' }
+          %}
         </a>
       {% endfor %}
       </ul>

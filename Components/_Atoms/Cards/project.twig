@@ -18,16 +18,20 @@
             <div class="caption">{{ post.boxMountingType.label }}</div>
           </div>
           <div class="w-1/2 flex flex-row justify-end items-center">
-            {% include 'Components/_Atoms/Images/icon.twig' with 
+            {% include 'Components/_Atoms/icon.twig' with 
               {
-                iconClasses: 'w-12 h-12',
+                width: 'w-12',
+                height: 'h-12',
+                color: 'text-black',
                 icon: post.boxMountingType.label
               } 
             %}
             {% for term in post.terms('customer_segment')  %}
-              {% include 'Components/_Atoms/Images/icon.twig' with 
+              {% include 'Components/_Atoms/icon.twig' with 
                 {
-                  iconClasses: 'w-12 h-12',
+                  width: 'w-12',
+                  height: 'h-12',
+                  color: 'text-black',
                   icon: term
                 } 
               %}

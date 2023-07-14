@@ -13,11 +13,11 @@ add_filter('Flynt/addComponentData?name=BlockImageTextFull', function ($data) {
     $componentPath = str_replace(trailingslashit(get_template_directory()), '', $componentPathFull);
 
     if (!empty($data['icon'])) {
-        $data['icon'] = array_map(function ($item) use ($componentPath) {
-            $item['icon'] = Asset::getContents("{$componentPath}Assets/{$item['label']['value']}.svg");
-            return $item;
+        $data['icon'] = array_map(function ($item) {
+            return $item['label']['value'];
         }, $data['icon']);
     }
+
     return $data;
 });
 
