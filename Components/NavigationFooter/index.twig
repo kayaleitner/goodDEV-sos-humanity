@@ -11,7 +11,7 @@
       {% endif %}
       <div class="flex flex-row lg:flex-row gap-lg justify-between items-start lg:justify-end flex-wrap">
         {% if addressHtml %}
-          <div class="flex flex-col gap-xs lg:gap-[15px] order-2 lg:order-1 w-1/4 lg:w-auto grow lg:grow-0 items-start justify-start">
+          <div class="flex flex-col gap-xs lg:gap-[15px] order-2 lg:order-1 w-full lg:w-auto grow lg:grow-0 items-start justify-start">
             <div class="caption font-bold">{{ addressColumnTitle }}</div>
             <div class="flex flex-col justify-between gap-[15px] lg:gap-[23px]">
               <div class="caption">{{ addressHtml|e('wp_kses_post') }}</div>
