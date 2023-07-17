@@ -58,7 +58,7 @@ jobs:
         remote_key: ${{ secrets.KINSTA_SSH_KEY }}
         remote_port: ${{ secrets.KINSTA_SSH_PORT }}
 
-    - name: executing remote ssh commands using ssh
+    - name: Clear Cache using SSH
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: ${{ secrets.KINSTA_SSH_HOST }}

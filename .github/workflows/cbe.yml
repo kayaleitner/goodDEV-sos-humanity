@@ -1,4 +1,4 @@
-name: Deploy to Starter Staging
+name: Deploy to CBE Staging
 
 on: workflow_dispatch
 
