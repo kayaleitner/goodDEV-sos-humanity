@@ -27,10 +27,10 @@ add_action('admin_init', function () {
 function getEditorStylesheet()
 {
     if (Asset::isHotModuleReplacement()) {
-        return Asset::requireUrl('assets/editor-style.scss');
+        return Asset::requireUrl('assets/editor-style.css');
     }
 
-    $editorStylePath = Asset::requirePath('assets/editor-style.scss');
+    $editorStylePath = Asset::requirePath('assets/editor-style.css');
     return str_replace(get_template_directory(), '', $editorStylePath);
 }
 
