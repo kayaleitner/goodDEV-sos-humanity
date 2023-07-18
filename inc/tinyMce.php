@@ -95,8 +95,8 @@ function getConfig()
             __('Heading 1', 'flynt') => 'h1',
             __('Heading 2', 'flynt') => 'h2',
             __('Heading 3', 'flynt') => 'h3',
-            // __('Heading 4', 'flynt') => 'h4',
-            // __('Heading 5', 'flynt') => 'h5',
+            __('Heading 4', 'flynt') => 'h4',
+            __('Heading 5', 'flynt') => 'h5',
             __('Heading 6', 'flynt') => 'h6'
         ],
         'styleformats' => [
