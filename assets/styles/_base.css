@@ -153,8 +153,8 @@ table {
     @apply border-white;
     @apply hover:border-transparent;
     @apply active:border-transparent;
-    @apply hover:bg-green;
-    @apply active:bg-green;
+    @apply hover:bg-cbegreen;
+    @apply active:bg-cbegreen;
     @apply text-white;
     @apply border;
     @apply bg-transparent;
@@ -188,8 +188,8 @@ table {
     @apply hover:bg-white;
     @apply border;
     @apply bg-transparent;
-    @apply hover:bg-green;
-    @apply active:bg-green;
+    @apply hover:bg-cbegreen;
+    @apply active:bg-cbegreen;
     @apply h-[45px];
     @apply justify-center;
     @apply p-0;
