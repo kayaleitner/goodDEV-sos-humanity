@@ -44,7 +44,7 @@ function getACFLayout()
                         'instructions' => '',
                         'required' => 0,
                         'wrapper' => [
-                            'width' => '',
+                            'width' => 30,
                             'class' => '',
                             'id' => '',
                         ],
@@ -68,7 +68,7 @@ function getACFLayout()
                         'instructions' => '',
                         'required' => 0,
                         'wrapper' => [
-                            'width' => '',
+                            'width' => 30,
                             'class' => '',
                             'id' => '',
                         ],
@@ -87,7 +87,7 @@ function getACFLayout()
                         'instructions' => '',
                         'required' => 0,
                         'wrapper' => [
-                            'width' => '',
+                            'width' => 30,
                             'class' => '',
                             'id' => '',
                         ],
@@ -97,7 +97,20 @@ function getACFLayout()
                         'prepend' => '',
                         'append' => '',
                         'parent_repeater' => 'field_63f4adae8cef0',
-                    ]
+                    ],
+                    [
+                        'label' => __('Text Size (mobile)', 'flynt'),
+                        'name' => 'textSizeMobile',
+                        'type' => 'button_group',
+                        'choices' => [
+                            'small' => sprintf('<p>30px</p>', __('30px', 'flynt')),
+                            'big' => sprintf('<p>40px</p>', __('40px', 'flynt'))
+                        ],
+                        'wrapper' => [
+                            'width' => 10,
+                        ],
+                        'default_value' => 'big'
+                    ],
                 ],
             ],
             [
