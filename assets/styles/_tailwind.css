@@ -17,16 +17,16 @@
     text-rendering: optimizeSpeed;
   }
 
-  .font-mono {
+  .font-family-mono {
     font-family: 'Aeonik Mono', Courier, monospace;
   }
 
-  .font-sans {
+  .font-family-sans {
     font-family: 'Aeonik', Verdana, sans-serif;
   }
 
   .font-body {
-    @apply font-sans;
+    @apply font-family-sans;
     font-size: 1.25rem;
     letter-spacing: 0.75px;
     line-height: normal;
@@ -170,29 +170,29 @@
     @apply text-black;
     @apply border;
     @apply border-black;
-    @apply hover:border-transparent;
-    @apply focus:border-transparent;
-    @apply group-hover:border-transparent;
-    @apply group-focus:border-transparent;
+    @apply hover: border-transparent;
+    @apply focus: border-transparent;
+    @apply group-hover: border-transparent;
+    @apply group-focus: border-transparent;
     @apply bg-transparent;
-    @apply hover:bg-green;
-    @apply focus:bg-green;
-    @apply group-hover:bg-green;
-    @apply group-focus:bg-green;
+    @apply hover: bg-green;
+    @apply focus: bg-green;
+    @apply group-hover: bg-green;
+    @apply group-focus: bg-green;
   }
 
   .button.button--link {
-    @apply hover:bg-green;
-    @apply focus:bg-green;
-    @apply group-hover:bg-green;
-    @apply group-focus:bg-green;
+    @apply hover: bg-green;
+    @apply focus: bg-green;
+    @apply group-hover: bg-green;
+    @apply group-focus: bg-green;
   }
 
   flynt-component[name='BlockImageTextFull'] .icon svg {
     @apply scale-75;
     @apply -translate-x-[10px];
-    @apply lg:scale-110;
-    @apply lg:-translate-x-0;
+    @apply lg: scale-110;
+    @apply lg: -translate-x-0;
   }
 
   flynt-component[name='BlockNewsletter'] {
@@ -239,9 +239,9 @@
           @apply cursor-pointer;
           @apply rounded-r-full;
           @apply rounded-l-none;
-          @apply hover:bg-white;
+          @apply hover: bg-white;
           @apply text-white;
-          @apply hover:text-black;
+          @apply hover: text-black;
           @apply transition-all;
         }
       }
@@ -275,8 +275,8 @@
           figure {
             img {
               @apply max-h-[370px];
-              @apply xl:max-h-[345px];
-              @apply max:max-h-[330px];
+              @apply xl: max-h-[345px];
+              @apply max: max-h-[330px];
             }
           }
 
@@ -321,10 +321,10 @@
         @apply h-[25px];
         @apply -translate-x-[12.5px];
         @apply -translate-y-[12.5px];
-        @apply md:w-lg;
-        @apply md:h-lg;
-        @apply md:-translate-x-[25px];
-        @apply md:-translate-y-[25px];
+        @apply md: w-lg;
+        @apply md: h-lg;
+        @apply md: -translate-x-[25px];
+        @apply md: -translate-y-[25px];
         z-index: 9999;
 
         &::before {
@@ -353,6 +353,7 @@
   }
 
   flynt-component[name='ScrollytellingImage'] {
+
     /* // Do we need this? */
     .panel:first-child {
       img {
@@ -466,7 +467,7 @@
         @apply -mt-[10px];
         @apply px-sm;
         @apply py-xs;
-        @apply lg:px-md;
+        @apply lg: px-md;
         @apply relative;
         @apply rounded-full;
         @apply text-button;
@@ -478,12 +479,12 @@
         @apply w-fit;
         @apply z-50;
         @apply bg-white;
-        @apply hover:bg-black;
+        @apply hover: bg-black;
         @apply text-black;
-        @apply hover:text-white;
+        @apply hover: text-white;
         @apply border;
         @apply border-black;
-        @apply hover:border-transparent;
+        @apply hover: border-transparent;
       }
     }
   }
@@ -527,7 +528,7 @@ flynt-component[name='SliderText'] {
     }
   }
 
-  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-horizontal>.swiper-pagination-bullets,
   .swiper-pagination-bullets.swiper-pagination-horizontal,
   .swiper-pagination-custom,
   .swiper-pagination-fraction {
