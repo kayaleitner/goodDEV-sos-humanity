@@ -35,11 +35,13 @@ mm.add('(min-width: 780px)', () => {
   const tl = gsap.timeline({
     duration: points.length,
     scrollTrigger: {
-      trigger: '#scrollytelling',
-      start: '-50px center',
-      end: `+=${  height  }%`,
+      trigger: '#scrollytelling-inner',
+      endTrigger: '#scrollytelling',
+      start: 'top bottom',
+      end: `+=${height}%`,
       scrub: true,
-      id: 'points'
+      id: 'points',
+      markers: false,
     }
   })
 
