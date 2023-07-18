@@ -17,14 +17,6 @@
     text-rendering: optimizeSpeed;
   }
 
-  .font-family-mono {
-    font-family: 'Aeonik Mono', Courier, monospace;
-  }
-
-  .font-family-sans {
-    font-family: 'Aeonik', Verdana, sans-serif;
-  }
-
   .font-body {
     @apply font-family-sans;
     font-size: 1.25rem;
@@ -353,7 +345,6 @@
   }
 
   flynt-component[name='ScrollytellingImage'] {
-
     /* // Do we need this? */
     .panel:first-child {
       img {
@@ -563,6 +554,14 @@ flynt-component[name='SliderText'] {
 }
 
 @layer utilities {
+  .font-family-mono {
+    font-family: 'Aeonik Mono', Courier, monospace;
+  }
+
+  .font-family-sans {
+    font-family: 'Aeonik', Verdana, sans-serif;
+  }
+
   .box-inherit {
     box-sizing: inherit;
   }
