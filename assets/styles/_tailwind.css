@@ -111,7 +111,7 @@
     }
 
     h4 {
-      @apply font-subtitle;
+      @apply font-body;
     }
 
     h5 {
