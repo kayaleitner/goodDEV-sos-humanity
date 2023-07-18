@@ -113,6 +113,40 @@
     h6 {
       @apply font-caption;
     }
+
+    ul {
+      list-style: disc;
+      margin-block-end: 1em;
+      margin-left: 25px;
+
+    }
+
+    ol {
+      list-style: decimal;
+      margin-block-end: 1em;
+      margin-left: 30px;
+    }
+
+    ul,
+    ol {
+      li {
+        @apply font-sans;
+        font-size: 1.25rem;
+        letter-spacing: 0.75px;
+        line-height: normal;
+        list-style: inherit;
+        margin-block-end: 1em;
+
+        @screen lg {
+          font-size: 1.563rem;
+          line-height: normal;
+        }
+
+        &:last-child {
+          margin-block-end: 1em;
+        }
+      }
+    }
   }
 
   /* Fonts General  */

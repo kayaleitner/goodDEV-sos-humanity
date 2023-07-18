@@ -60,7 +60,12 @@
             sm:bg-transparent
           "
           style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
-            <h1 class="hidden text-[2.813rem] sm:text-[3.438rem] mb-sm sm:w-1/2 p-4 sm:pr-24 text-8xl sm:text-right font-light w-full {% if loop.index == 2 %} hidden sm:block {% endif %} leading-[95%]">
+            <h1 
+              class="
+                hidden {% if slide.textSizeMobile is defined and slide.textSizeMobile == 'small' %}text-[1.875rem]{% elseif slide.textSizeMobile is defined and slide.textSizeMobile == 'big' %}text-[2.5rem]{% else %} text-[2.5rem]{% endif %}
+                sm:text-[3.438rem] 
+                mb-sm sm:w-1/2 p-4 sm:pr-24 text-8xl sm:text-right font-light w-full 
+                {% if loop.index == 2 %} hidden sm:block {% endif %} leading-[95%]">
               <span class="block">{{ slide.text_1 }}</span>
               <span class="block sm:hidden">{{ slide.text_2 }}</span>
             </h1>
@@ -97,7 +102,11 @@
             sm:bg-transparent
           "
           style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
-            <h1 class="text-[2.813rem] sm:text-[3.438rem] mb-sm sm:w-1/2 p-4 sm:pl-24 text-8xl font-light h-1/2 sm:h-auto {% if loop.index != 2 %} hidden sm:block {% endif %} leading-[95%]">
+            <h1 
+              class=" 
+              {% if slide.textSizeMobile is defined and slide.textSizeMobile == 'small' %}text-[1.875rem]{% elseif slide.textSizeMobile is defined and slide.textSizeMobile == 'big' %}text-[2.5rem]{% endif %}
+              sm:text-[3.438rem] 
+              mb-sm sm:w-1/2 p-4 sm:pl-24 text-8xl font-light h-1/2 sm:h-auto {% if loop.index != 2 %} hidden sm:block {% endif %} leading-[95%]">
               <span class="block sm:hidden">{{ slide.text_1 }}</span>
               <span class="block">{{ slide.text_2 }}</span>
             </h1>

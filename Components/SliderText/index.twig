@@ -35,18 +35,21 @@
         class="block xs:hidden slider-pagination swiper-pagination-fraction"></div>
       <div class="swiper-wrapper box box-inherit">
         {% for box in contentBoxes %}
-          <div class="box-border fade-in move-up gap-[40px] overflow-hidden min-h-[450px] relative w-full !h-auto item swiper-slide p-sm lg:p-md lg:mr-md !flex flex-col justify-between" style="background-color: {% if box.colorBackground %}{{ box.colorBackground }}{% else %}var(--secondary){% endif %}; color:{% if box.colorText %}{{ box.colorText }}{% else %}var(--white){% endif %};">
-            <div class="block xs:hidden py-md"></div>
+          <div class="box-border fade-in move-up gap-[40px] overflow-hidden min-h-[450px] relative w-full !h-auto item swiper-slide p-sm lg:p-md lg:mr-md !flex flex-col justify-start" style="background-color: {% if box.colorBackground %}{{ box.colorBackground }}{% else %}var(--secondary){% endif %}; color:{% if box.colorText %}{{ box.colorText }}{% else %}var(--white){% endif %};">
+            <div class="block xs:hidden pt-[90px]"></div>
             {% if box.panelTextbox %}
               <div class="wysiwyg">{{ box.panelTextbox|e('wp_kses_post') }}</div>
             {% endif %}
             <div>
               {% if box.panelLogo %}
                 <div class="">
-                  <img class="logo lazyload w-auto h-[45px] object-contain {% if box.logoFilter %} brightness-0 invert {% endif %}"
-                  src="{{ box.panelLogo.src | resize(32) }}"
-                  data-srcset="{{function('wp_get_attachment_image_srcset', box.panelLogo.id)}}"
-                  data-sizes="auto">
+                  <img 
+                    class="logo lazyload object-contain w-auto 
+                    {% if box.logoHeight is defined and box.logoHeight == 'small' %}h-[45px]{% elseif box.logoHeight is defined and box.logoHeight == 'big' %}h-[90px]{% endif %}
+                    {% if box.logoFilter %} brightness-0 invert {% endif %}"
+                    src="{{ box.panelLogo.src | resize(32) }}"
+                    data-srcset="{{function('wp_get_attachment_image_srcset', box.panelLogo.id)}}"
+                    data-sizes="auto">
                 </div>
               {% endif %}
               {% if box.panelAuthor %}<div class="caption mt-md" style="color:{% if box.colorText %}{{ box.colorText }}{% else %}var(--white){% endif %};">{{ box.panelAuthor }}</div>{% endif %}
