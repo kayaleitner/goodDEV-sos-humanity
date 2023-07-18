@@ -92,4 +92,8 @@ export default function (heroScrollySplit) {
         )
     }
   )
+
+  // undhide h1s that were hidden because of content shift on page load
+  refs.left[0].querySelector('h1').classList.remove('hidden')
+  refs.left[2].querySelector('h1').classList.remove('hidden')
 }
