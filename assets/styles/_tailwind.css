@@ -17,9 +17,8 @@
     text-rendering: optimizeSpeed;
   }
 
-
   .font-body {
-    @apply font-sans;
+    @apply font-family-sans;
     font-size: 1.25rem;
     letter-spacing: 0.75px;
     line-height: normal;
@@ -592,6 +591,7 @@ flynt-component[name='SliderText'] {
 }
 
 @layer variants {
+
   .group:hover .button--link {
     @apply bg-transparent;
     @apply text-black;
