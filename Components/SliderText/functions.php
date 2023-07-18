@@ -63,6 +63,19 @@ function getACFLayout()
                         ],
                     ],
                     [
+                        'label' => __('Logo Height', 'flynt'),
+                        'name' => 'logoHeight',
+                        'type' => 'button_group',
+                        'choices' => [
+                            'small' => sprintf('<p>45px</p>', __('45px', 'flynt')),
+                            'big' => sprintf('<p>90px</p>', __('90px', 'flynt'))
+                        ],
+                        'wrapper' => [
+                            'width' => 10,
+                        ],
+                        'default_value' => 'small'
+                    ],
+                    [
                         'label' => __('Logo Filter', 'flynt'),
                         'instructions' => __('Add a filter to turn the logo white.', 'flynt'),
                         'name' => 'logoFilter',
