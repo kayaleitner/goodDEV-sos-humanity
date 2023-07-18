@@ -114,6 +114,26 @@
               </a>
             </div>
           {% endfor %}
+          {# Press Contact #}
+          {% if post.displayPressContact %}
+            <div class="w-full pb-xs">
+              <div class="item w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
+                <div class="h-auto lg:h-auto w-full p-0 grow flex flex-row justify-start mt-sm">
+                  <div class="caption w-full flex flex-col justify-between gap-sm">
+                    <div>
+                      <div class="text-bodyMobile lg:text-body font-bold">{{ contactName }}</div>
+                      <div class="text-bodyMobile lg:text-body">{{ contactPosition }}</div>
+                    </div>
+                    <div class="flex justify-end items-center">
+                      <a class="download button button--outlineBlack" href="mailto:{{ contactEmail }}" target="_blank" rel="noreferrer noopener">
+                        {{ ContactButtonLabel }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>

@@ -13,6 +13,13 @@ add_action('Flynt/afterRegisterComponents', function () {
         'fields' => [
             [
                 'label' => __('External Resource', 'flynt'),
+                'name' => 'externalResourceTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => __('External Resource', 'flynt'),
                 'instructions' => __('Use this link to link an external resource.', 'flynt'),
                 'name' => 'externalResourceLink',
                 'type' => 'link',
@@ -109,7 +116,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'collapsed' => '',
                 'layout' => 'block',
                 'button_label' => __('Add Author', 'flynt'),
-                'min' => 1,
+                'min' => 0,
                 'sub_fields' => [
                     [
                         'label' => __('Profile Picture', 'flynt'),
@@ -145,8 +152,24 @@ add_action('Flynt/afterRegisterComponents', function () {
                         'wrapper' =>  [
                             'width' => 25,
                         ]
-                    ]
+                    ],
                 ]
+            ],
+            [
+                'label' => __('Press Contact', 'flynt'),
+                'name' => 'pressContactTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => __('Display Press Contact', 'flynt'),
+                'name' => 'displayPressContact',
+                'type' => 'true_false',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => __('Yes', 'flynt'),
+                'ui_off_text' => __('No', 'flynt'),
             ],
         ],
         'location' => [
