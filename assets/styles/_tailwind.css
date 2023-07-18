@@ -122,9 +122,9 @@
     }
 
     ol {
-      list-style: decimal;
+      list-style: decimal-leading-zero;
       margin-block-end: 1em;
-      margin-left: 30px;
+      margin-left: 47px;
     }
 
     ul,
@@ -136,10 +136,15 @@
         line-height: normal;
         list-style: inherit;
         margin-block-end: 1em;
+        padding-left: 15px;
 
         @screen lg {
           font-size: 1.563rem;
           line-height: normal;
+        }
+
+        &::marker {
+          font-weight: bold;
         }
 
         &:last-child {
