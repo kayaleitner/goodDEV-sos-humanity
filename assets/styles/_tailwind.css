@@ -17,16 +17,16 @@
     text-rendering: optimizeSpeed;
   }
 
-  .font-family-mono {
+  .font-mono {
     font-family: 'Aeonik Mono', Courier, monospace;
   }
 
-  .font-family-sans {
+  .font-sans {
     font-family: 'Aeonik', Verdana, sans-serif;
   }
 
   .font-body {
-    @apply font-family-sans;
+    @apply font-sans;
     font-size: 1.25rem;
     letter-spacing: 0.75px;
     line-height: normal;
@@ -138,7 +138,7 @@
     ul,
     ol {
       li {
-        @apply font-family-sans;
+        @apply font-sans;
         font-size: 1.25rem;
         letter-spacing: 0.75px;
         line-height: normal;
