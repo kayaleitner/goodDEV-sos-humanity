@@ -413,8 +413,26 @@
       form {
         align-items: flex-start;
         display: flex;
+        flex-flow: column wrap;
         justify-content: flex-start;
         width: 100%;
+
+        @screen sm {
+          flex-flow: row wrap;
+        }
+
+        .wpcf7-response-output {
+          @screen sm {
+            position: absolute;
+            right: calc(50% - 325px);
+            top: 550px;
+            width: 301px;
+          }
+
+          @screen lg {
+            top: 630px; 
+          }
+        }
       }
 
       &-list-item {
