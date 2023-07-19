@@ -3,10 +3,10 @@ import './scripts/loadCustomElements'
 import './scripts/custom'
 import Alpine from 'alpinejs'
 import FlyntComponent from './scripts/FlyntComponent'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import 'lazysizes'
 import scrollTrigger from './scripts/scrollTrigger'
+import lazySizes from 'lazysizes'
+
+lazySizes.cfg.preloadAfterLoad = true
 
 if (import.meta.env.DEV) {
   import('@vite/client')
@@ -20,7 +20,7 @@ import.meta.glob([
   '!**/*.php',
   '!**/*.twig',
   '!**/screenshot.png',
-  '!**/*.md'
+  '!**/*.md',
 ])
 
 window.customElements.define('flynt-component', FlyntComponent)
@@ -28,5 +28,3 @@ window.customElements.define('flynt-component', FlyntComponent)
 window.Alpine = Alpine
 Alpine.data('scrollTrigger', scrollTrigger)
 Alpine.start()
-
-gsap.registerPlugin(ScrollTrigger)
