@@ -28,7 +28,7 @@
         {% if loop.index == 1 %} sm:mt-[-100vh] {% endif %}
       ">
         <div data-refs="left" class="sm:absolute w-[100vw] sm:w-full h-1/2 sm:h-full sm:[clip-path:inset(0_49.9%_0_0)] left">
-          <picture class="h-full {% if loop.index != 2 %} hidden sm:block {% endif %}">
+          <picture class="h-full {% if loop.index != 2 %} hidden sm:block {% endif %} relative">
             <source 
               data-srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               media="(min-width: 768px)"
@@ -41,13 +41,14 @@
               data-object-fit="cover"
               alt="{{ slide.image.alt|e }}"
             />
+            <div id="overlay" class="
+              absolute top-0 left-0 sm:block 
+              h-full w-full
+              bg-black/40
+              z-10 
+            "></div>
           </picture>
-          <div id="overlay" class="
-            absolute top-0 left-0 hidden sm:block 
-            h-full w-full
-            bg-black/40
-            z-10 
-          "></div>
+          
           <div data-refs="text_{{loop.index}}" class="
             max-w-screen-lg mx-auto w-full
             h-full sm:h-screen
@@ -72,7 +73,7 @@
           </div>
         </div>
         <div data-refs="right" class="sm:absolute w-full h-1/2 sm:h-full sm:[clip-path:inset(0_0_0_50%)] translate-y-0">
-          <picture class="h-full {% if loop.index == 2 %} hidden sm:block {% endif %}">
+          <picture class="h-full {% if loop.index == 2 %} hidden sm:block {% endif %} relative">
             <source 
               data-srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
               media="(min-width: 768px)"
@@ -85,6 +86,12 @@
               data-object-fit="cover"
               alt="{{ slide.image.alt|e }}"
             />
+            <div id="overlay" class="
+              absolute top-0 left-0 md:hidden 
+              h-full w-full
+              bg-black/40
+              z-10 
+            "></div>
           </picture>
           <div id="overlay" class="
             absolute top-0 left-0 hidden sm:block 
