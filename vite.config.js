@@ -8,7 +8,6 @@ const fontFileNames = [
   'AeonikPro-Regular.woff2',
   'AeonikPro-Bold.woff2',
   'AeonikMono-Bold.woff2',
-  '_fonts.css',
 ]
 
 export default defineConfig(({ mode }) => {
