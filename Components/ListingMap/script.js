@@ -1,16 +1,6 @@
-import DottedMap, { getMapJSON } from 'dotted-map'
-
-const mapDesktop = getMapJSON({
-  height: (108 * 9) / 16,
-  width: 108,
-  grid: 'vertical'
-})
-
-const mapMobile = getMapJSON({
-  height: (72 * 9) / 16,
-  width: 72,
-  grid: 'vertical'
-})
+import DottedMap from 'dotted-map'
+import mapDesktop from '../../assets/images/mapDesktop.json'
+import mapMobile from '../../assets/images/mapMobile.json'
 
 export default function (listingMap) {
   // find the project which is the highest and set the min height of the map to that
@@ -20,7 +10,7 @@ export default function (listingMap) {
 
   const heightArray = []
   heightArray.push(projectArray[0].offsetHeight)
-  for (let i = 1; i < projects.length; i++) {
+  for (let i = 1; i < projects.length; i += 1) {
     projectArray[i].style.display = 'block'
     heightArray.push(projectArray[i].offsetHeight)
     projectArray[i].style.display = 'none'
@@ -28,7 +18,7 @@ export default function (listingMap) {
 
   const maxHeight = Math.max(...heightArray)
 
-  projectList.style.height = `${maxHeight  }px`
+  projectList.style.height = `${maxHeight}px`
 
   // TODO: on resize, update the height of the map
   // possibly reload complete component or js on resize, because dots on map are not responsive
@@ -48,7 +38,7 @@ export default function (listingMap) {
   const svgMap = map.getSVG({
     radius: 0.36,
     color: '#aaaaaa',
-    shape: 'circle'
+    shape: 'circle',
   })
 
   document.getElementById('dottedMap').innerHTML = svgMap
@@ -61,11 +51,11 @@ export default function (listingMap) {
     if (latitude && longitude) {
       const pinCoords = map.getPin({
         lat: parseFloat(latitude),
-        lng: parseFloat(longitude)
+        lng: parseFloat(longitude),
       })
 
-      pin.style.left = `${(pinCoords.x * 100) / mapWidth  }%`
-      pin.style.top = `${(pinCoords.y * 100) / mapHeight  }%`
+      pin.style.left = `${(pinCoords.x * 100) / mapWidth}%`
+      pin.style.top = `${(pinCoords.y * 100) / mapHeight}%`
     } else {
       pin.style.opacity = 0
     }
