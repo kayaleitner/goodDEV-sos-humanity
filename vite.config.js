@@ -1,8 +1,15 @@
 import { defineConfig, loadEnv } from 'vite'
-import { dest, entries, host, watchFiles } from './build-config.js'
+import { dest, entries, host, watchFiles } from './build-config'
 import flynt from './vite-plugin-flynt'
 import FullReload from 'vite-plugin-full-reload'
 import fs from 'fs'
+
+const fontFileNames = [
+  'AeonikPro-Regular.woff2',
+  'AeonikPro-Bold.woff2',
+  'AeonikMono-Bold.woff2',
+  '_fonts.css',
+]
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -37,6 +44,12 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         // overwrite default .html entry
         input: entries,
+        output: {
+          assetFileNames: (file) =>
+            fontFileNames.includes(file.name)
+              ? `assets/[name].[ext]`
+              : `assets/[name]-[hash].[ext]`,
+        },
       },
     },
   }
