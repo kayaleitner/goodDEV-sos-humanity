@@ -21,6 +21,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\BlockGridCards\getACFLayout(),
+                    Components\HeroContactForm\getACFLayout(),
                     Components\ListingInsights\getACFLayout(),
                     Components\ListingProjects\getACFLayout(),
                     Components\ListComponents\getACFLayout(),
