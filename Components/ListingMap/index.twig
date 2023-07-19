@@ -113,7 +113,7 @@
           </button>
         </div>
         <!-- Project -->
-        <div class="project-list overflow-hidden w-100 h-100" 
+        <ul class="project-list overflow-hidden w-100 h-100" 
           x-for="(project, index) in projects" 
           :key="project.index">
           {% for post in projects %}
@@ -136,7 +136,7 @@
               {% include 'Components/_Atoms/Cards/project.twig' with { 'post': post, 'labels': labels } only %}
           </div>
           {% endfor %}
-        </div>
+        </ul>
       </div>
     </div>
   </div>
