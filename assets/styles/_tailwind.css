@@ -237,23 +237,31 @@
       }
 
       form {
-        align-items: center;
+        align-items: flex-start;
         display: flex;
-        justify-content: center;
+        flex-flow: column wrap;
+        justify-content: flex-start;
+        width: 100%;
+
+        .wpcf7-response-output {
+          margin-top: 50px;
+
+          @screen sm {
+          }
+
+          @screen lg {
+            
+          }
+        }
       }
 
       &-spinner {
         display: none;
       }
 
-      &-not-valid-tip {
+      .wpcf7-not-valid-tip {
         position: absolute;
-        top: 50px;
-      }
-
-      &-response-output {
-        bottom: 0;
-        position: absolute;
+        top: 55px;
       }
 
       input {
