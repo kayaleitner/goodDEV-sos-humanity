@@ -10,7 +10,7 @@ export default function (listingMap) {
 
   const heightArray = []
   heightArray.push(projectArray[0].offsetHeight)
-  for (let i = 1; i < projects.length; i += 1) {
+  for (let i = 1; i < projects.length; i++) {
     projectArray[i].style.display = 'block'
     heightArray.push(projectArray[i].offsetHeight)
     projectArray[i].style.display = 'none'
