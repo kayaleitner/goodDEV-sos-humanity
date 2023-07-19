@@ -9,6 +9,7 @@
  */
 
 #tinymce.wp-editor {
+  background-color: #cdcdcd;
   box-sizing: border-box;
   overflow-wrap: break-word;
   padding: 18px;
@@ -18,10 +19,6 @@
   *::before,
   *::after {
     box-sizing: inherit;
-  }
-
-  .mce-content-body {
-    background-color: #cdcdcd;
   }
 }
 
