@@ -7,6 +7,11 @@
         "configFile": false
       }
     },
+    "env": {
+      "browser": true,
+      "node": false,
+      "es6": true
+    },
     "extends": [
       "airbnb-base",
       "prettier"
