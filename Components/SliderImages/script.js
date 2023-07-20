@@ -4,14 +4,14 @@ import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
 
 Swiper.use([Navigation, A11y, Autoplay, Pagination])
 
-export default function (sliderImages) {
+export default (sliderImages) => {
   const refs = buildRefs(sliderImages)
   const data = getJSON(sliderImages)
   const swiper = initSlider(refs, data)
   return () => swiper.destroy()
 }
 
-function initSlider (refs, data) {
+function initSlider(refs, data) {
   const { options } = data
   const config = {
     modules: [Navigation, A11y, Autoplay],
@@ -20,16 +20,22 @@ function initSlider (refs, data) {
     pagination: {
       el: refs.pagination,
       type: 'bullets',
-      clickable: true
+      clickable: true,
     },
     navigation: {
       nextEl: refs.next,
-      prevEl: refs.prev
-    }
+      prevEl: refs.prev,
+    },
+    on: {
+      afterInit: () => {
+        // eslint-disable-next-line no-undef
+        ScrollTrigger?.refresh()
+      },
+    },
   }
   if (options.autoplay && options.autoplaySpeed) {
     config.autoplay = {
-      delay: options.autoplaySpeed
+      delay: options.autoplaySpeed,
     }
   }
 

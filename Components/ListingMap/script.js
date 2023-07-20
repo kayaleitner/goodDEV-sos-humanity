@@ -42,7 +42,6 @@ export default function (listingMap) {
   })
 
   document.getElementById('dottedMap').innerHTML = svgMap
-
   const pinRefs = document.querySelectorAll('[data-ref="pin"]')
 
   pinRefs.forEach((pin) => {
@@ -60,4 +59,7 @@ export default function (listingMap) {
       pin.style.opacity = 0
     }
   })
+
+  // eslint-disable-next-line no-undef
+  ScrollTrigger?.refresh()
 }
