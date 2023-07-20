@@ -20,5 +20,11 @@
       "no-console": "warn",
       // allow to change object properties especially in the DOM e.g. style.width = '100px'
       "no-param-reassign": ["error", { "props": false }],
+      "no-use-before-define": ["error", {
+        "functions": false,
+        "classes": true,
+        "variables": true,
+        "allowNamedExports": false
+      }]
     }
 }
