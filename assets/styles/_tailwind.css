@@ -118,7 +118,6 @@
       list-style: disc;
       margin-block-end: 1em;
       margin-left: 25px;
-
     }
 
     ol {
@@ -219,6 +218,13 @@
     @apply group-focus:bg-cbegreen;
   }
 
+  .button.button--arrow {
+    @apply hover:bg-cbegreen;
+    @apply focus:bg-cbegreen;
+    @apply group-hover:bg-cbegreen;
+    @apply group-focus:bg-cbegreen;
+  }
+
   flynt-component[name='BlockImageTextFull'] .icon svg {
     @apply scale-75;
     @apply -translate-x-[10px];
@@ -250,7 +256,6 @@
           }
 
           @screen lg {
-            
           }
         }
       }
@@ -438,7 +443,7 @@
           }
 
           @screen lg {
-            top: 630px; 
+            top: 630px;
           }
         }
       }
@@ -656,29 +661,6 @@ flynt-component[name='SliderText'] {
 }
 
 @layer variants {
-
-  .group:hover .button--link {
-    @apply bg-transparent;
-    @apply text-black;
-  }
-
-  .group:focus .button--link {
-    @apply bg-transparent;
-    @apply text-black;
-  }
-
-  .group:hover .button--arrow {
-    @apply border-transparent;
-    @apply bg-white;
-    @apply bg-cbegreen;
-  }
-
-  .group:focus .button--arrow {
-    @apply border-transparent;
-    @apply bg-white;
-    @apply bg-cbegreen;
-  }
-
   .group:hover .button--arrow::after {
     @apply ml-[5px];
   }
