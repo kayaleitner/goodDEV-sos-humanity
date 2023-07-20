@@ -31,7 +31,7 @@ export default function (listingMap) {
 
   const isMobile = window.innerWidth < 1025
 
-  const map = new DottedMap(JSON.parse(isMobile ? mapMobile : mapDesktop))
+  const map = new DottedMap(isMobile ? mapMobile : mapDesktop)
   const mapWidth = isMobile ? 72 : 108
   const mapHeight = isMobile ? (72 * 9) / 16 : (108 * 9) / 16
 
