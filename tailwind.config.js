@@ -15,16 +15,28 @@ module.exports = {
       3: '3px'
     },
     colors: {
+      /** Colors (Primitives) */
       white: '#fff',
       black: '#000',
+      current: 'currentColor',
+      transparent: 'transparent',
       cbegreen: '#169b83',
       blue: '#0c2569',
-      green: '#6FF79D',
-      lightgreen: '#7CD3B9',
-      lightgrey: '#D1D5DB',
+      green: '#6ff79d',
+      lightgreen: '#7cd3b9',
+      mint: '#59d6b8',
+      lightgrey: '#d1d5db',
       grey: '#7b838d',
-      current: 'currentColor',
-      transparent: 'transparent'
+      /** Colors (Tokens) */
+      defaultTextColor: '#000',
+      defaultBgColor: '#fff',
+      brandColor: '#169b83',
+      accentColor: '#6ff79d',
+      hoverColor: '#59d6b8',
+      borderColor: '#d1d5db',
+      uiColor: '#7b838d',
+      errorColor: '#f05252',
+      dangerColor: '#ffb900',
     },
     fontSize: {
       body: ['1.563rem', '140%'],
