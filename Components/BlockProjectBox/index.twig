@@ -2,7 +2,7 @@
   {# Map #}
   <div class="relative md:w-full mb-md">
     <div data-ref="mapWrapper" class="h-auto aspect-video relative" id="dottedMap"></div>
-    <div class="pin bg-cbegreen w-[25px] h-[25px] -translate-x-[12.5px] -translate-y-[12.5px] rounded-full absolute before:rounded-full before:content-none before:absolute"
+    <div class="pin bg-brandColor w-[25px] h-[25px] -translate-x-[12.5px] -translate-y-[12.5px] rounded-full absolute before:rounded-full before:content-none before:absolute"
       data-ref="pin"
       data-latitude="{{ post.coordinates.lat }}"
       data-longitude="{{ post.coordinates.lng }}"></div>
@@ -13,7 +13,7 @@
       {% if post.coordinates.city or post.coordinates.country %}
       <div class="py-sm first:pt-0 flex flex-row gap-lg justify-between items-center border-b border-black">
         <span class="text-captionMobile lg:text-caption">{{ labels.boxLocation }}</span>
-        <a href="{{ post.boxLocation }}" class="text-right button button--link text-bodyMobile lg:text-body underline decoration-black hover:decoration-green underline-offset-[6px]" target="_blank" rel="noreferrer noopener">
+        <a href="{{ post.boxLocation }}" class="text-right button button--link text-bodyMobile lg:text-body underline decoration-black hover:decoration-accentColor underline-offset-[6px]" target="_blank" rel="noreferrer noopener">
           {{ post.coordinates.city }},
           {{ post.coordinates.country }}
         </a>

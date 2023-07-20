@@ -64,10 +64,10 @@
           {% for item in get_posts(post.internalAuthorz) %}
             {% if post.internalAuthorz %}
               <div class="w-full pb-xs">
-                <a href="{{ item.link|e('esc_url') }}" class="item w-full py-xs flex flex-row gap-sm border-t border-lightgrey no-underline">
+                <a href="{{ item.link|e('esc_url') }}" class="item w-full py-xs flex flex-row gap-sm border-t border-borderColor no-underline group [&_img]:hover:scale-[1.15] [&_img]:hover:origin-center [&_img]:focus:scale-[1.15] [&_img]:focus:origin-center">
                   <figure class="figure w-1/3 aspect-square overflow-hidden">
                     <img
-                      class="lazyload aspect-square object-cover grayscale transition duration-200 ease-linear hover:lg:scale-[1.15] focus:lg:scale-[1.15] hover:lg:origin-center focus:lg:origin-center"
+                      class="lazyload aspect-square object-cover grayscale transition duration-200 ease-linear"
                       src="{{ item.thumbnail.src | resize(32) }}"
                       data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
                       data-sizes="auto"
@@ -79,7 +79,7 @@
                       <div class="text-bodyMobile lg:text-body">{{ item.position }}</div>
                     </div>
                     <div class="flex justify-end items-center">
-                      <div class="button button--arrow border-transparent bg-white bg-green"></div>
+                      <div class="button button--arrow"></div>
                     </div>
                   </div>
                 </a>
@@ -89,11 +89,11 @@
           {# External Author #}
           {% for item in post.authorz %}
             <div class="w-full pb-xs">
-              <a href="{{ item.authorLink }}" class="item w-full py-xs flex flex-row gap-sm border-t border-lightgrey no-underline" target="_blank" rel="noreferrer noopener">
+              <a href="{{ item.authorLink }}" class="item w-full py-xs flex flex-row gap-sm border-t border-borderColor no-underline group [&_img]:hover:scale-[1.15] [&_img]:hover:origin-center [&_img]:focus:scale-[1.15] [&_img]:focus:origin-center" target="_blank" rel="noreferrer noopener">
                 {% if item.authorImage %}
                   <figure class="figure w-1/3 aspect-square overflow-hidden">
                     <img
-                      class="lazyload aspect-square object-cover grayscale transition duration-200 ease-linear hover:lg:scale-[1.15] focus:lg:scale-[1.15] hover:lg:origin-center focus:lg:origin-center"
+                      class="lazyload aspect-square object-cover grayscale transition duration-200 ease-linear"
                       src="{{ item.authorImage.src | resize(32) }}"
                       data-srcset="{{function('wp_get_attachment_image_srcset', item.authorImage.id)}}"
                       data-sizes="auto"
@@ -108,7 +108,7 @@
                     </div>
                     {% if item.authorLink %}
                       <div class="flex justify-end items-center">
-                        <div class="button button--arrow border-transparent hover:bg-white hover:bg-green focus:bg-white focus:bg-green"></div>
+                        <div class="button button--arrow"></div>
                       </div>
                     {% endif %}
                   </div>
@@ -119,7 +119,7 @@
           {# Press Contact #}
           {% if post.displayPressContact %}
             <div class="w-full pb-xs">
-              <div class="item w-full py-xs flex flex-row gap-sm border-t border-lightgrey">
+              <a class="item w-full py-xs flex flex-row gap-sm border-t border-borderColor no-underline group" href="mailto:{{ contactEmail }}" target="_blank" rel="noreferrer noopener">
                 <div class="h-auto lg:h-auto w-full p-0 grow flex flex-row justify-start">
                   <div class="caption w-full flex flex-col justify-between gap-sm">
                     <div>
@@ -127,13 +127,11 @@
                       <div class="text-bodyMobile lg:text-body">{{ contactPosition }}</div>
                     </div>
                     <div class="flex justify-end items-center">
-                      <a class="download button button--outlineBlack" href="mailto:{{ contactEmail }}" target="_blank" rel="noreferrer noopener">
-                        {{ ContactButtonLabel }}
-                      </a>
+                      <div class="button button--card">{{ ContactButtonLabel }}</div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           {% endif %}
         </div>

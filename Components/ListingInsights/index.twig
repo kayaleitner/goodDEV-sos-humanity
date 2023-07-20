@@ -15,7 +15,7 @@
       {% endif %}
       <ul class="w-full mx-auto gap-0 sm:gap-md grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
         {% for post in posts %}
-          <li class="border-b border-lightgrey fade-in move-up post py-sm md:py-0 w-full">
+          <li class="border-b border-borderColor fade-in move-up post py-sm md:py-0 w-full">
             {% if post.externalResourceLink %}
               <a class="h-full no-underline" href="{{ post.externalResourceLink.url }}" {% if post.externalResourceLink.target %} target="{{ post.externalResourceLink.target }}" rel="noreferrer noopener"{% endif %}>
             {% else %}

@@ -1,8 +1,8 @@
 <li class="fade-in move-up post w-full">
-  <a class="flex flex-col h-full no-underline group" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
+  <a class="flex flex-col h-full no-underline group [&_img]:hover:scale-[1.15] [&_img]:hover:origin-center [&_img]:focus:scale-[1.15] [&_img]:focus:origin-center" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
     {% if post.thumbnail %}
       <figure class="figure block overflow-hidden">
-        <img class="hover:scale-[1.15] hover:origin-center focus:scale-[1.15] focus:origin-center lazyload aspect-square object-cover transition duration-200 ease-linear"
+        <img class="lazyload aspect-square object-cover transition duration-200 ease-linear"
           src="{{  post.thumbnail.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
           data-sizes="auto"

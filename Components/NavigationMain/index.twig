@@ -14,19 +14,19 @@
         <div
           id="ctaMenu"
           class="hidden [@media(min-width:1160px)]:flex justify-center items-start relative z-[9999]
-          [&_a]:bg-white [&_a]:hover:bg-green [&_a]:text-black
+          [&_a]:bg-white [&_a]:hover:bg-accentColor [&_a]:text-black
         ">
           {% include 'Partials/_cta.twig' %}
         </div>
       </div>
     </div>
     {# this is just for tailwind blabla #}
-    <div class="hidden bg-white/50 backdrop-blur-xl text-grey text-white text-black bg-white bg-green bg-cbegreen [&_a]:bg-green [&_a]:hover:bg-cbegreen [&_a]:hover:text-white"></div>
+    <div class="hidden bg-white/50 backdrop-blur-xl text-uiColor text-white text-black bg-white bg-accentColor bg-brandColor [&_a]:bg-accentColor [&_a]:hover:bg-brandColor [&_a]:hover:text-white"></div>
   </nav>
 </flynt-component>
 <div id="ctaMain"
   class="fixed hidden sm:block [@media(min-width:1160px)]:hidden z-[9999] bottom-lg right-lg
-  [&>a]:bg-green [&>a]:text-black [&>a]:hover:bg-cbegreen [&>a]:hover:text-white
+  [&>a]:bg-accentColor [&>a]:text-black [&>a]:hover:bg-brandColor [&>a]:hover:text-white
 ">
   {% include 'Partials/_cta.twig' %}
 </div>

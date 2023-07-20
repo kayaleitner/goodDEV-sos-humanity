@@ -14,7 +14,7 @@
   {% for item in items %}
     {# regular menu item #}
     {% if not item.children %}
-      <li data-item="{{loop.index}}" class="h-fit px-sm item {{- item.current ? ' current-menu-item text-green' }}">
+      <li data-item="{{loop.index}}" class="h-fit px-sm item {{- item.current ? ' current-menu-item text-accentColor' }}">
         <a class="link text-body block no-underline text-white py-sm border-b border-white font-normal"  href="{{ item.link|e('esc_url') }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
@@ -22,9 +22,9 @@
     {% endif %}
     {# menu with submenu item #}
     {% if item.children %}
-      <li data-item="{{loop.index}}" class="h-fit item px-sm open-submenu {{- item.current ? ' current-menu-item text-green' }}" >
+      <li data-item="{{loop.index}}" class="h-fit item px-sm open-submenu {{- item.current ? ' current-menu-item text-accentColor' }}" >
         <button @click="activeSubmenu = {{loop.index}}" 
-          class="tab-control text-body w-full py-sm text-white border-b border-white link inline-block no-underline hover:text-green transition-all duration-200" 
+          class="tab-control text-body w-full py-sm text-white border-b border-white link inline-block no-underline hover:text-accentColor transition-all duration-200" 
           :class="{ 'open': activeSubmenu === {{loop.index}} }"
           >
           {{ item.title }}
@@ -49,7 +49,7 @@
               <span class="body px-sm flex items-center justify-center w-2/4 text-center">{{ item.title }}</span>
             </div>
           {% for subitem in item.children %}
-            <li class="h-fit px-sm item {{- subitem.current ? ' current-menu-item text-green' }} {{ subitem.classes|join(' ') }}">
+            <li class="h-fit px-sm item {{- subitem.current ? ' current-menu-item text-accentColor' }} {{ subitem.classes|join(' ') }}">
               <a class="link text-body w-full py-sm text-white font-normal border-b border-white inline-block no-underline text-currentColor transition-all duration-200" data-ref="menuButton" href="{{ subitem.link|e('esc_url') }}">{{ subitem.title }}</a>
             </li>
           {% endfor %}
@@ -59,7 +59,7 @@
   {% endfor %}
   <div class="absolute bottom-0 left-0 w-full p-sm flex justify-center">
     <a
-      class="button button--green"
+      class="button button--accentColor"
       href="{{ ctaLink.url }}"
       {% if ctaLink.target %} target="{{ ctaLink.target }}" rel="noreferrer noopener"{% endif %}
     >

@@ -183,7 +183,7 @@ function getConfig()
             //         ],
             //         [
             //             'title' => __('Brand Green', 'flynt'),
-            //             'classes' => 'text-cbegreen',
+            //             'classes' => 'text-brandColor',
             //             'selector' => 'hr'
             //         ],
             //         [
@@ -201,16 +201,6 @@ function getConfig()
             //             'classes' => 'text-lightgreen',
             //             'selector' => 'hr'
             //         ],
-            //         [
-            //             'title' => __('Light Grey', 'flynt'),
-            //             'classes' => 'text-lightgrey',
-            //             'selector' => 'hr'
-            //         ],
-            //         [
-            //             'title' => __('Grey', 'flynt'),
-            //             'classes' => 'text-grey',
-            //             'selector' => 'hr'
-            //         ]
             //     ]
             // ],
         ],

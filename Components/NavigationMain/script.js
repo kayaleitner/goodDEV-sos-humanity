@@ -51,11 +51,11 @@ export default function (el) {
               'text-white'
             )
             button.classList.remove(
-              '[&_a]:bg-green',
-              '[&_a]:hover:bg-cbegreen',
+              '[&_a]:bg-accentColor',
+              '[&_a]:hover:bg-brandColor',
               '[&_a]:hover:text-white',
               '[&_a]:bg-white',
-              '[&_a]:hover:bg-green'
+              '[&_a]:hover:bg-accentColor'
             )
 
             self.trigger.dataset?.navstyle?.includes('blur') &&
@@ -72,10 +72,10 @@ export default function (el) {
               ? el.classList.add('text-white')
               : el.classList.add('bg-white/50', 'text-black')
             self.trigger.dataset?.navstyle?.includes('dark')
-              ? button.classList.add('[&_a]:bg-white', '[&_a]:hover:bg-green')
+              ? button.classList.add('[&_a]:bg-white', '[&_a]:hover:bg-accentColor')
               : button.classList.add(
-                '[&_a]:bg-green',
-                '[&_a]:hover:bg-cbegreen',
+                '[&_a]:bg-accentColor',
+                '[&_a]:hover:bg-brandColor',
                 '[&_a]:hover:text-white'
               )
           }

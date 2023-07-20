@@ -201,28 +201,32 @@
     @apply border;
     @apply border-black;
     @apply hover:border-transparent;
-    @apply focus:border-transparent;
+    @apply focus:border-black;
     @apply group-hover:border-transparent;
-    @apply group-focus:border-transparent;
+    @apply group-focus:border-black;
     @apply bg-transparent;
-    @apply hover:bg-cbegreen;
-    @apply focus:bg-cbegreen;
-    @apply group-hover:bg-cbegreen;
-    @apply group-focus:bg-cbegreen;
+    @apply hover:bg-hoverColor;
+    @apply focus:bg-hoverColor;
+    @apply group-hover:bg-hoverColor;
+    @apply group-focus:bg-hoverColor;
   }
 
   .button.button--link {
-    @apply hover:bg-cbegreen;
-    @apply focus:bg-cbegreen;
-    @apply group-hover:bg-cbegreen;
-    @apply group-focus:bg-cbegreen;
+    @apply hover:bg-hoverColor;
+    @apply focus:bg-hoverColor;
+    @apply group-hover:bg-hoverColor;
+    @apply group-focus:bg-hoverColor;
+    @apply group-hover:border-transparent;
+    @apply group-focus:border-black;
   }
 
   .button.button--arrow {
-    @apply hover:bg-cbegreen;
-    @apply focus:bg-cbegreen;
-    @apply group-hover:bg-cbegreen;
-    @apply group-focus:bg-cbegreen;
+    @apply hover:bg-hoverColor;
+    @apply focus:bg-hoverColor;
+    @apply group-hover:bg-hoverColor;
+    @apply group-focus:bg-hoverColor;
+    @apply group-hover:border-transparent;
+    @apply group-focus:border-black;
   }
 
   flynt-component[name='BlockImageTextFull'] .icon svg {
@@ -360,7 +364,7 @@
 
     button {
       &.active {
-        @apply bg-cbegreen;
+        @apply bg-brandColor;
         @apply w-[25px];
         @apply h-[25px];
         @apply -translate-x-[12.5px];
@@ -525,7 +529,6 @@
         @apply gap-sm;
         @apply items-center;
         @apply no-underline;
-        @apply -mt-[10px];
         @apply px-sm;
         @apply py-xs;
         @apply lg:px-md;
@@ -540,12 +543,14 @@
         @apply w-fit;
         @apply z-50;
         @apply bg-white;
-        @apply hover:bg-black;
+        @apply hover:bg-hoverColor;
+        @apply focus:bg-hoverColor;
         @apply text-black;
-        @apply hover:text-white;
+        @apply hover:text-black;
         @apply border;
         @apply border-black;
         @apply hover:border-transparent;
+        @apply focus:border-black;
       }
     }
   }

@@ -138,8 +138,8 @@ table {
   }
 
   &--green {
-    @apply bg-green;
-    @apply hover:bg-cbegreen;
+    @apply bg-accentColor;
+    @apply hover:bg-hoverColor;
     @apply text-black;
     @apply hover:text-white;
 
@@ -153,8 +153,8 @@ table {
     @apply border-white;
     @apply hover:border-transparent;
     @apply active:border-transparent;
-    @apply hover:bg-cbegreen;
-    @apply active:bg-cbegreen;
+    @apply hover:bg-hoverColor;
+    @apply active:bg-hoverColor;
     @apply text-white;
     @apply border;
     @apply bg-transparent;
@@ -164,9 +164,9 @@ table {
     @apply border-black;
     @apply hover:border-transparent;
     @apply active:border-black;
-    @apply hover:bg-cbegreen;
+    @apply hover:bg-hoverColor;
     @apply text-black;
-    @apply hover:text-white;
+    @apply hover:text-black;
     @apply border;
     @apply bg-transparent;
   }
@@ -188,8 +188,8 @@ table {
     @apply hover:bg-white;
     @apply border;
     @apply bg-transparent;
-    @apply hover:bg-cbegreen;
-    @apply active:bg-cbegreen;
+    @apply hover:bg-hoverColor;
+    @apply active:bg-hoverColor;
     @apply h-[45px];
     @apply justify-center;
     @apply p-0;
