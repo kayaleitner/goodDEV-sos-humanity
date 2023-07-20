@@ -17,6 +17,8 @@
       "prettier"
     ],
     "rules": {
-      "no-console": "warn"
+      "no-console": "warn",
+      // allow to change object properties especially in the DOM e.g. style.width = '100px'
+      "no-param-reassign": ["error", { "props": false }],
     }
 }
