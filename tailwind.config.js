@@ -18,21 +18,11 @@ module.exports = {
     },
     colors: {
       /** Colors (Primitives) */
-      white: '#fff',
-      black: '#000',
       current: 'currentColor',
       transparent: 'transparent',
-      cbegreen: '#169b83',
-      blue: '#0c2569',
-      greenfluo: '#6ff79d',
-      lightgreen: '#7cd3b9',
-      mint: '#59d6b8',
-      lightgrey: '#d1d5db',
-      grey: '#7b838d',
-
       /** Colors (Tokens) */
-      defaultTextColor: palette.black,
-      defaultBgColor: palette.white,
+      textColor: palette.black,
+      bgColor: palette.white,
       brandColor: palette.cbegreen,
       accentColor: palette.greenfluo,
       hoverColor: palette.mint,
@@ -64,6 +54,15 @@ module.exports = {
       lg: '1280px',
       xl: '1440px',
       max: '1600px'
+    },
+    variables: {
+      DEFAULT: {
+        colors: {
+          red: {
+            50: '#ff3232',
+          },
+        },
+      },
     },
     extend: {
       aspectRatio: {
