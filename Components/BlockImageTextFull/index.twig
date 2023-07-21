@@ -6,7 +6,7 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
 <div class="sm:h-[600px] lg:h-[900px] flex {% if imagePosition is defined and imagePosition == 'left' %}flex-col-reverse sm:flex-row{% elseif imagePosition is defined and imagePosition == 'right' %}flex-col-reverse sm:flex-row-reverse{% else %}flex-col sm:flex-reverse{% endif %}"
-    style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
+    style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};">
     <figure class="w-full sm:w-1/2 overflow-hidden">
       {% if image %}
         <img class="lazyload w-full sm:h-[650px] lg:h-[950px] mt-[-2vw] object-cover aspect-square lg:aspect-3/4
@@ -23,7 +23,7 @@
     </figure>
     <div class="w-full sm:w-1/2 max-w-[800px] aspect-square lg:aspect-3/4 h-full flex flex-col gap-md justify-between
       p-sm xs:p-sm md:p-md lg:p-lg"
-      style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};">
+      style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};">
       <div class="sm:h-1/2 text-white flex justify-start">
         {% for icons in icon %}
           {# <div class="icon flex justify-start h-[80px] w-[80px] lg:h-[120px] svg-h-full svg-w-full">{{ icons.icon }}</div> #}

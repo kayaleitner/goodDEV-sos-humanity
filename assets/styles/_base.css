@@ -14,7 +14,7 @@
 
       &:hover,
       &:focus {
-        text-decoration-color: var(--green);
+        text-decoration-color: var(--hoverColor);
       }
     }
   }
@@ -42,7 +42,7 @@ code {
 
 blockquote,
 .blockquote {
-  border-inline-start: 5px solid var(--color-accent);
+  border-inline-start: 5px solid var(--brandColor);
   display: block;
   font-size: 1.44rem;
   font-style: italic;
@@ -137,11 +137,15 @@ table {
     @apply pointer-events-none;
   }
 
-  &--green {
+  &--accent {
     @apply bg-accentColor;
     @apply hover:bg-hoverColor;
+    @apply focus:bg-hoverColor;
+    @apply border-transparent;
+    @apply hover:border-transparent;
+    @apply focus:border-black;
     @apply text-black;
-    @apply hover:text-white;
+    
 
     &Big {
       @apply text-bodyMobile;

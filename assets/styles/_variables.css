@@ -54,7 +54,7 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --grey: #7b838d;
   --error: #f05252;
   --danger: #ffb900;
-
+  
   /* Colors (Tokens) */
   --defaultTextColor: var(--black); /* Default Text Color */
   --defaultBgColor: var(--white); /* Default Background Color */

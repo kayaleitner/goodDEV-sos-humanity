@@ -22,7 +22,7 @@ module.exports = {
       transparent: 'transparent',
       cbegreen: '#169b83',
       blue: '#0c2569',
-      green: '#6ff79d',
+      greenfluo: '#6ff79d',
       lightgreen: '#7cd3b9',
       mint: '#59d6b8',
       lightgrey: '#d1d5db',

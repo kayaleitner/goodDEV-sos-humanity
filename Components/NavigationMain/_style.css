@@ -8,7 +8,7 @@ flynt-component[name='NavigationMain'] {
         text-underline-offset: 8px;
 
         &:hover {
-          text-decoration-color: var(--lightgreen);
+          text-decoration-color: var(--hoverColor);
         }
       }
     }
@@ -19,7 +19,7 @@ flynt-component[name='NavigationMain'] {
     transform: translateX(100vw);
     
     &::after {
-      background-color: var(--secondary);
+      background-color: var(--brandColor);
       content: '';
       height: 100%;
       position: absolute;
@@ -42,7 +42,7 @@ flynt-component[name='NavigationMain'] {
         text-underline-offset: 8px;
 
         &:hover {
-          text-decoration-color: var(--lightgreen);
+          text-decoration-color: var(--hoverColor);
         }
       }
     }
@@ -66,7 +66,7 @@ flynt-component[name='NavigationMain'] {
       text-underline-offset: 8px;
 
       &:hover {
-        text-decoration-color: var(--lightgreen);
+        text-decoration-color: var(--hoverColor);
       }
     }
   }

@@ -27,7 +27,7 @@
           font-bold 
           link inline-block 
           no-underline text-currentColor 
-          hover:text-lightgreen underline-offset-4 
+          hover:text-hoverColor underline-offset-4 
           text-currentColor 
           transition-all duration-200 
           relative z-[9999]" 
@@ -46,7 +46,7 @@
           text-buttonSmall
           max:text-button
           font-bold link inline-block
-          hover:text-lightgreen no-underline underline-offset-4 
+          hover:text-hoverColor no-underline underline-offset-4 
           transition-all duration-200 relative z-[9999]" 
           :class="{
             'open': activeSubmenu === {{loop.index}},
@@ -69,7 +69,7 @@
         >
           <ul
             class="submenu rounded-l-[30px] h-full pt-xxl pr-md pb-auto pl-lg"
-            style="background: var(--secondary);"
+            style="background: var(--brandColor);"
           >
             {% for subitem in item.children %}
               <li 
@@ -79,7 +79,7 @@
                   class="
                     submenuItemLink link titleSmall mb-sm text-white font-normal inline-block no-underline 
                     decoration-white decoration-4 underline-offset-8 
-                    text-currentColor hover:text-lightgreen 
+                    text-currentColor hover:text-hoverColor 
                     transition-all duration-200
                     opacity-0
                   "

@@ -2,7 +2,7 @@
   load:on="idle"
   name="HeroContactForm"
   style="
-    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %};
   "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}

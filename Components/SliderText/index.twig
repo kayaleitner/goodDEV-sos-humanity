@@ -35,7 +35,7 @@
         class="block xs:hidden slider-pagination swiper-pagination-fraction"></div>
       <div class="swiper-wrapper box box-inherit">
         {% for box in contentBoxes %}
-          <div class="box-border fade-in move-up gap-[40px] overflow-hidden min-h-[450px] relative w-full !h-auto item swiper-slide p-sm lg:p-md lg:mr-md !flex flex-col justify-between" style="background-color: {% if box.colorBackground %}{{ box.colorBackground }}{% else %}var(--secondary){% endif %}; color:{% if box.colorText %}{{ box.colorText }}{% else %}var(--white){% endif %};">
+          <div class="box-border fade-in move-up gap-[40px] overflow-hidden min-h-[450px] relative w-full !h-auto item swiper-slide p-sm lg:p-md lg:mr-md !flex flex-col justify-between" style="background-color: {% if box.colorBackground %}{{ box.colorBackground }}{% else %}var(--brandColor){% endif %}; color:{% if box.colorText %}{{ box.colorText }}{% else %}var(--white){% endif %};">
             <div class="block xs:hidden pt-[90px]"></div>
             {% if box.panelTextbox %}
               <div class="wysiwyg">{{ box.panelTextbox|e('wp_kses_post') }}</div>

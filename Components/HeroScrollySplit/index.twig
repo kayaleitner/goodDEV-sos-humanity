@@ -14,7 +14,7 @@
       h-screen w-full
       overflow-hidden
     "
-    style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--secondary){% endif %};"
+    style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};"
   >
     {% set images = [slides[1], slides[0], slides[1]] %}
     {% for slide in images %}

@@ -193,7 +193,7 @@ function getConfig()
             //         ],
             //         [
             //             'title' => __('Green', 'flynt'),
-            //             'classes' => 'text-green',
+            //             'classes' => 'text-greenfluo',
             //             'selector' => 'hr'
             //         ],
             //         [
