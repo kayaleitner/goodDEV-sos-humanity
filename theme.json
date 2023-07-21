@@ -46,8 +46,8 @@
     }
   },
   "styles": {
-		"spacing": {
-			"blockGap": "var(--flow-space)"
-		}
-	}
+    "spacing": {
+      "blockGap": "var(--flow-space)"
+    }
+  }
 }
