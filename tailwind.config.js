@@ -1,3 +1,5 @@
+import { palette } from './colors.json'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -27,14 +29,15 @@ module.exports = {
       mint: '#59d6b8',
       lightgrey: '#d1d5db',
       grey: '#7b838d',
+
       /** Colors (Tokens) */
-      defaultTextColor: '#000',
-      defaultBgColor: '#fff',
-      brandColor: '#169b83',
-      accentColor: '#6ff79d',
-      hoverColor: '#59d6b8',
-      borderColor: '#d1d5db',
-      uiColor: '#7b838d',
+      defaultTextColor: palette.black,
+      defaultBgColor: palette.white,
+      brandColor: palette.cbegreen,
+      accentColor: palette.greenfluo,
+      hoverColor: palette.mint,
+      borderColor: palette.lightgrey,
+      uiColor: palette.grey,
       errorColor: '#f05252',
       dangerColor: '#ffb900',
     },

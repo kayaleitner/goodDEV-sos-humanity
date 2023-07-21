@@ -79,17 +79,29 @@ function getBlockFormats($blockFormats)
 
 function getConfig()
 {
+
+    $json_file_path = get_template_directory() . '/colors.json';
+    $palette = json_decode(file_get_contents($json_file_path), true)['palette'];
+
+    // Reformat the 'palette' array into the desired format using array_map
+    $reformatted = array_map(
+        function ($colorValue, $colorName) {
+            // Convert color name to uppercase
+            $colorName = strtoupper($colorName);
+            // Remove the '#' symbol from the color value
+            $colorValue = ltrim($colorValue, '#');
+            // Return the values in the desired order
+            return array($colorValue, $colorName);
+        },
+        $palette,
+        array_keys($palette)
+    );
+    // Flatten the array to get the final result
+    $mce_colormap = array_merge(...$reformatted);
+
+
     return [
-        'textcolor_map' => [
-            '000', 'Black',
-            'fff', 'White',
-            '0C2569', 'Blue',
-            '169b83', 'CBEgreen',
-            '6ff69d', 'Green',
-            '7cd3b9', 'Light Green',
-            'd1d5db', 'Light Grey',
-            '7b838d', 'Grey'
-        ],
+        'textcolor_map' => $mce_colormap,
         'blockformats' => [
             __('Paragraph', 'flynt') => 'p',
             __('Heading 1', 'flynt') => 'h1',
