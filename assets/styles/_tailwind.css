@@ -8,7 +8,7 @@
    * EDIT TEXT STYLES HERE */
 
   html {
-    color: var(--black);
+    color: var(--textColor);
     font-family: 'Aeonik', Verdana, sans-serif;
     font-size: 16px;
     -moz-osx-font-smoothing: grayscale;
@@ -197,13 +197,13 @@
   ONLY USE SMALL, HIGHLY REUSABLE COMPONENTS (ATOMS) LIKE BUTTONS OR FORMS CONTROLS */
 
   .button.button--card {
-    @apply text-black;
+    @apply text-current;
     @apply border;
-    @apply border-black;
+    @apply border-current;
     @apply hover:border-transparent;
-    @apply focus:border-black;
+    @apply focus:border-current;
     @apply group-hover:border-transparent;
-    @apply group-focus:border-black;
+    @apply group-focus:border-current;
     @apply bg-transparent;
     @apply hover:bg-hoverColor;
     @apply focus:bg-hoverColor;
@@ -217,7 +217,7 @@
     @apply group-hover:bg-hoverColor;
     @apply group-focus:bg-hoverColor;
     @apply group-hover:border-transparent;
-    @apply group-focus:border-black;
+    @apply group-focus:border-textColor;
   }
 
   .button.button--arrow {
@@ -226,7 +226,7 @@
     @apply group-hover:bg-hoverColor;
     @apply group-focus:bg-hoverColor;
     @apply group-hover:border-transparent;
-    @apply group-focus:border-black;
+    @apply group-focus:border-textColor;
   }
 
   flynt-component[name='BlockImageTextFull'] .icon svg {
@@ -283,13 +283,13 @@
           @apply px-sm;
           @apply py-xs;
           @apply border-l;
-          @apply border-white;
+          @apply border-bgColor;
           @apply cursor-pointer;
           @apply rounded-r-full;
           @apply rounded-l-none;
-          @apply hover:bg-white;
-          @apply text-white;
-          @apply hover:text-black;
+          @apply hover:bg-bgColor;
+          @apply text-bgColor;
+          @apply hover:text-textColor;
           @apply transition-all;
         }
       }
@@ -376,7 +376,7 @@
         z-index: 9999;
 
         &::before {
-          border: 2px solid var(--white);
+          border: 2px solid var(--bgColor);
           border-radius: 100%;
           bottom: 2px;
           content: '';
@@ -386,7 +386,7 @@
           top: 2px;
 
           @screen md {
-            border: 3px solid var(--white);
+            border: 3px solid var(--bgColor);
             border-radius: 100%;
             bottom: 3px;
             content: '';
@@ -423,7 +423,7 @@
       justify-content: flex-start;
 
       label {
-        color: var(--black);
+        color: var(--textColor);
         @apply mb-[5px];
       }
 
@@ -488,11 +488,11 @@
       [type='password'],
       textarea {
         appearance: none;
-        background-color: var(--white);
-        border: 2px solid var(--black);
+        background-color: var(--bgColor);
+        border: 2px solid var(--textColor);
         border-radius: 0;
-        caret-color: var(--black);
-        color: var(--black);
+        caret-color: var(--textColor);
+        color: var(--textColor);
         font-size: var(--body-font-size-small);
         max-width: 100%;
         outline: none;
@@ -501,7 +501,7 @@
         width: 100%;
 
         &::placeholder {
-          color: var(--black);
+          color: var(--textColor);
           opacity: 0.5;
         }
 
@@ -542,15 +542,15 @@
         @apply h-fit;
         @apply w-fit;
         @apply z-50;
-        @apply bg-white;
+        @apply bg-bgColor;
         @apply hover:bg-hoverColor;
         @apply focus:bg-hoverColor;
-        @apply text-black;
-        @apply hover:text-black;
+        @apply text-textColor;
+        @apply hover:text-textColor;
         @apply border;
-        @apply border-black;
+        @apply border-textColor;
         @apply hover:border-transparent;
-        @apply focus:border-black;
+        @apply focus:border-textColor;
       }
     }
   }
@@ -561,7 +561,7 @@
 flynt-component[name='SliderImages'] {
   .swiper-pagination-bullet {
     background: transparent;
-    border: 2px solid var(--white);
+    border: 2px solid var(--bgColor);
     border-radius: 50%;
     display: inline-block;
     height: 15px !important;
@@ -570,7 +570,7 @@ flynt-component[name='SliderImages'] {
     width: 15px !important;
 
     &-active {
-      background: var(--white) !important;
+      background: var(--bgColor) !important;
       opacity: 1;
     }
   }
@@ -587,7 +587,7 @@ flynt-component[name='SliderText'] {
       @screen sm {
         svg {
           path {
-            fill: var(--black) !important;
+            fill: var(--textColor) !important;
           }
         }
       }

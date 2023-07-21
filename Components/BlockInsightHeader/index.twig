@@ -38,11 +38,11 @@
     {% if post.factBoxTitle %}
       <div class="facts w-full flex flex-col sm:flex-row lg:flex-col gap-lg items-center">
         {# Facts Box #}
-        <div class="caption w-full border border-black p-sm flex flex-col">
+        <div class="caption w-full border border-textColor p-sm flex flex-col">
           <span class="pb-sm font-bold border-b">{{ post.factBoxTitle }}</span>
           <div class="factsflex flex-col">
             {% for item in post.facts %}
-              <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-black">{{ item.factTextarea }}</div>
+              <div class="py-sm flex flex-row gap-lg justify-between items-center border-b border-textColor">{{ item.factTextarea }}</div>
             {% endfor %}
             {% if post.download %}
               <div class="pt-sm">

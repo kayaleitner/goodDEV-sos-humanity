@@ -1,11 +1,11 @@
-<flynt-component class="w-full" load:on="idle" name="SliderImages" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }} style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}bg-white{% endif %};">
+<flynt-component class="w-full" load:on="idle" name="SliderImages" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }} style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}bg-bgColor{% endif %};">
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div class="outer w-full max-w-screen-max mx-auto p-sm xs:p-sm md:p-md lg:p-lg">
     <div class="wrapper w-full lg:w-2/3">
       {% if blockTitle %}
         {% include 'Components/_Atoms/Titles/blockTitle.twig' with { 
           blockTitle: blockTitle,
-          blockTitleClasses: 'text-white pb-xl z-50',
+          blockTitleClasses: 'text-bgColor pb-xl z-50',
         } 
       %}
       {% endif %}
@@ -21,7 +21,7 @@
                   alt="{{ image.alt|e }}"
                 >
                 {% if image.caption %}
-                  <figcaption class="absolute bottom-0 right-0 max-w-[450px] overflow-hidden py-1 px-2 text-white bg-[#000000b3] z-[2]">{{ image.caption|e }}</figcaption>
+                  <figcaption class="absolute bottom-0 right-0 max-w-[450px] overflow-hidden py-1 px-2 text-bgColor bg-[#000000b3] z-[2]">{{ image.caption|e }}</figcaption>
                 {% endif %}
               </figure>
             </div>

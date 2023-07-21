@@ -24,7 +24,7 @@
     <div class="w-full sm:w-1/2 max-w-[800px] aspect-square lg:aspect-3/4 h-full flex flex-col gap-md justify-between
       p-sm xs:p-sm md:p-md lg:p-lg"
       style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};">
-      <div class="sm:h-1/2 text-white flex justify-start">
+      <div class="sm:h-1/2 text-bgColor flex justify-start">
         {% for icons in icon %}
           {# <div class="icon flex justify-start h-[80px] w-[80px] lg:h-[120px] svg-h-full svg-w-full">{{ icons.icon }}</div> #}
            {% include 'Components/_Atoms/icon.twig' with {
@@ -35,7 +35,7 @@
         {% endfor %}
       </div>
       <div class="h-1/2 pb-0 lg:pb-lg flex flex-col gap-md justify-end items-start fade-in move-up">
-        <div class="wysiwyg text-white">{{ contentHtml|e('wp_kses_post') }}</div>
+        <div class="wysiwyg text-bgColor">{{ contentHtml|e('wp_kses_post') }}</div>
         {% if link %}
           <a href="{{ link.url }}" class="button button--outlineBlackWhite">{{ link.title }}</a>
         {% endif %}

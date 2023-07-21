@@ -190,7 +190,7 @@ function getConfig()
             //     'items' => [
             //         [
             //             'title' => __('Black', 'flynt'),
-            //             'classes' => 'text-black',
+            //             'classes' => 'text-textColor',
             //             'selector' => 'hr'
             //         ],
             //         [
@@ -199,18 +199,8 @@ function getConfig()
             //             'selector' => 'hr'
             //         ],
             //         [
-            //             'title' => __('Blue', 'flynt'),
-            //             'classes' => 'text-blue',
-            //             'selector' => 'hr'
-            //         ],
-            //         [
             //             'title' => __('Green', 'flynt'),
-            //             'classes' => 'text-greenfluo',
-            //             'selector' => 'hr'
-            //         ],
-            //         [
-            //             'title' => __('Light Green', 'flynt'),
-            //             'classes' => 'text-lightgreen',
+            //             'classes' => 'text-accentColor',
             //             'selector' => 'hr'
             //         ],
             //     ]

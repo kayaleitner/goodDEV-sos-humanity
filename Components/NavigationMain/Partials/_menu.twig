@@ -13,7 +13,7 @@
     }
   })"
   :class="{
-    'text-white': activeSubmenu > 0,
+    'text-bgColor': activeSubmenu > 0,
   }" 
 >
   {% for item in items %}
@@ -77,8 +77,8 @@
                 >
                 <a
                   class="
-                    submenuItemLink link titleSmall mb-sm text-white font-normal inline-block no-underline 
-                    decoration-white decoration-4 underline-offset-8 
+                    submenuItemLink link titleSmall mb-sm text-bgColor font-normal inline-block no-underline 
+                    decoration-bgColor decoration-4 underline-offset-8 
                     text-currentColor hover:text-hoverColor 
                     transition-all duration-200
                     opacity-0

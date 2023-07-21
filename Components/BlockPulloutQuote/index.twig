@@ -1,16 +1,16 @@
 <flynt-component load:on="idle" name="BlockPulloutQuote" class="w-full py-lg"
-  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--white){% endif %};"
+  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};"
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
   <div class="outer w-full max-w-screen-max mx-auto px-sm md:px-md lg:px-lg flex flex-col">
     {% for item in quotes %}
     <div class="fade-in move-up pb-md xs:pb-lg">
       {% if item.borderTop %}
       <div class="h-[4px] w-full pb-sm md:pb-md"
-        style="border-top: 4px dotted {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--black){% endif %};"></div>
+        style="border-top: 4px dotted {% if options.colorSecondary %}{{ options.colorSecondary }}{% else %}var(--textColor){% endif %};"></div>
       {% endif %}
       {% if item.blockTitle %}
       <h2 class="w-full md:w-2/3 md:pr-[25px] leading-[1.2] subtitle block-title font-bold pb-sm md:pb-md"
-        style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--black){% endif %}; line-height: 1.2;">
+        style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %}; line-height: 1.2;">
         {{ item.blockTitle }}
       </h2>
       {% else %}

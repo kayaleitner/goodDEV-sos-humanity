@@ -1,4 +1,4 @@
-<flynt-component class="block md:hidden backdrop-blur-lg relative text-white" load:on="idle" load:on:media="(max-width: 1025px)" name="NavigationBurger">
+<flynt-component class="block md:hidden backdrop-blur-lg relative text-bgColor" load:on="idle" load:on:media="(max-width: 1025px)" name="NavigationBurger">
   <nav aria-label="{{ labels.ariaLabel|e }}">
     <div class="fixed top-0 left-0 z-[49] flex items-center justify-between p-sm w-full">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'logo_dark': logo_dark, 'site': site } only %}

@@ -44,7 +44,7 @@
             <div id="overlay" class="
               absolute top-0 left-0 sm:block 
               h-full w-full
-              bg-black/40
+              bg-textColor/40
               z-10 
             "></div>
           </picture>
@@ -60,7 +60,7 @@
             sm:opacity-0
             sm:bg-transparent
           "
-          style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
+          style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};">
             <h1 
               class="
                 hidden {% if slide.textSizeMobile is defined and slide.textSizeMobile == 'small' %}text-[1.875rem]{% elseif slide.textSizeMobile is defined and slide.textSizeMobile == 'big' %}text-[2.5rem]{% else %} text-[2.5rem]{% endif %}
@@ -89,14 +89,14 @@
             <div id="overlay" class="
               absolute top-0 left-0 md:hidden 
               h-full w-full
-              bg-black/40
+              bg-textColor/40
               z-10 
             "></div>
           </picture>
           <div id="overlay" class="
             absolute top-0 left-0 hidden sm:block 
             h-full w-full
-            bg-black/40
+            bg-textColor/40
             z-10
           "></div>
           <div data-refs="text_{{loop.index}}" class="
@@ -108,7 +108,7 @@
             sm:opacity-0 {% if loop.index != 2 %} opacity-0 {% endif %}
             sm:bg-transparent
           "
-          style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};">
+          style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};">
             <h1 
               class=" 
               {% if slide.textSizeMobile is defined and slide.textSizeMobile == 'small' %}text-[1.875rem]{% elseif slide.textSizeMobile is defined and slide.textSizeMobile == 'big' %}text-[2.5rem]{% endif %}
@@ -142,7 +142,7 @@
         <div
           id="dot-{{i}}"
           class="scrollyDot rounded-full m-2 aspect-square"
-          style="width:{{s}}px; background:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};"
+          style="width:{{s}}px; background:{% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};"
         ></div>
       {% endfor %}
     </div>

@@ -25,7 +25,7 @@
     {% endif %}
   </div>
   <div class="w-full max-w-screen-max mx-auto aspect-square xs:aspect-2/1 sm:aspect-auto flex flex-row justify-center items-center sm:absolute sm:left-1/2 sm:-translate-x-1/2">
-    <div class="w-full sm:w-1/2 h-full p-sm xs:p-md lg:p-lg grow text-white" style="background: var(--brandColor);">
+    <div class="w-full sm:w-1/2 h-full p-sm xs:p-md lg:p-lg grow text-bgColor" style="background: var(--brandColor);">
       <h2 class="text-titleSmallMobile sm:text-titleSmall font-bold mb-md">{{ post.title }}</h2>
       {% for term in post.terms('country')  %}
         <div class="text-subtitleMobile sm:text-subtitle">{{ term }}</div>

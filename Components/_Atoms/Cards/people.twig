@@ -3,7 +3,7 @@
     {% if post.thumbnail %}
       <div class="block">
         <figure class="figure overflow-hidden relative">
-          <div class="absolute w-full h-full z-10 opacity-5 bg-black"></div>
+          <div class="absolute w-full h-full z-10 opacity-5 bg-textColor"></div>
           <img class="aspect-square grayscale group-hover:scale-[1.15] group-hover:origin-center group-focus:scale-[1.15] group-focus:origin-center lazyload object-cover transition duration-200 ease-linear" 
             src="{{ post.thumbnail.src|resize(32) }}" 
             data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
@@ -13,7 +13,7 @@
         </figure>
       </div>
     {% endif %}
-    <div class="text-black h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+    <div class="text-textColor h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
       <div class="w-full flex flex-col gap-sm">
         <div class="w-full h-full p-sm flex flex-row justify-between gap-sm align-middle items-center border caption">
           <div>

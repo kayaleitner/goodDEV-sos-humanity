@@ -143,8 +143,8 @@ table {
     @apply focus:bg-hoverColor;
     @apply border-transparent;
     @apply hover:border-transparent;
-    @apply focus:border-black;
-    @apply text-black;
+    @apply focus:border-textColor;
+    @apply text-textColor;
     
 
     &Big {
@@ -154,42 +154,42 @@ table {
   }
 
   &--outlineWhite {
-    @apply border-white;
+    @apply border-bgColor;
     @apply hover:border-transparent;
     @apply active:border-transparent;
     @apply hover:bg-hoverColor;
     @apply active:bg-hoverColor;
-    @apply text-white;
+    @apply text-bgColor;
     @apply border;
     @apply bg-transparent;
   }
 
   &--outlineBlack {
-    @apply border-black;
+    @apply border-textColor;
     @apply hover:border-transparent;
-    @apply active:border-black;
+    @apply active:border-textColor;
     @apply hover:bg-hoverColor;
-    @apply text-black;
-    @apply hover:text-black;
+    @apply text-textColor;
+    @apply hover:text-textColor;
     @apply border;
     @apply bg-transparent;
   }
 
   &--outlineBlackWhite {
-    @apply border-white;
-    @apply active:border-black;
-    @apply hover:bg-white;
-    @apply text-white;
-    @apply hover:text-black;
+    @apply border-bgColor;
+    @apply active:border-textColor;
+    @apply hover:bg-bgColor;
+    @apply text-bgColor;
+    @apply hover:text-textColor;
     @apply border;
     @apply bg-transparent;
   }
 
   &--arrow {
-    @apply border-black;
+    @apply border-textColor;
     @apply hover:border-transparent;
-    @apply active:border-black;
-    @apply hover:bg-white;
+    @apply active:border-textColor;
+    @apply hover:bg-bgColor;
     @apply border;
     @apply bg-transparent;
     @apply hover:bg-hoverColor;
@@ -208,8 +208,8 @@ table {
   &--link {
     @apply bg-transparent;
     @apply hover:bg-transparent;
-    @apply text-black;
-    @apply hover:text-black;
+    @apply text-textColor;
+    @apply hover:text-textColor;
     @apply p-0;
     @apply w-max;
 
@@ -262,10 +262,10 @@ label {
 
 select {
   appearance: none;
-  background-color: var(--white);
-  border: 2px solid var(--black);
-  caret-color: var(--black);
-  color: var(--black);
+  background-color: var(--bgColor);
+  border: 2px solid var(--textColor);
+  caret-color: var(--textColor);
+  color: var(--textColor);
   cursor: pointer;
   outline: none;
   padding: 10px;
@@ -273,7 +273,7 @@ select {
   width: 100%;
 
   &::placeholder {
-    color: var(--white);
+    color: var(--bgColor);
   }
 
   &:disabled {
@@ -296,8 +296,8 @@ textarea {
   background-color: transparent;
   border: 0;
   border-radius: 9999px;
-  caret-color: var(--white);
-  color: var(--white);
+  caret-color: var(--bgColor);
+  color: var(--bgColor);
   font-size: var(--body-font-size-small);
   max-width: 300px;
   outline: none;
@@ -306,7 +306,7 @@ textarea {
   width: 100%;
 
   &::placeholder {
-    color: var(--white);
+    color: var(--bgColor);
   }
 
   &:disabled {
@@ -338,7 +338,7 @@ textarea {
 
 [type='checkbox'],
 [type='radio'] {
-  accent-color: var(--black);
+  accent-color: var(--textColor);
   display: inline-block;
   height: 20px;
   margin-block-start: 4px;

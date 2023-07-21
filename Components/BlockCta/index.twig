@@ -1,5 +1,5 @@
 <flynt-component load:on="idle" name="BlockCta" class="w-full"
-  style="background-color: {% if labels.options.colorBackground %}{{ labels.options.colorBackground }}{% else %}var(--white){% endif %};"
+  style="background-color: {% if labels.options.colorBackground %}{{ labels.options.colorBackground }}{% else %}var(--bgColor){% endif %};"
   {{ labels.options.navStyle ? 'data-navStyle="' ~ labels.options.navStyle ~ '"' }}>
   <div class="outer w-full max-w-screen-max mx-auto p-sm md:p-md lg:p-lg">
     <div class="wysiwyg wrapper hidden sm:block lg:w-2/3">

@@ -45,16 +45,16 @@ export default function (el) {
               logo.classList.remove('flex', 'hidden')
             )
             el.classList.remove(
-              'bg-white/50',
+              'bg-bgColor/50',
               'backdrop-blur-xl',
-              'text-black',
-              'text-white'
+              'text-textColor',
+              'text-bgColor'
             )
             button.classList.remove(
               '[&_a]:bg-accentColor',
               '[&_a]:hover:bg-brandColor',
-              '[&_a]:hover:text-white',
-              '[&_a]:bg-white',
+              '[&_a]:hover:text-bgColor',
+              '[&_a]:bg-bgColor',
               '[&_a]:hover:bg-accentColor'
             )
 
@@ -69,14 +69,14 @@ export default function (el) {
               : el.querySelector('.logo_light').classList.add('flex')
 
             self.trigger.dataset?.navstyle?.includes('dark')
-              ? el.classList.add('text-white')
-              : el.classList.add('bg-white/50', 'text-black')
+              ? el.classList.add('text-bgColor')
+              : el.classList.add('bg-bgColor/50', 'text-textColor')
             self.trigger.dataset?.navstyle?.includes('dark')
-              ? button.classList.add('[&_a]:bg-white', '[&_a]:hover:bg-accentColor')
+              ? button.classList.add('[&_a]:bg-bgColor', '[&_a]:hover:bg-accentColor')
               : button.classList.add(
                 '[&_a]:bg-accentColor',
                 '[&_a]:hover:bg-brandColor',
-                '[&_a]:hover:text-white'
+                '[&_a]:hover:text-bgColor'
               )
           }
         }
@@ -143,7 +143,7 @@ export default function (el) {
 $(document).ready(() => {
   $('.submenuItemLink').on('click', () => {
     $('.mainNavBlock').removeClass('backdrop-blur-xl')
-    $('.menu').removeClass('text-white')
+    $('.menu').removeClass('text-bgColor')
     $('.submenu-wrapper').removeClass('open')
     $('.submenu-wrapper').css('display', 'none')
     $('.tab-control').removeClass('open')

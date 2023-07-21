@@ -4,8 +4,8 @@
   class=""
   style="
     background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};
-    color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};
-    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--white){% endif %};
+    color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};
   "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
@@ -15,7 +15,7 @@
       <div class="max-w-screen-max w-full mx-auto pb-sm lg:pb-lg flex flex-row justify-between align-bottom items-end content-end">
         {% include 'Components/_Atoms/Titles/blockTitle.twig' with {
           blockTitle: blockTitle,
-          blockTitleColor: options.colorSecondary ?? 'var(--white)'
+          blockTitleColor: options.colorSecondary ?? 'var(--bgColor)'
         } %}
       </div>
     {% endif %}

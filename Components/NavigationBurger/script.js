@@ -74,10 +74,10 @@ export default function (el) {
               logo.classList.remove('flex', 'hidden')
             )
             el.classList.remove(
-              'bg-white/50',
+              'bg-bgColor/50',
               'backdrop-blur-lg',
-              'text-black',
-              'text-white',
+              'text-bltextColorack',
+              'text-bgColor',
               'hamburger-grey'
             )
 
@@ -92,8 +92,8 @@ export default function (el) {
               : el.querySelector('.logo_light').classList.add('flex')
 
             self.trigger.dataset?.navstyle?.includes('dark')
-              ? el.classList.add('text-white')
-              : el.classList.add('bg-white/50', 'text-black', 'hamburger-grey')
+              ? el.classList.add('text-bgColor')
+              : el.classList.add('bg-bgColor/50', 'text-textColor', 'hamburger-grey')
           }
         }
       }

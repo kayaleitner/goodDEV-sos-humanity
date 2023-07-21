@@ -15,7 +15,7 @@
     {# regular menu item #}
     {% if not item.children %}
       <li data-item="{{loop.index}}" class="h-fit px-sm item {{- item.current ? ' current-menu-item text-hoverColor' }}">
-        <a class="link text-body block no-underline text-white py-sm border-b border-white font-normal"  href="{{ item.link|e('esc_url') }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+        <a class="link text-body block no-underline text-bgColor py-sm border-b border-bgColor font-normal"  href="{{ item.link|e('esc_url') }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
       </li>
@@ -24,7 +24,7 @@
     {% if item.children %}
       <li data-item="{{loop.index}}" class="h-fit item px-sm open-submenu {{- item.current ? ' current-menu-item text-hoverColor' }}" >
         <button @click="activeSubmenu = {{loop.index}}" 
-          class="tab-control text-body w-full py-sm text-white border-b border-white link inline-block no-underline hover:text-hoverColor transition-all duration-200" 
+          class="tab-control text-body w-full py-sm text-bgColor border-b border-bgColor link inline-block no-underline hover:text-hoverColor transition-all duration-200" 
           :class="{ 'open': activeSubmenu === {{loop.index}} }"
           >
           {{ item.title }}
@@ -38,7 +38,7 @@
             x-transition:leave-end="opacity-0" 
             class="submenu fixed top-0 right-0 h-screen w-full pt-[80px] z-50 translate-x-full" style="background: var(--brandColor);"
             :class="{ 'open': activeSubmenu === {{loop.index}} }">
-            <div class="text-white py-sm flex flex-row border-b border-white">
+            <div class="text-bgColor py-sm flex flex-row border-b border-bgColor">
               <span @click="activeSubmenu = false" class="px-xs w-1/4">
               {% include 'Components/_Atoms/icon.twig' with {
                 icon: 'arrow-back-menu',
@@ -50,7 +50,7 @@
             </div>
           {% for subitem in item.children %}
             <li class="h-fit px-sm item {{- subitem.current ? ' current-menu-item text-hoverColor' }} {{ subitem.classes|join(' ') }}">
-              <a class="link text-body w-full py-sm text-white font-normal border-b border-white inline-block no-underline text-currentColor transition-all duration-200" data-ref="menuButton" href="{{ subitem.link|e('esc_url') }}">{{ subitem.title }}</a>
+              <a class="link text-body w-full py-sm text-bgColor font-normal border-b border-bgColor inline-block no-underline text-currentColor transition-all duration-200" data-ref="menuButton" href="{{ subitem.link|e('esc_url') }}">{{ subitem.title }}</a>
             </li>
           {% endfor %}
         </ul>
