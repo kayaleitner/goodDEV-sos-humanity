@@ -37,8 +37,8 @@ mm.add('(min-width: 780px)', () => {
     scrollTrigger: {
       trigger: '#scrollytelling-inner',
       endTrigger: '#scrollytelling',
-      start: 'top bottom',
-      end: `+=${height}%`,
+      start: '+150px top',
+      end: `bottom bottom`,
       scrub: true,
       id: 'points',
       markers: false,
@@ -46,7 +46,7 @@ mm.add('(min-width: 780px)', () => {
   })
 
   // eslint-disable-next-line no-unused-vars
-  function fullscreenListener () {
+  function fullscreenListener() {
     const state =
       document.fullScreen ||
       document.mozFullScreen ||
@@ -64,15 +64,15 @@ mm.add('(min-width: 780px)', () => {
       tl.from(
         elem.querySelector('.panelIllustration img'),
         { autoAlpha: 0 },
-        i
+        i - 1
       )
     }
 
     if (i !== points.length - 1) {
       tl.to(
         elem.querySelector('.panelIllustration img'),
-        { autoAlpha: 0 },
-        i + 0.75
+        { autoAlpha: 0, duration: 0.3 },
+        i
       )
     }
   })
