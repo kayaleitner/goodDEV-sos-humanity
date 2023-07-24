@@ -512,7 +512,7 @@
         }
 
         &:invalid {
-          border-color: var(--color-error);
+          border-color: var(--errorColor);
         }
       }
 

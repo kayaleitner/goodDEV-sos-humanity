@@ -32,7 +32,7 @@ hr {
 }
 
 code {
-  background: var(--color-background-secondary);
+  background: var(--bgColor);
   border-radius: 4px;
   display: inline-block;
   font-size: 0.95em;
@@ -53,7 +53,7 @@ blockquote,
   padding-inline-start: 0.8rem;
 
   footer {
-    color: var(--color-text-muted);
+    color: var(--uiColor);
     font-size: var(--body-font-size);
     margin-block-start: 0.25rem;
   }
@@ -66,14 +66,14 @@ blockquote,
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  color: var(--color-text);
+  color: var(--textColor);
   font-size: var(--body-font-size-small);
   max-width: 100%;
   width: 100%;
 
   caption {
     caption-side: bottom;
-    color: var(--color-text-muted);
+    color: var(--uiColor);
     margin-block-start: calc(var(--flow-space) / 2);
     text-align: start;
   }
@@ -86,7 +86,7 @@ table {
   }
 
   th {
-    color: var(--color-text-muted);
+    color: var(--uiColor);
     font-weight: 500;
   }
 
@@ -95,13 +95,13 @@ table {
   }
 
   thead {
-    background-color: var(--color-background-secondary);
-    border-block-end: solid 2px var(--color-border);
+    background-color: var(--bgColor);
+    border-block-end: solid 2px var(--borderColor);
   }
 
   tr {
     &:nth-child(even) {
-      background-color: var(--color-background-secondary);
+      background-color: var(--bgColor);
     }
   }
 }
@@ -229,7 +229,7 @@ table {
   &--text {
     background-color: transparent;
     border: 0;
-    color: var(--color-accent);
+    color: var(--accentColor);
     padding: 0;
   }
 }
@@ -248,14 +248,14 @@ fieldset {
 }
 
 legend {
-  color: var(--color-text);
+  color: var(--textColor);
   font-size: var(--body-font-size);
   font-weight: 700;
   padding: 0;
 }
 
 label {
-  color: var(--color-text-muted);
+  color: var(--uiColor);
   font-size: var(--body-font-size-small);
   font-weight: 500;
 }
@@ -316,7 +316,7 @@ textarea {
   }
 
   &:invalid {
-    border-color: var(--color-error);
+    border-color: var(--errorColor);
   }
 }
 
@@ -347,7 +347,7 @@ textarea {
   width: 20px;
 
   + label {
-    color: var(--color-text);
+    color: var(--textColor);
     display: inline-block;
     font: inherit;
     width: calc(100% - 33px);
@@ -467,7 +467,7 @@ flynt-component {
 }
 
 .boxBorder {
-  border: solid 2px var(--color-border);
+  border: solid 2px var(--borderColor);
 }
 
 .noScroll {
@@ -479,6 +479,6 @@ flynt-component {
 */
 
 [data-theme] {
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--bgColor);
+  color: var(--textColor);
 }

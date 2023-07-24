@@ -1,0 +1,25 @@
+:root {
+  /* Colors (Primitives) */
+  --black: #000;
+  --white: #fff;
+  --cbegreen: #169b83;
+  --blue: #0c2569;
+  --greenfluo: #6ff79d;
+  --mint: #59d6b8;
+  --lightgrey: #d1d5db;
+  --grey: #7b838d;
+  --error: #f05252;
+  --danger: #ffb900;
+
+
+  /* Colors (Tokens) */
+  --textColor: var(--black);
+  --bgColor: var(--white);
+  --brandColor: var(--cbegreen);
+  --accentColor: var(--greenfluo);
+  --hoverColor: var(--mint);
+  --borderColor: var(--lightgrey);
+  --uiColor: var(--grey);
+  --errorColor: var(--error);
+  --dangerColor: var(--danger);
+}

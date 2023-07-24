@@ -1,13 +1,5 @@
 :root,
 [data-theme='reset'] {
-  --color-accent: hsl(212deg 100% 45% / 100%);
-  --color-background: hsl(0deg 0% 100% / 100%);
-  --color-background-secondary: hsl(0deg 0% 19% / 8%);
-  --color-border: hsl(0deg 0% 90%);
-  --color-border-secondary: hsl(0deg 0% 19% / 68%);
-  --color-text: #000;
-  --color-text-muted: hsl(0deg 0% 19% / 80%);
-  --color-error: hsl(343deg 98% 46%);
 }
 
 [data-theme='cbenergy'] {
@@ -17,28 +9,6 @@
 }
 
 :root {
-  /* Colors (Primitives) */
-  --black: #000;
-  --white: #fff;
-  --cbegreen: #169b83;
-  --blue: #0c2569;
-  --greenfluo: #6ff79d;
-  --mint: #59d6b8;
-  --lightgrey: #d1d5db;
-  --grey: #7b838d;
-  --error: #f05252;
-  --danger: #ffb900;
-  /* Colors (Tokens) */
-  --textColor: var(--black);
-  --bgColor: var(--white);
-  --brandColor: var(--cbegreen);
-  --accentColor: var(--greenfluo);
-  --hoverColor: var(--mint);
-  --borderColor: var(--lightgrey);
-  --uiColor: var(--grey);
-  --errorColor: var(--error);
-  --dangerColor: var(--danger);
-
   --content-max-width: 55ch;
   --content-max-width-large: 75ch;
   --container-max-width: calc(1200px + (var(--container-padding) * 2));
