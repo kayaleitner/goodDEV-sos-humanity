@@ -234,6 +234,26 @@ table {
   }
 }
 
+[data-theme='cbgroup'] {
+  .button {
+    &--accent {
+      @apply bg-accentColor;
+      @apply hover:bg-hoverColor;
+      @apply focus:bg-hoverColor;
+      @apply border-transparent;
+      @apply hover:border-transparent;
+      @apply focus:border-textColor;
+      @apply text-bgColor;
+      
+  
+      &Big {
+        @apply text-bodyMobile;
+        @apply lg:text-body;
+      }
+    }
+  }
+}
+
 /**
 * Forms
 */

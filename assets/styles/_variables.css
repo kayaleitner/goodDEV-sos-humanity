@@ -1,13 +1,3 @@
-:root,
-[data-theme='reset'] {
-}
-
-[data-theme='cbenergy'] {
-}
-
-[data-theme='cbglobal'] {
-}
-
 :root {
   --content-max-width: 55ch;
   --content-max-width-large: 75ch;

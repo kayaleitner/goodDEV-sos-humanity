@@ -29,10 +29,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'choices' => [
                     'none' => __('None', 'flynt'),
                     'cbenergy' => __('CB Energy', 'flynt'),
-                    'cbglobal' => __('CB Global', 'flynt'),
-                    'cbaccess' => __('CB Access', 'flynt'),
-                    'cbadvisory' => __('CB Advisory', 'flynt'),
-                    'cbdhowventures' => __('CB Dhow Ventures', 'flynt'),
+                    'cbgroup' => __('CB Group', 'flynt'),
                 ],
                 'default_value' => 'none',
             ]

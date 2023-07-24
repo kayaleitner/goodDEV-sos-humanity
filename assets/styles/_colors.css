@@ -10,8 +10,9 @@
   --grey: #7b838d;
   --error: #f05252;
   --danger: #ffb900;
+}
 
-
+[data-theme='cbenergy'] {
   /* Colors (Tokens) */
   --textColor: var(--black);
   --bgColor: var(--white);
@@ -20,6 +21,19 @@
   --hoverColor: var(--mint);
   --borderColor: var(--lightgrey);
   --uiColor: var(--grey);
+  --errorColor: var(--error);
+  --dangerColor: var(--danger);
+}
+
+[data-theme='cbgroup'] {
+  /* Colors (Tokens) */
+  --textColor: var(--black);
+  --bgColor: var(--white);
+  --brandColor: #302E78;
+  --accentColor: #595893;
+  --hoverColor: #0096FF;
+  --borderColor: var(--lightgrey);
+  --uiColor: #708390;
   --errorColor: var(--error);
   --dangerColor: var(--danger);
 }
