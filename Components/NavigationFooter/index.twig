@@ -1,4 +1,11 @@
-<flynt-component class="w-full left-0 bottom-0" load:on="visible" name="NavigationFooter" style="background: {% if colorBackground %}{{ colorBackground }}{% else %}var(--brandColor){% endif %}; color:{% if colorText %}{{ colorText }}{% else %}var(--bgColor){% endif %};">
+<flynt-component 
+  class="w-full left-0 bottom-0" 
+  load:on="visible" 
+  name="NavigationFooter" 
+  style="
+    background: {% if colorBackground %}{{ colorBackground }}{% else %}var(--brandColor){% endif %}; 
+    color:{% if colorText %}{{ colorText }}{% else %}var(--bgColor){% endif %};
+  ">
   <div class="max-w-screen-max mx-auto px-sm py-lg lg:p-lg flex flex-col">
     <div class="flex flex-col lg:flex-row gap-lg justify-between items-start w-full mb-xxl">
       {% if logoFooter %}
