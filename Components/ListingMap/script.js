@@ -1,7 +1,10 @@
 import DottedMap from 'dotted-map'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap } from 'gsap'
 import mapDesktop from '../../assets/images/mapDesktop.json'
 import mapMobile from '../../assets/images/mapMobile.json'
 
+gsap.registerPlugin(ScrollTrigger)
 
 export default function (listingMap) {
   // find the project which is the highest and set the min height of the map to that
@@ -59,6 +62,5 @@ export default function (listingMap) {
     }
   })
 
-  // eslint-disable-next-line no-undef
   ScrollTrigger?.refresh()
 }
