@@ -1,6 +1,10 @@
 import Swiper, { Navigation, A11y, Autoplay, Pagination } from 'swiper'
 import 'swiper/css/bundle'
 import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap } from 'gsap'
+
+gsap.registerPlugin(ScrollTrigger)
 
 Swiper.use([Navigation, A11y, Autoplay, Pagination])
 
@@ -28,8 +32,7 @@ function initSlider(refs, data) {
     },
     on: {
       afterInit: () => {
-        // eslint-disable-next-line no-undef
-        ScrollTrigger?.refresh()
+        ScrollTrigger.refresh()
       },
     },
   }
