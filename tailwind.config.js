@@ -55,15 +55,6 @@ module.exports = {
       xl: '1440px',
       max: '1600px'
     },
-    variables: {
-      DEFAULT: {
-        colors: {
-          red: {
-            50: '#ff3232',
-          },
-        },
-      },
-    },
     extend: {
       aspectRatio: {
         '4/3': '4 / 3',

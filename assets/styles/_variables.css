@@ -11,50 +11,23 @@
 }
 
 [data-theme='cbenergy'] {
-  --primary: #0c2569;
-  --secondary: #169b83;
 }
 
-[data-theme='cbaccess'] {
-  --primary: #302e78;
-  --secondary: #007506;
+[data-theme='cbglobal'] {
 }
-
-[data-theme='cbadvisory'] {
-  --primary: #0c2569;
-  --secondary: #002cf0;
-}
-
-[data-theme='cbdhowventures'] {
-  --primary: #302e78;
-  --secondary: #f06c00;
-}
-
-
-/* $breakpoint-mobile: 780px;
-$breakpoint-tablet: 1024px;
-$breakpoint-tablet-horizontal: 1024px;
-$breakpoint-desktop: 1280px;
-
-$heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .titleLarge, .titleSmall, .subtitle';
-$input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea'; */
 
 :root {
-  /* // --body-font-size: 1.125rem; // Always use rem. 1rem = 16px
-  // --body-font-size-small: 1rem;
-  // --flow-space: 1.5625rem; */
-
   /* Colors (Primitives) */
   --black: #000;
   --white: #fff;
   --cbegreen: #169b83;
+  --blue: #0c2569;
   --greenfluo: #6ff79d;
   --mint: #59d6b8;
   --lightgrey: #d1d5db;
   --grey: #7b838d;
   --error: #f05252;
   --danger: #ffb900;
-  
   /* Colors (Tokens) */
   --textColor: var(--black);
   --bgColor: var(--white);
