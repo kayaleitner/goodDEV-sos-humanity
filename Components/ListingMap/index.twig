@@ -123,17 +123,9 @@
           {% for post in projects %}
           <div
             x-cloak 
-            x-show="activeProject === {{ loop.index }}"
-            {# x-for="project in projects" :key="project"  #}
             data-item="{{loop.index}}"
-            x-transition:enter="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
-            x-transition:enter-start="opacity-0" 
-            x-transition:enter-end="opacity-100" 
-            x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-800" 
-            x-transition:leave-start="opacity-100" 
-            x-transition:leave-end="opacity-0 " 
-            class="project w-full flex items-start md:absolute" 
-            :class="{ 'active': activeProject === {{loop.index}} }"
+            class="project w-full flex items-start md:absolute transition cubic-bezier(0.19, 1, 0.22, 1) duration-100 opacity-0" 
+            :class="{ 'active !opacity-100': activeProject === {{loop.index}} }"
             data-latitude="{{ item.latitude }}" 
             data-longitude="{{ item.longitude }}"
             >

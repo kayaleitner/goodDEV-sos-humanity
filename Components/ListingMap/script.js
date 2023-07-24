@@ -2,6 +2,7 @@ import DottedMap from 'dotted-map'
 import mapDesktop from '../../assets/images/mapDesktop.json'
 import mapMobile from '../../assets/images/mapMobile.json'
 
+
 export default function (listingMap) {
   // find the project which is the highest and set the min height of the map to that
   const projectList = listingMap.getElementsByClassName('project-list')[0]
@@ -11,9 +12,7 @@ export default function (listingMap) {
   const heightArray = []
   heightArray.push(projectArray[0].offsetHeight)
   for (let i = 1; i < projects.length; i++) {
-    projectArray[i].style.display = 'block'
     heightArray.push(projectArray[i].offsetHeight)
-    projectArray[i].style.display = 'none'
   }
 
   const maxHeight = Math.max(...heightArray)
