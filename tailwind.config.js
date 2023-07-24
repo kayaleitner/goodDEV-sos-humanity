@@ -1,5 +1,3 @@
-import { palette } from './colors.json'
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -21,15 +19,15 @@ module.exports = {
       current: 'currentColor',
       transparent: 'transparent',
       /** Colors (Tokens) */
-      textColor: palette.black,
-      bgColor: palette.white,
-      brandColor: palette.cbegreen,
-      accentColor: palette.greenfluo,
-      hoverColor: palette.mint,
-      borderColor: palette.lightgrey,
-      uiColor: palette.grey,
-      errorColor: '#f05252',
-      dangerColor: '#ffb900',
+      textColor: 'var(--textColor)',
+      bgColor: 'var(--bgColor)',
+      brandColor: 'var(--brandColor)',
+      accentColor: 'var(--accentColor)',
+      hoverColor: 'var(--hoverColor)',
+      borderColor: 'var(--borderColor)',
+      uiColor: 'var(--uiColor)',
+      errorColor: 'var(--errorColor)',
+      dangerColor: 'var(--dangerColor)',
     },
     fontSize: {
       body: ['1.563rem', '140%'],

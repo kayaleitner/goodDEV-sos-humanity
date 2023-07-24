@@ -127,16 +127,7 @@ Options::addTranslatable('BlockNewsletter', [
         'placement' => 'top',
         'endpoint' => 0
     ],
-    [
-        'label' => '',
-        'name' => 'options',
-        'type' => 'group',
-        'layout' => 'row',
-        'sub_fields' => [
-            // // FieldVariables\getTheme(),
-            FieldVariables\getColorBackground(),
-            FieldVariables\getColorText(),
-            FieldVariables\getNavStyle('dark-blur'),
-        ]
-    ]
+    // FieldVariables\getTheme(),
+    FieldVariables\getColorBackground(),
+    FieldVariables\getColorText(),
 ]);

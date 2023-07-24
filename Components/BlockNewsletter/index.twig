@@ -2,10 +2,9 @@
   client:visible 
   name="BlockNewsletter" 
   style="
-    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--uiColor){% endif %};
-    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};
-  "
->
+    background: {% if colorBackground %}{{ colorBackground }}{% else %}var(--uiColor){% endif %}; 
+    color:{% if colorText %}{{ colorText }}{% else %}var(--bgColor){% endif %};
+  ">
   <div class="max-w-screen-max mx-auto px-sm md:px-md py-lg lg:px-lg lg:py-lg flex flex-col lg:flex-row justify-between items-stretch gap-lg">
     <div class="wysiwyg w-full lg:w-1/2 ">{{ contentHtml|e('wp_kses_post') }}</div>
     <div class="w-full lg:w-1/2 flex items-center justify-end">
