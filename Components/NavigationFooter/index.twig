@@ -26,7 +26,7 @@
           <div class="flex flex-col gap-xs lg:gap-[15px] order-1 lg:order-2 w-1/4 lg:w-auto grow lg:grow-0 items-start justify-start" id="content-{{ loop.index }}">
             <div class="caption font-bold">{{ panelOuter.title }}</div>
             {% for panelInner in panelOuter.repeaterInner %}
-              <a class="caption inline-block no-underline underline-offset-8 hover:text-accentColor text-currentColor transition-all duration-200" href="{{ panelInner.pageLink.url|e }}" alt="{{ panelInner.pageLink.alt|e }}" {% if panelInner.pageLink.target %} target="{{ panelInner.pageLink.target }}" rel="noreferrer noopener"{% endif %}>
+              <a class="caption inline-block no-underline underline-offset-8 hover:text-hoverColor text-currentColor transition-all duration-200" href="{{ panelInner.pageLink.url|e }}" alt="{{ panelInner.pageLink.alt|e }}" {% if panelInner.pageLink.target %} target="{{ panelInner.pageLink.target }}" rel="noreferrer noopener"{% endif %}>
                 {{ panelInner.pageLink.title|e }}
               </a>
             {% endfor %}

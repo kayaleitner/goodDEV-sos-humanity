@@ -2,6 +2,10 @@
   load:on="idle"
   name="ListingMap"
   class=""
+  style="
+    background: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %}; 
+    color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
+  "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
   <div
@@ -98,7 +102,7 @@
             class="slider-button slider-button--prev"
             @click="activeProject = activeProject === 1 ? 1 : activeProject - 1">
             <svg width="40" height="30" viewBox="0 0 40 30" fill="none">
-              <path :class="{ 'opacity-30': activeProject === 1 }" class="fill-textColor"  d="M3.93801 13.9393C3.35222 14.5251 3.35222 15.4749 3.93801 16.0607L13.4839 25.6066C14.0697 26.1924 15.0195 26.1924 15.6053 25.6066C16.1911 25.0208 16.1911 24.0711 15.6053 23.4853L7.11999 15L15.6053 6.51472C16.1911 5.92893 16.1911 4.97918 15.6053 4.3934C15.0195 3.80761 14.0697 3.80761 13.484 4.3934L3.93801 13.9393ZM34.3438 13.5L4.99867 13.5L4.99867 16.5L34.3437 16.5L34.3438 13.5Z" />
+              <path :class="{ 'opacity-30': activeProject === 1 }" class="fill-current"  d="M3.93801 13.9393C3.35222 14.5251 3.35222 15.4749 3.93801 16.0607L13.4839 25.6066C14.0697 26.1924 15.0195 26.1924 15.6053 25.6066C16.1911 25.0208 16.1911 24.0711 15.6053 23.4853L7.11999 15L15.6053 6.51472C16.1911 5.92893 16.1911 4.97918 15.6053 4.3934C15.0195 3.80761 14.0697 3.80761 13.484 4.3934L3.93801 13.9393ZM34.3438 13.5L4.99867 13.5L4.99867 16.5L34.3437 16.5L34.3438 13.5Z" />
             </svg>
           </button>
           <button 
@@ -108,7 +112,7 @@
             class="slider-button slider-button--next" 
             @click="activeProject = activeProject === projects.length ? projects.length : activeProject + 1">
               <svg class="transform scale-x-[-1]" width="40" height="30" viewbox="0 0 40 30" fill="none">
-                <path :class="{ 'opacity-30': activeProject === projects.length }" class="fill-textColor" d="M3.93801 13.9393C3.35222 14.5251 3.35222 15.4749 3.93801 16.0607L13.4839 25.6066C14.0697 26.1924 15.0195 26.1924 15.6053 25.6066C16.1911 25.0208 16.1911 24.0711 15.6053 23.4853L7.11999 15L15.6053 6.51472C16.1911 5.92893 16.1911 4.97918 15.6053 4.3934C15.0195 3.80761 14.0697 3.80761 13.484 4.3934L3.93801 13.9393ZM34.3438 13.5L4.99867 13.5L4.99867 16.5L34.3437 16.5L34.3438 13.5Z"/>
+                <path :class="{ 'opacity-30': activeProject === projects.length }" class="fill-current" d="M3.93801 13.9393C3.35222 14.5251 3.35222 15.4749 3.93801 16.0607L13.4839 25.6066C14.0697 26.1924 15.0195 26.1924 15.6053 25.6066C16.1911 25.0208 16.1911 24.0711 15.6053 23.4853L7.11999 15L15.6053 6.51472C16.1911 5.92893 16.1911 4.97918 15.6053 4.3934C15.0195 3.80761 14.0697 3.80761 13.484 4.3934L3.93801 13.9393ZM34.3438 13.5L4.99867 13.5L4.99867 16.5L34.3437 16.5L34.3438 13.5Z"/>
               </svg>
           </button>
         </div>

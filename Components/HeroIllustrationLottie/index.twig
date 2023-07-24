@@ -5,7 +5,6 @@
   style="
     background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};
     color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};
-    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};
   "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >
