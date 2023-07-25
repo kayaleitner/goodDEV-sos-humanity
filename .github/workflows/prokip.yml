@@ -1,0 +1,58 @@
+name: Deploy to ProKIP Server
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    name: Install, build and deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js v18
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - uses: actions/cache@v3
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - uses: actions/cache@v3
+      with:
+        path: ./vendor
+        key: ${{ runner.os }}-composer-${{ hashFiles('./composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-composer-
+    - name: Install npm
+      run: npm i
+      
+    - name: Setup PHP with logs
+      uses: shivammathur/setup-php@verbose
+      with:
+        php-version: '8.2'
+        tools: composer:v2, phpcs
+
+    - name: Install composer
+      run: php8.2 $(which composer) update --no-progress
+    # - name: Run linter
+    #   run: npm run lint:styles:fix lint:php:fix lint:scripts:fix
+    - name: Run build
+      run: npm run build
+    - name: set composer plugin config
+      run: php8.2 $(which composer) config --no-plugins allow-plugins.composer/installers true
+    - name: set CI config composer
+      run: php8.2 $(which composer) config --json extra.installer-paths '{"plugins/{$name}/":["type:wordpress-plugin"]}'
+    - name: Install composer optimized
+      run: php8.2 $(which composer) install --no-dev --no-progress --optimize-autoloader
+
+    - name: Move theme files to Staging using SSH/rsync
+      # if: github.ref == 'refs/heads/master'
+      uses: burnett01/rsync-deployments@6.0.0
+      with:
+        switches: -azv --delete
+        path: ./
+        remote_path: /wp-content/themes/${{ github.event.repository.name }}
+        remote_host: ${{ secrets.PROKIP_SSH_HOST }}
+        remote_user: ${{ secrets.PROKIP_SSH_USER }}
+        remote_key: ${{ secrets.RB_SSH_KEY }}
