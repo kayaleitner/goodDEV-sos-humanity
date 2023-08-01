@@ -52,7 +52,7 @@ jobs:
       with:
         switches: -azv --delete
         path: ./
-        remote_path: /www/crossboundaryenergy_748/public/wp-content/themes/${{ github.event.repository.name }}
+        remote_path: /www/crossboundary_820/public/wp-content/themes/${{ github.event.repository.name }}
         remote_host: ${{ secrets.KINSTA_CBG_SSH_HOST }}
         remote_user: ${{ secrets.KINSTA_CBG_SSH_USER }}
         remote_key: ${{ secrets.KINSTA_SSH_KEY }}
