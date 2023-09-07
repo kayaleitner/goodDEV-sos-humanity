@@ -43,22 +43,6 @@ add_action('customize_register', function ($wp_customize) {
 
 Options::addTranslatable('NavigationMain', [
     [
-        'label' => __('Call to Action', 'flynt'),
-        'name' => 'ctaTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0
-    ],
-    [
-        'label' => __('CTA Link', 'flynt'),
-        'name' => 'ctaLink',
-        'type' => 'link',
-        'return_format' => 'array',
-        'wrapper' =>  [
-            'width' => '100',
-        ]
-    ],
-    [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
         'type' => 'tab',

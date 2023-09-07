@@ -1,32 +1,14 @@
-<flynt-component
-  load:on="load"
-  load:onmedia="(min-width: 780px)"
-  name="NavigationMain"
-  class="mainNavBlock hidden md:block text-bgColor backdrop-blur-xl relative"
->
+<flynt-component load:on="idle" load:on:media="(min-width: 1024px)" name="NavigationMain">
   <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
-    <div class="max-w-screen-max mx-auto px-sm lg:px-lg py-md flex items-center justify-between flex-row">
-      {% include 'Partials/_logo.twig' with { 'logo': logo, 'logo_dark': logo_dark, 'site': site } only %}
-      <div class="menu-wrapper flex items-center justify-start gap-sm xl:gap-md w-fit h-fit pl-lg relative">
+    <div class="flex justify-between bg-white">
+      {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
         {% if menu %}
-          {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
-        {% endif %}
-        <div
-          id="ctaMenu"
-          class="hidden [@media(min-width:1160px)]:flex justify-center items-start relative z-[9999]
-          [&_a]:bg-bgColor [&_a]:hover:bg-accentColor [&_a]:text-textColor
-        ">
-          {% include 'Partials/_cta.twig' %}
+        <div class="flex items-center">
+        {% for item in menu.items %}
+          <a class="text-black no-underline pr-2" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
+        {% endfor %}
         </div>
-      </div>
+      {% endif %}
     </div>
-    {# this is just for tailwind blabla #}
-    <div class="hidden bg-bgColor/50 backdrop-blur-xl text-uiColor text-bgColor text-textColor bg-bgColor bg-accentColor bg-brandColor [&_a]:bg-accentColor [&_a]:hover:bg-brandColor [&_a]:hover:text-bgColor"></div>
   </nav>
 </flynt-component>
-<div id="ctaMain"
-  class="fixed hidden sm:block [@media(min-width:1160px)]:hidden z-[9999] bottom-lg right-lg
-  [&>a]:bg-accentColor [&>a]:text-textColor [&>a]:hover:bg-brandColor [&>a]:hover:text-bgColor
-">
-  {% include 'Partials/_cta.twig' %}
-</div>

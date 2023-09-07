@@ -38,6 +38,18 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
 
 Options::addTranslatable('NavigationFooter', [
     [
+        'label' => __('General', 'flynt'),
+        'name' => 'generalTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Catch phrase', 'flynt'),
+        'name' => 'catchPhrase',
+        'type' => 'text'
+    ],
+    [
         'label' => __('Logo', 'flynt'),
         'name' => 'logoTab',
         'type' => 'tab',
@@ -54,42 +66,6 @@ Options::addTranslatable('NavigationFooter', [
         'mime_types' => 'jpg,jpeg,png,svg'
     ],
     [
-        'label' => __('Address', 'flynt'),
-        'name' => 'addressTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0
-    ],
-    [
-        'label' => __('Address Column Title', 'flynt'),
-        'name' => 'addressColumnTitle',
-        'type' => 'text'
-    ],
-    [
-        'label' => __('Address', 'flynt'),
-        'name' => 'addressHtml',
-        'type' => 'wysiwyg',
-        'media_upload' => 0,
-        'delay' => 1,
-        'toolbar' => 'basic',
-    ],
-    [
-        'label' => __('Email', 'flynt'),
-        'name' => 'addressEmail',
-        'type' => 'text',
-        'wrapper' => [
-            'width' => 50
-        ],
-    ],
-    [
-        'label' => __('Phone', 'flynt'),
-        'name' => 'addressPhone',
-        'type' => 'text',
-        'wrapper' => [
-            'width' => 50
-        ],
-    ],
-    [
         'label' => __('Menus', 'flynt'),
         'name' => 'menusTab',
         'type' => 'tab',
@@ -104,30 +80,16 @@ Options::addTranslatable('NavigationFooter', [
         'min' => '1',
         'button_label' => __('Add Menu', 'flynt'),
         'sub_fields' => [
-            [
-                'label' => __('Title', 'flynt'),
-                'name' => 'title',
-                'type' => 'text'
-            ],
-            [
-                'label' => __('Menu Items', 'flynt'),
-                'name' => 'repeaterInner',
-                'type' => 'repeater',
-                'layout' => 'block',
-                'button_label' => __('Add Page Link', 'flynt'),
-                'sub_fields' => [
-                    [
-                        'label' => __('Page Link', 'flynt'),
-                        'name' => 'pageLink',
-                        'type' => 'link',
-                        'return_format' => 'array',
-                        'wrapper' => [
-                            'width' => 100
-                        ],
-                    ],
-                ]
-            ],
-        ]
+            [  
+                'label' => __('Page Link', 'flynt'),
+                'name' => 'pageLink',
+                'type' => 'link',
+                'return_format' => 'array',
+                'wrapper' => [
+                    'width' => 100
+                ],
+            ]
+        ],
     ],
     [
         'label' => __('Social Media', 'flynt'),
@@ -202,7 +164,6 @@ Options::addTranslatable('NavigationFooter', [
         'placement' => 'top',
         'endpoint' => 0
     ],
-    // FieldVariables\getTheme(),
     FieldVariables\getColorBackground(),
     FieldVariables\getColorText(),
 ]);
