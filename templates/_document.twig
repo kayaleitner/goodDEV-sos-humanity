@@ -4,16 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }} {{ __('Feed', 'flynt') }}" href="{{ site.rss2|e('esc_url') }}" />
-    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/AeonikPro-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/AeonikPro-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/AeonikMono-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/OpenSans-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/OpenSans-SemiBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/OpenSans-SemiBoldItalic.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/OpenSans-ExtraBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
     <meta name="theme-color" content="#169b83" />
     {{ function('wp_head') }}
   </head>
   <body class="">
     <a href="#mainContent" class="skipLink">{{ __('Skip to main content', 'flynt') }}</a>
     {% block layout %}
-      <div class="pageWrapper" data-theme="{{ options.globalThemeOption }}">
+      <div class="pageWrapper">
         <header class="mainHeader fixed top-0 left-0 z-[9999] w-full h-0">
           {% block header %}
             {{ renderComponent('NavigationMain') }}
