@@ -8,6 +8,11 @@ function disable_rest_api($access) {
         return $access;
     }
 
+    // Allow access to Redirection plugin endpoints
+    if (strpos($_SERVER['REQUEST_URI'], '/wp-json/redirection/v1/') !== false) {
+        return $access;
+    }
+
     // Allow access to Yoast SEO REST API endpoints (adjust if Yoast uses different endpoints in the future)
     if (strpos($_SERVER['REQUEST_URI'], '/wp-json/yoast/v1/') !== false) {
         return $access;
