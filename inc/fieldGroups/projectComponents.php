@@ -172,6 +172,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     // Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
+                    Components\BlockSeperatorLine\getACFLayout(),
                     // Components\ReusableComponent\getACFLayout(),
                 ],
             ],

@@ -26,6 +26,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\ListingProjects\getACFLayout(),
                     Components\ListComponents\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
+                    Components\BlockSeperatorLine\getACFLayout(),
                 ],
             ]
         ],

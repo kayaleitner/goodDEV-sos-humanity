@@ -99,3 +99,23 @@ function getColorText()
         ],
     ];
 }
+
+
+function mobileVisibility($default = 'hidden xs:block')
+{
+    return [
+        'label' => __('Hide on Mobile?', 'flynt'),
+        'instructions' => __('Choose if you want the block to be hidden on mobile or not.', 'flynt'),
+        'name' => 'mobileVisibility',
+        'type' => 'select',
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 0,
+        'ajax' => 0,
+        'choices' => [
+            'hidden xs:block' => __('Yes (hide on mobile, show on desktop)', 'flynt'),
+            'block' => __('No (show on both mobile and desktop)', 'flynt'),
+        ],
+        'default_value' => $default,
+    ];
+}

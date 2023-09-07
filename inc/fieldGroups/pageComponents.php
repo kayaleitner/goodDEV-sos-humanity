@@ -90,6 +90,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockCta\getACFLayout(),
                     Components\ReusableComponent\getACFLayout(),
                     Components\BlockAnchor\getACFLayout(),
+                    Components\BlockSeperatorLine\getACFLayout(),
                 ],
             ],
         ],
