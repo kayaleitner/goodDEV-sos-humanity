@@ -211,6 +211,21 @@
     @apply group-focus:bg-hoverColor;
   }
 
+  .dark .button.button--card {
+    @apply hover:text-bgColor;
+    @apply focus:text-bgColor;
+    /* @apply group-hover:text-bgColor;
+    @apply group-focus:text-bgColor; */
+  }
+
+  .dark .group:hover .button.button--card {
+    color: var(--bgColor);
+  }
+
+  .dark .group:focus .button.button--card {
+    color: var(--bgColor);
+  }
+
   .button.button--link {
     @apply hover:bg-hoverColor;
     @apply focus:bg-hoverColor;
@@ -427,7 +442,8 @@
 
       input {
         @apply px-sm;
-        @apply py-xs;
+        @apply py-[11px];
+        @apply font-caption;
       }
 
       button {
@@ -443,6 +459,7 @@
           @apply text-bgColor;
           @apply hover:text-textColor;
           @apply transition-all;
+          @apply font-caption;
         }
       }
     }
@@ -655,6 +672,7 @@
         &::placeholder {
           color: var(--textColor);
           opacity: 0.5;
+          @apply font-caption;
         }
 
         &:disabled {
