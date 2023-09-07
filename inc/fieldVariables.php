@@ -61,7 +61,7 @@ function getNavStyle($default = 'light-blur')
     ];
 }
 
-function getColorBackground()
+function getColorBackground($default = '#ffffff')
 {
     return [
         'label' => __('Color Background', 'flynt'),
@@ -71,6 +71,7 @@ function getColorBackground()
         'wrapper' => [
             'width' => 100,
         ],
+        'default_value' => $default,
     ];
 }
 
@@ -87,7 +88,7 @@ function getColorSecondary()
     ];
 }
 
-function getColorText()
+function getColorText($default = '#000000')
 {
     return [
         'label' => __('Color Text', 'flynt'),
@@ -97,6 +98,7 @@ function getColorText()
         'wrapper' => [
             'width' => 100,
         ],
+        'default_value' => $default,
     ];
 }
 
