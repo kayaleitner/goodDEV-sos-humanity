@@ -3,11 +3,17 @@
     <div class="flex justify-between bg-white">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
         {% if menu %}
-        <div class="flex items-center">
-        {% for item in menu.items %}
-          <a class="text-black no-underline pr-2" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
-        {% endfor %}
-        </div>
+        <ul class="hidden lg:flex items-end">
+          {% for item in menu.items %}
+          <li class="ml-md">
+            <a class="font-menu no-underline {{ item.classes|join(' ')}}" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <button data-ref="menuButton" class="xs:hidden" type="button" aria-expanded="false" aria-controls="navigation-menu"
+          @click="menuOpen = !menuOpen">
+          <span x-text="!menuOpen ? 'Menu' : 'Schließen'" class="font-titleSmall">Menu</span>
+        </button>
       {% endif %}
     </div>
   </nav>
