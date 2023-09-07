@@ -1,8 +1,12 @@
-<flynt-component class="" load:on="idle" name="Scrollytelling" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }} 
+<flynt-component 
+  load:on="idle" 
+  name="Scrollytelling" 
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }} 
+  class="bg-bgColor text-textColor" 
   style="
-    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--uiColor){% endif %}; 
-    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};"
-  >
+    {% if options.colorBackground %} --bgColor: {{ options.colorBackground }}; {% endif %}
+    {% if options.colorText %} --textColor: {{ options.colorText }};{% endif %}
+  ">
   <div class="max-w-screen-max w-full mx-auto p-sm md:p-md sm:p-lg lg:p-lg" id="scrollytelling">
     <div class="max-w-screen-max mx-auto h-full relative" id="scrollytelling-inner">
       <div class="w-full mx-auto">

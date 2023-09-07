@@ -1,10 +1,10 @@
 <flynt-component
   load:on="idle"
   name="HeroIllustrationLottie"
-  class=""
+  lass="bg-bgColor text-textColor"
   style="
-    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};
-    color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--bgColor){% endif %};
+    {% if options.colorBackground %} --bgColor: {{ options.colorBackground }}; {% endif %}
+    {% if options.colorText %} --textColor: {{ options.colorText }};{% endif %}
   "
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
 >

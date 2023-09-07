@@ -1,5 +1,13 @@
 {% if posts|length > 0 %}
-  <flynt-component load:on="visible" name="ListingFlex" data-type="listing" class="bg-bgColor" data-navStyle="light-blur">
+  <flynt-component load:on="visible" 
+    name="ListingFlex" 
+    data-type="listing" 
+    class="bg-bgColor text-textColor {% if options.colorText|hex_to_rgb|reduce((carry, v) => carry + v) >= 50 %}dark{% endif %}"
+    style="
+      {% if options.colorBackground %} --bgColor: {{ options.colorBackground }}; {% endif %}
+      {% if options.colorText %} --textColor: {{ options.colorText }};{% endif %}
+      {% if options.colorText|hex_to_rgb|reduce((carry, v) => carry + v) >= 50 %} --hoverColor: var(--white);{% endif %}
+    ">
     <div class="max-w-screen-max w-full mx-auto p-sm sm:p-md lg:p-lg">
       {% if (blockTitle or viewAllLink or filters) %}
         <div class="w-full mx-auto pb-md md:pb-lg flex flex-col justify-between align-bottom items-end gap-md">

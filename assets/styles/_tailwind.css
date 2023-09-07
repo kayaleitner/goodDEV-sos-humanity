@@ -158,6 +158,7 @@
   html body .paragraph,
   html body .body {
     @apply font-body;
+    margin-block-end: 0;
   }
 
   .paragraph:last-child,
@@ -173,7 +174,7 @@
     @apply font-titleSmall;
   }
 
-  .glance {
+  html body .glance {
     @apply font-glance;
   }
 
@@ -196,6 +197,10 @@
   /* Custom Components Style
   ONLY USE SMALL, HIGHLY REUSABLE COMPONENTS (ATOMS) LIKE BUTTONS OR FORMS CONTROLS */
 
+  .dark .filter-white {
+    filter: invert(1) brightness(10);
+  }
+
   .button.button--card {
     @apply text-current;
     @apply border;
@@ -211,11 +216,17 @@
     @apply group-focus:bg-hoverColor;
   }
 
+  .group:hover .button.button--card {
+    color: var(--bgColor);
+  }
+
+  .group:focus .button.button--card {
+    color: var(--bgColor);
+  }
+
   .dark .button.button--card {
     @apply hover:text-bgColor;
     @apply focus:text-bgColor;
-    /* @apply group-hover:text-bgColor;
-    @apply group-focus:text-bgColor; */
   }
 
   .dark .group:hover .button.button--card {
@@ -235,13 +246,41 @@
     @apply group-focus:border-textColor;
   }
 
-  .button.button--arrow {
+  .button.button--external {
     @apply hover:bg-hoverColor;
     @apply focus:bg-hoverColor;
     @apply group-hover:bg-hoverColor;
     @apply group-focus:bg-hoverColor;
     @apply group-hover:border-transparent;
     @apply group-focus:border-textColor;
+  }
+
+  .group:hover .button.button--external,
+  .group:focus .button.button--external {
+    @apply px-sm;
+    @apply py-xs;
+    @apply lg:px-md;
+    color: var(--bgColor);
+  }
+
+  .button.button--arrow {
+    @apply hover:bg-hoverColor;
+    @apply focus:bg-hoverColor;
+    @apply group-hover:bg-hoverColor;
+    @apply group-focus:bg-hoverColor;
+    @apply group-hover:border-transparent;
+    @apply group-focus:border-transparent;
+  }
+
+  .button.button--accent {
+    @apply bg-accentColor;
+    @apply hover:bg-hoverColor;
+    @apply focus:bg-hoverColor;
+  }
+
+  .dark .button--arrowCustom {
+    @apply hover:text-bgColor;
+    @apply focus:text-bgColor;
   }
 
   flynt-component[name='NavigationMain'] {
