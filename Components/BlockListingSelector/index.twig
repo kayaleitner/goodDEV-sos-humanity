@@ -1,0 +1,33 @@
+<flynt-component
+  data-type="listing"
+  name="BlockListingSelector"
+>
+  <div class="container mx-auto p-sm md:p-md lg:p-lg w-full">
+    <div class="">
+      {% if blockTitle or viewAllLink %}
+        <div class="w-full mx-auto p-sm md:p-md lg:p-lg flex flex-col sm:flex-row justify-between align-bottom items-baseline content-end border-1">
+          {% if blockTitle %}
+            <div class="font-titleSmall pb-sm sm:pb-0">{{ blockTitle }}</div>
+          {% endif %}
+          {% if viewAllLink %}
+            <a href="{{ viewAllLink.url }}" class="font-bodyLarge font-bold font-condensed">{{ viewAllLink.title }}</a>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="hidden xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"></div>
+      <ul class="
+        w-full
+        mx-auto
+        grid
+        grid-cols-1
+        xs:grid-cols-2 md:grid-cols-3
+      ">
+        {% for post in items %}
+          {% if post.type == 'post' %}
+            {% include 'Components/_Atoms/Cards/post.twig' with { post: post, labels: labels } only %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</flynt-component>
