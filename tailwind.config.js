@@ -22,9 +22,9 @@ export const theme = {
     bgColor: 'var(--bgColor)',
     brandColor: 'var(--brandColor)',
     hoverColor: 'var(--hoverColor)',
-    // accentColor: 'var(--accentColor)',
-    // borderColor: 'var(--borderColor)',
-    // uiColor: 'var(--uiColor)',
+    accentColor: 'var(--accentColor)',
+    borderColor: 'var(--borderColor)',
+    uiColor: 'var(--uiColor)',
   },
   fontSize: {
     body: ['1.563rem', '140%'],

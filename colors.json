@@ -4,9 +4,6 @@
         "black": "#000",
         "current": "currentColor",
         "transparent": "transparent",
-        "cbegreen": "#169b83",
-        "greenfluo": "#6ff79d",
-        "mint": "#59d6b8",
         "lightgrey": "#d1d5db",
         "grey": "#7b838d"
     }
