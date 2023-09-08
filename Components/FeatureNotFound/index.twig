@@ -1,0 +1,10 @@
+<flynt-component name="FeatureNotFound" class="mt-[134px] min-h-[calc(100vh_-_763px)]">
+  <div class="max-w-screen-max mx-auto p-sm sm:p-md lg:p-lg">
+    <div class="wysiwyg">
+      {{ contentHtml|e('wp_kses_post') }}
+    </div>
+    <a class="button button--outlineBlack mt-lg" href="{{ function('home_url') }}">
+      {{ backLinkLabel|e }}
+    </a>
+  </div>
+</flynt-component>

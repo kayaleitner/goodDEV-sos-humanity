@@ -99,7 +99,7 @@ add_action('Flynt/afterRegisterComponents', function () {
     //                 Components\BlockPulloutQuote\getACFLayout(),
     //                 Components\BlockVideoOembed\getACFLayout(),
     //                 Components\BlockWysiwyg\getACFLayout(),
-    //                 Components\SliderImages\getACFLayout(),
+    //                 Components\BlockSliderImages\getACFLayout(),
     //                 Components\ReusableComponent\getACFLayout(),
     //             ],
     //         ],

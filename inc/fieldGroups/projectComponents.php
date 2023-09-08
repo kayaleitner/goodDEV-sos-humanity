@@ -5,9 +5,9 @@ use Flynt\Components;
 use Flynt\ComponentManager;
 use Timber\Timber;
 
-// add_filter('Flynt/addComponentData?name=BlockProjectBox', function ($data) {
+// add_filter('Flynt/addComponentData?name=ElementProjectBox', function ($data) {
 //     $componentManager = ComponentManager::getInstance();
-//     $componentPathFull = $componentManager->getComponentDirPath('BlockProjectBox');
+//     $componentPathFull = $componentManager->getComponentDirPath('ElementProjectBox');
 //     $componentPath = str_replace(trailingslashit(get_template_directory()), '', $componentPathFull);
 
 //     if (!empty($data['boxCustomerSegment'])) {
@@ -171,8 +171,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockPulloutQuote\getACFLayout(),
                     // Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
-                    Components\SliderImages\getACFLayout(),
-                    Components\BlockSeperatorLine\getACFLayout(),
+                    Components\BlockSliderImages\getACFLayout(),
+                    Components\BlockSeparatorLine\getACFLayout(),
                     // Components\ReusableComponent\getACFLayout(),
                 ],
             ],

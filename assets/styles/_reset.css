@@ -101,7 +101,7 @@ sup {
 /* Exceptions */
 
 .single-project {
-  [name='SliderImages'],
+  [name='BlockSliderImages'],
   [name='BlockWysiwyg'],
   [name='BlockCta'],
   [name='BlockImage'] {
@@ -117,12 +117,12 @@ sup {
 }
 
 .single-post {
-  [name='SliderImages'],
+  [name='BlockSliderImages'],
   [name='BlockWysiwyg'],
   [name='BlockCta'],
   [name='BlockPulloutQuote'],
   [name='BlockImage'],
-  [name='RelatedInsights'] {
+  [name='BlockRelatedInsights'] {
     .outer {
       padding-left: 0;
       padding-right: 0;

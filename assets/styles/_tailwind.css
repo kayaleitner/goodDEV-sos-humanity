@@ -504,7 +504,7 @@
     }
   }
 
-  flynt-component[name='BlockProjectBox'] #dottedMap {
+  flynt-component[name='ElementProjectBox'] #dottedMap {
     svg {
       clip-path: polygon(4% 2%, 100% 3%, 100% 99%, 3% 98%);
 
@@ -555,7 +555,7 @@
     }
   }
 
-  flynt-component[name='ListingMap'] {
+  flynt-component[name='BlockListingMap'] {
     #dottedMap {
       svg {
         clip-path: polygon(0.5% 1%, 100% 1%, 100% 100%, 0% 100%);
@@ -608,7 +608,7 @@
     }
   }
 
-  flynt-component[name='ScrollytellingImage'] {
+  flynt-component[name='BlockScrollytellingImage'] {
     /* // Do we need this? */
     .panel:first-child {
       img {
@@ -624,7 +624,7 @@
     }
   }
 
-  flynt-component[name='HeroContactForm'] {
+  flynt-component[name='BlockHeroContactForm'] {
     .wpcf7 {
       align-items: flex-start;
       display: flex;
@@ -767,7 +767,7 @@
 
 /* Third party libraries */
 
-flynt-component[name='SliderImages'] {
+flynt-component[name='BlockSliderImages'] {
   .swiper-pagination-bullet {
     background: transparent;
     border: 2px solid var(--bgColor);
@@ -785,7 +785,7 @@ flynt-component[name='SliderImages'] {
   }
 }
 
-flynt-component[name='SliderText'] {
+flynt-component[name='BlockSliderText'] {
   .slider {
     &-button {
       &.swiper-button-disabled {
