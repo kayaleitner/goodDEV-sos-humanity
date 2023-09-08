@@ -9,7 +9,7 @@ export default function (component) {
   return () => c.destroy && c.destroy()
 }
 
-function initComponent(refs, data) {
+function initComponent (refs, data) {
   console.log(refs, data)
 
   const d = {
@@ -18,7 +18,7 @@ function initComponent(refs, data) {
     order: refs.listing[0].dataset.order,
     orderby: refs.listing[0].dataset.orderby,
     maxPosts: refs.listing[0].dataset.maxPosts,
-    labels: refs.listing[0].dataset.labels,
+    labels: refs.listing[0].dataset.labels
   }
 
   Array.from(refs.select).forEach((select) => {
@@ -26,23 +26,14 @@ function initComponent(refs, data) {
       select.dataset.value = e.target.value
       const userQuery = []
 
-      console.log(JSON.parse(select.dataset.filterterms))
-
       Array.from(refs.select).forEach((select) => {
-        select.dataset.value && select.dataset.value !== '*'
-          ? userQuery.push({
-              taxonomy: select.name,
-              field: 'term_id',
-              terms: [select.dataset.value],
-            })
-          : select.name === 'category' &&
-            userQuery.push({
-              taxonomy: select.name,
-              field: 'term_id',
-              terms: JSON.parse(select.dataset.filterterms).map(
-                (term) => term.term_id
-              ),
-            })
+        select.dataset.value &&
+          select.dataset.value !== '*' &&
+          userQuery.push({
+            taxonomy: select.name,
+            field: 'term_id',
+            terms: [select.dataset.value]
+          })
       })
 
       jQuery
@@ -58,8 +49,8 @@ function initComponent(refs, data) {
             order: d.order,
             orderby: d.orderby,
             maxPosts: d.maxPosts,
-            labels: d.labels,
-          },
+            labels: d.labels
+          }
         })
         .then(
           (res) => {
@@ -83,7 +74,7 @@ function initComponent(refs, data) {
           userQuery.push({
             taxonomy: select.name,
             field: 'term_id',
-            terms: [select.dataset.value],
+            terms: [select.dataset.value]
           })
       })
 
@@ -101,8 +92,8 @@ function initComponent(refs, data) {
             orderby: d.orderby,
             maxPosts: d.maxPosts,
             labels: d.labels,
-            count: refs.listing[0].querySelectorAll('li').length,
-          },
+            count: refs.listing[0].querySelectorAll('li').length
+          }
         })
         .then((res) => {
           refs.listing[0].innerHTML = refs.listing[0].innerHTML + res

@@ -17,8 +17,6 @@ add_filter('acf/load_field/name=post_types', function ($field) {
         $field['choices'][$post_type->name] = $post_type->label;
     }
 
-    $field['choices']['people'] = 'People';
-
     // return the field
     return $field;
 });
@@ -71,7 +69,7 @@ add_filter('acf/load_field/name=flexTaxonomies', function ($field) {
                     'add_term' => 0,
                     'save_terms' => 0,
                     'load_terms' => 0,
-                    'return_format' => 'object',
+                    'return_format' => 'id',
                     'field_type' => 'checkbox',
                     'multiple' => 1,
                     'allow_null' => 0,
@@ -88,7 +86,7 @@ function getACFLayout()
 {
     return [
         'name' => 'BlockListingAuto',
-        'label' => __('Listing: Automatic', 'flynt'),
+        'label' => __('Listing: Auto', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('Title', 'flynt'),
@@ -280,7 +278,7 @@ function getACFLayout()
                 'ui' => 1,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
-            ],
+            ]
         ]
     ];
 }

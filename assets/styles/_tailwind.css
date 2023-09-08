@@ -522,39 +522,6 @@
     }
   }
 
-  flynt-component[name='ListingFlex'] {
-    @screen md {
-      .firstItemLarger {
-        .post {
-          min-height: auto;
-
-          figure {
-            img {
-              @apply max-h-[370px];
-              @apply xl:max-h-[345px];
-              @apply max:max-h-[330px];
-            }
-          }
-
-          &:first-child {
-            grid-column-end: 3;
-            grid-column-start: 1;
-
-            figure {
-              img {
-                aspect-ratio: 2/1;
-              }
-            }
-
-            .content {
-              aspect-ratio: 2/1;
-            }
-          }
-        }
-      }
-    }
-  }
-
   flynt-component[name='BlockListingMap'] {
     #dottedMap {
       svg {

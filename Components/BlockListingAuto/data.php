@@ -1,10 +1,10 @@
 <?php
 
-namespace Flynt\Components\BlockListingAuto;
+namespace Flynt\Components\BlocListingAuto;
 
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=BlockListingAuto', function ($data) {
+add_filter('Flynt/addComponentData?name=BlocListingAuto', function ($data) {
 
     $data['flexTaxonomies'] = $data['flexTaxonomies'] ?: [];
 
@@ -18,48 +18,12 @@ add_filter('Flynt/addComponentData?name=BlockListingAuto', function ($data) {
         $tax_query['relation'] = 'AND';
     }
 
-    $flexFiltersAsArray = array();
-    $data['filters'] = [];
-    foreach ($data['flexFilters'] as $filter) {
-
-        $flexFiltersAsArray[] = $filter['value'];
-    }
-
-
     foreach ($data['flexTaxonomies'] as $tax) {
         $tax_query[] = [
             'taxonomy' => $tax["acf_fc_layout"],
             'field'    => 'term_id',
-            'terms'    => array_map(function ($item){
-                return $item->term_id;
-            }, $tax[""]),
+            'terms'    => $tax[""],
         ];
-
-        if (in_array($tax["acf_fc_layout"], $flexFiltersAsArray)) {
-            $label = '';
-            foreach($data['flexFilters'] as $filter) {
-                if ($filter['value'] == $tax["acf_fc_layout"]) {
-                    $label = $filter['label'];
-                    break;
-                }
-            }
-            $data['filters'][] = [
-                'name' => $tax["acf_fc_layout"],
-                'label' => $label,
-                'terms' => get_terms([
-                    'taxonomy' => $tax["acf_fc_layout"],
-                    'hide_empty' => true,
-                    'include' => array_map(function ($item){
-                        return $item->ID;
-                    }, $tax[""]),
-                ]),
-            ];
-            
-            $flexFiltersAsArray = array_filter($flexFiltersAsArray, function ($item) use ($tax) {
-                return $item != $tax["acf_fc_layout"];
-            });
-        }
-       
     }
 
     $data['tax_query'] = $tax_query;
@@ -78,19 +42,16 @@ add_filter('Flynt/addComponentData?name=BlockListingAuto', function ($data) {
     $data['found_posts'] = $data['posts']->found_posts;
 
     // get all terms for taxonomies in flexFilters array
-
+    $data['filters'] = [];
     foreach ($data['flexFilters'] as $filter) {
-        if (in_array($filter['value'], $flexFiltersAsArray)) {
-            $data['filters'][] = [
-                'name' => $filter['value'],
-                'label' => $filter['label'],
-                'terms' => get_terms([
-                    'taxonomy' => $filter['value'],
-                    'hide_empty' => true,
-                ]),
-            ];
-        }
-       // if filter value is category then if there is a prefilter category set, use all categories selected else use all categories
+        $data['filters'][] = [
+            'name' => $filter['value'],
+            'label' => $filter['label'],
+            'terms' => get_terms([
+                'taxonomy' => $filter['value'],
+                'hide_empty' => true,
+            ]),
+        ];
     }
 
     return $data;
