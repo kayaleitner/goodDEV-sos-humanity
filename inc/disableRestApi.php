@@ -11,6 +11,11 @@ function disable_rest_api($access)
         return $access;
     }
 
+    // Allow access to specific FileBird endpoints
+    if (strpos($_SERVER['REQUEST_URI'], '/wp-json/filebird/') !== false) {
+        return $access;
+    }
+
     // Allow access to Redirection plugin endpoints
     if (strpos($_SERVER['REQUEST_URI'], '/wp-json/redirection/v1/') !== false) {
         return $access;
