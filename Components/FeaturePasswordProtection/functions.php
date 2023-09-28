@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Components\FormPasswordProtection;
+namespace Flynt\Components\FeaturePasswordProtection;
 
 use Flynt\Utils\Options;
 use Timber\Timber;
@@ -10,7 +10,7 @@ add_filter('the_password_form', function () {
     $context['form'] = [
       'url' => site_url('/wp-login.php?action=postpass', 'login_post')
     ];
-    $translatableOptions = Options::getTranslatable('FormPasswordProtection');
+    $translatableOptions = Options::getTranslatable('FeaturePasswordProtection');
     if (!empty($translatableOptions)) {
         $context = array_replace_recursive($context, $translatableOptions);
     }
@@ -18,7 +18,7 @@ add_filter('the_password_form', function () {
     return Timber::compile('index.twig', $context);
 });
 
-Options::addTranslatable('FormPasswordProtection', [
+Options::addTranslatable('FeaturePasswordProtection', [
   [
     'label' => __('General', 'flynt'),
     'name' => 'general',
