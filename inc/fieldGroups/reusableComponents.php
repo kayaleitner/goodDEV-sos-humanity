@@ -18,14 +18,13 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'layouts' => [
                     Components\BlockImage\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
+                    Components\BlockSeparatorLine\getACFLayout(),
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\BlockGridCards\getACFLayout(),
-                    Components\HeroContactForm\getACFLayout(),
-                    Components\ListingInsights\getACFLayout(),
-                    Components\ListingProjects\getACFLayout(),
+                    Components\BlockHeroContactForm\getACFLayout(),
                     Components\ListComponents\getACFLayout(),
-                    Components\SliderImages\getACFLayout(),
+                    Components\BlockSliderImages\getACFLayout(),
                 ],
             ]
         ],

@@ -245,7 +245,7 @@ Returns the reading time of a string in minutes.
 {{ 'This is a string'|readingTime }}
 ```
 
-_Example from [Components/GridPostsArchive/index.twig](./Components/GridPostsArchive/index.twig)_
+_Example from [Components/BlockGridPostsArchive/index.twig](./Components/BlockGridPostsArchive/index.twig)_
 
 ---
 

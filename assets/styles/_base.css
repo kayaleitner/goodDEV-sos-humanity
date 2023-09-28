@@ -137,6 +137,14 @@ table {
     @apply pointer-events-none;
   }
 
+  &--brand {
+    @apply bg-brandColor;
+    @apply hover:bg-hoverColor;
+    @apply focus:bg-hoverColor;
+    @apply border-transparent;
+    @apply text-textColor;
+  }
+
   &--accent {
     @apply bg-accentColor;
     @apply hover:bg-hoverColor;
@@ -145,11 +153,13 @@ table {
     @apply hover:border-transparent;
     @apply focus:border-textColor;
     @apply text-textColor;
-    
 
     &Big {
-      @apply text-bodyMobile;
-      @apply lg:text-body;
+      font-size: var(--bodyMobile);
+
+      @screen lg {
+        font-size: var(--body);
+      }
     }
   }
 
@@ -167,17 +177,17 @@ table {
   &--outlineBlack {
     @apply border-textColor;
     @apply hover:border-transparent;
-    @apply active:border-textColor;
+    @apply active:border-transparent;
     @apply hover:bg-hoverColor;
     @apply text-textColor;
-    @apply hover:text-textColor;
+    @apply hover:text-bgColor;
     @apply border;
     @apply bg-transparent;
   }
 
   &--outlineBlackWhite {
     @apply border-bgColor;
-    @apply active:border-textColor;
+    @apply active:border-transparent;
     @apply hover:bg-bgColor;
     @apply text-bgColor;
     @apply hover:text-textColor;
@@ -205,7 +215,43 @@ table {
     }
   }
 
+  &--arrowCustom {
+    @apply border-textColor;
+    @apply hover:border-transparent;
+    @apply active:border-textColor;
+    @apply hover:bg-bgColor;
+    @apply border;
+    @apply bg-transparent;
+    @apply hover:bg-hoverColor;
+    @apply active:bg-hoverColor;
+    @apply h-[45px];
+    @apply justify-center;
+    @apply p-0;
+    @apply w-[45px];
+  }
+
   &--link {
+    @apply bg-transparent;
+    @apply hover:bg-transparent;
+    @apply text-textColor;
+    @apply hover:text-textColor;
+    @apply p-0;
+    @apply w-max;
+
+    &::after {
+      content: url('data:image/svg+xml,%3Csvg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M17.0898 1.75391C17.0898 1.20162 16.6421 0.753906 16.0898 0.753906L7.08984 0.753907C6.53756 0.753906 6.08984 1.20162 6.08984 1.75391C6.08984 2.30619 6.53756 2.75391 7.08984 2.75391L15.0898 2.75391L15.0898 10.7539C15.0898 11.3062 15.5376 11.7539 16.0898 11.7539C16.6421 11.7539 17.0898 11.3062 17.0898 10.7539L17.0898 1.75391ZM1.79695 17.461L16.797 2.46101L15.3827 1.0468L0.382737 16.0468L1.79695 17.461Z" fill="black"/%3E%3C/svg%3E%0A');
+      transition: all 0.2s linear;
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        @apply ml-[5px];
+      }
+    }
+  }
+
+  &--external {
     @apply bg-transparent;
     @apply hover:bg-transparent;
     @apply text-textColor;

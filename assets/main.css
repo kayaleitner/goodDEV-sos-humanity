@@ -4,9 +4,8 @@
 @import 'styles/_reset.css';
 @import 'styles/_icons.css';
 @import 'styles/_base.css';
-@import 'styles/_fonts.css';
+@import 'styles/_typography.css';
 @import 'styles/_borlabs-cookie.css';
 
 @import '../Components/BlockVideoOembed/_style.css';
-@import '../Components/NavigationMain/_style.css';
 @import '../Components/NavigationBurger/_style.css';

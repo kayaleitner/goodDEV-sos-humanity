@@ -42,7 +42,7 @@ function registerCountryTaxonomy()
         'show_tagcloud'              => true,
     ];
 
-    register_taxonomy('country', ['project'], $args);
+    register_taxonomy('country', ['project', 'work'], $args);
 }
 
 add_action('init', 'Flynt\\CustomTaxonomies\\registerCountryTaxonomy');

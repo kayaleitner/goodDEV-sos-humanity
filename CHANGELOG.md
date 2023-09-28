@@ -119,7 +119,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **BaseStyle:** replaced custom noindex code with wordpress action ([676235a](https://github.com/flyntwp/flynt/commit/676235a50f87b3d911a8a8ec60ad7dde72d8e60f))
 * **BaseStyle:** use custom document title, instead of archive title ([5a0fd5b](https://github.com/flyntwp/flynt/commit/5a0fd5b3a7f80e69f3b703f1cc5449c293eb8152))
 * **BaseStyle:** vertically center select input text in Firefox ([4b51d00](https://github.com/flyntwp/flynt/commit/4b51d0015cf134b3f87a8abbafc6a8f02be895bc)), closes [#185](https://github.com/flyntwp/flynt/issues/185)
-* **BlockPostFooter:** prevent overflowing author info (IE11) ([ac65669](https://github.com/flyntwp/flynt/commit/ac6566915cbe66f6d4872d3729d478ddf011ebe5))
+* **ElementPostFooter:** prevent overflowing author info (IE11) ([ac65669](https://github.com/flyntwp/flynt/commit/ac6566915cbe66f6d4872d3729d478ddf011ebe5))
 * **FeatureGoogleAnalytics:** Fixed boolean logic and window.$ ([26a8e5a](https://github.com/flyntwp/flynt/commit/26a8e5a5ed25b0bdc29f3211a08e9a5db1cac771))
 * **GoogleAnalytics:** minor improvements ([31a753c](https://github.com/flyntwp/flynt/commit/31a753cacd0f8583117b4c0f4d047a91e7a259f2))
 * **GridPostsArchive:** remove abandoned p-tag and close unclosed div ([6c11155](https://github.com/flyntwp/flynt/commit/6c11155eb2402d5a6a0ccc2667958ba2dd34af8d))

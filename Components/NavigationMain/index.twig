@@ -1,32 +1,38 @@
-<flynt-component
-  load:on="load"
-  load:onmedia="(min-width: 780px)"
-  name="NavigationMain"
-  class="mainNavBlock hidden md:block text-bgColor backdrop-blur-xl relative"
->
-  <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
-    <div class="max-w-screen-max mx-auto px-sm lg:px-lg py-md flex items-center justify-between flex-row">
-      {% include 'Partials/_logo.twig' with { 'logo': logo, 'logo_dark': logo_dark, 'site': site } only %}
-      <div class="menu-wrapper flex items-center justify-start gap-sm xl:gap-md w-fit h-fit pl-lg relative">
+<flynt-component name="NavigationMain" x-data="{ menuOpen: false }">
+  <nav class="navigation block" aria-label="{{ labels.ariaLabel|e }}">
+    <div class="flex justify-between bg-brandColor p-sm lg:p-[30px] border-b-1 border-borderColor">
+      <a class="logo logo_light no-underline flex align-middle justify-start shrink-0 h-full w-fit logo" href="{{ site.link|e('esc_url') }}">
+        <img class="logo-image h-auto w-[100px] lg:w-[120px]" src="{{ logo.src }}" alt="{{ logo.alt }}">
+      </a>
         {% if menu %}
-          {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
-        {% endif %}
-        <div
-          id="ctaMenu"
-          class="hidden [@media(min-width:1160px)]:flex justify-center items-start relative z-[9999]
-          [&_a]:bg-bgColor [&_a]:hover:bg-accentColor [&_a]:text-textColor
-        ">
-          {% include 'Partials/_cta.twig' %}
+        <ul class="hidden lg:flex items-end">
+          {% for item in menu.items %}
+          <li class="ml-md">
+            <a class="font-menu no-underline {{ item.classes|join(' ')}}" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
+          </li>
+          {% endfor %}
         </div>
-      </div>
+        <div class="hidden xs:flex lg:hidden items-center">
+          <div class="font-titleSmall">Menu</div>
+        </div>
+        <button data-ref="menuButton" class="xs:hidden" type="button" aria-expanded="false" aria-controls="navigation-menu"
+          @click="menuOpen = !menuOpen">
+          <span x-text="!menuOpen ? 'Menu' : 'Schließen'" class="font-titleSmall">Menu</span>
+        </button>
+      {% endif %}
     </div>
-    {# this is just for tailwind blabla #}
-    <div class="hidden bg-bgColor/50 backdrop-blur-xl text-uiColor text-bgColor text-textColor bg-bgColor bg-accentColor bg-brandColor [&_a]:bg-accentColor [&_a]:hover:bg-brandColor [&_a]:hover:text-bgColor"></div>
+    {% if menu %}
+      <div class="hidden xs:flex lg:hidden bg-bgColor p-sm items-center">
+        {% for item in menu.items %}
+          <a class="text-black font-menu no-underline mr-sm" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
+        {% endfor %}
+      </div>
+      <div class="hidden translate-x-full !translate-x-0"></div>
+       <div :class="{ '!translate-x-0': menuOpen }" class="translate-x-full h-full w-full py-md px-sm fixed flex flex-col xs:hidden bg-bgColor p-sm items-start transition">
+        {% for item in menu.items %}
+          <a class="text-black font-subtitle no-underline mb-sm" @click="menuOpen = false" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
   </nav>
 </flynt-component>
-<div id="ctaMain"
-  class="fixed hidden sm:block [@media(min-width:1160px)]:hidden z-[9999] bottom-lg right-lg
-  [&>a]:bg-accentColor [&>a]:text-textColor [&>a]:hover:bg-brandColor [&>a]:hover:text-bgColor
-">
-  {% include 'Partials/_cta.twig' %}
-</div>

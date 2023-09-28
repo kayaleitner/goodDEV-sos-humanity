@@ -1,7 +1,7 @@
 {% extends 'templates/_document.twig' %}
 
 {% block content %}
-  {{ renderComponent('BlockPageHeader', {'post': post}) }}
+  {{ renderComponent('ElementPageHeader', {'post': post}) }}
   {% for component in post.meta('pageComponents') %}
     {{ renderComponent(component) }}
   {% endfor %}

@@ -61,7 +61,7 @@ function getNavStyle($default = 'light-blur')
     ];
 }
 
-function getColorBackground()
+function getColorBackground($default = '#ffffff')
 {
     return [
         'label' => __('Color Background', 'flynt'),
@@ -71,6 +71,7 @@ function getColorBackground()
         'wrapper' => [
             'width' => 100,
         ],
+        'default_value' => $default,
     ];
 }
 
@@ -87,7 +88,7 @@ function getColorSecondary()
     ];
 }
 
-function getColorText()
+function getColorText($default = '#000000')
 {
     return [
         'label' => __('Color Text', 'flynt'),
@@ -97,5 +98,26 @@ function getColorText()
         'wrapper' => [
             'width' => 100,
         ],
+        'default_value' => $default,
+    ];
+}
+
+
+function mobileVisibility($default = 'hidden xs:block')
+{
+    return [
+        'label' => __('Hide on Mobile?', 'flynt'),
+        'instructions' => __('Choose if you want the block to be hidden on mobile or not.', 'flynt'),
+        'name' => 'mobileVisibility',
+        'type' => 'select',
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 0,
+        'ajax' => 0,
+        'choices' => [
+            'hidden xs:block' => __('Yes (hide on mobile, show on desktop)', 'flynt'),
+            'block' => __('No (show on both mobile and desktop)', 'flynt'),
+        ],
+        'default_value' => $default,
     ];
 }

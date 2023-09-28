@@ -158,6 +158,7 @@
   html body .paragraph,
   html body .body {
     @apply font-body;
+    margin-block-end: 0;
   }
 
   .paragraph:last-child,
@@ -173,7 +174,7 @@
     @apply font-titleSmall;
   }
 
-  .glance {
+  html body .glance {
     @apply font-glance;
   }
 
@@ -196,6 +197,10 @@
   /* Custom Components Style
   ONLY USE SMALL, HIGHLY REUSABLE COMPONENTS (ATOMS) LIKE BUTTONS OR FORMS CONTROLS */
 
+  .dark .filter-white {
+    filter: invert(1) brightness(10);
+  }
+
   .button.button--card {
     @apply text-current;
     @apply border;
@@ -211,6 +216,27 @@
     @apply group-focus:bg-hoverColor;
   }
 
+  .group:hover .button.button--card {
+    color: var(--bgColor);
+  }
+
+  .group:focus .button.button--card {
+    color: var(--bgColor);
+  }
+
+  .dark .button.button--card {
+    @apply hover:text-bgColor;
+    @apply focus:text-bgColor;
+  }
+
+  .dark .group:hover .button.button--card {
+    color: var(--bgColor);
+  }
+
+  .dark .group:focus .button.button--card {
+    color: var(--bgColor);
+  }
+
   .button.button--link {
     @apply hover:bg-hoverColor;
     @apply focus:bg-hoverColor;
@@ -220,13 +246,41 @@
     @apply group-focus:border-textColor;
   }
 
-  .button.button--arrow {
+  .button.button--external {
     @apply hover:bg-hoverColor;
     @apply focus:bg-hoverColor;
     @apply group-hover:bg-hoverColor;
     @apply group-focus:bg-hoverColor;
     @apply group-hover:border-transparent;
     @apply group-focus:border-textColor;
+  }
+
+  .group:hover .button.button--external,
+  .group:focus .button.button--external {
+    @apply px-sm;
+    @apply py-xs;
+    @apply lg:px-md;
+    color: var(--bgColor);
+  }
+
+  .button.button--arrow {
+    @apply hover:bg-hoverColor;
+    @apply focus:bg-hoverColor;
+    @apply group-hover:bg-hoverColor;
+    @apply group-focus:bg-hoverColor;
+    @apply group-hover:border-transparent;
+    @apply group-focus:border-transparent;
+  }
+
+  .button.button--accent {
+    @apply bg-accentColor;
+    @apply hover:bg-hoverColor;
+    @apply focus:bg-hoverColor;
+  }
+
+  .dark .button--arrowCustom {
+    @apply hover:text-bgColor;
+    @apply focus:text-bgColor;
   }
 
   flynt-component[name='NavigationMain'] {
@@ -427,7 +481,8 @@
 
       input {
         @apply px-sm;
-        @apply py-xs;
+        @apply py-[11px];
+        @apply font-caption;
       }
 
       button {
@@ -443,12 +498,13 @@
           @apply text-bgColor;
           @apply hover:text-textColor;
           @apply transition-all;
+          @apply font-caption;
         }
       }
     }
   }
 
-  flynt-component[name='BlockProjectBox'] #dottedMap {
+  flynt-component[name='ElementProjectBox'] #dottedMap {
     svg {
       clip-path: polygon(4% 2%, 100% 3%, 100% 99%, 3% 98%);
 
@@ -466,40 +522,7 @@
     }
   }
 
-  flynt-component[name='ListingFlex'] {
-    @screen md {
-      .firstItemLarger {
-        .post {
-          min-height: auto;
-
-          figure {
-            img {
-              @apply max-h-[370px];
-              @apply xl:max-h-[345px];
-              @apply max:max-h-[330px];
-            }
-          }
-
-          &:first-child {
-            grid-column-end: 3;
-            grid-column-start: 1;
-
-            figure {
-              img {
-                aspect-ratio: 2/1;
-              }
-            }
-
-            .content {
-              aspect-ratio: 2/1;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  flynt-component[name='ListingMap'] {
+  flynt-component[name='BlockListingMap'] {
     #dottedMap {
       svg {
         clip-path: polygon(0.5% 1%, 100% 1%, 100% 100%, 0% 100%);
@@ -552,7 +575,7 @@
     }
   }
 
-  flynt-component[name='ScrollytellingImage'] {
+  flynt-component[name='BlockScrollytellingImage'] {
     /* // Do we need this? */
     .panel:first-child {
       img {
@@ -568,7 +591,7 @@
     }
   }
 
-  flynt-component[name='HeroContactForm'] {
+  flynt-component[name='BlockHeroContactForm'] {
     .wpcf7 {
       align-items: flex-start;
       display: flex;
@@ -655,6 +678,7 @@
         &::placeholder {
           color: var(--textColor);
           opacity: 0.5;
+          @apply font-caption;
         }
 
         &:disabled {
@@ -710,7 +734,7 @@
 
 /* Third party libraries */
 
-flynt-component[name='SliderImages'] {
+flynt-component[name='BlockSliderImages'] {
   .swiper-pagination-bullet {
     background: transparent;
     border: 2px solid var(--bgColor);
@@ -728,7 +752,7 @@ flynt-component[name='SliderImages'] {
   }
 }
 
-flynt-component[name='SliderText'] {
+flynt-component[name='BlockSliderText'] {
   .slider {
     &-button {
       &.swiper-button-disabled {

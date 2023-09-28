@@ -10,7 +10,7 @@ namespace Flynt\CustomTaxonomies;
 
 function registerCustomerSegmentTaxonomy()
 {
-    $labels = [
+    $labelsCBE = [
         'name'                       => _x('Customer Segments', 'Taxonomy General Name', 'flynt'),
         'singular_name'              => _x('Customer Segment', 'Taxonomy Singular Name', 'flynt'),
         'menu_name'                  => __('Customer Segments', 'flynt'),
@@ -32,8 +32,30 @@ function registerCustomerSegmentTaxonomy()
         'items_list'                 => __('Items list', 'flynt'),
         'items_list_navigation'      => __('Items list navigation', 'flynt'),
     ];
+    $labelsCBG = [
+        'name'                       => _x('Sectors', 'Taxonomy General Name', 'flynt'),
+        'singular_name'              => _x('Sector', 'Taxonomy Singular Name', 'flynt'),
+        'menu_name'                  => __('Sectors', 'flynt'),
+        'all_items'                  => __('All Items', 'flynt'),
+        'parent_item'                => __('Parent Item', 'flynt'),
+        'parent_item_colon'          => __('Parent Item:', 'flynt'),
+        'new_item_name'              => __('New Item Name', 'flynt'),
+        'add_new_item'               => __('Add New Item', 'flynt'),
+        'edit_item'                  => __('Edit Item', 'flynt'),
+        'update_item'                => __('Update Item', 'flynt'),
+        'view_item'                  => __('View Item', 'flynt'),
+        'separate_items_with_commas' => __('Separate items with commas', 'flynt'),
+        'add_or_remove_items'        => __('Add or remove items', 'flynt'),
+        'choose_from_most_used'      => __('Choose from the most used', 'flynt'),
+        'popular_items'              => __('Popular Items', 'flynt'),
+        'search_items'               => __('Search Items', 'flynt'),
+        'not_found'                  => __('Not Found', 'flynt'),
+        'no_terms'                   => __('No items', 'flynt'),
+        'items_list'                 => __('Items list', 'flynt'),
+        'items_list_navigation'      => __('Items list navigation', 'flynt'),
+    ];
     $args = [
-        'labels'                     => $labels,
+        'labels'                     => (get_option('options_globalThemeOption') === 'cbenergy') ? $labelsCBE : $labelsCBG,
         'hierarchical'               => true,
         'public'                     => false,
         'show_ui'                    => true,
@@ -42,7 +64,7 @@ function registerCustomerSegmentTaxonomy()
         'show_tagcloud'              => true,
     ];
 
-    register_taxonomy('customer_segment', ['project'], $args);
+    register_taxonomy('customer_segment', ['project', 'work'], $args);
 }
 
 add_action('init', 'Flynt\\CustomTaxonomies\\registerCustomerSegmentTaxonomy');

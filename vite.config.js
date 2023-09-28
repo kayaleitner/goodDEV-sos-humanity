@@ -5,9 +5,10 @@ import FullReload from 'vite-plugin-full-reload'
 import fs from 'fs'
 
 const fontFileNames = [
-  'AeonikPro-Regular.woff2',
-  'AeonikPro-Bold.woff2',
-  'AeonikMono-Bold.woff2',
+  'OpenSans-ExtraBold.ttf',
+  'OpenSans-Regular.ttf',
+  'OpenSans-SemiBold.ttf',
+  'OpenSans-SemiBoldItalic.ttf',
 ]
 
 export default defineConfig(({ mode }) => {
