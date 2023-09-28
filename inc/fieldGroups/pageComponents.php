@@ -75,6 +75,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockCta\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
+                    Components\BlockInterstitial\getACFLayout(),
                     Components\BlockListingMap\getACFLayout(),
                     Components\BlockPulloutQuote\getACFLayout(),
                     Components\BlockImageTextFull\getACFLayout(),

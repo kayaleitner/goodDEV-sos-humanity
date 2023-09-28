@@ -195,6 +195,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'layouts' => [
                     Components\BlockAnchor\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
+                    Components\BlockInterstitial\getACFLayout(),
                     // Components\ListingProjects\getACFLayout(),
                     Components\BlockPulloutQuote\getACFLayout(),
                     Components\BlockVideoOembed\getACFLayout(),
