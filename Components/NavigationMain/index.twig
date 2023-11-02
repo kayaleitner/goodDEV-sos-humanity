@@ -1,8 +1,8 @@
-<flynt-component name="NavigationMain" x-data="{ menuOpen: false }">
-  <nav class="navigation block" aria-label="{{ labels.ariaLabel|e }}">
-    <div class="flex justify-between bg-brandColor p-sm lg:p-[30px] border-b-1 border-borderColor">
+<flynt-component name="NavigationMain" x-data="{ menuOpen: false }" load:on:media="(min-width: 981px)">
+  <nav class="navigation hidden md:block bg-brandColor" aria-label="{{ labels.ariaLabel|e }}">
+    <div class="max-w-screen-max mx-auto flex justify-between p-sm lg:p-[30px]">
       <a class="logo logo_light no-underline flex align-middle justify-start shrink-0 h-full w-fit logo" href="{{ site.link|e('esc_url') }}">
-        <img class="logo-image h-auto w-[100px] lg:w-[120px]" src="{{ logo.src }}" alt="{{ logo.alt }}">
+        <img class=" absolute logo-image h-[50px] w-[100px] lg:w-[120px]" src="{{ logo.src }}" alt="{{ logo.alt }}">
       </a>
         {% if menu %}
         <ul class="hidden lg:flex items-end">
@@ -11,7 +11,6 @@
             <a class="font-menu no-underline {{ item.classes|join(' ')}}" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
           </li>
           {% endfor %}
-        </div>
         <div class="hidden xs:flex lg:hidden items-center">
           <div class="font-titleSmall">Menu</div>
         </div>
@@ -28,7 +27,7 @@
         {% endfor %}
       </div>
       <div class="hidden translate-x-full !translate-x-0"></div>
-       <div :class="{ '!translate-x-0': menuOpen }" class="translate-x-full h-full w-full py-md px-sm fixed flex flex-col xs:hidden bg-bgColor p-sm items-start transition">
+      <div :class="{ '!translate-x-0': menuOpen }" class="translate-x-full h-full w-full py-md px-sm fixed flex flex-col xs:hidden bg-bgColor p-sm items-start transition">
         {% for item in menu.items %}
           <a class="text-black font-subtitle no-underline mb-sm" @click="menuOpen = false" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
         {% endfor %}
