@@ -77,31 +77,36 @@ function getBlockFormats($blockFormats)
     return '';
 }
 
+function getPalette()
+{
+    $cssContent = file_get_contents(get_template_directory() . '/assets/styles/_colors.css');
+    $parser = new \Sabberworm\CSS\Parser($cssContent);
+    $cssDocument = $parser->parse();
+    $colors = array();
+    $theme = get_option('options_globalThemeOption');
+
+    foreach ($cssDocument->getAllDeclarationBlocks() as $block) {
+        foreach ($block->getSelectors() as $selector) {
+            if ($selector->getSelector() === ':root' || $selector->getSelector() === "[data-theme='$theme']") {
+                foreach ($block->getRules() as $rule) {
+                    $outputFormat = \Sabberworm\CSS\OutputFormat::create();
+                    $slug = str_replace('-', '', $rule->getRule());
+                    if (str_contains($rule->getValue()->render($outputFormat), '#')) {
+                        $colors[] = str_replace('#', '', $rule->getValue()->render(\Sabberworm\CSS\OutputFormat::create()));
+                        $colors[] = $slug;
+                    }
+                }
+            }
+        }
+    }
+    return $colors;
+}
+
 function getConfig()
 {
 
-    $json_file_path = get_template_directory() . '/colors.json';
-    $palette = json_decode(file_get_contents($json_file_path), true)['palette'];
-
-    // Reformat the 'palette' array into the desired format using array_map
-    $reformatted = array_map(
-        function ($colorValue, $colorName) {
-            // Convert color name to uppercase
-            $colorName = strtoupper($colorName);
-            // Remove the '#' symbol from the color value
-            $colorValue = ltrim($colorValue, '#');
-            // Return the values in the desired order
-            return array($colorValue, $colorName);
-        },
-        $palette,
-        array_keys($palette)
-    );
-    // Flatten the array to get the final result
-    $mce_colormap = array_merge(...$reformatted);
-
-
     return [
-        'textcolor_map' => $mce_colormap,
+        'textcolor_map' => getPalette(),
         'blockformats' => [
             __('Paragraph', 'flynt') => 'p',
             __('Heading 1', 'flynt') => 'h1',
