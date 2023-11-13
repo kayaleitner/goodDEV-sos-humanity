@@ -5,10 +5,12 @@ import FullReload from 'vite-plugin-full-reload'
 import fs from 'fs'
 
 const fontFileNames = [
-  'OpenSans-ExtraBold.ttf',
-  'OpenSans-Regular.ttf',
-  'OpenSans-SemiBold.ttf',
-  'OpenSans-SemiBoldItalic.ttf',
+  'soehne-buch-kursiv.woff2',
+  'soehne-buch.woff2',
+  'soehne-halbfett-kursiv.woff2',
+  'soehne-halbfett.woff2',
+  'soehne-kraftig-kursiv.woff2',
+  'soehne-kraftig.woff2',
 ]
 
 export default defineConfig(({ mode }) => {

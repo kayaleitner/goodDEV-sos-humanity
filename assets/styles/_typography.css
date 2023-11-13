@@ -1,31 +1,47 @@
 @font-face {
   font-display: swap;
-  font-family: 'Open Sans';
+  font-family: 'Söhne';
   font-style: normal;
-  font-weight: 400;
-  src: url('/assets/fonts/OpenSans-Regular.ttf') format('ttf2');
+  font-weight: 500;
+  src: url('/assets/fonts/soehne-kraftig.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Open Sans';
+  font-family: 'Söhne';
+  font-style: italic;
+  font-weight: 500;
+  src: url('/assets/fonts/soehne-kraftig-kursiv.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Söhne';
   font-style: normal;
   font-weight: 600;
-  src: url('/assets/fonts/OpenSans-SemiBold.ttf') format('ttf2');
+  src: url('/assets/fonts/soehne-halbfett.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Open Sans';
+  font-family: 'Söhne';
   font-style: italic;
   font-weight: 600;
-  src: url('/assets/fonts/OpenSans-SemiBoldItalic.ttf') format('ttf2');
+  src: url('/assets/fonts/soehne-halbfett-kursiv.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Open Sans';
+  font-family: 'Söhne';
   font-style: normal;
-  font-weight: 800;
-  src: url('/assets/fonts/OpenSans-ExtraBold.ttf') format('ttf2');
+  font-weight: 400;
+  src: url('/assets/fonts/soehne-buch.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Söhne';
+  font-style: italic;
+  font-weight: 400;
+  src: url('/assets/fonts/soehne-buch-kursiv.woff2') format('woff2');
 }
