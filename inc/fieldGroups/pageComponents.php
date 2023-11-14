@@ -82,7 +82,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockHeroContactForm\getACFLayout(),
                     Components\BlockHeroIllustrationLottie\getACFLayout(),
-                    Components\BlockHeroIllustrationLottie\getACFLayout(),
                     Components\BlockListingAuto\getACFLayout(),
                     Components\BlockListingSelector\getACFLayout(),
                     Components\ReusableComponent\getACFLayout(),
