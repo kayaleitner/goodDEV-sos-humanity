@@ -10,7 +10,7 @@
   html {
     color: var(--textColor);
     font-family: 'Söhne', Verdana, sans-serif;
-    font-size: 16px;
+    font-size: 100%;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
