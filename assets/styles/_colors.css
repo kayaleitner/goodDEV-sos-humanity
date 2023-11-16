@@ -22,11 +22,12 @@
   --grey: #f3f8fe;
 
   /* Colors (Tokens) */
+  --hoverColor: var(--lightblue);
   --textColor: var(--darkblue);
   --bgColor: var(--white);
   --brandColor: var(--blue);
-  --accentColor: var(--blue);
-  --hoverColor: var(--grey);
+  --accentColor: var(--darkblue);
+  
   --borderColor: var(--lightgrey);
   --uiColor: var(--grey);
   --errorColor: var(--error);
