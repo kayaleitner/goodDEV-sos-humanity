@@ -11,11 +11,9 @@
       letter-spacing: 0.5px;
       text-decoration: underline;
       text-decoration-color: currentColor;
-
-      &:hover,
-      &:focus {
-        text-decoration-color: var(--hoverColor);
-      }
+      @apply transition-colors;
+      @apply ease-linear;
+      @apply duration-200;
     }
   }
 }
@@ -143,7 +141,7 @@ table {
     @apply bg-brandColor;
     @apply hover:bg-hoverColor;
     @apply focus:bg-hoverColor;
-    @apply active:bg-pressedColor;
+    @apply active:bg-activeColor;
     @apply text-bgColor;
   }
 
@@ -151,7 +149,7 @@ table {
     @apply bg-accentColor;
     @apply hover:bg-hoverColor;
     @apply focus:bg-hoverColor;
-    @apply active:bg-pressedColor;
+    @apply active:bg-activeColor;
     @apply text-bgColor;
   }
 

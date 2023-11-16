@@ -23,7 +23,7 @@ export const theme = {
     brandColor: 'var(--brandColor)',
     accentColor: 'var(--accentColor)',
     hoverColor: 'var(--hoverColor)',
-    pressedColor: 'var(--bluepressed)',
+    activeColor: 'var(--bluepressed)',
     borderColor: 'var(--borderColor)',
     uiColor: 'var(--uiColor)',
   },

@@ -27,6 +27,7 @@
   --bgColor: var(--white);
   --brandColor: var(--blue);
   --accentColor: var(--darkblue);
+  --activeColor: var(--bluepressed);
   
   --borderColor: var(--lightgrey);
   --uiColor: var(--grey);
