@@ -48,7 +48,8 @@ export const theme = {
     md: '980px',
     lg: '1080px',
     xl: '1280px',
-    max: '1440px',
+    xxl: '1440px',
+    max: '1600px',
   },
   extend: {
     aspectRatio: {

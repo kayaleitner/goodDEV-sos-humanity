@@ -7,9 +7,16 @@
   /* Custom Base Style     *
    * EDIT TEXT STYLES HERE */
 
+  /* Font sizes:
+   * 1rem = 16px (default)
+   * Use calc() for readable font sizes, e.g. font-size: calc(18rem / 16) for 18px
+   * Calculations with only one unit will be calculated at build time, e.g. calc(18rem / 16) => 1.125rem
+   */
+
   html {
     color: var(--textColor);
     font-family: 'Söhne', Verdana, sans-serif;
+    /* default is 16px for 100% */
     font-size: 100%;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -18,36 +25,123 @@
   }
 
   .font-body {
+    /* Paragraph Big */
     @apply font-family-sans;
-    font-size: 1.25rem;
-    letter-spacing: 0.75px;
-    line-height: normal;
+    font-size: 1rem;
+    line-height: calc(24 / 16);
     margin-block-end: 1em;
 
-    @screen lg {
-      font-size: 1.563rem;
-      line-height: 140%;
+    @screen md {
+      font-size: calc(18rem / 16);
+      line-height: calc(26 / 18);
+    }
+
+    @screen max {
+      font-size: calc(20rem / 16);
+      line-height: calc(28 / 20);
+    }
+  }
+
+  .font-bodySmall {
+    /* Paragraph */
+    @apply font-family-sans;
+    font-size: calc(14rem / 16);
+    line-height: calc(20 / 14);
+    margin-block-end: 1em;
+
+    @screen md {
+      font-size: calc(16rem / 16);
+      line-height: calc(24 / 16);
+    }
+
+    @screen max {
+      font-size: calc(18rem / 16);
+      line-height: calc(26 / 18);
+    }
+  }
+
+  .font-bodySmaller {
+    @apply font-family-sans;
+    font-size: calc(12rem / 16);
+    line-height: calc(18 / 12);
+    margin-block-end: 1em;
+
+    @screen md {
+      font-size: calc(14rem / 16);
+      line-height: calc(22 / 14);
+    }
+
+    @screen max {
+      font-size: calc(16rem / 16);
+      line-height: calc(24 / 16);
     }
   }
 
   .font-titleLarge {
-    font-size: 2.813rem;
-    line-height: normal;
-    @apply mb-sm;
+    /* H1 */
+    font-size: calc(38rem / 16);
+    font-weight: 500;
+    line-height: calc(48 / 38);
 
-    @screen lg {
-      font-size: 4.813rem;
+    @screen md {
+      font-size: calc(64rem / 16);
+      line-height: calc(70 / 64);
+    }
+
+    @screen max {
+      font-size: calc(84rem / 16);
+      line-height: calc(82 / 84);
+    }
+  }
+
+  .font-titleMedium {
+    /* H2 */
+    font-size: calc(24rem / 16);
+    font-weight: 500;
+    line-height: calc(32 / 24);
+
+    @screen md {
+      font-size: calc(34rem / 16);
+      line-height: calc(38 / 34);
+    }
+
+    @screen max {
+      font-size: calc(46rem / 16);
+      line-height: calc(50 / 46);
     }
   }
 
   .font-titleSmall {
-    font-size: 2.188rem;
-    line-height: normal;
-    @apply mb-sm;
+    /* H3 / T1 */
+    font-size: calc(20rem / 16);
+    font-weight: 500;
+    line-height: calc(26 / 20);
 
-    @screen lg {
-      font-size: 3.438rem;
-      line-height: 110%;
+    @screen md {
+      font-size: calc(24rem / 16);
+      line-height: calc(30 / 24);
+    }
+
+    @screen max {
+      font-size: calc(34rem / 16);
+      line-height: calc(42 / 34);
+    }
+  }
+
+  .font-titleSub {
+    /* H4 / T2 */
+    font-size: calc(18rem / 16);
+    font-weight: 600;
+    line-height: calc(24 / 18);
+
+    @screen md {
+      font-size: calc(22rem / 16);
+      line-height: calc(32 / 22);
+    }
+
+    @screen max {
+      font-size: calc(26rem / 16);
+      line-height: calc(32 / 26);
     }
   }
 
@@ -57,15 +151,6 @@
 
     @screen lg {
       font-size: 2.813rem;
-    }
-  }
-
-  .font-subtitle {
-    font-size: 1.875rem;
-    line-height: normal;
-
-    @screen lg {
-      font-size: 2.188rem;
     }
   }
 
@@ -94,16 +179,15 @@
     }
 
     h2 {
-      @apply font-titleSmall;
+      @apply font-titleMedium;
     }
 
     h3 {
-      @apply font-subtitle;
-      @apply mb-sm;
+      @apply font-titleSmall;
     }
 
     h4 {
-      @apply font-body;
+      @apply font-titleSub;
     }
 
     h5 {
@@ -179,7 +263,7 @@
   }
 
   html body .subtitle {
-    @apply font-subtitle;
+    @apply font-titleSub;
   }
 
   html body .caption {
