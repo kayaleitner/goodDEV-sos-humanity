@@ -82,6 +82,7 @@
     font-size: calc(38rem / 16);
     font-weight: 500;
     line-height: calc(48 / 38);
+    @apply mb-10;
 
     @screen md {
       font-size: calc(64rem / 16);
@@ -99,6 +100,7 @@
     font-size: calc(24rem / 16);
     font-weight: 500;
     line-height: calc(32 / 24);
+    @apply mb-10;
 
     @screen md {
       font-size: calc(34rem / 16);
@@ -116,6 +118,7 @@
     font-size: calc(20rem / 16);
     font-weight: 500;
     line-height: calc(26 / 20);
+    @apply mb-6;
 
     @screen md {
       font-size: calc(24rem / 16);
@@ -133,6 +136,7 @@
     font-size: calc(18rem / 16);
     font-weight: 600;
     line-height: calc(24 / 18);
+    @apply mb-6;
 
     @screen md {
       font-size: calc(22rem / 16);
