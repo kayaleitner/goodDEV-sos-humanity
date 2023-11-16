@@ -7,7 +7,7 @@ use Flynt\Utils\Options;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=BlockListingRegions', function ($data) {
-    $globalTheme = get_field('field_optionsMeta_globalThemeOption', 'options' );
+    $globalTheme = get_field('field_optionsMeta_globalThemeOption', 'options');
     $data['globalTheme'] = $globalTheme;
     return $data;
 });

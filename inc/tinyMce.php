@@ -82,7 +82,7 @@ function getPalette()
     $cssContent = file_get_contents(get_template_directory() . '/assets/styles/_colors.css');
     $parser = new \Sabberworm\CSS\Parser($cssContent);
     $cssDocument = $parser->parse();
-    $colors = array();
+    $colors = [];
     $theme = get_option('options_globalThemeOption');
 
     foreach ($cssDocument->getAllDeclarationBlocks() as $block) {

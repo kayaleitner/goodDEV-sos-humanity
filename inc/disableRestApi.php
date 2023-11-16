@@ -2,7 +2,8 @@
 
 add_filter('rest_authentication_errors', 'disable_rest_api');
 
-function disable_rest_api($access) {
+function disable_rest_api($access)
+{
     // Allow access to specific Contact Form 7 endpoints
     if (strpos($_SERVER['REQUEST_URI'], '/wp-json/contact-form-7/v1/') !== false) {
         return $access;
