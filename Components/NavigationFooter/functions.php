@@ -45,9 +45,9 @@ Options::addTranslatable('NavigationFooter', [
         'endpoint' => 0
     ],
     [
-        'label' => __('Catch phrase', 'flynt'),
-        'name' => 'catchPhrase',
-        'type' => 'text'
+        'label' => __('Paragraph', 'flynt'),
+        'name' => 'paragraph',
+        'type' => 'textarea'
     ],
     [
         'label' => __('Logo', 'flynt'),
@@ -64,32 +64,6 @@ Options::addTranslatable('NavigationFooter', [
         'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
         'required' => 0,
         'mime_types' => 'jpg,jpeg,png,svg'
-    ],
-    [
-        'label' => __('Menus', 'flynt'),
-        'name' => 'menusTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0
-    ],
-    [
-        'label' => __('Menu', 'flynt'),
-        'name' => 'repeaterOuter',
-        'type' => 'repeater',
-        'layout' => 'block',
-        'min' => '1',
-        'button_label' => __('Add Menu', 'flynt'),
-        'sub_fields' => [
-            [  
-                'label' => __('Page Link', 'flynt'),
-                'name' => 'pageLink',
-                'type' => 'link',
-                'return_format' => 'array',
-                'wrapper' => [
-                    'width' => 100
-                ],
-            ]
-        ],
     ],
     [
         'label' => __('Social Media', 'flynt'),
@@ -122,7 +96,8 @@ Options::addTranslatable('NavigationFooter', [
                 'choices' => [
                     'linkedin' => 'Linkedin',
                     'facebook' => 'Facebook',
-                    'twitter' => 'Twitter'
+                    'twitter' => 'Twitter',
+                    'instagram' => 'Instagram'
                 ]
             ],
             [
@@ -130,6 +105,32 @@ Options::addTranslatable('NavigationFooter', [
                 'name' => 'url',
                 'type' => 'url',
                 'required' => 1
+            ],
+        ]
+    ],
+    [
+        'label' => __('Partner Logos', 'flynt'),
+        'name' => 'partnerlogos',
+        'type' => 'repeater',
+        'layout' => 'table',
+        'button_label' => __('Add Partner Logo', 'flynt'),
+        'sub_fields' => [
+            [
+                'label' => __('Logo', 'flynt'),
+                'name' => 'image',
+                'type' => 'image',
+                'preview_size' => 'medium',
+                'instructions' => __('Image-Format: SVG.', 'flynt'),
+                'required' => 0,
+                'mime_types' => 'svg'
+            ],
+            [
+                'label' => __('Flex Basis (size)', 'flynt'),
+                'name' => 'basis',
+                'type' => 'number',
+                'instructions' => __('Determines the width relative to the other logos', 'flynt'),
+                'default_value' => 0,
+                'required' => 0,
             ],
         ]
     ],
