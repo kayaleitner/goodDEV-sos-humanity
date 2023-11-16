@@ -1,18 +1,30 @@
 :root {
   /* Colors (Primitives) */
-  --black: #000;
-  --white: #fff;
-  --blue: #003574;
-  --lightblue: #2c70c1;
+  /* --blue: #003574;
+  --lightblue: #0071c7;
   --lightgrey: #d1d5db;
   --grey: #7b838d;
   --error: #f05252;
-  --danger: #ffb900;
+  --danger: #ffb900; */
+
+  --black: #000;
+  --white: #fff;
+  --blue: #0071c7;
+  --darkblue: #003574;
+  --lightblue: #23bced;
+  --darkerblue: #002a5b;
+  --bluepressed: #059ecf;
+  --purple: #ac4399;
+  --tangerine: #f55200;
+  --pink: #f357ca;
+  --green: #03ab3d;
+  --yellow: #e8f000;
+  --grey: #f3f8fe;
 
   /* Colors (Tokens) */
-  --textColor: var(--black);
+  --textColor: var(--darkblue);
   --bgColor: var(--white);
-  --brandColor: var(--lightblue);
+  --brandColor: var(--blue);
   --accentColor: var(--blue);
   --hoverColor: var(--grey);
   --borderColor: var(--lightgrey);
