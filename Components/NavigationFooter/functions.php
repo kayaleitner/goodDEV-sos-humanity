@@ -125,10 +125,11 @@ Options::addTranslatable('NavigationFooter', [
                 'mime_types' => 'svg'
             ],
             [
-                'label' => __('Flex Basis (size)', 'flynt'),
+                'label' => __('Flex Basis', 'flynt'),
                 'name' => 'basis',
                 'type' => 'number',
-                'instructions' => __('Determines the width relative to the other logos', 'flynt'),
+                'instructions' => __('Determines the width relative to the other logos.', 'flynt'),
+                'append' => 'px',
                 'default_value' => 0,
                 'required' => 0,
             ],

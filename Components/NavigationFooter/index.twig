@@ -84,10 +84,29 @@
     {% if partnerlogos %}
       <div class="w-full flex items-stretch">
         {% for partner in partnerlogos %}
-        <div class="flex items-center py-xs {{ not loop.first ? 'ps-[29px] border-s-1' }} {{ not loop.last ? 'pe-[29px]' }}">
-          <img class="lazyload w-[150px] md:w-[170px] lg:w-[250px]"
+        {% set styles = [] %}
+        {% if partner.basis and (loop.first or loop.last) %}
+          {% set flexBasis = partner.basis + 29 %}
+        {% elseif partner.basis %}
+          {% set flexBasis = partner.basis + 29 + 29 %}
+        {% endif %}
+        {% if partner.basis %}
+          {% set styles = styles|merge(['flex-basis:' ~ flexBasis ~ 'px']) %}
+        {% endif %}
+        <div class="flex items-center py-xs
+          {{ not loop.first ? 'ps-[29px] border-s-1' }}
+          {{ not loop.last ? 'pe-[29px]' }}"
+          {% if styles is not empty %}
+            style="
+              {% for style in styles %}
+                {{ style }};
+              {% endfor %}
+            "
+          {% endif %}
+          >
+          <img class="lazyload"
             src="{{ partner.image.src | resize(32) }}"
-            data-srcset="{{function('wp_get_attachment_image_srcset', logoFooter.id)}}"
+            data-srcset="{{function('wp_get_attachment_image_srcset', partner.image.id)}}"
             data-sizes="auto"
             alt="{{ partner.image.alt }}">
           </div>
