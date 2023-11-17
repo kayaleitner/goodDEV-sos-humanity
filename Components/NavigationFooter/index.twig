@@ -16,30 +16,50 @@
           data-sizes="auto">
         </a>
       {% endif %}
-      <div class="w-full grid grid-cols-6 gap-y-md gap-x-xs sm:gap-x-sm xxl:flex xxl:gap-x-[126px] xxl:justify-between wide:gap-x-[100px]">
+      <div class="w-full grid grid-cols-6 gap-y-md gap-x-xs sm:gap-x-sm xxl:flex xxl:justify-between">
         <div class="col-span-full sm:col-span-3 sm:-me-[50px] font-bodySmaller xxl:max-w-[368px] xxl:me-0">
           <div>
             {{ paragraph }}<br><br>
             {{ 'now' | date('Y') }} - {{ site.name }} | All right reserved
           </div>
         </div>
-        <div class="col-span-3 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 font-linkSmall xxl:min-w-[136px]">
+        <div class="col-span-3 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 font-linkSmall xxl:hidden">
           {% if menu %}
             <nav aria-label="{{ labels.ariaLabel }}">
               {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
             </nav>
           {% endif %}
         </div>
-        <div class="col-span-3 sm:col-span-2 sm:-me-[12px] border-s-1 ps-4 justify-between flex flex-col gap-[1.375rem] font-bodySmaller -ms-[10px] sm:ms-0 xxl:m-0 xxl:w-[219px] wide:w-[240px]">
+        <div class="col-span-3 sm:col-span-2 sm:-me-[12px] border-s-1 ps-4 justify-between flex flex-col gap-[1.375rem] font-bodySmaller -ms-[10px] sm:ms-0 xxl:hidden">
           <div class="font-bodySmall">Offices</div>
           <p>Lorem ipsum dolor sot amet consectetur lorem ipsum doloe</p>
           <p>Lorem ipsum dolor sot amet consectetur lorem ipsum doloe</p>
         </div>
-        <div class="col-span-4 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 flex flex-col gap-4 font-bodySmaller xxl:w-[219px] wide:w-[240px]">
+        <div class="col-span-4 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 flex flex-col gap-4 font-bodySmaller xxl:hidden">
           <div class="font-bodySmall">Contact</div>
           <p>Get in touch now. Lorem ipsum dolor sit amet consectetur</p>
           <a class="button button--accent button--icon" href="#">Contact Us</a>
         </div>
+        <div class="hidden xxl:flex xxl:gap-x-[126px] wide:gap-x-[100px]">
+          <div class="col-span-3 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 font-linkSmall xxl:min-w-[136px]">
+            {% if menu %}
+              <nav aria-label="{{ labels.ariaLabel }}">
+                {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
+              </nav>
+            {% endif %}
+          </div>
+          <div class="col-span-3 sm:col-span-2 sm:-me-[12px] border-s-1 ps-4 justify-between flex flex-col gap-[1.375rem] font-bodySmaller -ms-[10px] sm:ms-0 xxl:m-0 xxl:w-[219px] wide:w-[240px]">
+            <div class="font-bodySmall">Offices</div>
+            <p>Lorem ipsum dolor sot amet consectetur lorem ipsum doloe</p>
+            <p>Lorem ipsum dolor sot amet consectetur lorem ipsum doloe</p>
+          </div>
+          <div class="col-span-4 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 flex flex-col gap-4 font-bodySmaller xxl:w-[219px] wide:w-[240px]">
+            <div class="font-bodySmall">Contact</div>
+            <p>Get in touch now. Lorem ipsum dolor sit amet consectetur</p>
+            <a class="button button--accent button--icon" href="#">Contact Us</a>
+          </div>
+        </div>
+
         {% if social %}
           <div class="col-span-full flex flex-col gap-xs sm:hidden w-full grow lg:grow-0 items-start justify-start social">
             {% if socialMediaTitle %}
