@@ -388,6 +388,19 @@
     @apply focus:text-bgColor;
   }
 
+  .container {
+    @apply max-w-screen-max;
+    @apply py-md;
+
+    @screen sm {
+      @apply py-lg;
+    }
+
+    @screen wide {
+      @apply py-xl;
+    }
+  }
+
   flynt-component[name='NavigationMain'] {
     .button.button--external {
       @apply border;
