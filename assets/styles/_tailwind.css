@@ -118,6 +118,18 @@
     font-weight: 500;
     line-height: calc(26 / 20);
     @apply mb-6;
+    position: relative;
+
+    &::after {
+      background-color: var(--lightblue);
+      bottom: calc(-10px - 6px);
+      content: '';
+      display: block;
+      height: 10px;
+      left: 0;
+      position: absolute;
+      right: 0;
+    }
 
     @screen sm {
       font-size: calc(24rem / 16);
