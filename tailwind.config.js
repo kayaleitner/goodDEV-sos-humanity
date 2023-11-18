@@ -58,6 +58,12 @@ export const theme = {
     wide: '1600px',
     max: '1880px',
   },
+  container: {
+    padding: {
+      DEFAULT: '20px',
+      sm: '60px',
+    },
+  },
   extend: {
     aspectRatio: {
       '4/3': '4 / 3',
