@@ -1,0 +1,33 @@
+{% macro hCls(args = { }) %}
+    {% with args %}
+        {% if level == 1 %}
+            font-titleLarge
+        {% elseif level == 2 %}
+            font-titleMedium
+        {% elseif level == 3 %}
+            font-titleSmall w-fit
+        {% elseif level == 4 %}
+            font-titleSub
+        {% endif %}
+    {% endwith %}
+{% endmacro %}
+
+{% macro hStart(args = { }) %}
+  {% with args %}
+    <h{{ level|default(2) }}
+      class="{{ class }} {{ _self.hCls(args) }}"
+    >
+  {% endwith %}
+{% endmacro %}
+
+{% macro hEnd(args = { }) %}
+  {% with args %}
+    </h{{ level|default(2) }}>
+  {% endwith %}
+{% endmacro %}
+
+{% macro h(text, args = { }) %}
+  {{ _self.hStart(args) }}
+    {{ text }}
+  {{ _self.hEnd(args) }}
+{% endmacro %}
