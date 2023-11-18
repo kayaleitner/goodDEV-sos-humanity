@@ -100,7 +100,7 @@
     </div> #}
   </div>
   {% if partnerlogos or social %}
-    <div class="container mx-auto py-[24px] sm:py-[27px] lg:py-lg border-t-1 flex flex-row items-center justify-between  sm:gap-20">
+    <div class="container mx-auto py-[24px] sm:py-[27px] lg:py-lg border-t-1 flex flex-row items-center justify-between sm:gap-20">
     {% if partnerlogos %}
       <div class="w-full flex items-stretch">
         {% for partner in partnerlogos %}
@@ -129,7 +129,7 @@
             data-srcset="{{function('wp_get_attachment_image_srcset', partner.image.id)}}"
             data-sizes="auto"
             alt="{{ partner.image.alt }}">
-          </div>
+        </div>
         {% endfor %}
       </div>
     {% endif %}
