@@ -1,8 +1,73 @@
-<flynt-component load:on="visible" name="BlockImageText" class="componentSpacing"
-  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+<flynt-component
+  load:on="visible"
+  name="BlockImageText"
+  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
+  "
+  >
+  <div class="container mx-auto grid items-center grid-cols-6 xxl:grid-cols-12 gap-xs">
+  {% if blockTitle %}
+    <div class="col-span-6 xxl:col-span-12">
+      {{ h.h(blockTitle, { level: 3, class: '' }) }}
+    </div>
+  {% endif %}
+  {% if media.image or media.video %}
+    <div class="
+        {{ mediaPosition == 'right' ? 'order-1' }}
+        col-start-{{ media.colMediaStart.mobile }}
+        sm:col-start-{{ media.colMediaStart.tablet }}
+        xxl:col-start-{{ media.colMediaStart.desktop }}
+        wide:col-start-{{ media.colMediaStart.wide }}
+        col-span-{{ media.colMediaSpan.mobile }}
+        sm:col-span-{{ media.colMediaSpan.tablet }}
+        xxl:col-span-{{ media.colMediaSpan.desktop }}
+        wide:col-span-{{ media.colMediaSpan.wide }}"
+    >
+      {% if media.type == 'image' %}
+        <img class="image lazyload"
+            src="{{ media.image.src | resize(32) }}"
+            width="{{ 768 }}"
+            height="{{ (768 / media.image.aspect)|round }}"
+            data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
+            data-sizes="auto"
+            alt="{{ media.image.alt|e }}">
+      {% elseif media.type == 'video' %}
+        <div class="aspect-square rounded-full overflow-hidden">
+          <video
+              class="object-cover w-full h-full"
+              src="{{media.video.url}}"
+              autoplay loop muted playsinline disablepictureinpicture
+              aria-label="{{ media.video.title|e }}"></video>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if content.contentHtml %}
+    <div class="
+        wysiwyg
+        col-start-{{ content.colTextStart.mobile }}
+        sm:col-start-{{ content.colTextStart.tablet }}
+        xxl:col-start-{{ content.colTextStart.desktop }}
+        wide:col-start-{{ content.colTextStart.wide }}
+        col-span-{{ content.colTextSpan.mobile }}
+        sm:col-span-{{ content.colTextSpan.tablet }}
+        xxl:col-span-{{ content.colTextSpan.desktop }}
+        wide:col-span-{{ content.colTextSpan.wide }}"
+      >
+      {{ content.contentHtml|e('wp_kses_post') }}
+    </div>
+  {% endif %}
+  </div>
+
+
   <div class="container centerMaxWidthContainer md:flex md:gap-8 md:justify-around md:items-center
     {% set flexRowClass = (imagePosition is defined and imagePosition == 'left') ? 'flex-row' :
       ((imagePosition is defined and imagePosition == 'right') ? 'flex-row-reverse' : '') %}">
+    {% if image %}
     <figure class="figure centerContentMaxWidth md:basis-1/2">
       {% if image.post_mime_type == 'image/svg+xml' %}
         <img class="image lazyload"
@@ -32,6 +97,7 @@
         <figcaption>{{ image.caption|e }}</figcaption>
       {% endif %}
     </figure>
+    {% endif %}
     <div class="wysiwyg centerContentMaxWidth md:basis-1/2">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
