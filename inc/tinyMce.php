@@ -159,34 +159,19 @@ function getConfig()
                 'items' => [
                     [
                         'title' => __('Button Primary', 'flynt'),
-                        'classes' => 'button button--green',
+                        'classes' => 'button button--brand',
                         'selector' => 'a'
                     ],
                     [
-                        'title' => __('Button Outline White', 'flynt'),
-                        'classes' => 'button button--outlineWhite',
+                        'title' => __('Button Accent', 'flynt'),
+                        'classes' => 'button button--accent',
                         'selector' => 'a'
                     ],
                     [
-                        'title' => __('Button Outline Black', 'flynt'),
-                        'classes' => 'button button--outlineBlack',
+                        'title' => __('Button Arrow Icon', 'flynt'),
+                        'classes' => 'button button--icon',
                         'selector' => 'a'
                     ],
-                    [
-                        'title' => __('Button Outline Black/White', 'flynt'),
-                        'classes' => 'button button--outlineBlackWhite',
-                        'selector' => 'a'
-                    ],
-                    [
-                        'title' => __('Button Arrow', 'flynt'),
-                        'classes' => 'button button--arrow',
-                        'selector' => 'a'
-                    ],
-                    [
-                        'title' => __('Button Link', 'flynt'),
-                        'classes' => 'button button--link',
-                        'selector' => 'a'
-                    ]
                 ]
             ],
             // [
