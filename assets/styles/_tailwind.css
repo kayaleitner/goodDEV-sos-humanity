@@ -875,10 +875,6 @@ flynt-component[name='BlockHeader'] {
     .mediaItems {
 
       div {
-        &:nth-of-type(1) {
-          left: calc(50% + 10px);
-        }
-
         &:nth-of-type(1),
         &:nth-of-type(2) {
           aspect-ratio: 425 / 503;

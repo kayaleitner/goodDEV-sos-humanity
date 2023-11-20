@@ -104,13 +104,10 @@ export const theme = {
     },
   },
 }
-export const purge = {
-  safelist: ['w-1/2', 'translate-x-full', '!translate-x-0'],
-}
-
-export const plugins = []
-
 export const safelist = [
+  'w-1/2',
+  'translate-x-full',
+  '!translate-x-0',
   'col-span-1',
   'col-span-2',
   'col-span-3',
@@ -122,7 +119,7 @@ export const safelist = [
   'col-span-9',
   'col-span-10',
   'col-span-11',
-  'xs:col-span-12',
+  'col-span-12',
   'xs:col-span-1',
   'xs:col-span-2',
   'xs:col-span-3',
@@ -158,7 +155,7 @@ export const safelist = [
   'md:col-span-9',
   'md:col-span-10',
   'md:col-span-11',
-  'lg:col-span-12',
+  'md:col-span-12',
   'lg:col-span-1',
   'lg:col-span-2',
   'lg:col-span-3',
@@ -207,6 +204,20 @@ export const safelist = [
   'wide:col-span-10',
   'wide:col-span-11',
   'wide:col-span-12',
+  'max:col-span-1',
+  'max:col-span-2',
+  'max:col-span-3',
+  'max:col-span-4',
+  'max:col-span-5',
+  'max:col-span-6',
+  'max:col-span-7',
+  'max:col-span-8',
+  'max:col-span-9',
+  'max:col-span-10',
+  'max:col-span-11',
+  'max:col-span-12',
 ]
+
+export const plugins = []
 
 export const darkMode = 'class'
