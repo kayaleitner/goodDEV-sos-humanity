@@ -1,0 +1,87 @@
+<flynt-component
+  load:on="visible"
+  name="BlockHeader"
+  class=""
+  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
+  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
+  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};"
+>
+<div class="container mx-auto {# sm:h-[600px] lg:h-[900px] #} grid xxl:grid-cols-12 items-center gap-sm h-screen	max-h-[900px] pb-lg pt-[85px]">
+  {# {% if imagePosition is defined and imagePosition == 'left' %}flex-col-reverse sm:flex-row
+  {% elseif imagePosition is defined and imagePosition == 'right' %}flex-col-reverse sm:flex-row-reverse
+  {% else %}flex-col sm:flex-reverse{% endif %}" #}
+    {# <figure class="w-full sm:w-1/2 overflow-hidden">
+      {% if image %}
+        <img class="lazyload w-full sm:h-[650px] lg:h-[950px] mt-[-2vw] object-cover aspect-square lg:aspect-3/4
+          {% if imageOverlay %}brightness-70{% endif %}"
+          src="{{ image.src | resize(32) }}"
+          data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
+          data-sizes="auto"
+          alt="{{ image.alt|e }}"
+          data-parallax>
+      {% endif %}
+      {% if image.caption %}
+        <figcaption>{{ image.caption|e }}</figcaption>
+      {% endif %}
+    </figure> #}
+    <div class="col-span-{{options.textWidth.mobile}} wide:col-span-{{options.textWidth.wide}}">
+      <div class="fade-in move-up">
+        <div class="wysiwyg text-bgColor">
+          {% if title %}
+          <h1>{{ title }}</h1>
+          {% endif %}
+          {{ contentHtml|e('wp_kses_post') }}
+        </div>
+        {% if link %}
+          <a href="{{ link.url }}" class="button button--accent button--icon mt-md">{{ link.title }}</a>
+        {% endif %}
+      </div>
+    </div>
+    {% if mediaItems %}
+    <div class="mediaItems wide:col-start-6 wide:col-span-6 relative h-full">
+    <svg width="0" height="0">
+      <defs>
+        <clipPath id="clip-1" clipPathUnits="objectBoundingBox">
+          {# <path d="M 0 0 L 1 0 L 1 0.5934 C 1 0.8179 0.7751 1 0.4977 1 c -0.2774 -0 -0.5023 -0.1821 -0.5023 -0.4066 l 0 -0.3989 Z"> #}
+          <path d="M 1 -0 L 1 0.6134 A 0.0333 0.0258 180 0 1 0 0.6134 L -0 0 Z">
+        </clipPath>
+        <clipPath id="clip-2" clipPathUnits="objectBoundingBox">
+          {# <path d="M 1 1 H 0 V 0.4066 C 0 0.1821 0.2249 -0 0.5023 -0 c 0.2774 0 0.5023 0.1821 0.5023 0.4066 v 0.3989 Z"> #}
+          <path d="M 0 1 L 0 0.3866 A 0.0333 0.0258 0 0 1 1 0.3866 L 1 1 Z">
+        </clipPath>
+        <clipPath id="clip-3" clipPathUnits="objectBoundingBox">
+          <circle cx="0.5" cy="0.5" r="0.5" />
+        </clipPath>
+      </defs>
+    </svg>
+    {% for media in mediaItems %}
+      {% set classes = '' %}
+      {% if loop.index == 1 %}
+        {% set classes = 'w-1/2 top-0 right-0 ' %}
+      {% elseif loop.index == 2 %}
+        {% set classes = 'w-1/4 top-0 right-1/2 mr-xs' %}
+      {% elseif loop.index == 3 %}
+        {% set classes = 'bottom-0 left-0 aspect-square' %} {# width is set via css #}
+      {% endif %}
+      <div class="absolute h-auto {{ classes }}" style="clip-path: url(#clip-{{ loop.index }})">
+        {# {{dump(media)}} #}
+        {% if media.type == 'image' %}
+          <img class="lazyload w-full object-cover aspect-[204/243] {# mt-[-2vw] #}" 
+          src="{{ media.image.src | resize(32) }}"
+          data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
+          data-sizes="auto"
+          alt="{{ media.image.alt|e }}"
+          >
+        {% elseif media.type == 'video' %}
+          <video
+            class="object-cover w-full h-full"
+            src="{{media.video.url}}" 
+            autoplay loop muted playsinline disablepictureinpicture
+            aria-label="{{ media.video.title|e }}"></video>
+        {% endif %}
+      </div>
+    {% endfor %}
+    </div>
+    {% endif %}
+</div>
+</flynt-component>

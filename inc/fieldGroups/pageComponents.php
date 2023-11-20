@@ -92,6 +92,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockSliderText\getACFLayout(),
 
                     // Breathe Cities
+                    Components\BlockHeader\getACFLayout(),
                     Components\BlockPartners\getACFLayout(),
                 ],
             ],
