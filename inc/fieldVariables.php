@@ -121,3 +121,63 @@ function mobileVisibility($default = 'hidden xs:block')
         'default_value' => $default,
     ];
 }
+
+function field(string $name, string $label, array $field = [])
+{
+    return array_merge([
+        'name' => $name,
+        'label' => $label,
+    ], $field);
+}
+
+function fieldType(string $name, string $label, string $type, array $field = [])
+{
+    return field($name, $label, array_merge($field, [
+        'type' => $type,
+    ]));
+}
+
+function group(string $name, string $label, array $fields = [], array $groupField = [])
+{
+    return fieldType($name, $label, 'group', array_merge(
+        [
+            'layout' => 'row',
+        ],
+        $groupField,
+        [
+            'sub_fields' => $fields,
+        ]
+    ));
+}
+
+function responsiveField(string $name, string $label, array $field, array $mediumField = [], array $largeField = [], array $sizes = null, array $groupField = [], array $extraMediumField = []): array
+{
+    $sizes = $sizes ?? [ 'small', 'large', ];
+    $fields = [
+        'mobile' => array_merge($field, [
+            'label' => 'Mobile',
+            'name' => 'mobile',
+        ]),
+        'tablet' => array_merge($field, $mediumField, [
+            'label' => 'Tablet',
+            'name' => 'tablet',
+        ]),
+        'desktop' => array_merge($field, $extraMediumField, [
+            'label' => 'Desktop',
+            'name' => 'desktop',
+        ]),
+        'wide' => array_merge($field, $largeField, [
+            'label' => 'Wide',
+            'name' => 'wide',
+        ]),
+    ];
+
+    return group(
+        $name,
+        $label,
+        array_map(function(string $k) use($fields) {
+            return $fields[$k];
+        }, $sizes),
+        $groupField
+    );
+}
