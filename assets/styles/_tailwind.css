@@ -31,7 +31,7 @@
     font-size: 1rem;
     line-height: calc(24 / 16);
 
-    @screen xs {
+    @screen sm {
       font-size: calc(18rem / 16);
       line-height: calc(26 / 18);
     }
@@ -48,7 +48,7 @@
     font-size: calc(14rem / 16);
     line-height: calc(20 / 14);
 
-    @screen xs {
+    @screen sm {
       font-size: calc(16rem / 16);
       line-height: calc(24 / 16);
     }
@@ -64,7 +64,7 @@
     font-size: calc(12rem / 16);
     line-height: calc(18 / 12);
 
-    @screen xs {
+    @screen sm {
       font-size: calc(14rem / 16);
       line-height: calc(22 / 14);
     }
@@ -83,7 +83,7 @@
     line-height: calc(48 / 38);
     @apply mb-10;
 
-    @screen xs {
+    @screen sm {
       font-size: calc(64rem / 16);
       line-height: calc(70 / 64);
     }
@@ -101,7 +101,7 @@
     line-height: calc(32 / 24);
     @apply mb-10;
 
-    @screen xs {
+    @screen sm {
       font-size: calc(34rem / 16);
       line-height: calc(38 / 34);
     }
@@ -133,7 +133,7 @@
       right: 0;
     }
 
-    @screen xs {
+    @screen sm {
       font-size: calc(24rem / 16);
       line-height: calc(30 / 24);
       padding-block-end: 16px;
@@ -156,7 +156,7 @@
     line-height: calc(24 / 18);
     @apply mb-6;
 
-    @screen xs {
+    @screen sm {
       font-size: calc(22rem / 16);
       line-height: calc(32 / 22);
     }
@@ -174,7 +174,7 @@
     font-weight: 500;
     line-height: calc(20 / 12);
 
-    @screen xs {
+    @screen sm {
       font-size: calc(16rem / 16);
       line-height: calc(22 / 16);
     }
