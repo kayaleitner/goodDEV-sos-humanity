@@ -1,0 +1,55 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+<flynt-component
+  load:on="visible"
+  name="BlockCarouselCities"
+  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
+  "
+  >
+  <div class="container mx-auto grid items-center grid-cols-6 xxl:grid-cols-12 gap-xs">
+  {% if content.blockTitle %}
+    <div class="col-span-6 xxl:col-span-12">
+      {{ h.h(content.blockTitle, { level: 3, class: '' }) }}
+    </div>
+  {% endif %}
+  {% if content.textContent %}
+    <div class="
+        wysiwyg
+        col-start-{{ content.colTextStart.mobile }}
+        sm:col-start-{{ content.colTextStart.tablet }}
+        xxl:col-start-{{ content.colTextStart.desktop }}
+        wide:col-start-{{ content.colTextStart.wide }}
+        col-span-{{ content.colTextSpan.mobile }}
+        sm:col-span-{{ content.colTextSpan.tablet }}
+        xxl:col-span-{{ content.colTextSpan.desktop }}
+        wide:col-span-{{ content.colTextSpan.wide }}"
+      >
+      <p>
+        {{ content.textContent|e('wp_kses_post') }}
+      </p>
+    </div>
+  {% endif %}
+    {% if cards %}
+    <div class="
+        {{ mediaPositionMobile == 'bottom' ? 'order-1 mt-[70px] xxl:mt-0' }}
+        {{ mediaPositionMobile == 'bottom' and mediaPosition != 'right' ? 'xxl:order-none' }}
+        {{ mediaPositionMobile != 'bottom' and mediaPosition == 'right' ? 'xxl:order-1' }}
+        col-start-{{ media.colMediaStart.mobile }}
+        sm:col-start-{{ media.colMediaStart.tablet }}
+        xxl:col-start-{{ media.colMediaStart.desktop }}
+        wide:col-start-{{ media.colMediaStart.wide }}
+        col-span-{{ media.colMediaSpan.mobile }}
+        sm:col-span-{{ media.colMediaSpan.tablet }}
+        xxl:col-span-{{ media.colMediaSpan.desktop }}
+        wide:col-span-{{ media.colMediaSpan.wide }}"
+    >
+    {% for card in cards %}
+      {{card.label}}
+    {% endfor %}
+    </div>
+  {% endif %}
+  </div>
+</flynt-component>

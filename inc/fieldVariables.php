@@ -137,7 +137,7 @@ function fieldType(string $name, string $label, string $type, array $field = [])
     ]));
 }
 
-function group(string $name, string $label, array $fields = [], array $groupField = [], int $width = 50)
+function group(string $name, string $label, array $fields = [], array $groupField = [], int $width = 100)
 {
     return fieldType($name, $label, 'group', array_merge(
         [
@@ -155,7 +155,7 @@ function group(string $name, string $label, array $fields = [], array $groupFiel
     ));
 }
 
-function responsiveField(string $name, string $label, array $field, array $mediumField = [], array $largeField = [], array $sizes = null, array $groupField = [], array $extraMediumField = [], int $width = 50): array
+function responsiveField(string $name, string $label, array $field, array $mediumField = [], array $largeField = [], array $sizes = null, array $groupField = [], array $extraMediumField = [], int $width = 100): array
 {
     $sizes = $sizes ?? [ 'small', 'large', ];
     $fields = [

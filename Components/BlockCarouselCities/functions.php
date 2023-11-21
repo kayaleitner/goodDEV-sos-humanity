@@ -7,7 +7,6 @@ use function Flynt\Components\Grid\gridCol;
 
 function getACFLayout()
 {
-    // die(var_dump(gridCol('colTextStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'wide'])));
     return [
         'name' => 'blockCarouselCities',
         'label' => __('Carousel: Cities', 'flynt'),
@@ -48,6 +47,36 @@ function getACFLayout()
                 'endpoint' => 0,
             ],
             [
+                'label' => __('Cards', 'flynt'),
+                'name' => 'cards',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => __('Add Card', 'flynt'),
+                'sub_fields' => [
+                    [
+                        'name' => 'label',
+                        'label' => __('Label', 'flynt'),
+                        'type' => 'text',
+                    ],
+                    [
+                        'name' => 'image',
+                        'label' => __('Image', 'flynt'),
+                        'type' => 'image',
+                        'wrapper' => [
+                            'width' => '50',
+                        ],
+                    ],
+                    [
+                        'name' => 'color',
+                        'label' => __('Background Color', 'flynt'),
+                        'type' => 'color_picker',
+                        'wrapper' => [
+                            'width' => '50',
+                        ],
+                    ]
+                ]
+            ],
+            [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
@@ -59,10 +88,7 @@ function getACFLayout()
                 'name' => 'options',
                 'type' => 'group',
                 'layout' => 'row',
-                'sub_fields' => [
-                    // FieldVariables\getColorText(),
-                    // FieldVariables\getColorBackground()
-                ]
+                'sub_fields' => []
             ]
         ]
     ];

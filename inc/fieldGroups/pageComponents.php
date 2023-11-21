@@ -89,6 +89,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockScrollytellingImage\getACFLayout(),
                     Components\BlockSeparatorLine\getACFLayout(),
                     Components\BlockSliderImages\getACFLayout(),
+                    Components\BlockCarouselCities\getACFLayout(),
                     Components\BlockSliderText\getACFLayout(),
 
                     // Breathe Cities
