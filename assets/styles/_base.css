@@ -2,8 +2,7 @@
 *  Typography
 */
 
-:not(nav) {
-  body,
+body :not(nav) {
   p .paragraph,
   .body {
     a {

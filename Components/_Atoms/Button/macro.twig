@@ -11,7 +11,11 @@
 {% endmacro %}
 
 {% macro buttonAnchor(link, args = { }) %}
-  <a href="{{ link.url }}" class="{{ args.class }} {{ _self.buttonCls(args) }}">
+  <a
+    href="{{ link.url }}"
+    class="{{ args.class }} {{ _self.buttonCls(args) }}"
+    {{ args.dataRef ? 'data-ref="' ~ args.dataRef ~ '"'}}
+  >
     {{ link.title }}
     {% if args.icon %}
       <svg width="15" height="16" viewBox="0 0 15 16" fill="none">
