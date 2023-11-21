@@ -6,54 +6,54 @@
     background: {% if colorBackground %}{{ colorBackground }}{% else %}var(--brandColor){% endif %}; 
     color: {% if colorText %}{{ colorText }}{% else %}var(--bgColor){% endif %};
   ">
-  <div class="container mx-auto sm:pb-xl sm:pt-[52px] lg:py-lg flex flex-col">
-    <div class="flex flex-col gap-[42px] justify-between items-start w-full xxl:gap-lg">
+  <div class="container mx-auto xs:pb-xl xs:pt-[52px] sm:py-lg flex flex-col">
+    <div class="flex flex-col gap-[42px] justify-between items-start w-full md:gap-lg">
       {% if logoFooter %}
         <a href="{{ site.link|e('esc_url') }}" aria-label="Go to Homepage">
-          <img class="logo lazyload w-[150px] sm:w-[170px]"
+          <img class="logo lazyload w-[150px] xs:w-[170px]"
           src="{{ logoFooter.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', logoFooter.id)}}"
           data-sizes="auto">
         </a>
       {% endif %}
-      <div class="w-full grid grid-cols-6 gap-y-md gap-x-xs sm:gap-x-sm xxl:flex xxl:justify-between">
-        <div class="col-span-full sm:col-span-3 sm:-me-[50px] font-bodySmaller xxl:max-w-[368px] xxl:me-0">
+      <div class="w-full grid grid-cols-6 gap-y-md gap-x-xs xs:gap-x-sm xl:flex xl:justify-between">
+        <div class="col-span-full xs:col-span-3 xs:-me-[50px] font-bodySmaller xl:max-w-[368px] xl:me-0">
           <div>
             {{ paragraph }}<br><br>
             {{ 'now' | date('Y') }} - {{ site.name }} | All right reserved
           </div>
         </div>
-        <div class="col-span-3 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 font-linkSmall xxl:hidden">
+        <div class="col-span-3 xs:col-start-5 xs:col-span-2 border-s-1 ps-4 font-linkSmall xl:hidden">
           {% if menu %}
             <nav aria-label="{{ labels.ariaLabel }}">
               {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
             </nav>
           {% endif %}
         </div>
-        <div class="col-span-3 sm:col-span-2 sm:-me-[12px] border-s-1 ps-4 justify-between flex flex-col gap-[1.375rem] font-bodySmaller -ms-[10px] sm:ms-0 xxl:hidden">
+        <div class="col-span-3 xs:col-span-2 xs:-me-[12px] border-s-1 ps-4 justify-between flex flex-col gap-[1.375rem] font-bodySmaller -ms-[10px] xs:ms-0 xl:hidden">
           <div class="font-bodySmall">Offices</div>
           <p>Lorem ipsum dolor sot amet consectetur lorem ipsum doloe</p>
           <p>Lorem ipsum dolor sot amet consectetur lorem ipsum doloe</p>
         </div>
-        <div class="col-span-4 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 flex flex-col gap-4 font-bodySmaller xxl:hidden">
+        <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 ps-4 flex flex-col gap-4 font-bodySmaller xl:hidden">
           <div class="font-bodySmall">Contact</div>
           <p>Get in touch now. Lorem ipsum dolor sit amet consectetur</p>
           <a class="button button--accent button--icon" href="#">Contact Us</a>
         </div>
-        <div class="hidden xxl:flex xxl:gap-x-[126px] wide:gap-x-[100px]">
-          <div class="col-span-3 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 font-linkSmall xxl:min-w-[136px]">
+        <div class="hidden xl:flex xl:gap-x-[126px] xxl:gap-x-[100px]">
+          <div class="col-span-3 xs:col-start-5 xs:col-span-2 border-s-1 ps-4 font-linkSmall xl:min-w-[136px]">
             {% if menu %}
               <nav aria-label="{{ labels.ariaLabel }}">
                 {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
               </nav>
             {% endif %}
           </div>
-          <div class="col-span-3 sm:col-span-2 sm:-me-[12px] border-s-1 ps-4 justify-between flex flex-col gap-[1.375rem] font-bodySmaller -ms-[10px] sm:ms-0 xxl:m-0 xxl:w-[219px] wide:w-[240px]">
+          <div class="col-span-3 xs:col-span-2 xs:-me-[12px] border-s-1 ps-4 justify-between flex flex-col gap-[1.375rem] font-bodySmaller -ms-[10px] xs:ms-0 xl:m-0 xl:w-[219px] xxl:w-[240px]">
             <div class="font-bodySmall">Offices</div>
             <p>Lorem ipsum dolor sot amet consectetur lorem ipsum doloe</p>
             <p>Lorem ipsum dolor sot amet consectetur lorem ipsum doloe</p>
           </div>
-          <div class="col-span-4 sm:col-start-5 sm:col-span-2 border-s-1 ps-4 flex flex-col gap-4 font-bodySmaller xxl:w-[219px] wide:w-[240px]">
+          <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 ps-4 flex flex-col gap-4 font-bodySmaller xl:w-[219px] xxl:w-[240px]">
             <div class="font-bodySmall">Contact</div>
             <p>Get in touch now. Lorem ipsum dolor sit amet consectetur</p>
             <a class="button button--accent button--icon" href="#">Contact Us</a>
@@ -61,7 +61,7 @@
         </div>
 
         {% if social %}
-          <div class="col-span-full flex flex-col gap-xs sm:hidden w-full grow lg:grow-0 items-start justify-start social">
+          <div class="col-span-full flex flex-col gap-xs xs:hidden w-full grow items-start justify-start social">
             {% if socialMediaTitle %}
               <div class="caption font-bold">{{ socialMediaTitle }}</div>
             {% endif %}
@@ -100,9 +100,9 @@
     </div> #}
   </div>
   {% if partnerlogos or social %}
-    <div class="container mx-auto py-[24px] sm:py-[27px] lg:py-lg border-t-1 flex flex-row items-center justify-between sm:gap-20">
+    <div class="container mx-auto py-[24px] xs:py-[27px] sm:py-lg border-t-1 flex flex-row items-center justify-between xs:gap-20">
     {% if partnerlogos %}
-      <div class="w-full flex items-stretch">
+      <div class="w-full flex items-stretch justify-center xs:justify-start">
         {% for partner in partnerlogos %}
         {% set styles = [] %}
         {% if partner.basis and (loop.first or loop.last) %}
@@ -134,7 +134,7 @@
       </div>
     {% endif %}
     {% if social %}
-      <div class="col-span-full hidden flex-col gap-xs basis-0 w-full social sm:flex">
+      <div class="col-span-full hidden flex-col gap-xs basis-0 w-full social xs:flex">
         {% if socialMediaTitle %}
           <div class="caption font-bold">{{ socialMediaTitle }}</div>
         {% endif %}
