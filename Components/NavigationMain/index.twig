@@ -33,6 +33,16 @@
             {% endif %}
           </li>
           {% endfor %}
+          {% if ctaLink %}
+          <li>
+            {{ btn.buttonAnchor({ url: ctaLink.url, title: ctaLink.title }, {
+                class: '',
+                color: 'accent',
+                style: 'outline',
+                icon: true,
+              }) }}
+          </li>
+          {% endif %}
       {% endif %}
     </div>
   </nav>

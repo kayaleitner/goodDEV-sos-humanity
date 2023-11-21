@@ -212,9 +212,9 @@
       content: '';
       display: block;
       height: 6px;
-      left: 50%;
+      left: calc(50% + 1px);
       position: absolute;
-      right: 50%;
+      right: calc(50% + 1px);
       transition: left 200ms, right 200ms;
     }
 
