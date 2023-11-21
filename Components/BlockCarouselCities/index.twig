@@ -3,52 +3,73 @@
 <flynt-component
   load:on="visible"
   name="BlockCarouselCities"
-  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
   style="
     background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
   "
+  class="overflow-hidden"
   >
-  <div class="container mx-auto grid items-center grid-cols-6 xxl:grid-cols-12 gap-xs">
-  {% if content.blockTitle %}
-    <div class="col-span-6 xxl:col-span-12">
-      {{ h.h(content.blockTitle, { level: 3, class: '' }) }}
-    </div>
-  {% endif %}
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <div class="container md:my-md mx-auto grid grid-cols-6 xxl:grid-cols-12 gap-xs">
+
   {% if content.textContent %}
     <div class="
-        wysiwyg
         col-start-{{ content.colTextStart.mobile }}
-        sm:col-start-{{ content.colTextStart.tablet }}
+        md:col-start-{{ content.colTextStart.tablet }}
         xxl:col-start-{{ content.colTextStart.desktop }}
         wide:col-start-{{ content.colTextStart.wide }}
         col-span-{{ content.colTextSpan.mobile }}
-        sm:col-span-{{ content.colTextSpan.tablet }}
+        md:col-span-{{ content.colTextSpan.tablet }}
         xxl:col-span-{{ content.colTextSpan.desktop }}
-        wide:col-span-{{ content.colTextSpan.wide }}"
+        wide:col-span-{{ content.colTextSpan.wide }}
+        flex flex-col justify-between
+        "
       >
-      <p>
-        {{ content.textContent|e('wp_kses_post') }}
-      </p>
+      <div class="text-contents">
+        {% if content.blockTitle %}
+          {{ h.h(content.blockTitle, { level: 4, class: '' }) }}
+        {% endif %}
+        <p>
+          {{ content.textContent|e('wp_kses_post') }}
+        </p>
+      </div>
+      <div class="controls absolute md:relative bottom-md right-sm md:left-0 md:bottom-0">
+        {% include 'Components/_Atoms/Slider/navArrows.twig' %}
+        <div data-ref="indicator" class="border-b-2 border-[#b2c2d5] h-[5px] hidden md:block"></div>
+      </div>
     </div>
   {% endif %}
     {% if cards %}
-    <div class="
-        {{ mediaPositionMobile == 'bottom' ? 'order-1 mt-[70px] xxl:mt-0' }}
-        {{ mediaPositionMobile == 'bottom' and mediaPosition != 'right' ? 'xxl:order-none' }}
-        {{ mediaPositionMobile != 'bottom' and mediaPosition == 'right' ? 'xxl:order-1' }}
-        col-start-{{ media.colMediaStart.mobile }}
-        sm:col-start-{{ media.colMediaStart.tablet }}
-        xxl:col-start-{{ media.colMediaStart.desktop }}
-        wide:col-start-{{ media.colMediaStart.wide }}
-        col-span-{{ media.colMediaSpan.mobile }}
-        sm:col-span-{{ media.colMediaSpan.tablet }}
-        xxl:col-span-{{ media.colMediaSpan.desktop }}
-        wide:col-span-{{ media.colMediaSpan.wide }}"
+    <div
+      data-ref="slider"
+      class="
+        h-[400px] mt-md mb-[100px] md:my-0
+        swiper-container
+        col-start-{{ colCardsStart.mobile }}
+        md:col-start-{{ colCardsStart.tablet }}
+        xxl:col-start-{{ colCardsStart.desktop }}
+        wide:col-start-{{ colCardsStart.wide }}
+        col-span-{{ colCardsSpan.mobile }}
+        md:col-span-{{ colCardsSpan.tablet }}
+        xxl:col-span-{{ colCardsSpan.desktop }}
+        wide:col-span-{{ colCardsSpan.wide }}"
     >
-    {% for card in cards %}
-      {{card.label}}
-    {% endfor %}
+      <div class="slider relative max-w-full swiper-wrapper">
+        {% for card in cards %}
+        <div class="swiper-slide city-slide relative text-bgColor rounded-xl overflow-hidden" style="background-color: {{card.color}};">
+          <img class="h-full md:absolute left-0 top-0" src="{{ card.image.guid }}" alt="{{ card.image.alt }}"
+            src="{{ card.image.src|resize(32) }}" 
+            data-srcset="{{ function('wp_get_attachment_image_srcset', card.image.id) }}" 
+            data-sizes="auto" 
+            data-src="{{ card.image.src }}" 
+            alt="{{ card.image.alt|e }}"
+          />
+          <div class="absolute p-sm top-0 left-0">
+            {{ h.h(card.label, { level: 2, class: 'relative font-titleSmall' }) }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
   {% endif %}
   </div>

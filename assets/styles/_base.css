@@ -543,6 +543,29 @@ flynt-component {
   color: var(--textColor);
 }
 
+/**
+* Swiper stuff
+*/
+
+.swiper-scrollbar-drag {
+  height: 4px !important;
+  border-radius: 0 !important;
+  background-color: var(--textColor) !important;
+}
+
+[name='BlockCarouselCities'] {
+
+  @screen md {
+    .swiper-container {
+      clip-path: inset( -100vw -100vw -100vw 0 );
+      .swiper-slide.city-slide {
+        width: 315px;
+        height: 400px;
+      }
+    }
+  }
+}
+
 .swiper-button-disabled {
   opacity: .6;
 }

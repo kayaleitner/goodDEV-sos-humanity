@@ -4,6 +4,17 @@ namespace Flynt\Components\BlockCarouselCities;
 
 use Flynt\FieldVariables;
 use function Flynt\Components\Grid\gridCol;
+use Flynt\Utils\Options;
+
+add_filter('Flynt/addComponentData?name=BlockCarouselCities', function ($data) {
+    $data['options'] = gettype($data['options']) === 'array' ? $data['options'] : [];
+    $translatableOptions = Options::getTranslatable('SliderOptions');
+    $data['jsonData'] = [
+        'options' => array_merge($translatableOptions, $data['options']),
+    ];
+    return $data;
+});
+
 
 function getACFLayout()
 {
@@ -76,6 +87,8 @@ function getACFLayout()
                     ]
                 ]
             ],
+            gridCol('colCardsStart', 'Column-Start', ['default_value' => 4], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
+            gridCol('colCardsSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
             [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
