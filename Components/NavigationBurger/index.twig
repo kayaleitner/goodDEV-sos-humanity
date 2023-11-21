@@ -1,9 +1,18 @@
-<flynt-component class="block md:hidden backdrop-blur-lg relative text-bgColor" load:on="idle" load:on:media="(max-width: 980px)" name="NavigationBurger">
-  <nav aria-label="{{ labels.ariaLabel|e }}">
-    <div class="fixed top-0 left-0 z-[49] flex items-center justify-between p-sm w-full">
+<flynt-component
+    class="md:hidden relative text-bgColor"
+    load:on="idle"
+    load:on:media="(max-width: 980px)"
+    name="NavigationBurger">
+  <nav class="max-h-full" aria-label="{{ labels.ariaLabel|e }}">
+    <div class="fixed top-0 left-0 z-[49] container mx-auto flex items-center justify-between py-[16px]">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'logo_dark': logo_dark, 'site': site } only %}
-      {% if menu %}
-        {% include 'Partials/_hamburger.twig' with { 'labels': labels } only %}
+      {% if ctaLink or menu %}
+        <div class="flex gap-xs items-center">
+        <a class="button button--outlineWhite" href="">Join Us</a>
+        {% if menu %}
+          {% include 'Partials/_hamburger.twig' with { 'labels': labels } only %}
+        {% endif %}
+        </div>
       {% endif %}
     </div>
     {% if menu %}
