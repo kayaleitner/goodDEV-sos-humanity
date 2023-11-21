@@ -121,7 +121,7 @@
     padding-block-end: 8px;
     position: relative;
 
-    &::after {
+    &.bc-underline::after {
       background-color: var(--lightblue);
       /* bottom: calc(-6px - 2px); */
       bottom: 0;
@@ -138,7 +138,7 @@
       line-height: calc(30 / 24);
       padding-block-end: 16px;
 
-      &::after {
+      &.bc-underline::after {
         height: 10px;
       }
     }
