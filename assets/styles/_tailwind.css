@@ -225,9 +225,19 @@
     }
   }
 
+  .after-marker--closer {
+    @apply pb-[7px];
+  }
+
   .after-marker--dark {
     &::after {
       background-color: var(--textColor);
+    }
+  }
+
+  .after-marker--hoverColor {
+    &::after {
+      background-color: var(--hoverColor);
     }
   }
 
@@ -463,7 +473,8 @@
     }
   }
 
-  flynt-component[name='NavigationMain'] {
+  flynt-component[name='NavigationMain'],
+  flynt-component[name='NavigationBurger'] {
     .current-menu-item {
       @apply after-marker-active;
     }

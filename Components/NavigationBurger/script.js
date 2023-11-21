@@ -42,7 +42,6 @@ export default function (el) {
     refs.nav.classList.add('bg-bgColor')
     refs.logo.classList.add('hidden')
     refs.logoDark.classList.remove('hidden')
-    $('.after-marker', refs.nav).addClass('after-marker--dark')
     const $button = $('.button--outlineWhite', refs.nav)
     $button
       // prevent transitions on style change, we want instant switch
@@ -64,7 +63,6 @@ export default function (el) {
     refs.nav.classList.add('text-bgColor')
     refs.logoDark.classList.add('hidden')
     refs.logo.classList.remove('hidden')
-    $('.after-marker', refs.nav).removeClass('after-marker--dark')
     const $button = $('.button--accent', refs.nav)
     $button
       .addClass('!transition-none')

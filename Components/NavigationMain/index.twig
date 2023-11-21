@@ -25,7 +25,7 @@
                 icon: true,
               }) }}
             {% else %}
-            <a class="{{ item.classes|join(' ')}} no-underline after-marker hover:after-marker-active !transition-none"
+            <a class="{{ item.classes|join(' ')}} no-underline after-marker after-marker--small hover:after-marker-active !transition-none"
                 href="{{ item.url|e }}"
                 title="{{ item.title|e }}">
                   {{ item.title|e }}
