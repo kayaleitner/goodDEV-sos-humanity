@@ -15,7 +15,7 @@
         <ul class="flex items-center gap-[50px] font-bodySmall h-[52px]">
           {% for item in menu.items %}
           <li>
-            <a class="{{ item.classes|join(' ')}} no-underline !transition-none" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
+            <a class="{{ item.classes|join(' ')}} no-underline {{ 'button' not in item.classes|join(' ') ? 'after-marker hover:after-marker-active' }} !transition-none" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
           </li>
           {% endfor %}
       {% endif %}

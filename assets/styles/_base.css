@@ -175,6 +175,10 @@ table {
     @apply text-bgColor;
     @apply border;
     @apply bg-transparent;
+    @apply px-[18px];
+    @apply py-[11px];
+    @apply sm:px-[28px];
+    @apply sm:py-[12px];
   }
 
   &--outlineBlack {

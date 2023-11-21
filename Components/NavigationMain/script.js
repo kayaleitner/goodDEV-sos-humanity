@@ -23,12 +23,10 @@ export default function (el) {
     refs.nav.classList.add('bg-bgColor')
     refs.logo.classList.add('hidden')
     refs.logoDark.classList.remove('hidden')
+    $('.after-marker', refs.nav).addClass('after-marker--dark')
     $('.button--outlineWhite', refs.nav)
       .removeClass('button--outlineWhite')
-      .addClass('button--outlineBlack')
-    $('.button--icon', refs.nav)
-      .removeClass('button--icon')
-      .addClass('button--iconBlack')
+      .addClass('button--accent')
   }
 
   function unsetScrolledState() {
@@ -36,12 +34,10 @@ export default function (el) {
     refs.nav.classList.add('text-bgColor')
     refs.logoDark.classList.add('hidden')
     refs.logo.classList.remove('hidden')
-    $('.button--outlineBlack', refs.nav)
-      .removeClass('button--outlineBlack')
+    $('.after-marker', refs.nav).removeClass('after-marker--dark')
+    $('.button--accent', refs.nav)
+      .removeClass('button--accent')
       .addClass('button--outlineWhite')
-    $('.button--iconBlack', refs.nav)
-      .removeClass('button--iconBlack')
-      .addClass('button--icon')
   }
 
   function handleScroll() {
