@@ -542,3 +542,28 @@ flynt-component {
   background-color: var(--bgColor);
   color: var(--textColor);
 }
+
+.swiper-button-disabled {
+  opacity: .6;
+}
+
+.slider-button {
+  &:hover {
+    circle {
+      fill: var(--lightblue);
+      stroke: var(--lightblue);
+    }
+    g {
+      stroke: white;
+    }
+  }
+  &:active {
+    circle {
+      fill: var(--bluepressed);
+      stroke: var(--bluepressed);
+    }
+    g {
+      stroke: white;
+    }
+  }
+}
