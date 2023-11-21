@@ -7,7 +7,7 @@
     <div class="fixed top-0 left-0 z-[49] container mx-auto flex items-center justify-between py-[7px] xs:py-sm">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'logo_dark': logo_dark, 'site': site } only %}
       {% if ctaLink or menu %}
-        <div class="flex gap-xs items-center">
+        <div class="flex gap-xs xs:gap-[16px] items-center">
           {% if ctaLink %}
             <div data-ref="cta" class="top-0 transition-[top] transition-delay-75 duration-300 ease-in-out relative">
               {% include 'Partials/_cta.twig' with { 'ctaLink': ctaLink } only %}

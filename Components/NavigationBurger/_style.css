@@ -2,6 +2,11 @@ flynt-component[name='NavigationBurger'] {
   --navigation-height: 60px;
   height: var(--navigation-height);
 
+  @screen xs {
+    /* The font stays the same at this breakpoint, hence the narrower navbar */
+    --navigation-height: 86px;
+  }
+
   @screen sm {
     --navigation-height: 92px;
   }
@@ -94,6 +99,10 @@ flynt-component[name='NavigationBurger'] {
   &[data-status='menuIsOpen'] {
     [data-ref="cta"] {
       top: -60px;
+
+      @screen xs {
+        top: -86px;
+      }
 
       @screen sm {
         top: -92px;
