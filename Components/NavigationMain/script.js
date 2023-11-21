@@ -9,7 +9,6 @@ export default function (el) {
   initNavState()
 
   function initNavState() {
-    // const prevScrollPos = $(window).scrollTop()
     const currentScrollPos = $(window).scrollTop()
 
     if (currentScrollPos > 0) {

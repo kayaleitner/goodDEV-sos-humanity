@@ -19,7 +19,7 @@ add_filter('Flynt/addComponentData?name=NavigationBurger', function ($data) {
         'alt' => get_bloginfo('name')
     ];
     $data['logo_dark'] = [
-        'src' => get_theme_mod('logo_dark') ? get_theme_mod('logo_dark') : Asset::requireUrl('assets/images/logo.svg'),
+        'src' => get_theme_mod('logo_dark') ? get_theme_mod('logo_dark') : Asset::requireUrl('assets/images/logo-dark.svg'),
         'alt' => get_bloginfo('name')
     ];
 
