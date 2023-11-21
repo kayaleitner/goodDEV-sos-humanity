@@ -37,6 +37,18 @@ function getACFLayout()
                 ]
             ],
             [
+                'label' => __('Media Position (mobile)', 'flynt'),
+                'name' => 'mediaPositionMobile',
+                'type' => 'button_group',
+                'choices' => [
+                    'top' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
+                    'bottom' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
+                ],
+                'wrapper' => [
+                    'width' => 50,
+                ]
+            ],
+            [
                 'label' => 'Media',
                 'name' => 'media',
                 'type' => 'group',

@@ -17,7 +17,9 @@
   {% endif %}
   {% if media.image or media.video %}
     <div class="
-        {{ mediaPosition == 'right' ? 'xxl:order-1' }}
+        {{ mediaPositionMobile == 'bottom' ? 'order-1 mt-[70px] xxl:mt-0' }}
+        {{ mediaPositionMobile == 'bottom' and mediaPosition != 'right' ? 'xxl:order-none' }}
+        {{ mediaPositionMobile != 'bottom' and mediaPosition == 'right' ? 'xxl:order-1' }}
         col-start-{{ media.colMediaStart.mobile }}
         sm:col-start-{{ media.colMediaStart.tablet }}
         xxl:col-start-{{ media.colMediaStart.desktop }}
