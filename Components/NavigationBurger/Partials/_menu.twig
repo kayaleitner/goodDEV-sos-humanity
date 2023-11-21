@@ -1,8 +1,7 @@
 <ul 
   x-data="{ activeSubmenu:  '' }" 
   data-ref="menu" 
-  class="menu pt-[80px]" 
-  style="background: var(--brandColor);"
+  class="menu pt-[80px] bg-accentColor"
   x-init="$watch('activeSubmenu', value => {
     if (value) {
       document.querySelector('body').style.overflow = 'hidden';

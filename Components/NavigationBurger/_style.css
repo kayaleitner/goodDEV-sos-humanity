@@ -193,6 +193,17 @@ flynt-component[name='NavigationBurger'] {
   }
 
   &[data-status='menuIsOpen'] {
+    .logo {
+      @apply block;
+
+      &--dark {
+        @apply hidden;
+      }
+    }
+
+    .hamburger {
+      @apply text-bgColor;
+    }
     .menu {
       transform: translateX(0);
       visibility: visible;
