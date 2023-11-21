@@ -411,11 +411,11 @@
     @apply max-w-screen-max;
     @apply py-md;
 
-    @screen sm {
+    @screen xs {
       @apply py-lg;
     }
 
-    @screen wide {
+    @screen xxl {
       @apply py-xl;
     }
   }
@@ -887,12 +887,12 @@ flynt-component[name='BlockHeader'] {
         &:nth-of-type(3) {
           width: calc(50% + 23px);
 
-          @screen xxl {
+          @screen md {
             top: clamp(35%, 1.5817% + 17.4292vw, 40%);
             width: calc(50% + 26px);
           }
 
-          @screen wide {
+          @screen xxl {
             top: 35%;
             width: calc(50% + 31px);
           }

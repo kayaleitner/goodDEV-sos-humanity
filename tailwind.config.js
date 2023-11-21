@@ -61,7 +61,7 @@ export const theme = {
   container: {
     padding: {
       DEFAULT: '20px',
-      sm: '60px',
+      xs: '60px',
     },
   },
   extend: {
