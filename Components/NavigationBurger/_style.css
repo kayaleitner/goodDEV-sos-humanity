@@ -2,6 +2,10 @@ flynt-component[name='NavigationBurger'] {
   --navigation-height: 60px;
   height: var(--navigation-height);
 
+  @screen sm {
+    --navigation-height: 92px;
+  }
+
   &.hamburger-grey {
     .hamburger-lines {
       &::before,
@@ -90,6 +94,10 @@ flynt-component[name='NavigationBurger'] {
   &[data-status='menuIsOpen'] {
     [data-ref="cta"] {
       top: -60px;
+
+      @screen sm {
+        top: -92px;
+      }
     }
 
     .hamburger-lines {
