@@ -2,14 +2,14 @@
 
 <flynt-component class="w-full bg-accentColor" load:on="idle" name="BlockPartners" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="container mx-auto flex flex-col gap-md text-bgColor sm:py-[68px] sm:items-center sm:flex-row sm:justify-between xxl:py-[104px] wide:py-[107px]">
+  <div class="container mx-auto flex flex-col gap-md text-bgColor sm:py-[68px] xs:items-center xs:flex-row xs:justify-between md:py-[104px] xxl:py-[107px]">
     {% if blockTitle %}
-      <div class="sm:w-1/3">
+      <div class="xs:w-1/3">
         {{ h.h(blockTitle, { level: 3, class: 'text-bgColor mb-0' }) }}
       </div>
     {% endif %}
       {% if partnerlogos %}
-        <div class="w-full flex items-stretch justify-center sm:justify-end gap-sm sm:gap-md xxl:gap-[88px] wide:gap-[148px]">
+        <div class="w-full flex items-stretch justify-center xs:justify-end gap-sm xs:gap-md md:gap-[88px] xxl:gap-[148px]">
           {% for partner in partnerlogos %}
           {% set styles = [] %}
           {% set stylesXxl = [] %}
@@ -21,7 +21,7 @@
             {% set styles = styles|merge(['flex-basis:' ~ flexBasis ~ 'px']) %}
             {% set stylesXxl = styles|merge(['flex-basis:' ~ flexBasisXxl ~ 'px']) %}
           {% endif %}
-          <div class="flex items-center py-xs md:shrink-0 xxl:hidden"
+          <div class="flex items-center py-xs md:shrink-0 md:hidden"
             {% if styles is not empty %}
               style="
                 {% for style in styles %}
@@ -36,7 +36,7 @@
               data-sizes="auto"
               alt="{{ partner.image.alt }}">
           </div>
-          <div class="hidden xxl:flex items-center py-xs md:shrink-0 xxl:py-0"
+          <div class="hidden md:flex items-center py-xs xs:shrink-0 md:py-0"
             {% if stylesXxl is not empty %}
               style="
                 {% for style in stylesXxl %}
