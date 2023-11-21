@@ -117,7 +117,8 @@ table {
   @apply no-underline;
   @apply px-sm;
   @apply py-[13px];
-  @apply lg:px-md;
+  @apply sm:px-[30px];
+  @apply sm:py-[14px];
   @apply relative;
   @apply rounded-full;
   @apply text-buttonMobile;
