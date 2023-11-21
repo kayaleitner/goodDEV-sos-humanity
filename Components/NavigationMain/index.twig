@@ -1,3 +1,5 @@
+{% import "Components/_Atoms/Button/macro.twig" as btn %}
+
 <flynt-component
     class="hidden md:block"
     load:on="load"
@@ -15,7 +17,20 @@
         <ul class="flex items-center gap-[50px] font-bodySmall h-[52px]">
           {% for item in menu.items %}
           <li>
-            <a class="{{ item.classes|join(' ')}} no-underline {{ 'button' not in item.classes|join(' ') ? 'after-marker hover:after-marker-active' }} !transition-none" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
+            {% if 'button'  in item.classes|join(' ') %}
+              {{ btn.buttonAnchor({ url: item.url, title: item.title }, {
+                class: '',
+                color: 'accent',
+                style: 'outline',
+                icon: true,
+              }) }}
+            {% else %}
+            <a class="{{ item.classes|join(' ')}} no-underline after-marker hover:after-marker-active !transition-none"
+                href="{{ item.url|e }}"
+                title="{{ item.title|e }}">
+                  {{ item.title|e }}
+            </a>
+            {% endif %}
           </li>
           {% endfor %}
       {% endif %}

@@ -1,3 +1,5 @@
+{% import "Components/_Atoms/Button/macro.twig" as btn %}
+
 <flynt-component
   load:on="visible"
   name="BlockHeader"
@@ -16,7 +18,11 @@
           {{ contentHtml|e('wp_kses_post') }}
         </div>
         {% if link %}
-          <a href="{{ link.url }}" class="button button--accent button--icon mt-md">{{ link.title }}</a>
+          {{ btn.buttonAnchor(link, {
+            class: 'mt-md',
+            color: 'accent',
+            icon: true,
+          }) }}
         {% endif %}
       </div>
     </div>

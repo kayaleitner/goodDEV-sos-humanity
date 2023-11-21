@@ -5,6 +5,7 @@ import { buildRefs } from '@/assets/scripts/helpers.js'
 
 export default function (el) {
   const refs = buildRefs(el)
+  let navScrolled = false
   initNavState()
 
   function initNavState() {
@@ -19,25 +20,44 @@ export default function (el) {
   }
 
   function setScrolledState() {
+    if (navScrolled) return
+    navScrolled = true
+    // Set style classes
     refs.nav.classList.remove('text-bgColor')
     refs.nav.classList.add('bg-bgColor')
     refs.logo.classList.add('hidden')
     refs.logoDark.classList.remove('hidden')
     $('.after-marker', refs.nav).addClass('after-marker--dark')
-    $('.button--outlineWhite', refs.nav)
+    const $button = $('.button--outlineWhite', refs.nav)
+    $button
+      // prevent transitions on style change, we want instant switch
+      .addClass('!transition-none')
       .removeClass('button--outlineWhite')
       .addClass('button--accent')
+
+    // re-add transitions for hover after the switch is complete (100ms is arbitraty)
+    setTimeout(function () {
+      $button.removeClass('!transition-none')
+    }, 100)
   }
 
   function unsetScrolledState() {
+    if (!navScrolled) return
+    navScrolled = false
+    // Set style classes
     refs.nav.classList.remove('bg-bgColor')
     refs.nav.classList.add('text-bgColor')
     refs.logoDark.classList.add('hidden')
     refs.logo.classList.remove('hidden')
     $('.after-marker', refs.nav).removeClass('after-marker--dark')
-    $('.button--accent', refs.nav)
+    const $button = $('.button--accent', refs.nav)
+    $button
+      .addClass('!transition-none')
       .removeClass('button--accent')
       .addClass('button--outlineWhite')
+    setTimeout(function () {
+      $button.removeClass('!transition-none')
+    }, 100)
   }
 
   function handleScroll() {
