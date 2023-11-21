@@ -108,6 +108,8 @@ export const safelist = [
   'w-1/2',
   'translate-x-full',
   '!translate-x-0',
+  'after-marker',
+  'after-marker--dark',
   {
     pattern: /col-span-\d/,
     variants: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'wide', 'max'],

@@ -117,7 +117,8 @@ table {
   @apply no-underline;
   @apply px-sm;
   @apply py-[13px];
-  @apply lg:px-md;
+  @apply sm:px-[30px];
+  @apply sm:py-[14px];
   @apply relative;
   @apply rounded-full;
   @apply text-buttonMobile;
@@ -156,7 +157,12 @@ table {
   &--icon {
     &::after {
       content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='16' fill='none' viewBox='0 0 15 16'%3E%3Cg clip-path='url(%23a)'%3E%3Cpath stroke='%23fff' stroke-width='1.5' d='M1.262 2.413H12.95v11.689m.116-11.712L.89 14.565'/%3E%3C/g%3E%3C/svg%3E");
-      @apply h-[15px];
+    }
+
+    &Black {
+      &::after {
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='16' fill='none' viewBox='0 0 15 16'%3E%3Cg clip-path='url(%23a)'%3E%3Cpath stroke='%23003574' stroke-width='1.5' d='M1.262 2.413H12.95v11.689m.116-11.712L.89 14.565'/%3E%3C/g%3E%3C/svg%3E");
+      }
     }
   }
 
@@ -165,10 +171,14 @@ table {
     @apply hover:border-transparent;
     @apply active:border-transparent;
     @apply hover:bg-hoverColor;
-    @apply active:bg-hoverColor;
+    @apply active:bg-activeColor;
     @apply text-bgColor;
     @apply border;
     @apply bg-transparent;
+    @apply px-[18px];
+    @apply py-[11px];
+    @apply sm:px-[28px];
+    @apply sm:py-[12px];
   }
 
   &--outlineBlack {
