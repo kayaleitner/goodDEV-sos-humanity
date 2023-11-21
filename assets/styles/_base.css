@@ -165,7 +165,7 @@ table {
     @apply hover:border-transparent;
     @apply active:border-transparent;
     @apply hover:bg-hoverColor;
-    @apply active:bg-hoverColor;
+    @apply active:bg-activeColor;
     @apply text-bgColor;
     @apply border;
     @apply bg-transparent;
