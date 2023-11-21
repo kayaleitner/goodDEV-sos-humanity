@@ -7,7 +7,7 @@ flynt-component[name='NavigationBurger'] {
       &::before,
       &::after,
       &--text {
-        background-color: var(--bgColor);
+        background-color: currentColor;
       }
     }
   }
@@ -25,7 +25,7 @@ flynt-component[name='NavigationBurger'] {
         &::after,
         &--primary,
         &--text {
-          background-color: var(--bgColor);
+          background-color: currentColor;
         }
       }
     }
@@ -59,7 +59,7 @@ flynt-component[name='NavigationBurger'] {
       &::after,
       &--primary,
       &--text {
-        background-color: var(--bgColor);
+        background-color: currentColor;
         display: block;
         height: 2px;
         inset-inline-start: 0;
@@ -88,6 +88,10 @@ flynt-component[name='NavigationBurger'] {
   }
 
   &[data-status='menuIsOpen'] {
+    [data-ref="cta"] {
+      top: -60px;
+    }
+
     .hamburger-lines {
       &::before,
       &::after {
