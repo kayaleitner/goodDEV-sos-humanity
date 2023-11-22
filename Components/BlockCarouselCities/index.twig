@@ -57,7 +57,7 @@
       <div class="slider relative max-w-full swiper-wrapper">
         {% for card in cards %}
         <div class="swiper-slide city-slide relative text-bgColor rounded-xl overflow-hidden" style="background-color: {{card.color}};">
-          <img class="h-full md:absolute left-0 top-0" src="{{ card.image.guid }}" alt="{{ card.image.alt }}"
+          <img class="h-auto md:absolute left-0 bottom-0" src="{{ card.image.guid }}" alt="{{ card.image.alt }}"
             src="{{ card.image.src|resize(32) }}" 
             data-srcset="{{ function('wp_get_attachment_image_srcset', card.image.id) }}" 
             data-sizes="auto" 
