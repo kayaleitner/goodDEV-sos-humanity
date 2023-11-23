@@ -565,7 +565,7 @@ flynt-component {
 .swiper-scrollbar-drag {
   height: 4px !important;
   border-radius: 0 !important;
-  background-color: var(--textColor) !important;
+  background-color: currentColor !important;
 }
 
 [name='BlockCarouselCities'] {
