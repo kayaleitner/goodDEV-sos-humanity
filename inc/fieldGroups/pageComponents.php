@@ -96,6 +96,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockPartners\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
                     Components\BlockCarouselCities\getACFLayout(),
+                    Components\BlockCarousel\getACFLayout(),
                 ],
             ],
         ],
