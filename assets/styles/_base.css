@@ -555,7 +555,7 @@ flynt-component {
 
 [name='BlockCarouselCities'] {
   .swiper-container {
-    .swiper-slide {
+    .swiper-slide.city-slide {
         aspect-ratio: 230 / 292;
     }
   }
@@ -564,6 +564,7 @@ flynt-component {
     .swiper-container {
       clip-path: inset( -100vw -100vw -100vw 0 );
       .swiper-slide.city-slide {
+        aspect-ratio: auto;
         width: 315px;
         height: 400px;
       }
