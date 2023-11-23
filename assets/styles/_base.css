@@ -557,3 +557,57 @@ flynt-component {
   background-color: var(--bgColor);
   color: var(--textColor);
 }
+
+/**
+* Swiper stuff
+*/
+
+.swiper-scrollbar-drag {
+  height: 4px !important;
+  border-radius: 0 !important;
+  background-color: var(--textColor) !important;
+}
+
+[name='BlockCarouselCities'] {
+  .swiper-container {
+    .swiper-slide.city-slide {
+        aspect-ratio: 230 / 292;
+    }
+  }
+
+  @screen md {
+    .swiper-container {
+      clip-path: inset( -100vw -100vw -100vw 0 );
+      .swiper-slide.city-slide {
+        aspect-ratio: auto;
+        width: 315px;
+        height: 400px;
+      }
+    }
+  }
+}
+
+.swiper-button-disabled {
+  opacity: .6;
+}
+
+.slider-button {
+  &:hover {
+    circle {
+      fill: var(--lightblue);
+      stroke: var(--lightblue);
+    }
+    g {
+      stroke: white;
+    }
+  }
+  &:active {
+    circle {
+      fill: var(--bluepressed);
+      stroke: var(--bluepressed);
+    }
+    g {
+      stroke: white;
+    }
+  }
+}

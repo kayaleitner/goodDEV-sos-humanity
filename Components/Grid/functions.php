@@ -4,7 +4,7 @@ namespace Flynt\Components\Grid;
 
 use function Flynt\FieldVariables\responsiveField;
 
-function gridCol(string $name, string $label, array $field = [], array $tabletField = [], array $desktopField = [], array $wideField = [], array $sizes = ['small', 'large']): array
+function gridCol(string $name, string $label, array $field = [], array $tabletField = [], array $desktopField = [], array $wideField = [], array $sizes = ['small', 'large'], int $width = 50): array
 {
     return responsiveField(
         $name,
@@ -72,5 +72,6 @@ function gridCol(string $name, string $label, array $field = [], array $tabletFi
                 ),
             ]
         ),
+        $width
     );
 }
