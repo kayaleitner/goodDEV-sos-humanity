@@ -61,7 +61,7 @@ export const theme = {
   container: {
     padding: {
       DEFAULT: '20px',
-      sm: '60px',
+      xs: '60px',
     },
   },
   extend: {
@@ -108,6 +108,8 @@ export const safelist = [
   'w-1/2',
   'translate-x-full',
   '!translate-x-0',
+  'after-marker',
+  'after-marker--dark',
   {
     pattern: /col-span-\d/,
     variants: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'wide', 'max'],

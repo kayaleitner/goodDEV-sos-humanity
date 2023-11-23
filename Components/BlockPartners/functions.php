@@ -54,7 +54,7 @@ function getACFLayout()
                         'required' => 0,
                     ],
                     [
-                        'label' => __('Flex Basis (>=1440px)', 'flynt'),
+                        'label' => __('Flex Basis (>=980px)', 'flynt'),
                         'name' => 'basisXxl',
                         'type' => 'number',
                         'instructions' => __('Determines the width relative to the other logos.', 'flynt'),

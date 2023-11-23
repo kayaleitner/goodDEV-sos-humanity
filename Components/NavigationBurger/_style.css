@@ -1,24 +1,14 @@
 flynt-component[name='NavigationBurger'] {
-  --navigation-height: 88px;
+  --navigation-height: 60px;
   height: var(--navigation-height);
 
-  @screen md {
-    display: none;
+  @screen xs {
+    /* The font stays the same at this breakpoint, hence the narrower navbar */
+    --navigation-height: 86px;
   }
 
-  .container {
-    align-items: center;
-    display: flex;
-    height: var(--navigation-height);
-    justify-content: space-between;
-    margin: 0;
-    padding-block: 12px;
-    position: fixed;
-    width: 100vw;
-
-    .admin-bar & {
-      inset-block-start: var(--wp-admin--admin-bar--height);
-    }
+  @screen sm {
+    --navigation-height: 92px;
   }
 
   &.hamburger-grey {
@@ -26,7 +16,7 @@ flynt-component[name='NavigationBurger'] {
       &::before,
       &::after,
       &--text {
-        background-color: var(--brandColor);
+        background-color: currentColor;
       }
     }
   }
@@ -44,7 +34,7 @@ flynt-component[name='NavigationBurger'] {
         &::after,
         &--primary,
         &--text {
-          background-color: var(--bgColor);
+          background-color: currentColor;
         }
       }
     }
@@ -54,19 +44,20 @@ flynt-component[name='NavigationBurger'] {
     align-items: center;
     cursor: pointer;
     display: flex;
-    height: 47px;
+    height: calc(14px + 2 * 10px);
     justify-content: center;
-    margin-inline-end: -10px;
-    width: 47px;
+    width: calc(23px + 2 * 10px);
+    /* padding for better a11y */
+    padding: 10px;
 
     &:focus:not(:focus-visible) {
       outline: none;
     }
 
     &-lines {
-      height: 22px;
+      height: 14px;
       position: relative;
-      width: 27px;
+      width: 23px;
 
       &::before,
       &::after {
@@ -77,36 +68,43 @@ flynt-component[name='NavigationBurger'] {
       &::after,
       &--primary,
       &--text {
-        background-color: var(--bgColor);
-        border-radius: 10px;
+        background-color: currentColor;
         display: block;
-        height: 3.5px;
+        height: 2px;
         inset-inline-start: 0;
         position: absolute;
         transition:
           opacity 0.2s ease-in-out 0.2s,
           transform 0.2s ease-in-out 0.2s;
-        width: 27px;
+        width: 100%;
         will-change: opacity, transform;
-      }
-
-      &::before {
-        inset-block-start: -1px;
       }
 
       &--primary,
       &--text {
-        inset-block-start: 8px;
+        inset-block-start: 6px;
         transition-delay: 0s;
       }
 
       &::after {
-        inset-block-start: 17px;
+        inset-block-start: 12px;
       }
     }
   }
 
   &[data-status='menuIsOpen'] {
+    [data-ref="cta"] {
+      top: -60px;
+
+      @screen xs {
+        top: -86px;
+      }
+
+      @screen sm {
+        top: -92px;
+      }
+    }
+
     .hamburger-lines {
       &::before,
       &::after {
@@ -191,6 +189,17 @@ flynt-component[name='NavigationBurger'] {
   }
 
   &[data-status='menuIsOpen'] {
+    .logo {
+      @apply block;
+
+      &--dark {
+        @apply hidden;
+      }
+    }
+
+    .hamburger {
+      @apply text-bgColor;
+    }
     .menu {
       transform: translateX(0);
       visibility: visible;

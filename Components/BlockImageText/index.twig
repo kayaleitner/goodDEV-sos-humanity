@@ -9,25 +9,25 @@
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
   "
   >
-  <div class="container mx-auto grid items-center grid-cols-6 xxl:grid-cols-12 gap-xs">
+  <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-xs">
   {% if blockTitle %}
-    <div class="col-span-6 xxl:col-span-12">
+    <div class="col-span-6 md:col-span-12">
       {{ h.h(blockTitle, { level: 3, class: '' }) }}
     </div>
   {% endif %}
   {% if media.image or media.video %}
     <div class="
-        {{ mediaPositionMobile == 'bottom' ? 'order-1 mt-[70px] xxl:mt-0' }}
-        {{ mediaPositionMobile == 'bottom' and mediaPosition != 'right' ? 'xxl:order-none' }}
-        {{ mediaPositionMobile != 'bottom' and mediaPosition == 'right' ? 'xxl:order-1' }}
+        {{ mediaPositionMobile == 'bottom' ? 'order-1 mt-[70px] md:mt-0' }}
+        {{ mediaPositionMobile == 'bottom' and mediaPosition != 'right' ? 'md:order-none' }}
+        {{ mediaPositionMobile != 'bottom' and mediaPosition == 'right' ? 'md:order-1' }}
         col-start-{{ media.colMediaStart.mobile }}
-        sm:col-start-{{ media.colMediaStart.tablet }}
-        xxl:col-start-{{ media.colMediaStart.desktop }}
-        wide:col-start-{{ media.colMediaStart.wide }}
+        xs:col-start-{{ media.colMediaStart.tablet }}
+        md:col-start-{{ media.colMediaStart.desktop }}
+        xxl:col-start-{{ media.colMediaStart.wide }}
         col-span-{{ media.colMediaSpan.mobile }}
-        sm:col-span-{{ media.colMediaSpan.tablet }}
-        xxl:col-span-{{ media.colMediaSpan.desktop }}
-        wide:col-span-{{ media.colMediaSpan.wide }}"
+        xs:col-span-{{ media.colMediaSpan.tablet }}
+        md:col-span-{{ media.colMediaSpan.desktop }}
+        xxl:col-span-{{ media.colMediaSpan.wide }}"
     >
       {% if media.type == 'image' %}
         <img class="image lazyload"
@@ -52,13 +52,13 @@
     <div class="
         wysiwyg
         col-start-{{ content.colTextStart.mobile }}
-        sm:col-start-{{ content.colTextStart.tablet }}
-        xxl:col-start-{{ content.colTextStart.desktop }}
-        wide:col-start-{{ content.colTextStart.wide }}
+        xs:col-start-{{ content.colTextStart.tablet }}
+        md:col-start-{{ content.colTextStart.desktop }}
+        xxl:col-start-{{ content.colTextStart.wide }}
         col-span-{{ content.colTextSpan.mobile }}
-        sm:col-span-{{ content.colTextSpan.tablet }}
-        xxl:col-span-{{ content.colTextSpan.desktop }}
-        wide:col-span-{{ content.colTextSpan.wide }}"
+        xd:col-span-{{ content.colTextSpan.tablet }}
+        md:col-span-{{ content.colTextSpan.desktop }}
+        xxl:col-span-{{ content.colTextSpan.wide }}"
       >
       {{ content.contentHtml|e('wp_kses_post') }}
     </div>
