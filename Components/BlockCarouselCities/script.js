@@ -1,4 +1,11 @@
-import Swiper, { Navigation, A11y, Autoplay, Pagination, Parallax, Scrollbar } from 'swiper'
+import Swiper, {
+  Navigation,
+  A11y,
+  Autoplay,
+  Pagination,
+  Parallax,
+  Scrollbar,
+} from 'swiper'
 import 'swiper/css/bundle'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
@@ -18,7 +25,7 @@ function initSlider(refs, data) {
   const config = {
     modules: [Navigation, A11y, Autoplay, Pagination, Parallax, Scrollbar],
     a11y: options.a11y,
-    slidesPerView: 2,
+    slidesPerView: 1.5,
     autoHeight: true,
     spaceBetween: 15,
     navigation: {
@@ -28,9 +35,12 @@ function initSlider(refs, data) {
     scrollbar: {
       el: refs.indicator,
       draggable: true,
-      dragSize: 100
+      dragSize: 100,
     },
     breakpoints: {
+      640: {
+        slidesPerView: 2,
+      },
       980: {
         slidesPerView: 'auto',
       },

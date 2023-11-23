@@ -554,6 +554,11 @@ flynt-component {
 }
 
 [name='BlockCarouselCities'] {
+  .swiper-container {
+    .swiper-slide {
+        aspect-ratio: 230 / 292;
+    }
+  }
 
   @screen md {
     .swiper-container {
