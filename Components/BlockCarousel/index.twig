@@ -10,19 +10,19 @@
   class="overflow-hidden"
   >
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="container md:my-md mx-auto grid grid-cols-6 md:grid-cols-12 gap-xs sm:gap-sm">
+  <div class="container md:my-md mx-auto grid grid-cols-6 md:grid-cols-12 sm:items-start gap-xs sm:gap-sm">
 
   {% if content.textContent %}
     <div class="
         col-start-{{ content.colTextStart.mobile }}
-        sm:col-start-{{ content.colTextStart.tablet }}
+        xs:col-start-{{ content.colTextStart.tablet }}
         md:col-start-{{ content.colTextStart.desktop }}
         xxl:col-start-{{ content.colTextStart.wide }}
         col-span-{{ content.colTextSpan.mobile }}
-        sm:col-span-{{ content.colTextSpan.tablet }}
+        xs:col-span-{{ content.colTextSpan.tablet }}
         md:col-span-{{ content.colTextSpan.desktop }}
         xxl:col-span-{{ content.colTextSpan.wide }}
-        flex flex-col justify-between gap-[38px]
+        flex flex-col justify-between gap-[38px] md:mr-[-20px] xxl:mr-0 xxl:pe-[70px]
         "
       >
       <div class="text-contents font-body">
@@ -46,19 +46,19 @@
         mt-md mb-[100px] md:my-0
         swiper-container
         col-start-{{ colCardsStart.mobile }}
-        sm:col-start-{{ colCardsStart.tablet }}
+        xs:col-start-{{ colCardsStart.tablet }}
         md:col-start-{{ colCardsStart.desktop }}
         xxl:col-start-{{ colCardsStart.wide }}
         col-span-{{ colCardsSpan.mobile }}
-        sm:col-span-{{ colCardsSpan.tablet }}
+        xs:col-span-{{ colCardsSpan.tablet }}
         md:col-span-{{ colCardsSpan.desktop }}
         xxl:col-span-{{ colCardsSpan.wide }}"
     >
       <div class="slider relative max-w-full swiper-wrapper">
         {% for card in cards %}
         <div class="swiper-slide relative rounded-xl overflow-hidden w-[239px] min-h-[369] md:max-w-[427px] md:aspect-[427/496] xxl:max-w-[511px]" style="background-color: {{card.bgColor}}; color: {{card.color}};">
-          <div class="flex flex-col gap-[45px] p-sm">
-            <div class="w-[calc(51%_+_40px)] sm:w-[49.307%] flex self-end items-end aspect-[5/4] overflow-hidden">
+          <div class="flex flex-col gap-[45px] p-sm sm:p-md">
+            <div class="w-[72%] sm:w-[63%] {# xxl:w-[55.6845%] #} flex self-end items-end aspect-[5/4] overflow-hidden">
               <img class="w-full h-full object-contain object-right" src="{{ card.image.guid }}" alt="{{ card.image.alt }}"
                 src="{{ card.image.src|resize(32) }}" 
                 data-srcset="{{ function('wp_get_attachment_image_srcset', card.image.id) }}" 
@@ -70,7 +70,7 @@
             {% if card.title or card.text %}
             <div>
               {% if card.title %}
-                {{ h.h(card.title, { level: 2, class: 'relative font-titleSmall mb-0' }) }}
+                {{ h.h(card.title, { level: 2, class: 'relative font-titleSub me-sm' }) }}
               {% endif %}
               {% if card.text %}
                 <p class="font-body">{{ card.text }}</p>
