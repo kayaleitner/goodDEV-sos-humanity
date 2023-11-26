@@ -2,7 +2,7 @@
 
 <flynt-component
   load:on="visible"
-  name="BlockCarouselCities"
+  name="BlockCarousel"
   style="
     background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
@@ -10,7 +10,7 @@
   class="overflow-hidden"
   >
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="container md:my-md mx-auto grid grid-cols-6 md:grid-cols-12 gap-xs sm:gap-sm">
+  <div class="container md:my-md mx-auto grid grid-cols-6 md:grid-cols-12 sm:items-start gap-xs sm:gap-sm">
 
   {% if content.textContent %}
     <div class="
@@ -22,20 +22,20 @@
         xs:col-span-{{ content.colTextSpan.tablet }}
         md:col-span-{{ content.colTextSpan.desktop }}
         xxl:col-span-{{ content.colTextSpan.wide }}
-        flex flex-col justify-between
+        flex flex-col justify-between gap-[38px] md:mr-[-20px] xxl:mr-0 xxl:pe-[70px]
         "
       >
       <div class="text-contents font-body">
         {% if content.blockTitle %}
-          {{ h.h(content.blockTitle, { level: 4, class: '' }) }}
+          {{ h.h(content.blockTitle, { level: 3, class: '' }) }}
         {% endif %}
         <p>
           {{ content.textContent|e('wp_kses_post') }}
         </p>
       </div>
       <div class="controls absolute md:relative bottom-md right-sm md:left-0 md:bottom-0">
-        {% include 'Components/_Atoms/Slider/navArrows.twig' %}
-        <div data-ref="indicator" class="border-b-2 border-[#b2c2d5] h-[5px] hidden md:block"></div>
+        {% include 'Components/_Atoms/Slider/navArrows.twig' with {color: options.colorText, bgColor: options.colorBackground } only %}
+        <div data-ref="indicator" class="border-b-2 border-[#ffffff4D] h-[5px] hidden md:block"></div>
       </div>
     </div>
   {% endif %}
@@ -43,7 +43,7 @@
     <div
       data-ref="slider"
       class="
-        h-[400px] mt-md mb-[100px] md:my-0
+        mt-md mb-[100px] md:my-0
         swiper-container
         col-start-{{ colCardsStart.mobile }}
         xs:col-start-{{ colCardsStart.tablet }}
@@ -56,16 +56,27 @@
     >
       <div class="slider relative max-w-full swiper-wrapper">
         {% for card in cards %}
-        <div class="swiper-slide city-slide relative text-bgColor rounded-xl overflow-hidden" style="background-color: {{card.color}};">
-          <img class="absolute left-0 bottom-0 h-auto" src="{{ card.image.guid }}" alt="{{ card.image.alt }}"
-            src="{{ card.image.src|resize(32) }}" 
-            data-srcset="{{ function('wp_get_attachment_image_srcset', card.image.id) }}" 
-            data-sizes="auto" 
-            data-src="{{ card.image.src }}" 
-            alt="{{ card.image.alt|e }}"
-          />
-          <div class="absolute p-sm top-0 left-0">
-            {{ h.h(card.label, { level: 2, class: 'relative font-titleSmall' }) }}
+        <div class="swiper-slide relative rounded-xl overflow-hidden w-[239px] min-h-[369] md:max-w-[427px] md:aspect-[427/496] xxl:max-w-[511px]" style="background-color: {{card.bgColor}}; color: {{card.color}};">
+          <div class="flex flex-col gap-[45px] p-sm sm:p-md">
+            <div class="w-[72%] sm:w-[63%] {# xxl:w-[55.6845%] #} flex self-end items-end aspect-[5/4] overflow-hidden">
+              <img class="w-full h-full object-contain object-right" src="{{ card.image.guid }}" alt="{{ card.image.alt }}"
+                src="{{ card.image.src|resize(32) }}" 
+                data-srcset="{{ function('wp_get_attachment_image_srcset', card.image.id) }}" 
+                data-sizes="auto" 
+                data-src="{{ card.image.src }}" 
+                alt="{{ card.image.alt|e }}"
+              />
+            </div>
+            {% if card.title or card.text %}
+            <div>
+              {% if card.title %}
+                {{ h.h(card.title, { level: 2, class: 'relative font-titleSub me-sm' }) }}
+              {% endif %}
+              {% if card.text %}
+                <p class="font-body">{{ card.text }}</p>
+              {% endif %}
+            </div>
+            {% endif %}
           </div>
         </div>
         {% endfor %}

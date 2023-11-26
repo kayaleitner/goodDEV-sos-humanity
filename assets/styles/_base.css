@@ -565,7 +565,16 @@ flynt-component {
 .swiper-scrollbar-drag {
   height: 4px !important;
   border-radius: 0 !important;
-  background-color: var(--textColor) !important;
+  background-color: currentColor !important;
+}
+
+[name='BlockCarouselCities'],
+[name='BlockCarousel'] {
+  @screen md {
+    .swiper-container {
+      clip-path: inset( -100vw -100vw -100vw 0 );
+    }
+  }
 }
 
 [name='BlockCarouselCities'] {
@@ -577,7 +586,6 @@ flynt-component {
 
   @screen md {
     .swiper-container {
-      clip-path: inset( -100vw -100vw -100vw 0 );
       .swiper-slide.city-slide {
         aspect-ratio: auto;
         width: 315px;
