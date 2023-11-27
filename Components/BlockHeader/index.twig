@@ -61,9 +61,13 @@
           {% elseif media.type == 'video' %}
             <video
               class="object-cover w-full h-full"
-              src="{{media.video.url}}"
+              {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
               autoplay loop muted playsinline disablepictureinpicture
-              aria-label="{{ media.video.title|e }}"></video>
+              aria-label="{{ media.video.label|e }}">
+              {% for item in media.video.videoFiles %}
+                <source src="{{ item.videoFile.url }}" type="{{ item.videoFile.mime_type}};codecs={{ item.codec }}">
+              {% endfor %}
+            </video>
           {% endif %}
         </div>
       {% endfor %}
