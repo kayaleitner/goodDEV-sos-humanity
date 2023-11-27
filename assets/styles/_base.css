@@ -19,13 +19,12 @@ body :not(nav) {
 
 hr {
   background-color: inherit;
-  border: 0;
-  height: 2px;
-  margin: 1.25rem auto;
-
-  @screen lg {
-    margin: 1.563rem auto;
-  }
+  height: 30px;
+  width: 100%;
+  max-width: 150px;
+  margin-inline-start: 0;
+  margin-block: -10px 30px;
+  border: none;
 }
 
 code {

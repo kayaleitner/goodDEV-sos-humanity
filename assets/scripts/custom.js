@@ -12,30 +12,28 @@ document.addEventListener('resize', () => {
 })
 
 mm.add('(min-width: 1280px)', () => {
-  gsap.set('.fade-in',
-    { opacity: 0 }
-  )
-  gsap.set('.move-up',
-    { y: 200 }
-  )
+  gsap.set('.fade-in', { opacity: 0 })
+  gsap.set('.move-up', { y: 200 })
 })
 
 ScrollTrigger.batch('.fade-in', {
-  onEnter: (elements) => gsap.to(elements, { opacity: 1, stagger: 0.1, duration: 0.5 }),
+  onEnter: (elements) =>
+    gsap.to(elements, { opacity: 1, stagger: 0.1, duration: 0.5 }),
   start: '100px bottom',
-  end: 'top top'
+  end: 'top top',
 })
 
 ScrollTrigger.batch('.move-up', {
-  onEnter: (elements) => gsap.to(elements, { y: 0, stagger: 0.1, duration: 0.3 }),
+  onEnter: (elements) =>
+    gsap.to(elements, { y: 0, stagger: 0.1, duration: 0.3 }),
   start: '100px bottom',
-  end: 'top top'
+  end: 'top top',
 })
 
-document.querySelectorAll('hr').forEach(item => {
-  let color = item.previousElementSibling.lastChild.style !== undefined
-    ? item.previousElementSibling.lastChild.style.color
-    : item.previousElementSibling.style.color
-  color = color.length ? color : 'black'
-  item.style.backgroundColor = color
-})
+// document.querySelectorAll('hr').forEach(item => {
+//   let color = item.previousElementSibling.lastChild.style !== undefined
+//     ? item.previousElementSibling.lastChild.style.color
+//     : item.previousElementSibling.style.color
+//   color = color.length ? color : 'black'
+//   item.style.backgroundColor = color
+// })

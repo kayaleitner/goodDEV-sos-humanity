@@ -174,27 +174,27 @@ function getConfig()
                     ],
                 ]
             ],
-            // [
-            //     'title' => __('Horizontal Line', 'flynt'),
-            //     'icon' => '',
-            //     'items' => [
-            //         [
-            //             'title' => __('Black', 'flynt'),
-            //             'classes' => 'text-textColor',
-            //             'selector' => 'hr'
-            //         ],
-            //         [
-            //             'title' => __('Brand Green', 'flynt'),
-            //             'classes' => 'text-brandColor',
-            //             'selector' => 'hr'
-            //         ],
-            //         [
-            //             'title' => __('Green', 'flynt'),
-            //             'classes' => 'text-accentColor',
-            //             'selector' => 'hr'
-            //         ],
-            //     ]
-            // ],
+            [
+                'title' => __('Horizontal Line', 'flynt'),
+                'icon' => '',
+                'items' => [
+                    [
+                        'title' => __('Dark Blue', 'flynt'),
+                        'classes' => 'bg-textColor',
+                        'selector' => 'hr'
+                    ],
+                    [
+                        'title' => __('Light Blue', 'flynt'),
+                        'classes' => 'bg-hoverColor',
+                        'selector' => 'hr'
+                    ],
+                    [
+                        'title' => __('Orange', 'flynt'),
+                        'classes' => 'bg-tangerine',
+                        'selector' => 'hr'
+                    ],
+                ]
+            ],
         ],
         'toolbars' => [
             'default' => [

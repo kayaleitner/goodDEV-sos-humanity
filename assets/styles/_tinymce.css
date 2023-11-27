@@ -181,6 +181,15 @@ ol {
   }
 }
 
+hr {
+  border: none;
+  height: 30px;
+  margin-inline-start: 0;
+  margin-block: 30px;
+  max-width: 150px;
+  width: 100%;
+}
+
 /* li,
 ul,
 ol {
