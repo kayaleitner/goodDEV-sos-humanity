@@ -10,9 +10,9 @@
   class="overflow-hidden"
   >
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="container md:my-md mx-auto grid grid-cols-6 md:grid-cols-12 sm:items-start gap-xs sm:gap-sm">
+  <div class="container md:my-md mx-auto grid grid-cols-6 md:grid-cols-12 gap-xs sm:gap-sm">
 
-  {% if content.textContent %}
+  {% if content.textContent or content.blockTitle %}
     <div class="
         col-start-{{ content.colTextStart.mobile }}
         xs:col-start-{{ content.colTextStart.tablet }}
@@ -29,9 +29,11 @@
         {% if content.blockTitle %}
           {{ h.h(content.blockTitle, { level: 3, class: '' }) }}
         {% endif %}
+        {% if content.textContent %}
         <p>
           {{ content.textContent|e('wp_kses_post') }}
         </p>
+        {% endif %}
       </div>
       <div class="controls absolute md:relative bottom-md right-sm md:left-0 md:bottom-0">
         {% include 'Components/_Atoms/Slider/navArrows.twig' with {color: options.colorText, bgColor: options.colorBackground } only %}
