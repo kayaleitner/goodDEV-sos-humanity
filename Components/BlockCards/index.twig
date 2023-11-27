@@ -1,0 +1,60 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+<flynt-component
+  load:on="visible"
+  name="BlockCards"
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
+  "
+  >
+  <div class="container md:my-md mx-auto pb-xl sm:pb-[100px] md:pb-xxl">
+  {% if content.textContent or content.blockTitle %}
+    <div class="mb-[48px] sm:mb-lg xxl:mb-[100px]">
+      <div class="text-contents font-body">
+        {% if content.blockTitle %}
+          {{ h.h(content.blockTitle, { level: 3, class: '' }) }}
+        {% endif %}
+        {% if content.textContent %}
+        <p>
+          {{ content.textContent|e('wp_kses_post') }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+    {% if cards %}
+    <div
+      class="grid grid-cols-6 md:grid-cols-12 gap-sm"
+    >
+      {% for card in cards %}
+        <div class="rounded-[10px] col-span-6 sm:col-span-3 md:col-span-6 xxl:col-span-3" style="background-color: {{card.bgColor}}; color: {{card.color}};">
+          <div class="flex flex-col gap-[31px] p-[30px] sm:p-md">
+            <div class="w-full h-[80px] flex overflow-hidden">
+              {% if card.image %}
+                <img class="w-full h-full object-contain object-left" src="{{ card.image.src }}" alt="{{ card.image.alt }}"
+                  src="{{ card.image.src|resize(32) }}" 
+                  data-srcset="{{ function('wp_get_attachment_image_srcset', card.image.id) }}" 
+                  data-sizes="auto" 
+                  data-src="{{ card.image.src }}" 
+                  alt="{{ card.image.alt|e }}"
+                />
+              {% endif %}
+            </div>
+            {% if card.title or card.text %}
+            <div>
+              {% if card.title %}
+                {{ h.h(card.title, { level: 2, class: 'relative font-titleSub mb-[31px]' }) }}
+              {% endif %}
+              {% if card.text %}
+                <p class="font-body">{{ card.text }}</p>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  </div>
+</flynt-component>
