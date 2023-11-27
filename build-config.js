@@ -1,7 +1,7 @@
 const domain = 'breathecities.local/'
 const dest = './dist'
 
-const host = `http://${domain}`
+const host = `https://${domain}`
 
 const entries = [
   './assets/admin.js',
