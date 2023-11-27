@@ -84,10 +84,10 @@ function getACFLayout()
                     ],
                     [
                         'label' => __('Video', 'flynt'),
-                        'instructions' => __('Format: MP4.', 'flynt'),
+                        'instructions' => __('Provide a poster image and various formats for best performance', 'flynt'),
                         'name' => 'video',
-                        'type' => 'file',
-                        'mime_types' => 'mp4',
+                        'type' => 'group',
+                        'layout' => 'row',
                         'conditional_logic' => [
                             [
                                 [
@@ -96,6 +96,54 @@ function getACFLayout()
                                     'value' => 'video',
                                 ],
                             ]
+                        ],
+                        'sub_fields' => [
+                            [
+                                'label' => __('Aria-Label', 'flynt'),
+                                'name' => 'label',
+                                'type' => 'text',
+                                'required' => 1,
+                            ],
+                            [
+                                'label' => __('Poster image', 'flynt'),
+                                'instructions' => __('Image-Format: JPG, PNG, WEBM (choose smallest size!)', 'flynt'),
+                                'name' => 'posterImage',
+                                'type' => 'image',
+                                'preview_size' => 'medium',
+                                'required' => 0,
+                                'mime_types' => 'jpg,jpeg,png,webp'
+                            ],
+                            [
+                                'label' => __('Items', 'flynt'),
+                                'name' => 'videoFiles',
+                                'type' => 'repeater',
+                                'layout' => 'table',
+                                'min' => 1,
+                                'button_label' => __('Add video format', 'flynt'),
+                                'instructions' => __('Provide video in h264 (mp4), h265 (mp4), vp8 (webm) and vp9 (webm). Sort ascending by size!', 'flynt'),
+                                'sub_fields' => [
+                                    [
+                                        'label' => __('Video', 'flynt'),
+                                        'name' => 'videoFile',
+                                        'type' => 'file',
+                                        'required' => 1,
+                                        'mime_types' => 'mp4,webm',
+                                    ],
+                                    [
+                                        'label' => __('Codec', 'flynt'),
+                                        'name' => 'codec',
+                                        'type' => 'select',
+                                        'required' => 1,
+                                        'choices' => [
+                                            'avc1' => 'h264',
+                                            'hvc1' =>'h265',
+                                            'vp8' =>'vp8',
+                                            'vp9' => 'vp9',
+                                        ],
+                                        'default_value' => 'avc1',
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                     gridCol('colMediaStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
