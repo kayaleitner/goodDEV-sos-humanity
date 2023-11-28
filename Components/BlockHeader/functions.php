@@ -2,6 +2,8 @@
 
 namespace Flynt\Components\BlockHeader;
 
+use Flynt\Utils\Asset;
+use Flynt\ComponentManager;
 use Flynt\FieldVariables;
 use function Flynt\Components\Grid\gridCol;
 use Timber\Timber;
@@ -9,6 +11,9 @@ use Timber\Timber;
 
 function getACFLayout()
 {
+    $componentManager = ComponentManager::getInstance();
+    $componentPathFull = $componentManager->getComponentDirPath('BlockHeader');
+    $componentPath = str_replace(trailingslashit(get_template_directory()), '', $componentPathFull);
     return [
         'name' => 'BlockHeader',
         'label' => __('Header', 'flynt'),
@@ -53,6 +58,7 @@ function getACFLayout()
                 'name' => 'mediaItems',
                 'type' => 'repeater',
                 'layout' => 'table',
+                'max' => 3,
                 'button_label' => __('Add Media Item', 'flynt'),
                 'sub_fields' => [
                     [
@@ -166,7 +172,9 @@ function getACFLayout()
                     // FieldVariables\getTheme(),
                     // FieldVariables\getNavStyle('dark-blur'),
                     FieldVariables\getColorBackground(),
-                    gridCol('textWidth', 'Text Width', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
+                    gridCol('textWidth', 'Text Columns', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
+                    gridCol('colMediaStart', 'Media Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
+                    gridCol('colMediaSpan', 'Media Column Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
                     [
                         'label' => __('Indent intro text', 'flynt'),
                         'name' => 'textIndent',
@@ -175,6 +183,20 @@ function getACFLayout()
                         'ui_on_text' => __('Yes', 'flynt'),
                         'ui_off_text' => __('No', 'flynt'),
                         'default_value' => 1,
+                    ],
+                    [
+                        'label' => __('Media layout', 'flynt'),
+                        'name' => 'mediaLayout',
+                        'instructions' => 'Select the layout for displaying media<br>(click on the image to select)',
+                        'type' => 'radio',
+                        'default_value' => 1,
+                        'allow_null' => false,
+                        'layout' => 'horizontal',
+                        'class' => 'acf-image-select',
+                        'choices' => [
+                            1 => '<img src="'.Asset::requireUrl("{$componentPath}Assets/media-layout-1.png").'"><p>'.__('Home-Layout', 'flynt').'</p>',
+                            2 => '<img src="'.Asset::requireUrl("{$componentPath}Assets/media-layout-2.png").'"><p>'.__('What we do-Layout', 'flynt').'</p>',
+                        ],
                     ],
                 ]
             ]

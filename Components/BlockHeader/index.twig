@@ -3,12 +3,12 @@
 <flynt-component
   load:on="visible"
   name="BlockHeader"
-  class=""
+  class="layout-{{ options.mediaLayout}}"
   {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};"
 >
-<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-y-md gap-xs sm:gap-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems ? 'xs:pb-0' }} pt-[92px]">
+<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-y-md gap-xs sm:gap-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
     <div class="col-span-{{options.textWidth.mobile}} xs:col-span-{{options.textWidth.tablet}} md:col-span-{{options.textWidth.desktop}} xxl:col-span-{{options.textWidth.wide}}">
       <div>
         <div class="wysiwyg text-bgColor">
@@ -16,7 +16,7 @@
           <h1>{{ title|e('wp_kses_post') }}</h1>
           {% endif %}
         </div>
-        <div class="wysiwyg text-bgColor {{ options.textIndent ? 'sm:ps-[90px]' : 'pe-[15px] xs:pe-0' }}">
+        <div class="wysiwyg text-bgColor {{ options.textIndent ? 'xs:ps-[90px]' : 'pe-[15px] xs:pe-0' }}">
           {{ contentHtml|e('wp_kses_post') }}
           {% if link %}
             {{ btn.buttonAnchor(link, {
@@ -29,30 +29,63 @@
       </div>
     </div>
     {% if mediaItems %}
-    <div class="mediaItems col-span-6 md:col-start-6 md:col-span-7 xxl:col-start-7 xxl:col-span-6 relative h-full aspect-square md:aspect-auto">
+    <div class="mediaItems relative aspect-square xxl:aspect-auto xxl:h-full
+        col-start-{{ options.colMediaStart.mobile }}
+        xs:col-start-{{ options.colMediaStart.tablet }}
+        md:col-start-{{ options.colMediaStart.desktop }}
+        xxl:col-start-{{ options.colMediaStart.wide }}
+        col-span-{{ options.colMediaSpan.mobile }}
+        xs:col-span-{{ options.colMediaSpan.tablet }}
+        md:col-span-{{ options.colMediaSpan.desktop }}
+        xxl:col-span-{{ options.colMediaSpan.wide }}"
+    >
       <svg width="0" height="0">
         <defs>
-          <clipPath id="clip-1" clipPathUnits="objectBoundingBox">
+          {# Arc upside down #}
+          <clipPath id="clip-arc-upsidedown" clipPathUnits="objectBoundingBox">
             <path d="M 1 -0 L 1 0.6134 A 0.0333 0.0258 180 0 1 0 0.6134 L -0 0 Z">
           </clipPath>
-          <clipPath id="clip-2" clipPathUnits="objectBoundingBox">
+          {# Arc #}
+          <clipPath id="clip-arc" clipPathUnits="objectBoundingBox">
             <path d="M 0 1 L 0 0.3866 A 0.0333 0.0258 0 0 1 1 0.3866 L 1 1 Z">
           </clipPath>
-          <clipPath id="clip-3" clipPathUnits="objectBoundingBox">
+          {# Circle #}
+          <clipPath id="clip-circle" clipPathUnits="objectBoundingBox">
             <circle cx="0.5" cy="0.5" r="0.5" />
           </clipPath>
         </defs>
       </svg>
+
+      {# Set the shapes for respective layouts (first index is layout, second level index is loop.index) #}
+      {% set clipMap = {
+        1: {
+          1: 'clip-arc-upsidedown',
+          2: 'clip-arc',
+          3: 'clip-circle'
+        },
+        2: {
+          1: 'clip-circle',
+          2: 'clip-arc',
+          3: 'clip-arc'
+        },
+      } %}
+
+      {# Set classes of the shapes for respective layouts (first index is layout, second level index is loop.index) #}
+      {% set classMap = {
+        1: {
+          1: 'top-0 right-0',
+          2: 'w-1/4 top-0 right-1/2 mr-xs md:mr-[18px] xxl:mr-xs',
+          3: 'top-[34%] md:top-[35%] md:translate-x-[-6px] xxl:translate-x-0 left-0 aspect-square max-h-60%'
+        },
+        2: {
+          1: 'top-[21px] w-[37.1429%] right-[1.14286%] xs:right-[6.3636%] md:right-[12.1538%] xs:w-[35.1515%] md:right-[12.1538%] md:w-[33.8462%] xxl:right-[5.7471%] xxl:w-[31.4943%] aspect-square',
+          2: 'top-[53px] left-0 w-[64%] aspect-[472/558] xs:top-[80px] xs:w-[60.6061%] md:top-[75px] md:w-[58.6153%] md:ms-[-20px] xxl:top-[105px] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
+          3: 'right-0 bottom-0 aspect-[248/268] w-[33.4285%] xs:right-[35px] xs:w-[30.8181%] md:right-[11%] md:w-[30.923%] xxl:right-[4.7126%] xxl:w-[28.3908%]'
+        },
+      } %}
       {% for media in mediaItems %}
-        {% set classes = '' %}
-        {% if loop.index == 1 %}
-          {% set classes = 'top-0 right-0 ' %}
-        {% elseif loop.index == 2 %}
-          {% set classes = 'w-1/4 top-0 right-1/2 mr-xs md:mr-[18px] xxl:mr-xs' %}
-        {% elseif loop.index == 3 %}
-          {% set classes = 'top-[34%] md:top-[35%] md:translate-x-[-6px] xxl:translate-x-0 left-0 aspect-square max-h-60%' %}
-        {% endif %}
-        <div class="absolute h-auto {{ classes }}" style="clip-path: url(#clip-{{ loop.index }})">
+        {% set classes = classMap[options.mediaLayout][loop.index] %}
+        <div class="absolute h-auto {{ classes }}" style="clip-path: url(#{{ clipMap[options.mediaLayout][loop.index] }})">
           {% if media.type == 'image' %}
             <img class="lazyload w-full object-cover aspect-[204/243]"
             src="{{ media.image.src | resize(32) }}"

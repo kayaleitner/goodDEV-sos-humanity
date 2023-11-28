@@ -894,8 +894,8 @@
 /* Third party libraries */
 
 flynt-component[name='BlockHeader'] {
+  &.layout-1 {
     .mediaItems {
-
       div {
         &:nth-of-type(1),
         &:nth-of-type(2) {
@@ -921,6 +921,7 @@ flynt-component[name='BlockHeader'] {
         }
       }
     }
+  }
 }
 
 flynt-component[name='BlockSliderImages'] {
