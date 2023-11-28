@@ -1,0 +1,67 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+<flynt-component
+  load:on="visible"
+  name="BlockStatistics"
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
+  "
+  >
+  <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-xs">
+  {% if blockTitle %}
+    <div class="col-span-6 xs:col-span-4 md:col-span-6 lg:col-span-5">
+      {{ h.h(blockTitle, { level: 3, class: '' }) }}
+    </div>
+  {% endif %}
+  {% if stats %}
+    <div class="
+        col-span-full
+        xs:col-start-{{ media.colMediaStart.tablet }}
+        md:col-start-{{ media.colMediaStart.desktop }}
+        xxl:col-start-{{ media.colMediaStart.wide }}
+        col-span-{{ media.colMediaSpan.mobile }}
+        xs:col-span-{{ media.colMediaSpan.tablet }}
+        md:col-span-{{ media.colMediaSpan.desktop }}
+        xxl:col-span-{{ media.colMediaSpan.wide }}"
+    >
+      {# {% if media.type == 'image' %} #}
+        <img class="image lazyload"
+            src="{{ media.image.src | resize(32) }}"
+            width="{{ 768 }}"
+            height="{{ (768 / media.image.aspect)|round }}"
+            data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
+            data-sizes="auto"
+            alt="{{ media.image.alt|e }}">
+      {# {% elseif media.type == 'video' %}
+        <div class="aspect-square rounded-full overflow-hidden">
+          <video
+            class="object-cover w-full h-full"
+            {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
+            autoplay loop muted playsinline disablepictureinpicture
+            aria-label="{{ media.video.label|e }}">
+            {% for item in media.video.videoFiles %}
+              <source src="{{ item.videoFile.url }}" type="{{ item.videoFile.mime_type}};codecs={{ item.codec }}">
+            {% endfor %}
+          </video>
+        </div>
+      {% endif %} #}
+    </div>
+  {% endif %}
+  {% if content.contentHtml %}
+    <div class="
+        wysiwyg
+        col-start-{{ content.colTextStart.mobile }}
+        xs:col-start-{{ content.colTextStart.tablet }}
+        md:col-start-{{ content.colTextStart.desktop }}
+        xxl:col-start-{{ content.colTextStart.wide }}
+        col-span-{{ content.colTextSpan.mobile }}
+        xd:col-span-{{ content.colTextSpan.tablet }}
+        md:col-span-{{ content.colTextSpan.desktop }}
+        xxl:col-span-{{ content.colTextSpan.wide }}"
+      >
+      {{ content.contentHtml|e('wp_kses_post') }}
+    </div>
+  {% endif %}
+  </div>
+</flynt-component>
