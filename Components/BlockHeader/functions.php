@@ -165,7 +165,7 @@ function getACFLayout()
                 'sub_fields' => [
                     // FieldVariables\getTheme(),
                     // FieldVariables\getNavStyle('dark-blur'),
-                    // FieldVariables\getColorBackground(),
+                    FieldVariables\getColorBackground(),
                     gridCol('textWidth', 'Text Width', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
                 ]
             ]
