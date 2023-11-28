@@ -8,22 +8,24 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};"
 >
-<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-y-md gap-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md xs:pb-0 pt-[92px]">
+<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-y-md gap-xs sm:gap-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems ? 'xs:pb-0' }} pt-[92px]">
     <div class="col-span-{{options.textWidth.mobile}} xs:col-span-{{options.textWidth.tablet}} md:col-span-{{options.textWidth.desktop}} xxl:col-span-{{options.textWidth.wide}}">
       <div>
-        <div class="wysiwyg text-bgColor pe-[15px] xs:pe-0">
+        <div class="wysiwyg text-bgColor">
           {% if title %}
           <h1>{{ title|e('wp_kses_post') }}</h1>
           {% endif %}
-          {{ contentHtml|e('wp_kses_post') }}
         </div>
-        {% if link %}
-          {{ btn.buttonAnchor(link, {
-            class: 'mt-md',
-            color: 'accent',
-            icon: true,
-          }) }}
+        <div class="wysiwyg text-bgColor {{ options.textIndent ? 'sm:ps-[90px]' : 'pe-[15px] xs:pe-0' }}">
+          {{ contentHtml|e('wp_kses_post') }}
+          {% if link %}
+            {{ btn.buttonAnchor(link, {
+              class: 'mt-md',
+              color: 'accent',
+              icon: true,
+            }) }}
         {% endif %}
+        </div>
       </div>
     </div>
     {% if mediaItems %}

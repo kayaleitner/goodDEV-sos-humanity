@@ -167,6 +167,15 @@ function getACFLayout()
                     // FieldVariables\getNavStyle('dark-blur'),
                     FieldVariables\getColorBackground(),
                     gridCol('textWidth', 'Text Width', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
+                    [
+                        'label' => __('Indent intro text', 'flynt'),
+                        'name' => 'textIndent',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                        'ui_on_text' => __('Yes', 'flynt'),
+                        'ui_off_text' => __('No', 'flynt'),
+                        'default_value' => 1,
+                    ],
                 ]
             ]
         ]
