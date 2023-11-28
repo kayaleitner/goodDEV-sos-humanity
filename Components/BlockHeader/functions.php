@@ -151,15 +151,6 @@ function getACFLayout()
                 ],
             ],
             [
-                'label' => __('Image', 'flynt'),
-                'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
-                'name' => 'image',
-                'type' => 'image',
-                'preview_size' => 'medium',
-                'required' => 0,
-                'mime_types' => 'jpg,jpeg,png,svg'
-            ],
-            [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
