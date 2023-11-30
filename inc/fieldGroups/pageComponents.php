@@ -73,7 +73,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'layouts' => [
                     // Components\BlockAnchor\getACFLayout(),
                     // Components\BlockCta\getACFLayout(),
-                    // Components\BlockWysiwyg\getACFLayout(),
                     // Components\BlockImage\getACFLayout(),
                     // Components\BlockInterstitial\getACFLayout(),
                     // Components\BlockListingMap\getACFLayout(),
@@ -99,6 +98,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockCarousel\getACFLayout(),
                     Components\BlockCards\getACFLayout(),
                     Components\BlockStatistics\getACFLayout(),
+                    Components\BlockWysiwyg\getACFLayout(),
                 ],
             ],
         ],

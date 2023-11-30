@@ -20,6 +20,7 @@ function getACFLayout()
             [
                 'label' => __('Title', 'flynt'),
                 'name' => 'blockTitle',
+                'instructions' => 'H1',
                 'type' => 'text'
             ],
             [
@@ -47,7 +48,6 @@ function getACFLayout()
                     // FieldVariables\getTheme(),
                     FieldVariables\getColorBackground(),
                     FieldVariables\getColorText(),
-                    FieldVariables\getNavStyle(),
                 ]
             ]
         ]
