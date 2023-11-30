@@ -1,0 +1,58 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+<flynt-component
+  load:on="visible"
+  name="BlockStatistics"
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
+  "
+  >
+  <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-xs xs:gap-sm">
+  {% if blockTitle %}
+    <div class="col-span-6 xs:col-span-4 md:col-span-6 lg:col-span-5">
+      {{ h.h(blockTitle, { level: 3, class: '' }) }}
+    </div>
+  {% endif %}
+  {% if statistics %}
+    <div class="col-span-full pt-[22px] xs:flex xs:gap-x-[20px] xs:flex-wrap xs:pe-0">
+      {% for stat in statistics %}
+        {% set class = '' %}
+        {% set imgClass = '' %}
+        {% if loop.index % 4 == 1 %}
+          {# every 4th element starting with the first #}
+          {% set imgClass = 'object-[calc(50%_+_33px)]' %}
+        {% elseif loop.index % 4 == 2 %}
+          {# every 4th element starting with the second #}
+          {% set class =  'xs:mt-[111px] md:mt-[144px]' %}
+          {% set imgClass = 'object-[calc(50%_+_40px)] xs:object-start' %}
+        {% elseif loop.index % 4 == 3 %}
+          {% set class =  'xs:mt-[-9px] md:mt-[-49px]' %}
+          {% set imgClass = 'object-[calc(50%_+_24px)]' %}
+        {% elseif loop.index % 4 == 0 %}
+          {% set class =  'xs:mt-[187px] md:mt-[154px]' %}
+          {% set imgClass = 'object-[calc(50%_+_15px)]' %}
+        {% endif %}
+        <div class="xs:basis-[calc(50%_-_10px)] md:basis-[calc(25%_-_(60px/3))] {{ not loop.last ? 'mb-[66px] xs:mb-0' }} {{ class }}">
+          <div class="w-full mb-[-10px] aspect-[3/2] xs:ps-[50px] ">
+            <img class="image lazyload w-full h-full object-contain xs:object-left {{ imgClass }}"
+                src="{{ stat.image.src | resize(32) }}"
+                width="{{ 768 }}"
+                height="{{ (768 / stat.image.aspect)|round }}"
+                data-srcset="{{function('wp_get_attachment_image_srcset', stat.image.id)}}"
+                data-sizes="auto"
+                alt="{{ stat.image.alt|e }}">
+          </div>
+          <div class="stat-number">
+            <div data-refs="amount" data-prefix="{{ stat.number.prefix }}" data-amount="{{ stat.number.amount }}" class="stat-amount">{{ stat.number.prefix }}0</div>
+            {% if stat.number.unit %}
+              <div class="stat-unit font-titleSub mt-xs mb-0">{{ stat.number.unit }}</div>
+            {% endif %}
+          </div>
+          <div class="stat-description  xs:ps-[50px] {{ stat.number.unit ? 'mt-[16px]' : 'mt-[23px]'}}">{{ stat.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  </div>
+</flynt-component>

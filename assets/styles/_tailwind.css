@@ -924,6 +924,25 @@ flynt-component[name='BlockHeader'] {
   }
 }
 
+flynt-component[name='BlockStatistics'] {
+  .stat-amount {
+    color: var(--lightblue);
+    font-size: calc(57rem / 16);
+    font-weight: 800;
+    line-height: calc(37 / 57);
+  }
+
+  .stat-unit {
+    color: var(--lightblue);
+  }
+
+  .stat-description {
+    font-size: calc(18rem / 16);
+    font-weight: 600;
+    line-height: calc(24 / 18);
+  }
+}
+
 flynt-component[name='BlockSliderImages'] {
   .swiper-pagination-bullet {
     background: transparent;

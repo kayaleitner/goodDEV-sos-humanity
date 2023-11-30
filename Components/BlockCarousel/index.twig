@@ -61,7 +61,7 @@
         <div class="swiper-slide relative rounded-xl overflow-hidden w-[239px] min-h-[369] md:max-w-[427px] md:aspect-[427/496] xxl:max-w-[511px]" style="background-color: {{card.bgColor}}; color: {{card.color}};">
           <div class="flex flex-col gap-[45px] p-sm sm:p-md">
             <div class="w-[72%] sm:w-[63%] {# xxl:w-[55.6845%] #} flex self-end items-end aspect-[5/4] overflow-hidden">
-              <img class="w-full h-full object-contain object-right" src="{{ card.image.src }}" alt="{{ card.image.alt }}"
+              <img class="image lazyload w-full h-full object-contain object-right"
                 src="{{ card.image.src|resize(32) }}" 
                 data-srcset="{{ function('wp_get_attachment_image_srcset', card.image.id) }}" 
                 data-sizes="auto" 
