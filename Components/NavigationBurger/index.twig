@@ -3,14 +3,14 @@
     load:on="idle"
     load:on:media="(max-width: 980px)"
     name="NavigationBurger">
-  <nav data-ref="nav" class="h-full text-bgColor" aria-label="{{ labels.ariaLabel|e }}">
+  <nav data-ref="nav" data-on-light="{{ post.navOnLight }}" class="h-full {{ not post.navOnLight ? 'text-bgColor' }}" aria-label="{{ labels.ariaLabel|e }}">
     <div class="fixed top-0 left-0 z-[49] container mx-auto flex items-center justify-between py-[7px] xs:py-sm">
-      {% include 'Partials/_logo.twig' with { 'logo': logo, 'logo_dark': logo_dark, 'site': site } only %}
+      {% include 'Partials/_logo.twig' with { 'logo': logo, 'logo_dark': logo_dark, 'site': site, 'navOnLight': post.navOnLight } only %}
       {% if ctaLink or menu %}
         <div class="flex gap-xs xs:gap-[16px] items-center">
           {% if ctaLink %}
             <div data-ref="cta" class="top-0 transition-[top] transition-delay-75 duration-300 ease-in-out relative">
-              {% include 'Partials/_cta.twig' with { 'ctaLink': ctaLink } only %}
+              {% include 'Partials/_cta.twig' with { 'ctaLink': ctaLink, 'navOnLight': post.navOnLight } only %}
             </div>
           {% endif %}
           {% if menu %}

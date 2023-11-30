@@ -59,18 +59,20 @@ export default function (el) {
     if (!navScrolled) return
     navScrolled = false
     // Set style classes
-    refs.nav.classList.remove('bg-bgColor')
-    refs.nav.classList.add('text-bgColor')
-    refs.logoDark.classList.add('hidden')
-    refs.logo.classList.remove('hidden')
-    const $button = $('.button--accent', refs.nav)
-    $button
-      .addClass('!transition-none')
-      .removeClass('button--accent')
-      .addClass('button--outlineWhite')
-    setTimeout(function () {
-      $button.removeClass('!transition-none')
-    }, 100)
+    if (!refs.nav.dataset.onLight) {
+      refs.nav.classList.remove('bg-bgColor')
+      refs.nav.classList.add('text-bgColor')
+      refs.logoDark.classList.add('hidden')
+      refs.logo.classList.remove('hidden')
+      const $button = $('.button--accent', refs.nav)
+      $button
+        .addClass('!transition-none')
+        .removeClass('button--accent')
+        .addClass('button--outlineWhite')
+      setTimeout(function () {
+        $button.removeClass('!transition-none')
+      }, 100)
+    }
   }
 
   function handleScroll() {
