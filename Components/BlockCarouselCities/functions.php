@@ -7,11 +7,8 @@ use function Flynt\Components\Grid\gridCol;
 use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=BlockCarouselCities', function ($data) {
-    $data['options'] = gettype($data['options']) === 'array' ? $data['options'] : [];
     $translatableOptions = Options::getTranslatable('SliderOptions');
-    $data['jsonData'] = [
-        'options' => array_merge($translatableOptions, $data['options']),
-    ];
+    $data['jsonData']['options'] = $translatableOptions;
     return $data;
 });
 

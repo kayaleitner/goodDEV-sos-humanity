@@ -3,10 +3,6 @@
 <flynt-component
   load:on="visible"
   name="BlockCarouselCities"
-  style="
-    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
-    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
-  "
   class="overflow-hidden"
   >
   <script type="application/json">{{ jsonData|json_encode }}</script>
