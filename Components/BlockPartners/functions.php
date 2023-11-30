@@ -16,13 +16,6 @@ function getACFLayout()
         'label' => __('Partners: Logos', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0
-            ],
-            [
                 'label' => __('Title', 'flynt'),
                 'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'name' => 'blockTitle',
@@ -64,24 +57,6 @@ function getACFLayout()
                     ],
                 ]
             ],
-            [
-                'label' => __('Options', 'flynt'),
-                'name' => 'optionsTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0
-            ],
-            [
-                'label' => '',
-                'name' => 'options',
-                'type' => 'group',
-                'layout' => 'row',
-                'sub_fields' => [
-                    // FieldVariables\getTheme(),
-                    // FieldVariables\getColorBackground(),
-                    FieldVariables\getNavStyle()
-                ]
-            ]
         ]
     ];
 }
