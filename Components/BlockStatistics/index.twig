@@ -44,7 +44,7 @@
                 alt="{{ stat.image.alt|e }}">
           </div>
           <div class="stat-number">
-            <div class="stat-amount">{{ stat.number.prefix }}{{ stat.number.amount|number_format(0, '.', ',') }}</div>
+            <div data-refs="amount" data-prefix="{{ stat.number.prefix }}" data-amount="{{ stat.number.amount }}" class="stat-amount">{{ stat.number.prefix }}0</div>
             {% if stat.number.unit %}
               <div class="stat-unit font-titleSub mt-xs mb-0">{{ stat.number.unit }}</div>
             {% endif %}
