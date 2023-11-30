@@ -45,3 +45,19 @@
   font-weight: 400;
   src: url('/assets/fonts/soehne-buch-kursiv.woff2') format('woff2');
 }
+
+@font-face {
+  font-display: swap;
+  font-family: 'Söhne';
+  font-style: normal;
+  font-weight: 800;
+  src: url('/assets/fonts/soehne-fett.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Söhne';
+  font-style: italic;
+  font-weight: 800;
+  src: url('/assets/fonts/soehne-fett-kursiv.woff2') format('woff2');
+}
