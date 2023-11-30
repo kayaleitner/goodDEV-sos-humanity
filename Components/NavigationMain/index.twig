@@ -7,11 +7,11 @@
     x-data="{ menuOpen: false }"
     name="NavigationMain"
 >
-  <nav data-ref="nav" class="text-bgColor" aria-label="{{ labels.ariaLabel|e }}" >
+  <nav data-ref="nav" data-on-light="{{ post.navOnLight }}" class="{{ not post.navOnLight ? 'text-bgColor' }}" aria-label="{{ labels.ariaLabel|e }}" >
     <div class="container mx-auto flex items-center justify-between py-sm">
       <a class="no-underline" href="{{ site.link|e('esc_url') }}">
-        <img data-ref="logo" class="h-[48px] w-[172px]" src="{{ logo.src }}" alt="{{ logo.alt }}">
-        <img data-ref="logoDark" class="hidden h-[48px] w-[172px]" src="{{ logo_dark.src }}" alt="{{ logo_dark.alt }}">
+        <img data-ref="logo" class="h-[48px] w-[172px] {{ post.navOnLight ? 'hidden' }}" src="{{ logo.src }}" alt="{{ logo.alt }}">
+        <img data-ref="logoDark" class="{{ not post.navOnLight ? 'hidden' }} h-[48px] w-[172px]" src="{{ logo_dark.src }}" alt="{{ logo_dark.alt }}">
       </a>
         {% if menu %}
         <ul class="flex items-center gap-[50px] font-bodySmall h-[52px]">
@@ -25,7 +25,7 @@
                 icon: true,
               }) }}
             {% else %}
-            <a class="{{ item.classes|join(' ')}} no-underline after-marker after-marker--small hover:after-marker-active !transition-none"
+            <a class="{{ item.classes|join(' ')}} no-underline after-marker after-marker--small hover:after-marker-active {{ post.navOnLight ? 'after-marker--dark' }} !transition-none"
                 href="{{ item.url|e }}"
                 title="{{ item.title|e }}">
                   {{ item.title|e }}
@@ -38,7 +38,7 @@
             {{ btn.buttonAnchor({ url: ctaLink.url, title: ctaLink.title }, {
                 class: '',
                 color: 'accent',
-                style: 'outline',
+                style: post.navOnLight ? '' : 'outline',
                 icon: true,
               }) }}
           </li>
