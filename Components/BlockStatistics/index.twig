@@ -8,17 +8,33 @@
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
   "
   >
-  <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-xs">
+  <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-xs xs:gap-sm">
   {% if blockTitle %}
     <div class="col-span-6 xs:col-span-4 md:col-span-6 lg:col-span-5">
       {{ h.h(blockTitle, { level: 3, class: '' }) }}
     </div>
   {% endif %}
   {% if statistics %}
-    <div class="col-span-full pt-[22px] pe-[30px]">
+    <div class="col-span-full pt-[22px] pe-[30px] xs:flex xs:gap-x-[20px] xs:flex-wrap xs:pe-0">
       {% for stat in statistics %}
-        <div {{ not loop.last ? 'class="mb-[66px]"' }}>
-          <div class="h-[225px] w-full mb-[-10px]">
+        {% set class = '' %}
+        {% if loop.index % 4 == 1 %}
+          {# every 4th element starting with the first #}
+          {% set class =  'xs:pe-[46px]' %}
+          {% set imgClass = '' %}
+        {% elseif loop.index % 4 == 2 %}
+          {# every 4th element starting with the second #}
+          {% set class =  'xs:mt-[111px]' %}
+          {% set imgClass = 'xs:pe-[46px]' %}
+        {% elseif loop.index % 4 == 3 %}
+          {% set class =  'xs:mt-[-9px]' %}
+          {% set imgClass = 'xs:pe-[29px]' %}
+        {% elseif loop.index % 4 == 0 %}
+          {% set class =  'xs:mt-[187px]' %}
+          {% set imgClass = 'xs:pe-[10px]' %}
+        {% endif %}
+        <div class="basis-[calc(50%_-_10px)] {{ not loop.last ? 'mb-[66px] xs:mb-0' }} {{ class }}">
+          <div class="h-[225px] w-full mb-[-10px] {{ imgClass }}">
             <img class="image lazyload w-full h-full object-contain object-right"
                 src="{{ stat.image.src | resize(32) }}"
                 width="{{ 768 }}"
@@ -30,10 +46,10 @@
           <div class="stat-number">
             <div class="stat-amount">{{ stat.number.prefix }}{{ stat.number.amount|number_format(0, '.', ',') }}</div>
             {% if stat.number.unit %}
-              <div class="stat-unit font-titleSub mt-xs">{{ stat.number.unit }}</div>
+              <div class="stat-unit font-titleSub mt-xs mb-0">{{ stat.number.unit }}</div>
             {% endif %}
           </div>
-          <div class="stat-description ps-[50px] {{ stat.number.unit ? 'mt-[19px]' : 'mt-[23px]'}}">{{ stat.description }}</div>
+          <div class="stat-description ps-[50px] {{ stat.number.unit ? 'mt-[16px]' : 'mt-[23px]'}}">{{ stat.description }}</div>
         </div>
       {% endfor %}
     </div>
