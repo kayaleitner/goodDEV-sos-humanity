@@ -20,7 +20,7 @@ function disable_rest_api($access)
     if (strpos($_SERVER['REQUEST_URI'], '/wp-json/yoast/v1/') !== false) {
         return $access;
     }
-    if (strpos($_SERVER['REQUEST_URI'], '/wp/v2/media/') !== false) {
+    if (strpos($_SERVER['REQUEST_URI'], '/wp-json/wp/v2/media/') !== false) {
         return $access;
     }
 
