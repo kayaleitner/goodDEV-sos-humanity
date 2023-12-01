@@ -46,6 +46,11 @@ function getACFLayout()
                         'name' => 'textContent',
                         'type' => 'textarea',
                     ],
+                    [
+                        'label' => __('CTA Link', 'flynt'),
+                        'name' => 'ctaLink',
+                        'type' => 'link',
+                    ],
                     gridCol('colTextStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
                     gridCol('colTextSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
                 ]
