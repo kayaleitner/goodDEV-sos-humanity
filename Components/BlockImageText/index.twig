@@ -9,15 +9,15 @@
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
   "
   >
-  <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-xs">
+  <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]">
   {% if blockTitle %}
     <div class="col-span-6 md:col-span-12">
-      {{ h.h(blockTitle, { level: 3, class: '' }) }}
+      {{ h.h(blockTitle, { level: 3, class: 'mb-0' }) }}
     </div>
   {% endif %}
   {% if media.image or media.video %}
     <div class="
-        {{ mediaPositionMobile == 'bottom' ? 'order-1 mt-[70px] md:mt-0' }}
+        {{ mediaPositionMobile == 'bottom' ? 'order-1' }}
         {{ mediaPositionMobile == 'bottom' and mediaPosition != 'right' ? 'md:order-none' }}
         {{ mediaPositionMobile != 'bottom' and mediaPosition == 'right' ? 'md:order-1' }}
         col-start-{{ media.colMediaStart.mobile }}
@@ -62,7 +62,9 @@
         col-span-{{ content.colTextSpan.mobile }}
         xd:col-span-{{ content.colTextSpan.tablet }}
         md:col-span-{{ content.colTextSpan.desktop }}
-        xxl:col-span-{{ content.colTextSpan.wide }}"
+        xxl:col-span-{{ content.colTextSpan.wide }}
+        {{ mediaPositionMobile == 'bottom' ? 'pb-[20px]' : 'pt-[20px]' }} xs:p-0
+      "
       >
       {{ content.contentHtml|e('wp_kses_post') }}
     </div>
