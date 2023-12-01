@@ -1,3 +1,5 @@
+{% import "Components/_Atoms/Button/macro.twig" as btn %}
+
 <flynt-component 
   class="w-full left-0 bottom-0" 
   load:on="visible" 
@@ -37,7 +39,10 @@
         <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 ps-4 flex flex-col gap-4 font-bodySmaller xl:hidden">
           <div class="font-bodySmall">{{ title3 }}</div>
           {{ paragraph3 }}
-          <a class="button button--accent button--icon" href="#">Contact Us</a>
+          {{ btn.buttonAnchor(button, {
+            color: 'accent',
+            icon: true,
+          }) }}
         </div>
         <div class="hidden xl:flex xl:gap-x-[126px] xxl:gap-x-[100px]">
           <div class="col-span-3 xs:col-start-5 xs:col-span-2 border-s-1 ps-4 font-linkSmall xl:min-w-[136px]">
@@ -54,8 +59,10 @@
           <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 ps-4 flex flex-col gap-4 font-bodySmaller xl:w-[219px] xxl:w-[240px]">
             <div class="font-bodySmall">{{ title3 }}</div>
             {{ paragraph3 }}
-            <a class="button button--accent button--icon" href="mailto:{{email}}">Contact Us</a>
-          </div>
+            {{ btn.buttonAnchor(button, {
+              color: 'accent',
+              icon: true,
+            }) }}          </div>
         </div>
 
         {% if social %}

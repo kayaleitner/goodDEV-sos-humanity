@@ -76,9 +76,9 @@ Options::addTranslatable('NavigationFooter', [
         'new_lines' => 'br',
     ],
     [
-        'label' => __('Email', 'flynt'),
-        'name' => 'email',
-        'type' => 'text'
+        'label' => __('Button', 'flynt'),
+        'name' => 'button',
+        'type' => 'link'
     ],
     [
         'label' => __('Logo', 'flynt'),
