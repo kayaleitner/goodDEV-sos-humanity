@@ -1,5 +1,7 @@
 <?php
 
+// @TODO: needs refactoring
+
 add_filter('rest_authentication_errors', 'disable_rest_api');
 
 function disable_rest_api($access)
@@ -16,6 +18,9 @@ function disable_rest_api($access)
 
     // Allow access to Yoast SEO REST API endpoints (adjust if Yoast uses different endpoints in the future)
     if (strpos($_SERVER['REQUEST_URI'], '/wp-json/yoast/v1/') !== false) {
+        return $access;
+    }
+    if (strpos($_SERVER['REQUEST_URI'], '/wp/v2/media/') !== false) {
         return $access;
     }
 
