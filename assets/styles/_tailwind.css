@@ -750,7 +750,7 @@
     }
   }
 
-  flynt-component[name='BlockHeroContactForm'] {
+  flynt-component[name='BlockHeroContactFormH'] {
     .wpcf7 {
       align-items: flex-start;
       display: flex;
@@ -899,24 +899,68 @@ flynt-component[name='BlockHeader'] {
       div {
         &:nth-of-type(1),
         &:nth-of-type(2) {
-          aspect-ratio: 425 / 503;
+          aspect-ratio: 170 / 201;
+          top: 0;
         }
 
         &:nth-of-type(1) {
-          width: calc(50% - 10px);
-        }
+          right: 0;
+          width: calc(50% - 5px);
 
-        &:nth-of-type(3) {
-          width: calc(50% + 23px);
+          @screen xs {
+            width: calc(50% - 10px);
+          }
 
           @screen md {
-            top: clamp(35%, 1.5817% + 17.4292vw, 40%);
-            width: calc(50% + 26px);
+            width: calc(100% * 381 / 762);
           }
 
           @screen xxl {
-            top: 35%;
-            width: calc(50% + 31px);
+            width: calc(50% - 10px);
+          }
+        }
+
+        &:nth-of-type(2) {
+          right: calc(50% + 5px);
+          width: calc(100% * 85 / 350);
+
+          @screen xs {
+            right: calc(50% + 10px);
+            width: calc(100% * 155.2 / 660);
+          }
+
+          @screen md {
+            right: calc(50% + 18px);
+            width: calc(100% * 186 / 762);
+          }
+
+          @screen xxl {
+            right: calc(50% + 10px);
+            width: calc(100% * 204.94 / 870);
+          }
+        }
+
+        &:nth-of-type(3) {
+          aspect-ratio: 1 / 1;
+          left: 0;
+          right: calc(50% - 5px - 6.45px);
+          /* Use aspect ratio and width of 2nd element to calculate top position */
+          /* Container is squared, so width = height */
+          top: calc((202/170) * (100% * 85 / 350) + 11.52px);
+
+          @screen xs {
+            right: calc(50% - 10px - 16.24px);
+            top: calc((202/170) * (100% * 155.2 / 660) + 13.43px);
+          }
+
+          @screen md {
+            right: calc(50% - 100% * 14 / 762);
+            top: calc((202/170) * (100% * 186 / 762) + 20px);
+          }
+
+          @screen xxl {
+            right: calc(50% - 10px - 100% * 11.45 / 870);
+            top: calc((202/170) * (100% * 204.94 / 870) + 20px);
           }
         }
       }
