@@ -45,9 +45,40 @@ Options::addTranslatable('NavigationFooter', [
         'endpoint' => 0
     ],
     [
-        'label' => __('Paragraph', 'flynt'),
+        'label' => __('Paragraph 1', 'flynt'),
         'name' => 'paragraph',
-        'type' => 'textarea'
+        'type' => 'textarea',
+        'rows' => 4,
+        'new_lines' => 'br',
+    ],
+    [
+        'label' => __('Title 2', 'flynt'),
+        'name' => 'title2',
+        'type' => 'text'
+    ],
+    [
+        'label' => __('Paragraph 2', 'flynt'),
+        'name' => 'paragraph2',
+        'type' => 'textarea',
+        'rows' => 4,
+        'new_lines' => 'br',
+    ],
+    [
+        'label' => __('Title 3', 'flynt'),
+        'name' => 'title3',
+        'type' => 'text'
+    ],
+    [
+        'label' => __('Paragraph 3', 'flynt'),
+        'name' => 'paragraph3',
+        'type' => 'textarea',
+        'rows' => 4,
+        'new_lines' => 'br',
+    ],
+    [
+        'label' => __('Email', 'flynt'),
+        'name' => 'email',
+        'type' => 'text'
     ],
     [
         'label' => __('Logo', 'flynt'),
