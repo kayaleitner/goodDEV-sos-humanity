@@ -750,7 +750,7 @@
     }
   }
 
-  flynt-component[name='BlockHeroContactForm'] {
+  flynt-component[name='BlockHeroContactFormH'] {
     .wpcf7 {
       align-items: flex-start;
       display: flex;
@@ -896,27 +896,201 @@
 flynt-component[name='BlockHeader'] {
   &.layout-1 {
     .mediaItems {
-      div {
+      > div {
         &:nth-of-type(1),
         &:nth-of-type(2) {
-          aspect-ratio: 425 / 503;
+          aspect-ratio: 170 / 201;
+          top: 0;
         }
 
         &:nth-of-type(1) {
-          width: calc(50% - 10px);
-        }
+          right: 0;
+          width: calc(50% - 5px);
 
-        &:nth-of-type(3) {
-          width: calc(50% + 23px);
+          @screen xs {
+            width: calc(50% - 10px);
+          }
 
           @screen md {
-            top: clamp(35%, 1.5817% + 17.4292vw, 40%);
-            width: calc(50% + 26px);
+            width: calc(100% * 381 / 762);
           }
 
           @screen xxl {
-            top: 35%;
-            width: calc(50% + 31px);
+            width: calc(50% - 10px);
+          }
+        }
+
+        &:nth-of-type(2) {
+          right: calc(50% + 5px);
+          width: calc(100% * 85 / 350);
+
+          @screen xs {
+            right: calc(50% + 10px);
+            width: calc(100% * 155.2 / 660);
+          }
+
+          @screen md {
+            right: calc(50% + 18px);
+            width: calc(100% * 186 / 762);
+          }
+
+          @screen xxl {
+            right: calc(50% + 10px);
+            width: calc(100% * 204.94 / 870);
+          }
+        }
+
+        &:nth-of-type(3) {
+          aspect-ratio: 1 / 1;
+          left: 0;
+          right: calc(50% - 5px - 6.45px);
+          /* Use aspect ratio and width of 2nd element to calculate top position */
+          /* Container is squared, so width = height */
+          top: calc((202/170) * (100% * 85 / 350) + 11.52px);
+
+          @screen xs {
+            right: calc(50% - 10px - 16.24px);
+            top: calc((202/170) * (100% * 155.2 / 660) + 13.43px);
+          }
+
+          @screen md {
+            right: calc(50% - 100% * 14 / 762);
+            top: calc((202/170) * (100% * 186 / 762) + 20px);
+          }
+
+          @screen xxl {
+            right: calc(50% - 10px - 100% * 11.45 / 870);
+            top: calc((202/170) * (100% * 204.94 / 870) + 20px);
+          }
+        }
+
+        &.wind-visual {
+          &::before {
+            content: '';
+            aspect-ratio: 122.95 / 50;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='294' height='118' fill='none' viewBox='0 0 294 118'%3E%3Cpath fill='%2328BCED' d='M234.875 118c-32.607 0-59.127-26.471-59.127-59v-6.057h34.126V59c0 13.741 11.218 24.921 25.001 24.921 13.782 0 25-11.18 25-24.921s-11.218-24.921-25-24.921H.085V0h234.79c32.607 0 59.126 26.471 59.126 59 0 32.529-26.519 59-59.126 59Z'/%3E%3C/svg%3E");
+            position: absolute;
+            bottom: 8px;
+            left: calc(50% + 29.05px);
+            width: calc(100% * 122.95 / 186.45);
+            object-fit: contain;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            @screen xs {
+              bottom: 15.15px;
+            }
+
+            @screen md {
+              bottom: 3.66px;
+            }
+
+            @screen xxl {
+              bottom: 20px;
+            }
+          }
+
+          &::after {
+            content: '';
+            aspect-ratio: 149 / 49;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='357' height='118' fill='none' viewBox='0 0 357 118'%3E%3Cpath fill='%2328BCED' d='M297.875 0c-32.607 0-59.126 26.471-59.126 59v6.057h34.126V59c0-13.741 11.218-24.921 25-24.921 13.783 0 25.001 11.18 25.001 24.921s-11.218 24.921-25.001 24.921H.825V118h297.05c32.607 0 59.127-26.471 59.127-59 0-32.529-26.52-59-59.127-59Z'/%3E%3C/svg%3E");
+            position: absolute;
+            /*
+              Calc bottom-position 8px above the ::before element by takig width
+              and aspect-ration of ::before into account.
+            */
+            bottom: calc((50 / 122.95) * (100% * 122.95 / 186.45) + 2 * 8px);
+            left: calc(50% + 42px);
+            width: calc(100% * 149 / 186.45);
+            object-fit: contain;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            @screen xs {
+              bottom: calc((50 / 122.95) * (100% * 122.95 / 186.45) + 15.15px + 12.12px);
+            }
+
+            @screen md {
+              bottom: calc((50 / 122.95) * (100% * 122.95 / 186.45) + 3.66px + 13.66px);
+            }
+
+            @screen xxl {
+              bottom: calc((50 / 122.95) * (100% * 122.95 / 186.45) + 20px + 16px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.layout-2 {
+    .mediaItems {
+      > div {
+        &.wind-visual {
+          &::after {
+            content: '';
+            aspect-ratio: 122.95 / 50;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='294' height='118' fill='none' viewBox='0 0 294 118'%3E%3Cpath fill='%2328BCED' d='M234.875 118c-32.607 0-59.127-26.471-59.127-59v-6.057h34.126V59c0 13.741 11.218 24.921 25.001 24.921 13.782 0 25-11.18 25-24.921s-11.218-24.921-25-24.921H.085V0h234.79c32.607 0 59.126 26.471 59.126 59 0 32.529-26.519 59-59.126 59Z'/%3E%3C/svg%3E");
+            position: absolute;
+            bottom: 67.6px;
+            left: calc(50% + 75.05px);
+            width: calc(100% * 122.95 / 224.36);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 2;
+
+            @screen xs {
+              bottom: 85.76px;
+              left: calc(50% + 91.95px);
+              width: calc(100% * 280.4 / 400.13);
+            }
+
+            @screen md {
+              bottom: 81.66px;
+              left: calc(50% + 87px);
+            }
+
+            @screen xxl {
+              bottom: 101.2px;
+              left: calc(50% + 108.5px);
+            }
+          }
+
+          &::before {
+            /* image aspect ratio is 472/558 */
+            content: '';
+            aspect-ratio: 149 / 49;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='357' height='118' fill='none' viewBox='0 0 357 118'%3E%3Cpath fill='%2328BCED' d='M297.875 0c-32.607 0-59.126 26.471-59.126 59v6.057h34.126V59c0-13.741 11.218-24.921 25-24.921 13.783 0 25.001 11.18 25.001 24.921s-11.218 24.921-25.001 24.921H.825V118h297.05c32.607 0 59.127-26.471 59.127-59 0-32.529-26.52-59-59.127-59Z'/%3E%3C/svg%3E");
+            position: absolute;
+            /*
+              Calc bottom-position 8px above the ::before element by takig width
+              and aspect-ration of ::before into account.
+              The factor 472/558 is the aspect ratio of the image element
+            */
+            bottom: calc((50 / 122.95) * (100% * (472/558) * 122.95 / 224.36) + 67.6px + 8px);
+            left: calc(50% + 78.01px);
+            width: calc(100% * 149 / 224.36);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            @screen xs {
+              aspect-ratio: 259.39 / 112.73;
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='114' fill='none' viewBox='0 0 260 114'%3E%3Cpath fill='%2323BCED' d='M203.087.883c-31.107 0-56.407 25.29-56.407 56.365v5.787h32.557v-5.787c0-13.127 10.701-23.808 23.85-23.808 13.149 0 23.85 10.68 23.85 23.808s-10.701 23.809-23.85 23.809H.102v32.556h202.985c31.107 0 56.407-25.289 56.407-56.365 0-31.075-25.3-56.365-56.407-56.365Z'/%3E%3C/svg%3E");
+              bottom: calc((50 / 122.95) * (100% * (472/558) * 280.4 / 400.13) + 85.76px + (100% * 20.65 / 473.65));
+              left: 99%;
+            }
+
+            @screen md {
+              bottom: calc((50 / 122.95) * (100% * (472/558) * 280.4 / 400.13) + 81.66px + (100% * 19.66 / 459.88));
+            }
+
+            @screen xxl {
+              bottom: calc((50 / 122.95) * (100% * (472/558) * 280.4 / 400.13) + 101.2px + (100% * 24.36 / 558.88));
+            }
           }
         }
       }

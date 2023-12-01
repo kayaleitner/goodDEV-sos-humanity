@@ -8,7 +8,7 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};"
 >
-<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-y-md gap-xs sm:gap-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
+<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-y-md gap-xs xs:gap-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
     <div class="col-span-{{options.textWidth.mobile}} xs:col-span-{{options.textWidth.tablet}} md:col-span-{{options.textWidth.desktop}} xxl:col-span-{{options.textWidth.wide}}">
       <div>
         <div class="wysiwyg text-bgColor">
@@ -29,7 +29,7 @@
       </div>
     </div>
     {% if mediaItems %}
-    <div class="mediaItems relative aspect-square xxl:aspect-auto xxl:h-full
+    <div class="mediaItems relative aspect-square wide:translate-y-[20px]
         col-start-{{ options.colMediaStart.mobile }}
         xs:col-start-{{ options.colMediaStart.tablet }}
         md:col-start-{{ options.colMediaStart.desktop }}
@@ -73,37 +73,39 @@
       {# Set classes of the shapes for respective layouts (first index is layout, second level index is loop.index) #}
       {% set classMap = {
         1: {
-          1: 'top-0 right-0',
-          2: 'w-1/4 top-0 right-1/2 mr-xs md:mr-[18px] xxl:mr-xs',
-          3: 'top-[34%] md:top-[35%] md:translate-x-[-6px] xxl:translate-x-0 left-0 aspect-square max-h-60%'
+          1: '',
+          2: '',
+          3: 'wind-visual',
         },
         2: {
           1: 'top-[21px] w-[37.1429%] right-[1.14286%] xs:right-[6.3636%] md:right-[12.1538%] xs:w-[35.1515%] md:right-[12.1538%] md:w-[33.8462%] xxl:right-[5.7471%] xxl:w-[31.4943%] aspect-square',
-          2: 'top-[53px] left-0 w-[64%] aspect-[472/558] xs:top-[80px] xs:w-[60.6061%] md:top-[75px] md:w-[58.6153%] md:ms-[-20px] xxl:top-[105px] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
-          3: 'right-0 bottom-0 aspect-[248/268] w-[33.4285%] xs:right-[35px] xs:w-[30.8181%] md:right-[11%] md:w-[30.923%] xxl:right-[4.7126%] xxl:w-[28.3908%]'
+          2: 'wind-visual top-[53px] left-0 w-[64%] aspect-[472/558] xs:top-[80px] xs:w-[60.6061%] md:top-[75px] md:w-[58.6153%] md:ms-[-20px] xxl:top-[105px] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
+          3: 'right-0 bottom-0 aspect-[248/268] w-[33.4285%] xs:right-[35px] xs:w-[30.8181%] md:right-[11%] md:w-[30.923%] xxl:right-[4.7126%] xxl:w-[28.3908%]',
         },
       } %}
       {% for media in mediaItems %}
         {% set classes = classMap[options.mediaLayout][loop.index] %}
-        <div class="absolute h-auto {{ classes }}" style="clip-path: url(#{{ clipMap[options.mediaLayout][loop.index] }})">
-          {% if media.type == 'image' %}
-            <img class="lazyload w-full object-cover aspect-[204/243]"
-            src="{{ media.image.src | resize(32) }}"
-            data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
-            data-sizes="auto"
-            alt="{{ media.image.alt|e }}"
-            >
-          {% elseif media.type == 'video' %}
-            <video
-              class="object-cover w-full h-full"
-              {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
-              autoplay loop muted playsinline disablepictureinpicture
-              aria-label="{{ media.video.label|e }}">
-              {% for item in media.video.videoFiles %}
-                <source src="{{ item.videoFile.url }}" type="{{ item.videoFile.mime_type}};codecs={{ item.codec }}">
-              {% endfor %}
-            </video>
-          {% endif %}
+        <div class="absolute h-auto {{ classes }}">
+          <div class="h-full w-full" style="clip-path: url(#{{ clipMap[options.mediaLayout][loop.index] }})">
+            {% if media.type == 'image' %}
+              <img class="lazyload w-full object-cover aspect-[204/243]"
+              src="{{ media.image.src | resize(32) }}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
+              data-sizes="auto"
+              alt="{{ media.image.alt|e }}"
+              >
+            {% elseif media.type == 'video' %}
+              <video
+                class="object-cover w-full h-full"
+                {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
+                autoplay loop muted playsinline disablepictureinpicture
+                aria-label="{{ media.video.label|e }}">
+                {% for item in media.video.videoFiles %}
+                  <source src="{{ item.videoFile.url }}" type="{{ item.videoFile.mime_type}};codecs={{ item.codec }}">
+                {% endfor %}
+              </video>
+            {% endif %}
+          </div>
         </div>
       {% endfor %}
     </div>
