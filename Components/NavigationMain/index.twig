@@ -18,7 +18,7 @@
           {% for item in menu.items %}
           <li>
             {% if 'button'  in item.classes|join(' ') %}
-              {{ btn.buttonAnchor({ url: item.url, title: item.title }, {
+              {{ btn.buttonAnchor({ url: item.url, title: item.title, target: item.target }, {
                 class: '',
                 color: 'accent',
                 style: 'outline',
@@ -35,7 +35,7 @@
           {% endfor %}
           {% if ctaLink %}
           <li>
-            {{ btn.buttonAnchor({ url: ctaLink.url, title: ctaLink.title }, {
+            {{ btn.buttonAnchor(ctaLink, {
                 class: '',
                 color: 'accent',
                 style: post.navOnLight ? '' : 'outline',
