@@ -75,35 +75,37 @@
         1: {
           1: '',
           2: '',
-          3: ''
+          3: 'wind-visual',
         },
         2: {
           1: 'top-[21px] w-[37.1429%] right-[1.14286%] xs:right-[6.3636%] md:right-[12.1538%] xs:w-[35.1515%] md:right-[12.1538%] md:w-[33.8462%] xxl:right-[5.7471%] xxl:w-[31.4943%] aspect-square',
           2: 'top-[53px] left-0 w-[64%] aspect-[472/558] xs:top-[80px] xs:w-[60.6061%] md:top-[75px] md:w-[58.6153%] md:ms-[-20px] xxl:top-[105px] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
-          3: 'right-0 bottom-0 aspect-[248/268] w-[33.4285%] xs:right-[35px] xs:w-[30.8181%] md:right-[11%] md:w-[30.923%] xxl:right-[4.7126%] xxl:w-[28.3908%]'
+          3: 'right-0 bottom-0 aspect-[248/268] w-[33.4285%] xs:right-[35px] xs:w-[30.8181%] md:right-[11%] md:w-[30.923%] xxl:right-[4.7126%] xxl:w-[28.3908%]',
         },
       } %}
       {% for media in mediaItems %}
         {% set classes = classMap[options.mediaLayout][loop.index] %}
-        <div class="absolute h-auto {{ classes }}" style="clip-path: url(#{{ clipMap[options.mediaLayout][loop.index] }})">
-          {% if media.type == 'image' %}
-            <img class="lazyload w-full object-cover aspect-[204/243]"
-            src="{{ media.image.src | resize(32) }}"
-            data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
-            data-sizes="auto"
-            alt="{{ media.image.alt|e }}"
-            >
-          {% elseif media.type == 'video' %}
-            <video
-              class="object-cover w-full h-full"
-              {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
-              autoplay loop muted playsinline disablepictureinpicture
-              aria-label="{{ media.video.label|e }}">
-              {% for item in media.video.videoFiles %}
-                <source src="{{ item.videoFile.url }}" type="{{ item.videoFile.mime_type}};codecs={{ item.codec }}">
-              {% endfor %}
-            </video>
-          {% endif %}
+        <div class="absolute h-auto {{ classes }}">
+          <div class="h-full w-full" style="clip-path: url(#{{ clipMap[options.mediaLayout][loop.index] }})">
+            {% if media.type == 'image' %}
+              <img class="lazyload w-full object-cover aspect-[204/243]"
+              src="{{ media.image.src | resize(32) }}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
+              data-sizes="auto"
+              alt="{{ media.image.alt|e }}"
+              >
+            {% elseif media.type == 'video' %}
+              <video
+                class="object-cover w-full h-full"
+                {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
+                autoplay loop muted playsinline disablepictureinpicture
+                aria-label="{{ media.video.label|e }}">
+                {% for item in media.video.videoFiles %}
+                  <source src="{{ item.videoFile.url }}" type="{{ item.videoFile.mime_type}};codecs={{ item.codec }}">
+                {% endfor %}
+              </video>
+            {% endif %}
+          </div>
         </div>
       {% endfor %}
     </div>

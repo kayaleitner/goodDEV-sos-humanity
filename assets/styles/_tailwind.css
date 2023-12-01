@@ -896,7 +896,7 @@
 flynt-component[name='BlockHeader'] {
   &.layout-1 {
     .mediaItems {
-      div {
+      > div {
         &:nth-of-type(1),
         &:nth-of-type(2) {
           aspect-ratio: 170 / 201;
@@ -961,6 +961,65 @@ flynt-component[name='BlockHeader'] {
           @screen xxl {
             right: calc(50% - 10px - 100% * 11.45 / 870);
             top: calc((202/170) * (100% * 204.94 / 870) + 20px);
+          }
+        }
+
+        &.wind-visual {
+          &::before {
+            content: '';
+            aspect-ratio: 122.95 / 50;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='294' height='118' fill='none' viewBox='0 0 294 118'%3E%3Cpath fill='%2328BCED' d='M234.875 118c-32.607 0-59.127-26.471-59.127-59v-6.057h34.126V59c0 13.741 11.218 24.921 25.001 24.921 13.782 0 25-11.18 25-24.921s-11.218-24.921-25-24.921H.085V0h234.79c32.607 0 59.126 26.471 59.126 59 0 32.529-26.519 59-59.126 59Z'/%3E%3C/svg%3E");
+            position: absolute;
+            bottom: 8px;
+            /* right: -58.55px; */
+            left: calc(50% + 29.05px);
+            width: calc(100% * 122.95 / 186.45);
+            object-fit: contain;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            @screen xs {
+              bottom: 15.15px;
+            }
+
+            @screen md {
+              bottom: 3.66px;
+            }
+
+            @screen xxl {
+              bottom: 20px;
+            }
+          }
+
+          &::after {
+            content: '';
+            aspect-ratio: 149 / 49;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='357' height='118' fill='none' viewBox='0 0 357 118'%3E%3Cpath fill='%2328BCED' d='M297.875 0c-32.607 0-59.126 26.471-59.126 59v6.057h34.126V59c0-13.741 11.218-24.921 25-24.921 13.783 0 25.001 11.18 25.001 24.921s-11.218 24.921-25.001 24.921H.825V118h297.05c32.607 0 59.127-26.471 59.127-59 0-32.529-26.52-59-59.127-59Z'/%3E%3C/svg%3E");
+            position: absolute;
+            /*
+              Calc bottom-position 8px above the ::before element by takig width
+              and aspect-ration of ::before into account.
+            */
+            bottom: calc((50 / 122.95) * (100% * 122.95 / 186.45) + 2 * 8px);
+            left: calc(50% + 42px);
+            width: calc(100% * 149 / 186.45);
+            object-fit: contain;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            @screen xs {
+              bottom: calc((50 / 122.95) * (100% * 122.95 / 186.45) + 15.15px + 12.12px);
+            }
+
+            @screen md {
+              bottom: calc((50 / 122.95) * (100% * 122.95 / 186.45) + 3.66px + 13.66px);
+            }
+
+            @screen xxl {
+              bottom: calc((50 / 122.95) * (100% * 122.95 / 186.45) + 20px + 16px);
+            }
           }
         }
       }
