@@ -62,4 +62,4 @@ function registerPeoplePostType()
     register_post_type('people', $args);
 }
 
-add_action('init', '\\Flynt\\CustomPostTypes\\registerPeoplePostType');
+// add_action('init', '\\Flynt\\CustomPostTypes\\registerPeoplePostType');

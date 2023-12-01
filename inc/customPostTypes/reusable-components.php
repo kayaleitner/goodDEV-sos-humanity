@@ -46,4 +46,4 @@ function registerReusableComponentsPostType()
     register_post_type('reusable-components', $args);
 }
 
-add_action('init', '\\Flynt\\CustomPostTypes\\registerReusableComponentsPostType');
+// add_action('init', '\\Flynt\\CustomPostTypes\\registerReusableComponentsPostType');

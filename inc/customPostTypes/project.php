@@ -62,4 +62,4 @@ function registerProjectPostType()
     register_post_type('project', $args);
 }
 
-add_action('init', '\\Flynt\\CustomPostTypes\\registerProjectPostType');
+// add_action('init', '\\Flynt\\CustomPostTypes\\registerProjectPostType');
