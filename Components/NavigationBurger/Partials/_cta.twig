@@ -1,6 +1,6 @@
 {% import "Components/_Atoms/Button/macro.twig" as btn %}
 
-{{ btn.buttonAnchor({ url: ctaLink.url, title: ctaLink.title }, {
+{{ btn.buttonAnchor(ctaLink, {
   color: 'accent',
   style: navOnLight ? '' : 'outline',
   icon: true,

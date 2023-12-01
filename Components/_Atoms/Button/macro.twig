@@ -14,6 +14,10 @@
   <a
     href="{{ link.url }}"
     class="{{ args.class }} {{ _self.buttonCls(args) }}"
+    {% if link.target %}
+      target="{{ link.target }}"
+      rel="noopener noreferrer nofollow"
+    {% endif %}
     {{ args.dataRef ? 'data-ref="' ~ args.dataRef ~ '"'}}
   >
     {{ link.title }}
