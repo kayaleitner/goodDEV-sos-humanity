@@ -118,7 +118,18 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getColorBackground(),
-                    FieldVariables\getColorText()
+                    FieldVariables\getColorText(),
+                    [
+                        'label' => __('Layout', 'flynt'),
+                        'name' => 'layout',
+                        'instructions' => 'Select how many cards should be displayed in one row.',
+                        'type' => 'button_group',
+                        'default_value' => '4col',
+                        'choices' => [
+                            '3col' => __('3 cards per row', 'flynt'),
+                            '4col' => __('4 cards per row', 'flynt'),
+                        ],
+                    ],
                 ],
             ]
         ]

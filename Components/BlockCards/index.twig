@@ -8,7 +8,8 @@
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
   "
   >
-  <div class="container md:my-md mx-auto pb-xl sm:pb-[100px] md:pb-xxl">
+  {% set hasText = content.blockTitle or content.textContent %}
+  <div class="container mx-auto {{ hasText ? 'pt-md pb-xl xs:pb-[100px] xs:pt-lg md:pt-xl xxl:pb-xxl' : 'p-md xs:p-xl xxl:p-[140px]' }}">
   {% if content.textContent or content.blockTitle %}
     <div class="mb-[48px] sm:mb-lg xxl:mb-[100px]">
       <div class="text-contents font-body">
@@ -24,11 +25,20 @@
     </div>
   {% endif %}
     {% if cards %}
+      {% set layoutCardClass = '' %}
+      {% if options.layout == '3col' %}
+        {% set layoutCardClass = 'basis-full md:basis-[calc(100%_/_2-20px_/2)] xl:basis-[calc(100%_/_3-2_*_20px_/3)]' %}
+      {% elseif options.layout == '4col' %}
+        {% set layoutCardClass = 'col-span-6 sm:col-span-3 md:col-span-6 xxl:col-span-3' %}
+      {% endif %}
     <div
-      class="grid grid-cols-6 md:grid-cols-12 gap-sm"
+      class="grid grid-cols-6 md:grid-cols-12 gap-xs xs:gap-sm"
     >
+      {% if options.layout == '3col' %}
+      <div class="col-span-full md:col-start-2 md:col-span-10 xl:mx-[-27px] xxl:mx-0 flex flex-wrap justify-center gap-xs xs:gap-sm">
+      {% endif %}
       {% for card in cards %}
-        <div class="rounded-[10px] col-span-6 sm:col-span-3 md:col-span-6 xxl:col-span-3" style="background-color: {{card.bgColor}}; color: {{card.color}};">
+        <div class="rounded-[10px] {{ layoutCardClass }}" style="background-color: {{card.bgColor}}; color: {{card.color}};">
           <div class="flex flex-col gap-[31px] p-[30px] sm:p-md">
             <div class="w-full h-[80px] flex overflow-hidden">
               {% if card.image %}
@@ -54,6 +64,9 @@
           </div>
         </div>
       {% endfor %}
+      {% if options.layout == '3col' %}
+      </div>
+      {% endif %}
     </div>
   {% endif %}
   </div>
