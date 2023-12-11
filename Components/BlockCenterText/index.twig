@@ -9,24 +9,25 @@
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
   "
   >
-  <div class="container mx-auto py-[250px] flex items-center gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]">
-    <div class="relative pt-md pb-xl text-center">
+  <div class="container mx-auto overflow-hidden py-[250px] xs:py-[60vw] flex items-center gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]">
+    <div class="relative pt-md pb-xl text-center xs:p-0">
     {% if blockTitle %}
       <div {{ options.colorTitle ? 'style="color:' ~ options.colorTitle ~ '"' }}>
         {{ h.h(blockTitle, { level: 2, class: 'mb-0' }) }}
         </div>
     {% endif %}
     {% if textHtml %}
-      <div class="font-titleMedium mt-[1em]">
+      <div class="font-titleMedium mt-[1em] mb-0">
         {{ textHtml|e('wp_kses_post') }}
         </div>
     {% endif %}
     {# ---- #}
     {% set classMap = {
-      1: 'top-[-21px] -translate-x-1/2 -translate-y-full max-w-[calc(100vw_*_173_/_390)]',
-      2: 'top-[-80px] right-0 -translate-y-full max-w-[calc(100vw_*_111_/_390)]',
-      3: 'bottom-[-71px] left-[-20px] translate-y-full max-w-[calc(100vw_*_121_/_390)]',
-      4: 'bottom-[14px] left-[calc((100%_-40px)_*_2/3+_4*10px)] translate-y-full w-[calc(100vw_*_162_/_390)]',
+      1: 'top-[-21px] -translate-x-1/2 -translate-y-full max-w-[calc(100vw_*_173_/_390)] xs:top-[-116px] xs:left-1/3
+          xs:-translate-x-full xs:max-w-[calc(100vw_*_349_/_780)]',
+      2: 'top-[-80px] right-0 -translate-y-full max-w-[calc(100vw_*_111_/_390)] xs:top-[-254px] xs:max-w-[calc(100vw_*_159_/_780)]',
+      3: 'bottom-[-71px] left-[-20px] translate-y-full max-w-[calc(100vw_*_121_/_390)] xs:bottom-[-161px] xs:left-[-60px]',
+      4: 'bottom-[14px] left-[calc((100%_-40px)_*_2/3+_4*10px)] translate-y-full w-[calc(100vw_*_162_/_390)] xs:bottom-[-170px] xs:left-full xs:-translate-x-1/2 xs:w-[calc(100vw_*_255_/_780)]',
     } %}
     {% if mediaItems %}
       <svg width="0" height="0">
@@ -35,14 +36,15 @@
           <clipPath id="clip-arc-upsidedown" clipPathUnits="objectBoundingBox">
             <path d="M 1 -0 L 1 0.6134 A 0.0333 0.0258 180 0 1 0 0.6134 L -0 0 Z">
           </clipPath>
+          {# Keep the following for possible future use #}
           {# Arc #}
-          <clipPath id="clip-arc" clipPathUnits="objectBoundingBox">
+          {# <clipPath id="clip-arc" clipPathUnits="objectBoundingBox">
             <path d="M 0 1 L 0 0.3866 A 0.0333 0.0258 0 0 1 1 0.3866 L 1 1 Z">
-          </clipPath>
+          </clipPath> #}
           {# Circle #}
-          <clipPath id="clip-circle" clipPathUnits="objectBoundingBox">
+          {# <clipPath id="clip-circle" clipPathUnits="objectBoundingBox">
             <circle cx="0.5" cy="0.5" r="0.5" />
-          </clipPath>
+          </clipPath> #}
         </defs>
       </svg>
       {% for media in mediaItems %}
