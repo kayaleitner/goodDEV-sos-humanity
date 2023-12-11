@@ -1,0 +1,75 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+<flynt-component
+  load:on="visible"
+  name="BlockCenterText"
+  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
+  "
+  >
+  <div class="container mx-auto py-[250px] flex items-center gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]">
+    <div class="relative pt-md pb-xl text-center">
+    {% if blockTitle %}
+      <div {{ options.colorTitle ? 'style="color:' ~ options.colorTitle ~ '"' }}>
+        {{ h.h(blockTitle, { level: 2, class: 'mb-0' }) }}
+        </div>
+    {% endif %}
+    {% if textHtml %}
+      <div class="font-titleMedium mt-[1em]">
+        {{ textHtml|e('wp_kses_post') }}
+        </div>
+    {% endif %}
+    {# ---- #}
+    {% set classMap = {
+      1: 'top-[-21px] -translate-x-1/2 -translate-y-full max-w-[calc(100vw_*_173_/_390)]',
+      2: 'top-[-80px] right-0 -translate-y-full max-w-[calc(100vw_*_111_/_390)]',
+      3: 'bottom-[-71px] left-[-20px] translate-y-full max-w-[calc(100vw_*_121_/_390)]',
+      4: 'bottom-[14px] left-[calc((100%_-40px)_*_2/3+_4*10px)] translate-y-full w-[calc(100vw_*_162_/_390)]',
+    } %}
+    {% if mediaItems %}
+      <svg width="0" height="0">
+        <defs>
+          {# Arc upside down #}
+          <clipPath id="clip-arc-upsidedown" clipPathUnits="objectBoundingBox">
+            <path d="M 1 -0 L 1 0.6134 A 0.0333 0.0258 180 0 1 0 0.6134 L -0 0 Z">
+          </clipPath>
+          {# Arc #}
+          <clipPath id="clip-arc" clipPathUnits="objectBoundingBox">
+            <path d="M 0 1 L 0 0.3866 A 0.0333 0.0258 0 0 1 1 0.3866 L 1 1 Z">
+          </clipPath>
+          {# Circle #}
+          <clipPath id="clip-circle" clipPathUnits="objectBoundingBox">
+            <circle cx="0.5" cy="0.5" r="0.5" />
+          </clipPath>
+        </defs>
+      </svg>
+      {% for media in mediaItems %}
+        <div class="absolute {{ classMap[loop.index] }} {{ media.type == 'video' ? 'aspect-[162/175]' }}">
+          {% if media.type == 'image' %}
+            <img class="lazyload"
+            src="{{ media.image.src | resize(32) }}"
+            data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
+            data-sizes="auto"
+            alt="{{ media.image.alt|e }}"
+            >
+          {% elseif media.type == 'video' %}
+            <div class="h-full w-full" style="clip-path: url(#clip-arc-upsidedown)">
+              <video
+                class="object-cover w-full h-full"
+                {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
+                autoplay loop muted playsinline disablepictureinpicture
+                aria-label="{{ media.video.label|e }}">
+                {% for item in media.video.videoFiles %}
+                  <source src="{{ item.videoFile.url }}" type="{{ item.videoFile.mime_type}};codecs={{ item.codec }}">
+                {% endfor %}
+              </video>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% endif %}
+    </div>
+  </div>
+</flynt-component>

@@ -84,6 +84,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockHeader\getACFLayout(),
                     Components\BlockPartners\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
+                    Components\BlockCenterText\getACFLayout(),
                     Components\BlockCarouselCities\getACFLayout(),
                     Components\BlockCarousel\getACFLayout(),
                     Components\BlockCards\getACFLayout(),
