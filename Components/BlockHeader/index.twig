@@ -52,13 +52,21 @@
           <clipPath id="clip-arc-upsidedown" clipPathUnits="objectBoundingBox">
             <path d="M 1 -0 L 1 0.6134 A 0.0333 0.0258 180 0 1 0 0.6134 L -0 0 Z">
           </clipPath>
-          {# Arc #}
+          {# Arc (200 radius) #}
           <clipPath id="clip-arc" clipPathUnits="objectBoundingBox">
             <path d="M 0 1 L 0 0.3866 A 0.0333 0.0258 0 0 1 1 0.3866 L 1 1 Z">
+          </clipPath>
+          {# Arc (250 radius) #}
+          <clipPath id="clip-arc-250" clipPathUnits="objectBoundingBox">
+            <path d="M 0.9995 0.9996 H 0.0021 V 0.4642 C 0.0021 0.209 0.2253 0.002 0.5008 0.002 C 0.7762 0.002 0.9995 0.209 0.9995 0.4642 v 0.5354 Z">
           </clipPath>
           {# Circle #}
           <clipPath id="clip-circle" clipPathUnits="objectBoundingBox">
             <circle cx="0.5" cy="0.5" r="0.5" />
+          </clipPath>
+          {# Rectangle Union #}
+          <clipPath id="clip-rectangle-union" clipPathUnits="objectBoundingBox">
+            <path d="M 0.6133 -0 L 0.9977 0.1604 L 0.9977 1 L 0.6133 0.8396 L 0.6133 -0 Z M -0 -0 L 0.6133 0 L 0.6133 0.8396 L -0 0.8396 L -0 -0 Z">
           </clipPath>
         </defs>
       </svg>
@@ -77,8 +85,8 @@
         },
         3: {
           1: 'clip-circle',
-          2: 'clip-arc',
-          3: 'clip-arc'
+          2: 'clip-rectangle-union',
+          3: 'clip-arc-250'
         },
       } %}
 
@@ -104,9 +112,18 @@
               xxl:right-[4.7126%] xxl:w-[28.3908%]',
         },
         3: {
-          1: 'top-[25px] w-[37.1429%] right-[1.14286%] xs:right-[6.3636%] md:right-[12.1538%] xs:w-[35.1515%] md:right-[12.1538%] md:w-[33.8462%] xxl:right-[5.7471%] xxl:w-[31.4943%] aspect-square',
-          2: 'wind-visual top-[53px] left-0 w-[64%] aspect-[472/558] xs:top-[80px] xs:w-[60.6061%] md:top-[75px] md:w-[58.6153%] md:ms-[-20px] xxl:top-[105px] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
-          3: 'right-0 bottom-0 aspect-[248/268] w-[33.4285%] xs:right-[35px] xs:w-[30.8181%] md:right-[11%] md:w-[30.923%] xxl:right-[4.7126%] xxl:w-[28.3908%]',
+          1: 'aspect-square top-0 left-[21.1429%] w-[24.8571%]
+              xs:left-[22.07778%] xs:w-[26.25%]
+              md:left-[26.3779%] md:w-[24.8031%]
+              xxl:left-[22.0781%] xxl:w-[26.2735%]',
+          2: 'top-[27.8689%] left-0 w-[34.2085%] aspect-[119.731/118]
+              xs:top-[29.1946%] xs:w-[35.7647%]
+              md:top-[29.1946%] md:left-[5.5118%] md:w-[33.7939%]
+              xxl:top-[29.1553%] xxl:left-0 xxl:w-[35.7635%]',
+          3: 'right-0 bottom-0 aspect-[224/242] w-[64%]
+              xs:bottom-[4.2265%] xs:w-[61.3684%]
+              md:bottom-[4.2516%] md:w-[58.0052%]
+              xxl:bottom-[4.251%] xxl:w-[61.3719%]',
         },
       } %}
       {% for media in mediaItems %}

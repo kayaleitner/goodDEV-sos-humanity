@@ -1149,6 +1149,26 @@ flynt-component[name='BlockHeader'] {
       }
     }
   }
+
+  &.layout-3 {
+    .mediaItems {
+      @apply aspect-[350/305];
+
+      @screen xs {
+        @apply aspect-[720/596];
+        @apply mx-[-30px];
+      }
+
+      @screen md {
+        @apply aspect-[762/596];
+        @apply mx-0;
+      }
+
+      @screen xxl {
+        @apply aspect-[870/721];
+      }
+    }
+  }
 }
 
 flynt-component[name='BlockStatistics'] {
