@@ -1226,6 +1226,36 @@ flynt-component[name='BlockHeader'] {
       @screen xxl {
         @apply aspect-[1018/698];
       }
+
+      > div {
+        &.wind-visual {
+          &::before {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='49' fill='none' viewBox='0 0 120 49'%3E%3Cpath fill='%23003574' d='M24.511 48.982c13.517 0 24.51-10.989 24.51-24.491v-2.514H34.873v2.514c0 5.704-4.65 10.345-10.363 10.345-5.713 0-10.363-4.641-10.363-10.345 0-5.704 4.65-10.345 10.363-10.345h95.325V0H24.511C10.995 0 .002 10.988.002 24.49c0 13.503 10.993 24.492 24.51 24.492Z'/%3E%3C/svg%3E");
+            position: absolute;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            aspect-ratio: 119.83 / 48.98;
+            width: calc(100% * 121.83 / 230.44);
+            bottom: calc(-100% * 6.88 / 193.18);
+            left: calc(-100% * 119.83 / 230.44);
+          }
+
+          &::after {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='123' height='50' fill='none' viewBox='0 0 123 50'%3E%3Cpath fill='%23003574' d='M25.222.53c13.517 0 24.51 10.988 24.51 24.49v2.515H35.584v-2.514c0-5.704-4.65-10.345-10.363-10.345-5.713 0-10.363 4.64-10.363 10.345 0 5.704 4.65 10.345 10.363 10.345h97.325v14.146H25.222C11.706 49.512.713 38.523.713 25.02.713 11.518 11.706.53 25.223.53Z'/%3E%3C/svg%3E");
+            position: absolute;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            aspect-ratio: 121.83 / 48.98;
+            width: calc(100% * 119.83 / 230.44);
+            bottom: calc(100% * (-6.88 + 48.98 + 6.49) / 193.18);
+            left: calc(-100% * 75.29 / 230.44);
+          }
+        }
+      }
     }
   }
 }
