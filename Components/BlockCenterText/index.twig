@@ -38,6 +38,34 @@
           md:bottom-[79px] md:left-auto md:right-[calc(-100vw_*88/1440)] md:translate-x-full md:w-[calc(100vw_*_307_/_1440)]
           max:w-[calc(1880px_*_307_/_1440)] max:right-[calc(-1880px_*88/1440)]',
     } %}
+    {%
+      set parallaxMap = {
+        1: {
+          speed: -1.5,
+          xs: -0.25,
+          mobile: -0.5,
+          tablet: -1,
+        },
+        2: {
+          speed: 2,
+          xs: 0.5,
+          mobile: 1,
+          tablet: 1.5,
+        },
+        3: {
+          speed: 2,
+          xs: 0.5,
+          mobile: 1,
+          tablet: 1.5,
+        },
+        4: {
+          speed: -3,
+          xs: -1,
+          mobile: -1.75,
+          tablet: -2.5,
+        },
+      }
+    %}
     {% if mediaItems %}
       <svg width="0" height="0">
         <defs>
@@ -60,13 +88,22 @@
         <div class="absolute {{ classMap[loop.index] }} {{ media.type == 'video' ? 'aspect-[162/175]' }}">
           {% if media.type == 'image' %}
             <img class="lazyload"
+            data-parallax
+            data-rellax-speed="{{ parallaxMap[loop.index].speed }}"
+            data-rellax-xs-speed="{{ parallaxMap[loop.index].xs }}"
+            data-rellax-mobile-speed="{{ parallaxMap[loop.index].mobile }}"
+            data-rellax-tablet-speed="{{ parallaxMap[loop.index].tablet }}"
             src="{{ media.image.src | resize(32) }}"
             data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
             data-sizes="auto"
             alt="{{ media.image.alt|e }}"
             >
           {% elseif media.type == 'video' %}
-            <div class="h-full w-full" style="clip-path: url(#clip-arc-upsidedown)">
+            <div class="h-full w-full" style="clip-path: url(#clip-arc-upsidedown)"
+            data-parallax data-rellax-speed="{{ parallaxMap[loop.index].speed }}"
+            data-rellax-xs-speed="{{ parallaxMap[loop.index].xs }}"
+            data-rellax-mobile-speed="{{ parallaxMap[loop.index].mobile }}"
+            data-rellax-tablet-speed="{{ parallaxMap[loop.index].tablet }}">
               <video
                 class="object-cover w-full h-full"
                 {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
