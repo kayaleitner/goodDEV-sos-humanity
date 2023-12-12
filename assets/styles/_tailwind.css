@@ -894,6 +894,40 @@
 /* Third party libraries */
 
 flynt-component[name='BlockHeader'] {
+  .wind-visual {
+    --beforeTranslateX: 0px;
+    --beforeTranslateY: 0px;
+    --afterTranslateX: 0px;
+    --afterTranslateY: 0px;
+    --animationDuration: 400ms;
+    --visualOpacity: 0;
+    will-change: transform;
+
+    &::before,
+    &::after {
+      opacity: var(--visualOpacity);
+    }
+
+    &::before {
+      transform: translate(var(--beforeTranslateX), var(--beforeTranslateY));
+    }
+
+    &::after {
+      transform: translate(var(--afterTranslateX), var(--afterTranslateY));
+    }
+
+
+    &--animating {
+      /* Extra class so that we dont have flickering because of dynamic opacity */
+      /* will-change: transform; */
+
+      /* &::before,
+      &::after {
+        opacity: var(--visualOpacity);
+      } */
+    }
+  }
+
   &.layout-1 {
     .text-container {
       @apply flex;
