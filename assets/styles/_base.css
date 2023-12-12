@@ -616,6 +616,14 @@ flynt-component {
 }
 
 .slider-button {
+  circle {
+    transition: fill 200ms, stroke 200ms;
+  }
+
+  g {
+    transition: stroke 200ms;
+  }
+
   &:hover {
     circle {
       fill: var(--lightblue);
