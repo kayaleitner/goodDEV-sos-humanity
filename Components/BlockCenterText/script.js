@@ -1,12 +1,7 @@
 import Rellax from 'rellax'
 
 // Parallax Animation
-const rellax = new Rellax('[data-parallax]', {
-  //   speed: -2,
+Rellax('[data-parallax]', {
   center: true,
+  breakpoints: [640, 980, 1440],
 })
-
-// eslint-disable-next-line no-undef
-if (window && window.matchMedia('(max-width: 1280px)').matches) {
-  //   rellax.destroy()
-}
