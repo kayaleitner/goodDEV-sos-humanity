@@ -30,7 +30,7 @@
         xxl:col-span-{{ media.colMediaSpan.wide }}"
     >
       {% if media.type == 'image' %}
-        <img class="image lazyload"
+        <img class="image lazyload anim-fade-in"
             src="{{ media.image.src | resize(32) }}"
             width="{{ 768 }}"
             height="{{ (768 / media.image.aspect)|round }}"
@@ -38,7 +38,7 @@
             data-sizes="auto"
             alt="{{ media.image.alt|e }}">
       {% elseif media.type == 'video' %}
-        <div class="aspect-square rounded-full overflow-hidden">
+        <div class="anim-fade-in aspect-square rounded-full overflow-hidden">
           <video
             class="object-cover w-full h-full"
             {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
@@ -55,6 +55,7 @@
   {% if content.contentHtml %}
     <div class="
         wysiwyg
+        anim-move-up
         col-start-{{ content.colTextStart.mobile }}
         xs:col-start-{{ content.colTextStart.tablet }}
         md:col-start-{{ content.colTextStart.desktop }}
