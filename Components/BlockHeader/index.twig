@@ -8,9 +8,15 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};"
 >
-<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-y-md gap-xs xs:gap-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
-    <div class="col-span-{{options.textWidth.mobile}} xs:col-span-{{options.textWidth.tablet}} md:col-span-{{options.textWidth.desktop}} xxl:col-span-{{options.textWidth.wide}}">
-      <div>
+<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-x-xs xs:gap-x-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
+    <div class="
+      col-span-{{options.textWidth.mobile}}
+      xs:col-span-{{options.textWidth.tablet}}
+      md:col-span-{{options.textWidth.desktop}}
+      xxl:col-span-{{options.textWidth.wide}}
+      {{ options.mediaLayout > 1 ? 'xxl:self-end xxl:pb-xxl' }}"
+      >
+      <div class="text-container">
         <div class="wysiwyg text-bgColor">
           {% if title %}
           <h1>{{ title|e('wp_kses_post') }}</h1>
@@ -29,7 +35,7 @@
       </div>
     </div>
     {% if mediaItems %}
-    <div class="mediaItems relative aspect-square wide:translate-y-[20px]
+    <div class="mediaItems relative wide:translate-y-[20px]
         col-start-{{ options.colMediaStart.mobile }}
         xs:col-start-{{ options.colMediaStart.tablet }}
         md:col-start-{{ options.colMediaStart.desktop }}
@@ -37,7 +43,8 @@
         col-span-{{ options.colMediaSpan.mobile }}
         xs:col-span-{{ options.colMediaSpan.tablet }}
         md:col-span-{{ options.colMediaSpan.desktop }}
-        xxl:col-span-{{ options.colMediaSpan.wide }}"
+        xxl:col-span-{{ options.colMediaSpan.wide }}
+        {{ options.mediaLayout < 2 ? 'aspect-square' }}"
     >
       <svg width="0" height="0">
         <defs>
@@ -45,13 +52,25 @@
           <clipPath id="clip-arc-upsidedown" clipPathUnits="objectBoundingBox">
             <path d="M 1 -0 L 1 0.6134 A 0.0333 0.0258 180 0 1 0 0.6134 L -0 0 Z">
           </clipPath>
-          {# Arc #}
+          {# Arc (200 radius) #}
           <clipPath id="clip-arc" clipPathUnits="objectBoundingBox">
             <path d="M 0 1 L 0 0.3866 A 0.0333 0.0258 0 0 1 1 0.3866 L 1 1 Z">
+          </clipPath>
+          {# Arc (250 radius) #}
+          <clipPath id="clip-arc-250" clipPathUnits="objectBoundingBox">
+            <path d="M 0.9995 0.9996 H 0.0021 V 0.4642 C 0.0021 0.209 0.2253 0.002 0.5008 0.002 C 0.7762 0.002 0.9995 0.209 0.9995 0.4642 v 0.5354 Z">
           </clipPath>
           {# Circle #}
           <clipPath id="clip-circle" clipPathUnits="objectBoundingBox">
             <circle cx="0.5" cy="0.5" r="0.5" />
+          </clipPath>
+          {# Rectangle Union #}
+          <clipPath id="clip-rectangle-union" clipPathUnits="objectBoundingBox">
+            <path d="M 0.6133 -0 L 0.9977 0.1604 L 0.9977 1 L 0.6133 0.8396 L 0.6133 -0 Z M -0 -0 L 0.6133 0 L 0.6133 0.8396 L -0 0.8396 L -0 -0 Z">
+          </clipPath>
+          {# Two arcs #}
+          <clipPath id="clip-two-arcs" clipPathUnits="objectBoundingBox">
+            <path d="M 0.9679 0.0005 H 1 V 0.9997 H 0.0002 V 0.3955 c 0 -0.2181 0.151 -0.395 0.334 -0.395 c 0.1725 0 0.3166 0.1571 0.3325 0.3579 C 0.6672 0.1606 0.8019 0.0005 0.9679 0.0005 Z">
           </clipPath>
         </defs>
       </svg>
@@ -68,6 +87,15 @@
           2: 'clip-arc',
           3: 'clip-arc'
         },
+        3: {
+          1: 'clip-circle',
+          2: 'clip-rectangle-union',
+          3: 'clip-arc-250'
+        },
+        4: {
+          1: 'clip-circle',
+          2: 'clip-two-arcs',
+        },
       } %}
 
       {# Set classes of the shapes for respective layouts (first index is layout, second level index is loop.index) #}
@@ -78,9 +106,42 @@
           3: 'wind-visual',
         },
         2: {
-          1: 'top-[21px] w-[37.1429%] right-[1.14286%] xs:right-[6.3636%] md:right-[12.1538%] xs:w-[35.1515%] md:right-[12.1538%] md:w-[33.8462%] xxl:right-[5.7471%] xxl:w-[31.4943%] aspect-square',
-          2: 'wind-visual top-[53px] left-0 w-[64%] aspect-[472/558] xs:top-[80px] xs:w-[60.6061%] md:top-[75px] md:w-[58.6153%] md:ms-[-20px] xxl:top-[105px] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
-          3: 'right-0 bottom-0 aspect-[248/268] w-[33.4285%] xs:right-[35px] xs:w-[30.8181%] md:right-[11%] md:w-[30.923%] xxl:right-[4.7126%] xxl:w-[28.3908%]',
+          1: 'aspect-square top-0 right-[1.1886%] w-[37.2923%]
+              xs:right-[6.4364%] xs:w-[35.2693%]
+              md:right-[12.1538%] md:w-[34.1%]
+              xxl:right-[5.7471%] xxl:w-[31.4943%]',
+          2: 'wind-visual top-[9.5753%] left-0 w-[64.1031%] aspect-[472/558]
+              xs:top-[12.4776%] xs:w-[60.6259%]
+              md:top-[12.0576%] md:w-[58.6153%] md:ms-[-20px]
+              xxl:top-[9.5811%] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
+          3: 'right-0 bottom-0 aspect-[248/268] w-[33.65%]
+              xs:right-[4.7136%] xs:w-[31.8246%]
+              md:right-[11%] md:w-[30.923%]
+              xxl:right-[4.7126%] xxl:w-[28.3908%]',
+        },
+        3: {
+          1: 'aspect-square top-0 left-[21.1429%] w-[24.8571%]
+              xs:left-[22.07778%] xs:w-[26.25%]
+              md:left-[26.3779%] md:w-[24.8031%]
+              xxl:left-[22.0781%] xxl:w-[26.2735%]',
+          2: 'top-[27.8689%] left-0 w-[34.2085%] aspect-[119.731/118]
+              xs:top-[29.1946%] xs:w-[35.7647%]
+              md:top-[29.1946%] md:left-[5.5118%] md:w-[33.7939%]
+              xxl:top-[29.1553%] xxl:left-0 xxl:w-[35.7635%]',
+          3: 'wind-visual right-0 bottom-0 aspect-[224/242] w-[64%]
+              xs:bottom-[4.2265%] xs:w-[61.3684%]
+              md:bottom-[4.2516%] md:w-[58.0052%]
+              xxl:bottom-[4.251%] xxl:w-[61.3719%]',
+        },
+        4: {
+          1: 'aspect-square top-[0.40161%] left-[10%] w-[28.8571%]
+              xs:top-[2.1505%] xs:left-[8.3682%] xs:w-[29.3484%]
+              md:top-0 md:left-[9.0806%] md:w-[28.2609%]
+              xxl:left-[10.8959%] xxl:w-[28.5393%]',
+          2: 'wind-visual aspect-[230.44/193.18] bottom-[2.7631%] right-0 w-[65.84%]
+              xs:bottom-0 xs:w-[67.0621%]
+              md:w-[64.578%]
+              xxl:w-[65.2141%]',
         },
       } %}
       {% for media in mediaItems %}
