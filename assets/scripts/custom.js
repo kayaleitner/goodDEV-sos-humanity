@@ -23,12 +23,12 @@ ScrollTrigger.batch('.anim-fade-in', {
   end: 'top top',
 })
 
-// ScrollTrigger.batch('.move-up', {
-//   onEnter: (elements) =>
-//     gsap.to(elements, { y: 0, stagger: 0.1, duration: 0.3 }),
-//   start: '100px bottom',
-//   end: 'top top',
-// })
+ScrollTrigger.batch('.anim-move-up', {
+  onEnter: (elements) =>
+    gsap.to(elements, { y: 0, opacity: 1, stagger: 0.1, duration: 0.3 }),
+  start: '100px bottom',
+  end: 'top top',
+})
 
 // document.querySelectorAll('hr').forEach(item => {
 //   let color = item.previousElementSibling.lastChild.style !== undefined

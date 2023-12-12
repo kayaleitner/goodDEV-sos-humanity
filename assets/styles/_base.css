@@ -653,4 +653,9 @@ flynt-component {
   &-fade-in {
     opacity: 0;
   }
+
+  &-move-up {
+    opacity: 0;
+    transform: translateY(50px);
+  }
 }
