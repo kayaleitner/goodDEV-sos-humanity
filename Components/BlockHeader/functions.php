@@ -57,6 +57,7 @@ function getACFLayout()
                 'label' => __('Items', 'flynt'),
                 'name' => 'mediaItems',
                 'type' => 'repeater',
+                'instructions' => 'Keep in mind that the layout for "Why we do it"-layout only supports a maximum of 2 media items.',
                 'layout' => 'table',
                 'max' => 3,
                 'button_label' => __('Add Media Item', 'flynt'),
@@ -187,7 +188,7 @@ function getACFLayout()
                     [
                         'label' => __('Media layout', 'flynt'),
                         'name' => 'mediaLayout',
-                        'instructions' => 'Select the layout for displaying media<br>(click on the image to select)',
+                        'instructions' => 'Select the layout for displaying media<br>(click on the image to select)<br>"Why we do it-Layout" only supports up to 2 media items!',
                         'type' => 'radio',
                         'default_value' => 1,
                         'allow_null' => false,
@@ -197,6 +198,7 @@ function getACFLayout()
                             1 => '<img src="'.Asset::requireUrl("{$componentPath}Assets/media-layout-1.png").'"><p>'.__('Home-Layout', 'flynt').'</p>',
                             3 => '<img src="'.Asset::requireUrl("{$componentPath}Assets/media-layout-3.png").'"><p>'.__('Who we are-Layout', 'flynt').'</p>',
                             2 => '<img src="'.Asset::requireUrl("{$componentPath}Assets/media-layout-2.png").'"><p>'.__('What we do-Layout', 'flynt').'</p>',
+                            4 => '<img src="'.Asset::requireUrl("{$componentPath}Assets/media-layout-4.png").'"><p>'.__('Why we do it-Layout', 'flynt').'</p>',
                         ],
                     ],
                 ]

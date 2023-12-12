@@ -68,6 +68,10 @@
           <clipPath id="clip-rectangle-union" clipPathUnits="objectBoundingBox">
             <path d="M 0.6133 -0 L 0.9977 0.1604 L 0.9977 1 L 0.6133 0.8396 L 0.6133 -0 Z M -0 -0 L 0.6133 0 L 0.6133 0.8396 L -0 0.8396 L -0 -0 Z">
           </clipPath>
+          {# Two arcs #}
+          <clipPath id="clip-two-arcs" clipPathUnits="objectBoundingBox">
+            <path d="M 0.9679 0.0005 H 1 V 0.9997 H 0.0002 V 0.3955 c 0 -0.2181 0.151 -0.395 0.334 -0.395 c 0.1725 0 0.3166 0.1571 0.3325 0.3579 C 0.6672 0.1606 0.8019 0.0005 0.9679 0.0005 Z">
+          </clipPath>
         </defs>
       </svg>
 
@@ -87,6 +91,10 @@
           1: 'clip-circle',
           2: 'clip-rectangle-union',
           3: 'clip-arc-250'
+        },
+        4: {
+          1: 'clip-circle',
+          2: 'clip-two-arcs',
         },
       } %}
 
@@ -124,6 +132,16 @@
               xs:bottom-[4.2265%] xs:w-[61.3684%]
               md:bottom-[4.2516%] md:w-[58.0052%]
               xxl:bottom-[4.251%] xxl:w-[61.3719%]',
+        },
+        4: {
+          1: 'aspect-square top-[0.40161%] left-[10%] w-[28.8571%]
+              xs:top-[2.1505%] xs:left-[8.3682%] xs:w-[29.3484%]
+              md:top-0 md:left-[9.0806%] md:w-[28.2609%]
+              xxl:left-[10.8959%] xxl:w-[28.5393%]',
+          2: 'aspect-[230.44/193.18] bottom-[2.7631%] right-0 w-[65.84%]
+              xs:bottom-0 xs:w-[67.0621%]
+              md:w-[64.578%]
+              xxl:w-[65.2141%]',
         },
       } %}
       {% for media in mediaItems %}

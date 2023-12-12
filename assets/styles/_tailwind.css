@@ -1046,7 +1046,8 @@ flynt-component[name='BlockHeader'] {
   }
 
   &.layout-2,
-  &.layout-3 {
+  &.layout-3,
+  &.layout-4 {
     .text-container {
       @apply flex;
       @apply flex-col;
@@ -1166,6 +1167,24 @@ flynt-component[name='BlockHeader'] {
 
       @screen xxl {
         @apply aspect-[870/721];
+      }
+    }
+  }
+
+  &.layout-4 {
+    .mediaItems {
+      @apply aspect-[350/249];
+
+      @screen xs {
+        @apply aspect-[660/465];
+      }
+
+      @screen md {
+        @apply aspect-[782/531];
+      }
+
+      @screen xxl {
+        @apply aspect-[1018/698];
       }
     }
   }
