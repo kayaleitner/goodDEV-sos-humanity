@@ -38,7 +38,7 @@
       <div class="col-span-full md:col-start-2 md:col-span-10 xl:mx-[-27px] xxl:mx-0 flex flex-wrap justify-center gap-xs xs:gap-sm">
       {% endif %}
       {% for card in cards %}
-        <div class="rounded-[10px] {{ layoutCardClass }}" style="background-color: {{card.bgColor}}; color: {{card.color}};">
+        <div class="anim-move-up rounded-[10px] {{ layoutCardClass }}" style="background-color: {{card.bgColor}}; color: {{card.color}};">
           <div class="flex flex-col gap-[31px] p-[30px] sm:p-md">
             <div class="w-full h-[80px] flex overflow-hidden">
               {% if card.image %}

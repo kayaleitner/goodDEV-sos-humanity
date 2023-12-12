@@ -1,11 +1,11 @@
 import $ from 'jquery'
 import 'jquery.easing'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Rellax from 'rellax'
 import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
 
 export default (statistics) => {
   const refs = buildRefs(statistics, true)
-
   $(refs.amount).each((index, elem) => {
     ScrollTrigger.create({
       trigger: elem,
@@ -15,6 +15,17 @@ export default (statistics) => {
       },
     })
   })
+
+  // Parallax Animation
+  Rellax('[data-parallax]', {
+    center: true,
+    breakpoints: [640, 980, 1440],
+  })
+
+  // eslint-disable-next-line no-undef
+  if (window && window.matchMedia('(max-width: 1280px)').matches) {
+    //   rellax.destroy()
+  }
 }
 
 function animateNumber(
@@ -23,7 +34,6 @@ function animateNumber(
   thousandsSeperator = false,
   prefix = ''
 ) {
-  console.log('animate', amountElem, countTo)
   $(amountElem).text('0')
 
   if (countTo === undefined) {

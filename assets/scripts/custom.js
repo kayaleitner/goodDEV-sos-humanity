@@ -5,27 +5,60 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 // responsive
-const mm = gsap.matchMedia()
+// const mm = gsap.matchMedia()
 
-document.addEventListener('resize', () => {
-  ScrollTrigger.refresh()
-})
+// document.addEventListener('resize', () => {
+ScrollTrigger.refresh()
+// })
 
-mm.add('(min-width: 1280px)', () => {
-  gsap.set('.fade-in', { opacity: 0 })
-  gsap.set('.move-up', { y: 200 })
-})
+// mm.add('(min-width: 1280px)', () => {
+//   gsap.set('.fade-in', { opacity: 0 })
+//   gsap.set('.move-up', { y: 200 })
+// })
 
-ScrollTrigger.batch('.fade-in', {
+ScrollTrigger.batch('.anim-fade-in', {
   onEnter: (elements) =>
     gsap.to(elements, { opacity: 1, stagger: 0.1, duration: 0.5 }),
   start: '100px bottom',
   end: 'top top',
 })
 
-ScrollTrigger.batch('.move-up', {
+ScrollTrigger.batch('.anim-move-up', {
   onEnter: (elements) =>
-    gsap.to(elements, { y: 0, stagger: 0.1, duration: 0.3 }),
+    gsap.to(elements, { y: 0, opacity: 1, stagger: 0.1, duration: 0.3 }),
+  start: '100px bottom',
+  end: 'top top',
+})
+
+ScrollTrigger.batch('.anim-move-down', {
+  onEnter: (elements) =>
+    gsap.to(elements, { y: 0, opacity: 1, stagger: 0.1, duration: 0.3 }),
+  start: '100px bottom',
+  end: 'top top',
+})
+
+ScrollTrigger.batch('.anim-move-left', {
+  onEnter: (elements) =>
+    gsap.to(elements, {
+      x: 0,
+      opacity: 1,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: 'power3.out',
+    }),
+  start: '100px bottom',
+  end: 'top top',
+})
+
+ScrollTrigger.batch('.anim-move-right', {
+  onEnter: (elements) =>
+    gsap.to(elements, {
+      x: 0,
+      opacity: 1,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: 'power3.out',
+    }),
   start: '100px bottom',
   end: 'top top',
 })
