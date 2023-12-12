@@ -1070,6 +1070,16 @@ flynt-component[name='BlockHeader'] {
 
   &.layout-2 {
     .mediaItems {
+      @apply aspect-[350.42/334.193];
+
+      @screen xs {
+        @apply aspect-[660/597];
+      }
+
+      @screen md {
+        @apply aspect-[648/568];
+      }
+
       > div {
         &.wind-visual {
           &::after {
