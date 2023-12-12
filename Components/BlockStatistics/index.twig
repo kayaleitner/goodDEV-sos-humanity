@@ -15,6 +15,34 @@
     </div>
   {% endif %}
   {% if statistics %}
+    {%
+      set parallaxMap = {
+        1: {
+          speed: -1,
+          xs: -0,
+          mobile: -0,
+          tablet: -0.75,
+        },
+        2: {
+          speed: 1,
+          xs: 0,
+          mobile: 0,
+          tablet: 0.75,
+        },
+        3: {
+          speed: -1,
+          xs: -0,
+          mobile: -0,
+          tablet: -0.75,
+        },
+        4: {
+          speed: 1,
+          xs: 0,
+          mobile: 0,
+          tablet: 0.75,
+        },
+      }
+    %}
     <div class="col-span-full pt-[22px] xs:flex xs:gap-x-[20px] xs:flex-wrap xs:pe-0">
       {% for stat in statistics %}
         {% set class = '' %}
@@ -33,7 +61,13 @@
           {% set class =  'xs:mt-[187px] md:mt-[154px]' %}
           {% set imgClass = 'object-[calc(50%_+_15px)]' %}
         {% endif %}
-        <div class="xs:basis-[calc(50%_-_10px)] md:basis-[calc(25%_-_(60px/3))] {{ not loop.last ? 'mb-[66px] xs:mb-0' }} {{ class }}">
+        <div class="xs:basis-[calc(50%_-_10px)] md:basis-[calc(25%_-_(60px/3))] {{ not loop.last ? 'mb-[66px] xs:mb-0' }} {{ class }}"
+          data-parallax
+          data-rellax-speed="{{ parallaxMap[loop.index].speed }}"
+          data-rellax-xs-speed="{{ parallaxMap[loop.index].xs }}"
+          data-rellax-mobile-speed="{{ parallaxMap[loop.index].mobile }}"
+          data-rellax-tablet-speed="{{ parallaxMap[loop.index].tablet }}"
+        >
           <div class="w-full mb-[-10px] aspect-[3/2] xs:ps-[50px] ">
             <img class="image lazyload w-full h-full object-contain xs:object-left {{ imgClass }}"
                 src="{{ stat.image.src | resize(32) }}"
@@ -43,7 +77,7 @@
                 data-sizes="auto"
                 alt="{{ stat.image.alt|e }}">
           </div>
-          <div class="stat-number">
+          <div class="stat-number" data-parallax data-rellax-speed="-0.25">
             <div data-refs="amount" data-prefix="{{ stat.number.prefix }}" data-amount="{{ stat.number.amount }}" class="stat-amount">{{ stat.number.prefix }}0</div>
             {% if stat.number.unit %}
               <div class="stat-unit font-titleSub mt-xs mb-0">{{ stat.number.unit }}</div>
