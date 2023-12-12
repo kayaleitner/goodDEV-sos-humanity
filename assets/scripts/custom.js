@@ -30,6 +30,19 @@ ScrollTrigger.batch('.anim-move-up', {
   end: 'top top',
 })
 
+ScrollTrigger.batch('.anim-move-right', {
+  onEnter: (elements) =>
+    gsap.to(elements, {
+      x: 0,
+      opacity: 1,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: 'power3.out',
+    }),
+  start: '100px bottom',
+  end: 'top top',
+})
+
 // document.querySelectorAll('hr').forEach(item => {
 //   let color = item.previousElementSibling.lastChild.style !== undefined
 //     ? item.previousElementSibling.lastChild.style.color

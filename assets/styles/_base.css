@@ -658,4 +658,9 @@ flynt-component {
     opacity: 0;
     transform: translateY(50px);
   }
+
+  &-move-right {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
 }

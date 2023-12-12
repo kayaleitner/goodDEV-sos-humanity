@@ -19,14 +19,14 @@
       <div class="text-container">
         <div class="wysiwyg text-bgColor">
           {% if title %}
-          <h1>{{ title|e('wp_kses_post') }}</h1>
+          <h1 class="anim-move-right">{{ title|e('wp_kses_post') }}</h1>
           {% endif %}
         </div>
-        <div class="wysiwyg text-bgColor {{ options.textIndent ? 'xs:ps-[90px]' : 'pe-[15px] xs:pe-0' }}">
+        <div class="wysiwyg anim-move-right text-bgColor {{ options.textIndent ? 'xs:ps-[90px]' : 'pe-[15px] xs:pe-0' }}">
           {{ contentHtml|e('wp_kses_post') }}
           {% if link %}
             {{ btn.buttonAnchor(link, {
-              class: 'mt-md',
+              class: 'mt-md anim-move-right',
               color: 'accent',
               icon: true,
             }) }}
