@@ -30,6 +30,26 @@ ScrollTrigger.batch('.anim-move-up', {
   end: 'top top',
 })
 
+ScrollTrigger.batch('.anim-move-down', {
+  onEnter: (elements) =>
+    gsap.to(elements, { y: 0, opacity: 1, stagger: 0.1, duration: 0.3 }),
+  start: '100px bottom',
+  end: 'top top',
+})
+
+ScrollTrigger.batch('.anim-move-left', {
+  onEnter: (elements) =>
+    gsap.to(elements, {
+      x: 0,
+      opacity: 1,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: 'power3.out',
+    }),
+  start: '100px bottom',
+  end: 'top top',
+})
+
 ScrollTrigger.batch('.anim-move-right', {
   onEnter: (elements) =>
     gsap.to(elements, {
