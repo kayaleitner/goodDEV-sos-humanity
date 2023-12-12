@@ -643,3 +643,14 @@ flynt-component {
     }
   }
 }
+
+/**
+* Animateables
+*/
+
+.anim {
+  /* Initial styles for animateables, will be changed via JS */
+  &-fade-in {
+    opacity: 0;
+  }
+}
