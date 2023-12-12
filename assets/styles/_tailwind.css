@@ -915,17 +915,6 @@ flynt-component[name='BlockHeader'] {
     &::after {
       transform: translate(var(--afterTranslateX), var(--afterTranslateY));
     }
-
-
-    &--animating {
-      /* Extra class so that we dont have flickering because of dynamic opacity */
-      /* will-change: transform; */
-
-      /* &::before,
-      &::after {
-        opacity: var(--visualOpacity);
-      } */
-    }
   }
 
   &.layout-1 {
