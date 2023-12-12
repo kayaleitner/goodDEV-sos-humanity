@@ -895,6 +895,26 @@
 
 flynt-component[name='BlockHeader'] {
   &.layout-1 {
+    .text-container {
+      @apply flex;
+      @apply flex-col;
+      @apply gap-[22px];
+      @apply py-md;
+
+      @screen xs {
+        @apply gap-[40px];
+        @apply pt-[100px];
+      }
+
+      @screen md {
+        @apply p-0;
+      }
+
+      .wysiwyg :last-child {
+        @apply mb-0;
+      }
+    }
+
     .mediaItems {
       > div {
         &:nth-of-type(1),
@@ -1021,6 +1041,29 @@ flynt-component[name='BlockHeader'] {
             }
           }
         }
+      }
+    }
+  }
+
+  &.layout-2,
+  &.layout-3 {
+    .text-container {
+      @apply flex;
+      @apply flex-col;
+      @apply gap-[24px];
+      @apply py-lg;
+
+      @screen xs {
+        @apply gap-[30px];
+        @apply py-xl;
+      }
+
+      @screen md {
+        @apply p-0;
+      }
+
+      .wysiwyg :last-child {
+        @apply mb-0;
       }
     }
   }

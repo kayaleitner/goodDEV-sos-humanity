@@ -195,6 +195,7 @@ function getACFLayout()
                         'class' => 'acf-image-select',
                         'choices' => [
                             1 => '<img src="'.Asset::requireUrl("{$componentPath}Assets/media-layout-1.png").'"><p>'.__('Home-Layout', 'flynt').'</p>',
+                            3 => '<img src="'.Asset::requireUrl("{$componentPath}Assets/media-layout-3.png").'"><p>'.__('Who we are-Layout', 'flynt').'</p>',
                             2 => '<img src="'.Asset::requireUrl("{$componentPath}Assets/media-layout-2.png").'"><p>'.__('What we do-Layout', 'flynt').'</p>',
                         ],
                     ],

@@ -8,9 +8,15 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};"
 >
-<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-y-md gap-xs xs:gap-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
-    <div class="col-span-{{options.textWidth.mobile}} xs:col-span-{{options.textWidth.tablet}} md:col-span-{{options.textWidth.desktop}} xxl:col-span-{{options.textWidth.wide}}">
-      <div>
+<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-x-xs xs:gap-x-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
+    <div class="
+      col-span-{{options.textWidth.mobile}}
+      xs:col-span-{{options.textWidth.tablet}}
+      md:col-span-{{options.textWidth.desktop}}
+      xxl:col-span-{{options.textWidth.wide}}
+      {{ options.mediaLayout > 1 ? 'xxl:self-end xxl:pb-xxl' }}"
+      >
+      <div class="text-container">
         <div class="wysiwyg text-bgColor">
           {% if title %}
           <h1>{{ title|e('wp_kses_post') }}</h1>
@@ -68,6 +74,11 @@
           2: 'clip-arc',
           3: 'clip-arc'
         },
+        3: {
+          1: 'clip-circle',
+          2: 'clip-arc',
+          3: 'clip-arc'
+        },
       } %}
 
       {# Set classes of the shapes for respective layouts (first index is layout, second level index is loop.index) #}
@@ -79,6 +90,11 @@
         },
         2: {
           1: 'top-[21px] w-[37.1429%] right-[1.14286%] xs:right-[6.3636%] md:right-[12.1538%] xs:w-[35.1515%] md:right-[12.1538%] md:w-[33.8462%] xxl:right-[5.7471%] xxl:w-[31.4943%] aspect-square',
+          2: 'wind-visual top-[53px] left-0 w-[64%] aspect-[472/558] xs:top-[80px] xs:w-[60.6061%] md:top-[75px] md:w-[58.6153%] md:ms-[-20px] xxl:top-[105px] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
+          3: 'right-0 bottom-0 aspect-[248/268] w-[33.4285%] xs:right-[35px] xs:w-[30.8181%] md:right-[11%] md:w-[30.923%] xxl:right-[4.7126%] xxl:w-[28.3908%]',
+        },
+        3: {
+          1: 'top-[25px] w-[37.1429%] right-[1.14286%] xs:right-[6.3636%] md:right-[12.1538%] xs:w-[35.1515%] md:right-[12.1538%] md:w-[33.8462%] xxl:right-[5.7471%] xxl:w-[31.4943%] aspect-square',
           2: 'wind-visual top-[53px] left-0 w-[64%] aspect-[472/558] xs:top-[80px] xs:w-[60.6061%] md:top-[75px] md:w-[58.6153%] md:ms-[-20px] xxl:top-[105px] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
           3: 'right-0 bottom-0 aspect-[248/268] w-[33.4285%] xs:right-[35px] xs:w-[30.8181%] md:right-[11%] md:w-[30.923%] xxl:right-[4.7126%] xxl:w-[28.3908%]',
         },
