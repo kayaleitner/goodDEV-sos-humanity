@@ -18,6 +18,7 @@ export const theme = {
     current: 'currentColor',
     transparent: 'transparent',
     tangerine: 'var(--tangerine)',
+    yellow: 'var(--yellow)',
     /** Colors (Tokens) */
     textColor: 'var(--textColor)',
     bgColor: 'var(--bgColor)',
@@ -112,6 +113,7 @@ export const safelist = [
   'after-marker',
   'after-marker--dark',
   'bg-tangerine', // used in tinyMCE
+  'bg-yellow', // used in tinyMCE
   {
     pattern: /col-span-\d/,
     variants: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'wide', 'max'],

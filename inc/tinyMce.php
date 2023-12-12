@@ -193,6 +193,11 @@ function getConfig()
                         'classes' => 'bg-tangerine',
                         'selector' => 'hr'
                     ],
+                    [
+                        'title' => __('Yellow', 'flynt'),
+                        'classes' => 'bg-yellow',
+                        'selector' => 'hr'
+                    ],
                 ]
             ],
         ],
