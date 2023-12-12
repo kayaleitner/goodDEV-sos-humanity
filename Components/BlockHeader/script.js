@@ -5,7 +5,6 @@ import $ from 'jquery'
 gsap.registerPlugin(ScrollTrigger)
 
 export default (header) => {
-  console.log(header)
   // const refs = buildRefs(carouselCities)
   // const data = getJSON(carouselCities)
 
