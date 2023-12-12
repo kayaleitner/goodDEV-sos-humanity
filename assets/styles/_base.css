@@ -160,11 +160,18 @@ table {
       position: relative;
       top: -0.125em;
       width: 15px;
+      transition: rotate 0.25s;
     }
 
     &Black {
       &::after {
         content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='16' viewBox='0 0 15 16' fill='none'%3E%3Cg clip-path='url(%23clip0_3627_18234)'%3E%3Cpath d='M1.26171 2.41309H12.9502V14.1016' stroke='%23003574' stroke-width='1.5'/%3E%3Cline x1='13.0655' y1='2.38971' x2='0.889977' y2='14.5652' stroke='%23003574' stroke-width='1.5'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3627_18234'%3E%3Crect width='15' height='15' fill='%23fff' transform='translate(0 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+      }
+    }
+
+    &:hover {
+      &::after {
+        rotate: -45deg;
       }
     }
   }
@@ -288,6 +295,16 @@ table {
     border: 0;
     color: var(--accentColor);
     padding: 0;
+  }
+
+  svg {
+    transition: rotate 0.25s;
+  }
+
+  &:hover {
+    svg {
+      rotate: -45deg;
+    }
   }
 }
 
