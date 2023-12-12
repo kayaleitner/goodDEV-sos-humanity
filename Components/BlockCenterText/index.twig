@@ -3,7 +3,6 @@
 <flynt-component
   load:on="visible"
   name="BlockCenterText"
-  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
   style="
     background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
