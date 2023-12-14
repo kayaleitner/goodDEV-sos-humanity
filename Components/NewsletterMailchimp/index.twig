@@ -1,0 +1,40 @@
+{% import "Components/_Atoms/Button/macro.twig" as btn %}
+
+<flynt-component 
+  class="bg-accentColor text-bgColor" 
+  load:on="visible" 
+  name="NewsletterMailchimp"
+>
+  <div class="container flex flex-col gap-[30px]">
+    <div class="flex flex-col items-center gap-sm">
+      <h3 class="font-titleLarge text-hoverColor m-0">Join Us</h3>
+      <p class="font-bodySmall max-w-[70%] text-center">If you share our commitment to clean air, join us.</p>
+    </div>
+    <form data-ref="form" class="flex flex-col gap-[13px]">
+      <div class="flex flex-col gap-[4px]">
+        <label class="ps-[22px]" for="fname">First Name</label>
+        <input class="!px-[22px]" type="text" name="fname" required>
+      </div>
+      <div class="flex flex-col gap-[4px]">
+        <label class="ps-[22px]" for="lname">Last Name</label>
+        <input class="!px-[22px]" type="text" name="lname" required>
+      </div>
+      <div class="flex flex-col gap-[4px]">
+        <label class="ps-[22px]" for="email">Email Address</label>
+        <input class="!px-[22px]" type="email" name="email" required>
+      </div>
+      <div class="flex flex-col gap-[4px]">
+        <label class="ps-[22px]" for="organisation">Organisation</label>
+        <input class="!px-[22px]" type="text" name="organisation" required>
+      </div>
+      <div class="flex flex-col gap-[4px]">
+        <label class="ps-[22px]" for="jobtitle">Job Title</label>
+        <input class="!px-[22px]" type="text" name="jobtitle" required>
+      </div>
+      <div>
+      <div class="text-right">
+        <button class="mt-[17px] ms-auto button button--brand button--icon">Subscribe</button>
+      </div>
+    </form>
+  </div>
+  </flynt-component>

@@ -28,9 +28,9 @@
   --brandColor: var(--blue);
   --accentColor: var(--darkblue);
   --activeColor: var(--bluepressed);
+  --errorColor: var(--tangerine);
   
   --borderColor: var(--lightgrey);
   --uiColor: var(--grey);
-  --errorColor: var(--error);
   --dangerColor: var(--danger);
 }
