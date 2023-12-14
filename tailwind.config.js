@@ -27,6 +27,8 @@ export const theme = {
     hoverColor: 'var(--hoverColor)',
     activeColor: 'var(--bluepressed)',
     borderColor: 'var(--borderColor)',
+    errorColor: 'var(--errorColor)',
+    successColor: 'var(--successColor)',
     uiColor: 'var(--uiColor)',
   },
   fontSize: {

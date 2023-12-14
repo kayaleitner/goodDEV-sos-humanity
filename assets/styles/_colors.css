@@ -29,6 +29,7 @@
   --accentColor: var(--darkblue);
   --activeColor: var(--bluepressed);
   --errorColor: var(--tangerine);
+  --successColor: var(--green);
   
   --borderColor: var(--lightgrey);
   --uiColor: var(--grey);

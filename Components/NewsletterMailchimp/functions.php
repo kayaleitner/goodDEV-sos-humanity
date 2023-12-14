@@ -4,6 +4,14 @@ namespace Flynt\Components\NewsletterMailchimp;
 
 use Flynt\Utils\Options;
 
+add_filter('Flynt/addComponentData?name=NewsletterMailchimp', function ($data) {
+    $options = Options::getTranslatable('NewsletterMailchimp');
+    $data['jsonData'] = [
+        'msgSuccess' => $options['msgSuccess']
+    ];
+    return $data;
+});
+
 // Make function available for requests
 add_action('wp_ajax_subscribe_to_mailchimp_list', function() { subscribe_to_mailchimp_list(); });
 add_action('wp_ajax_nopriv_subscribe_to_mailchimp_list', function() { subscribe_to_mailchimp_list(); });
@@ -108,6 +116,19 @@ function subscribe_to_mailchimp_list() {
 }
 
 Options::addTranslatable('NewsletterMailchimp', [
+    [
+        'label' => __('General', 'flynt'),
+        'name' => 'generalTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Success message', 'flynt'),
+        'name' => 'msgSuccess',
+        'type' => 'text',
+        'required' => 0,
+    ],
     [
         'label' => __('Mailchimp Options', 'flynt'),
         'name' => 'mailchimpOptionsTab',

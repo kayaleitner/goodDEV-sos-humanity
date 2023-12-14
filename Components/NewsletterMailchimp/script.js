@@ -1,6 +1,6 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import $ from 'jquery'
-import { buildRefs } from '@/assets/scripts/helpers.js'
+import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
 
 export function open() {
   // Hacky way of getting the element
@@ -20,6 +20,7 @@ export function close() {
 
 export default (el) => {
   const refs = buildRefs(el)
+  const data = getJSON(el)
   setEventListeners(refs)
 
   function setEventListeners() {
@@ -80,8 +81,58 @@ export default (el) => {
         success(response) {
           const r = JSON.parse(JSON.stringify(response))
           // TODO: handle response
+          if (r.success) {
+            handleSuccess(r)
+          } else {
+            handleError(r)
+          }
         },
       })
+    })
+
+    $(refs.btnCloseError).on('click', function () {
+      $(this).closest('[data-ref$=Bar]').fadeOut()
+    })
+
+    $(refs.btnCloseSuccess).on('click', function () {
+      $(this).closest('[data-ref$=Bar]').fadeOut()
+    })
+  }
+
+  function handleSuccess(message) {
+    console.log(message)
+    showSuccess(data.msgSuccess)
+  }
+
+  function handleError(r) {
+    console.log('error')
+    console.log(r)
+    let message
+    if (r.error_body) {
+      message = r.error_body.detail
+    } else if (r.error_message) {
+      message = r.error_message
+    }
+
+    showError(message)
+  }
+
+  function showSuccess(message) {
+    $(refs.successText).text(message)
+    $(refs.successBar).fadeIn(400, () => {
+      setTimeout(() => {
+        $(refs.successBar).fadeOut()
+      }, 4000)
+    })
+  }
+
+  function showError(message) {
+    console.log(message)
+    $(refs.errorText).text(message)
+    $(refs.errorBar).fadeIn(400, () => {
+      setTimeout(() => {
+        $(refs.errorBar).fadeOut()
+      }, 4000)
     })
   }
 }
