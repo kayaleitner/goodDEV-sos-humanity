@@ -1,0 +1,13 @@
+flynt-component[name='NewsletterMailchimp'] {
+    transition: transform 0.2s ease-in-out;
+    transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+
+    &[data-open="true"] {
+        transform: translateX(0);
+    }
+
+    .container {
+        max-height: 100vh;
+        overflow-y: scroll;
+    }
+}

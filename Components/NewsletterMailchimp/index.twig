@@ -1,11 +1,18 @@
 {% import "Components/_Atoms/Button/macro.twig" as btn %}
 
 <flynt-component 
-  class="bg-accentColor text-bgColor" 
+  class="bg-accentColor text-bgColor absolute top-0 w-full translate-x-full"
   load:on="visible" 
   name="NewsletterMailchimp"
+  data-open="false"
 >
-  <div class="container flex flex-col gap-[30px]">
+  <div data-ref="formContainer" class="container flex flex-col gap-[30px]">
+    <button class="self-end mb-[-21px]" data-ref="close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="none" viewBox="0 0 46 46">
+        <circle cx="23" cy="23" r="22.5" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-width="2" d="m16.824 16.785 12.511 12.51m.005-12.346L16.83 29.46"/>
+      </svg>
+    </button>
     <div class="flex flex-col items-center gap-sm">
       <h3 class="font-titleLarge text-hoverColor m-0">Join Us</h3>
       <p class="font-bodySmall max-w-[70%] text-center">If you share our commitment to clean air, join us.</p>
