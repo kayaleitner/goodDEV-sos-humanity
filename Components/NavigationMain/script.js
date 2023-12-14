@@ -2,6 +2,7 @@
 // import ScrollTrigger from 'gsap/ScrollTrigger'
 import $ from 'jquery'
 import { buildRefs } from '@/assets/scripts/helpers.js'
+import { open as openNewsletter } from '../NewsletterMailchimp/script'
 
 export default function (el) {
   const refs = buildRefs(el)
@@ -95,6 +96,16 @@ export default function (el) {
       : navigationHeight
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
+
+  refs.cta.addEventListener('click', (e) => {
+    if (e.target.getAttribute('href') === '#') {
+      // Open newsletter form
+      e.preventDefault()
+      openNewsletter()
+    }
+
+    // link behaves as default otherwise
+  })
 
   // const sections = gsap.utils.toArray([
   //   '#mainContent flynt-component',
