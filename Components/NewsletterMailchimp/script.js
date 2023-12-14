@@ -99,14 +99,12 @@ export default (el) => {
     })
   }
 
-  function handleSuccess(message) {
-    console.log(message)
+  function handleSuccess() {
+    refs.form.reset()
     showSuccess(data.msgSuccess)
   }
 
   function handleError(r) {
-    console.log('error')
-    console.log(r)
     let message
     if (r.error_body) {
       message = r.error_body.detail
@@ -127,7 +125,6 @@ export default (el) => {
   }
 
   function showError(message) {
-    console.log(message)
     $(refs.errorText).text(message)
     $(refs.errorBar).fadeIn(400, () => {
       setTimeout(() => {
