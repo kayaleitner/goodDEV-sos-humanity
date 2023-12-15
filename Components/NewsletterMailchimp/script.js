@@ -64,13 +64,19 @@ export default (el) => {
       let theData = {
         action: 'subscribe_to_mailchimp_list',
         nonce: myAjaxVar.nonce,
-        payload: {},
+        payload: {
+          merge_fields: {},
+        },
       }
 
       $(refs.form)
         .serializeArray()
         .forEach((elem) => {
-          theData.payload[elem.name] = elem.value
+          if (elem.name === 'JOB' || elem.name === 'ORG') {
+            theData.payload.merge_fields[elem.name] = elem.value
+          } else {
+            theData.payload[elem.name] = elem.value
+          }
         })
 
       $.ajax({

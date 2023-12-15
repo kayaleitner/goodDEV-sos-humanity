@@ -21,7 +21,7 @@ function subscribe_to_mailchimp_list() {
     $options = Options::getTranslatable('NewsletterMailchimp');
 
     // Verify that necessary options are set
-    if (empty($options) || empty($options['apiKey'] || empty($options['datacenter'] || empty($options['listId'])))) {
+    if (empty($options) || empty($options['apiKey']) || empty($options['datacenter']) || empty($options['listId'])) {
         echo json_encode([
             'error' => true,
             'errorBody' => "Please check Mailchimp setting (API key, datacenter, list ID).",
@@ -61,6 +61,7 @@ function subscribe_to_mailchimp_list() {
 
     // Encode message body
     $body = json_encode($the_data);
+    // wp_die(print_r($_POST));
 
     // Send the request to Mailchimp
     $response = wp_remote_post(
