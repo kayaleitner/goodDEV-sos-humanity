@@ -1372,6 +1372,23 @@ flynt-component[name='BlockSliderText'] {
   }
 }
 
+flynt-component[name='NewsletterMailchimp'] {
+  .wind-bottom {
+    background-image: url('data:image/svg+xml;utf8,<svg width="313" height="182" viewBox="0 0 313 182" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M93.2038 122.999L341.844 122.999L341.844 153.999L93.2038 153.999C58.9038 153.999 31.0038 181.899 31.0038 216.199L0.00375366 216.199C0.00375815 164.809 41.8138 122.999 93.2038 122.999Z" fill="%2323BCED"/><g clip-path="url(%23clip0_4588_8079)"><path d="M241.689 -0.000171233C271.309 -0.000168644 295.399 24.0798 295.399 53.6698L295.399 59.1798L264.399 59.1798L264.399 53.6698C264.399 41.1698 254.209 30.9998 241.689 30.9998C229.169 30.9998 218.979 41.1698 218.979 53.6698C218.979 66.1698 229.169 76.3398 241.689 76.3398L454.969 76.3398L454.969 107.34L241.689 107.34C212.069 107.34 187.979 83.2598 187.979 53.6698C187.979 24.0798 212.069 -0.000173823 241.689 -0.000171233Z" fill="%2323BCED"/></g><defs><clipPath id="clip0_4588_8079"><rect width="366.99" height="107.34" fill="white" transform="translate(554.969 107.34) rotate(-180)"/></clipPath></defs></svg>');
+    background-size: contain;
+    background-position: bottom;
+    overflow: hidden;
+    background-repeat: no-repeat;
+  }
+  .wind-top {
+      background-image: url("data:image/svg+xml,%3Csvg width='262' height='94' viewBox='0 0 262 94' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M168.64 93.2L-1.62956e-05 93.2L-1.08754e-05 62.2L168.64 62.2C202.94 62.2 230.84 34.3 230.84 4.03613e-05L261.84 4.57816e-05C261.84 51.39 220.03 93.2 168.64 93.2Z' fill='%2323BCED'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-position: top;
+      overflow: hidden;
+      background-repeat: no-repeat;
+  }
+}
+
 @layer utilities {
   .font-family-mono {
     font-family: 'Aeonik Mono', Courier, monospace;

@@ -7,7 +7,7 @@
   data-open="false"
 >
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div data-ref="formContainer" class="container flex flex-col gap-[30px] md:gap-[50px] md:max-w-[910px] md:px-[174px] md:pt-[37px]">
+  <div data-ref="formContainer" class="container flex flex-col gap-[30px] md:gap-[50px] md:max-w-[910px] md:px-[174px] md:pt-[37px] h-screen">
     <button class="w-[46px] h-[46px] self-end mb-[-21px] md:w-[52px] md:h-[52px] md:mb-[56px]" data-ref="close">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" fill="none" viewBox="0 0 46 46">
         <circle cx="23" cy="23" r="22.5" stroke="currentColor"/>
@@ -43,6 +43,8 @@
         <button class="mt-[17px] ms-auto button button--brand button--icon">Subscribe</button>
       </div>
     </form>
+    <div class="wind-top absolute top-0 left-0 w-72 max-w-[50%] h-36"></div>
+    <div class="wind-bottom absolute bottom-0 right-4 w-72 max-w-[50%] h-72"></div>
   </div>
   <div data-ref="errorBar" class="absolute container rounded-lg py-[7px] px-lg bottom-md z-50 text-center font-bodySmall bg-errorColor text-bgColor w-[95%] left-1/2 -translate-x-1/2 hidden">
     <div data-ref="errorText"></div>
