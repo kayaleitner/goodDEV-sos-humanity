@@ -39,18 +39,6 @@ function subscribe_to_mailchimp_list() {
         die ('Busted!');
     }
 
-    // echo json_encode([
-    //     'success' => true,
-    //     'apikey' => $options['apiKey'],
-    //     'datacenter' => $options['datacenter'],
-    //     'listId' => $options['listId'],
-    //     'data' => $_POST,
-    // ]);
-
-    // wp_die();
-    // exit;
-
-
     // Get Mailchimp options
     // the last part of the API key determines which url to use (something like 'us16')
     $baseUrl = 'https://anystring:'.$options['apiKey'].'@'.$options['datacenter'].'.api.mailchimp.com/3.0';
