@@ -161,6 +161,7 @@ table {
       top: -0.125em;
       width: 15px;
       transition: rotate 0.25s;
+      transform-origin: center 60%;
     }
 
     &Black {
@@ -349,9 +350,13 @@ legend {
 }
 
 label {
-  color: var(--uiColor);
-  font-size: var(--body-font-size-small);
-  font-weight: 500;
+  font-size: calc(12rem / 16);
+  line-height: calc(24 / 12);
+  transition: color 0.3s ease-in-out;
+
+  &.hasError {
+    color: var(--errorColor);
+  }
 }
 
 select {
@@ -387,20 +392,23 @@ select {
 [type='password'],
 textarea {
   appearance: none;
-  background-color: transparent;
-  border: 0;
+  background-color: var(--darkerblue);
+  border: 1px solid var(--darkerblue);
   border-radius: 9999px;
   caret-color: var(--bgColor);
   color: var(--bgColor);
-  font-size: var(--body-font-size-small);
-  max-width: 300px;
   outline: none;
   padding: 0.75rem 0.625rem;
   transition: border-color 0.3s ease-in-out;
   width: 100%;
+  @apply font-bodySmaller;
 
   &::placeholder {
     color: var(--bgColor);
+  }
+
+  &:focus {
+    border-color: var(--hoverColor);
   }
 
   &:disabled {
@@ -409,7 +417,7 @@ textarea {
     pointer-events: none;
   }
 
-  &:invalid {
+  &:user-invalid {
     border-color: var(--errorColor);
   }
 }

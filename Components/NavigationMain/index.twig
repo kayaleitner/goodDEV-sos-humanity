@@ -23,6 +23,7 @@
                 color: 'accent',
                 style: 'outline',
                 icon: true,
+                dataRef: 'cta',
               }) }}
             {% else %}
             <a class="{{ item.classes|join(' ')}} no-underline after-marker after-marker--small hover:after-marker-active {{ post.navOnLight ? 'after-marker--dark' }} !transition-none"
@@ -40,6 +41,7 @@
                 color: 'accent',
                 style: post.navOnLight ? '' : 'outline',
                 icon: true,
+                dataRef: 'cta'
               }) }}
           </li>
           {% endif %}
