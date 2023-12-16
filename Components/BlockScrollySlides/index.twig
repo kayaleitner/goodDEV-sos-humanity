@@ -1,0 +1,61 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+{% import "Components/_Atoms/Button/macro.twig" as btn %}
+
+<flynt-component
+  load:on="visible"
+  name="BlockScrollySlides"
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
+  "
+  class="overflow-hidden"
+  >
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+
+    {% if slides %}
+    <div
+      class="slidesContainer md:pt-lg xxl:pt-md"
+      style="background-color: {{slides[0].bgColor}}; color: {{slides[0].color}};"
+      >
+        {% set classMap = {
+          1: 'w-full',
+          2: 'w-[calc(100%_-_192px)] ml-[48px]',
+          3: 'w-[calc(100%_-_216px)] ml-[24px]',
+        } %}
+
+        {% for slide in slides %}
+        <div
+          class="relative overflow-hidden {{ classMap[loop.index] }}"
+          style="background-color: {{slide.bgColor}}; color: {{slide.color}};"
+          data-refs="slides"
+        >
+          <div class="container flex">
+            <div class="w-1/2 p-md">
+              <img class="image lazyload w-full h-full object-contain object-right"
+                src="{{ slide.image.src|resize(32) }}" 
+                data-srcset="{{ function('wp_get_attachment_image_srcset', slide.image.id) }}" 
+                data-sizes="auto" 
+                data-src="{{ slide.image.src }}" 
+                alt="{{ slide.image.alt|e }}"
+              />
+            </div>
+            <div class="wysiwyg w-1/2 p-md">
+              {{ slide.text|e('wp_kses_post') }}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+  {% endif %}
+  {% if content.ctaLink %}
+  <div class="hidden md:block col-span-full text-right">
+    {{ btn.buttonAnchor(content.ctaLink, {
+        class: 'ms-auto',
+        color: 'accent',
+        icon: true,
+      })
+    }}
+  </div>
+  {% endif %}
+  </div>
+</flynt-component>

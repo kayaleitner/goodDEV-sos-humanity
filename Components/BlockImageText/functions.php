@@ -12,7 +12,7 @@ function getACFLayout()
         'label' => __('Image/Text', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
+                'label' => __('Image', 'flynt'),
                 'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
@@ -150,7 +150,13 @@ function getACFLayout()
                     gridCol('colMediaSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
                 ]
             ],
-
+            [
+                'label' => __('Text', 'flynt'),
+                'name' => 'textTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
             [
                 'label' => 'Content',
                 'name' => 'content',

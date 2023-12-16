@@ -90,6 +90,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockCards\getACFLayout(),
                     Components\BlockStatistics\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
+                    Components\BlockScrollySlides\getACFLayout(),
                 ],
             ],
         ],
