@@ -16,55 +16,56 @@
       style="background-color: {{slides[0].bgColor}}; color: {{slides[0].color}};"
       >
         {% set containerClassMap = {
-          1: 'w-full py-lg',
-          2: 'w-[calc(100%_-_240px)] ml-[48px] h-[calc(100vh_-_72px)]',
-          3: 'w-[calc(100%_-_264px)] ml-[24px] h-[calc(100vh_-_72px)]',
+          1: ' xl:w-full xl:py-lg',
+          2: ' xl:w-[calc(100%_-_240px)] xl:ml-[48px] xl:h-[calc(100vh_-_72px)]',
+          3: ' xl:w-[calc(100%_-_264px)] xl:ml-[24px] xl:h-[calc(100vh_-_72px)]',
         } %}
         {% set imageClassMap = {
-          1: 'col-start-5 col-span-7 order-2 h-[calc(100vh_-_212px)] w-full object-contain object-center',
-          2: 'col-start-1 col-span-6 order-1 self-start h-[calc(100vh_-_260px)] w-full object-contain object-left',
-          3: 'col-start-8 col-span-5 order-2 self-start',
+          1: ' xl:col-start-5 xl:col-span-7 xl:order-2 xl:h-[calc(100vh_-_212px)] xl:w-full xl:object-contain xl:object-center',
+          2: ' xl:col-start-1 xl:col-span-6 xl:order-1 xl:self-start xl:h-[calc(100vh_-_260px)] xl:w-full xl:object-contain xl:object-left',
+          3: ' xl:col-start-8 xl:col-span-5 xl:order-2 xl:self-start',
         } %}
         {% set textClassMap = {
-          1: 'col-start-1 col-span-4 order-1 pr-sm bottom-0 self-end w-full overflow-hidden',
-          2: 'col-start-8 col-span-5 order-2 self-start',
-          3: 'col-start-1 col-span-5 order-1 self-start',
+          1: ' xl:col-start-1 xl:col-span-4 xl:order-1 xl:pr-sm xl:bottom-0 xl:self-end xl:w-full xl:overflow-hidden',
+          2: ' xl:col-start-8 xl:col-span-5 xl:order-2 xl:self-start',
+          3: ' xl:col-start-1 xl:col-span-5 xl:order-1 xl:self-start',
         } %}
 
         {% for slide in slides %}  
         <div
           class="container relative overflow-hidden
           grid items-center grid-cols-6 md:grid-cols-12
-          gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]
-          {{ containerClassMap[loop.index] }}"
+          gap-x-xs gap-y-[40px] sm:gap-x-lg xl:gap-x-sm xs:gap-y-[60px]
+          {{ containerClassMap[loop.index] }}
+          {% if loop.index == 1 %} pt-xxl md:pt-lg {% endif %}"
           style="background-color: {{slide.bgColor}}; color: {{slide.color}};"
           data-refs="slides" data-index="{{ loop.index }}" id="scrolly-slide-{{ loop.index }}"
         >
-          <img class="image lazyload anim-fade-in {{ imageClassMap[loop.index] }}"
+          <img class="image lazyload anim-fade-in col-span-6 {{ imageClassMap[loop.index] }}"
             src="{{ slide.image.src|resize(32) }}" 
             data-srcset="{{ function('wp_get_attachment_image_srcset', slide.image.id) }}" 
             data-sizes="auto" 
             data-src="{{ slide.image.src }}" 
             alt="{{ slide.image.alt|e }}"
           />
-          <div class="wysiwyg anim-move-up {{ textClassMap[loop.index] }}">
+          <div class="wysiwyg anim-move-up col-span-6 {{ textClassMap[loop.index] }}">
             {{ slide.text|e('wp_kses_post') }}
           </div>
           {% if loop.index == 1 %}
             {% if blockTitle %}
-                <div class="absolute left-lg top-0">
+                <div class="absolute left-sm xl:left-lg top-md md:top-0">
                   {{ h.h(blockTitle, { level: 3, class: 'mb-0' }) }}
                 </div>
             {% endif %}
             {% if topImage %}
               <img
-                class="absolute top-0 right-lg w-xxl h-auto"
+                class="hidden xl:block absolute top-0 right-lg w-xxl h-auto"
                 src="{{ topImage.src|resize(32) }}"
                 srcset="{{ function('wp_get_attachment_image_srcset', topImage.id) }}"
                 alt="{{ topImage.alt|e }}"
                 />
             {% endif %}
-            <div class="absolute bottom-0 right-lg flex flex-col items-center">
+            <div class="hidden xl:flex absolute bottom-0 right-lg flex-col items-center">
               <button
                 type="button"
                 data-refs="next"
@@ -83,7 +84,7 @@
                     </defs>
                 </svg>
               </button>
-              <span data-refs="indicator" class="font-linkSmall font-light p-xs text-center">01--0{{loop.length}}</span>
+              <span data-refs="indicator" class="hidden xl:block font-linkSmall font-light p-xs text-center">01--0{{loop.length}}</span>
             </div>
           {% endif %}
           {% if content.ctaLink %}

@@ -12,43 +12,46 @@ export default (BlockScrollySlides) => {
 }
 
 const initScrolly = (refs) => {
-  let currentSlide = 1
+  const mm = gsap.matchMedia()
 
-  const setSlide = (i) => {
-    currentSlide = i + 1
-    refs.indicator[0].innerHTML = `0${currentSlide}--0${refs.slides.length}`
-  }
+  mm.add('(min-width: 1280px)', () => {
+    let currentSlide = 1
 
-  refs.slides.forEach((slide, i) => {
-    ScrollTrigger.create({
-      trigger: slide,
-      start: `top top+=${(i + 1) * 36}px`,
-      endTrigger: slide.parentNode,
-      end: `bottom-=${(i) * 36}px bottom`,
-      pin: true,
-      pinSpacing: false,
-      markers: false,
-      onEnter: () => {
-        setSlide(i)
-      },
-      onEnterBack: () => {
-        setSlide(i)
-      },
+    const setSlide = (i) => {
+      currentSlide = i + 1
+      refs.indicator[0].innerHTML = `0${currentSlide}--0${refs.slides.length}`
+    }
+
+    refs.slides.forEach((slide, i) => {
+      ScrollTrigger.create({
+        trigger: slide,
+        start: `top top+=${(i + 1) * 36}px`,
+        endTrigger: slide.parentNode,
+        end: `bottom-=${(i) * 36}px bottom`,
+        pin: true,
+        pinSpacing: false,
+        markers: false,
+        onEnter: () => {
+          setSlide(i)
+        },
+        onEnterBack: () => {
+          setSlide(i)
+        },
+      })
+    })
+
+    refs.next[0].addEventListener('click', (e) => {
+      if (currentSlide <= refs.slides.length - 1) {
+        gsap.to(window, {
+          duration: 0.1,
+          ease: "power2",
+          scrollTo: {
+            y: `#scrolly-slide-${currentSlide + 1}`,
+            offsetY: -10,
+          },
+        })
+      }
     })
   })
 
-  refs.next[0].addEventListener('click', (e) => {
-    if (currentSlide <= refs.slides.length - 1) {
-      gsap.to(window, {
-        duration: 0.1,
-        ease: "power2",
-        scrollTo: {
-          y: `#scrolly-slide-${currentSlide + 1}`,
-          offsetY: -36,
-        },
-      })
-    }
-
-
-  })
 }
