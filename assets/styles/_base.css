@@ -172,7 +172,7 @@ table {
 
     &:hover {
       &::after {
-        rotate: -45deg;
+        rotate: 45deg;
       }
     }
   }
@@ -304,7 +304,7 @@ table {
 
   &:hover {
     svg {
-      rotate: -45deg;
+      rotate: 45deg;
     }
   }
 }
