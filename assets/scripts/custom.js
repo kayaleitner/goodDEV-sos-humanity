@@ -7,9 +7,10 @@ gsap.registerPlugin(ScrollTrigger)
 // responsive
 // const mm = gsap.matchMedia()
 
-// document.addEventListener('resize', () => {
 ScrollTrigger.refresh()
-// })
+document.addEventListener('resize', () => {
+  ScrollTrigger.refresh()
+})
 
 // mm.add('(min-width: 1280px)', () => {
 //   gsap.set('.fade-in', { opacity: 0 })
