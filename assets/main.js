@@ -25,5 +25,4 @@ import.meta.glob([
 window.customElements.define('flynt-component', FlyntComponent)
 
 window.Alpine = Alpine
-Alpine.data('scrollTrigger', scrollTrigger)
 Alpine.start()
