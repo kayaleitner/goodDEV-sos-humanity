@@ -28,9 +28,10 @@
   --brandColor: var(--blue);
   --accentColor: var(--darkblue);
   --activeColor: var(--bluepressed);
+  --errorColor: var(--tangerine);
+  --successColor: var(--green);
   
   --borderColor: var(--lightgrey);
   --uiColor: var(--grey);
-  --errorColor: var(--error);
   --dangerColor: var(--danger);
 }

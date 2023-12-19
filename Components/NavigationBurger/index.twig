@@ -9,7 +9,7 @@
       {% if ctaLink or menu %}
         <div class="flex gap-xs xs:gap-[16px] items-center">
           {% if ctaLink %}
-            <div data-ref="cta" class="top-0 transition-[top] transition-delay-75 duration-300 ease-in-out relative">
+            <div class="top-0 transition-[top] transition-delay-75 duration-300 ease-in-out relative">
               {% include 'Partials/_cta.twig' with { 'ctaLink': ctaLink, 'navOnLight': post.navOnLight } only %}
             </div>
           {% endif %}

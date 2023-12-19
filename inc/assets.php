@@ -28,6 +28,11 @@ add_action('wp_enqueue_scripts', function () {
     wp_localize_script('Flynt/assets/main', 'FlyntData', [
         'componentsWithScript' => ComponentManager::getInstance()->getComponentsWithScript(),
         'templateDirectoryUri' => get_template_directory_uri(),
+        // Used in component NewsletterMailchimp (nonce is security relevant!):
+        'myAjaxVar' => array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('subcribe-to-mailchimp-list-now')
+        )
     ]);
 
     wp_enqueue_style('Flynt/assets/main', Asset::requireUrl('assets/main.css'), [], null);

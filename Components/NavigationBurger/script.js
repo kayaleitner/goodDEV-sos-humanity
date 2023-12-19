@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import $ from 'jquery'
 import { buildRefs } from '@/assets/scripts/helpers.js'
+import { open as openNewsletter } from '../NewsletterMailchimp/script'
 
 export default function (el) {
   let isMenuOpen, navScrolled
@@ -21,6 +22,16 @@ export default function (el) {
     'click',
     delegate('[data-ref="menuButton"]', onMenuButtonClick)
   )
+
+  refs.cta.addEventListener('click', (e) => {
+    if (e.target.getAttribute('href') === '#') {
+      // Open newsletter form
+      e.preventDefault()
+      openNewsletter()
+    }
+
+    // link behaves as default otherwise
+  })
 
   onBreakpointChange()
 

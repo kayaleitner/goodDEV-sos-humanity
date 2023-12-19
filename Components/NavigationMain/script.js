@@ -2,6 +2,7 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import $ from 'jquery'
 import { buildRefs } from '@/assets/scripts/helpers.js'
+import { open as openNewsletter } from '../NewsletterMailchimp/script'
 
 export default function (el) {
   const refs = buildRefs(el)
@@ -129,6 +130,17 @@ export default function (el) {
       }
     },
   })
+
+  refs.cta.addEventListener('click', (e) => {
+    if (e.target.getAttribute('href') === '#') {
+      // Open newsletter form
+      e.preventDefault()
+      openNewsletter()
+    }
+
+    // link behaves as default otherwise
+  })
+
 
   // // hide/show cta on scroll
   // const showCtaAnim = gsap
