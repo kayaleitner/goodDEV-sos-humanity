@@ -29,32 +29,23 @@ function getACFLayout()
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
-            // [
-            //     'label' => 'Content',
-            //     'name' => 'content',
-            //     'type' => 'group',
-            //     'layout' => 'block',
-            //     'sub_fields' => [
-            //         [
-            //             'label' => __('Title', 'flynt'),
-            //             'instructions' => 'Displayed as H2',
-            //             'name' => 'blockTitle',
-            //             'type' => 'text',
-            //         ],
-            //         [
-            //             'label' => __('Paragraph', 'flynt'),
-            //             'name' => 'textContent',
-            //             'type' => 'textarea',
-            //         ],
-            //         [
-            //             'label' => __('CTA Link', 'flynt'),
-            //             'name' => 'ctaLink',
-            //             'type' => 'link',
-            //         ],
-            //         gridCol('colTextStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
-            //         gridCol('colTextSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
-            //     ]
-            // ],
+            [
+                'label' => __('Title', 'flynt'),
+                'instructions' => 'Displayed as H2',
+                'name' => 'blockTitle',
+                'type' => 'text',
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'name' => 'topImage',
+                'label' => __('Top Right Image', 'flynt'),
+                'type' => 'image',
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
             [
                 'label' => __('Slides', 'flynt'),
                 'name' => 'slidesTab',
