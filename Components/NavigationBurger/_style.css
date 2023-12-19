@@ -1,5 +1,5 @@
 flynt-component[name='NavigationBurger'] {
-  --navigation-height: 60px;
+  --navigation-height: 70px;
   height: var(--navigation-height);
 
   @screen xs {
@@ -70,7 +70,7 @@ flynt-component[name='NavigationBurger'] {
       &--text {
         background-color: currentColor;
         display: block;
-        height: 2px;
+        height: 1px;
         inset-inline-start: 0;
         position: absolute;
         transition:

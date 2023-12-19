@@ -14,6 +14,7 @@ add_action('init', function () {
 
 add_filter('Flynt/addComponentData?name=NavigationBurger', function ($data) {
     $data['menu'] = Timber::get_menu('navigation_burger') ?? Timber::get_pages_menu();
+
     $data['logo'] = [
         'src' => get_theme_mod('custom_logo') ? get_theme_mod('custom_logo') : Asset::requireUrl('assets/images/logo.svg'),
         'alt' => get_bloginfo('name')
@@ -77,4 +78,61 @@ Options::addTranslatable('NavigationBurger', [
             ],
         ],
     ],
+    [
+        'label' => __('Social Media', 'flynt'),
+        'name' => 'socialmediaTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Social Media Title', 'flynt'),
+        'name' => 'socialMediaTitle',
+        'type' => 'text'
+    ],
+    [
+        'label' => __('Social Platform', 'flynt'),
+        'name' => 'social',
+        'type' => 'repeater',
+        'layout' => 'table',
+        'button_label' => __('Add Social Link', 'flynt'),
+        'sub_fields' => [
+            [
+                'label' => __('Platform', 'flynt'),
+                'name' => 'platform',
+                'type' => 'select',
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 1,
+                'ajax' => 0,
+                'return_format' => 'array',
+                'choices' => [
+                    'linkedin' => 'Linkedin',
+                    'facebook' => 'Facebook',
+                    'twitter' => 'Twitter',
+                    'instagram' => 'Instagram'
+                ]
+            ],
+            [
+                'label' => __('Link', 'flynt'),
+                'name' => 'url',
+                'type' => 'url',
+                'required' => 1
+            ],
+        ]
+    ],
+    [
+        'label' => __('Image', 'flynt'),
+        'name' => 'imageTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Image', 'flynt'),
+        'name' => 'image',
+        'type' => 'image',
+        'preview_size' => 'medium',
+        'instructions' => __('Image-Formats: PNG, SVG, JPG', 'flynt'),
+    ]
 ]);

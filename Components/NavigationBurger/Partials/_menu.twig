@@ -1,7 +1,7 @@
 <ul 
   x-data="{ activeSubmenu:  '' }" 
   data-ref="menu" 
-  class="menu container bg-accentColor flex flex-col gap-[22px] pt-[130px] xs:pt-[186px] sm:pt-[192px]"
+  class="menu container bg-accentColor flex flex-col gap-[22px] pt-[250px] xs:pt-[186px] sm:pt-[192px]"
   x-init="$watch('activeSubmenu', value => {
     if (value) {
       document.querySelector('body').style.overflow = 'hidden';
@@ -14,7 +14,7 @@
     {# regular menu item #}
     {% if not item.children %}
       <li data-item="{{loop.index}}" class="h-fit item text-hoverColor">
-        <a class="font-titleMedium mb-0 inline-block no-underline after-marker after-marker--closer after-marker--small after-marker--hoverColor hover:after-marker-active {{- item.current ? ' current-menu-item' }}"
+        <a class="font-titleLarge mb-0 inline-block no-underline after-marker after-marker--closer after-marker--small after-marker--hoverColor hover:after-marker-active {{- item.current ? ' current-menu-item' }}"
             href="{{ item.link|e('esc_url') }}"
             {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
@@ -58,4 +58,32 @@
       </li>
     {% endif %}
   {% endfor %}
+  {% if social %}
+      <div class="absolute bottom-xxl flex-col gap-xs basis-0 w-full social">
+        {% if socialMediaTitle %}
+          <div class="caption font-bold">{{ socialMediaTitle }}</div>
+        {% endif %}
+        <div class="flex flex-row gap-[5px]">
+          {% for socials in social %}
+            <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
+              {% include 'Components/_Atoms/icon.twig'
+              with {
+                icon: socials.platform.label|lower ~ '-white',
+                color: 'text-[#ffffff]',
+                iconClasses: 'bg-brandColor',
+              }
+              %}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    {% if image %}
+      <img
+        class="absolute bottom-xxl right-sm w-xxl h-auto"
+        src="{{ image.src|resize(32) }}"
+        srcset="{{ function('wp_get_attachment_image_srcset', image.id) }}"
+        alt="{{ image.alt|e }}"
+      />
+    {% endif %}
 </ul>
