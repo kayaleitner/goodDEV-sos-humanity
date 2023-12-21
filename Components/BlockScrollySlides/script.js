@@ -25,9 +25,9 @@ const initScrolly = (refs) => {
     refs.slides.forEach((slide, i) => {
       ScrollTrigger.create({
         trigger: slide,
-        start: `top top+=${(i + 1) * 36}px`,
+        start: `top top+=${(i + 1) * 56}px`,
         endTrigger: slide.parentNode,
-        end: `bottom-=${(i) * 36}px bottom`,
+        end: `bottom-=${(i) * 0}px bottom`,
         pin: true,
         pinSpacing: false,
         markers: false,

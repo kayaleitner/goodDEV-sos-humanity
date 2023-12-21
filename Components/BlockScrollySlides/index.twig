@@ -17,27 +17,27 @@
       >
         {% set containerClassMap = {
           1: ' xl:w-full xl:py-lg',
-          2: ' xl:w-[calc(100%_-_240px)] xl:ml-[48px] xl:h-[calc(100vh_-_72px)]',
-          3: ' xl:w-[calc(100%_-_264px)] xl:ml-[24px] xl:h-[calc(100vh_-_72px)]',
+          2: ' xl:w-[calc(100%_-_264px)] xl:ml-lg xl:h-[calc(100vh_-_72px)]',
+          3: ' xl:w-[calc(100%_-_296px)] xl:ml-[24px] xl:h-[calc(100vh_-_132px)]',
         } %}
         {% set imageClassMap = {
-          1: ' xl:col-start-5 xl:col-span-7 xl:order-2 xl:h-[calc(100vh_-_212px)] xl:w-full xl:object-contain xl:object-center',
-          2: ' xl:col-start-1 xl:col-span-6 xl:order-1 xl:self-start xl:h-[calc(100vh_-_260px)] xl:w-full xl:object-contain xl:object-left',
-          3: ' xl:col-start-8 xl:col-span-5 xl:order-2 xl:self-start',
+          1: ' xl:col-start-6 xl:col-span-6 xxl:col-start-5 xxl:col-span-7 xl:order-2 xl:h-[calc(100vh_-_212px)] pt-md pr-md xl:w-full xl:object-contain xl:object-center',
+          2: ' xl:col-start-1 xl:col-span-4 xxl:col-start-1 xxl:col-span-5 xl:order-1 xl:self-start xl:h-[calc(100vh_-_260px)] xl:w-full xl:object-contain xl:object-left-top',
+          3: ' xl:col-start-8 xl:col-span-5 xxl:col-start-7 xxl:col-span-6 xl:order-2 xl:self-start',
         } %}
         {% set textClassMap = {
-          1: ' xl:col-start-1 xl:col-span-4 xl:order-1 xl:pr-sm xl:bottom-0 xl:self-end xl:w-full xl:overflow-hidden',
-          2: ' xl:col-start-8 xl:col-span-5 xl:order-2 xl:self-start',
-          3: ' xl:col-start-1 xl:col-span-5 xl:order-1 xl:self-start',
+          1: ' xl:col-start-1 xl:col-span-5 xxl:col-start-1 xxl:col-span-4 xl:order-1 xxl:pr-sm xl:bottom-0 xl:self-end xl:w-full xl:overflow-hidden',
+          2: ' xl:col-start-7 xl:col-span-6 xxl:col-start-8 xxl:col-span-5 xl:order-2 xl:self-start',
+          3: ' xl:col-start-1 xl:col-span-6 xxl:col-start-1 xxl:col-span-5 xl:order-1 xl:self-start',
         } %}
 
         {% for slide in slides %}  
         <div
           class="container relative overflow-hidden
           grid items-center grid-cols-6 md:grid-cols-12
-          gap-x-xs gap-y-[40px] sm:gap-x-lg xl:gap-x-sm xs:gap-y-[60px]
+          gap-x-xs gap-y-[40px] sm:gap-x-lg xl:gap-x-[5px] xs:gap-y-[60px]
           {{ containerClassMap[loop.index] }}
-          {% if loop.index == 1 %} pt-xxl md:pt-lg {% endif %}"
+          {% if loop.index == 1 %} pt-xxl md:pt-xxl {% else %} xl:p-lg xxl:p-xxl {% endif %}"
           style="background-color: {{slide.bgColor}}; color: {{slide.color}};"
           data-refs="slides" data-index="{{ loop.index }}" id="scrolly-slide-{{ loop.index }}"
         >
