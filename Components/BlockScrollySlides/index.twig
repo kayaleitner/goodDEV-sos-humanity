@@ -12,7 +12,7 @@
   >
     {% if slides %}
     <div
-      class="container px-0 md:my-md mx-auto slidesContainer md:pt-lg xxl:pt-md"
+      class="container px-0 my-0 md:my-md mx-auto slidesContainer md:pt-lg xxl:pt-md"
       style="background-color: {{slides[0].bgColor}}; color: {{slides[0].color}};"
       >
         {% set containerClassMap = {
@@ -21,7 +21,7 @@
           3: ' xl:w-[calc(100%_-_296px)] xl:ml-[24px] xl:h-[calc(100vh_-_132px)]',
         } %}
         {% set imageClassMap = {
-          1: ' xl:col-start-6 xl:col-span-6 xxl:col-start-5 xxl:col-span-7 xl:order-2 xl:h-[calc(100vh_-_212px)] pt-md pr-md xl:w-full xl:object-contain xl:object-center',
+          1: ' xl:col-start-6 xl:col-span-6 xxl:col-start-5 xxl:col-span-7 xl:order-2 xl:h-[calc(100vh_-_212px)] md:pt-md md:pr-md xl:w-full xl:object-contain xl:object-center',
           2: ' xl:col-start-1 xl:col-span-4 xxl:col-start-1 xxl:col-span-5 xl:order-1 xl:self-start xl:h-[calc(100vh_-_260px)] xl:w-full xl:object-contain xl:object-left-top',
           3: ' xl:col-start-8 xl:col-span-5 xxl:col-start-7 xxl:col-span-6 xl:order-2 xl:self-start',
         } %}
