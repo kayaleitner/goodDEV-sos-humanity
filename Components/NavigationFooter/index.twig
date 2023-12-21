@@ -133,9 +133,10 @@
             <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
               {% include 'Components/_Atoms/icon.twig'
               with {
-                icon: socials.platform.label|lower ~ '-white',
+                icon: socials.platform.label|lower,
                 color: 'text-bgColor',
                 iconClasses: '',
+                png: true,
               }
               %}
             </a>
