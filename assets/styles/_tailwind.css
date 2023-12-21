@@ -306,17 +306,22 @@
     ul,
     ol {
       li {
-        @apply font-sans;
-        font-size: 1.25rem;
-        letter-spacing: 0.75px;
-        line-height: normal;
-        list-style: inherit;
-        margin-block-end: 1em;
-        padding-left: 15px;
 
-        @screen lg {
-          font-size: 1.563rem;
-          line-height: normal;
+        list-style: inherit;
+        margin-block-end: .25em;
+
+        @apply font-family-sans;
+        font-size: 1rem;
+        line-height: calc(24 / 16);
+    
+        @screen sm {
+          font-size: calc(18rem / 16);
+          line-height: calc(26 / 18);
+        }
+    
+        @screen wide {
+          font-size: calc(20rem / 16);
+          line-height: calc(28 / 20);
         }
 
         &::marker {
