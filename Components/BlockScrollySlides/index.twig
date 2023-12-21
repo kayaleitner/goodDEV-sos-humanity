@@ -87,10 +87,9 @@
               <span data-refs="indicator" class="hidden xl:block font-linkSmall font-light p-xs text-center">01--0{{loop.length}}</span>
             </div>
           {% endif %}
-          {% if content.ctaLink %}
-            <div class="hidden md:block col-span-full">
-              {{ btn.buttonAnchor(content.ctaLink, {
-                  class: 'ms-auto',
+          {% if slide.ctaLink %}
+            <div class="col-span-full xl:absolute xl:bottom-xxl xl:right-0">
+              {{ btn.buttonAnchor(slide.ctaLink, {
                   color: 'accent',
                   icon: true,
                 })
@@ -98,7 +97,7 @@
             </div>
           {% endif %}
         </div>
-        <div class="spacer h-[400px] w-full"></div>
+        <div class="spacer hidden xl:block h-[400px] w-full"></div>
         {% endfor %}
     </div>
   {% endif %}
