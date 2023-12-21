@@ -19,7 +19,7 @@ body :not(nav) {
 
 hr {
   background-color: inherit;
-  height: 20px;
+  height: 15px;
   width: 100%;
   max-width: 150px;
   margin-inline-start: 0;
