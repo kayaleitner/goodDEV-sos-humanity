@@ -1,7 +1,7 @@
 <ul 
   x-data="{ activeSubmenu:  '' }" 
   data-ref="menu" 
-  class="menu container bg-accentColor flex flex-col gap-[22px] pt-[250px] xs:pt-[186px] sm:pt-[192px]"
+  class="menu container bg-accentColor flex flex-col gap-[22px] justify-center h-screen max-h[100dvh]"
   x-init="$watch('activeSubmenu', value => {
     if (value) {
       document.querySelector('body').style.overflow = 'hidden';
@@ -37,7 +37,7 @@
             x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-650" 
             x-transition:leave-start="opacity-100" 
             x-transition:leave-end="opacity-0" 
-            class="submenu fixed top-0 right-0 h-screen max-h-[100dvh] w-full pt-[80px] z-50 translate-x-full flex justify-center" style="background: var(--brandColor);"
+            class="submenu fixed top-0 right-0 h-screen max-h[100dvh] w-full pt-[80px] z-50 translate-x-full" style="background: var(--brandColor);"
             :class="{ 'open': activeSubmenu === {{loop.index}} }">
             <div class="text-bgColor py-sm flex flex-row border-b border-bgColor">
               <span @click="activeSubmenu = false" class="px-xs w-1/4">
