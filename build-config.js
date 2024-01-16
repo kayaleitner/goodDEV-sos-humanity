@@ -1,4 +1,4 @@
-const domain = 'crossboundaryenergy.local/'
+const domain = 'backendforth.local/'
 const dest = './dist'
 
 const host = `http://${domain}`

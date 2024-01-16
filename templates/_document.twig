@@ -14,15 +14,10 @@
       <div class="pageWrapper">
         <header class="mainHeader fixed top-0 left-0 z-[9999] w-full h-0">
           {% block header %}
-            {{ renderComponent('NavigationMain') }}
-            {{ renderComponent('NavigationBurger') }}
+            {# {{ renderComponent('NavigationMain') }} #}
+            {# {{ renderComponent('NavigationBurger') }} #}
           {% endblock %}
         </header>
-          {# <div
-            id="blur-overlay"
-            class="fixed w-screen h-screen top-0 left-0 backdrop-blur-md z-20"
-            style="display: none;"
-          ></div> #}
         <main id="mainContent" class="mainContent" aria-label="{{ __('Content', 'flynt') }}">
           {% if function('post_password_required') %}
             {{ function('get_the_password_form') }}
@@ -31,14 +26,18 @@
               No <code>{{ '{% block content %}' }}</code> defined for this template.
             {% endblock %}
           {% endif %}
+
+          <div class="bg-bgColor h-full w-full min-h-[100vh]">
+            <h1 class="h1">backendforth</h1>
+          </div>
+          
           <footer class="mainFooter">
             {% block footer %}
-              {{ renderComponent('BlockNewsletter') }}
-              {{ renderComponent('NavigationFooter') }}
+              {# {{ renderComponent('BlockNewsletter') }} #}
+              {# {{ renderComponent('NavigationFooter') }} #}
             {% endblock %}
           </footer>
         </main>
-        <div class="wpFooter">{{ function('wp_footer') }}</div>
       </div>
     {% endblock %}
   </body>

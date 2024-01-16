@@ -28,8 +28,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'ajax' => 0,
                 'choices' => [
                     'none' => __('None', 'flynt'),
-                    'cbenergy' => __('CB Energy', 'flynt'),
-                    'cbgroup' => __('CB Group', 'flynt'),
                 ],
                 'default_value' => 'none',
             ]
