@@ -1,4 +1,4 @@
-const domain = 'breathecities.local/'
+const domain = 'backendforth.local/'
 const dest = './dist'
 
 const host = `https://${domain}`
