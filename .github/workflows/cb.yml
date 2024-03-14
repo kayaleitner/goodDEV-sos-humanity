@@ -1,4 +1,4 @@
-name: Deploy to CB (Multisite) Production
+name: Deploy to CB (Multisite) Stage
 
 on: workflow_dispatch
 
