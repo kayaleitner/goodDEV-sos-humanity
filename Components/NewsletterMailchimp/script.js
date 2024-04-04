@@ -106,6 +106,7 @@ export default (el) => {
   }
 
   function handleSuccess() {
+    gtag('event', 'subscribe')
     refs.form.reset()
     showSuccess(data.msgSuccess)
   }
