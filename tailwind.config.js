@@ -59,7 +59,8 @@ export const theme = {
     lg: '1080px',
     xl: '1281px',
     xxl: '1441px',
-    wide: '1600px',
+    wide: { 'raw': '(min-width: 1600px) and (min-height: 800px)' },
+    // max: { 'raw': '(min-width: 1880px) and (min-height: 1000px)' },
     max: '1880px',
   },
   container: {
