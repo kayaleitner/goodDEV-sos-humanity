@@ -15,8 +15,8 @@
       </svg>
     </button>
     <div class="flex flex-col items-center gap-sm">
-      <h3 class="font-titleLarge text-hoverColor m-0">Join Us</h3>
-      <p class="font-bodySmall max-w-[70%] text-center">If you share our commitment to clean air, join us.</p>
+      <h3 class="font-titleLarge text-hoverColor m-0">{{title}}</h3>
+      <p class="font-bodySmall max-w-[70%] text-center">{{intro}}</p>
     </div>
     <form data-ref="form" class="flex flex-col gap-[13px] md:flex-row md:flex-wrap md:gap-x-[18px] md:gap-y-sm">
       <div class="flex flex-col gap-[4px] md:basis-[calc(50%_-_18px/2)]">
@@ -40,7 +40,7 @@
         <input class="!px-[22px]" type="text" name="JOB" required>
       </div>
       <div class="text-right md:basis-full">
-        <button class="mt-[17px] lg:ms-auto button button--brand button--icon">Subscribe</button>
+        <button class="mt-[17px] lg:ms-auto button button--brand button--icon">{{button}}</button>
       </div>
     </form>
     <div class="wind-top absolute -top-md left-0 w-72 max-w-[50%] h-36"></div>

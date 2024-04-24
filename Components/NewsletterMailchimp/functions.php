@@ -87,17 +87,84 @@ function subscribe_to_mailchimp_list() {
 
     if ($status >= 200 && $status <= 299) {
         $return['success'] = true;
-    } else {
+    } else if ($status == 400) {
+        $error_data = json_decode($response['body'], true);
         $return['success'] = false;
         $return['error'] = true;
         $return['ms-response'] = $response;
 
-        if (!empty($response['body'])) {
-            $return['error_body'] = json_decode($response['body']);
-        } else {
-            $return['error_message'] = 'There was en error. Please try again later.';
+        // handle users that already are in the database
+        if (isset($error_data['title']) && str_contains($error_data['title'], 'Exists')) {
+
+            // get user object to see their status
+            $member_info_url = $baseUrl . '/lists/' . $options['listId'] . '/members/' . md5(strtolower($the_data['email_address']));
+            $member_response = wp_remote_get($member_info_url, [
+                'headers' => $headers
+            ]);
+
+            if (wp_remote_retrieve_response_code($member_response) == 200) {
+                $member_data = json_decode(wp_remote_retrieve_body($member_response), true);
+
+                // handle users that are not yet confirmed
+                if ($member_data['status'] == 'pending' || $member_data['status'] == 'unsubscribed') {
+                    
+
+                    if ($member_data['status'] == 'pending') {
+                        // Member exists and is pending, toggle status to 'unsubscribed'
+                        $unsubscribe_data = json_encode(['status' => 'unsubscribed']);
+                        $unsubscribe_response = wp_remote_request($member_info_url, [
+                            'method' => 'PATCH',
+                            'headers' => $headers,
+                            'body' => $unsubscribe_data,
+                        ]);
+                        if (wp_remote_retrieve_response_code($unsubscribe_response) == 200) {
+                            // Set status back to 'pending' to resend confirmation
+                            $resubscribe_data = json_encode([
+                                'status' => 'pending',
+                                'merge_fields' => array_merge([
+                                    $the_data['merge_fields'],
+                                    'FNAME' => $the_data['fname'], 'LNAME' => $the_data['lname']
+                                ])
+                            ]);
+                            $resubscribe_response = wp_remote_request($member_info_url, [
+                                'method' => 'PATCH',
+                                'headers' => $headers,
+                                'body' => $resubscribe_data,
+                            ]);
+                        }
+                    } else if ($member_data['status'] == 'unsubscribed') {
+                        // Set status back to 'pending' to resend confirmation
+                        $resubscribe_data = json_encode([
+                            'status' => 'pending',
+                            'merge_fields' => array_merge([
+                                $the_data['merge_fields'],
+                                'FNAME' => $the_data['fname'], 'LNAME' => $the_data['lname']
+                            ])
+                        ]);
+                           $resubscribe_response = wp_remote_request($member_info_url, [
+                            'method' => 'PATCH',
+                            'headers' => $headers,
+                            'body' => $resubscribe_data,
+                        ]);
+                        $return['error_message'] = wp_remote_retrieve_body($resubscribe_response);
+                    }
+
+                    if (wp_remote_retrieve_response_code($resubscribe_response) == 200) {
+                        $return['error_message'] = $options['msgErrorEmailSent'];
+                    } else {
+                        $return['error_message'] = $options['msgErrorReconfirm'];
+                    }
+                } else {
+                    $return['error_message'] = $options['msgErrorSubscribed'];
+                }
+            }
         }
-    }
+        } else {
+            if (!empty($response['body'])) {
+                $return['error_body'] = json_decode($response['body']);
+            }
+            $return['error_message'] = $options['msgError'];
+        }
 
     echo json_encode($return);
     wp_die();
@@ -113,8 +180,50 @@ Options::addTranslatable('NewsletterMailchimp', [
         'endpoint' => 0
     ],
     [
+        'label' => __('Title', 'flynt'),
+        'name' => 'title',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Intro', 'flynt'),
+        'name' => 'intro',
+        'type' => 'wysiwyg',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Button Label', 'flynt'),
+        'name' => 'button',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
         'label' => __('Success message', 'flynt'),
         'name' => 'msgSuccess',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('General error message', 'flynt'),
+        'name' => 'msgError',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Error message reconfirm email sent', 'flynt'),
+        'name' => 'msgErrorEmailSent',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Error message reconfirm no email sent', 'flynt'),
+        'name' => 'msgErrorReconfirm',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Error message already subscribed', 'flynt'),
+        'name' => 'msgErrorSubscribed',
         'type' => 'text',
         'required' => 0,
     ],

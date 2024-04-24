@@ -112,11 +112,12 @@ export default (el) => {
   }
 
   function handleError(r) {
+    console.log('error', r)
     let message
-    if (r.error_body) {
-      message = r.error_body.detail
-    } else if (r.error_message) {
+    if (r.error_message) {
       message = r.error_message
+    } else if (r.error_body) {
+      message = r.error_body.detail
     }
 
     showError(message)
