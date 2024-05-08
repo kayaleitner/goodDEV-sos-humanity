@@ -1,5 +1,4 @@
 import 'vite/modulepreload-polyfill'
-import './scripts/loadCustomElements'
 import './scripts/custom'
 import Alpine from 'alpinejs'
 import FlyntComponent from './scripts/FlyntComponent'
@@ -15,7 +14,7 @@ import.meta.glob([
   '../Components/**',
   '../assets/**',
   '!**/*.js',
-  '!**/*.scss',
+  '!**/*.css',
   '!**/*.php',
   '!**/*.twig',
   '!**/screenshot.png',
