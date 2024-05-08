@@ -1,11 +1,12 @@
-import Swiper, {
+import Swiper from 'swiper'
+import {
   Navigation,
   A11y,
   Autoplay,
   Pagination,
   Parallax,
   Scrollbar,
-} from 'swiper'
+} from 'swiper/modules'
 import 'swiper/css/bundle'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
