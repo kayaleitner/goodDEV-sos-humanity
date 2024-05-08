@@ -9,14 +9,13 @@ use Flynt\FieldVariables;
 use Flynt\ComponentManager;
 use Timber\Timber;
 
-add_action('init', function () {
+add_action('init', function (): void {
     register_nav_menus([
         'navigation_footer' => __('Navigation Footer', 'flynt')
     ]);
 });
 
-add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
-    $data['maxLevel'] = 0;
+add_filter('Flynt/addComponentData?name=NavigationFooter', function (array $data): array {
     $data['menu'] = Timber::get_menu('navigation_footer') ?? Timber::get_pages_menu();
 
     return $data;
@@ -38,8 +37,8 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
 
 Options::addTranslatable('NavigationFooter', [
     [
-        'label' => __('General', 'flynt'),
-        'name' => 'generalTab',
+        'label' => __('Content', 'flynt'),
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0

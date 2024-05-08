@@ -9,7 +9,8 @@ use Timber\Timber;
 const POST_TYPE = 'post';
 const FILTER_BY_TAXONOMY = 'category';
 
-add_filter('Flynt/addComponentData?name=BlockGridPostsArchive', function ($data) {
+add_filter('Flynt/addComponentData?name=BlockGridPostsArchive', function (array $data): array {
+    $data['uuid'] ??= wp_generate_uuid4();
     $postType = POST_TYPE;
     $taxonomy = FILTER_BY_TAXONOMY;
     $terms = get_terms([
@@ -23,8 +24,10 @@ add_filter('Flynt/addComponentData?name=BlockGridPostsArchive', function ($data)
             if ($queriedObject->taxonomy ?? null) {
                 $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
             }
+
             return $timberTerm;
         }, $terms);
+
         // Add item for all posts
         array_unshift($data['terms'], [
             'link' => get_post_type_archive_link($postType),
@@ -56,8 +59,8 @@ Options::addGlobal('BlockGridPostsArchive', [
 
 Options::addTranslatable('BlockGridPostsArchive', [
     [
-        'label' => __('General', 'flynt'),
-        'name' => 'general',
+        'label' => __('Content', 'flynt'),
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0,
@@ -69,7 +72,7 @@ Options::addTranslatable('BlockGridPostsArchive', [
         'type' => 'wysiwyg',
         'tabs' => 'visual',
         'media_upload' => 0,
-        'delay' => 1,
+        'delay' => 0,
     ],
     [
         'label' => __('Labels', 'flynt'),

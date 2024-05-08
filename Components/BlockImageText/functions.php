@@ -5,7 +5,7 @@ namespace Flynt\Components\BlockImageText;
 use Flynt\FieldVariables;
 use function Flynt\Components\Grid\gridCol;
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockImageText',

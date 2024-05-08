@@ -6,8 +6,8 @@ use Flynt\Utils\Options;
 
 Options::addTranslatable('FeatureListSearchResults', [
     [
-        'label' => __('General', 'flynt'),
-        'name' => 'generalTab',
+        'label' => __('Content', 'flynt'),
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0
@@ -20,7 +20,7 @@ Options::addTranslatable('FeatureListSearchResults', [
         'required' => 0,
         'default_value' => __('Search Result', 'flynt'),
         'media_upload' => 0,
-        'delay' => 1,
+        'delay' => 0,
     ],
     [
         'label' => __('Labels', 'flynt'),

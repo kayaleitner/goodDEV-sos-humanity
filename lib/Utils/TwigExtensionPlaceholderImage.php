@@ -25,17 +25,17 @@ class TwigExtensionPlaceholderImage extends AbstractExtension
     /**
      * Render placeholder image.
      *
-     * @param integer|float $width The width of the placeholder image.
-     * @param integer|float $height The height of the placeholder image.
+     * @param float $width The width of the placeholder image.
+     * @param float $height The height of the placeholder image.
      * @param string $color The color of the placeholder image.
      *
      * @return string The placeholder image.
      */
-    public function renderPlaceholderImage(int|float $width, int|float $height, string $color = null)
+    public function renderPlaceholderImage(float $width, float $height, string $color = null): string
     {
         $width = (int) round($width);
         $height = (int) round($height);
-        $colorRect = $color ? "<rect width='{$width}' height='{$height}' style='fill:$color' />" : '';
+        $colorRect = $color ? "<rect width='{$width}' height='{$height}' style='fill:{$color}' />" : '';
         $svg = "<svg width='{$width}' height='{$height}' xmlns='http://www.w3.org/2000/svg'>{$colorRect}</svg>";
         return "data:image/svg+xml;base64," . base64_encode($svg);
     }

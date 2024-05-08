@@ -5,10 +5,10 @@ namespace Flynt\Components\FeaturePasswordProtection;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-add_filter('the_password_form', function () {
+add_filter('the_password_form', function (): string {
     $context = Timber::context();
     $context['form'] = [
-      'url' => site_url('/wp-login.php?action=postpass', 'login_post')
+        'url' => site_url('/wp-login.php?action=postpass', 'login_post')
     ];
     $translatableOptions = Options::getTranslatable('FeaturePasswordProtection');
     if (!empty($translatableOptions)) {

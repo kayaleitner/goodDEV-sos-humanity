@@ -8,8 +8,7 @@
 
 namespace Flynt\CustomTaxonomies;
 
-// function registerExampleTaxonomy()
-// {
+// add_action('init', function (): void {
 //     $labels = [
 //         'name'                       => _x('Taxonomies', 'Taxonomy General Name', 'flynt'),
 //         'singular_name'              => _x('Taxonomy', 'Taxonomy Singular Name', 'flynt'),
@@ -32,6 +31,7 @@ namespace Flynt\CustomTaxonomies;
 //         'items_list'                 => __('Items list', 'flynt'),
 //         'items_list_navigation'      => __('Items list navigation', 'flynt'),
 //     ];
+//
 //     $args = [
 //         'labels'                     => $labels,
 //         'hierarchical'               => false,
@@ -41,8 +41,6 @@ namespace Flynt\CustomTaxonomies;
 //         'show_in_nav_menus'          => true,
 //         'show_tagcloud'              => true,
 //     ];
-
+//
 //     register_taxonomy('example', ['post'], $args);
-// }
-
-// add_action('init', 'Flynt\\CustomTaxonomies\\registerExampleTaxonomy');
+// });

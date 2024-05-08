@@ -6,17 +6,18 @@ use Flynt\Utils\Options;
 
 Options::addTranslatable('FeatureNotFound', [
     [
-        'label' => __('General', 'flynt'),
-        'name' => 'general',
+        'label' => __('Content', 'flynt'),
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0,
     ],
     [
-        'label' => __('Content', 'flynt'),
+        'label' => __('Text', 'flynt'),
         'instructions' => __('Content to be displayed on the 404 Not Found Page', 'flynt'),
         'name' => 'contentHtml',
         'type' => 'wysiwyg',
+        'delay' => 0,
         'media_upload' => 0,
         'default_value' => sprintf('<h1>%1$s</h1><p>%2$s</p>', __('Not Found', 'flynt'), __('The page you are looking for does not exist.', 'flynt')),
         'required' => 0,

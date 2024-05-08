@@ -92,8 +92,8 @@ export default function (el) {
 
   function setScrollPaddingTop() {
     const scrollPaddingTop = document.getElementById('wpadminbar')
-      ? navigationHeight + document.getElementById('wpadminbar').offsetHeight
-      : navigationHeight
+      ? document.getElementById('wpadminbar').offsetHeight
+      : 0
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
 

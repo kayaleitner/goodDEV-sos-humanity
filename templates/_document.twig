@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html class="html {{ body_class }}" {{ site.language_attributes }}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} {{ __('Feed', 'flynt') }}" href="{{ site.rss2|e('esc_url') }}" />
-    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/soehne-kraftig.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/soehne-halbfett.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href="/wp-content/themes/boilerplate-flynt-next/dist/assets/soehne-buch.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="{{- theme.labels.feed|replace({'%s': site.title}) -}}" href="{{ site.rss2|e('esc_url') }}">
     {{ function('wp_head') }}
   </head>
-  <body class="">
-    <a href="#mainContent" class="skipLink">{{ __('Skip to main content', 'flynt') }}</a>
+  <body>
+    {{ function('wp_body_open') }}
+    <a href="#mainContent" class="visuallyHidden-focusable">
+      {{- theme.labels.skipToMainContent|e -}}
+    </a>
     {% block layout %}
       <div class="pageWrapper">
         <header class="mainHeader fixed top-0 left-0 z-[9999] w-full h-0">
@@ -20,7 +20,7 @@
             {{ renderComponent('NewsletterMailchimp') }}
           {% endblock %}
         </header>
-        <main id="mainContent" class="mainContent" aria-label="{{ __('Content', 'flynt') }}">
+        <main id="mainContent" class="mainContent" aria-label="{{- theme.labels.mainContentAriaLabel|e -}}">
           {% if function('post_password_required') %}
             {{ function('get_the_password_form') }}
           {% else %}

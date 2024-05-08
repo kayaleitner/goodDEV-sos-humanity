@@ -4,15 +4,15 @@ namespace Flynt\Components\BlockWysiwyg;
 
 use Flynt\FieldVariables;
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockWysiwyg',
         'label' => __('Text Editor', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,

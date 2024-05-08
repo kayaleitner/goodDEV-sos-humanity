@@ -14,7 +14,7 @@
             {% else %}
               <div class="componentLink">
             {% endif %}
-              {% if componentBlock.componentScreenshot %}
+              {% if component.componentScreenshot %}
                 <div class="imageWrapper">
                   <img class="image lazyload {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }}" data-refs="images"
                     alt="{{ componentBlock.readme.title|e }}"
@@ -30,17 +30,17 @@
                 <h3 class="h5">{{ componentBlock.readme.title }}</h3>
                 {{ componentBlock.readme.description }}
               </div>
-            {% if componentBlock.ctas.primary %}
+            {% if component.ctas.primary %}
               </a>
             {% else %}
               </div>
             {% endif %}
-            {% if componentBlock.ctas.primary or componentBlock.ctas.secondary %}
+            {% if component.ctas.primary or component.ctas.secondary %}
               <footer>
                 {% if componentBlock.ctas.secondary %}
                   <a href="{{ componentBlock.ctas.secondary }}" class="component-ctaSecondary" rel="noreferrer noopener" target="_blank">
                     {{ labels.code }}
-                    <span class="visuallyHidden">{{ componentBlock.readme.title ~ ' ' ~ labels.code }}</span>
+                    <span class="visuallyHidden">{{ component.readme.title ~ ' ' ~ labels.code }}</span>
                   </a>
                 {% endif %}
                 {% if componentBlock.ctas.primary %}

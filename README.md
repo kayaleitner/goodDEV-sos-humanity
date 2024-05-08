@@ -1,49 +1,64 @@
-![Flynt – WordPress Starter Theme for Developers](.github/assets/banner.png 'Flynt – WordPress Starter Theme for Developers')
+![Flynt – WordPress Starter Theme for Developers](.github/assets/banner.svg 'Flynt – WordPress Starter Theme for Developers')
 
-# Flynt – WordPress Starter Theme for Developers
+# Fall in love with WordPress (again)
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Build Status](https://travis-ci.org/flyntwp/flynt.svg?branch=master)](https://travis-ci.org/flyntwp/flynt)
 [![Code Quality](https://img.shields.io/scrutinizer/g/flyntwp/flynt.svg)](https://scrutinizer-ci.com/g/flyntwp/flynt/?branch=master)
 
-[Flynt](https://flyntwp.com/) is a WordPress theme for component-based development using [Timber](#page-templates) and [Advanced Custom Fields](#advanced-custom-fields).
+[Flynt](https://flyntwp.com/) is a lightning-fast WordPress Starter Theme for component-based development with [ACF Pro](#advanced-custom-fields).
 
 ## Dependencies
 
 * [WordPress](https://wordpress.org/) >= 6.1
-* [Node](https://nodejs.org/en/) = 18
+* [Node](https://nodejs.org/en/) = 20
 * [Composer](https://getcomposer.org/download/) >= 2.4
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 6.0
 
 ## Install
 
 1. Clone this repo to `<your-project>/wp-content/themes`.
-2. Change the domain variable in `flynt/build-config.js` to match your domain: `const domain = 'your-project.test'`
-3. Create a `.env` file in the theme folder.
-4. Define ssl certificate variables to enable ssl support for the vite dev server:
-
-```
-VITE_DEV_SERVER_KEY=<path-to-ssl-certificate-key>/your-project.test_key.pem
-VITE_DEV_SERVER_CERT=<path-to-ssl-certificate-cert>/your-project.test_cert.pem
-```
-
-5. Navigate to the theme folder and run the following command in your terminal:
+2. Change the domain variable in `flynt/vite.config.js` to match your domain:
+`const wordpressHost = 'http://your-project.test'`
+3. Navigate to the theme folder and run the following command in your terminal:
 
 ```
 # wp-content/themes/flynt
 composer install
-npm i
+npm install
 npm run build
 ```
 
-6. Open the WordPress back-end and activate the Flynt theme.
-7. Run `npm run start` and start developing.
+4. Open the WordPress backend and activate the Flynt theme.
 
 ## Usage
 
-In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start the webpack dev server.
+To start developing run the following command:
 
-All files in `assets` and `Components` will now be watched for changes and compiled to the `dist` folder. Happy coding!
+```
+# wp-content/themes/flynt
+npm start
+```
+
+All files in `assets` and `Components` will now be watched for changes and served. Happy coding!
+
+### Build
+
+After developing it is required to generate compiled files in the `./dist` folder.
+
+To generate the compiled files, run the following command:
+
+```
+# wp-content/themes/flynt
+npm run build
+```
+
+To skip the linting process (optional) and to generate the compiled files, run the command:
+
+```
+# wp-content/themes/flynt
+npm run build:production
+```
 
 ### Base Style
 
@@ -87,12 +102,12 @@ A component is a self-contained building-block. Each component contains its own 
 
 ```
   ExampleComponent/
+  ├── _style.scss
   ├── functions.php
   ├── index.twig
   ├── README.md
   ├── screenshot.png
   ├── script.js
-  ├── style.scss
 ```
 
 The `functions.php` file for every component in the `./Components` folder is executed during the WordPress action `after_setup_theme`. [This is run from the `./functions.php` file of the theme.](https://github.com/flyntwp/flynt/tree/master/functions.php)
@@ -122,7 +137,7 @@ Initialises after full page load, when the browser enters idle state.<br>
 Usage example: Elements that don’t need to be interactive immediately.
 * `load:on="visible"`<br>
 Initialises after the element get visible in the viewport.<br>
-Usage example: Elements that go “below the fold” or if you want to load it when the user sees it.
+Usage example: Elements that go “below the fold” or should be loaded when the user sees them.
 * `load:on="load"` (default)<br>
 Initialises immediately when the page loads.<br>
 Usage example: Elements that need to be interactive as soon as possible.
@@ -163,7 +178,7 @@ function getACFLayout()
                 'label' => __('Content', 'flynt'),
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
-                'delay' => 1,
+                'delay' => 0,
                 'media_upload' => 0,
                 'required' => 1,
             ],
@@ -206,11 +221,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'page'
-                ],
-                [
-                    'param' => 'page_type',
-                    'operator' => '!=',
-                    'value' => 'posts_page'
                 ]
             ]
         ]
@@ -245,7 +255,7 @@ Returns the reading time of a string in minutes.
 {{ 'This is a string'|readingTime }}
 ```
 
-_Example from [Components/BlockGridPostsArchive/index.twig](./Components/BlockGridPostsArchive/index.twig)_
+*Example from [Components/GridPostsArchive/index.twig](./Components/GridPostsArchive/index.twig)*
 
 ---
 
@@ -259,17 +269,17 @@ Renders a component. [See Page Templates](#page-templates).
 {% endfor %}
 ```
 
-_Example from [templates/page.twig](./templates/page.twig)_
+*Example from [templates/page.twig](./templates/page.twig)*
 
 #### `placeholderImage($width, $height, $color = null)` (Type: Function)
 
 Useful in combination with lazysizes for lazy loading. Returns a "data:image/svg+xml;base64" placeholder image.
 
 ```twig
-{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}
+{{ placeholderImage(768, 512, 'rgba(125, 125, 125, 0.1)') }}
 ```
 
-_Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)_
+*Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)*
 
 ---
 
@@ -281,7 +291,7 @@ Resizes an image dynamically. [See Timber Dynamic Resize](#timber-dynamic-resize
 {{ post.thumbnail.src|resizeDynamic(1920, (1920 / 3 * 2)|round, 'center') }}
 ```
 
-_Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)_
+*Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)*
 
 ---
 
@@ -313,23 +323,26 @@ add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
 });
 ```
 
-### Comments
+### SSL certificate for dev server
 
-All comments are disabled globally for security purposes in `inc/disableComments.php`
+If you want to use https in development, please define the following variables inside a `.env` file:
 
-### Rest API
-
-The Rest API is disabled for security purposes in `inc/disableRestApi.php`
+```
+VITE_DEV_SERVER_HOST=https://your-project.test
+VITE_DEV_SERVER_KEY=<path-to-ssl-certificate-key>/your-project.test_key.pem
+VITE_DEV_SERVER_CERT=<path-to-ssl-certificate-cert>/your-project.test_cert.pem
+```
 
 ## Maintainers
 
-This project is maintained by [bleech](https://github.com/bleech).
+This project is maintained by [Bleech](https://bleech.de/en/).
 
 The main people in charge of this repo are:
 
 * [Steffen Bewersdorff](https://github.com/steffenbew)
 * [Dominik Tränklein](https://github.com/domtra)
 * [Timo Hubois](https://github.com/timohubois)
+* [Harun Bašić](https://github.com/harunbleech)
 
 ## Contributing
 
@@ -339,4 +352,4 @@ If editing the README, please conform to the [standard-readme](https://github.co
 
 ## License
 
-MIT © [bleech](https://www.bleech.de)
+MIT © [Bleech](https://bleech.de/en/)

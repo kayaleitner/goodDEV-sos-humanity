@@ -16,7 +16,7 @@ add_action('admin_init', function () {
 });
 
 // First Toolbar.
-add_filter('mce_buttons', function ($buttons) {
+add_filter('mce_buttons', function (array $buttons) {
     $config = getConfig();
     if ($config && isset($config['toolbars'])) {
         $toolbars = $config['toolbars'];
@@ -24,22 +24,35 @@ add_filter('mce_buttons', function ($buttons) {
             return $toolbars['default'][0];
         }
     }
+
     return $buttons;
 });
 
 // Second Toolbar.
 add_filter('mce_buttons_2', '__return_empty_array');
 
-add_filter('tiny_mce_before_init', function ($init) {
+add_filter('tiny_mce_before_init', function (array $mceInit): array {
     $config = getConfig();
-    if ($config) {
+
+    if ($config !== []) {
         if (isset($config['blockformats'])) {
-            $init['block_formats'] = getBlockFormats($config['blockformats']);
+            $mceInit['block_formats'] = getBlockFormats($config['blockformats']);
         }
 
         if (isset($config['styleformats'])) {
             // Send it to style_formats as true js array
-            $init['style_formats'] = json_encode($config['styleformats']);
+            $mceInit['style_formats'] = json_encode($config['styleformats']);
+        }
+
+        if (isset($config['entities'])) {
+            $entityString = getEntities($config['entities']);
+            if ($entityString !== '' && $entityString !== '0') {
+                $mceInit['entities'] = implode(',', [$mceInit['entities'] ?? '', $entityString]);
+            }
+        }
+
+        if (isset($config['entity_encoding'])) {
+            $mceInit['entity_encoding'] = getEntityEncoding($config['entity_encoding']);
         }
 
         if (isset($config['textcolor_map'])) {
@@ -47,33 +60,36 @@ add_filter('tiny_mce_before_init', function ($init) {
             $init['textcolor_map'] = json_encode($config['textcolor_map']);
         }
     }
-    return $init;
-});
 
-add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
+    return $mceInit;
+}, 10);
+
+add_filter('acf/fields/wysiwyg/toolbars', function (array $toolbars) {
     // Load Toolbars and parse them into TinyMCE.
     $config = getConfig();
     if ($config && !empty($config['toolbars'])) {
-        $toolbars = array_map(function ($toolbar) {
+        return array_map(function ($toolbar) {
             array_unshift($toolbar, []);
             return $toolbar;
         }, $config['toolbars']);
     }
+
     return $toolbars;
 });
 
-function getBlockFormats($blockFormats)
+function getBlockFormats($blockFormats): string
 {
     if (!empty($blockFormats)) {
         $blockFormatStrings = array_map(
-            function ($tag, $label) {
-                return "${label}=${tag}";
+            function ($tag, $label): string {
+                return "{$label}={$tag}";
             },
             $blockFormats,
             array_keys($blockFormats)
         );
         return implode(';', $blockFormatStrings);
     }
+
     return '';
 }
 
@@ -102,7 +118,32 @@ function getPalette()
     return $colors;
 }
 
-function getConfig()
+function getEntities($entities): string
+{
+    if (!empty($entities)) {
+        $entityString = array_map(
+            function ($name, $code): string {
+                return "{$code},{$name}";
+            },
+            $entities,
+            array_keys($entities)
+        );
+        return implode(',', $entityString);
+    }
+
+    return '';
+}
+
+function getEntityEncoding($entityEncoding): string
+{
+    if (!empty($entityEncoding)) {
+        return $entityEncoding;
+    }
+
+    return 'raw';
+}
+
+function getConfig(): array
 {
 
     return [
@@ -254,6 +295,11 @@ function getConfig()
                     'removeformat'
                 ]
             ]
-        ]
+        ],
+        'entities' => [
+            '160' => 'nbsp',
+            '173' => 'shy'
+        ],
+        'entity_encoding' => 'named',
     ];
 }

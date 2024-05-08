@@ -17,15 +17,15 @@ export default function ({ dest, host }) {
       }
     },
 
-    configResolved (config) {
+    configResolved(config) {
       resolvedConfig = config
     },
-    transform (code) {
+    transform(code) {
       if (resolvedConfig.command === 'serve') {
         return code.replace(/__flynt_vite_placeholder__/g, viteDevServerUrl)
       }
     },
-    configureServer (server) {
+    configureServer(server) {
       const appUrl = host
 
       server.httpServer?.on('listening', () => {
@@ -37,13 +37,10 @@ export default function ({ dest, host }) {
           fs.writeFileSync(hotFile, viteDevServerUrl)
 
           setTimeout(() => {
-            const isSecure =
-              host.indexOf('https://') === 0 &&
-              (server.httpServer.key || server.httpServer.cert)
-            if (!isSecure) {
-              server.config.logger.info(
-                '  ➜ Please define VITE_DEV_SERVER_KEY and VITE_DEV_SERVER_CERT inside a “.env” file in the theme folder to enable ssl support for the vite dev server.'
-              )
+            const isHttps = host.indexOf('https://') === 0
+            const hasCertificates = server.httpServer.key && server.httpServer.cert
+            if (isHttps && !hasCertificates) {
+              server.config.logger.info('  ➜ Please define VITE_DEV_SERVER_KEY and VITE_DEV_SERVER_CERT inside a “.env” file in the theme folder to enable ssl support for the vite dev server.')
             }
 
             server.config.logger.info(
@@ -64,9 +61,9 @@ export default function ({ dest, host }) {
         }
 
         process.on('exit', clean)
-        process.on('SIGINT', process.exit)
-        process.on('SIGTERM', process.exit)
-        process.on('SIGHUP', process.exit)
+        process.on('SIGINT', () => process.exit(130))
+        process.on('SIGTERM', () => process.exit(143))
+        process.on('SIGHUP', () => process.exit(129))
 
         exitHandlersBound = true
       }
@@ -86,7 +83,7 @@ export default function ({ dest, host }) {
 /**
  * Resolve the dev server URL from the server address and configuration.
  */
-function resolveDevServerUrl (address, config) {
+function resolveDevServerUrl(address, config) {
   const configHmrProtocol =
     typeof config.server.hmr === 'object' ? config.server.hmr.protocol : null
   const clientProtocol = configHmrProtocol
@@ -112,7 +109,7 @@ function resolveDevServerUrl (address, config) {
 
   return `${protocol}://${host}:${port}`
 }
-function isIpv6 (address) {
+function isIpv6(address) {
   return (
     address.family === 'IPv6' ||
     // In node >=18.0 <18.4 this was an integer value. This was changed in a minor version.
