@@ -4,22 +4,22 @@ namespace Flynt\Components\BlockImage;
 
 use Flynt\FieldVariables;
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockImage',
         'label' => __('Image', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
             [
                 'label' => __('Image', 'flynt'),
-                'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
+                'instructions' => __('Image-Format: JPG, PNG, SVG, WebP.', 'flynt'),
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',

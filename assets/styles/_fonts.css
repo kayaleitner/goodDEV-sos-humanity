@@ -1,0 +1,182 @@
+@tailwind base;
+
+@layer base {
+     /* -- Paragraphs -- */
+  .font-body {
+    /* Paragraph Big */
+    @apply font-family-sans;
+    font-size: 1rem;
+    line-height: calc(24 / 16);
+
+    @screen sm {
+      font-size: calc(18rem / 16);
+      line-height: calc(26 / 18);
+    }
+
+    @screen max {
+      font-size: calc(20rem / 16);
+      line-height: calc(28 / 20);
+    }
+  }
+
+  .font-bodySmall {
+    /* Paragraph */
+    @apply font-family-sans;
+    font-size: calc(14rem / 16);
+    line-height: calc(20 / 14);
+
+    @screen sm {
+      font-size: calc(16rem / 16);
+      line-height: calc(24 / 16);
+    }
+
+    @screen max {
+      font-size: calc(18rem / 16);
+      line-height: calc(26 / 18);
+    }
+  }
+
+  .font-bodySmaller {
+    @apply font-family-sans;
+    font-size: calc(12rem / 16);
+    line-height: calc(18 / 12);
+
+    @screen sm {
+      font-size: calc(14rem / 16);
+      line-height: calc(22 / 14);
+    }
+
+    @screen max {
+      font-size: calc(16rem / 16);
+      line-height: calc(24 / 16);
+    }
+  }
+
+  /* -- Headlines / Titles -- */
+  .font-titleLarge {
+    /* H1 */
+    font-size: calc(38rem / 16);
+    font-weight: 500;
+    line-height: calc(48 / 38);
+    @apply mb-10;
+
+    @screen sm {
+      font-size: calc(64rem / 16);
+      line-height: calc(70 / 64);
+    }
+
+    @screen max {
+      font-size: calc(84rem / 16);
+      line-height: calc(82 / 84);
+    }
+  }
+
+  .font-titleMedium {
+    /* H2 */
+    font-size: calc(24rem / 16);
+    font-weight: 500;
+    line-height: calc(32 / 24);
+    @apply mb-10;
+
+    @screen sm {
+      font-size: calc(34rem / 16);
+      line-height: calc(38 / 34);
+    }
+
+    @screen max {
+      font-size: calc(46rem / 16);
+      line-height: calc(50 / 46);
+    }
+  }
+
+  .font-titleSmall {
+    /* H3 / T1 */
+    font-size: calc(20rem / 16);
+    font-weight: 500;
+    line-height: calc(26 / 20);
+    @apply mb-6;
+    padding-block-end: 8px;
+    position: relative;
+
+    &.bc-underline::after {
+      background-color: var(--lightblue);
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 6px;
+      left: 0;
+      position: absolute;
+      right: 0;
+    }
+
+    @screen sm {
+      font-size: calc(24rem / 16);
+      line-height: calc(30 / 24);
+      padding-block-end: 16px;
+
+      &.bc-underline::after {
+        height: 10px;
+      }
+    }
+
+    @screen max {
+      font-size: calc(34rem / 16);
+      line-height: calc(42 / 34);
+    }
+  }
+
+  .font-titleSub {
+    /* H4 / T2 */
+    font-size: calc(18rem / 16);
+    font-weight: 600;
+    line-height: calc(24 / 18);
+    @apply mb-6;
+
+    @screen sm {
+      font-size: calc(22rem / 16);
+      line-height: calc(32 / 22);
+    }
+
+    @screen max {
+      font-size: calc(26rem / 16);
+      line-height: calc(32 / 26);
+    }
+  }
+
+  /* -- Links -- */
+  .font-linkSmall {
+    /* Small Links */
+    font-size: calc(12rem / 16);
+    font-weight: 500;
+    line-height: calc(20 / 12);
+
+    @screen sm {
+      font-size: calc(16rem / 16);
+      line-height: calc(22 / 16);
+    }
+  }
+
+  /* -- Buttons --*
+
+
+  /* ---- */
+
+  .font-glance {
+    font-size: 1.5rem;
+    line-height: 110%;
+
+    @screen lg {
+      font-size: 2.813rem;
+    }
+  }
+
+  .font-caption {
+    font-size: 0.938rem;
+    line-height: normal;
+
+    @screen lg {
+      font-size: 1.125rem;
+    }
+  }
+
+}

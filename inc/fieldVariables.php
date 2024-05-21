@@ -6,7 +6,7 @@
 
 namespace Flynt\FieldVariables;
 
-function getTheme($default = '')
+function getTheme($default = ''): array
 {
     return [
         'label' => __('Theme', 'flynt'),
@@ -25,19 +25,64 @@ function getTheme($default = '')
     ];
 }
 
-function getRawSvg()
+function getSize($default = 'medium'): array
 {
     return [
-        'label' => __('Raw SVG', 'flynt'),
-        'instructions' => sprintf(
-            'Insert raw svg e. g. from <a href="%1$s" target="_blank">%1$s</a>',
-            'https://heroicons.com/'
-        ),
-        'name' => 'rawSvg',
-        'type' => 'text',
-        'required' => 1,
-        'rows' => 1,
-        'new_lines' => '',
+        'label' => __('Size', 'flynt'),
+        'name' => 'size',
+        'type' => 'radio',
+        'other_choice' => 0,
+        'save_other_choice' => 0,
+        'layout' => 'horizontal',
+        'choices' => [
+            'medium' => __('Medium', 'flynt'),
+            'max' => __('Wide', 'flynt'),
+            'full' => __('Full', 'flynt'),
+        ],
+        'default_value' => $default
+    ];
+}
+
+function getAlignment($args = []): array
+{
+    $options = wp_parse_args($args, [
+        'label' => __('Align', 'flynt'),
+        'name' => 'align',
+        'default' => 'center',
+    ]);
+
+    return [
+        'label' => $options['label'],
+        'name' => $options['name'],
+        'type' => 'radio',
+        'other_choice' => 0,
+        'save_other_choice' => 0,
+        'layout' => 'horizontal',
+        'choices' => [
+            'left' => __('Left', 'flynt'),
+            'center' => __('Center', 'flynt'),
+        ],
+        'default_value' => $options['default']
+    ];
+}
+
+function getTextAlignment($args = []): array
+{
+    $options = wp_parse_args($args, [
+        'label' => __('Align text', 'flynt'),
+        'name' => 'textAlign',
+        'default' => 'left',
+    ]);
+
+    return [
+        'label' => $options['label'],
+        'name' => $options['name'],
+        'type' => 'button_group',
+        'choices' => [
+            'left' => sprintf('<i class="dashicons dashicons-editor-alignleft" title="%1$s"></i>', __('Align text left', 'flynt')),
+            'center' => sprintf('<i class="dashicons dashicons-editor-aligncenter" title="%1$s"></i>', __('Align text center', 'flynt'))
+        ],
+        'default_value' => $options['default']
     ];
 }
 
@@ -120,4 +165,70 @@ function mobileVisibility($default = 'hidden xs:block')
         ],
         'default_value' => $default,
     ];
+}
+
+function field(string $name, string $label, array $field = [])
+{
+    return array_merge([
+        'name' => $name,
+        'label' => $label,
+    ], $field);
+}
+
+function fieldType(string $name, string $label, string $type, array $field = [])
+{
+    return field($name, $label, array_merge($field, [
+        'type' => $type,
+    ]));
+}
+
+function group(string $name, string $label, array $fields = [], array $groupField = [], int $width = 100)
+{
+    return fieldType($name, $label, 'group', array_merge(
+        [
+            'layout' => 'row',
+        ],
+        $groupField,
+        [
+            'sub_fields' => $fields,
+        ],
+        [
+            'wrapper' => [
+                'width' => $width,
+            ],
+        ]
+    ));
+}
+
+function responsiveField(string $name, string $label, array $field, array $mediumField = [], array $largeField = [], array $sizes = null, array $groupField = [], array $extraMediumField = [], int $width = 100): array
+{
+    $sizes = $sizes ?? [ 'small', 'large', ];
+    $fields = [
+        'mobile' => array_merge($field, [
+            'label' => 'Mobile',
+            'name' => 'mobile',
+        ]),
+        'tablet' => array_merge($field, $mediumField, [
+            'label' => 'Tablet',
+            'name' => 'tablet',
+        ]),
+        'desktop' => array_merge($field, $extraMediumField, [
+            'label' => 'Desktop',
+            'name' => 'desktop',
+        ]),
+        'max' => array_merge($field, $largeField, [
+            'label' => 'Wide',
+            'name' => 'max',
+        ]),
+    ];
+
+    return group(
+        $name,
+        $label,
+        array_map(function(string $k) use($fields) {
+            return $fields[$k];
+        }, $sizes),
+        $groupField,
+        $width
+    );
 }

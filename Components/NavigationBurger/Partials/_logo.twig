@@ -1,6 +1,4 @@
-<a class="logo logo_light" href="{{ site.link|e('esc_url') }}">
-  <img class="logo-image w-[185px]" width="142" height="44" src="{{ logo.src }}" alt="{{ logo.alt }}">
-</a>
-<a class="logo logo_dark hidden" href="{{ site.link|e('esc_url') }}">
-  <img class="logo-image w-[185px]" width="142" height="44" src="{{ logo_dark.src }}" alt="{{ logo.alt }}">
+<a class="origin-left scale-110" href="{{ site.link|e('esc_url') }}">
+  <img data-ref="logo" class="logo w-[120px] h-[35px] sm:w-[172px] sm:h-[48.5px] {{ navOnLight ? 'hidden' }}" width="174" height="50" src="{{ logo.src }}" alt="{{ logo.alt }}">
+  <img data-ref="logoDark" class="logo--dark w-[120px] h-[35px] sm:w-[172px] sm:h-[48.5px] {{ not navOnLight ? 'hidden' }}" width="174" height="50" src="{{ logo_dark.src }}" alt="{{ logo.alt }}">
 </a>

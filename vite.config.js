@@ -1,21 +1,43 @@
 import { defineConfig, loadEnv } from 'vite'
-import { dest, entries, host, watchFiles } from './build-config'
+import autoprefixer from 'autoprefixer'
 import flynt from './vite-plugin-flynt'
 import FullReload from 'vite-plugin-full-reload'
 import fs from 'fs'
 
+const wordpressHost = 'http:/starterb.local'
+
 const fontFileNames = [
-  'OpenSans-ExtraBold.ttf',
-  'OpenSans-Regular.ttf',
-  'OpenSans-SemiBold.ttf',
-  'OpenSans-SemiBoldItalic.ttf',
+  'soehne-buch-kursiv.woff2',
+  'soehne-buch.woff2',
+  'soehne-halbfett-kursiv.woff2',
+  'soehne-halbfett.woff2',
+  'soehne-kraftig-kursiv.woff2',
+  'soehne-kraftig.woff2',
+]
+
+const dest = './dist'
+
+const entries = [
+  './assets/admin.js',
+  './assets/admin.css',
+  './assets/main.js',
+  './assets/main.css',
+  './assets/print.css',
+  './assets/editor-style.css'
+]
+
+const watchFiles = [
+  '*.php',
+  'templates/**/*',
+  'lib/**/*',
+  'inc/**/*',
+  './Components/**/*.{php,twig}'
 ]
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const isSecure =
-    host.indexOf('https://') === 0 &&
-    (env.VITE_DEV_SERVER_KEY || env.VITE_DEV_SERVER_CERT)
+  const host = env.VITE_DEV_SERVER_HOST || wordpressHost
+  const isSecure = host.indexOf('https://') === 0 && (env.VITE_DEV_SERVER_KEY || env.VITE_DEV_SERVER_CERT)
 
   return {
     base: './',
@@ -31,9 +53,9 @@ export default defineConfig(({ mode }) => {
     server: {
       https: isSecure
         ? {
-            key: fs.readFileSync(env.VITE_DEV_SERVER_KEY),
-            cert: fs.readFileSync(env.VITE_DEV_SERVER_CERT),
-          }
+          key: fs.readFileSync(env.VITE_DEV_SERVER_KEY),
+          cert: fs.readFileSync(env.VITE_DEV_SERVER_CERT),
+        }
         : false,
       host: 'localhost', // preserve conflicts with IpV6
     },

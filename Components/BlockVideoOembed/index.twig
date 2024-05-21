@@ -1,7 +1,9 @@
-<flynt-component
-  load:on="visible"
-  name="BlockVideoOembed"
-  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
+{% set componentOptions = {
+    name: 'BlockVideoOembed',
+    loadOn: 'visible',
+} %}
+
+{% set content %}
   <div class="">
     <div class="video">
       {% include 'Partials/_figure.twig' ignore missing with {image: posterImage} only %}
@@ -18,4 +20,9 @@
       </div>
     </div>
   </div>
-</flynt-component>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

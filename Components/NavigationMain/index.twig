@@ -1,38 +1,51 @@
-<flynt-component name="NavigationMain" x-data="{ menuOpen: false }">
-  <nav class="navigation block" aria-label="{{ labels.ariaLabel|e }}">
-    <div class="flex justify-between bg-brandColor p-sm lg:p-[30px] border-b-1 border-borderColor">
-      <a class="logo logo_light no-underline flex align-middle justify-start shrink-0 h-full w-fit logo" href="{{ site.link|e('esc_url') }}">
-        <img class="logo-image h-auto w-[100px] lg:w-[120px]" src="{{ logo.src }}" alt="{{ logo.alt }}">
+{% import "Components/_Atoms/Button/macro.twig" as btn %}
+
+<flynt-component
+    class="hidden md:block"
+    load:on="load"
+    load:on:media="(min-width: 980px)"
+    x-data="{ menuOpen: false }"
+    name="NavigationMain"
+>
+  <nav data-ref="nav" data-on-light="{{ post.navOnLight }}" class="{{ not post.navOnLight ? 'text-bgColor' }}" aria-label="{{ labels.ariaLabel|e }}" >
+    <div class="container mx-auto flex items-center justify-between py-sm">
+      <a class="no-underline" href="{{ site.link|e('esc_url') }}">
+        <img data-ref="logo" class="h-[48px] w-[172px] {{ post.navOnLight ? 'hidden' }}" src="{{ logo.src }}" alt="{{ logo.alt }}">
+        <img data-ref="logoDark" class="{{ not post.navOnLight ? 'hidden' }} h-[48px] w-[172px]" src="{{ logo_dark.src }}" alt="{{ logo_dark.alt }}">
       </a>
         {% if menu %}
-        <ul class="hidden lg:flex items-end">
+        <ul class="flex items-center gap-[50px] font-bodySmall h-[52px]">
           {% for item in menu.items %}
-          <li class="ml-md">
-            <a class="font-menu no-underline {{ item.classes|join(' ')}}" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
+          <li>
+            {% if 'button'  in item.classes|join(' ') %}
+              {{ btn.buttonAnchor({ url: item.url, title: item.title, target: item.target }, {
+                class: '',
+                color: 'accent',
+                style: 'outline',
+                icon: true,
+                dataRef: 'cta',
+              }) }}
+            {% else %}
+            <a class="{{ item.classes|join(' ')}} no-underline after-marker after-marker--small hover:after-marker-active {{ post.navOnLight ? 'after-marker--dark' }} !transition-none"
+                href="{{ item.url|e }}"
+                title="{{ item.title|e }}">
+                  {{ item.title|e }}
+            </a>
+            {% endif %}
           </li>
           {% endfor %}
-        </div>
-        <div class="hidden xs:flex lg:hidden items-center">
-          <div class="font-titleSmall">Menu</div>
-        </div>
-        <button data-ref="menuButton" class="xs:hidden" type="button" aria-expanded="false" aria-controls="navigation-menu"
-          @click="menuOpen = !menuOpen">
-          <span x-text="!menuOpen ? 'Menu' : 'Schließen'" class="font-titleSmall">Menu</span>
-        </button>
+          {% if ctaLink %}
+          <li>
+            {{ btn.buttonAnchor(ctaLink, {
+                class: '',
+                color: 'accent',
+                style: post.navOnLight ? '' : 'outline',
+                icon: true,
+                dataRef: 'cta'
+              }) }}
+          </li>
+          {% endif %}
       {% endif %}
     </div>
-    {% if menu %}
-      <div class="hidden xs:flex lg:hidden bg-bgColor p-sm items-center">
-        {% for item in menu.items %}
-          <a class="text-black font-menu no-underline mr-sm" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
-        {% endfor %}
-      </div>
-      <div class="hidden translate-x-full !translate-x-0"></div>
-       <div :class="{ '!translate-x-0': menuOpen }" class="translate-x-full h-full w-full py-md px-sm fixed flex flex-col xs:hidden bg-bgColor p-sm items-start transition">
-        {% for item in menu.items %}
-          <a class="text-black font-subtitle no-underline mb-sm" @click="menuOpen = false" href="{{ item.url|e }}" title="{{ item.title|e }}">{{ item.title|e }}</a>
-        {% endfor %}
-      </div>
-    {% endif %}
   </nav>
 </flynt-component>

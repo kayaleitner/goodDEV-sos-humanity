@@ -1,0 +1,126 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+{% set componentOptions = {
+    name: 'BlockCenterText',
+    loadOn: 'visible',
+} %}
+
+{% set content %}
+  <div class="container-flex items-center justify-center overflow-hidden max:overflow-visible py-[250px] xs:py-[calc(100vw_*_471/780)] md:py-[calc(100vw_*_298/1440)] gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]">
+    <div class="relative pt-md pb-xl text-center xs:p-0 md:w-[calc(100%_*_727/1440)]">
+    {% if blockTitle %}
+      <div {{ options.colorTitle ? 'style="color:' ~ options.colorTitle ~ '"' }}>
+        {{ h.h(blockTitle, { level: 2, class: 'mb-0' }) }}
+        </div>
+    {% endif %}
+    {% if textHtml %}
+      <div class="font-titleMedium mt-[1em] mb-0">
+        {{ textHtml|e('wp_kses_post') }}
+        </div>
+    {% endif %}
+    {% set classMap = {
+      1: 'top-[-21px] -translate-x-1/2 -translate-y-full w-[calc(100vw_*_173_/_390)]
+          xs:top-[-116px] xs:left-1/3 xs:-translate-x-full xs:w-[calc(100vw_*_349_/_780)]
+          md:top-[calc(100vw_*_28/1440)] md:left-[-69px] md:-translate-x-full md:w-[calc(100vw_*_365_/_1440)]
+          max:w-[calc(1880px_*_365_/_1440)]',
+      2: 'top-[-80px] right-0 -translate-y-full w-[calc(100vw_*_111_/_390)]
+          xs:top-[-254px] xs:w-[calc(100vw_*_159_/_780)]
+          md:top-[calc(-100vw_*_105/1440)] md:right-[-40px] md:translate-x-full md:w-[calc(100vw_*_159_/_1440)]
+          max:w-[calc(1880px_*_159_/_1440)]',
+      3: 'bottom-[-71px] left-[-20px] translate-y-full w-[calc(100vw_*_121_/_390)]
+          xs:bottom-[-161px] xs:left-[-60px] xs:w-[calc(100vw_*_202_/_780)]
+          md:bottom-0 md:left-[24px] md:-translate-x-full md:w-[calc(100vw_*_231_/_1440)]
+          max:w-[calc(1880px_*_231_/_1440)]',
+      4: 'bottom-[14px] left-[calc((100%-40px)_*_2/3+_4*10px)] translate-y-full w-[calc(100vw_*_162_/_390)]
+          xs:bottom-[-170px] xs:left-full xs:-translate-x-1/2 xs:w-[calc(100vw_*_255_/_780)]
+          md:bottom-[79px] md:left-auto md:right-[calc(-100vw_*88/1440)] md:translate-x-full md:w-[calc(100vw_*_307_/_1440)]
+          max:w-[calc(1880px_*_307_/_1440)] max:right-[calc(-1880px_*88/1440)]',
+    } %}
+    {%
+      set parallaxMap = {
+        1: {
+          speed: -1.5,
+          xs: -0.25,
+          mobile: -0.5,
+          tablet: -1,
+        },
+        2: {
+          speed: 0.5,
+          xs: 0.5,
+          mobile: 1,
+          tablet: 1.5,
+        },
+        3: {
+          speed: 2,
+          xs: 0.5,
+          mobile: 1,
+          tablet: 1.5,
+        },
+        4: {
+          speed: -3,
+          xs: -1,
+          mobile: -1.75,
+          tablet: -2.5,
+        },
+      }
+    %}
+    {% if mediaItems %}
+      <svg width="0" height="0">
+        <defs>
+          {# Arc upside down #}
+          <clipPath id="clip-arc-upsidedown" clipPathUnits="objectBoundingBox">
+            <path d="M 1 -0 L 1 0.6134 A 0.0333 0.0258 180 0 1 0 0.6134 L -0 0 Z">
+          </clipPath>
+          {# Keep the following for possible future use #}
+          {# Arc #}
+          {# <clipPath id="clip-arc" clipPathUnits="objectBoundingBox">
+            <path d="M 0 1 L 0 0.3866 A 0.0333 0.0258 0 0 1 1 0.3866 L 1 1 Z">
+          </clipPath> #}
+          {# Circle #}
+          {# <clipPath id="clip-circle" clipPathUnits="objectBoundingBox">
+            <circle cx="0.5" cy="0.5" r="0.5" />
+          </clipPath> #}
+        </defs>
+      </svg>
+      {% for media in mediaItems %}
+        <div class="absolute {{ classMap[loop.index] }} {{ media.type == 'video' ? 'aspect-[162/175]' }}">
+          {% if media.type == 'image' %}
+            <img class="lazyload"
+            data-parallax
+            data-rellax-speed="{{ parallaxMap[loop.index].speed }}"
+            data-rellax-xs-speed="{{ parallaxMap[loop.index].xs }}"
+            data-rellax-mobile-speed="{{ parallaxMap[loop.index].mobile }}"
+            data-rellax-tablet-speed="{{ parallaxMap[loop.index].tablet }}"
+            src="{{ media.image.src | resize(32) }}"
+            data-srcset="{{function('wp_get_attachment_image_srcset', media.image.id)}}"
+            data-sizes="auto"
+            alt="{{ media.image.alt|e }}"
+            >
+          {% elseif media.type == 'video' %}
+            <div class="h-full w-full" style="clip-path: url(#clip-arc-upsidedown)"
+            data-parallax data-rellax-speed="{{ parallaxMap[loop.index].speed }}"
+            data-rellax-xs-speed="{{ parallaxMap[loop.index].xs }}"
+            data-rellax-mobile-speed="{{ parallaxMap[loop.index].mobile }}"
+            data-rellax-tablet-speed="{{ parallaxMap[loop.index].tablet }}">
+              <video
+                class="object-cover w-full h-full"
+                {{ media.video.posterImage ? 'poster="'~ media.video.posterImage.src ~'"' }}
+                autoplay loop muted playsinline disablepictureinpicture
+                aria-label="{{ media.video.label|e }}">
+                {% for item in media.video.videoFiles %}
+                  <source src="{{ item.videoFile.url }}" type="{{ item.videoFile.mime_type}};codecs={{ item.codec }}">
+                {% endfor %}
+              </video>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% endif %}
+    </div>
+  </div>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

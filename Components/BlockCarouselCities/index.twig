@@ -1,0 +1,79 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+{% set componentOptions = {
+    name: 'BlockCarouselCities',
+    loadOn: 'visible',
+    class: 'overflow-hidden',
+} %}
+
+{% set content %}
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <div class="container-grid">
+
+  {% if content.textContent %}
+    <div class="
+        col-start-{{ content.colTextStart.mobile }}
+        xs:col-start-{{ content.colTextStart.tablet }}
+        md:col-start-{{ content.colTextStart.desktop }}
+        xl:col-start-{{ content.colTextStart.max }}
+        col-span-{{ content.colTextSpan.mobile }}
+        xs:col-span-{{ content.colTextSpan.tablet }}
+        md:col-span-{{ content.colTextSpan.desktop }}
+        xl:col-span-{{ content.colTextSpan.max }}
+        flex flex-col justify-between
+        "
+      >
+      <div class="text-contents font-body">
+        {% if content.blockTitle %}
+          {{ h.h(content.blockTitle, { level: 4, class: '' }) }}
+        {% endif %}
+        <p>
+          {{ content.textContent|e('wp_kses_post') }}
+        </p>
+      </div>
+      <div class="controls absolute md:relative bottom-md right-sm xs:right-lg md:left-0 md:bottom-0">
+        {% include 'Components/_Atoms/Slider/navArrows.twig' %}
+        <div data-ref="indicator" class="border-b-2 border-[#b2c2d5] h-[5px] hidden md:block"></div>
+      </div>
+    </div>
+  {% endif %}
+    {% if cards %}
+    <div
+      data-ref="slider"
+      class="
+        h-[400px] mt-md mb-[100px] md:my-0
+        swiper-container
+        col-start-{{ colCardsStart.mobile }}
+        xs:col-start-{{ colCardsStart.tablet }}
+        md:col-start-{{ colCardsStart.desktop }}
+        xl:col-start-{{ colCardsStart.max }}
+        col-span-{{ colCardsSpan.mobile }}
+        xs:col-span-{{ colCardsSpan.tablet }}
+        md:col-span-{{ colCardsSpan.desktop }}
+        xl:col-span-{{ colCardsSpan.max }}"
+    >
+      <div class="slider relative max-w-full swiper-wrapper">
+        {% for card in cards %}
+        <div class="swiper-slide city-slide anim-fade-in relative text-bgColor rounded-xl overflow-hidden" style="background-color: {{card.color}};">
+          <img class="absolute left-0 bottom-0 h-auto" src="{{ card.image.guid }}" alt="{{ card.image.alt }}"
+            src="{{ card.image.src|resize(32) }}" 
+            data-srcset="{{ function('wp_get_attachment_image_srcset', card.image.id) }}" 
+            data-sizes="auto" 
+            data-src="{{ card.image.src }}" 
+            alt="{{ card.image.alt|e }}"
+          />
+          <div class="absolute p-sm top-0 left-0">
+            {{ h.h(card.label, { level: 2, class: 'relative font-titleSmall' }) }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  </div>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

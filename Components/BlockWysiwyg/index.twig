@@ -1,26 +1,27 @@
-<flynt-component
-  load:on="idle"
-  name="BlockWysiwyg"
-  class="w-full"
-  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
-  <div class="outer w-full max-w-screen-max mx-auto p-sm xs:p-sm md:p-md lg:p-lg">
-    {# {% if blockTitle %}
-    <h2 class="wrapper lg:w-2/3 subtitle block-title font-bold pb-sm sm:pb-md"
-      style="color:{% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};">
-      {{ blockTitle }}
-    </h2>
-    {% endif %} #}
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+{% set componentOptions = {
+    name: 'BlockWysiwyg',
+    loadOn: 'idle',
+} %}
+
+{% set content %}
+  <div class="container-grid">
     {% if blockTitle %}
-      {% include 'Components/_Atoms/Titles/blockTitle.twig' 
-        with {
-          blockTitleClasses: 'wrapper lg:w-2/3 pb-sm sm:pb-md',
-          blockTitleColor: options.colorText ?? 'var(--textColor)',
-          blockTitle: blockTitle
-        }
-      %}
+      <div class="col-span-full md:col-start-2 md:col-span-5">
+          {{ h.h(blockTitle, { level: 1, class: '' }) }}
+        </div>
     {% endif %}
-    <div class="wysiwyg wrapper lg:w-2/3">
+    <div class="wysiwyg col-span-full md:col-start-2 md:col-span-8 ">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>
-</flynt-component>
+{% endset %}
+
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}
+
+

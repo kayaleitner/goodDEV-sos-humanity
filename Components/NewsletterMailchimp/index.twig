@@ -1,0 +1,67 @@
+{% import "Components/_Atoms/Button/macro.twig" as btn %}
+
+<flynt-component 
+  class="bg-accentColor text-bgColor absolute top-0 w-full md:w-[910px] left-full z-50"
+  load:on="visible" 
+  name="NewsletterMailchimp"
+  data-open="false"
+>
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <div data-ref="formContainer" class="container flex flex-col gap-[30px] md:gap-[50px] md:max-w-[910px] md:px-[174px] md:pt-[37px] h-screen">
+    <button class="absolute lg:relative w-[46px] h-[46px] self-end mb-[-21px] md:w-[52px] md:h-[52px] md:mb-[56px]" data-ref="close">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" fill="none" viewBox="0 0 46 46">
+        <circle cx="23" cy="23" r="22.5" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-width="2" d="m16.824 16.785 12.511 12.51m.005-12.346L16.83 29.46"/>
+      </svg>
+    </button>
+    <div class="flex flex-col items-center gap-sm">
+      <h3 class="font-titleLarge text-hoverColor m-0">{{title}}</h3>
+      <p class="font-bodySmall max-w-[70%] text-center">{{intro}}</p>
+    </div>
+    <form data-ref="form" class="flex flex-col gap-[13px] md:flex-row md:flex-wrap md:gap-x-[18px] md:gap-y-sm">
+      <div class="flex flex-col gap-[4px] md:basis-[calc(50%_-_18px/2)]">
+        <label class="ps-[22px]" for="fname">First name</label>
+        <input class="!px-[22px]" type="text" name="fname" required>
+      </div>
+      <div class="flex flex-col gap-[4px] md:basis-[calc(50%_-_18px/2)]">
+        <label class="ps-[22px]" for="lname">Last name</label>
+        <input class="!px-[22px]" type="text" name="lname" required>
+      </div>
+      <div class="flex flex-col gap-[4px] md:basis-full">
+        <label class="ps-[22px]" for="email_address">Email address</label>
+        <input class="!px-[22px]" type="email" name="email_address" required>
+      </div>
+      <div class="flex flex-col gap-[4px md:basis-[calc(50%_-_18px/2)]">
+        <label class="ps-[22px]" for="ORG">Organisation</label>
+        <input class="!px-[22px]" type="text" name="ORG" required>
+      </div>
+      <div class="flex flex-col gap-[4px] md:basis-[calc(50%_-_18px/2)]">
+        <label class="ps-[22px]" for="JOB">Job title</label>
+        <input class="!px-[22px]" type="text" name="JOB" required>
+      </div>
+      <div class="text-right md:basis-full">
+        <button class="mt-[17px] lg:ms-auto button button--brand button--icon">{{button}}</button>
+      </div>
+    </form>
+    <div class="wind-top absolute -top-md left-0 w-72 max-w-[50%] h-36"></div>
+    <div class="wind-bottom absolute bottom-0 right-0 w-72 max-w-[50%] h-72"></div>
+  </div>
+  <div data-ref="errorBar" class="absolute container rounded-lg py-[7px] px-lg bottom-md z-50 text-center font-bodySmall bg-errorColor text-bgColor w-[95%] left-1/2 -translate-x-1/2 hidden">
+    <div data-ref="errorText"></div>
+    <button data-ref="btnCloseError" class="absolute right-[18px] top-1/2 -translate-y-1/2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+        <line x1="3.51311" y1="3.16655" x2="15.5873" y2="15.2408" stroke="white" stroke-width="2"/>
+        <line x1="15.586" y1="3.37367" x2="3.51184" y2="15.4479" stroke="white" stroke-width="2"/>
+      </svg>
+    </button>
+  </div>
+  <div data-ref="successBar" class="absolute container rounded-lg py-[7px] px-lg bottom-md z-50 text-center font-bodySmall bg-successColor text-bgColor w-[95%] left-1/2 -translate-x-1/2 hidden">
+    <div data-ref="successText"></div>
+    <button data-ref="btnCloseSuccess" class="absolute right-[18px] top-1/2 -translate-y-1/2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+        <line x1="3.51311" y1="3.16655" x2="15.5873" y2="15.2408" stroke="white" stroke-width="2"/>
+        <line x1="15.586" y1="3.37367" x2="3.51184" y2="15.4479" stroke="white" stroke-width="2"/>
+      </svg>
+    </button>
+  </div>
+  </flynt-component>

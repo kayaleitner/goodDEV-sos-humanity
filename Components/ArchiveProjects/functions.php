@@ -13,7 +13,7 @@ add_filter('Flynt/addComponentData?name=ArchiveProjects', function ($data) {
 
     $data['taxonomies'] = $data['taxonomies'] ?: [];
 
-    $data['posts'] = Timber::get_posts([
+    $posts = Timber::get_posts([
         'post_status' => 'publish',
         'post_type' => $postType,
         'category' => join(',', array_map(function ($taxonomy) {
@@ -29,15 +29,15 @@ add_filter('Flynt/addComponentData?name=ArchiveProjects', function ($data) {
     return $data;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'ArchiveProjects',
         'label' => __('Archive: Projects (filters)', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0

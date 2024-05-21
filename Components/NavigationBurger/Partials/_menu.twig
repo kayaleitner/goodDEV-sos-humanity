@@ -1,8 +1,7 @@
 <ul 
   x-data="{ activeSubmenu:  '' }" 
   data-ref="menu" 
-  class="menu pt-[80px]" 
-  style="background: var(--brandColor);"
+  class="menu container bg-accentColor flex flex-col gap-[22px] justify-center h-screen max-h-[100dvh]"
   x-init="$watch('activeSubmenu', value => {
     if (value) {
       document.querySelector('body').style.overflow = 'hidden';
@@ -14,8 +13,10 @@
   {% for item in items %}
     {# regular menu item #}
     {% if not item.children %}
-      <li data-item="{{loop.index}}" class="h-fit px-sm item {{- item.current ? ' current-menu-item text-hoverColor' }}">
-        <a class="link text-body block no-underline text-bgColor py-sm border-b border-bgColor font-normal"  href="{{ item.link|e('esc_url') }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
+      <li data-item="{{loop.index}}" class="h-fit item text-hoverColor">
+        <a class="font-titleLarge mb-0 inline-block no-underline after-marker after-marker--closer after-marker--small after-marker--hoverColor hover:after-marker-active {{- item.current ? ' current-menu-item' }}"
+            href="{{ item.link|e('esc_url') }}"
+            {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>
           {{ item.title }}
         </a>
       </li>
@@ -36,7 +37,7 @@
             x-transition:leave="transition cubic-bezier(0.19, 1, 0.22, 1) duration-650" 
             x-transition:leave-start="opacity-100" 
             x-transition:leave-end="opacity-0" 
-            class="submenu fixed top-0 right-0 h-screen w-full pt-[80px] z-50 translate-x-full" style="background: var(--brandColor);"
+            class="submenu fixed top-0 right-0 h-screen max-h-[100dvh] w-full pt-[80px] z-50 translate-x-full" style="background: var(--brandColor);"
             :class="{ 'open': activeSubmenu === {{loop.index}} }">
             <div class="text-bgColor py-sm flex flex-row border-b border-bgColor">
               <span @click="activeSubmenu = false" class="px-xs w-1/4">
@@ -57,13 +58,33 @@
       </li>
     {% endif %}
   {% endfor %}
-  <div class="absolute bottom-0 left-0 w-full p-sm flex justify-center">
-    <a
-      class="button button--accent"
-      href="{{ ctaLink.url }}"
-      {% if ctaLink.target %} target="{{ ctaLink.target }}" rel="noreferrer noopener"{% endif %}
-    >
-      {{ ctaLink.title|e }}
-    </a>
-  </div>
+  {% if social %}
+      <div class="absolute bottom-sm flex-col gap-xs basis-0 w-full social">
+        {% if socialMediaTitle %}
+          <div class="caption font-bold">{{ socialMediaTitle }}</div>
+        {% endif %}
+        <div class="flex flex-row gap-[5px]">
+          {% for socials in social %}
+            <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
+              {% include 'Components/_Atoms/icon.twig'
+              with {
+                icon: socials.platform.label|lower,
+                color: 'text-[#ffffff]',
+                iconClasses: 'bg-brandColor',
+                png: true
+              }
+              %}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    {% if image %}
+      <img
+        class="absolute bottom-sm right-sm w-xl h-auto"
+        src="{{ image.src|resize(32) }}"
+        srcset="{{ function('wp_get_attachment_image_srcset', image.id) }}"
+        alt="{{ image.alt|e }}"
+      />
+    {% endif %}
 </ul>

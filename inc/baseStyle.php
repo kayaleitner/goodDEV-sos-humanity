@@ -9,33 +9,25 @@
 
 namespace Flynt\BaseStyle;
 
-const ROUTENAME = 'BaseStyle';
+const ROUTE_NAME = 'BaseStyle';
 
-add_filter('init', 'Flynt\BaseStyle\registerRewriteRule');
-add_filter('template_include', 'Flynt\BaseStyle\templateInclude');
-
-/**
+/*
  * Registers the custom rewrite rule for the 'BaseStyle' route.
  */
-function registerRewriteRule()
-{
-    $routeName = ROUTENAME;
+add_action('init', function (): void {
+    $routeName = ROUTE_NAME;
 
     add_rewrite_rule("{$routeName}/?$", "index.php?pagename={$routeName}", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
-}
+});
 
-/**
+/*
  * Sets the template file for the 'BaseStyle' route and sets the document title for the route.
- *
- * @param string $template The current template file path.
- * @return string The template file path to use for the 'BaseStyle' route.
  */
-function templateInclude($template)
-{
+add_filter('template_include', function (string $template): string {
     global $wp_query;
 
-    $routeName = ROUTENAME;
+    $routeName = ROUTE_NAME;
 
     if (isset($wp_query->query['pagename']) && $wp_query->query["pagename"] === $routeName) {
         setDocumentTitle();
@@ -44,18 +36,18 @@ function templateInclude($template)
     }
 
     return $template;
-}
+});
 
 /**
  * Sets the document title for the 'BaseStyle' route.
  */
-function setDocumentTitle()
+function setDocumentTitle(): void
 {
     // prevent yoast overwriting the title
     add_filter('pre_get_document_title', '__return_empty_string', 99);
 
     // set custom title and keep the default separator and site name
-    add_filter('document_title_parts', function ($title) {
+    add_filter('document_title_parts', function (array $title) {
         $title['title'] = __('Base Style', 'flynt');
         return $title;
     }, 99);

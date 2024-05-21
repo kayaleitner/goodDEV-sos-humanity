@@ -6,49 +6,31 @@ use Flynt\Utils\Asset;
 use Flynt\ComponentManager;
 use Flynt\Utils\ScriptAndStyleLoader;
 
-call_user_func(function () {
+call_user_func(function (): void {
     $loader = new ScriptAndStyleLoader();
     add_filter('script_loader_tag', [$loader, 'filterScriptLoaderTag'], 10, 3);
-    add_filter('style_loader_tag', [$loader, 'filterStyleLoaderTag'], 10, 3);
-
-    // Preload jQuery if it is enqueued.
-    add_filter('script_loader_tag', function ($tag, $handle, $src) use ($loader) {
-        if ('jquery-core' === $handle) {
-            $tag = $loader->addPreloadLinkBeforeTag($tag, $src, 'script');
-        }
-        return $tag;
-    }, 10, 3);
 });
 
-add_action('wp_enqueue_scripts', function () {
+add_action('wp_enqueue_scripts', function (): void {
     wp_enqueue_script('Flynt/assets/main', Asset::requireUrl('assets/main.js'), [], null);
-    wp_script_add_data('Flynt/assets/main', 'defer', true);
     wp_script_add_data('Flynt/assets/main', 'module', true);
 
     wp_localize_script('Flynt/assets/main', 'FlyntData', [
         'componentsWithScript' => ComponentManager::getInstance()->getComponentsWithScript(),
         'templateDirectoryUri' => get_template_directory_uri(),
+        // Used in component NewsletterMailchimp (nonce is security relevant!):
+        'myAjaxVar' => array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('subcribe-to-mailchimp-list-now')
+        )
     ]);
 
     wp_enqueue_style('Flynt/assets/main', Asset::requireUrl('assets/main.css'), [], null);
     wp_enqueue_style('Flynt/assets/print', Asset::requireUrl('assets/print.css'), [], null, 'print');
-
-    if (!Asset::isHotModuleReplacement()) {
-        wp_style_add_data('Flynt/assets/main', 'preload', true);
-    }
-
-    // Remove Gutenberg block related styles on front-end, when a post has no blocks.
-    if (!has_blocks()) {
-        wp_dequeue_style('core-block-supports');
-        wp_dequeue_style('wp-block-library');
-        wp_dequeue_style('wp-block-library-theme');
-        wp_dequeue_style('global-styles');
-    }
 });
 
-add_action('admin_enqueue_scripts', function () {
+add_action('admin_enqueue_scripts', function (): void {
     wp_enqueue_script('Flynt/assets/admin', Asset::requireUrl('assets/admin.js'), [], null);
-    wp_script_add_data('Flynt/assets/admin', 'defer', true);
     wp_script_add_data('Flynt/assets/admin', 'module', true);
 
     wp_localize_script('Flynt/assets/admin', 'FlyntData', [

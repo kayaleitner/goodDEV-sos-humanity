@@ -4,15 +4,15 @@ namespace Flynt\Components\BlockWysiwyg;
 
 use Flynt\FieldVariables;
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockWysiwyg',
         'label' => __('Text Editor', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
@@ -20,6 +20,7 @@ function getACFLayout()
             [
                 'label' => __('Title', 'flynt'),
                 'name' => 'blockTitle',
+                'instructions' => 'H1',
                 'type' => 'text'
             ],
             [
@@ -44,10 +45,8 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    // FieldVariables\getTheme(),
                     FieldVariables\getColorBackground(),
                     FieldVariables\getColorText(),
-                    FieldVariables\getNavStyle(),
                 ]
             ]
         ]

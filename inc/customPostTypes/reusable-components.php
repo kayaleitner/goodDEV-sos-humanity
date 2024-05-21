@@ -2,8 +2,7 @@
 
 namespace Flynt\CustomPostTypes;
 
-function registerReusableComponentsPostType()
-{
+add_action('init', function (): void {
     $labels = [
         'name'                  => _x('Fixed Blocks', 'Component Post Type', 'flynt'),
         'singular_name'         => _x('Fixed Block', 'Component Post Type', 'flynt'),
@@ -26,6 +25,7 @@ function registerReusableComponentsPostType()
         'items_list_navigation' => __('Fixed Blocks list navigation', 'flynt'),
         'filter_items_list'     => __('Filter fixed blocks list', 'flynt'),
     ];
+
     $args = [
         'labels'                => $labels,
         'supports'              => ['title', 'revisions'],
@@ -43,7 +43,6 @@ function registerReusableComponentsPostType()
         'capability_type'       => 'page',
         'rewrite'               => false
     ];
-    register_post_type('reusable-components', $args);
-}
 
-add_action('init', '\\Flynt\\CustomPostTypes\\registerReusableComponentsPostType');
+    register_post_type('reusable-components', $args);
+});

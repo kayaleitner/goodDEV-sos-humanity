@@ -1,0 +1,72 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+{% set componentOptions = {
+    name: 'BlockPartners',
+    loadOn: 'idle',
+} %}
+
+{% set content %}
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <div class="container-flex flex-col gap-md text-bgColor sm:py-[68px] xs:items-center xs:flex-row xs:justify-between md:py-[104px] xl:py-[107px]">
+    {% if blockTitle %}
+      <div class="xs:w-1/3">
+        {{ h.h(blockTitle, { level: 3, class: 'text-bgColor mb-0' }) }}
+      </div>
+    {% endif %}
+      {% if partnerlogos %}
+        <div class="w-full flex items-stretch justify-center xs:justify-end gap-sm xs:gap-md md:gap-[88px] xl:gap-[148px]">
+          {% for partner in partnerlogos %}
+          {% set styles = [] %}
+          {% set stylesXxl = [] %}
+          {% if partner.basis %}
+            {% set flexBasis = partner.basis %}
+            {% set flexBasisXxl = partner.basisXxl %}
+          {% endif %}
+          {% if partner.basis %}
+            {% set styles = styles|merge(['flex-basis:' ~ flexBasis ~ 'px']) %}
+            {% set stylesXxl = styles|merge(['flex-basis:' ~ flexBasisXxl ~ 'px']) %}
+          {% endif %}
+          <div class="flex items-center py-xs md:shrink-0 md:hidden"
+            {% if styles is not empty %}
+              style="
+                {% for style in styles %}
+                  {{ style }};
+                {% endfor %}
+              "
+            {% endif %}
+            >
+            <img class="lazyload anim-move-up"
+              src="{{ partner.image.src | resize(32) }}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', partner.image.id)}}"
+              data-sizes="auto"
+              alt="{{ partner.image.alt }}">
+          </div>
+          <div class="hidden md:flex items-center py-xs xs:shrink-0 md:py-0"
+            {% if stylesXxl is not empty %}
+              style="
+                {% for style in stylesXxl %}
+                  {{ style }};
+                {% endfor %}
+              "
+            {% endif %}
+            >
+            <img class="lazyload anim-move-up"
+              src="{{ partner.image.src | resize(32) }}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', partner.image.id)}}"
+              data-sizes="auto"
+              alt="{{ partner.image.alt }}">
+          </div>
+          {% if not loop.last %}
+          <div class="border-s-1"></div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

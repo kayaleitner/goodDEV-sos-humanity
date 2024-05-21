@@ -2,9 +2,10 @@
 
 namespace Flynt\Components\BlockAnchor;
 
+use Flynt\ComponentManager;
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=BlockAnchor', function ($data) {
+add_filter('Flynt/addComponentData?name=BlockAnchor', function (array $data): array {
     if (isset($data['anchor'])) {
         $data['anchor'] = preg_replace('/[^A-Za-z0-9]/', '-', strtolower($data['anchor']));
     }
@@ -12,7 +13,7 @@ add_filter('Flynt/addComponentData?name=BlockAnchor', function ($data) {
     return $data;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockAnchor',
@@ -38,41 +39,26 @@ function getACFLayout()
     ];
 }
 
-add_filter('acf/load_field/name=anchorLink', function ($field) {
+add_filter('acf/load_field/name=anchorLink', function (array $field) {
     if (!is_admin()) {
         return $field;
     }
 
-    global $post;
-    $post = Timber::get_Post($post);
-
-    if (!$post || !$post->link) {
-        return $field;
-    }
-
-    $context = Timber::context();
-    $context['post'] = $post;
-    $context['href'] = $post->link;
-
-    $templateDir = get_template_directory();
-    $componentPath = $templateDir . '/Components/BlockAnchor';
-
-    $content = [
-        'copiedMessage' => __('Link copied', 'flynt'),
-        'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
-        'buttonText' =>  __('Copy link', 'flynt')
-    ];
-    $content = array_merge($content, $context);
-    $message = Timber::compile(
-        $componentPath . '/Partials/_anchorLink.twig',
-        $content
-    );
-    $field['message'] = $message;
-
-    $field['label'] =  sprintf(
+    $permalink = get_permalink();
+    $field['label'] = sprintf(
         '<p class="anchorLink-url" data-href="%1$s">%2$s#</p>',
-        $post->link,
-        $post->link
+        $permalink,
+        $permalink
     );
+
+    $field['message'] = Timber::compile(
+        ComponentManager::getInstance()->getComponentFilePath('BlockAnchor', 'Partials/_anchorLink.twig'),
+        [
+            'copiedMessage' => __('Link copied', 'flynt'),
+            'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
+            'buttonText' =>  __('Copy link', 'flynt')
+        ]
+    );
+
     return $field;
 });

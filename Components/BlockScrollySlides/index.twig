@@ -1,0 +1,105 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+{% import "Components/_Atoms/Button/macro.twig" as btn %}
+
+<flynt-component
+  load:on="load"
+  name="BlockScrollySlides"
+  style="
+    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
+    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
+  "
+  class="overflow-hidden"
+  >
+    {% if slides %}
+    <div
+      class="container px-0 py-0 md:my-md mx-auto slidesContainer md:pt-lg xl:pt-md"
+      style="background-color: {{slides[0].bgColor}}; color: {{slides[0].color}};"
+      >
+        {% set containerClassMap = {
+          1: ' xl:w-full xl:py-lg',
+          2: ' xl:w-[calc(100%_-_264px)] xl:ml-lg xl:h-[calc(100vh_-_72px)]',
+          3: ' xl:w-[calc(100%_-_296px)] xl:ml-[24px] xl:h-[calc(100vh_-_132px)]',
+        } %}
+        {% set imageClassMap = {
+          1: ' xl:col-start-6 xl:col-span-6 xl:col-start-5 xl:col-span-7 xl:order-2 xl:h-[calc(100vh_-_212px)] md:pt-md md:pr-md xl:w-full xl:object-contain xl:object-center',
+          2: ' xl:col-start-1 xl:col-span-4 xl:col-start-1 xl:col-span-5 xl:order-1 xl:self-start xl:h-[calc(100vh_-_260px)] xl:w-full xl:object-contain xl:object-left-top',
+          3: ' xl:col-start-9 xl:col-span-4 xl:col-start-8 xl:col-span-5 xl:order-2 xl:self-start',
+        } %}
+        {% set textClassMap = {
+          1: ' xl:col-start-1 xl:col-span-5 xl:col-start-1 xl:col-span-4 xl:order-1 xl:pr-sm xl:bottom-0 xl:self-end xl:w-full xl:overflow-hidden',
+          2: ' xl:col-start-7 xl:col-span-6 xl:order-2 xl:self-start',
+          3: ' xl:col-start-1 xl:col-span-6 xl:col-start-1 xl:col-span-5 xl:order-1 xl:self-start',
+        } %}
+
+        {% for slide in slides %}  
+        <div
+          class="container relative overflow-hidden
+          grid items-center grid-cols-6 md:grid-cols-12
+          gap-x-xs gap-y-[40px] sm:gap-x-lg xl:gap-x-[5px] xs:gap-y-[60px]
+          {{ containerClassMap[loop.index] }}
+          {% if loop.index == 1 %} pt-xl md:pt-xl {% else %} xl:p-lg xl:p-xl {% endif %}"
+          style="background-color: {{slide.bgColor}}; color: {{slide.color}};"
+          data-refs="slides" data-index="{{ loop.index }}" id="scrolly-slide-{{ loop.index }}"
+        >
+          <img class="image lazyload anim-fade-in col-span-6 {{ imageClassMap[loop.index] }}"
+            src="{{ slide.image.src|resize(32) }}" 
+            data-srcset="{{ function('wp_get_attachment_image_srcset', slide.image.id) }}" 
+            data-sizes="auto" 
+            data-src="{{ slide.image.src }}" 
+            alt="{{ slide.image.alt|e }}"
+          />
+          <div class="wysiwyg anim-move-up col-span-6 {{ textClassMap[loop.index] }}">
+            {{ slide.text|e('wp_kses_post') }}
+          </div>
+          {% if loop.index == 1 %}
+            {% if blockTitle %}
+                <div class="absolute left-sm xl:left-lg top-md md:top-0">
+                  {{ h.h(blockTitle, { level: 3, class: 'mb-0' }) }}
+                </div>
+            {% endif %}
+            {% if topImage %}
+              <img
+                class="hidden xl:block absolute top-0 right-lg w-xl h-auto"
+                src="{{ topImage.src|resize(32) }}"
+                srcset="{{ function('wp_get_attachment_image_srcset', topImage.id) }}"
+                alt="{{ topImage.alt|e }}"
+                />
+            {% endif %}
+            <div class="hidden xl:flex absolute bottom-0 right-lg flex-col items-center">
+              <button
+                type="button"
+                data-refs="next"
+                class="slider-button justify-center flex cursor-pointer items-center -rotate-90 w-[50px]"
+                >
+                <svg width="100%" height="100%" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="35" cy="35" r="34" transform="rotate(-180 35 35)" stroke="{{ options.colorText }}" stroke-width="2" fill="{{ options.colorBackground }}"/>
+                    <g clip-path="url(#clip0_3522_3951)" stroke="{{ options.colorText }}">
+                      <path d="M35.4616 43.7533L27.1966 35.4883L35.4616 27.2233" stroke-width="1.5"/>
+                      <line x1="27.0977" y1="35.4258" x2="44.3164" y2="35.4258" stroke-width="1.5"/>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_3522_3951">
+                        <rect width="15" height="15" fill="white" transform="translate(35 46) rotate(-135)"/>
+                      </clipPath>
+                    </defs>
+                </svg>
+              </button>
+              <span data-refs="indicator" class="hidden xl:block font-linkSmall font-light p-xs text-center">01--0{{loop.length}}</span>
+            </div>
+          {% endif %}
+          {% if slide.ctaLink %}
+            <div class="col-span-full xl:absolute xl:bottom-xl xl:right-0">
+              {{ btn.buttonAnchor(slide.ctaLink, {
+                  color: 'accent',
+                  icon: true,
+                })
+              }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="spacer hidden xl:block h-[400px] w-full"></div>
+        {% endfor %}
+    </div>
+  {% endif %}
+  </div>
+</flynt-component>

@@ -10,6 +10,7 @@
     <section class="flex flex-col">
       <section class="post-header">
         {{ renderComponent('BlockInsightHeader', { post: post }) }}
+        {# {{ renderComponent('BlockPostHeader', {post: post}) }} #}
       </section>
       <section class="post-main">
         {% if post.post_excerpt %}
@@ -21,9 +22,15 @@
           {{ renderComponent(component) }}
         {% endfor %}
       </section>
+      <section class="wp-block-post-content has-global-padding is-layout-constrained">
+        {{ post.content }}
+      </section>
     </section>
+    <footer>
     <section class="post-related">
       {{ renderComponent('RelatedInsights', {'blockTitle': __('Related Insights')}) }}
-    </section>
+    </section>     
+      {{ renderComponent('BlockPostFooter', {post: post}) }}
+    </footer>
   </article>
 {% endblock %}

@@ -1,0 +1,60 @@
+@layer base {
+  .p-container {
+
+      /* Mobile */
+      @apply py-xl;
+      @apply px-md;
+      
+      /* Tablet */
+      @apply sm:py-xl;
+      @apply sm:px-md;
+
+      
+      /* Desktop */
+      @apply md:py-xl;
+      @apply md:px-md;
+  }
+}
+
+@layer utilities {
+
+    .container-grid {
+      @apply sm:container;
+      @apply p-container;
+      @apply mx-auto;
+
+      @apply grid;
+      @apply items-center;
+
+      /* Mobile */
+      @apply grid-cols-4;
+      @apply gap-sm;
+      
+      /* Tablet */
+      @apply sm:grid-cols-12;
+      @apply sm:gap-sm;
+      
+      /* Desktop */
+      @apply md:grid-cols-12; 
+      @apply md:gap-md;
+    }
+
+    .container-flex {
+      @apply sm:container;
+      @apply p-container;
+      @apply mx-auto;
+
+      @apply flex;
+      @apply flex-col;
+    }
+
+    .container-full {
+      @apply w-full;
+      @apply p-container;
+    }
+
+    .container {
+      @apply p-container;
+      @apply mx-auto;
+    }
+}

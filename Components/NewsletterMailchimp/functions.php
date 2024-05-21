@@ -1,0 +1,267 @@
+<?php
+
+namespace Flynt\Components\NewsletterMailchimp;
+
+use Flynt\Utils\Options;
+
+add_filter('Flynt/addComponentData?name=NewsletterMailchimp', function ($data) {
+    $options = Options::getTranslatable('NewsletterMailchimp');
+    $data['jsonData'] = [
+        'msgSuccess' => $options['msgSuccess']
+    ];
+    return $data;
+});
+
+// Make function available for requests
+add_action('wp_ajax_subscribe_to_mailchimp_list', function() { subscribe_to_mailchimp_list(); });
+add_action('wp_ajax_nopriv_subscribe_to_mailchimp_list', function() { subscribe_to_mailchimp_list(); });
+
+// Handle subscription request, the output of this function is returned to javascript (must be json)!
+function subscribe_to_mailchimp_list() {
+    $options = Options::getTranslatable('NewsletterMailchimp');
+
+    // Verify that necessary options are set
+    if (empty($options) || empty($options['apiKey']) || empty($options['datacenter']) || empty($options['listId'])) {
+        echo json_encode([
+            'error' => true,
+            'errorBody' => "Please check Mailchimp setting (API key, datacenter, list ID).",
+        ]);
+
+        wp_die();
+        exit;
+    }
+
+    // Check the security nonce to prevent external requests
+    $nonce = $_POST['nonce'];
+
+    // Verify nonce field passed from javascript code
+    if (!wp_verify_nonce( $nonce, 'subcribe-to-mailchimp-list-now')) {
+        die ('Busted!');
+    }
+
+    // Get Mailchimp options
+    // the last part of the API key determines which url to use (something like 'us16')
+    $baseUrl = 'https://anystring:'.$options['apiKey'].'@'.$options['datacenter'].'.api.mailchimp.com/3.0';
+
+    // Request URL contains list ID
+    $url = $baseUrl.'/lists/'.$options['listId'].'/members';
+
+    // Request headers
+    $headers = array(
+        'Accept: application/vnd.api+json',
+        'Content-Type: application/vnd.api+json',
+        'Authorization: apikey ' . $options['apiKey'],
+    );
+
+    // Set all payload entries as data, add status pending so that Mailchimp can handle confirmation
+    $the_data = array_merge(
+        $_POST['payload'],
+        ['status' => 'pending'],
+    );
+
+    // Encode message body
+    $body = json_encode($the_data);
+    // wp_die(print_r($_POST));
+
+    // Send the request to Mailchimp
+    $response = wp_remote_post(
+        $url,
+        array(
+            'method' => 'POST',
+            'timeout' => 10,
+            'redirection' => 5,
+            'httpversion' => '1.0',
+            'blocking' => true,
+            'headers' => $headers,
+            'body' => $body
+        )
+    );
+
+    // Custom return object
+    $return = [
+        'success' => false,
+        'error' => true
+    ];
+
+    $status = $response['response']['code'];
+
+    if ($status >= 200 && $status <= 299) {
+        $return['success'] = true;
+    } else if ($status == 400) {
+        $error_data = json_decode($response['body'], true);
+        $return['success'] = false;
+        $return['error'] = true;
+        $return['ms-response'] = $response;
+
+        // handle users that already are in the database
+        if (isset($error_data['title']) && str_contains($error_data['title'], 'Exists')) {
+
+            // get user object to see their status
+            $member_info_url = $baseUrl . '/lists/' . $options['listId'] . '/members/' . md5(strtolower($the_data['email_address']));
+            $member_response = wp_remote_get($member_info_url, [
+                'headers' => $headers
+            ]);
+
+            if (wp_remote_retrieve_response_code($member_response) == 200) {
+                $member_data = json_decode(wp_remote_retrieve_body($member_response), true);
+
+                // handle users that are not yet confirmed
+                if ($member_data['status'] == 'pending' || $member_data['status'] == 'unsubscribed') {
+                    
+
+                    if ($member_data['status'] == 'pending') {
+                        // Member exists and is pending, toggle status to 'unsubscribed'
+                        $unsubscribe_data = json_encode(['status' => 'unsubscribed']);
+                        $unsubscribe_response = wp_remote_request($member_info_url, [
+                            'method' => 'PATCH',
+                            'headers' => $headers,
+                            'body' => $unsubscribe_data,
+                        ]);
+                        if (wp_remote_retrieve_response_code($unsubscribe_response) == 200) {
+                            // Set status back to 'pending' to resend confirmation
+                            $resubscribe_data = json_encode([
+                                'status' => 'pending',
+                                'merge_fields' => array_merge([
+                                    $the_data['merge_fields'],
+                                    'FNAME' => $the_data['fname'], 'LNAME' => $the_data['lname']
+                                ])
+                            ]);
+                            $resubscribe_response = wp_remote_request($member_info_url, [
+                                'method' => 'PATCH',
+                                'headers' => $headers,
+                                'body' => $resubscribe_data,
+                            ]);
+                        }
+                    } else if ($member_data['status'] == 'unsubscribed') {
+                        // Set status back to 'pending' to resend confirmation
+                        $resubscribe_data = json_encode([
+                            'status' => 'pending',
+                            'merge_fields' => array_merge([
+                                $the_data['merge_fields'],
+                                'FNAME' => $the_data['fname'], 'LNAME' => $the_data['lname']
+                            ])
+                        ]);
+                           $resubscribe_response = wp_remote_request($member_info_url, [
+                            'method' => 'PATCH',
+                            'headers' => $headers,
+                            'body' => $resubscribe_data,
+                        ]);
+                        $return['error_message'] = wp_remote_retrieve_body($resubscribe_response);
+                    }
+
+                    if (wp_remote_retrieve_response_code($resubscribe_response) == 200) {
+                        $return['error_message'] = $options['msgErrorEmailSent'];
+                    } else {
+                        $return['error_message'] = $options['msgErrorReconfirm'];
+                    }
+                } else {
+                    $return['error_message'] = $options['msgErrorSubscribed'];
+                }
+            }
+        }
+        } else {
+            if (!empty($response['body'])) {
+                $return['error_body'] = json_decode($response['body']);
+            }
+            $return['error_message'] = $options['msgError'];
+        }
+
+    echo json_encode($return);
+    wp_die();
+    exit;
+}
+
+Options::addTranslatable('NewsletterMailchimp', [
+    [
+        'label' => __('General', 'flynt'),
+        'name' => 'generalTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Title', 'flynt'),
+        'name' => 'title',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Intro', 'flynt'),
+        'name' => 'intro',
+        'type' => 'wysiwyg',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Button Label', 'flynt'),
+        'name' => 'button',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Success message', 'flynt'),
+        'name' => 'msgSuccess',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('General error message', 'flynt'),
+        'name' => 'msgError',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Error message reconfirm email sent', 'flynt'),
+        'name' => 'msgErrorEmailSent',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Error message reconfirm no email sent', 'flynt'),
+        'name' => 'msgErrorReconfirm',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Error message already subscribed', 'flynt'),
+        'name' => 'msgErrorSubscribed',
+        'type' => 'text',
+        'required' => 0,
+    ],
+    [
+        'label' => __('Mailchimp Options', 'flynt'),
+        'name' => 'mailchimpOptionsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('API Key', 'flynt'),
+        'instructions' => 'Keep this secret!<br>See <a href="https://mailchimp.com/help/about-api-keys/#Generate_an_API_key" target="_blank" rel="noopener">Mailchimp docs</a> for information on how to get an API key.',
+        'name' => 'apiKey',
+        'type' => 'text',
+        'required' => 0,
+        'wrapper' => [
+            'width' => '60',
+        ],
+    ],
+    [
+        'label' => __('Data center', 'flynt'),
+        'instructions' => 'Should be something like "us18" or "us24"',
+        'name' => 'datacenter',
+        'type' => 'text',
+        'required' => 0,
+        'wrapper' => [
+            'width' => '60',
+        ],
+    ],
+    [
+        'label' => __('List ID', 'flynt'),
+        'instructions' => 'Should be a 10-character string',
+        'name' => 'listId',
+        'type' => 'text',
+        'required' => 0,
+        'wrapper' => [
+            'width' => '60',
+        ],
+    ],
+]);

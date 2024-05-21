@@ -1,8 +1,14 @@
-import Swiper, { Navigation, A11y, Autoplay, Pagination } from 'swiper'
+import Swiper from 'swiper'
+import {
+  Navigation,
+  A11y,
+  Autoplay,
+  Pagination
+} from 'swiper/modules'
 import 'swiper/css/bundle'
-import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
+import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
 
 gsap.registerPlugin(ScrollTrigger)
 

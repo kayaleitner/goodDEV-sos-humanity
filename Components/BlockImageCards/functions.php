@@ -4,15 +4,15 @@ namespace Flynt\Components\BlockGridCards;
 
 use Flynt\FieldVariables;
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockGridCards',
         'label' => __('Block: Grid Cards', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
@@ -34,7 +34,7 @@ function getACFLayout()
                 'type' => 'wysiwyg',
                 'tabs' => 'visual',
                 'media_upload' => 0,
-                'delay' => 1,
+                'delay' => 0,
             ],
             [
                 'label' => __('Items', 'flynt'),
@@ -46,26 +46,24 @@ function getACFLayout()
                 'sub_fields' => [
                     [
                         'label' => __('Image', 'flynt'),
-                        'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
+                        'instructions' => __('Image-Format: JPG, PNG, SVG, WebP. Aspect Ratio: 3:2.', 'flynt'),
                         'name' => 'image',
                         'type' => 'image',
                         'preview_size' => 'medium',
-                        'mime_types' => 'jpg,jpeg,png',
-                        'wrapper' => [
-                            'width' => 40
-                        ],
+                        'mime_types' => 'jpg,jpeg,png,svg,webp',
                     ],
                     [
-                        'label' => __('Content', 'flynt'),
+                        'label' => __('Text', 'flynt'),
                         'name' => 'contentHtml',
                         'type' => 'wysiwyg',
                         'tabs' => 'visual',
+                        'delay' => 0,
                         'media_upload' => 0,
-                        'delay' => 1,
+                        'required' => 1,
                         'wrapper' => [
                             'width' => 60
                         ],
-                    ]
+                    ],
                 ]
             ],
             [

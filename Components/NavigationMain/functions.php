@@ -9,11 +9,11 @@ use Timber\Timber;
 add_filter('Flynt/addComponentData?name=NavigationMain', function ($data) {
     $data['menu'] = Timber::get_menu('navigation_main') ?? Timber::get_pages_menu();
     $data['logo'] = [
-        'src' => get_theme_mod('custom_logo') ? get_theme_mod('custom_logo') : Asset::requireUrl('assets/images/logo.svg'),
+        'src' => get_theme_mod('custom_logo') ? wp_get_attachment_image_url(get_theme_mod('custom_logo'), 'full') : Asset::requireUrl('assets/images/logo.svg'),
         'alt' => get_bloginfo('name')
     ];
     $data['logo_dark'] = [
-        'src' => get_theme_mod('logo_dark') ? get_theme_mod('logo_dark') : Asset::requireUrl('assets/images/logo.svg'),
+        'src' => get_theme_mod('logo_dark') ? get_theme_mod('logo_dark') : Asset::requireUrl('assets/images/logo-dark.svg'),
         'alt' => get_bloginfo('name')
     ];
 
@@ -42,6 +42,22 @@ add_action('customize_register', function ($wp_customize) {
 });
 
 Options::addTranslatable('NavigationMain', [
+    [
+        'label' => __('Call to Action', 'flynt'),
+        'name' => 'ctaTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('CTA Link', 'flynt'),
+        'name' => 'ctaLink',
+        'type' => 'link',
+        'return_format' => 'array',
+        'wrapper' =>  [
+            'width' => '100',
+        ]
+    ],
     [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',

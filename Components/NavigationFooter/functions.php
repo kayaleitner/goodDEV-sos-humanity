@@ -9,14 +9,13 @@ use Flynt\FieldVariables;
 use Flynt\ComponentManager;
 use Timber\Timber;
 
-add_action('init', function () {
+add_action('init', function (): void {
     register_nav_menus([
         'navigation_footer' => __('Navigation Footer', 'flynt')
     ]);
 });
 
-add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
-    $data['maxLevel'] = 0;
+add_filter('Flynt/addComponentData?name=NavigationFooter', function (array $data): array {
     $data['menu'] = Timber::get_menu('navigation_footer') ?? Timber::get_pages_menu();
 
     return $data;
@@ -38,16 +37,47 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
 
 Options::addTranslatable('NavigationFooter', [
     [
-        'label' => __('General', 'flynt'),
-        'name' => 'generalTab',
+        'label' => __('Content', 'flynt'),
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0
     ],
     [
-        'label' => __('Catch phrase', 'flynt'),
-        'name' => 'catchPhrase',
+        'label' => __('Paragraph 1', 'flynt'),
+        'name' => 'paragraph',
+        'type' => 'textarea',
+        'rows' => 4,
+        'new_lines' => 'br',
+    ],
+    [
+        'label' => __('Title 2', 'flynt'),
+        'name' => 'title2',
         'type' => 'text'
+    ],
+    [
+        'label' => __('Paragraph 2', 'flynt'),
+        'name' => 'paragraph2',
+        'type' => 'textarea',
+        'rows' => 4,
+        'new_lines' => 'br',
+    ],
+    [
+        'label' => __('Title 3', 'flynt'),
+        'name' => 'title3',
+        'type' => 'text'
+    ],
+    [
+        'label' => __('Paragraph 3', 'flynt'),
+        'name' => 'paragraph3',
+        'type' => 'textarea',
+        'rows' => 4,
+        'new_lines' => 'br',
+    ],
+    [
+        'label' => __('Button', 'flynt'),
+        'name' => 'button',
+        'type' => 'link'
     ],
     [
         'label' => __('Logo', 'flynt'),
@@ -64,32 +94,6 @@ Options::addTranslatable('NavigationFooter', [
         'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
         'required' => 0,
         'mime_types' => 'jpg,jpeg,png,svg'
-    ],
-    [
-        'label' => __('Menus', 'flynt'),
-        'name' => 'menusTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0
-    ],
-    [
-        'label' => __('Menu', 'flynt'),
-        'name' => 'repeaterOuter',
-        'type' => 'repeater',
-        'layout' => 'block',
-        'min' => '1',
-        'button_label' => __('Add Menu', 'flynt'),
-        'sub_fields' => [
-            [  
-                'label' => __('Page Link', 'flynt'),
-                'name' => 'pageLink',
-                'type' => 'link',
-                'return_format' => 'array',
-                'wrapper' => [
-                    'width' => 100
-                ],
-            ]
-        ],
     ],
     [
         'label' => __('Social Media', 'flynt'),
@@ -122,7 +126,8 @@ Options::addTranslatable('NavigationFooter', [
                 'choices' => [
                     'linkedin' => 'Linkedin',
                     'facebook' => 'Facebook',
-                    'twitter' => 'Twitter'
+                    'twitter' => 'Twitter',
+                    'instagram' => 'Instagram'
                 ]
             ],
             [
@@ -130,6 +135,33 @@ Options::addTranslatable('NavigationFooter', [
                 'name' => 'url',
                 'type' => 'url',
                 'required' => 1
+            ],
+        ]
+    ],
+    [
+        'label' => __('Partner Logos', 'flynt'),
+        'name' => 'partnerlogos',
+        'type' => 'repeater',
+        'layout' => 'table',
+        'button_label' => __('Add Partner Logo', 'flynt'),
+        'sub_fields' => [
+            [
+                'label' => __('Logo', 'flynt'),
+                'name' => 'image',
+                'type' => 'image',
+                'preview_size' => 'medium',
+                'instructions' => __('Image-Format: SVG.', 'flynt'),
+                'required' => 0,
+                'mime_types' => 'svg'
+            ],
+            [
+                'label' => __('Flex Basis', 'flynt'),
+                'name' => 'basis',
+                'type' => 'number',
+                'instructions' => __('Determines the width relative to the other logos.', 'flynt'),
+                'append' => 'px',
+                'default_value' => 0,
+                'required' => 0,
             ],
         ]
     ],

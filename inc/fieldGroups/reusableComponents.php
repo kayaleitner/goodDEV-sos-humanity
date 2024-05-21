@@ -3,7 +3,7 @@
 use ACFComposer\ACFComposer;
 use Flynt\Components;
 
-add_action('Flynt/afterRegisterComponents', function () {
+add_action('Flynt/afterRegisterComponents', function (): void {
     ACFComposer::registerFieldGroup([
         'name' => 'reusableComponents',
         'title' => __('Fixed Blocks', 'flynt'),
@@ -19,6 +19,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockImage\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
                     Components\BlockSeparatorLine\getACFLayout(),
+                    Components\BlockSpacer\getACFLayout(),
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\BlockGridCards\getACFLayout(),

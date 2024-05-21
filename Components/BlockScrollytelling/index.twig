@@ -18,7 +18,7 @@
       </div>
       <div class="wrapper h-auto sm:h-screen w-full sm:absolute">
         {% for item in scrollytelling %}
-          <div class="panelIllustration sm:absolute h-auto sm:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl sm:m-0 grid grid-cols-1 sm:grid-cols-2 gap-sm sm:gap-lg items-center {% if item.hideOnMobile %}hidden sm:grid{% endif %}">
+          <div class="panelIllustration sm:absolute h-auto sm:h-[calc(100vh_-_100px)] w-full mt-lg mb-xl sm:m-0 grid grid-cols-1 sm:grid-cols-2 gap-sm sm:gap-lg items-center {% if item.hideOnMobile %}hidden sm:grid{% endif %}">
             {% if item.image %}
               <img class="lazyload w-full max-w-[600px] mx-auto px-md py-lg sm:p-0" 
                 src="{{ item.image.src | resize(32) }}"
@@ -36,7 +36,7 @@
       </div>
     </div>
     {% for item in scrollytelling %}
-      <div class="relative hidden sm:grid panel h-auto sm:h-[calc(100vh_-_100px)] w-full mt-lg mb-xxl sm:m-0 grid-cols-1 sm:grid-cols-2 gap-sm sm:gap-lg items-center">
+      <div class="relative hidden sm:grid panel h-auto sm:h-[calc(100vh_-_100px)] w-full mt-lg mb-xl sm:m-0 grid-cols-1 sm:grid-cols-2 gap-sm sm:gap-lg items-center">
         {% if item.contentHtml %}
           <div class="wysiwyg row max-w-[600px] mx-auto col-start-2 font-bold">
             {{ item.contentHtml|e('wp_kses_post') }}

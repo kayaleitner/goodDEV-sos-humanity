@@ -1,4 +1,7 @@
-@import 'styles/_tailwind.css';
+@import 'styles/_tw-directives.css';
+@import 'styles/_fonts.css';
+@import 'styles/_container.css';
+@import 'styles/_tailwind.css'; 
 @import 'styles/_colors.css';
 @import 'styles/_variables.css';
 @import 'styles/_reset.css';
@@ -9,3 +12,4 @@
 
 @import '../Components/BlockVideoOembed/_style.css';
 @import '../Components/NavigationBurger/_style.css';
+@import '../Components/NewsletterMailchimp/_style.css';

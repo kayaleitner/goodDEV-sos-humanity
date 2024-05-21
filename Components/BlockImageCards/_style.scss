@@ -3,12 +3,16 @@ flynt-component[name='BlockGridCards'] {
     --grid-columns: 1;
     display: grid;
     gap: var(--column-gap);
-    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
-    justify-content: center;
+    grid-template-columns: repeat(var(--grid-columns), minmax(300px, 1fr));
     list-style: none;
-    margin-block: 0;
-    margin-inline: auto;
     padding: 0;
+
+    &[data-max-columns='1'] {
+      @media (min-width: $breakpoint-tablet) {
+        margin-inline: auto;
+        max-inline-size: calc(100% / 2 - var(--flow-space));
+      }
+    }
 
     &[data-max-columns='2'],
     &[data-max-columns='3'],
@@ -36,6 +40,10 @@ flynt-component[name='BlockGridCards'] {
 
     &[data-card='true'] {
       --column-gap: var(--flow-space);
+
+      .content {
+        margin-block-start: 0;
+      }
     }
   }
 
@@ -50,8 +58,8 @@ flynt-component[name='BlockGridCards'] {
       }
     }
 
-    .content {
-      margin-block-start: 0;
+    .figure-image-svg {
+      aspect-ratio: 3 / 2;
     }
   }
 }

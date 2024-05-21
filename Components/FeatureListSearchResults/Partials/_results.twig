@@ -1,7 +1,8 @@
 {% if posts|length > 0 %}
   <ul role="list" class="results">
-    {% for post in posts  %}
-      <li class="result boxBorder boxPadding" data-theme="reset">
+    {% for post in posts %}
+      {% set aria_labelledby_id = uuid ~ '-' ~ loop.index %}
+      <li class="result boxBorder boxPadding" id="{{ aria_labelledby_id }}" data-theme="reset">
         <article>
           <h2 class="body">{{ post.title }}</h2>
           <p>{{ post.excerpt.read_more(false) }}</p>

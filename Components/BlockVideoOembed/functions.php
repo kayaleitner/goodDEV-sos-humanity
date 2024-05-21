@@ -7,7 +7,7 @@ use Flynt\Utils\Options;
 use Flynt\Utils\Oembed;
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
+add_filter('Flynt/addComponentData?name=BlockVideoOembed', function (array $data): array {
     $data['oembed'] = Oembed::setSrcAsDataAttribute(
         $data['oembed'],
         ['autoplay' => 'true']
@@ -47,7 +47,7 @@ function getACFLayout()
             ],
             [
                 'label' => __('Poster Image', 'flynt'),
-                'instructions' => __('Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG, PNG. Aspect Ratio 16/9.', 'flynt'),
+                'instructions' => __('Image-Format: JPG, PNG, SVG, WebP. Aspect Ratio: 16:9. Recommended Size: 1920px × 1080px.', 'flynt'),
                 'name' => 'posterImage',
                 'type' => 'image',
                 'preview_size' => 'medium',

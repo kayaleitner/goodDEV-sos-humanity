@@ -1,9 +1,7 @@
 import 'vite/modulepreload-polyfill'
-import './scripts/loadCustomElements'
 import './scripts/custom'
 import Alpine from 'alpinejs'
 import FlyntComponent from './scripts/FlyntComponent'
-import scrollTrigger from './scripts/scrollTrigger'
 import lazySizes from 'lazysizes'
 
 lazySizes.cfg.preloadAfterLoad = true
@@ -16,7 +14,7 @@ import.meta.glob([
   '../Components/**',
   '../assets/**',
   '!**/*.js',
-  '!**/*.scss',
+  '!**/*.css',
   '!**/*.php',
   '!**/*.twig',
   '!**/screenshot.png',
@@ -26,5 +24,4 @@ import.meta.glob([
 window.customElements.define('flynt-component', FlyntComponent)
 
 window.Alpine = Alpine
-Alpine.data('scrollTrigger', scrollTrigger)
 Alpine.start()

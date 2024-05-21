@@ -1,3 +1,7 @@
-<div class="{{ color }} {{ height }} {{ width }} {{ iconClasses }} svg-w-full svg-h-full">
-    {% include 'assets/icons/' ~ icon|lower|replace({'/': "", ' ': ""}) ~ '.svg' %}
+<div class="{{ color }} {{ height }} {{ width }} {{ iconClasses }} w-[45px] h-[45px] bg-accentColor rounded-full p-[12px] hover:bg-hoverColor focus:bg-hoverColor active:bg-activeColor transition-all ease-linear duration-200">
+    {% if png %}
+        <img src="{{ '/wp-content/themes/boilerplate-flynt-next/assets/icons/' ~ icon|lower|replace({'/': "", ' ': ""}) ~ '.png' }}" alt="{{ icon }}" class="w-full h-full">
+    {% else %}
+        {% include 'assets/icons/' ~ icon|lower|replace({'/': "", ' ': ""}) ~ '.svg' %}
+    {% endif %}
 </div>
