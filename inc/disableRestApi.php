@@ -1,37 +1,23 @@
 <?php
 
-// @TODO: needs refactoring
-
 add_filter('rest_authentication_errors', 'disable_rest_api');
 
 function disable_rest_api($access)
 {
-    // Allow access to specific Contact Form 7 endpoints
-    if (strpos($_SERVER['REQUEST_URI'], '/wp-json/contact-form-7/v1/') !== false) {
-        return $access;
-    }
+    // List of allowed endpoints
+    $allowed_endpoints = [
+        '/wp-json/contact-form-7/v1/',
+        '/wp-json/filebird/',
+        '/wp-json/redirection/v1/',
+        '/wp-json/yoast/v1/',
+        '/wp-json/wp/v2/media',
+    ];
 
-    // Allow access to specific FileBird endpoints
-    if (strpos($_SERVER['REQUEST_URI'], '/wp-json/filebird/') !== false) {
-        return $access;
-    }
-
-    // Allow access to Redirection plugin endpoints
-    if (strpos($_SERVER['REQUEST_URI'], '/wp-json/redirection/v1/') !== false) {
-        return $access;
-    }
-
-    // Allow access to Yoast SEO REST API endpoints (adjust if Yoast uses different endpoints in the future)
-    if (strpos($_SERVER['REQUEST_URI'], '/wp-json/yoast/v1/') !== false) {
-        return $access;
-    }
-    if (strpos($_SERVER['REQUEST_URI'], '/wp-json/wp/v2/media') !== false) {
-        return $access;
-    }
-
-    // Allow access to Filebird endpoints
-    if (strpos($_SERVER['REQUEST_URI'], '/wp-json/filebird/v1/') !== false) {
-        return $access;
+    // Check if the current request URI matches any allowed endpoints
+    foreach ($allowed_endpoints as $endpoint) {
+        if (strpos($_SERVER['REQUEST_URI'], $endpoint) !== false) {
+            return $access;
+        }
     }
 
     // Deny access to all other REST API routes
