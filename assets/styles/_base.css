@@ -120,9 +120,6 @@ table {
   @apply wide:py-[17px];
   @apply relative;
   @apply rounded-full;
-  @apply text-buttonMobile;
-  @apply sm:text-button;
-  @apply wide:text-buttonWide;
   @apply text-center;
   @apply transition-all;
   @apply ease-linear;
@@ -322,8 +319,7 @@ table {
       
   
       &Big {
-        @apply text-bodyMobile;
-        @apply lg:text-body;
+        @apply lg:font-body;
       }
     }
   }
