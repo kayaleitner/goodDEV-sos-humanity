@@ -1,4 +1,4 @@
-name: Deploy to Starter Staging
+name: Deploy to Starter
 
 on: workflow_dispatch
 
@@ -30,7 +30,7 @@ jobs:
     - name: Setup PHP with logs
       uses: shivammathur/setup-php@verbose
       with:
-        php-version: '8.0'
+        php-version: '8.1'
         tools: composer:v2, phpcs
 
     - name: Install composer
@@ -46,7 +46,7 @@ jobs:
     - name: Install composer optimized
       run: php8.0 $(which composer) install --no-dev --no-progress --optimize-autoloader
 
-    - name: Move theme files to Staging using SSH/rsync
+    - name: Move theme files to Production using SSH/rsync
       # if: github.ref == 'refs/heads/master'
       uses: burnett01/rsync-deployments@6.0.0
       with:
