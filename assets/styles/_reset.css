@@ -131,7 +131,7 @@ sup {
 }
 
 /* Fix Safari bug on column width in listings */
-[data-type='listing'] {
+[data-type='listing'], [name="BlockListingAuto"], [name="BlockListingManual"] {
   .post {
     .content {
       width: stretch;
