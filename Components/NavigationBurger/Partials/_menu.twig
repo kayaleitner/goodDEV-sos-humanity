@@ -81,7 +81,7 @@
     {% endif %}
     {% if image %}
       <img
-        class="absolute bottom-sm right-sm w-xxl h-auto"
+        class="absolute bottom-sm right-sm w-xl h-auto"
         src="{{ image.src|resize(32) }}"
         srcset="{{ function('wp_get_attachment_image_srcset', image.id) }}"
         alt="{{ image.alt|e }}"

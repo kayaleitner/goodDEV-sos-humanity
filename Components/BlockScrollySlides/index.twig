@@ -12,7 +12,7 @@
   >
     {% if slides %}
     <div
-      class="container px-0 py-0 md:my-md mx-auto slidesContainer md:pt-lg xxl:pt-md"
+      class="container px-0 py-0 md:my-md mx-auto slidesContainer md:pt-lg xl:pt-md"
       style="background-color: {{slides[0].bgColor}}; color: {{slides[0].color}};"
       >
         {% set containerClassMap = {
@@ -21,14 +21,14 @@
           3: ' xl:w-[calc(100%_-_296px)] xl:ml-[24px] xl:h-[calc(100vh_-_132px)]',
         } %}
         {% set imageClassMap = {
-          1: ' xl:col-start-6 xl:col-span-6 xxl:col-start-5 xxl:col-span-7 xl:order-2 xl:h-[calc(100vh_-_212px)] md:pt-md md:pr-md xl:w-full xl:object-contain xl:object-center',
-          2: ' xl:col-start-1 xl:col-span-4 xxl:col-start-1 xxl:col-span-5 xl:order-1 xl:self-start xl:h-[calc(100vh_-_260px)] xl:w-full xl:object-contain xl:object-left-top',
-          3: ' xl:col-start-9 xl:col-span-4 xxl:col-start-8 xxl:col-span-5 xl:order-2 xl:self-start',
+          1: ' xl:col-start-6 xl:col-span-6 xl:col-start-5 xl:col-span-7 xl:order-2 xl:h-[calc(100vh_-_212px)] md:pt-md md:pr-md xl:w-full xl:object-contain xl:object-center',
+          2: ' xl:col-start-1 xl:col-span-4 xl:col-start-1 xl:col-span-5 xl:order-1 xl:self-start xl:h-[calc(100vh_-_260px)] xl:w-full xl:object-contain xl:object-left-top',
+          3: ' xl:col-start-9 xl:col-span-4 xl:col-start-8 xl:col-span-5 xl:order-2 xl:self-start',
         } %}
         {% set textClassMap = {
-          1: ' xl:col-start-1 xl:col-span-5 xxl:col-start-1 xxl:col-span-4 xl:order-1 xxl:pr-sm xl:bottom-0 xl:self-end xl:w-full xl:overflow-hidden',
+          1: ' xl:col-start-1 xl:col-span-5 xl:col-start-1 xl:col-span-4 xl:order-1 xl:pr-sm xl:bottom-0 xl:self-end xl:w-full xl:overflow-hidden',
           2: ' xl:col-start-7 xl:col-span-6 xl:order-2 xl:self-start',
-          3: ' xl:col-start-1 xl:col-span-6 xxl:col-start-1 xxl:col-span-5 xl:order-1 xl:self-start',
+          3: ' xl:col-start-1 xl:col-span-6 xl:col-start-1 xl:col-span-5 xl:order-1 xl:self-start',
         } %}
 
         {% for slide in slides %}  
@@ -37,7 +37,7 @@
           grid items-center grid-cols-6 md:grid-cols-12
           gap-x-xs gap-y-[40px] sm:gap-x-lg xl:gap-x-[5px] xs:gap-y-[60px]
           {{ containerClassMap[loop.index] }}
-          {% if loop.index == 1 %} pt-xxl md:pt-xxl {% else %} xl:p-lg xxl:p-xxl {% endif %}"
+          {% if loop.index == 1 %} pt-xl md:pt-xl {% else %} xl:p-lg xl:p-xl {% endif %}"
           style="background-color: {{slide.bgColor}}; color: {{slide.color}};"
           data-refs="slides" data-index="{{ loop.index }}" id="scrolly-slide-{{ loop.index }}"
         >
@@ -59,7 +59,7 @@
             {% endif %}
             {% if topImage %}
               <img
-                class="hidden xl:block absolute top-0 right-lg w-xxl h-auto"
+                class="hidden xl:block absolute top-0 right-lg w-xl h-auto"
                 src="{{ topImage.src|resize(32) }}"
                 srcset="{{ function('wp_get_attachment_image_srcset', topImage.id) }}"
                 alt="{{ topImage.alt|e }}"
@@ -88,7 +88,7 @@
             </div>
           {% endif %}
           {% if slide.ctaLink %}
-            <div class="col-span-full xl:absolute xl:bottom-xxl xl:right-0">
+            <div class="col-span-full xl:absolute xl:bottom-xl xl:right-0">
               {{ btn.buttonAnchor(slide.ctaLink, {
                   color: 'accent',
                   icon: true,

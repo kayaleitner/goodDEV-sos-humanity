@@ -102,8 +102,8 @@ function getACFLayout()
                     ]
                 ]
             ],
-            gridCol('colCardsStart', 'Column-Start', ['default_value' => 4], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
-            gridCol('colCardsSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
+            gridCol('colCardsStart', 'Column-Start', ['default_value' => 4], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
+            gridCol('colCardsSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
             [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',

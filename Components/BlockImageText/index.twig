@@ -23,11 +23,11 @@
         col-start-{{ media.colMediaStart.mobile }}
         xs:col-start-{{ media.colMediaStart.tablet }}
         md:col-start-{{ media.colMediaStart.desktop }}
-        xxl:col-start-{{ media.colMediaStart.wide }}
+        xl:col-start-{{ media.colMediaStart.max }}
         col-span-{{ media.colMediaSpan.mobile }}
         xs:col-span-{{ media.colMediaSpan.tablet }}
         md:col-span-{{ media.colMediaSpan.desktop }}
-        xxl:col-span-{{ media.colMediaSpan.wide }}"
+        xl:col-span-{{ media.colMediaSpan.max }}"
     >
       {% if media.type == 'image' %}
         <img class="image lazyload anim-fade-in"
@@ -59,11 +59,11 @@
         col-start-{{ content.colTextStart.mobile }}
         xs:col-start-{{ content.colTextStart.tablet }}
         md:col-start-{{ content.colTextStart.desktop }}
-        xxl:col-start-{{ content.colTextStart.wide }}
+        xl:col-start-{{ content.colTextStart.max }}
         col-span-{{ content.colTextSpan.mobile }}
         xd:col-span-{{ content.colTextSpan.tablet }}
         md:col-span-{{ content.colTextSpan.desktop }}
-        xxl:col-span-{{ content.colTextSpan.wide }}
+        xl:col-span-{{ content.colTextSpan.max }}
         {{ mediaPositionMobile == 'bottom' ? 'pb-[20px]' : 'pt-[20px]' }} xs:p-0
       "
       >

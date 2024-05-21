@@ -36,7 +36,7 @@ function getSize($default = 'medium'): array
         'layout' => 'horizontal',
         'choices' => [
             'medium' => __('Medium', 'flynt'),
-            'wide' => __('Wide', 'flynt'),
+            'max' => __('Wide', 'flynt'),
             'full' => __('Full', 'flynt'),
         ],
         'default_value' => $default
@@ -216,9 +216,9 @@ function responsiveField(string $name, string $label, array $field, array $mediu
             'label' => 'Desktop',
             'name' => 'desktop',
         ]),
-        'wide' => array_merge($field, $largeField, [
+        'max' => array_merge($field, $largeField, [
             'label' => 'Wide',
-            'name' => 'wide',
+            'name' => 'max',
         ]),
     ];
 

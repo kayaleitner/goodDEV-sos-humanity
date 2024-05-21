@@ -8,13 +8,13 @@
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
   style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};"
 >
-<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-x-xs xs:gap-x-sm md:min-h-[850px] wide:max-h-screen wide:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
+<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-x-xs xs:gap-x-sm md:min-h-[850px] max:max-h-screen max:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
     <div class="
       col-span-{{options.textWidth.mobile}}
       xs:col-span-{{options.textWidth.tablet}}
       md:col-span-{{options.textWidth.desktop}}
-      xxl:col-span-{{options.textWidth.wide}}
-      {{ options.mediaLayout > 1 ? 'xxl:self-end xxl:pb-xxl' }}"
+      xl:col-span-{{options.textWidth.max}}
+      {{ options.mediaLayout > 1 ? 'xl:self-end xl:pb-xl' }}"
       >
       <div class="text-container">
         <div class="wysiwyg text-bgColor">
@@ -35,15 +35,15 @@
       </div>
     </div>
     {% if mediaItems %}
-    <div class="mediaItems relative wide:translate-y-[20px]
+    <div class="mediaItems relative max:translate-y-[20px]
         col-start-{{ options.colMediaStart.mobile }}
         xs:col-start-{{ options.colMediaStart.tablet }}
         md:col-start-{{ options.colMediaStart.desktop }}
-        xxl:col-start-{{ options.colMediaStart.wide }}
+        xl:col-start-{{ options.colMediaStart.max }}
         col-span-{{ options.colMediaSpan.mobile }}
         xs:col-span-{{ options.colMediaSpan.tablet }}
         md:col-span-{{ options.colMediaSpan.desktop }}
-        xxl:col-span-{{ options.colMediaSpan.wide }}
+        xl:col-span-{{ options.colMediaSpan.max }}
         {{ options.mediaLayout < 2 ? 'aspect-square' }}"
     >
       <svg width="0" height="0">
@@ -109,39 +109,39 @@
           1: 'aspect-square top-0 right-[1.1886%] w-[37.2923%]
               xs:right-[6.4364%] xs:w-[35.2693%]
               md:right-[12.1538%] md:w-[34.1%]
-              xxl:right-[5.7471%] xxl:w-[31.4943%]',
+              xl:right-[5.7471%] xl:w-[31.4943%]',
           2: 'wind-visual top-[9.5753%] left-0 w-[64.1031%] aspect-[472/558]
               xs:top-[12.4776%] xs:w-[60.6259%]
               md:top-[12.0576%] md:w-[58.6153%] md:ms-[-20px]
-              xxl:top-[9.5811%] xxl:left-[10.2298%] xxl:w-[54.2528%] xxl:ms-0',
+              xl:top-[9.5811%] xl:left-[10.2298%] xl:w-[54.2528%] xl:ms-0',
           3: 'right-0 bottom-0 aspect-[248/268] w-[33.65%]
               xs:right-[4.7136%] xs:w-[31.8246%]
               md:right-[11%] md:w-[30.923%]
-              xxl:right-[4.7126%] xxl:w-[28.3908%]',
+              xl:right-[4.7126%] xl:w-[28.3908%]',
         },
         3: {
           1: 'aspect-square top-0 left-[21.1429%] w-[24.8571%]
               xs:left-[22.07778%] xs:w-[26.25%]
               md:left-[26.3779%] md:w-[24.8031%]
-              xxl:left-[22.0781%] xxl:w-[26.2735%]',
+              xl:left-[22.0781%] xl:w-[26.2735%]',
           2: 'top-[27.8689%] left-0 w-[34.2085%] aspect-[119.731/118]
               xs:top-[29.1946%] xs:w-[35.7647%]
               md:top-[29.1946%] md:left-[5.5118%] md:w-[33.7939%]
-              xxl:top-[29.1553%] xxl:left-0 xxl:w-[35.7635%]',
+              xl:top-[29.1553%] xl:left-0 xl:w-[35.7635%]',
           3: 'wind-visual right-0 bottom-0 aspect-[224/242] w-[64%]
               xs:bottom-[4.2265%] xs:w-[61.3684%]
               md:bottom-[4.2516%] md:w-[58.0052%]
-              xxl:bottom-[4.251%] xxl:w-[61.3719%]',
+              xl:bottom-[4.251%] xl:w-[61.3719%]',
         },
         4: {
           1: 'aspect-square top-[0.40161%] left-[10%] w-[28.8571%]
               xs:top-[2.1505%] xs:left-[8.3682%] xs:w-[29.3484%]
               md:top-0 md:left-[9.0806%] md:w-[28.2609%]
-              xxl:left-[10.8959%] xxl:w-[28.5393%]',
+              xl:left-[10.8959%] xl:w-[28.5393%]',
           2: 'wind-visual aspect-[230.44/193.18] bottom-[2.7631%] right-0 w-[65.84%]
               xs:bottom-0 xs:w-[67.0621%]
               md:w-[64.578%]
-              xxl:w-[65.2141%]',
+              xl:w-[65.2141%]',
         },
       } %}
       {% for media in mediaItems %}

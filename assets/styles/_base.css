@@ -117,7 +117,7 @@ table {
   @apply py-[13px];
   @apply sm:px-[30px];
   @apply sm:py-[14px];
-  @apply wide:py-[17px];
+  @apply max:py-[17px];
   @apply relative;
   @apply rounded-full;
   @apply text-center;
@@ -187,7 +187,7 @@ table {
     @apply py-[11px];
     @apply sm:px-[28px];
     @apply sm:py-[12px];
-    @apply wide:py-[15px];
+    @apply max:py-[15px];
   }
 
   &--outlineBlack {

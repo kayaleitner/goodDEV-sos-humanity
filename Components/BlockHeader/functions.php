@@ -173,9 +173,9 @@ function getACFLayout()
                     // FieldVariables\getTheme(),
                     // FieldVariables\getNavStyle('dark-blur'),
                     FieldVariables\getColorBackground(),
-                    gridCol('textWidth', 'Text Columns', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
-                    gridCol('colMediaStart', 'Media Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
-                    gridCol('colMediaSpan', 'Media Column Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
+                    gridCol('textWidth', 'Text Columns', [], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
+                    gridCol('colMediaStart', 'Media Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
+                    gridCol('colMediaSpan', 'Media Column Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
                     [
                         'label' => __('Indent intro text', 'flynt'),
                         'name' => 'textIndent',

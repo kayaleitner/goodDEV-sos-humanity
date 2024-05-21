@@ -13,11 +13,11 @@
         col-start-{{ content.colTextStart.mobile }}
         xs:col-start-{{ content.colTextStart.tablet }}
         md:col-start-{{ content.colTextStart.desktop }}
-        xxl:col-start-{{ content.colTextStart.wide }}
+        xl:col-start-{{ content.colTextStart.max }}
         col-span-{{ content.colTextSpan.mobile }}
         xs:col-span-{{ content.colTextSpan.tablet }}
         md:col-span-{{ content.colTextSpan.desktop }}
-        xxl:col-span-{{ content.colTextSpan.wide }}
+        xl:col-span-{{ content.colTextSpan.max }}
         flex flex-col justify-between
         "
       >
@@ -44,11 +44,11 @@
         col-start-{{ colCardsStart.mobile }}
         xs:col-start-{{ colCardsStart.tablet }}
         md:col-start-{{ colCardsStart.desktop }}
-        xxl:col-start-{{ colCardsStart.wide }}
+        xl:col-start-{{ colCardsStart.max }}
         col-span-{{ colCardsSpan.mobile }}
         xs:col-span-{{ colCardsSpan.tablet }}
         md:col-span-{{ colCardsSpan.desktop }}
-        xxl:col-span-{{ colCardsSpan.wide }}"
+        xl:col-span-{{ colCardsSpan.max }}"
     >
       <div class="slider relative max-w-full swiper-wrapper">
         {% for card in cards %}

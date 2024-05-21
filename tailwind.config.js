@@ -19,6 +19,7 @@ export const theme = {
     transparent: 'transparent',
     tangerine: 'var(--tangerine)',
     yellow: 'var(--yellow)',
+
     /** Colors (Tokens) */
     textColor: 'var(--textColor)',
     bgColor: 'var(--bgColor)',
@@ -32,15 +33,13 @@ export const theme = {
     uiColor: 'var(--uiColor)',
   },
   screens: {
-    xs: '640px',
+    min: '375px',
+    xs: '680px',
     sm: '780px',
-    md: '980px',
-    lg: '1080px',
-    xl: '1281px',
-    xxl: '1441px',
-    wide: { 'raw': '(min-width: 1600px) and (min-height: 800px)' },
-    // max: { 'raw': '(min-width: 1880px) and (min-height: 1000px)' },
-    max: '1880px',
+    md: '1180px',
+    lg: '1280px',
+    xl: '1440px',
+    max: '1600px',
   },
   container: {
     padding: {
@@ -74,8 +73,8 @@ export const theme = {
       md: '35px',
       lg: '50px',
       xl: '75px',
-      xxl: '125px',
-      max: '200px',
+      max: '125px',
+      extra: '200px',
     },
     spacing: {
       xs: '10px',
@@ -83,8 +82,8 @@ export const theme = {
       md: '40px',
       lg: '60px',
       xl: '80px',
-      xxl: '120px',
-      max: '200px',
+      max: '120px',
+      extra: '200px',
     },
   },
 }
@@ -98,11 +97,11 @@ export const safelist = [
   'bg-yellow', // used in tinyMCE
   {
     pattern: /col-span-\d/,
-    variants: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'wide', 'max'],
+    variants: ['xs', 'sm', 'md', 'lg', 'xl', 'max'],
   },
   {
     pattern: /col-start-\d/,
-    variants: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'wide', 'max'],
+    variants: ['xs', 'sm', 'md', 'lg', 'xl', 'max'],
   },
 ]
 

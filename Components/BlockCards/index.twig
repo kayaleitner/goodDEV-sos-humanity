@@ -9,9 +9,9 @@
   "
   >
   {% set hasText = content.blockTitle or content.textContent %}
-  <div class="container mx-auto {{ hasText ? 'pt-md pb-xl xs:pb-[100px] xs:pt-lg md:pt-xl xxl:pb-xxl' : 'p-md xs:p-xl xxl:p-[140px]' }}">
+  <div class="container mx-auto {{ hasText ? 'pt-md pb-xl xs:pb-[100px] xs:pt-lg md:pt-xl xl:pb-xl' : 'p-md xs:p-xl xl:p-[140px]' }}">
   {% if content.textContent or content.blockTitle %}
-    <div class="mb-[48px] sm:mb-lg xxl:mb-[100px]">
+    <div class="mb-[48px] sm:mb-lg xl:mb-[100px]">
       <div class="text-contents font-body">
         {% if content.blockTitle %}
           {{ h.h(content.blockTitle, { level: 3, class: '' }) }}
@@ -29,13 +29,13 @@
       {% if options.layout == '3col' %}
         {% set layoutCardClass = 'basis-full md:basis-[calc(100%_/_2-20px_/2)] xl:basis-[calc(100%_/_3-2_*_20px_/3)]' %}
       {% elseif options.layout == '4col' %}
-        {% set layoutCardClass = 'col-span-6 sm:col-span-3 md:col-span-6 xxl:col-span-3' %}
+        {% set layoutCardClass = 'col-span-6 sm:col-span-3 md:col-span-6 xl:col-span-3' %}
       {% endif %}
     <div
       class="grid grid-cols-6 md:grid-cols-12 gap-xs xs:gap-sm"
     >
       {% if options.layout == '3col' %}
-      <div class="col-span-full md:col-start-2 md:col-span-10 xl:mx-[-27px] xxl:mx-0 flex flex-wrap justify-center gap-xs xs:gap-sm">
+      <div class="col-span-full md:col-start-2 md:col-span-10 xl:mx-[-27px] xl:mx-0 flex flex-wrap justify-center gap-xs xs:gap-sm">
       {% endif %}
       {% for card in cards %}
         <div class="anim-move-up rounded-[10px] {{ layoutCardClass }}" style="background-color: {{card.bgColor}}; color: {{card.color}};">

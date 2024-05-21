@@ -4,7 +4,7 @@ namespace Flynt\Components\Grid;
 
 use function Flynt\FieldVariables\responsiveField;
 
-function gridCol(string $name, string $label, array $field = [], array $tabletField = [], array $desktopField = [], array $wideField = [], array $sizes = ['small', 'large'], int $width = 50): array
+function gridCol(string $name, string $label, array $field = [], array $tabletField = [], array $desktopField = [], array $maxField = [], array $sizes = ['small', 'large'], int $width = 50): array
 {
     return responsiveField(
         $name,
@@ -60,7 +60,7 @@ function gridCol(string $name, string $label, array $field = [], array $tabletFi
             'instructions' => 'How many columns should the element span?',
         ],
         array_merge(
-            $wideField,
+            $maxField,
             [
                 'type' => 'select',
                 'required' => 1,

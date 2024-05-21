@@ -8,7 +8,7 @@
     background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
     color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
   "
-  class="md:pt-lg {{ not content.ctaLink ? 'md:pb-lg' }} xxl:pt-md overflow-hidden"
+  class="md:pt-lg {{ not content.ctaLink ? 'md:pb-lg' }} xl:pt-md overflow-hidden"
   >
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div class="container mx-auto grid grid-cols-6 md:grid-cols-12 md:pb-md gap-x-xs xs:gap-x-sm xs:gap-y-md">
@@ -18,12 +18,12 @@
         col-start-{{ content.colTextStart.mobile }}
         xs:col-start-{{ content.colTextStart.tablet }}
         md:col-start-{{ content.colTextStart.desktop }}
-        xxl:col-start-{{ content.colTextStart.wide }}
+        xl:col-start-{{ content.colTextStart.max }}
         col-span-{{ content.colTextSpan.mobile }}
         xs:col-span-{{ content.colTextSpan.tablet }}
         md:col-span-{{ content.colTextSpan.desktop }}
-        xxl:col-span-{{ content.colTextSpan.wide }}
-        flex flex-col justify-between gap-[38px] md:mr-[-20px] xxl:mr-0 xxl:pe-[70px]
+        xl:col-span-{{ content.colTextSpan.max }}
+        flex flex-col justify-between gap-[38px] md:mr-[-20px] xl:mr-0 xl:pe-[70px]
         "
       >
       <div class="text-contents font-body">
@@ -61,17 +61,17 @@
         col-start-{{ colCardsStart.mobile }}
         xs:col-start-{{ colCardsStart.tablet }}
         md:col-start-{{ colCardsStart.desktop }}
-        xxl:col-start-{{ colCardsStart.wide }}
+        xl:col-start-{{ colCardsStart.max }}
         col-span-{{ colCardsSpan.mobile }}
         xs:col-span-{{ colCardsSpan.tablet }}
         md:col-span-{{ colCardsSpan.desktop }}
-        xxl:col-span-{{ colCardsSpan.wide }}"
+        xl:col-span-{{ colCardsSpan.max }}"
     >
       <div class="slider relative max-w-full swiper-wrapper">
         {% for card in cards %}
-        <div class="swiper-slide anim-fade-in relative rounded-xl overflow-hidden w-[239px] min-h-[369px] md:max-w-[427px] md:aspect-[427/496] xxl:max-w-[511px]" style="background-color: {{card.bgColor}}; color: {{card.color}};">
+        <div class="swiper-slide anim-fade-in relative rounded-xl overflow-hidden w-[239px] min-h-[369px] md:max-w-[427px] md:aspect-[427/496] xl:max-w-[511px]" style="background-color: {{card.bgColor}}; color: {{card.color}};">
           <div class="flex flex-col gap-[45px] p-sm sm:p-md">
-            <div class="w-[72%] sm:w-[63%] {# xxl:w-[55.6845%] #} flex self-end items-end aspect-[5/4] overflow-hidden">
+            <div class="w-[72%] sm:w-[63%] {# xl:w-[55.6845%] #} flex self-end items-end aspect-[5/4] overflow-hidden">
               <img class="image lazyload w-full h-full object-contain object-right"
                 src="{{ card.image.src|resize(32) }}" 
                 data-srcset="{{ function('wp_get_attachment_image_srcset', card.image.id) }}" 

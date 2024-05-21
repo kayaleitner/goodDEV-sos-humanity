@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
 @import 'styles/_fonts.css';
 @import 'styles/_tailwind.css';
 @import 'styles/_colors.css';

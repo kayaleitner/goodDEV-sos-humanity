@@ -146,8 +146,8 @@ function getACFLayout(): array
                             ],
                         ],
                     ],
-                    gridCol('colMediaStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
-                    gridCol('colMediaSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
+                    gridCol('colMediaStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
+                    gridCol('colMediaSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
                 ]
             ],
             [
@@ -171,8 +171,8 @@ function getACFLayout(): array
                         'media_upload' => 0,
                         'required' => 0,
                     ],
-                    gridCol('colTextStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
-                    gridCol('colTextSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'wide']),
+                    gridCol('colTextStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
+                    gridCol('colTextSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
                 ]
             ],
             [
