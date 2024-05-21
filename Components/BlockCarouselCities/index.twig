@@ -1,12 +1,14 @@
 {% import "Components/_Atoms/Titles/title/macro.twig" as h %}
 
-<flynt-component
-  load:on="visible"
-  name="BlockCarouselCities"
-  class="overflow-hidden"
-  >
+{% set componentOptions = {
+    name: 'BlockCarouselCities',
+    loadOn: 'visible',
+    class: 'overflow-hidden',
+} %}
+
+{% set content %}
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="container md:my-md mx-auto grid grid-cols-6 md:grid-cols-12 gap-xs sm:gap-sm">
+  <div class="container-grid">
 
   {% if content.textContent %}
     <div class="
@@ -69,4 +71,9 @@
     </div>
   {% endif %}
   </div>
-</flynt-component>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

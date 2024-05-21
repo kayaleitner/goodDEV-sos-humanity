@@ -1,14 +1,12 @@
 {% import "Components/_Atoms/Titles/title/macro.twig" as h %}
 
-<flynt-component
-  load:on="visible"
-  name="BlockCenterText"
-  style="
-    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
-    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
-  "
-  >
-  <div class="container mx-auto overflow-hidden max:overflow-visible py-[250px] xs:py-[calc(100vw_*_471/780)] md:py-[calc(100vw_*_298/1440)] flex items-center justify-center gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]">
+{% set componentOptions = {
+    name: 'BlockCenterText',
+    loadOn: 'visible',
+} %}
+
+{% set content %}
+  <div class="container-flex items-center justify-center overflow-hidden max:overflow-visible py-[250px] xs:py-[calc(100vw_*_471/780)] md:py-[calc(100vw_*_298/1440)] gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]">
     <div class="relative pt-md pb-xl text-center xs:p-0 md:w-[calc(100%_*_727/1440)]">
     {% if blockTitle %}
       <div {{ options.colorTitle ? 'style="color:' ~ options.colorTitle ~ '"' }}>
@@ -120,4 +118,9 @@
     {% endif %}
     </div>
   </div>
-</flynt-component>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

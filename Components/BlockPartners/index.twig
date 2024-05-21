@@ -1,8 +1,13 @@
 {% import "Components/_Atoms/Titles/title/macro.twig" as h %}
 
-<flynt-component class="w-full bg-accentColor" load:on="idle" name="BlockPartners" {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}>
+{% set componentOptions = {
+    name: 'BlockPartners',
+    loadOn: 'idle',
+} %}
+
+{% set content %}
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="container mx-auto flex flex-col gap-md text-bgColor sm:py-[68px] xs:items-center xs:flex-row xs:justify-between md:py-[104px] xl:py-[107px]">
+  <div class="container-flex flex-col gap-md text-bgColor sm:py-[68px] xs:items-center xs:flex-row xs:justify-between md:py-[104px] xl:py-[107px]">
     {% if blockTitle %}
       <div class="xs:w-1/3">
         {{ h.h(blockTitle, { level: 3, class: 'text-bgColor mb-0' }) }}
@@ -59,4 +64,9 @@
       {% endif %}
     </div>
   </div>
-</flynt-component>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

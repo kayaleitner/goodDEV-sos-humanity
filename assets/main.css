@@ -5,6 +5,7 @@
 
 @import 'styles/_fonts.css';
 @import 'styles/_tailwind.css';
+@import 'styles/_container.css';
 @import 'styles/_colors.css';
 @import 'styles/_variables.css';
 @import 'styles/_reset.css';

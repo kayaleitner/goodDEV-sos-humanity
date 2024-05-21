@@ -45,7 +45,6 @@ function getACFLayout(): array
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    // FieldVariables\getTheme(),
                     FieldVariables\getColorBackground(),
                     FieldVariables\getColorText(),
                 ]

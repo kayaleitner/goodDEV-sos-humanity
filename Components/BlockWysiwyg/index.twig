@@ -1,10 +1,12 @@
 {% import "Components/_Atoms/Titles/title/macro.twig" as h %}
 
-<flynt-component
-  load:on="idle"
-  name="BlockWysiwyg"
-  >
-  <div class="container mx-auto mt-[50px] md:mt-[110px] grid grid-cols-6 md:grid-cols-12 gap-x-xs xs:gap-x-sm">
+{% set componentOptions = {
+    name: 'BlockWysiwyg',
+    loadOn: 'idle',
+} %}
+
+{% set content %}
+  <div class="container-grid">
     {% if blockTitle %}
       <div class="col-span-full md:col-start-2 md:col-span-5">
           {{ h.h(blockTitle, { level: 1, class: '' }) }}
@@ -14,4 +16,12 @@
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>
-</flynt-component>
+{% endset %}
+
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}
+
+

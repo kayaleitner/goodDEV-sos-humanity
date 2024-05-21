@@ -1,14 +1,11 @@
 {% import "Components/_Atoms/Titles/title/macro.twig" as h %}
 
-<flynt-component
-  load:on="visible"
-  name="BlockImageText"
-  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
-  style="
-    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
-    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
-  "
-  >
+{% set componentOptions = {
+    name: 'BlockImageText',
+    loadOn: 'visible',
+} %}
+
+{% set content %}
   <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]">
   {% if blockTitle %}
     <div class="col-span-6 md:col-span-12">
@@ -71,4 +68,9 @@
     </div>
   {% endif %}
   </div>
-</flynt-component>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

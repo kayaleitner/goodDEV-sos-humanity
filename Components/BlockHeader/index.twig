@@ -1,14 +1,12 @@
 {% import "Components/_Atoms/Button/macro.twig" as btn %}
 
-<flynt-component
-  load:on="visible"
-  name="BlockHeader"
-  class="layout-{{ options.mediaLayout}}"
-  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
-  {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
-  style="background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--brandColor){% endif %};"
->
-<div class="container mx-auto grid grid-cols-6 md:grid-cols-12 items-center gap-x-xs xs:gap-x-sm md:min-h-[850px] max:max-h-screen max:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
+{% set componentOptions = {
+    name: 'BlockHeader',
+    loadOn: 'visible',
+} %}
+
+{% set content %}
+<div class="container-grid items-center md:min-h-[850px] max:max-h-screen max:min-h-[900px] pb-md {{ mediaItems and options.mediaLayout == 1 ? 'xs:pb-0' }} pt-[92px]">
     <div class="
       col-span-{{options.textWidth.mobile}}
       xs:col-span-{{options.textWidth.tablet}}
@@ -172,4 +170,10 @@
     </div>
     {% endif %}
 </div>
-</flynt-component>
+{% endset %}
+
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}
