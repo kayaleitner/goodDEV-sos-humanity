@@ -33,6 +33,7 @@ nbproject
 # Linux
 .*
 !.gitignore
+!.github
 !.editorconfig
 !.ht*
 !.keep
