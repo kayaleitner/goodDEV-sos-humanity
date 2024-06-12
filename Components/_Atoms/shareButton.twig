@@ -1,0 +1,52 @@
+{% macro shareButton(type, link) %}
+
+     {% set icon %}
+        {% if type == 'mail' %}
+            {% include 'assets/icons/email.svg' %}
+        {% elseif type == 'copy' %}
+            {% include 'assets/icons/copy.svg' %}
+        {% elseif type == 'linkedin' %}
+            {% include 'assets/icons/linkedin.svg' %}
+        {% elseif type == 'x' %}
+            {% include 'assets/icons/x.svg' %}
+        {% endif %}
+    {% endset %}
+
+    {% set link %}
+        {% if type == 'mail' %}
+            mailto:info@example.com?&subject=&cc=&bcc=&body={{ link }}%0A     
+        {% elseif type == 'linkedin' %}
+            https://www.linkedin.com/shareArticle?mini=true&url={{ link }}
+        {% elseif type == 'x' %}
+            https://twitter.com/intent/tweet?url={{ link }}&text=
+        {% elseif type == 'facebook' %}
+            https://www.facebook.com/sharer/sharer.php?u={{ link }}
+        {% endif %}
+    {% endset %}
+
+    {% set onclick %}
+        {% if type == 'mail' %}
+            window.location.href='{{ link }}'
+        {% elseif type == 'copy' %}
+            navigator.clipboard.writeText(linkToCopy).then(() => alert('Link copied to clipboard: ' + linkToCopy))
+        {% elseif type == 'linkedin' %}
+            window.open('{{ link }}', 'popup', 'width=600,height=600'); return false;
+        {% elseif type == 'x' %}
+            window.open('{{ link }}', 'popup', 'width=600,height=600'); return false;
+        {% elseif type == 'facebook' %}
+            window.open('{{ link }}', 'popup', 'width=600,height=600'); return false;
+        {% endif %}
+    {% endset %}
+
+    {% set onclick_cleaned = onclick | replace({"\n": "", "\r": "", "\t": "", "  ": ""}) %}
+
+    {% if type == 'copy' %}
+        <button x-data="{ linkToCopy: '{{ link }}' }" @click="`{{ onclick_cleaned }}`">
+            {{ icon }}
+        </button>
+    {% else %}
+        <a href="{{link}}" onclick="{{ onclick_cleaned }}" target="popup">
+            {{ icon }}
+        </a>
+    {% endif %}
+{% endmacro %}
