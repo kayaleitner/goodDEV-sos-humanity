@@ -1,4 +1,4 @@
-{% macro shareButton(type, url) %}
+{% macro shareButton(type, link) %}
 
      {% set icon %}
         {% if type == 'mail' %}
@@ -14,13 +14,13 @@
 
     {% set link %}
         {% if type == 'mail' %}
-            mailto:info@example.com?&subject=&cc=&bcc=&body={{ url }}%0A     
+            mailto:info@example.com?&subject=&cc=&bcc=&body={{ link }}%0A     
         {% elseif type == 'linkedin' %}
-            https://www.linkedin.com/shareArticle?mini=true&url={{ url }}
+            https://www.linkedin.com/shareArticle?mini=true&url={{ link }}
         {% elseif type == 'x' %}
-            https://twitter.com/intent/tweet?url={{ url }}&text=
+            https://twitter.com/intent/tweet?url={{ link }}&text=
         {% elseif type == 'facebook' %}
-            https://www.facebook.com/sharer/sharer.php?u={{ url }}
+            https://www.facebook.com/sharer/sharer.php?u={{ link }}
         {% endif %}
     {% endset %}
 
@@ -28,7 +28,7 @@
         {% if type == 'mail' %}
             window.location.href='{{ link }}'
         {% elseif type == 'copy' %}
-            navigator.clipboard.writeText('{{ url }}').then(() => alert('Link copied to clipboard: ' + '{{ url }}'))
+            navigator.clipboard.writeText(linkToCopy).then(() => alert('Link copied to clipboard: ' + linkToCopy))
         {% elseif type == 'linkedin' %}
             window.open('{{ link }}', 'popup', 'width=600,height=600'); return false;
         {% elseif type == 'x' %}
@@ -41,7 +41,7 @@
     {% set onclick_cleaned = onclick | replace({"\n": "", "\r": "", "\t": "", "  ": ""}) %}
 
     {% if type == 'copy' %}
-        <button onclick="{{ onclick_cleaned }}">
+        <button x-data="{ linkToCopy: '{{ link }}' }" @click="`{{ onclick_cleaned }}`">
             {{ icon }}
         </button>
     {% else %}
