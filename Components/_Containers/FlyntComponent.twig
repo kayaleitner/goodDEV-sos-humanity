@@ -1,4 +1,5 @@
 <flynt-component
+  {% if options.componentId %}id="{{ options.componentId }}"{% endif %}
   load:on="{{ componentOptions.loadOn }}"
   name="{{ componentOptions.name }}"
   class="{{ options.mediaLayout ? 'layout-{{ options.mediaLayout}}' }}{{ componentOptions.class }}"

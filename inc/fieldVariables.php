@@ -147,6 +147,19 @@ function getColorText($default = '#000000')
     ];
 }
 
+function getComponentID($default = '')
+{
+    return [
+        'label' => __('Anchor Link', 'flynt'),
+        'name' => 'componentId',
+        'type' => 'text',
+        'default_value' => $default,
+        'wrapper' => [
+            'width' => 30,
+        ],
+    ];
+}
+
 
 function mobileVisibility($default = 'hidden xs:block')
 {
