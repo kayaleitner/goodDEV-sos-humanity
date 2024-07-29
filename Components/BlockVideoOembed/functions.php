@@ -10,7 +10,7 @@ use Timber\Timber;
 add_filter('Flynt/addComponentData?name=BlockVideoOembed', function (array $data): array {
     $data['oembed'] = Oembed::setSrcAsDataAttribute(
         $data['oembed'],
-        ['autoplay' => 'true']
+        ['autoplay' => 1, 'enablejsapi' => 1],
     );
 
     return $data;
