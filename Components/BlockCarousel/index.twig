@@ -23,7 +23,7 @@
             flex flex-col justify-between gap-[38px] md:mr-[-20px] xl:mr-0 xl:pe-[70px]
             "
           >
-          <div class="text-contents font-body">
+          <div class="text-contents font-paragraph">
             {% if content.blockTitle %}
               {{ h.h(content.blockTitle, { level: 3, class: '' }) }}
             {% endif %}
@@ -83,7 +83,7 @@
                     {{ h.h(card.title, { level: 2, class: 'relative font-titleSub me-sm' }) }}
                   {% endif %}
                   {% if card.text %}
-                    <p class="font-body">{{ card.text }}</p>
+                    <p class="font-paragraph">{{ card.text }}</p>
                   {% endif %}
                 </div>
                 {% endif %}

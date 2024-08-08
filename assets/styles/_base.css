@@ -319,7 +319,7 @@ table {
       
   
       &Big {
-        @apply lg:font-body;
+        @apply lg:font-paragraph;
       }
     }
   }
@@ -397,7 +397,7 @@ textarea {
   padding: 0.75rem 0.625rem;
   transition: border-color 0.3s ease-in-out;
   width: 100%;
-  @apply font-bodySmaller;
+  @apply font-smallParagraph;
 
   &::placeholder {
     color: var(--bgColor);

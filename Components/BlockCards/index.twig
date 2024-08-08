@@ -12,7 +12,7 @@
   <div class="container mx-auto {{ hasText ? 'pt-md pb-xl xs:pb-[100px] xs:pt-lg md:pt-xl xl:pb-xl' : 'p-md xs:p-xl xl:p-[140px]' }}">
   {% if content.textContent or content.blockTitle %}
     <div class="mb-[48px] sm:mb-lg xl:mb-[100px]">
-      <div class="text-contents font-body">
+      <div class="text-contents font-paragraph">
         {% if content.blockTitle %}
           {{ h.h(content.blockTitle, { level: 3, class: '' }) }}
         {% endif %}
@@ -57,7 +57,7 @@
                 {{ h.h(card.title, { level: 2, class: 'relative font-titleSub mb-[31px]' }) }}
               {% endif %}
               {% if card.text %}
-                <p class="font-body">{{ card.text }}</p>
+                <p class="font-paragraph">{{ card.text }}</p>
               {% endif %}
             </div>
             {% endif %}

@@ -14,7 +14,7 @@
         <img data-ref="logoDark" class="{{ not post.navOnLight ? 'hidden' }} h-[48px] w-[172px]" src="{{ logo_dark.src }}" alt="{{ logo_dark.alt }}">
       </a>
         {% if menu %}
-        <ul class="flex items-center gap-[50px] font-bodySmall h-[52px]">
+        <ul class="flex items-center gap-[50px] font-paragraphSmall h-[52px]">
           {% for item in menu.items %}
           <li>
             {% if 'button'  in item.classes|join(' ') %}

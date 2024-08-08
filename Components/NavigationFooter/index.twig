@@ -19,7 +19,7 @@
         </a>
       {% endif %}
       <div class="w-full grid grid-cols-6 gap-y-md gap-x-xs xs:gap-x-sm xl:flex xl:justify-between">
-        <div class="col-span-full xs:col-span-3 xs:-me-[50px] font-bodySmaller xl:max-w-[368px] xl:me-0">
+        <div class="col-span-full xs:col-span-3 xs:-me-[50px] font-smallParagraph xl:max-w-[368px] xl:me-0">
           <div>
             {{ paragraph }}<br><br>
             {{ 'now' | date('Y') }} - {{ site.name }} | All right reserved
@@ -32,12 +32,12 @@
             </nav>
           {% endif %}
         </div>
-        <div class="col-span-3 xs:col-span-2 xs:-me-[12px] border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 justify-between flex flex-col gap-[1.375rem] font-bodySmaller -ms-[10px] xs:ms-0 xl:hidden">
-          <div class="font-bodySmall">{{ title2 }}</div>
+        <div class="col-span-3 xs:col-span-2 xs:-me-[12px] border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 justify-between flex flex-col gap-[1.375rem] font-smallParagraph -ms-[10px] xs:ms-0 xl:hidden">
+          <div class="font-paragraphSmall">{{ title2 }}</div>
           {{ paragraph2 }}
         </div>
-        <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 flex flex-col gap-4 font-bodySmaller xl:hidden">
-          <div class="font-bodySmall">{{ title3 }}</div>
+        <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 flex flex-col gap-4 font-smallParagraph xl:hidden">
+          <div class="font-paragraphSmall">{{ title3 }}</div>
           {{ paragraph3 }}
           {{ btn.buttonAnchor(button, {
             color: 'accent',
@@ -52,12 +52,12 @@
               </nav>
             {% endif %}
           </div>
-          <div class="col-span-3 xs:col-span-2 xs:-me-[12px] border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 justify-between flex flex-col gap-[1.375rem] font-bodySmaller -ms-[10px] xs:ms-0 xl:m-0 xl:w-[219px] xl:w-[240px]">
-            <div class="font-bodySmall">{{ title2 }}</div>
+          <div class="col-span-3 xs:col-span-2 xs:-me-[12px] border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 justify-between flex flex-col gap-[1.375rem] font-smallParagraph -ms-[10px] xs:ms-0 xl:m-0 xl:w-[219px] xl:w-[240px]">
+            <div class="font-paragraphSmall">{{ title2 }}</div>
             {{ paragraph2 }}
           </div>
-          <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 flex flex-col gap-4 font-bodySmaller xl:w-[219px] xl:w-[240px]">
-            <div class="font-bodySmall">{{ title3 }}</div>
+          <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 flex flex-col gap-4 font-smallParagraph xl:w-[219px] xl:w-[240px]">
+            <div class="font-paragraphSmall">{{ title3 }}</div>
             {{ paragraph3 }}
             {{ btn.buttonAnchor(button, {
               color: 'accent',
