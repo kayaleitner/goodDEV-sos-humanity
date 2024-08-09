@@ -9,11 +9,15 @@ use Timber\Timber;
 add_filter('Flynt/addComponentData?name=NavigationMain', function ($data) {
     $data['menu'] = Timber::get_menu('navigation_main') ?? Timber::get_pages_menu();
     $data['logo'] = [
-        'src' => get_theme_mod('custom_logo') ? wp_get_attachment_image_url(get_theme_mod('custom_logo'), 'full') : Asset::requireUrl('assets/images/logo.svg'),
+        'src' => get_theme_mod('custom_logo') ? wp_get_attachment_image_url(get_theme_mod('custom_logo'), 'full') : Asset::requireUrl('assets/logo/logoBlack.svg'),
         'alt' => get_bloginfo('name')
     ];
-    $data['logo_dark'] = [
-        'src' => get_theme_mod('logo_dark') ? get_theme_mod('logo_dark') : Asset::requireUrl('assets/images/logo-dark.svg'),
+    // $data['logo_dark'] = [
+    //     'src' => get_theme_mod('logo_dark') ? get_theme_mod('logo_dark') : Asset::requireUrl('assets/logo/logoGreen.svg'),
+    //     'alt' => get_bloginfo('name')
+    // ];
+    $data['logo_secondary'] = [
+        'src' => get_theme_mod('logo_secondary') ? get_theme_mod('logo_secondary') : Asset::requireUrl('assets/logo/logoOrange.svg'),
         'alt' => get_bloginfo('name')
     ];
 
@@ -30,15 +34,26 @@ add_action('init', function () {
 add_action('customize_register', function ($wp_customize) {
 
     //adding setting for dark logo
-    $wp_customize->add_setting('logo_dark', [
-        'default'        => 'Dark Logo',
+    $wp_customize->add_setting('logo_secondary', [
+        'default'        => 'Secondary Logo',
     ]);
-
-    $wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'logo_dark', [
-        'label'             => "Set Dark Logo",
+ 
+    $wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'logo_secondary', [
+        'label'             => "Set Secondary Logo",
         'section'           => 'title_tagline',
-        'settings'          => 'logo_dark',
+        'settings'          => 'logo_secondary',
     ]));
+
+    //adding setting for dark logo
+    // $wp_customize->add_setting('logo_dark', [
+    //     'default'        => 'Dark Logo',
+    // ]);
+
+    // $wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'logo_dark', [
+    //     'label'             => "Set Dark Logo",
+    //     'section'           => 'title_tagline',
+    //     'settings'          => 'logo_dark',
+    // ]));
 });
 
 Options::addTranslatable('NavigationMain', [
