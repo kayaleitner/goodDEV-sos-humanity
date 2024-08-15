@@ -5,6 +5,7 @@
  */
 
 namespace Flynt\FieldVariables;
+use function Flynt\Components\Grid\gridCol;
 
 function getTheme($default = ''): array
 {
@@ -158,6 +159,22 @@ function getComponentID($default = '')
             'width' => 30,
         ],
     ];
+}
+
+function getColumnLayout(
+    array $mobile = [1, 4],
+    array $tablet = [1, 8],
+    array $desktop = [4, 9],
+    array $max = [4, 9],
+    string $name = 'cols',
+    string $label = 'Columns'
+) {
+    return gridCol($name, $label, [
+        ['label' => 'Mobile', 'cols' => 4, 'start' => $mobile[0], 'end' => $mobile[1]],
+        ['label' => 'Tablet', 'cols' => 8, 'start' => $tablet[0], 'end' => $tablet[1]],
+        ['label' => 'Desktop', 'cols' => 12, 'start' => $desktop[0], 'end' => $desktop[1]],
+        ['label' => 'Wide', 'cols' => 12, 'start' => $max[0], 'end' => $max[1]]
+    ]);
 }
 
 
