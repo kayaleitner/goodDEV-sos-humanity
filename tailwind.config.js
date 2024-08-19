@@ -107,6 +107,10 @@ export const safelist = [
     pattern: /col-start-\d/,
     variants: ['xs', 'sm', 'md', 'lg', 'xl', 'max'],
   },
+  {
+    pattern: /col-end-\d/,
+    variants: ['xs', 'sm', 'md', 'lg', 'xl', 'max'],
+  },
 ]
 
 export const plugins = []

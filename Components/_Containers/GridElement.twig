@@ -1,0 +1,20 @@
+{% macro elementCls(args = { }) %}
+  {% with args %}
+    col-start-{{ args.cols.mobile.start }}
+    sm:col-start-{{ args.cols.tablet.start }}
+    md:col-start-{{ args.cols.desktop.start }}
+    max:col-start-{{ args.cols.wide.start }}
+    col-end-{{ args.cols.mobile.end + 1 }}
+    sm:col-end-{{ args.cols.tablet.end + 1 }}
+    md:col-end-{{ args.cols.desktop.end + 1 }}
+    max:col-end-{{ args.cols.wide.end + 1 }}
+  {% endwith %}
+{% endmacro %}
+
+{% macro gridElement(content, args = { }) %}
+
+<div class="grid {{ args.class }} {{ _self.elementCls(args) }}" 
+  {% if args.ref %} data-ref="{{ args.ref }}" {% endif %}>
+    {{ content }}
+</div>
+{% endmacro %}
