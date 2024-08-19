@@ -81,11 +81,13 @@ export const theme = {
       min: '5px',
       xs: '10px',
       sm: '20px',
+      p: '30px',
       md: '40px',
       lg: '60px',
       xl: '80px',
       max: '120px',
       extra: '200px',
+      navBar: 'var(--navBarHeight)',
     },
   },
 }

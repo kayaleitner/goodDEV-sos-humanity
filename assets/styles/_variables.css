@@ -1,4 +1,10 @@
 :root {
+  --navBarHeight: 89px;
+
+  @screen md {
+    --navBarHeight: 119px;
+  }
+
   --content-max-width: 55ch;
   --content-max-width-large: 75ch;
   --container-max-width: calc(1200px + (var(--container-padding) * 2));
