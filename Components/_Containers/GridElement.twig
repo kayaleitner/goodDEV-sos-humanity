@@ -13,7 +13,7 @@
 
 {% macro gridElement(content, args = { }) %}
 
-<div class="grid {{ args.class }} {{ _self.elementCls(args) }}" 
+<div class="{{ args.class }} {{ _self.elementCls(args) }}" 
   {% if args.ref %} data-ref="{{ args.ref }}" {% endif %}>
     {{ content }}
 </div>
