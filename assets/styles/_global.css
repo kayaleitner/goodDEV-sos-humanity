@@ -1,0 +1,16 @@
+@layer base {
+
+    body {
+        @apply font-paragraph;
+        @apply text-textColor;
+    }
+}
+
+.pageWrapper {
+    display: block;
+  
+    .admin-bar & {
+      padding-block-start: var(--wp-admin--admin-bar--height);
+    }
+  }
+  

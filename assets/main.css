@@ -1,12 +1,10 @@
 @import 'styles/_tw-directives.css';
 @import 'styles/_fonts.css';
 @import 'styles/_container.css';
-@import 'styles/_tailwind.css'; 
-@import 'styles/_colors.css';
-@import 'styles/_variables.css';
-@import 'styles/_reset.css';
-@import 'styles/_base.css';
 @import 'styles/_typography.css';
+@import 'styles/_buttons.css';
+@import 'styles/_variables.css';
+@import 'styles/_global.css';
 @import 'styles/_borlabs-cookie.css';
 
 @import '../Components/BlockVideoOembed/_style.css';

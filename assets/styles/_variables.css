@@ -1,15 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
 :root {
   --navBarHeight: 89px;
 
   @screen md {
     --navBarHeight: 119px;
   }
-
-  --content-max-width: 55ch;
-  --content-max-width-large: 75ch;
-  --container-max-width: calc(1200px + (var(--container-padding) * 2));
-  --container-max-width-large: calc(1340px + (var(--container-padding) * 2));
-  --box-padding: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);
-  --container-padding: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);
-  --component-spacing: clamp(3rem, 6vw + 1.2rem, 6rem);
 }

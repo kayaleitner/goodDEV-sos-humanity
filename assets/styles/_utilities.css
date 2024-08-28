@@ -7,6 +7,30 @@
 
 @layer utilities {
 
+  .visuallyHidden {
+    clip: rect(0, 0, 0, 0) !important;
+    height: 1px !important;
+    margin: -1px !important; 
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+  }
+  
+  
+  .visuallyHidden-focusable:focus {
+    clip: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    position: static !important;
+    white-space: normal !important;
+    width: auto !important;
+  }
+
+
   .underline-offset {
     position: relative;
     display: inline-block;
@@ -23,4 +47,95 @@
     bottom: -8px; /* Offset of the underline */
   }
 
+  .svg-h-full {
+    svg {
+      height: 100%;
+    }
+  }
+
+  
+/**
+* Animateables
+*/
+
+.anim {
+  /* Initial styles for animateables, will be changed via JS */
+  &-fade-in {
+    opacity: 0;
+  }
+
+  &-move-up {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  &-move-down {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  &-move-left {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  &-move-right {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+
+  .box-inherit {
+    box-sizing: inherit;
+  }
+
+  .clip-path-triangle-right {
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    aspect-ratio: 0.866;
+  }
+
+  .clip-path-image-bottom-left {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+  }
+
+  .clip-path-image-bottom-right {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+
+  .clip-path-ray-bottom-left {
+    clip-path: polygon(0 0, 100% 36%, 100% 100%);
+  }
+
+  .clip-path-ray-bottom-right {
+    clip-path: polygon(0 36%, 0 100%, 100% 0);
+  }
+
+  .clip-path-image-left-wide {
+    clip-path: polygon(0 0, calc(55%) 0, calc(45%)  100%, 0 100%);
+  }
+
+  .clip-path-ray-left-wide {
+    clip-path: polygon(50% 0, 100% 0, 0 100%);
+    width: 10%;
+    left: 45%;
+  }
+
+  .clip-path-ray-right-wide {
+    clip-path: polygon(0 0, 100% 100%, 50% 0);
+    width: 10%;
+    left: 45%;
+  }
+
+  .clip-path-image-right-wide {
+    clip-path: polygon(100% 0, 100% 100%, calc(55%) 100%, calc(45%) 0);
+  }
+
+  .clip-path-image-left-narrow {
+    clip-path: polygon(0 0, calc(45%) 0, calc(30%)  100%, 0 100%);
+  }
+
+  .clip-path-image-right-narrow {
+    clip-path: polygon(100% 0, 100% 100%, calc(45%) 100%, calc(30%) 0);
+  }
 }
