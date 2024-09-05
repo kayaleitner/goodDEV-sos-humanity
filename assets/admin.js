@@ -1,5 +1,3 @@
-import './scripts/envBadge'
-
 if (import.meta.env.DEV) {
   import('@vite/client')
 }

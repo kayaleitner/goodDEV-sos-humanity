@@ -1,0 +1,32 @@
+.env_badge {
+    &::after {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        /* The color will need to be dynamically set in JavaScript based on hostname */
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        z-index: 1000;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        text-transform: uppercase;
+
+    }
+
+    &.env_local {
+        &::after {
+            content: 'LOCAL';
+            background-color: red;
+        }
+    }
+
+    &.env_staging {
+        &::after {
+            content: 'STAGING';
+            background-color: red;
+        }
+    }
+}
