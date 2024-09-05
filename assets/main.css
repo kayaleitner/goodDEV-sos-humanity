@@ -5,6 +5,7 @@
 @import 'styles/_buttons.css';
 @import 'styles/_variables.css';
 @import 'styles/_global.css';
+@import 'styles/_anim.css';
 @import 'styles/_borlabs-cookie.css';
 
 @import '../Components/BlockVideoOembed/_style.css';

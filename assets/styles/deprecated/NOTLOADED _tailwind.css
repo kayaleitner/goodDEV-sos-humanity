@@ -15,7 +15,7 @@
 
   html {
     color: var(--textColor);
-    font-family: 'Söhne', Verdana, sans-serif;
+    font-family: 'Inter', Verdana, sans-serif;
     /* default is 16px for 100% */
     font-size: 100%;
     -moz-osx-font-smoothing: grayscale;
@@ -1019,11 +1019,11 @@ flynt-component[name='NewsletterMailchimp'] {
 
 @layer utilities {
   .font-family-mono {
-    font-family: 'Aeonik Mono', Courier, monospace;
+    font-family: 'IBM Plex Mono', Courier, monospace;
   }
 
   .font-family-sans {
-    font-family: 'Söhne', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   
   .box-inherit {
