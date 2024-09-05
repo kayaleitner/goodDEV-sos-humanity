@@ -66,7 +66,9 @@ export const theme = {
       70: '.70',
     },
     fontFamily: {
-      mono: ['Aeonik Mono'],
+      sans: ['Inter', 'Roboto', 'Open Sans', 'Helvetica', 'Arial', 'Sans'],
+      serif: ['EB Garamond', 'Georgia', 'Times New Roman', 'Serif'],
+      mono: ['IBM Plex Mono', 'Menlo', 'courier', 'monospace'],
     },
     height: {
       min: '5px',

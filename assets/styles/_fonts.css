@@ -131,7 +131,7 @@
 
     pre {
       @apply font-smallParagraph;
-      font-family: 'Proxima Nova', Arial, Helvetica, sans-serif;
+      @apply font-mono;
       display: block;
       text-wrap: wrap;
       @apply pb-[20px];
