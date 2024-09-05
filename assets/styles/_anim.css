@@ -1,0 +1,31 @@
+/**
+* Animateables
+*/
+
+.anim {
+    /* Initial styles for animateables, will be changed via JS */
+    &-fade-in {
+      opacity: 0;
+    }
+  
+    &-move-up {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+  
+    &-move-down {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+  
+    &-move-left {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+  
+    &-move-right {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+  }
+  

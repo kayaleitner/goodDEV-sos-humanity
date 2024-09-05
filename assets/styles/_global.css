@@ -7,10 +7,33 @@
 }
 
 .pageWrapper {
-    display: block;
-  
-    .admin-bar & {
-      padding-block-start: var(--wp-admin--admin-bar--height);
-    }
+  display: block;
+
+  .admin-bar & {
+    padding-block-start: var(--wp-admin--admin-bar--height);
   }
-  
+}
+
+/* Class for text that should only be visible to screen readers */
+.visuallyHidden {
+  clip: rect(0, 0, 0, 0) !important;
+  height: 1px !important;
+  margin: -1px !important; 
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}
+
+
+.visuallyHidden-focusable:focus {
+  clip: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  position: static !important;
+  white-space: normal !important;
+  width: auto !important;
+}

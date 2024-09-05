@@ -19,6 +19,7 @@ export const theme = {
     transparent: 'transparent',
     tangerine: 'var(--tangerine)',
     yellow: 'var(--yellow)',
+    white: 'var(--white)',
 
     /** Colors (Tokens) */
     textColor: 'var(--textColor)',
