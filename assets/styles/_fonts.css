@@ -1,5 +1,13 @@
 @tailwind base;
 
+html {
+  font-size: 16px;
+
+  @screen xl {
+    font-size: 1.1111vw;
+  }
+}
+
 @layer base {
 
   /* -- Paragraphs -- */
