@@ -150,12 +150,10 @@ function getConfig(): array
         'textcolor_map' => getPalette(),
         'blockformats' => [
             __('Paragraph', 'flynt') => 'p',
-            __('Heading 1', 'flynt') => 'h1',
-            __('Heading 2', 'flynt') => 'h2',
-            __('Heading 3', 'flynt') => 'h3',
-            __('Heading 4', 'flynt') => 'h4',
-            __('Heading 5', 'flynt') => 'h5',
-            __('Heading 6', 'flynt') => 'h6'
+            __('Preformatted', 'flynt') => 'pre',
+            __('Page Title (H1)', 'flynt') => 'h1',
+            __('Section Title (H2)', 'flynt') => 'h2',
+            __('Content Title (H3)', 'flynt') => 'h3',
         ],
         'styleformats' => [
             [
@@ -164,27 +162,27 @@ function getConfig(): array
                 'items' => [
                     [
                         'title' => __('Body', 'flynt'),
-                        'classes' => 'body',
+                        'classes' => 'font-paragraph',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Title Large', 'flynt'),
-                        'classes' => 'titleLarge',
+                        'classes' => 'font-pageTitle',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Title Small', 'flynt'),
-                        'classes' => 'titleSmall',
+                        'classes' => 'font-sectionTitle',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Subtitle', 'flynt'),
-                        'classes' => 'subtitle',
+                        'classes' => 'font-contentTitle',
                         'selector' => '*'
                     ],
                     [
                         'title' => __('Caption', 'flynt'),
-                        'classes' => 'caption',
+                        'classes' => 'font-caption',
                         'selector' => '*'
                     ],
                     [

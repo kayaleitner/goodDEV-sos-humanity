@@ -4,9 +4,9 @@
 @tailwind variants;
 
 :root {
-  --navBarHeight: 89px;
+  --navBarHeight: 4rem;
 
   @screen md {
-    --navBarHeight: 119px;
+    --navBarHeight: 4rem;
   }
 }

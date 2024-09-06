@@ -3,7 +3,7 @@
 @import 'styles/_colors.css';
 @import 'styles/_variables.css';
 @import 'styles/_typography.css';
-@import 'styles/_tinymce.css';
+@import 'styles/_buttons.css';
 
 /**
  * Classic editor styles
@@ -21,6 +21,8 @@
   *::after {
     box-sizing: inherit;
   }
+
+  font-family: inherit;
 }
 
 /**
@@ -30,3 +32,4 @@
 .block-editor-inserter {
   margin: 0;
 }
+
