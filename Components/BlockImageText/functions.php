@@ -3,7 +3,6 @@
 namespace Flynt\Components\BlockImageText;
 
 use Flynt\FieldVariables;
-use function Flynt\Components\Grid\gridCol;
 
 function getACFLayout(): array
 {
@@ -12,48 +11,58 @@ function getACFLayout(): array
         'label' => __('Image/Text', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('Image', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Media', 'flynt'),
+                'name' => 'mediaTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
-            [
-                'label' => __('Title', 'flynt'),
-                'instructions' => 'Displayed as H2',
-                'name' => 'blockTitle',
-                'type' => 'text',
-            ],
-            [
-                'label' => __('Media Position', 'flynt'),
-                'name' => 'mediaPosition',
-                'type' => 'button_group',
-                'choices' => [
-                    'left' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
-                    'right' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
-                ],
-                'wrapper' => [
-                    'width' => 50,
-                ]
-            ],
-            [
-                'label' => __('Media Position (mobile)', 'flynt'),
-                'name' => 'mediaPositionMobile',
-                'type' => 'button_group',
-                'choices' => [
-                    'top' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
-                    'bottom' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
-                ],
-                'wrapper' => [
-                    'width' => 50,
-                ]
-            ],
+            // [
+            //     'label' => __('Title', 'flynt'),
+            //     'instructions' => 'Displayed as H2',
+            //     'name' => 'blockTitle',
+            //     'type' => 'text',
+            // ],
+            // [
+            //     'label' => __('Media Position', 'flynt'),
+            //     'name' => 'mediaPosition',
+            //     'type' => 'button_group',
+            //     'choices' => [
+            //         'left' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
+            //         'right' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
+            //     ],
+            //     'wrapper' => [
+            //         'width' => 50,
+            //     ]
+            // ],
+            // [
+            //     'label' => __('Media Position (mobile)', 'flynt'),
+            //     'name' => 'mediaPositionMobile',
+            //     'type' => 'button_group',
+            //     'choices' => [
+            //         'top' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
+            //         'bottom' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
+            //     ],
+            //     'wrapper' => [
+            //         'width' => 50,
+            //     ]
+            // ],
+
             [
                 'label' => 'Media',
                 'name' => 'media',
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
+                    [
+                        'label' => __('Media Position', 'flynt'),
+                        'name' => 'mediaPosition',
+                        'type' => 'button_group',
+                        'choices' => [
+                            'left' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
+                            'right' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
+                        ],
+                    ],
                     [
                         'label' => __('Type', 'flynt'),
                         'name' => 'type',
@@ -146,8 +155,7 @@ function getACFLayout(): array
                             ],
                         ],
                     ],
-                    gridCol('colMediaStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
-                    gridCol('colMediaSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
+                    // FieldVariables\getColumnLayout([1, 4], [1, 8], [7, 12], [7, 12]),
                 ]
             ],
             [
@@ -171,8 +179,7 @@ function getACFLayout(): array
                         'media_upload' => 0,
                         'required' => 0,
                     ],
-                    gridCol('colTextStart', 'Column-Start', ['default_value' => 1], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
-                    gridCol('colTextSpan', 'Column-Span', [], [], [], [], ['mobile', 'tablet', 'desktop', 'max']),
+                    // FieldVariables\getColumnLayout([1, 4], [1, 8], [1, 4], [1, 4]),
                 ]
             ],
             [
@@ -188,8 +195,18 @@ function getACFLayout(): array
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
+                    [
+                        'label' => __('Background Effect', 'flynt'),
+                        'name' => 'backgroundEffect',
+                        'type' => 'true_false',
+                        'ui' => 1,
+                        'default_value' => 0,
+                        'wrapper' => [
+                            'width' => '50',
+                        ],
+                    ],
                     FieldVariables\getColorText(),
-                    FieldVariables\getColorBackground()
+                    FieldVariables\getColorBackground(),
                 ]
             ]
         ]
