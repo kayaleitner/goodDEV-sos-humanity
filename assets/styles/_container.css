@@ -103,5 +103,6 @@
 
     .container {
       @apply mx-auto;
+      max-width: rem(1440);
     }
 }
