@@ -6,13 +6,6 @@ export const content = [
   './Atoms/**/*.{php,twig}',
 ]
 export const theme = {
-  borderWidth: {
-    DEFAULT: '2px',
-    0: '0',
-    1: '1px',
-    2: '2px',
-    3: '3px',
-  },
   colors: {
     /** Colors (Primitives) */
     current: 'currentColor',
@@ -42,12 +35,6 @@ export const theme = {
     xl: '1440px',
     max: '1600px',
   },
-  container: {
-    padding: {
-      DEFAULT: '20px',
-      xs: '60px',
-    },
-  },
   extend: {
     aspectRatio: {
       '4/3': '4 / 3',
@@ -55,12 +42,8 @@ export const theme = {
       '2/1': '2 / 1',
     },
     borderWidth: {
-      DEFAULT: '2px',
+      DEFAULT: '.125rem',
       0: '0',
-      1: '1px',
-      2: '2px',
-      3: '3px',
-      4: '4px',
     },
     brightness: {
       70: '.70',
@@ -71,25 +54,24 @@ export const theme = {
       mono: ['IBM Plex Mono', 'Menlo', 'courier', 'monospace'],
     },
     height: {
-      min: '5px',
-      xs: '10px',
-      sm: '20px',
-      md: '40px',
-      lg: '60px',
-      xl: '80px',
-      max: '120px',
-      extra: '200px',
+      min: '.125rem',
+      xs: '.5rem',
+      sm: '1rem',
+      md: '2rem',
+      lg: '3rem',
+      xl: '4rem',
+      max: '6rem',
+      extra: '12rem',
     },
     spacing: {
-      min: '5px',
-      xs: '10px',
-      sm: '20px',
-      p: '30px',
-      md: '40px',
-      lg: '60px',
-      xl: '80px',
-      max: '120px',
-      extra: '200px',
+      min: '.125rem',
+      xs: '.5rem',
+      sm: '1rem',
+      md: '2rem',
+      lg: '3rem',
+      xl: '4rem',
+      max: '6rem',
+      extra: '12rem',
       navBar: 'var(--navBarHeight)',
     },
   },
