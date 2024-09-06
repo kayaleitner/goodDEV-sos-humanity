@@ -5,23 +5,75 @@ use Flynt\Components;
 
 add_action('Flynt/afterRegisterComponents', function (): void {
     ACFComposer::registerFieldGroup([
-        'name' => 'pageMeta',
-        'title' => 'Page Options',
-        'style' => '',
-        'menu_order' => 1,
-        'position' => 'side',
+        'name' => 'pageHeader',
+        'title' => 'Page Header',
+        'style' => 'seamless',
+        'menu_order' => 0,
+        'position' => 'normal',
         'fields' => [
             [
-                'label' => __('Navigation is on light', 'flynt'),
+                'label' => __('Display Page Header', 'flynt'),
                 'instructions' => __('If enabled, the navigation is rendered with a blue text on light background', 'flynt'),
-                'name' => 'navOnLight',
+                'name' => 'displayPageHeader',
+                'type' => 'true_false',
+                'ui' => 1,
+                'ui_on_text' => 'Yes',
+                'ui_off_text' => 'No',
+                'default_value' => 1,
+                'wrapper' => [
+                    'width' => 50,
+                ]
+            ],
+            [
+                'label' => __('Logo is on dark', 'flynt'),
+                'instructions' => __('If enabled, the dark version of the logo is rendered', 'flynt'),
+                'name' => 'logoOnDark',
                 'type' => 'true_false',
                 'ui' => 1,
                 'ui_on_text' => 'Yes',
                 'ui_off_text' => 'No',
                 'default_value' => 0,
                 'wrapper' => [
-                    'width' => 100,
+                    'width' => 50,
+                ]
+            ],
+            [
+                'label' => __('Header', 'flynt'),
+                'name' => 'header',
+                'type' => 'group',
+                // 'layout' => '',
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'displayPageHeader',
+                            'operator' => '==',
+                            'value' => 1
+                        ]
+                    ]
+                ],
+                'sub_fields' => [
+                    [
+                        'label' => __('Long Title', 'flynt'),
+                        'instructions' => __('Displayed as H1, falls back to page title if none provided', 'flynt'),
+                        'name' => 'title',
+                        'type' => 'textarea',
+                        "rows" => 6,
+                        'line_breaks' => 'br',
+                        'wrapper' => [
+                            'width' => 50,
+                        ],
+                    ],
+                    [
+                        'label' => __('Intro', 'flynt'),
+                        'instructions' => __('Short Paragraph', 'flynt'),
+                        'name' => 'intro',
+                        'type' => 'textarea',
+                        "rows" => 6,
+                        'line_breaks' => 'br',
+                        'wrapper' => [
+                            'width' => 50,
+                        ],
+                    ],
                 ]
             ],
         ],
@@ -54,6 +106,7 @@ add_action('Flynt/afterRegisterComponents', function (): void {
         'name' => 'pageComponents',
         'title' => __('Page Blocks', 'flynt'),
         'style' => 'seamless',
+        'menu_order' => 1,
         'fields' => [
             [
                 'name' => 'pageComponents',
