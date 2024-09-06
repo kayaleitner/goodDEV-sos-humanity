@@ -3,10 +3,10 @@
 
 @layer base {
   .pl-container {
-    @apply pl-[20px];
-    @apply sm:pl-[50px];
-    @apply md:pl-[50px];
-    @apply xl:pl-[150px];
+    @apply pl-md;
+    @apply sm:pl-[3rem];
+    @apply md:pl-[3rem];
+    @apply xl:pl-[13rem];
   }
 
   .pt-container {
@@ -16,10 +16,10 @@
   }
 
   .pr-container {
-    @apply pr-[20px];
-    @apply sm:pr-[50px];
-    @apply md:pr-[50px];
-    @apply xl:pr-[150px];
+    @apply pr-md;
+    @apply sm:pr-[3rem];
+    @apply md:pr-[3rem];
+    @apply xl:pr-[13rem];
   }
 
   .pb-container {
@@ -29,10 +29,10 @@
   }
 
   .px-container {
-    @apply px-[20px];
-    @apply sm:px-[50px];
-    @apply md:px-[50px];
-    @apply xl:px-[150px];
+    @apply px-md;
+    @apply sm:px-[3rem];
+    @apply md:px-[3rem];
+    @apply xl:px-[13rem];
   }
 
 
@@ -46,19 +46,19 @@
 
       /* Mobile */
       @apply py-xl;
-      @apply px-[20px];
+      @apply px-md;
       
       /* Tablet */
       @apply sm:py-xl;
-      @apply sm:px-[50px];
+      @apply sm:px-[3rem];
       
       /* Desktop */
       @apply md:py-xl;
-      @apply md:px-[50px];
+      @apply md:px-[3rem];
 
       /* Wide */
       @apply xl:py-xl;
-      @apply xl:px-[150px];
+      @apply xl:px-[13rem];
   }
 }
 
@@ -74,15 +74,15 @@
 
       /* Mobile */
       @apply grid-cols-4;
-      @apply gap-[20px];
+      @apply gap-md;
       
       /* Tablet */
       @apply sm:grid-cols-12;
-      @apply sm:gap-[20px];
+      @apply sm:gap-md;
       
       /* Desktop */
       @apply md:grid-cols-12; 
-      @apply md:gap-[30px];
+      @apply md:gap-lg;
     }
 
     .container-flex {

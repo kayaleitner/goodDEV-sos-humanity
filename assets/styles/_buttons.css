@@ -3,6 +3,6 @@
     .btn-primary {
         @apply bg-brandColor hover:bg-hoverColor text-white;
         @apply transition-colors duration-300;
-        @apply px-[22px] md:px-[28px] py-[10px] md:py-[16px] rounded-[8px];
+        @apply px-sm md:px-md py-sm md:py-sm rounded-full;
     }
 }

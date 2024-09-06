@@ -20,7 +20,7 @@
             xs:col-span-{{ content.colTextSpan.tablet }}
             md:col-span-{{ content.colTextSpan.desktop }}
             xl:col-span-{{ content.colTextSpan.max }}
-            flex flex-col justify-between gap-[38px] md:mr-[-20px] xl:mr-0 xl:pe-[70px]
+            flex flex-col justify-between gap-[2.375rem] md:mr-[-1.25rem] xl:mr-0 xl:pe-[4.375rem]
             "
           >
           <div class="text-contents font-paragraph">
@@ -45,7 +45,7 @@
           {% endif %}
           <div class="controls absolute md:relative bottom-md right-sm xs:right-lg md:left-0 md:bottom-0">
             {% include 'Components/_Atoms/Slider/navArrows.twig' with {color: options.colorText, bgColor: options.colorBackground } only %}
-            <div data-ref="indicator" class="border-b-2 border-[#ffffff4D] h-[5px] hidden md:block"></div>
+            <div data-ref="indicator" class="border-b-2 border-[#ffffff4D] h-[0.3125rem] hidden md:block"></div>
           </div>
         </div>
       {% endif %}
@@ -53,7 +53,7 @@
         <div
           data-ref="slider"
           class="
-            mt-md mb-[100px] md:my-0
+            mt-md mb-[6.25rem] md:my-0
             swiper-container
             col-start-{{ colCardsStart.mobile }}
             xs:col-start-{{ colCardsStart.tablet }}
@@ -66,8 +66,8 @@
         >
           <div class="slider relative max-w-full swiper-wrapper">
             {% for card in cards %}
-            <div class="swiper-slide anim-fade-in relative rounded-xl overflow-hidden w-[239px] min-h-[369px] md:max-w-[427px] md:aspect-[427/496] xl:max-w-[511px]" style="background-color: {{card.bgColor}}; color: {{card.color}};">
-              <div class="flex flex-col gap-[45px] p-sm sm:p-md">
+            <div class="swiper-slide anim-fade-in relative rounded-xl overflow-hidden w-[14.9375rem] min-h-[23.0625rem] md:max-w-[26.6875rem] md:aspect-[427/496] xl:max-w-[31.9375rem]" style="background-color: {{card.bgColor}}; color: {{card.color}};">
+              <div class="flex flex-col gap-[2.8125rem] p-sm sm:p-md">
                 <div class="w-[72%] sm:w-[63%] {# xl:w-[55.6845%] #} flex self-end items-end aspect-[5/4] overflow-hidden">
                   <img class="image lazyload w-full h-full object-contain object-right"
                     src="{{ card.image.src|resize(32) }}" 

@@ -168,7 +168,7 @@
     ul {
       list-style: none;
       margin-block-end: 1em;
-      margin-left: 22px;
+      margin-left: 2rem;
 
       li {
         position: relative;
@@ -210,7 +210,7 @@
         }
       }
     }
-    
+
   }
 
 }

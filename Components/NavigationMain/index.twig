@@ -3,7 +3,7 @@
 <flynt-component
     class="hidden md:block"
     load:on="load"
-    load:on:media="(min-width: 980px)"
+    load:on:media="(min-width: 1180px)"
     name="NavigationMain"
 >
   <nav data-ref="nav" class="" aria-label="{{ labels.ariaLabel|e }}" >
@@ -13,7 +13,7 @@
         <img data-ref="logoSecondary" class="hidden h-full" src="{{ logo_secondary.src ? logo_secondary.src : logo.src }}" alt="{{ logo_secondary.alt }}">
       </a>
       {% if menu %}
-        <ul class="anim-move-down flex items-center gap-[50px] pl-[14px] py-[4px] pr-[4px] rounded-full text-textColor" x-data="{ openSubmenu: null }">
+        <ul class="anim-move-down flex items-center gap-[3rem] pl-[14px] py-[4px] pr-[4px] rounded-full text-textColor" x-data="{ openSubmenu: null }">
           {% for item in menu.items %}
             {% if not item.children %}
               <li>
@@ -34,7 +34,7 @@
                       {{ item.title|e }}
                 </a>
                 </button>
-                <div class="bg-transparent w-full h-[50px] top-[25px] z-10 absolute"></div>
+                <div class="bg-transparent w-full h-[3rem] top-[25px] z-10 absolute"></div>
                 <ul x-show="openSubmenu === id" x-cloak class="w-[247px] absolute z-20 top-[65px] -left-[10px] bg-bgColor text-textColor p-[30px] rounded-[20px]">
                   {% for subitem in item.children %}
                     <li>

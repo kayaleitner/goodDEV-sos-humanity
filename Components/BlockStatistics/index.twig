@@ -43,32 +43,32 @@
         },
       }
     %}
-    <div class="col-span-full pt-[22px] xs:flex xs:gap-x-[20px] xs:flex-wrap xs:pe-0">
+    <div class="col-span-full pt-[1.375rem] xs:flex xs:gap-x-[1.25rem] xs:flex-wrap xs:pe-0">
       {% for stat in statistics %}
         {% set class = '' %}
         {% set imgClass = '' %}
         {% if loop.index % 4 == 1 %}
           {# every 4th element starting with the first #}
-          {% set imgClass = 'object-[calc(50%_+_33px)]' %}
+          {% set imgClass = 'object-[calc(50%_+_2.0625rem)]' %}
         {% elseif loop.index % 4 == 2 %}
           {# every 4th element starting with the second #}
-          {% set class =  'xs:mt-[111px] md:mt-[144px]' %}
-          {% set imgClass = 'object-[calc(50%_+_40px)] xs:object-start' %}
+          {% set class =  'xs:mt-[6.9375rem] md:mt-[9rem]' %}
+          {% set imgClass = 'object-[calc(50%_+_2.5rem)] xs:object-start' %}
         {% elseif loop.index % 4 == 3 %}
-          {% set class =  'xs:mt-[-9px] md:mt-[-49px]' %}
-          {% set imgClass = 'object-[calc(50%_+_24px)]' %}
+          {% set class =  'xs:mt-[-0.5625rem] md:mt-[-3.0625rem]' %}
+          {% set imgClass = 'object-[calc(50%_+_1.5rem)]' %}
         {% elseif loop.index % 4 == 0 %}
-          {% set class =  'xs:mt-[187px] md:mt-[154px]' %}
-          {% set imgClass = 'object-[calc(50%_+_15px)]' %}
+          {% set class =  'xs:mt-[11.6875rem] md:mt-[9.625rem]' %}
+          {% set imgClass = 'object-[calc(50%_+_0.9375rem)]' %}
         {% endif %}
-        <div class="xs:basis-[calc(50%_-_10px)] md:basis-[calc(25%_-_(60px/3))] {{ not loop.last ? 'mb-[66px] xs:mb-0' }} {{ class }}"
+        <div class="xs:basis-[calc(50%_-_0.625rem)] md:basis-[calc(25%_-_(3.75rem/3))] {{ not loop.last ? 'mb-[4.125rem] xs:mb-0' }} {{ class }}"
           data-parallax
           data-rellax-speed="{{ parallaxMap[loop.index].speed }}"
           data-rellax-xs-speed="{{ parallaxMap[loop.index].xs }}"
           data-rellax-mobile-speed="{{ parallaxMap[loop.index].mobile }}"
           data-rellax-tablet-speed="{{ parallaxMap[loop.index].tablet }}"
         >
-          <div class="w-full mb-[-10px] aspect-[3/2] xs:ps-[50px] ">
+          <div class="w-full mb-[-0.625rem] aspect-[3/2] xs:ps-[3rem] ">
             <img class="image lazyload w-full h-full object-contain xs:object-left {{ imgClass }}"
                 src="{{ stat.image.src | resize(32) }}"
                 width="{{ 768 }}"
@@ -83,7 +83,7 @@
               <div class="stat-unit font-titleSub mt-xs mb-0">{{ stat.number.unit }}</div>
             {% endif %}
           </div>
-          <div class="stat-description  xs:ps-[50px] {{ stat.number.unit ? 'mt-[16px]' : 'mt-[23px]'}}">{{ stat.description }}</div>
+          <div class="stat-description  xs:ps-[3rem] {{ stat.number.unit ? 'mt-[1rem]' : 'mt-[1.4375rem]'}}">{{ stat.description }}</div>
         </div>
       {% endfor %}
     </div>

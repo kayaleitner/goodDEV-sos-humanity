@@ -10,22 +10,22 @@
   
     &-move-up {
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(4rem);
     }
   
     &-move-down {
       opacity: 0;
-      transform: translateY(-50px);
+      transform: translateY(-4rem);
     }
   
     &-move-left {
       opacity: 0;
-      transform: translateX(50px);
+      transform: translateX(4rem);
     }
   
     &-move-right {
       opacity: 0;
-      transform: translateX(-50px);
+      transform: translateX(-4rem);
     }
   }
   

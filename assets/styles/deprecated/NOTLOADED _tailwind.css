@@ -248,7 +248,7 @@
         width: 100%;
 
         .wpcf7-response-output {
-          margin-top: 50px;
+          margin-top: 3rem;
 
           @screen sm {
           }
@@ -405,7 +405,7 @@
           @screen sm {
             position: absolute;
             right: calc(50% - 325px);
-            top: 550px;
+            top: 53rem;
             width: 301px;
           }
 

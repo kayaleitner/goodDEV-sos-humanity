@@ -63,6 +63,16 @@ export const theme = {
       max: '6rem',
       extra: '12rem',
     },
+    width: {
+      min: '.125rem',
+      xs: '.5rem',
+      sm: '1rem',
+      md: '2rem',
+      lg: '3rem',
+      xl: '4rem',
+      max: '6rem',
+      extra: '12rem',
+    },
     spacing: {
       min: '.125rem',
       xs: '.5rem',

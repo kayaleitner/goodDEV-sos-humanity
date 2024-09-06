@@ -66,22 +66,22 @@
 
   &-move-up {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(3rem);
   }
 
   &-move-down {
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateY(-3rem);
   }
 
   &-move-left {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(3rem);
   }
 
   &-move-right {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-3rem);
   }
 }
 

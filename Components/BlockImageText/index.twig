@@ -6,7 +6,7 @@
 } %}
 
 {% set content %}
-  <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-x-xs gap-y-[40px] xs:gap-x-sm xs:gap-y-[60px]">
+  <div class="container mx-auto grid items-center grid-cols-6 md:grid-cols-12 gap-x-xs gap-y-[2.5rem] xs:gap-x-sm xs:gap-y-[3.75rem]">
   {% if blockTitle %}
     <div class="col-span-6 md:col-span-12">
       {{ h.h(blockTitle, { level: 3, class: 'mb-0' }) }}
@@ -61,7 +61,7 @@
         xd:col-span-{{ content.colTextSpan.tablet }}
         md:col-span-{{ content.colTextSpan.desktop }}
         xl:col-span-{{ content.colTextSpan.max }}
-        {{ mediaPositionMobile == 'bottom' ? 'pb-[20px]' : 'pt-[20px]' }} xs:p-0
+        {{ mediaPositionMobile == 'bottom' ? 'pb-[1.25rem]' : 'pt-[1.25rem]' }} xs:p-0
       "
       >
       {{ content.contentHtml|e('wp_kses_post') }}
