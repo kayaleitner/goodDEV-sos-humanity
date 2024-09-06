@@ -5,9 +5,8 @@
         right: 10px;
         /* The color will need to be dynamically set in JavaScript based on hostname */
         color: white;
-        padding: 8px 12px;
-        border-radius: 4px;
-        font-size: 14px;
+        padding: .5rem;
+        border-radius: rem(4);
         font-family: Arial, sans-serif;
         font-weight: bold;
         z-index: 1000;
