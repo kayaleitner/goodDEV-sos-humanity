@@ -55,12 +55,12 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     [
                         'label' => __('Long Title', 'flynt'),
                         'instructions' => __('Displayed as H1, falls back to page title if none provided', 'flynt'),
-                        'name' => 'title',
+                        'name' => 'longTitle',
                         'type' => 'textarea',
                         "rows" => 6,
-                        'line_breaks' => 'br',
+                        'new_lines' => 'br',
                         'wrapper' => [
-                            'width' => 50,
+                            'width' => 33,
                         ],
                     ],
                     [
@@ -69,9 +69,32 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                         'name' => 'intro',
                         'type' => 'textarea',
                         "rows" => 6,
-                        'line_breaks' => 'br',
+                        'new_lines' => 'br',
                         'wrapper' => [
-                            'width' => 50,
+                            'width' => 33,
+                        ],
+                    ],
+                    [
+                        'label' => __('Shape', 'flynt'),
+                        'instructions' => __('Shape for the animation - should consist of a single thin colored stroke - but open for experiments', 'flynt'),
+                        'name' => 'shape',
+                        'type' => 'image',
+                        'wrapper' => [
+                            'width' => 20,
+                        ],
+                    ],
+                    [
+                        'label' => __('Stretch', 'flynt'),
+                        'instructions' => __('Stretch of the animation', 'flynt'),
+                        'name' => 'stretch',
+                        'type' => 'number',
+                        'default_value' => 20,
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                        'append' => '%',
+                        'wrapper' => [
+                            'width' => 10,
                         ],
                     ],
                 ]

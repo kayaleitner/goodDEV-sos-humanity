@@ -1,33 +1,45 @@
-{% if post.displayBanner %}
-<flynt-component
-  load:on="visible" name="ElementPageHeader"
-  class="w-full mx-auto flex flex-col sm:flex-row justify-between items-center"
-  style="background: var(--brandColor);"
-  data-navStyle="dark-clear"
->
-  <div class="w-full mx-auto flex flex-col sm:flex-row justify-between items-center">
-    <div class="w-full sm:w-1/2 grow hidden sm:block"></div>
-    {% if post.thumbnail %}
-      <div class="w-full sm:w-1/2 sm:min-h-[720px] grow aspect-square xs:aspect-2/1 overflow-hidden">
-        <img class="lazyload w-full h-full object-cover aspect-2/1 brightness-70"
-          src="{{ post.thumbnail.src | resize(32) }}"
-          data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-          data-sizes="auto">
-      </div>
+{% if post.displayPageHeader %}
+
+{% set componentOptions = {
+    name: 'ElementPageHeader',
+    loadOn: 'visible',
+    class: 'overflow-hidden',
+} %}
+
+{% set options = {
+    colorText: 'var(--blue)',
+    colorBackground: 'var(--paperColor)',
+} %}
+
+{% set content %}
+
+  <div class="container-grid items-end prose mt-max">
+    <h1 class="col-span-6 md:col-span-8 sm:!mb-0 pt-48">
+      {% if post.header.longTitle %}
+        {{ post.header.longTitle }}
       {% else %}
-      <div class="w-full sm:w-1/2 sm:min-h-[720px] grow aspect-square xs:aspect-2/1 overflow-hidden">
-        <div class="w-full h-full relative">
-          <div class="titleSmall mb-sm font-bold text-[orange] absolute top-0 left-0 h-full w-full flex justify-center items-center">Please set a featured image.</div>
-        </div>
-      </div>
+        <span class="font-extraLarge">{{ post.title }}</span>
+      {% endif %}
+    </h1>
+    {% if post.header.intro %}
+      <h2 class="col-span-6 md:col-span-3  sm:!mb-0">
+        {{ post.header.intro }}
+      </h2>
     {% endif %}
   </div>
-  <div class="w-full max-w-screen-max mx-auto aspect-square xs:aspect-2/1 sm:aspect-auto flex flex-row justify-center items-center sm:absolute sm:left-1/2 sm:-translate-x-1/2">
-    <div class="w-full sm:w-1/2 h-full p-sm xs:p-md lg:p-lg grow text-bgColor flex flex-col justify-between" style="background: var(--brandColor);">
-      {% if post.title %}<h1 class="titleSmall font-bold mb-sm">{{ post.title }}</h1>{% endif %}
-      {% if post.intro %}<div class="subtitle mb-sm mt-0 sm:mt-lg">{{ post.intro }}</div>{% endif %}
-    </div>
-    <div class="w-full sm:w-1/2 grow hidden sm:block"></div>
+
+  <div class="absolute -right-[12rem] -top-[18rem] w-[60rem] h-[60rem]">
+  {% include 'Components/ElementPageHeader/shape.twig' with {
+    image: post.header.shape,
+    stretch: post.header.stretch,
+  } %}
   </div>
-</flynt-component>
+
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}
+
 {% endif %}
