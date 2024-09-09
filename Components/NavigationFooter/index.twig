@@ -1,149 +1,90 @@
 {% import "Components/_Atoms/Button/macro.twig" as btn %}
+{% import "Components/_Atoms/macroIcon.twig" as icon %}
 
-<flynt-component 
-  class="w-full left-0 bottom-0" 
-  load:on="visible" 
-  name="NavigationFooter" 
-  style="
-    background: {% if colorBackground %}{{ colorBackground }}{% else %}var(--brandColor){% endif %}; 
-    color: {% if colorText %}{{ colorText }}{% else %}var(--bgColor){% endif %};
-  ">
-  <div class="container mx-auto xs:pb-xl xs:pt-[52px] sm:py-lg flex flex-col">
-    <div class="flex flex-col gap-[42px] justify-between items-start w-full md:gap-lg">
+{% set componentOptions = {
+    name: 'NavigationFooter',
+    loadOn: 'visible',
+    class: "w-full left-0 bottom-0" 
+} %}
+
+{% set content %}
+  <div class="mx-auto container-grid gap-y-md items-start">
+    <div class="col-start-1 col-end-4 sm:col-end-7 md:col-start-1 md:col-end-4 flex flex-col gap-p">
       {% if logoFooter %}
-        <a href="{{ site.link|e('esc_url') }}" aria-label="Go to Homepage">
-          <img class="logo lazyload w-[13rem] xs:w-[170px]"
+        <a class="" href="{{ site.link|e('esc_url') }}" aria-label="Go to Homepage">
+          <img class="logo lazyload"
           src="{{ logoFooter.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', logoFooter.id)}}"
           data-sizes="auto">
         </a>
       {% endif %}
-      <div class="w-full grid grid-cols-6 gap-y-md gap-x-xs xs:gap-x-sm xl:flex xl:justify-between">
-        <div class="col-span-full xs:col-span-3 xs:-me-[3rem] font-smallParagraph xl:max-w-[368px] xl:me-0">
-          <div>
-            {{ paragraph }}<br><br>
-            {{ 'now' | date('Y') }} - {{ site.name }} | All right reserved
+    
+       {% if social %}
+        <div class="flex flex-row gap-sm  align-center">
+          <div class="flex flex-row">
+            <p>{{ socialMediaTitle }}</p>
           </div>
-        </div>
-        <div class="col-span-3 xs:col-start-5 xs:col-span-2 border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 font-linkSmall xl:hidden">
-          {% if menu %}
-            <nav aria-label="{{ labels.ariaLabel }}">
-              {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
-            </nav>
-          {% endif %}
-        </div>
-        <div class="col-span-3 xs:col-span-2 xs:-me-[12px] border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 justify-between flex flex-col gap-[1.375rem] font-smallParagraph -ms-[10px] xs:ms-0 xl:hidden">
-          <div class="font-paragraphSmall">{{ title2 }}</div>
-          {{ paragraph2 }}
-        </div>
-        <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 flex flex-col gap-4 font-smallParagraph xl:hidden">
-          <div class="font-paragraphSmall">{{ title3 }}</div>
-          {{ paragraph3 }}
-          {{ btn.buttonAnchor(button, {
-            color: 'accent',
-            icon: true,
-          }) }}
-        </div>
-        <div class="hidden xl:flex xl:gap-x-[126px] xl:gap-x-[100px]">
-          <div class="col-span-3 xs:col-start-5 xs:col-span-2 border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 font-linkSmall xl:min-w-[136px]">
-            {% if menu %}
-              <nav aria-label="{{ labels.ariaLabel }}">
-                {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
-              </nav>
-            {% endif %}
+          <div class="flex flex-row gap-sm">
+            {% for socials in social %}
+              <a href="{{ socials.url.href }}" class="block w-md h-md" aria-label="{{ socials.title }}">
+                {{ icon.icon(socials.platform.value) }}
+              </a>
+            {% endfor %}
           </div>
-          <div class="col-span-3 xs:col-span-2 xs:-me-[12px] border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 justify-between flex flex-col gap-[1.375rem] font-smallParagraph -ms-[10px] xs:ms-0 xl:m-0 xl:w-[219px] xl:w-[240px]">
-            <div class="font-paragraphSmall">{{ title2 }}</div>
-            {{ paragraph2 }}
           </div>
-          <div class="col-span-4 xs:col-start-5 xs:col-span-2 border-s-1 border-s-[rgba(255,255,255,0.7)] ps-4 flex flex-col gap-4 font-smallParagraph xl:w-[219px] xl:w-[240px]">
-            <div class="font-paragraphSmall">{{ title3 }}</div>
-            {{ paragraph3 }}
-            {{ btn.buttonAnchor(button, {
-              color: 'accent',
-              icon: true,
-            }) }}
-          </div>
-        </div>
+      {% endif %}
 
-        {% if social %}
-          <div class="col-span-full flex flex-col gap-xs xs:hidden w-full grow items-start justify-start social">
-            {% if socialMediaTitle %}
-              <div class="caption font-bold">{{ socialMediaTitle }}</div>
-            {% endif %}
-            <div class="flex flex-row gap-[5px]">
-              {% for socials in social %}
-                <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
-                  {% include 'Components/_Atoms/icon.twig'
-                  with {
-                    icon: socials.platform.label|lower ~ '-white',
-                    color: 'text-bgColor',
-                    iconClasses: '',
-                  }
-                  %}
-                </a>
-              {% endfor %}
-            </div>
-          </div>
-        {% endif %}
+      {% if cta %}
+      <div>
+        <a class="btn-primary" href="{{ cta.url }}" >{{ cta.title }}</a>
       </div>
+      {% endif %}
     </div>
-  </div>
-  {% if partnerlogos or social %}
-    <div class="container mx-auto py-[24px] xs:py-[27px] sm:py-lg border-t-1 border-t-[rgba(255,255,255,0.3)] flex flex-row items-center justify-between xs:gap-20">
-    {% if partnerlogos %}
-      <div class="w-full flex items-stretch justify-center xs:justify-start">
-        {% for partner in partnerlogos %}
-        {% set styles = [] %}
-        {% if partner.basis and (loop.first or loop.last) %}
-          {% set flexBasis = partner.basis + 29 %}
-        {% elseif partner.basis %}
-          {% set flexBasis = partner.basis + 29 + 29 %}
-        {% endif %}
-        {% if partner.basis %}
-          {% set styles = styles|merge(['flex-basis:' ~ flexBasis ~ 'px']) %}
-        {% endif %}
-        <div class="flex items-center py-xs
-          {{ not loop.first ? 'ps-[29px] border-s-1 border-s-[rgba(255,255,255,0.7)]' }}
-          {{ not loop.last ? 'pe-[29px]' }}"
-          {% if styles is not empty %}
-            style="
-              {% for style in styles %}
-                {{ style }};
-              {% endfor %}
-            "
-          {% endif %}
-          >
-          <img class="lazyload"
-            src="{{ partner.image.src | resize(32) }}"
-            data-srcset="{{function('wp_get_attachment_image_srcset', partner.image.id)}}"
-            data-sizes="auto"
-            alt="{{ partner.image.alt }}">
-        </div>
+
+    <div class="col-start-1 col-end-4 sm:col-end-7 md:col-start-5 md:col-end-8 md:row-start-1">
+      <h3 class="font-bold uppercase pb-sm"> {{linkTitle}} </h3>
+      <ul>
+        {% for item in links %}
+          <li class="pb-xs" >
+            <a class="link" href="{{ item.link.url }}">{{ item.link.title }}</a>
+          </li>
         {% endfor %}
-      </div>
-    {% endif %}
-    {% if social %}
-      <div class="col-span-full hidden flex-col gap-xs basis-0 w-full social xs:flex">
-        {% if socialMediaTitle %}
-          <div class="caption font-bold">{{ socialMediaTitle }}</div>
-        {% endif %}
-        <div class="flex flex-row gap-[5px]">
-          {% for socials in social %}
-            <a class="socialList-link" href="{{ socials.url }}" target="_blank" aria-label="{{ socials.platform.label }}">
-              {% include 'Components/_Atoms/icon.twig'
-              with {
-                icon: socials.platform.label|lower,
-                color: 'text-bgColor',
-                iconClasses: '',
-                png: true,
-              }
-              %}
-            </a>
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
+      </ul>
     </div>
-  {% endif %}
-</flynt-component>
+
+    <div class="col-start-1 col-end-4 sm:col-start-7 sm:col-end-13 md:col-start-8 md:col-end-11 md:row-start-1">
+      <h3 class="font-bold uppercase pb-sm"> {{contactTitle}}</h3>
+      <div class="wysiwyg">
+        {{ contactInfo|e('wp_kses_post')  }}
+      </div>
+    </div>
+
+    {% if menu %}
+      <div class="col-start-1 col-end-5 sm:col-end-13 md:flex justify-between border-t pt-md">
+          <nav aria-label="{{ labels.ariaLabel }}">
+          <ul class="flex gap-xs flex-col md:flex-row md:gap-p ">
+          {% set items = menu.get_items %}
+          
+            {% for item in items %}
+              <li class="{{ item.classes | join(' ') }}">
+                <a class="hover:text-hoverColor focus:text-hoverColor active:text-activeColor" href="{{ item.link|e('esc_url')|e('esc_url') }}"{% if item.target %} target="{{ item.target }}"{% endif %}>{{ item.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+          </nav>
+
+          <div class="mt-md md:mt-0">
+            {{ 'now' | date('Y') }} - {{ site.name }} | All rights reserved
+          </div>
+      </div>
+    {% endif %}
+  </div>
+{% endset %}
+
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}
+
+

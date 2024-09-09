@@ -37,50 +37,59 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
 
 Options::addTranslatable('NavigationFooter', [
     [
-        'label' => __('Content', 'flynt'),
-        'name' => 'contentTab',
+        'label' => __('Links', 'flynt'),
+        'name' => 'linkTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0
     ],
     [
-        'label' => __('Paragraph 1', 'flynt'),
-        'name' => 'paragraph',
-        'type' => 'textarea',
-        'rows' => 4,
-        'new_lines' => 'br',
+        'label' => __('Label Link Title', 'flynt'),
+        'name' => 'linkTitle',
+        'type' => 'text',
+        'default_value' => __('Important Links', 'flynt')
     ],
     [
-        'label' => __('Title 2', 'flynt'),
-        'name' => 'title2',
-        'type' => 'text'
+        'label' => __('Links', 'flynt'),
+        'name' => 'links',
+        'type' => 'repeater',
+        'layout' => 'table',
+        'button_label' => __('Add Link', 'flynt'),
+        'sub_fields' => [
+            [
+                'label' => __('Link', 'flynt'),
+                'type' => 'link',
+                'name' => 'link',
+                'required' => 1
+            ],
+        ]
     ],
     [
-        'label' => __('Paragraph 2', 'flynt'),
-        'name' => 'paragraph2',
-        'type' => 'textarea',
-        'rows' => 4,
-        'new_lines' => 'br',
-    ],
-    [
-        'label' => __('Title 3', 'flynt'),
-        'name' => 'title3',
-        'type' => 'text'
-    ],
-    [
-        'label' => __('Paragraph 3', 'flynt'),
-        'name' => 'paragraph3',
-        'type' => 'textarea',
-        'rows' => 4,
-        'new_lines' => 'br',
-    ],
-    [
-        'label' => __('Button', 'flynt'),
-        'name' => 'button',
+        'label' => __('CTA', 'flynt'),
+        'name' => 'cta',
         'type' => 'link'
     ],
     [
-        'label' => __('Logo', 'flynt'),
+        'label' => __('Contact', 'flynt'),
+        'name' => 'contactTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Label Link Title', 'flynt'),
+        'name' => 'contactTitle',
+        'type' => 'text',
+        'default_value' => __('Contact', 'flynt')
+    ],
+    [
+        'label' => __('Contact Info', 'flynt'),
+        'name' => 'contactInfo',
+        'type' => 'wysiwyg',
+        'media_upload' => 0,
+    ],
+    [
+        'label' => __('Imagery', 'flynt'),
         'name' => 'logoTab',
         'type' => 'tab',
         'placement' => 'top',
@@ -94,6 +103,13 @@ Options::addTranslatable('NavigationFooter', [
         'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
         'required' => 0,
         'mime_types' => 'jpg,jpeg,png,svg'
+    ],
+    [
+        'label' => __('Triangle Image', 'flynt'),
+        'name' => 'triangleImage',
+        'type' => 'image',
+        'preview_size' => 'medium',
+        'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
     ],
     [
         'label' => __('Social Media', 'flynt'),
@@ -139,33 +155,6 @@ Options::addTranslatable('NavigationFooter', [
         ]
     ],
     [
-        'label' => __('Partner Logos', 'flynt'),
-        'name' => 'partnerlogos',
-        'type' => 'repeater',
-        'layout' => 'table',
-        'button_label' => __('Add Partner Logo', 'flynt'),
-        'sub_fields' => [
-            [
-                'label' => __('Logo', 'flynt'),
-                'name' => 'image',
-                'type' => 'image',
-                'preview_size' => 'medium',
-                'instructions' => __('Image-Format: SVG.', 'flynt'),
-                'required' => 0,
-                'mime_types' => 'svg'
-            ],
-            [
-                'label' => __('Flex Basis', 'flynt'),
-                'name' => 'basis',
-                'type' => 'number',
-                'instructions' => __('Determines the width relative to the other logos.', 'flynt'),
-                'append' => 'px',
-                'default_value' => 0,
-                'required' => 0,
-            ],
-        ]
-    ],
-    [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
         'type' => 'tab',
@@ -187,15 +176,12 @@ Options::addTranslatable('NavigationFooter', [
                     'width' => '50',
                 ],
             ],
+            [
+                'label' => __('Copy Right', 'flynt'),
+                'name' => 'copyRight',
+                'type' => 'text',
+                'default_value' => __('© 2024 - German Foreign Ministry | All rights reserved', 'flynt'),
+            ]
         ],
     ],
-    [
-        'label' => __('Options', 'flynt'),
-        'name' => 'optionsTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0
-    ],
-    FieldVariables\getColorBackground(),
-    FieldVariables\getColorText(),
 ]);

@@ -1,0 +1,3 @@
+{% macro icon(name, classes = '') %}
+    {% include 'assets/icons/' ~ name|lower|replace({'/': "", ' ': ""}) ~ '.svg' %}
+{% endmacro %}

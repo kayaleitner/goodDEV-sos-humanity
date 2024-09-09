@@ -1,4 +1,4 @@
-<ul class="flex gap-xs flex-col">
+<ul class="flex gap-xs flex-col border-t border-[#ccc] pt-md">
   {% for item in items %}
     <li class="{{ item.classes | join(' ') }}">
       <a class="hover:text-hoverColor focus:text-hoverColor active:text-activeColor" href="{{ item.link|e('esc_url')|e('esc_url') }}"{% if item.target %} target="{{ item.target }}"{% endif %}>{{ item.title }}</a>
