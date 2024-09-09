@@ -8,11 +8,11 @@
 {% set content %}
   <div class="container-grid">
     {% if blockTitle %}
-      <div class="col-span-full md:col-start-2 md:col-span-5">
-          {{ h.h(blockTitle, { level: 1, class: '' }) }}
+      <div class="col-span-full md:col-span-5">
+          {{ h.h(blockTitle, { level: 2, class: '' }) }}
         </div>
     {% endif %}
-    <div class="wysiwyg col-span-full md:col-start-2 md:col-span-8 ">
+    <div class="wysiwyg col-span-full md:col-span-8 ">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>

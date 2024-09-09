@@ -1,11 +1,25 @@
 <flynt-component
-  {% if options.componentId %}id="{{ options.componentId }}"{% endif %}
+  {% if options.componentId %}
+    id="{{ options.componentId }}"
+  {% endif %}
   load:on="{{ componentOptions.loadOn }}"
+  load:on:media="{{ componentOptions.loadOnMedia }}"
   name="{{ componentOptions.name }}"
-  class="{{ options.mediaLayout ? 'layout-{{ options.mediaLayout}}' }}{{ componentOptions.class }}"
+  class="
+    block relative
+    {{ options.mediaLayout ? 'layout-{{ options.mediaLayout}}' }}
+    {{ componentOptions.class }}
+  "
   {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
   {{ options.navStyle ? 'data-navStyle="' ~ options.navStyle ~ '"' }}
-  style="{% if options.colorBackground %}background:{{options.colorBackground }};{% endif %}{% if options.colorText %} color:{{ options.colorText }};{% endif %}"
+  style="
+    {% if options.colorBackground %}
+      background:{{options.colorBackground }};
+      --bgColor:{{options.colorBackground }};
+    {% endif %}{% if options.colorText %}
+      color:{{ options.colorText }};
+      --textColor:{{options.colorText }};
+    {% endif %}"
 >
   {{ content|raw }}
 </flynt-component>

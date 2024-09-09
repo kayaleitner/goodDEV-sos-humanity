@@ -2,9 +2,11 @@
 
 html {
   font-size: 16px;
+  text-wrap: balance;
 
   @screen xl {
-    font-size: 1.1111vw;
+    /* font-size: 1.1111vw; */
+    font-size: clamp(1rem, 1.111111vw, 3rem); 
   }
 }
 
@@ -24,7 +26,7 @@ html {
 
   .font-pageTitle {
     @apply font-medium;
-    font-size: rem(32);
+    font-size: rem(36);
     line-height: rem(45);
 
     @screen md {
@@ -36,12 +38,12 @@ html {
 
   .font-sectionTitle {
     @apply font-medium;
-    font-size: rem(24);
+    font-size: rem(22);
     line-height: rem(28);
 
     @screen md {
-      font-size: rem(24);
-      line-height: rem(28);
+      font-size: rem(28);
+      line-height: rem(32);
     }
   }
 
@@ -97,9 +99,18 @@ html {
     @apply font-smallParagraph;
   }
 
+  .link {
+    text-decoration: underline;
+    @apply text-linkColor;
+    &:hover {
+      text-decoration: none;
+      @apply text-hoverColor;
+    }
+  }
 
   .wysiwyg,
-  #tinymce {
+  #tinymce,
+  .prose {
     p {
       @apply font-paragraph;
       @apply my-sm;
@@ -171,6 +182,10 @@ html {
 
     .caption {
       @apply font-caption;
+    }
+
+    a {
+      @apply link;
     }
 
     ul {

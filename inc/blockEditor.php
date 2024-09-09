@@ -24,6 +24,7 @@ add_filter('block_editor_settings_all', function (array $settings): array {
  */
 add_action('init', function (): void {
     remove_post_type_support('page', 'editor');
+    remove_post_type_support('post', 'editor');
     remove_action('wp_enqueue_scripts', 'wp_enqueue_classic_theme_styles');
 });
 

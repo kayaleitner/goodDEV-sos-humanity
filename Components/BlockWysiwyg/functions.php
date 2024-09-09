@@ -20,7 +20,7 @@ function getACFLayout(): array
             [
                 'label' => __('Title', 'flynt'),
                 'name' => 'blockTitle',
-                'instructions' => 'H1',
+                'instructions' => 'Displayed as H2',
                 'type' => 'text'
             ],
             [
