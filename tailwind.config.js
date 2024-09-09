@@ -15,16 +15,34 @@ export const theme = {
     white: 'var(--white)',
 
     /** Colors (Tokens) */
-    textColor: 'var(--textColor)',
-    bgColor: 'var(--bgColor)',
     brandColor: 'var(--brandColor)',
     accentColor: 'var(--accentColor)',
+
+    textColor: 'var(--textColor)',
+    linkColor: 'var(--linkColor)',
     hoverColor: 'var(--hoverColor)',
     activeColor: 'var(--bluepressed)',
+
     borderColor: 'var(--borderColor)',
+    uiColor: 'var(--grey)',
+
+    bgColor: 'var(--bgColor)',
+    paperColor: 'var(--paperColor)',
+
     errorColor: 'var(--errorColor)',
     successColor: 'var(--successColor)',
-    uiColor: 'var(--uiColor)',
+  },
+  fontFamily: {
+    sans: ['Inter', 'Roboto', 'Open Sans', 'Helvetica', 'Arial', 'Sans'],
+    serif: ['EB Garamond', 'Georgia', 'Times New Roman', 'Serif'],
+    mono: ['IBM Plex Mono', 'Menlo', 'courier', 'monospace'],
+  },
+  borderRadius: {
+    DEFAULT: '2rem',
+  },
+  borderWidth: {
+    DEFAULT: '.0625rem',
+    0: '0',
   },
   screens: {
     min: '375px',
@@ -41,17 +59,8 @@ export const theme = {
       '3/4': '3 / 4',
       '2/1': '2 / 1',
     },
-    borderWidth: {
-      DEFAULT: '.125rem',
-      0: '0',
-    },
     brightness: {
       70: '.70',
-    },
-    fontFamily: {
-      sans: ['Inter', 'Roboto', 'Open Sans', 'Helvetica', 'Arial', 'Sans'],
-      serif: ['EB Garamond', 'Georgia', 'Times New Roman', 'Serif'],
-      mono: ['IBM Plex Mono', 'Menlo', 'courier', 'monospace'],
     },
     height: {
       min: '.125rem',

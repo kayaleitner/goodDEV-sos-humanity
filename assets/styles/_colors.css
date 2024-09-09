@@ -3,31 +3,39 @@
   --error: #f05252;
   --danger: #ffb900;
 
-  --black: #000;
+  --black: #262626;
   --white: #fff;
-  --blue: #0071c7;
-  --darkblue: #003574;
-  --lightblue: #23bced;
-  --darkerblue: #002a5b;
-  --bluepressed: #059ecf;
+
+  --blue: #1E26A1;
+
+  --mint-light: #E7ECE7;
+  --mint: #C0F6C0;
+
   --purple: #ac4399;
   --tangerine: #f55200;
   --pink: #f357ca;
   --green: #03ab3d;
   --yellow: #e8f000;
-  --grey: #f3f8fe;
+
+  --lightgrey: #f3f8fe;
+  --mint-transparent: #f3f8fead;
 
   /* Colors (Tokens) */
-  --hoverColor: var(--lightblue);
-  --textColor: var(--darkblue);
-  --bgColor: var(--white);
   --brandColor: var(--blue);
-  --accentColor: var(--darkblue);
+  --accentColor: var(--mint);
+
+  --textColor: var(--blue);
+  --linkColor: var(--blue);
+
+  --bgColor: var(--white);
+  --paperColor: var(--mint-light);
+
+  --hoverColor: var(--mint);
   --activeColor: var(--bluepressed);
   --errorColor: var(--tangerine);
   --successColor: var(--green);
   
-  --borderColor: var(--lightgrey);
+  --borderColor: var(--blue);
   --uiColor: var(--grey);
   --dangerColor: var(--danger);
 }
