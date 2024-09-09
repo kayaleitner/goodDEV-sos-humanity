@@ -13,11 +13,11 @@
     </a>
     {% block layout %}
       <div class="pageWrapper env_badge env_{{function('wp_get_environment_type')}}">
-        <header class="mainHeader fixed top-0 left-0 z-[9999] w-full h-0">
+        <header class="mainHeader top-0 left-0 z-[9999] w-full h-0 absolute">
           {% block header %}
             {{ renderComponent('NavigationMain') }}
             {{ renderComponent('NavigationBurger') }}
-            {{ renderComponent('NewsletterMailchimp') }}
+            {# {{ renderComponent('NewsletterMailchimp') }} #}
           {% endblock %}
         </header>
         <main id="mainContent" class="mainContent" aria-label="{{- theme.labels.mainContentAriaLabel|e -}}">

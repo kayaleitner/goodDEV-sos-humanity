@@ -12,7 +12,7 @@ export default function (el) {
   const BACKGROUND_COLOR_SCROLLED = 'bg-white'
 
   initNavState()
- 
+
   function initNavState() {
     const currentScrollPos = $(window).scrollTop()
 
@@ -27,17 +27,17 @@ export default function (el) {
     if (navScrolled) return
     navScrolled = true
     // Set style classes
-    refs.nav.classList.add(BACKGROUND_COLOR_SCROLLED)
-    refs.logo.classList.add('hidden')
-    refs.logoSecondary.classList.remove('hidden')
+    // refs.nav.classList.add(BACKGROUND_COLOR_SCROLLED)
+    // refs.logo.classList.add('hidden')
+    // refs.logoSecondary.classList.remove('hidden')
   }
 
   function unsetScrolledState() {
     if (!navScrolled) return
     navScrolled = false
-    refs.nav.classList.remove(BACKGROUND_COLOR_SCROLLED)
-    refs.logo.classList.remove('hidden')
-    refs.logoSecondary.classList.add('hidden')
+    // refs.nav.classList.remove(BACKGROUND_COLOR_SCROLLED)
+    // refs.logo.classList.remove('hidden')
+    // refs.logoSecondary.classList.add('hidden')
   }
 
   function handleScroll() {
@@ -71,8 +71,8 @@ export default function (el) {
 
   // hide / show navigation on scroll
   const showAnim = gsap
-    .from('[name="NavigationMain"]', {
-      yPercent: -100,
+    .from('[name="NavigationMain"] nav', {
+      yPercent: -200,
       paused: true,
       duration: 0.4,
       // scrub: 0.5,
@@ -80,7 +80,7 @@ export default function (el) {
     .progress(1)
 
   ScrollTrigger.create({
-    start: 'top top-=100',
+    start: 'top top-=1rem',
     end: 9999,
     markers: false,
     onUpdate: (self) => {
