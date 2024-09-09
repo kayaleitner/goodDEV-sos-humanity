@@ -1,46 +1,41 @@
 {% import "Components/_Atoms/Titles/title/macro.twig" as h %}
 
-<flynt-component
-  load:on="visible"
-  name="BlockCards"
-  style="
-    background-color: {% if options.colorBackground %}{{ options.colorBackground }}{% else %}var(--bgColor){% endif %};
-    color: {% if options.colorText %}{{ options.colorText }}{% else %}var(--textColor){% endif %};
-  "
-  >
+{% set componentOptions = {
+    name: 'BlockCards',
+    loadOn: 'idle',
+} %}
+
+{% set content %}
   {% set hasText = content.blockTitle or content.textContent %}
-  <div class="container mx-auto {{ hasText ? 'pt-md pb-xl xs:pb-[6.25rem] xs:pt-lg md:pt-xl xl:pb-xl' : 'p-md xs:p-xl xl:p-[8.75rem]' }}">
-  {% if content.textContent or content.blockTitle %}
-    <div class="mb-[3rem] sm:mb-lg xl:mb-[6.25rem]">
-      <div class="text-contents font-paragraph">
+
+  <div class="container-grid mx-auto">
+
+    {% if content.textContent or content.blockTitle %}
+      <div class="col-span-full">
         {% if content.blockTitle %}
-          {{ h.h(content.blockTitle, { level: 3, class: '' }) }}
+          {{ h.h(content.blockTitle, { level: 2, class: 'mb-sm' }) }}
         {% endif %}
         {% if content.textContent %}
-        <p>
+        <p class="font-paragraph">
           {{ content.textContent|e('wp_kses_post') }}
         </p>
         {% endif %}
       </div>
-    </div>
-  {% endif %}
+    {% endif %}
+
     {% if cards %}
       {% set layoutCardClass = '' %}
       {% if options.layout == '3col' %}
-        {% set layoutCardClass = 'basis-full md:basis-[calc(100%_/_2-1.25rem_/2)] xl:basis-[calc(100%_/_3-2_*_1.25rem_/3)]' %}
+        {% set layoutCardClass = 'col-span-full md:col-span-4' %}
       {% elseif options.layout == '4col' %}
-        {% set layoutCardClass = 'col-span-6 sm:col-span-3 md:col-span-6 xl:col-span-3' %}
+        {% set layoutCardClass = 'col-span-3' %}
       {% endif %}
-    <div
-      class="grid grid-cols-6 md:grid-cols-12 gap-xs xs:gap-sm"
-    >
-      {% if options.layout == '3col' %}
-      <div class="col-span-full md:col-start-2 md:col-span-10 xl:mx-0 flex flex-wrap justify-center gap-xs xs:gap-sm">
-      {% endif %}
+
       {% for card in cards %}
-        <div class="anim-move-up rounded-[0.625rem] {{ layoutCardClass }}" style="background-color: {{card.bgColor}}; color: {{card.color}};">
-          <div class="flex flex-col gap-[1.9375rem] p-[1.875rem] sm:p-md">
-            <div class="w-full h-[5rem] flex overflow-hidden">
+        <div class="anim-move-up rounded border {{ layoutCardClass }}" style="background-color: {{card.bgColor}}; color: {{card.color}};">
+          <div class="flex flex-col gap-md p-md">
+
+            <div class="w-full h-extra flex overflow-hidden">
               {% if card.image %}
                 <img class="w-full h-full object-contain object-left" src="{{ card.image.src }}" alt="{{ card.image.alt }}"
                   src="{{ card.image.src|resize(32) }}" 
@@ -51,23 +46,28 @@
                 />
               {% endif %}
             </div>
+
             {% if card.title or card.text %}
             <div>
               {% if card.title %}
-                {{ h.h(card.title, { level: 2, class: 'relative font-titleSub mb-[1.9375rem]' }) }}
+                {{ h.h(card.title, { level: 3, class: 'relative font-titleSub mb-md' }) }}
               {% endif %}
               {% if card.text %}
                 <p class="font-paragraph">{{ card.text }}</p>
               {% endif %}
             </div>
             {% endif %}
+
           </div>
         </div>
       {% endfor %}
-      {% if options.layout == '3col' %}
-      </div>
-      {% endif %}
-    </div>
+
   {% endif %}
   </div>
-</flynt-component>
+{% endset %}
+
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

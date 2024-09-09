@@ -83,7 +83,7 @@ function getACFLayout()
                     [
                         'name' => 'bgColor',
                         'label' => __('Background Color', 'flynt'),
-                        'default_value' => '#03ab3d',
+                        'default_value' => 'var(--paperColor)',
                         'type' => 'color_picker',
                         'required' => 1,
                         'wrapper' => [
@@ -93,7 +93,7 @@ function getACFLayout()
                     [
                         'name' => 'color',
                         'label' => __('Text Color', 'flynt'),
-                        'default_value' => '#ffffff',
+                        'default_value' => 'var(--textColor)',
                         'type' => 'color_picker',
                         'required' => 1,
                         'wrapper' => [
