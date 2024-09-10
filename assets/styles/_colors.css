@@ -24,11 +24,15 @@
   --brandColor: var(--blue);
   --accentColor: var(--mint);
 
-  --textColor: var(--blue);
-  --linkColor: var(--blue);
+  --textColor: var(--textColorDefault);
+  --textColorDefault: var(--brandGreen);
+  --linkColor: var(--black);
 
-  --bgColor: var(--white);
-  --paperColor: var(--mint-light);
+  --bgColor: var(--bgColorDefault);
+  --bgColorDefault: var(--white);
+  --paperColor: var(--grey);
+  --borderColor: var(--brandLight);
+  --uiColor: var(--brandLight);
 
   --hoverColor: var(--mint);
   --activeColor: var(--bluepressed);

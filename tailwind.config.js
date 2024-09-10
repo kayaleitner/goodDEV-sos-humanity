@@ -23,6 +23,8 @@ export const theme = {
     hoverColor: 'var(--hoverColor)',
     activeColor: 'var(--bluepressed)',
 
+    bgColor: 'var(--bgColor)',
+    paperColor: 'var(--paperColor)',
     borderColor: 'var(--borderColor)',
     uiColor: 'var(--grey)',
 

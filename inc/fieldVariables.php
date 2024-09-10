@@ -107,7 +107,7 @@ function getNavStyle($default = 'light-blur')
     ];
 }
 
-function getColorBackground($default = 'var(--bgColor)')
+function getColorBackground($default = 'var(--bgColorDefault)')
 {
     return [
         'label' => __('Color Background', 'flynt'),
@@ -134,7 +134,7 @@ function getColorSecondary()
     ];
 }
 
-function getColorText($default = 'var(--textColor)')
+function getColorText($default = 'var(--textColorDefault)')
 {
     return [
         'label' => __('Color Text', 'flynt'),
