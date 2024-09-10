@@ -1,5 +1,6 @@
 import 'vite/modulepreload-polyfill'
 import './scripts/custom'
+import './scripts/parallax'
 import Alpine from 'alpinejs'
 import FlyntComponent from './scripts/FlyntComponent'
 import lazySizes from 'lazysizes'
