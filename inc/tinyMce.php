@@ -56,8 +56,9 @@ add_filter('tiny_mce_before_init', function (array $mceInit): array {
         }
 
         if (isset($config['textcolor_map'])) {
+            // error_log(json_encode($config['textcolor_map']));
             // Send it to textcolor_map as true js array
-            $init['textcolor_map'] = json_encode($config['textcolor_map']);
+            $mceInit['textcolor_map'] = json_encode($config['textcolor_map']);
         }
     }
 
