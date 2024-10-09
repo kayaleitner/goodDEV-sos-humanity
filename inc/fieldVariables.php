@@ -262,3 +262,68 @@ function responsiveField(string $name, string $label, array $field, array $mediu
         $width
     );
 }
+
+function getCarouselOptions(int $speed = 300, int $autoplay = 0, int $delay = 4000, int $loop = 1): array
+{
+    return [
+        [
+            'label' => __('Carousel Options', 'flynt'),
+            'name' => 'carouselOptions',
+            'type' => 'group',
+            'layout' => 'block',
+            'sub_fields' => [
+                [
+                    'label' => __('Transition Duration', 'flynt'),
+                    'name' => 'speed',
+                    'type' => 'number',
+                    'instructions' => __('Duration of transition between slides (in ms).', 'flynt'),
+                    'default_value' => $speed,
+                    'wrapper' => [
+                        'width' => 25,
+                    ],
+                ],
+                [
+                    'label' => __('Autoplay', 'flynt'),
+                    'name' => 'autoplay',
+                    'type' => 'true_false',
+                    'wrapper' => [
+                        'width' => 25,
+                    ],
+                    'default_value' => $autoplay,
+                    'ui' => 1, // Enable UI toggle switch
+                ],
+                [
+                    'label' => __('Delay', 'flynt'),
+                    'name' => 'delay',
+                    'type' => 'number',
+                    'wrapper' => [
+                        'width' => 25,
+                    ],
+                    'instructions' => __('Delay time in milliseconds for autoplay.', 'flynt'),
+                    'default_value' => $delay,
+                    'conditional_logic' => [
+                        [
+                            [
+                                'field' => 'carouselOptions.autoplay',
+                                'operator' => '==',
+                                'value' => '1',
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'label' => __('Loop', 'flynt'),
+                    'name' => 'loop',
+                    'type' => 'true_false',
+                    'wrapper' => [
+                        'width' => 25,
+                    ],
+                    'default_value' => $loop,
+                    'ui' => 1, // Enable UI toggle switch
+                ],
+            ]
+        ]
+        
+    ];
+}
+
