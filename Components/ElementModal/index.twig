@@ -1,0 +1,29 @@
+{% set componentOptions = {
+    name: 'ElementModal',
+    loadOn: 'idle',
+    class: '!fixed w-screen h-screen z-[200] top-0 left-0 right-0 hidden',
+} %}
+
+{% set options = (options | default({})) | merge({ 
+    componentId: 'ElementModal',
+}) %}
+
+{% set content %}
+    <div data-ref="backdrop" 
+      class="w-full h-full absolute z-[200] opacity-1/2 bg-transparent backdrop-blur-sm" >
+    </div>
+
+    <div data-ref="modal" data-modal-open="false"
+        class="rounded-t-[2rem] absolute bottom-0 left-0 w-full bg-grey z-[300] flex flex-col max-h-[calc(100vh-8rem)] md:max-h-[calc(100vh-12.75rem)] overflow-y-auto"
+        style="transform: translateY(100%); transition: transform 0.5s ease-in-out;"
+    >
+      <button class="fixed top-sm right-sm btn-primary" data-ref="closeButton">Close</button>
+      <div data-ref="modalContent">
+      </div>
+    </div>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}
