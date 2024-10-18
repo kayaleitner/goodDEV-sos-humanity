@@ -1,0 +1,15 @@
+<div>
+
+    <div class="rounded-[2em] overflow-hidden mb-md aspect-[0.75]">
+        <img class="h-full lazyload object-cover transition duration-200 ease-linear" 
+        src="{{ post.thumbnail.src|resize(32) }}" 
+        data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
+        data-sizes="auto" 
+        data-src="{{ post.thumbnail.src }}" 
+        alt="{{ post.thumbnail.alt|e }}" />
+    </div>
+
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.function }}</p>
+    <p>{{ post.biography }}</p>
+</div>
