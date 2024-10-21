@@ -8,9 +8,16 @@ export default function (el) {
 
     const initModal = () => {
 
-        window.addEventListener('popstate', function(event) {
-            handleQueryParameters()
-            // Add your custom logic here
+
+        const modalButtons = document.querySelectorAll('[data-refs="modalLink"]');
+
+        Array.from(modalButtons).forEach((modalLink) => {
+            modalLink.addEventListener('click', (e) => {
+                e.preventDefault()
+                modalLink.getAttribute('href') && history.pushState(null, null, modalLink.getAttribute('href'))
+                handleQueryParameters()
+            })
+
         })
 
         modal.dataset.modalOpen === 'true' ? openModal() : null
@@ -35,7 +42,6 @@ export default function (el) {
         if (modalParam) {
             switch(modalParam) {
                 case 'people': 
-                    console.log('People modal');
                     jQuery.ajax({
                         type: 'POST',
                         url: '/wp-admin/admin-ajax.php',
@@ -47,7 +53,6 @@ export default function (el) {
                     })
                     .then(
                         (res) => {
-                            console.log('People modal response:', res);
                             modalContent.innerHTML = ''
                             modalContent.insertAdjacentHTML('beforeend', res)
                             openModal()
@@ -70,7 +75,6 @@ export default function (el) {
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'data-modal-open') {
-                    console.log('Modal open attribute changed');
                     const modalOpen = modal.getAttribute('data-modal-open')
                     if (modalOpen === 'true') {
                         _openModal()

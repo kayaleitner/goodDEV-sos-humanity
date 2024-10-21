@@ -17,7 +17,7 @@ function get_single_people() {
 
     $args = [
         'post_type' => 'people',
-        'name' => $post_slug,
+        'name' => sanitize_title($post_slug),
     ];
 
     $post = Timber::get_posts($args);
