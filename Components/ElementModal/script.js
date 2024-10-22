@@ -93,6 +93,11 @@ export default function (el) {
     const _closeModal = () => {
         // Logic to close the modal
 
+        const url = new URL(window.location);
+        url.searchParams.delete('modal');
+        url.searchParams.delete('slug');
+        window.history.replaceState({}, document.title, url);
+
         const isDesktop = window.matchMedia('(min-width: 1180px)').matches
         
         if (isDesktop) {
