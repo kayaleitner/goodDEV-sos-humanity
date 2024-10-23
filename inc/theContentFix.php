@@ -14,7 +14,8 @@ add_filter('wp_insert_post_data', function (array $data, array $postArr): array 
         'acf-post-type',
         'acf-ui-options-page',
         'acf-field-group',
-        'acf-field'
+        'acf-field',
+        'wpforms'
     ];
 
     if (in_array($postArr['post_type'], $excludedPostTypes)) {
