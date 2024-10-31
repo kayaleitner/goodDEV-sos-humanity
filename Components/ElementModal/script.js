@@ -40,8 +40,8 @@ export default function (el) {
         const slugParam = urlParams.get('slug');
 
         if (modalParam) {
-            switch(modalParam) {
-                case 'people': 
+            switch (modalParam) {
+                case 'people':
                     jQuery.ajax({
                         type: 'POST',
                         url: '/wp-admin/admin-ajax.php',
@@ -51,16 +51,21 @@ export default function (el) {
                             slug: slugParam
                         }
                     })
-                    .then(
-                        (res) => {
-                            modalContent.innerHTML = ''
-                            modalContent.insertAdjacentHTML('beforeend', res)
-                            openModal()
-                        }
-                    )
+                        .then(
+                            (res) => {
+                                modalContent.innerHTML = ''
+                                modalContent.insertAdjacentHTML('beforeend', res)
+                                openModal()
+                            }
+                        )
                     break
-                case 'forms': 
-                    console.log('Forms modal');
+                case 'form':
+                    // we load the form markup itself already hidden in the footer
+                    // in order for WPForms to load properly - unfortunately it doesn't work with AJAX
+                    modalContent.innerHTML = ''
+                    modalContent.appendChild(document.querySelector(`#${slugParam}`))
+                    modalContent.querySelector('div').style.display = 'block'
+                    openModal()
                     break
                 default:
                     break
@@ -99,7 +104,7 @@ export default function (el) {
         window.history.replaceState({}, document.title, url);
 
         const isDesktop = window.matchMedia('(min-width: 1180px)').matches
-        
+
         if (isDesktop) {
             modal.style.transform = '';
             modal.style.opacity = 0;
@@ -122,7 +127,7 @@ export default function (el) {
         el.style.display = 'block';
 
         const isDesktop = window.matchMedia('(min-width: 1180px)').matches
-        
+
         setTimeout(() => {
             if (isDesktop) {
                 modal.style.opacity = 1;
