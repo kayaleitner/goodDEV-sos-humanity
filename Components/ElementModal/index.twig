@@ -1,7 +1,7 @@
 {% set componentOptions = {
     name: 'ElementModal',
     loadOn: 'idle',
-    class: '!fixed w-screen h-screen z-[10000] top-0 left-0 right-0 hidden',
+    class: '!fixed w-screen h-screen z-[200] top-0 left-0 right-0 hidden',
 } %}
 
 {% set options = (options | default({})) | merge({ 
@@ -10,11 +10,11 @@
 
 {% set content %}
     <div data-ref="backdrop" 
-      class="w-full h-full absolute bg-black opacity-[0.4] cursor-pointer" >
+      class="w-full h-full absolute z-[9999] bg-black opacity-[0.4] cursor-pointer" >
     </div>
 
     <div data-ref="modal" data-modal-open="false"
-        class="rounded-t-[2rem] md:rounded-b-[2rem] overflow-y-auto md:overflow-y-clip max-h-[calc(100%-8rem)] md:max-h-[unset]
+        class="rounded-t-[2rem] md:rounded-b-[2rem] z-[10000] overflow-y-auto md:overflow-y-clip
           w-full md:w-[unset]
           absolute bottom-0 left-0 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2
           transition-all"
