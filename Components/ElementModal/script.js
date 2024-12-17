@@ -19,10 +19,6 @@ export default function (el) {
             closeModal()
         })
 
-        backdrop.addEventListener('click', () => {
-            closeModal()
-        })
-
         setupModalObserver()
         handleQueryParameters()
     }
@@ -89,14 +85,7 @@ export default function (el) {
     const _closeModal = () => {
         // Logic to close the modal
 
-        const isDesktop = window.matchMedia('(min-width: 1180px)').matches
-        
-        if (isDesktop) {
-            modal.style.transform = '';
-            modal.style.opacity = 0;
-        } else {
-            modal.style.transform = 'translateY(100%)';
-        }
+        modal.style.transform = 'translateY(100%)';
 
         setTimeout(() => {
             document.body.style.overflow = 'auto'
@@ -112,16 +101,10 @@ export default function (el) {
         // Logic to open the modal
         el.style.display = 'block';
 
-        const isDesktop = window.matchMedia('(min-width: 1180px)').matches
-
-        if (isDesktop) {
-            modal.style.opacity = 1;
-        } else {
-            modal.style.transform = 'translateY(0)';
-        }
-
-
+        console.log('Open modal');
         document.body.style.overflow = 'hidden'
+
+        modal.style.transform = 'translateY(0)';
     }
 
     const openModal = () => {
