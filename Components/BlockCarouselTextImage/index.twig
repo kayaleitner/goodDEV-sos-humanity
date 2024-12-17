@@ -1,0 +1,32 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+{% import "Components/_Containers/GridElement.twig" as ge %}
+
+{% set classes = blockTitle ? 'overflow-visible anim-pinCard relative' : 'relative' %}
+
+{% set componentOptions = {
+    name: 'BlockCarouselTextImage',
+    loadOn: 'idle',
+    class: classes
+} %}
+
+{% set content %}
+  {% if blockTitle %}
+    {% include 'Components/_Atoms/cardTab.twig' with {'title': blockTitle} %}
+  {% endif %}
+
+  <div class="container-full">
+    {# Text Image Carousel #}
+    {% if textImageCards %}
+      <div class="container-grid gap-y-0 p-0 relative grid-rows-[24rem_2rem_16.5rem] sm:grid-rows-[22.25rem_2rem_1fr] md:grid-rows-[38.563rem]">
+        {% include 'Components/BlockCarouselTextImage/Partials/_textFader.twig' with {options: options, textImageCards: textImageCards} %}
+        {% include 'Components/BlockCarouselTextImage/Partials/_imageSwiper.twig' with {options: options, textImageCards: textImageCards} %}
+        {% include 'Components/BlockCarouselTextImage/Partials/_carouselControls.twig' with {options: options, textImageCards: textImageCards} %}
+      </div>
+    {% endif %}
+  </div>
+{% endset %}
+
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

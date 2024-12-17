@@ -27,3 +27,43 @@ export function getJSON (node, selector = 'script[type="application/json"]', pro
   } catch (e) { }
   return data
 }
+
+export function fadeElements(refs, faderType) {
+  // Determine the active index based on pagination
+  const realActiveIndex = Array.from(refs.pagination.children).indexOf(
+    refs.pagination.querySelector('.swiper-pagination-bullet-active')
+  )
+  // Get the specified fader (either 'textFader' or 'ctaFader') and iterate over its children
+  Array.from(refs[faderType].children).forEach((child, index) => {
+    const isCurrentCta = parseInt(child.dataset.index) == realActiveIndex
+    const isCurrentText = index === realActiveIndex
+    const fadeCondition = faderType == 'ctaFader' ? isCurrentCta : isCurrentText
+
+    if (fadeCondition) {
+      // Apply active classes to the child with matching index
+      showElement(child)
+    } else {
+      // Apply inactive classes to every other child
+      hideElement(child)
+    }
+  })
+}
+
+export function showElement(child) {
+  child.classList.add('opacity-100', 'z-10')
+  child.classList.remove(
+    'opacity-0',
+    'z-0',
+    'pointer-events-none',
+    'cursor-default'
+  )
+}
+export function hideElement(child) {
+  child.classList.add(
+    'opacity-0',
+    'z-0',
+    'pointer-events-none',
+    'cursor-default'
+  )
+  child.classList.remove('opacity-100', 'z-10')
+}
