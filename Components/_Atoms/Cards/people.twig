@@ -1,33 +1,52 @@
-<div class="md:hidden bg-white sm:container-grid max-h-full md:max-h-[unset] overflow-y-auto">
-    <div class="md:block col-span-6 px-sm pt-lg mb-lg sm:col-start-5 sm:col-end-9 ">
-        <h2 class="font-pageTitle mb-5">{{ post.title }}</h1>
-        <p class="font-sectionTitle mb-md">{{ post.function }}</p>
-        <p class="font-smallParagraph">{{ post.biography }}</p>
+<li class="fade-in move-up post w-full py-sm lg:py-0">
+  <a class="flex flex-col h-full no-underline group [&_img]:hover:scale-[1.15] [&_img]:hover:origin-center [&_img]:focus:scale-[1.15] [&_img]:focus:origin-center" href="{{ post.link|e('esc_url')|e('esc_url')|e('esc_url') }}" aria-label="{{ post.title }}">
+    {% if post.thumbnail %}
+      <div class="block">
+        <figure class="figure overflow-hidden relative">
+          <div class="absolute w-full h-full z-10 opacity-5 bg-textColor"></div>
+          <img class="aspect-square grayscale group-hover:scale-[1.15] group-hover:origin-center group-focus:scale-[1.15] group-focus:origin-center lazyload object-cover transition duration-200 ease-linear" 
+            src="{{ post.thumbnail.src|resize(32) }}" 
+            data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
+            data-sizes="auto" 
+            data-src="{{ post.thumbnail.src }}" 
+            alt="{{ post.thumbnail.alt|e }}" />
+        </figure>
+      </div>
+    {% endif %}
+    <div class="text-current h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
+      <div class="w-full flex flex-col gap-sm">
+        <div class="w-full h-full p-sm flex flex-row justify-between gap-sm align-middle items-center border caption">
+          <div>
+            <div class="font-mono font-bold">
+              {% for term in post.terms('location') %}
+                <div class="caption">{{ term }}</div>
+              {% endfor %}
+            </div>
+            {% for term in post.terms('division') %}
+              <div class="caption">{{ term }}</div>
+            {% endfor %}
+          </div>
+          {% for term in post.terms('division') %}
+            {% include 'Components/_Atoms/icon.twig' with 
+              {
+                iconClasses: 'w-10 h-10',
+                icon: term
+              } 
+            %}
+            {# <div class="w-10 h-10" data-icon="{{ term|lower|replace({ '/': '', ' ': '' }) }}"></div> #}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="w-full grow flex flex-col gap-sm justify-start align-start items-start">
+        <div class="body xs:h-14">{{ post.position }}</div>
+        <div class="w-full flex flex-col">
+          <h2 class="subtitle mb-sm w-full grow">{{ post.title }}</h2>
+          <div class="body w-full grow">{{ post.bio|truncate(10) }}</div>
+        </div>
+      </div>
+      <div class="mt-sm flex flex-row lg:flex-col gap-sm justify-start items-start">
+        <div class="link button button--card">{{ labels.readMore }}</div>
+      </div>
     </div>
-    <div class="col-span-6 sm:col-span-3 sm:row-start-1 sm:mt-lg rounded-t-[2em] sm:rounded-b-[2rem] overflow-hidden aspect-[0.75]">
-        <img class="h-full w-full lazyload object-cover transition duration-200 ease-linear" 
-        src="{{ post.thumbnail.src|resize(32) }}" 
-        data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
-        data-sizes="auto" 
-        data-src="{{ post.thumbnail.src }}" 
-        alt="{{ post.thumbnail.alt|e }}" />
-    </div>
-</div>
-
-<div class="hidden md:block w-[73.75rem] h-[38.8rem] relative">
-    <div class="absolute w-[45%] left-0 top-0 h-full mr-[55%] rounded-l-[2rem] overflow-hidden">
-        <img class="h-full w-full lazyload object-cover transition duration-200 ease-linear" 
-        src="{{ post.thumbnail.src|resize(32) }}" 
-        data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
-        data-sizes="auto" 
-        data-src="{{ post.thumbnail.src }}" 
-        alt="{{ post.thumbnail.alt|e }}" />
-    </div>
-    <div class="block h-full w-[59%] overflow-y-auto absolute top-0 right-0 bg-white pl-lg pr-xl rounded-[2rem] no-scrollbar modal-overflow-gradient-top modal-overflow-gradient-bottom">
-       <div class="px-sm pt-lg mb-lg">
-        <h2 class="font-pageTitle mb-5">{{ post.title }}</h1>
-        <p class="font-sectionTitle mb-md">{{ post.function }}</p>
-        <p class="font-smallParagraph">{{ post.biography }}</p>
-       </div>
-    </div>
-</div>
+  </a>
+</li>

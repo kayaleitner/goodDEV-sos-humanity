@@ -122,14 +122,12 @@ export default function (el) {
         el.style.display = 'block';
 
         const isDesktop = window.matchMedia('(min-width: 1180px)').matches
-        
-        setTimeout(() => {
-            if (isDesktop) {
-                modal.style.opacity = 1;
-            } else {
-                modal.style.transform = 'translateY(0)';
-            }
-        }, 50)
+
+        if (isDesktop) {
+            modal.style.opacity = 1;
+        } else {
+            modal.style.transform = 'translateY(0)';
+        }
 
 
         document.body.style.overflow = 'hidden'
