@@ -89,6 +89,26 @@ Options::addTranslatable('NavigationFooter', [
         'media_upload' => 0,
     ],
     [
+        'label' => __('CTA', 'flynt'),
+        'instructions' => __('If a form is opened, URL will be ignored', 'flynt'),
+        'name' => 'contactCta',
+        'type' => 'link',
+        'wrapper' => [
+            'width' => '50'
+        ]
+    ],
+    [
+        'label' => __('Form to open in Popup Modal', 'flynt'),
+        'instructions' => __('Select a WPForms form.', 'flynt'),
+        'name' => 'contactForm',
+        'type' => 'post_object',
+        'post_type' => ['wpforms'],
+        'allow_null' => 1,
+        'wrapper' => [
+            'width' => '50'
+        ]
+    ],
+    [
         'label' => __('Imagery', 'flynt'),
         'name' => 'logoTab',
         'type' => 'tab',
