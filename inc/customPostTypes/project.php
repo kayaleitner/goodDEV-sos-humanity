@@ -1,11 +1,5 @@
 <?php
 
-/**
- * This is an example file showcasing how you can add custom post types to your Flynt theme.
- *
- * For a full list of parameters see https://developer.wordpress.org/reference/functions/register_post_type/ or use https://generatewp.com/post-type/ to generate the code for you.
- */
-
 namespace Flynt\CustomPostTypes;
 
 function registerProjectPostType()
@@ -17,7 +11,7 @@ function registerProjectPostType()
         'name_admin_bar'        => __('Project', 'flynt'),
         'archives'              => __('Project Archives', 'flynt'),
         'attributes'            => __('Project Attributes', 'flynt'),
-        'parent_item_colon'     => __('Parent Item:', 'flynt'),
+        'parent_item_colon'     => __('Parent Project:', 'flynt'),
         'all_items'             => __('All Projects', 'flynt'),
         'add_new_item'          => __('Add New Project', 'flynt'),
         'add_new'               => __('Add New', 'flynt'),
@@ -26,40 +20,39 @@ function registerProjectPostType()
         'update_item'           => __('Update Project', 'flynt'),
         'view_item'             => __('View Project', 'flynt'),
         'view_items'            => __('View Projects', 'flynt'),
-        'search_items'          => __('Search Project', 'flynt'),
-        'not_found'             => __('Not found', 'flynt'),
-        'not_found_in_trash'    => __('Not found in Trash', 'flynt'),
-        'featured_image'        => __('Featured Image', 'flynt'),
-        'set_featured_image'    => __('Set featured image', 'flynt'),
-        'remove_featured_image' => __('Remove featured image', 'flynt'),
-        'use_featured_image'    => __('Use as featured image', 'flynt'),
-        'insert_into_item'      => __('Insert into item', 'flynt'),
-        'uploaded_to_this_item' => __('Uploaded to this item', 'flynt'),
+        'search_items'          => __('Search Projects', 'flynt'),
+        'not_found'             => __('No Projects found', 'flynt'),
+        'not_found_in_trash'    => __('No Projects found in Trash', 'flynt'),
+        'featured_image'        => __('Project Image', 'flynt'),
+        'set_featured_image'    => __('Set project image', 'flynt'),
+        'remove_featured_image' => __('Remove project image', 'flynt'),
+        'use_featured_image'    => __('Use as project image', 'flynt'),
+        'insert_into_item'      => __('Insert into project', 'flynt'),
+        'uploaded_to_this_item' => __('Uploaded to this project', 'flynt'),
         'items_list'            => __('Projects list', 'flynt'),
         'items_list_navigation' => __('Projects list navigation', 'flynt'),
         'filter_items_list'     => __('Filter projects list', 'flynt'),
     ];
+
     $args = [
-        'label'                 => __('Project', 'flynt'),
-        'description'           => __('Project Description', 'flynt'),
+        'label'                 => __('Projects', 'flynt'),
+        'description'           => __('Projects Custom Post Type', 'flynt'),
         'labels'                => $labels,
-        'supports'              => ['title', 'thumbnail', 'revisions'],
-        'taxonomies'            => ['post_tag'],
-        'hierarchical'          => false,
+        'supports'              => ['title', 'excerpt', 'thumbnail', 'revisions'],
         'public'                => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 6,
-        'menu_icon'             => 'dashicons-admin-site-alt3',
+        'menu_icon'             => 'dashicons-portfolio',
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
-        'has_archive'           => true,
-        'exclude_from_search'   => false,
+        'has_archive'           => false,
         'publicly_queryable'    => true,
-        'capability_type'       => 'page',
+        'capability_type'       => 'post',
     ];
+
     register_post_type('project', $args);
 }
 
-// add_action('init', '\\Flynt\\CustomPostTypes\\registerProjectPostType');
+add_action('init', '\\Flynt\\CustomPostTypes\\registerProjectPostType');

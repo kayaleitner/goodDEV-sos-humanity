@@ -1,8 +1,14 @@
 {% for post in posts %}
 	{% if post.type == 'post' %}
-		{% include 'Components/_Atoms/Cards/post.twig' with { 'post': post, 'labels': labels } only %}
+		{% include 'Components/_Atoms/Cards/article.twig' with { 'post': post, as: 'li' } only %}
+	{% endif %}
+	{% if post.type == 'project' %}
+		{% include 'Components/_Atoms/Cards/project.twig' with { 'post': post, as: 'li' } only %}
 	{% endif %}
 	{% if post.type == 'people' %}
-		{% include 'Components/_Atoms/Cards/people.twig' with { 'post': post, 'labels': labels } only %}
+		{% include 'Components/_Atoms/Cards/people.twig' with { 'post': post, as: 'li' } only %}
+	{% endif %}
+	{% if post.type == 'job' %}
+		{% include 'Components/_Atoms/Cards/job.twig' with { 'post': post, labels: labels, as: 'li' } only %}
 	{% endif %}
 {% endfor %}

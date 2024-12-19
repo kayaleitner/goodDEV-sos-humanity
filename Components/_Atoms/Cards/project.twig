@@ -1,53 +1,34 @@
-<li class="fade-in move-up post w-full">
-  <a class="flex flex-col h-full no-underline group [&_img]:hover:scale-[1.15] [&_img]:hover:origin-center [&_img]:focus:scale-[1.15] [&_img]:focus:origin-center" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
+{% if as == 'li' %} <li class="list-none mb-md anim-fade-in"> {% else %} <div class="mb-md anim-fade-in"> {% endif %}
+  <a href="{{ post.link }}" class="group">
     {% if post.thumbnail %}
-      <figure class="figure block overflow-hidden">
-        <img class="lazyload aspect-square object-cover transition duration-200 ease-linear"
-          src="{{  post.thumbnail.src | resize(32) }}"
-          data-srcset="{{function('wp_get_attachment_image_srcset', post.thumbnail.id)}}"
-          data-sizes="auto"
-          data-src="{{ post.thumbnail.src }}"
-          alt="{{ post.thumbnail.alt|e }}">
-      </figure>
+      <div class="rounded-[1.875rem] overflow-hidden mb-md aspect-[1.2] relative group-hover:bg-coldGreen cursor-pointer">
+        <img class="lazyload w-full h-full object-cover object-center group-hover:opacity-30 transition-opacity"
+            src="{{ post.thumbnail.src|resize(32) }}" 
+            data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
+            data-sizes="auto" 
+            data-src="{{ post.thumbnail.src }}" 
+            alt="{{ post.thumbnail.alt|e }}"
+        />
+        <div class="absolute bottom-0 right-0 p-[calc(1rem*10/16)] cursor-pointer text-lightMint">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="47" viewBox="0 0 48 47" fill="none">
+            <circle cx="24" cy="23.5" r="23.5" fill="currentColor"/>
+            <path d="M16.6497 28.4864L26.9751 18.161L17.1309 18.186C16.4811 18.1793 15.9626 17.6497 15.9726 16.9999C15.9825 16.35 16.5147 15.8288 17.1646 15.8355L29.8292 15.8033C30.468 15.81 30.981 16.323 30.9877 16.9617L30.9555 29.6264C30.8599 30.2682 30.267 30.7177 29.6257 30.6253C29.1088 30.5519 28.7061 30.1492 28.6327 29.6323L28.63 19.8159L18.3046 30.1413C17.8444 30.6015 17.1034 30.6034 16.6455 30.1455C16.1876 29.6876 16.1895 28.9466 16.6497 28.4864Z" fill="#1D1D1D"/>
+          </svg>
+        </div>
+      </div>
     {% endif %}
-    <div class="text-current py-md xs:py-sm flex flex-col gap-sm justify-between items-stretch grow">
-      <div class="flex flex-col gap-sm">
-        <div class="w-full px-sm py-sm flex flex-row justify-between align-middle items-center border caption">
-          <div class="w-1/2">
-            <div class="caption font-mono font-bold mb-1">{{ post.boxGenerationSize }} MWp</div>
-            <div class="caption">{{ post.boxMountingType.label }}</div>
-          </div>
-          <div class="w-1/2 flex flex-row justify-end items-center">
-            {% include 'Components/_Atoms/icon.twig' with 
-              {
-                width: 'w-12',
-                height: 'h-12',
-                color: 'text-current',
-                icon: post.boxMountingType.label
-              } 
-            %}
-            {% for term in post.terms('customer_segment')  %}
-              {% include 'Components/_Atoms/icon.twig' with 
-                {
-                  width: 'w-12',
-                  height: 'h-12',
-                  color: 'text-current',
-                  icon: term
-                } 
-              %}
-            {% endfor %}
-          </div>
-        </div>
-        <div class="w-full flex flex-col justify-between align-start items-start">
-          {% for term in post.terms('country')  %}
-            <div class="paragraph">{{ term }}</div>
-          {% endfor %}
-          <h2 class="subtitle mb-sm w-full grow">{{ post.title }}</h2>
-        </div>
-      </div>
-      <div class="flex flex-row lg:flex-col gap-sm justify-start lg:justify-end items-start sm:items-end lg:items-start h-full">
-        <div class="button button--card">{{ labels.readMore }}</div>
-      </div>
+
+    <div class="mb-md">
+      <h3 class="font-sectionTitle mb-[0.625rem]">{{ post.title }}</h3>
+      <p class="font-smallParagraph">{{ post.excerpt({word: 10, read_more: false, force: true}) }}</p>
+    </div>
+
+    <div class="flex flex-wrap gap-1">
+      {% for term in post.terms %}
+        {% if term.taxonomy == 'thematic_area' %}
+          <div class="tag font-smallLabel rounded-[1.25rem] bg-brandGreen text-white px-[calc(1rem*12/16)] py-[calc(1rem*6/16)]">{{ term.name }}</div>
+        {% endif %}
+      {% endfor %}
     </div>
   </a>
-</li>
+{% if as == 'li' %} </li> {% else %} </div> {% endif %}

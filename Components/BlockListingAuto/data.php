@@ -4,7 +4,7 @@ namespace Flynt\Components\BlocListingAuto;
 
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=BlocListingAuto', function ($data) {
+add_filter('Flynt/addComponentData?name=BlockListingAuto', function ($data) {
 
     $data['flexTaxonomies'] = $data['flexTaxonomies'] ?: [];
 

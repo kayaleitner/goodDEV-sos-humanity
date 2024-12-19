@@ -1,0 +1,11 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+
+  <div
+    class="cardTab px-container flex justify-start gap-sm items-center relative w-full bg-bgColor pb-xs pt-md rounded-t border-b border-[#97AEAE]"
+  >
+    <span class="relative flex h-3 w-3">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded bg-accentColor opacity-75"></span>
+      <span class="relative inline-flex rounded h-3 w-3 bg-accentColor"></span>
+    </span>
+    {{ h.h(title, { level: 2, class: 'font-contentTitle mb-0' }) }}
+  </div>
