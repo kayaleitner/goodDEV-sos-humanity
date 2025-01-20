@@ -227,6 +227,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockCards\getACFLayout(),
                     Components\BlockCarousel\getACFLayout(),
                     Components\BlockStatistics\getACFLayout(),
+                    Components\BlockOembed\getACFLayout(),
                 ],
             ],
         ],

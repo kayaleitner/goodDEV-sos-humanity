@@ -81,6 +81,7 @@ function getACFLayout(): array
                         'type' => 'image',
                         'preview_size' => 'medium',
                         'mime_types' => 'jpg,jpeg,png',
+                        'required' => 1,
                         'conditional_logic' => [
                             [
                                 [
