@@ -46,6 +46,12 @@ function getACFLayout()
                 'endpoint' => 0
             ],
             [
+                'label' => __('Title', 'flynt'),
+                'name' => 'blockTitle',
+                'instructions' => 'Displayed as H2',
+                'type' => 'text'
+            ],
+            [
                 'label' => __('Content', 'flynt'),
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
@@ -121,8 +127,9 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    // FieldVariables\getTheme(),
-                    FieldVariables\getNavStyle(),
+                    FieldVariables\getComponentID(),
+                    FieldVariables\getColorBackground(),
+                    FieldVariables\getColorText(),
                 ]
             ]
         ]
