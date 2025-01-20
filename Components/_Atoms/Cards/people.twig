@@ -1,52 +1,29 @@
-<li class="fade-in move-up post w-full py-sm lg:py-0">
-  <a class="flex flex-col h-full no-underline group [&_img]:hover:scale-[1.15] [&_img]:hover:origin-center [&_img]:focus:scale-[1.15] [&_img]:focus:origin-center" href="{{ post.link|e('esc_url')|e('esc_url')|e('esc_url') }}" aria-label="{{ post.title }}">
-    {% if post.thumbnail %}
-      <div class="block">
-        <figure class="figure overflow-hidden relative">
-          <div class="absolute w-full h-full z-10 opacity-5 bg-textColor"></div>
-          <img class="aspect-square grayscale group-hover:scale-[1.15] group-hover:origin-center group-focus:scale-[1.15] group-focus:origin-center lazyload object-cover transition duration-200 ease-linear" 
-            src="{{ post.thumbnail.src|resize(32) }}" 
-            data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
-            data-sizes="auto" 
-            data-src="{{ post.thumbnail.src }}" 
-            alt="{{ post.thumbnail.alt|e }}" />
-        </figure>
-      </div>
-    {% endif %}
-    <div class="text-current h-full py-sm grow flex flex-col gap-sm justify-start lg:justify-between items-start md:items-stretch">
-      <div class="w-full flex flex-col gap-sm">
-        <div class="w-full h-full p-sm flex flex-row justify-between gap-sm align-middle items-center border caption">
-          <div>
-            <div class="font-mono font-bold">
-              {% for term in post.terms('location') %}
-                <div class="caption">{{ term }}</div>
-              {% endfor %}
-            </div>
-            {% for term in post.terms('division') %}
-              <div class="caption">{{ term }}</div>
-            {% endfor %}
-          </div>
-          {% for term in post.terms('division') %}
-            {% include 'Components/_Atoms/icon.twig' with 
-              {
-                iconClasses: 'w-10 h-10',
-                icon: term
-              } 
-            %}
-            {# <div class="w-10 h-10" data-icon="{{ term|lower|replace({ '/': '', ' ': '' }) }}"></div> #}
-          {% endfor %}
+{% if as == 'li' %} <li class="list-none anim-fade-in"> {% else %} <div class="anim-fade-in"> {% endif %}
+  <a href="{{ window.location.href ~ '?modal=people&slug=' ~ post.name}}" data-refs="modalLink">
+  <div class="rounded-[1.875rem] overflow-hidden mb-md aspect-[0.75] relative group cursor-pointer">
+    <img class="h-full w-full lazyload object-cover transition duration-200 ease-linear" 
+      src="{{ post.thumbnail.src|resize(32) }}" 
+      data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
+      data-sizes="auto" 
+      data-src="{{ post.thumbnail.src }}" 
+      alt="{{ post.thumbnail.alt|e }}" />
+    <div class="w-full h-full absolute top-0 left-0"
+      style="background: linear-gradient(190deg, rgba(0, 0, 0, 0) 67.32%, rgba(0, 0, 0, 1) 100%); mix-blend-mode: multiply;"></div>
+      
+    <div class="w-full absolute bottom-0 left-0">
+      <div class="flex justify-between items-end p-[1.25rem] pl-[1.875rem]">
+        <div>
+          <h3 class="text-white font-contentTitle">{{ post.title }}</h3>
+          <p class="text-white font-smallParagraph  ">{{post.function}}</p>
         </div>
-      </div>
-      <div class="w-full grow flex flex-col gap-sm justify-start align-start items-start">
-        <div class="body xs:h-14">{{ post.position }}</div>
-        <div class="w-full flex flex-col">
-          <h2 class="subtitle mb-sm w-full grow">{{ post.title }}</h2>
-          <div class="body w-full grow">{{ post.bio|truncate(10) }}</div>
+        <div class="cursor-pointer text-lightMint hover:text-coldGreen group-hover:text-coldGreen">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="47" viewBox="0 0 48 47" fill="none">
+            <circle cx="24" cy="23.5" r="23.5" fill="currentColor"/>
+            <path d="M16.6497 28.4864L26.9751 18.161L17.1309 18.186C16.4811 18.1793 15.9626 17.6497 15.9726 16.9999C15.9825 16.35 16.5147 15.8288 17.1646 15.8355L29.8292 15.8033C30.468 15.81 30.981 16.323 30.9877 16.9617L30.9555 29.6264C30.8599 30.2682 30.267 30.7177 29.6257 30.6253C29.1088 30.5519 28.7061 30.1492 28.6327 29.6323L28.63 19.8159L18.3046 30.1413C17.8444 30.6015 17.1034 30.6034 16.6455 30.1455C16.1876 29.6876 16.1895 28.9466 16.6497 28.4864Z" fill="#1D1D1D"/>
+          </svg>
         </div>
-      </div>
-      <div class="mt-sm flex flex-row lg:flex-col gap-sm justify-start items-start">
-        <div class="link button button--card">{{ labels.readMore }}</div>
       </div>
     </div>
+  </div>
   </a>
 </li>

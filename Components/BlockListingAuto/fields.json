@@ -31,7 +31,7 @@
                   "ID": 0,
                   "key": "field_pageComponents_pageComponents_BlockListingAuto_blockTitle",
                   "label": "Title",
-                  "name": "blockTitle",
+                  "name": "blockTitle_listingAuto",
                   "aria-label": "",
                   "prefix": "acf",
                   "type": "text",

@@ -3,15 +3,16 @@
 namespace Flynt\Components\BlockListingAuto;
 
 use Flynt\Utils\Options;
+use Flynt\FieldVariables;
 
 add_filter('acf/load_field/name=post_types', function ($field) {
     $args = [
-        'public' => true,
+        
     ];
 
     foreach (get_post_types($args, 'objects') as $post_type) {
         // don't list attachments or pages
-        if ($post_type->name == 'attachment' || $post_type->name == 'page') {
+        if ($post_type->name != 'project' && $post_type->name != 'people' && $post_type->name != 'post' && $post_type->name != 'job') {
             continue;
         }
         $field['choices'][$post_type->name] = $post_type->label;
@@ -89,10 +90,49 @@ function getACFLayout()
         'label' => __('Listing: Auto', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('Title', 'flynt'),
+                'label' => __('General', 'flynt'),
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
+                'label' => __('Block Title', 'flynt'),
                 'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
-                'name' => 'blockTitle',
+                'name' => 'blockTitle_listingAuto',
                 'type' => 'text',
+            ],
+            [
+                'label' => __('Title Dark', 'flynt'),
+                'name' => 'titleDark',
+                'type' => 'textarea',
+                "rows" => 2,
+                'new_lines' => 'br',
+                'wrapper' => [
+                    'width' => 50,
+                ],
+            ],
+            [
+                'label' => __('Title Green', 'flynt'),
+                'instructions' => __('Second sentence to be set in green', 'flynt'),
+                'name' => 'titleGreen',
+                'type' => 'textarea',
+                "rows" => 2,
+                'new_lines' => 'br',
+                'wrapper' => [
+                    'width' => 50,
+                ],
+            ],
+            [
+                'label' => __('Intro Text', 'flynt'),
+                'name' => 'introText',
+                'type' => 'text',   
+            ],
+            [
+                'label' => __('Listing', 'flynt'),
+                'name' => 'listingTab',
+                'type' => 'tab',
+                'placement' => 'top',
             ],
             [
                 'label' => __('Content Types', 'flynt'),
@@ -107,7 +147,7 @@ function getACFLayout()
                 ],
                 'relevanssi_exclude' => 0,
                 'return_format' => 'value',
-                'multiple' => 1,
+                'multiple' => 0,
                 'allow_null' => 0,
                 'ui' => 1,
                 'ajax' => 0,
@@ -215,7 +255,7 @@ function getACFLayout()
                     'rand' => 'Random',
                     'menu_order' => 'Custom Order',
                 ],
-                'default_value' => 'title',
+                'default_value' => 'date',
                 'return_format' => 'value',
                 'multiple' => 0,
                 'allow_null' => 0,
@@ -238,7 +278,7 @@ function getACFLayout()
                     'ASC' => 'Asc.',
                     'DESC' => 'Desc.',
                 ],
-                'default_value' => 'ASC',
+                'default_value' => 'DESC',
                 'return_format' => 'value',
                 'layout' => 'horizontal',
             ],
@@ -262,23 +302,43 @@ function getACFLayout()
                 'ui_off_text' => '',
             ],
             [
-                'label' => '"View All"-Link',
-                'name' => 'viewAllLink',
-                'aria-label' => '',
-                'type' => 'link',
-                'instructions' => '',
-                'required' => 0,
+                'label' => __('Load More Text', 'flynt'),
+                'name' => 'loadMoreLabel',
+                'type' => 'text',
+                'default_value' => 'Load More',
                 'wrapper' => [
-                    'width' => '20%',
+                    'width' => '80%',
                     'class' => '',
                     'id' => '',
                 ],
-                'relevanssi_exclude' => 0,
-                'message' => '',
-                'ui' => 1,
-                'ui_on_text' => '',
-                'ui_off_text' => '',
-            ]
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'show_load_more',
+                            'operator' => '==',
+                            'value' => 1,
+                        ],
+                    ]
+                ],
+            ],
+            [
+                'label' => __('Options', 'flynt'),
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    FieldVariables\getComponentID(),
+                    FieldVariables\getColorBackground(),
+                    FieldVariables\getColorText(),
+                ],
+            ],
         ]
     ];
 }
@@ -296,25 +356,6 @@ Options::addTranslatable('BlockListingAuto', [
         'name' => 'labels',
         'type' => 'group',
         'sub_fields' => [
-            // [
-            //     'label' => __('All Posts', 'flynt'),
-            //     'name' => 'allPosts',
-            //     'type' => 'text',
-            //     'default_value' => __('View all', 'flynt'),
-            //     'required' => 0,
-            //     'wrapper' => [
-            //         'width' => 50
-            //     ],
-            // ],
-            // [
-            //     'label' => __('All Posts Link', 'flynt'),
-            //     'name' => 'allPostsLink',
-            //     'type' => 'link',
-            //     'required' => 0,
-            //     'wrapper' => [
-            //         'width' => 50
-            //     ],
-            // ],
             [
                 'label' => __('Read More', 'flynt'),
                 'name' => 'readMore',
@@ -326,16 +367,66 @@ Options::addTranslatable('BlockListingAuto', [
                 ],
             ],
             [
-                'label' => __('Reading Time - (20) min read', 'flynt'),
-                'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
-                'name' => 'readingTime',
+                'label' => __('Apply Now', 'flynt'),
+                'name' => 'applyNow',
                 'type' => 'text',
-                'default_value' => __('%d min read', 'flynt'),
+                'default_value' => __('Apply Now', 'flynt'),
                 'required' => 0,
                 'wrapper' => [
                     'width' => 50
                 ],
-            ]
+            ],
+            [
+                'label' => __('Posted On', 'flynt'),
+                'name' => 'postedOn',
+                'type' => 'text',
+                'default_value' => __('Posted On', 'flynt'),
+                'required' => 0,
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
         ],
-    ]
+    ],
+    [
+        'label' => __('Jobs Fallback', 'flynt'),
+        'name' => 'jobsFallbak',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Text', 'flynt'),
+        'name' => 'fallBackText',
+        'type' => 'wysiwyg',
+        'media_upload' => 0,
+    ],
+    [
+        'label' => __('CTA', 'flynt'),
+        'instructions' => __('If a form is opened, URL will be ignored', 'flynt'),
+        'name' => 'contactCta',
+        'type' => 'link',
+        'wrapper' => [
+            'width' => '33'
+        ]
+    ],
+    [
+        'label' => __('Form to open in Popup Modal', 'flynt'),
+        'instructions' => __('Select a WPForms form.', 'flynt'),
+        'name' => 'contactForm',
+        'type' => 'post_object',
+        'post_type' => ['wpforms'],
+        'allow_null' => 1,
+        'wrapper' => [
+            'width' => '33'
+        ]
+    ],
+    [
+        'label' => __('LinkedIn', 'flynt'),
+        'name' => 'linkedin',
+        'type' => 'url',
+        'wrapper' => [
+            'width' => '33'
+        ]
+    ],
 ]);

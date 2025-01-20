@@ -36,6 +36,12 @@
 
       {% if cta %}
       <div>
+      {# Contact Form Modal #}
+      {# <a class="btn-primary overflow-hidden whitespace-nowrap min-w-[8rem] text-center" href="?modal=form&slug=contactFormCta" data-refs="modalLink">Open Modal</a>
+      <div id="contactFormCta" class="hidden bg-paperColor max-h-full md:max-h-[unset] overflow-y-auto px-sm py-md md:py-lg md:px-xl md:w-[60rem]">
+          {{ function('do_shortcode', '[wpforms id="' ~ contactForm.id ~ '" title="true" description="true"]') }}
+      </div> #}
+
         <a class="btn-primary" href="{{ cta.url }}" >{{ cta.title }}</a>
       </div>
       {% endif %}

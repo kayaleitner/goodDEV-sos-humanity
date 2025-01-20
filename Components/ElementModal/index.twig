@@ -1,0 +1,37 @@
+{% set componentOptions = {
+    name: 'ElementModal',
+    loadOn: 'idle',
+    class: '!fixed w-screen h-screen z-[10000] top-0 left-0 right-0 hidden',
+} %}
+
+{% set options = (options | default({})) | merge({ 
+    componentId: 'ElementModal',
+}) %}
+
+{% set content %}
+    <div data-ref="backdrop" 
+      class="w-full h-full absolute bg-black opacity-[0.4] cursor-pointer" >
+    </div>
+
+    <div data-ref="modal" data-modal-open="false"
+        class="rounded-t-[2rem] md:rounded-b-[2rem] overflow-y-auto md:overflow-y-clip overflow-x-auto max-h-[calc(100%-8rem)] md:max-h-[unset] md:h-fit
+          w-full md:w-[unset]
+          absolute bottom-0 left-0 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2
+          transition-all"
+    >
+      <button class="fixed z-50 top-5 right-5 text-lightMint hover:text-coldGreen" aria-label="Close" data-ref="closeButton">
+          <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="23.5" cy="23.5" r="23.5" fill="currentColor"/>
+          <path d="M28.6556 29.3131L25.8272 26.4847L22.9988 23.6562L28.6556 17.9994" stroke="#1C3A39" stroke-width="2" stroke-linecap="round"/>
+          <path d="M17.6569 17.9994L20.4853 20.8278L23.3137 23.6562L17.6569 29.3131" stroke="#1C3A39" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div data-ref="modalContent" class="h-full md:h-[inherit]">
+      </div>
+    </div>
+{% endset %}
+  
+{% include 'Components/_Containers/FlyntComponent.twig' with {
+    content: content,
+    componentOptions: componentOptions
+} %}

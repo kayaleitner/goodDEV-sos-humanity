@@ -1,0 +1,9 @@
+{% macro ctaButton(label, dataRef, class) %}
+    <button 
+        class="{{ class | default('btn-primary') }}"
+        data-refs="{{ dataRef | default('') }}"
+        aria-label="{{ label | default('Click here') }}"
+    >
+            {{ label | default('Click here') }}
+    </button>
+{% endmacro %}

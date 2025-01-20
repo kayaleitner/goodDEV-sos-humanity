@@ -171,6 +171,35 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'ui_on_text' => __('Yes', 'flynt'),
                 'ui_off_text' => __('No', 'flynt'),
             ],
+            [
+                'label' => __('Related Project', 'flynt'),
+                'name' => 'related_project',
+                'type' => 'post_object',
+                'post_type' => ['project'],  // Reference only the Project post type
+                'return_format' => 'object',  // Returns the post object for easy access
+                'instructions' => __('Select a related project for this post.', 'flynt'),
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ],
+            [
+                'label' => __('URL', 'flynt'),
+                'name' => 'url',
+                'type' => 'url',
+                'instructions' => __('Enter the URL for the post.', 'flynt'),
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('Excerpt', 'flynt'),
+                'name' => 'excerpt',
+                'type' => 'textarea',
+                'instructions' => __('Enter the excerpt for the post.', 'flynt'),
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ],
         ],
         'location' => [
             [

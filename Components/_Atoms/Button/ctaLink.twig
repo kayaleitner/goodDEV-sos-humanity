@@ -1,0 +1,7 @@
+{% macro ctaLink(ctaLink, class) %}
+    <a href="{{ ctaLink.url | default('#') }}"
+        target="{{ ctaLink.target | default('_self') }}"
+        class="{{ class | default('btn-primary') }}">
+        {{ ctaLink.title | default('Click here') }}
+    </a>
+{% endmacro %}

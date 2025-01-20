@@ -1,60 +1,115 @@
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+{% import "Components/_Containers/GridElement.twig" as ge %}
+
+{% set classes = blockTitle_listingAuto ? 'overflow-visible anim-pinCard relative' : 'relative' %}
+
 {% set componentOptions = {
     name: 'BlockListingAuto',
-    loadOn: 'visible',
+    loadOn: 'idle',
+    class: classes
 } %}
 
-{% set content %}
-  <div class="container">
-    <div class="grid">
-    {% if (blockTitle or viewAllLink or filters) %}
-      <div class="w-full mx-auto p-sm md:p-md lg:p-lg flex flex-col justify-between align-bottom items-end gap-md border-1">
-        {% if blockTitle or viewAllLink %}
-          <div class="w-full mx-auto flex flex-col sm:flex-row justify-between items-baseline content-center">
-            <div class="font-titleSmall pb-sm sm:pb-0">{{ blockTitle }}</div>
-            <a href="{{ viewAllLink.url }}" class="font-paragraphLarge font-bold font-condensed">{{ viewAllLink.title }}</a>
-          </div>
-        {% endif %}
-        {% if filters %}
-          <div class="filters w-full flex flex-col md:flex-row gap-sm" x-data="{filters: [] }">
-            {% for index, flexFilter in filters %}
-              {% include 'Components/_Atoms/Other/filters.twig' 
-                with {
-                  filterName: flexFilter.name,
-                  filterLabel: flexFilter.label,
-                  filterTerms: flexFilter.terms
-                }
-              %}
-            {% endfor %}
-          </div>
-        {% endif %}
-      </div>
-    {% endif %}
-    <ul data-refs="listing"
-      class="w-full mx-auto grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3"
+{% set listContent %}
+  <ul data-refs="listing"
       data-post-types="{{post_types|json_encode|e}}"
       data-orderby='{{ orderby }}'
       data-order='{{ order }}'
       data-max-posts='{{ maxPosts }}'
       data-labels='{{ labels|json_encode()|e }}'
-      data-query='{{ tax_query|json_encode()|e }}'>
-      {% include 'Partials/_items.twig' with {posts: posts, 'labels': labels } %}
-    </ul>
-    {% if (show_load_more and found_posts > posts|length ) %}
-      <div class="w-full flex justify-center align-center">
-        <a class="btn btn-primary hover:cursor-pointer text-buttonSmall font-bold my-8" data-refs="loadMore">
-          View More
-        </a>
-      </div>
+      data-query='{{ tax_query|json_encode()|e }}'
+      class="grid grid-cols-1 {{posts[0].type == 'job' ? 'md:grid-cols-2'  : 'sm:grid-cols-2 md:grid-cols-3' }}  gap-md">
+    {% if introText or titleDark or titleGreen %}
+      <li class="text-list-item mb-md md:mr-xl">
+        {% if titleDark or titleGreen %}
+          <h3 class="font-pageTitle mb-md">
+            {% if titleDark %} {{titleDark|e('wp_kses_post')}} {% endif %}
+            {% if titleDark and titleGreen %} <br /> {% endif %}
+            {% if titleGreen %} <span class="text-green">{{titleGreen|e('wp_kses_post')}}</span> {% endif %}
+          </h3>
+        {% endif %}
+        {% if introText %}
+          <p class="font-sectionTitle">{{ introText }}</p>
+        {% endif %}
+      </li>
     {% endif %}
+    {% if post_types == 'job' and posts|length < 1 %}
+      {% include 'Partials/_jobFallback.twig' with {
+          fallBackText: fallBackText,
+          contactCta: contactCta,
+          contactForm: contactForm,
+          linkedin: linkedin
+        } only %}
+    {% endif %}
+    {% include 'Partials/_items.twig' with {posts: posts, labels:labels } %}
+  </ul>
+{% endset %}
+
+
+{% if filters %}
+  {% set filterContent %}
+    <div class="filters w-full flex flex-col sm:flex-row gap-sm justify-end mb-sm md:mb-lg mt-sm" x-data="{filters: [] }">
+      {% for index, flexFilter in filters %}
+        {% include 'Components/_Atoms/Other/filters.twig' 
+          with {
+            filterName: flexFilter.name,
+            filterLabel: flexFilter.label,
+            filterTerms: flexFilter.terms
+          }
+        %}
+      {% endfor %}
     </div>
+  {% endset %}
+{% endif %}
+
+{% set loadMoreContent %}
+    <div class="flex justify-center"><button class="btn-primary" data-refs="loadMore" aria-label="Load More">{{loadMoreLabel}}</button></div>
+{% endset %}
+
+{% set content %}
+  {% if blockTitle_listingAuto %}
+    {% include 'Components/_Atoms/cardTab.twig' with {'title': blockTitle_listingAuto} %}
+  {% endif %}
+
+  <div class="container-grid {% if filters %} pt-sm {% endif %}">
+  {% if filters %}
+    {{ ge.gridElement(filterContent, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 1, 'end': 8},
+        'desktop': {'start': 1, 'end': 12},
+      },
+      'class': ''
+    }) }}
+  {% endif %}	
+
+    {{ ge.gridElement(listContent, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 1, 'end': 8},
+        'desktop': {'start': 1, 'end': 12},
+      },
+      'class': ''
+    }) }}
+
+    {% if show_load_more and found_posts > posts|length %}
+      {{ ge.gridElement(loadMoreContent, {
+        'cols': {
+          'mobile': {'start': 1, 'end': 6},
+          'tablet': {'start': 1, 'end': 8},
+          'desktop': {'start': 1, 'end': 12},
+        },
+        'class': ''
+      }) }}
+    {% endif %}
+
+
   </div>
 {% endset %}
 
-{% if posts|length > 0 %}
+{% if posts|length > 0 or post_types == 'job' %}
+{# {% if true %} #}
   {% include 'Components/_Containers/FlyntComponent.twig' with {
     content: content,
     componentOptions: componentOptions
   } %}
-{% else %}
-  {% include 'Components/_Atoms/Other/noResults.twig' %}
-{% endif %}
+{% endif %} 

@@ -1,3 +1,4 @@
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import jQuery from 'jquery'
 import { buildRefs, getJSON } from '../../assets/scripts/helpers'
@@ -9,8 +10,7 @@ export default function (component) {
   return () => c.destroy && c.destroy()
 }
 
-function initComponent (refs, data) {
-  console.log(refs, data)
+function initComponent(refs, data) {
 
   const d = {
     filterQuery: refs.listing[0].dataset.query,
@@ -54,8 +54,20 @@ function initComponent (refs, data) {
         })
         .then(
           (res) => {
-            refs.listing[0].innerHTML = res
-            ScrollTrigger && ScrollTrigger.refresh()
+
+            const textListItem = refs.listing[0].querySelector('.text-list-item')
+
+            if (textListItem) {
+              refs.listing[0].innerHTML = ''
+              refs.listing[0].appendChild(textListItem)
+              refs.listing[0].innerHTML += res
+            } else {
+              refs.listing[0].innerHTML = res
+            }
+            document.querySelectorAll('.anim-fade-in').forEach((item) => {
+              gsap.to(item, { opacity: 1, stagger: 0.2, duration: 0.5 })
+            })
+            ScrollTrigger.refresh()
           },
           (err) => {
             console.log(err)
@@ -100,7 +112,10 @@ function initComponent (refs, data) {
           if ((res.match(/<li /g) || []).length < d.maxPosts) {
             loadMore.style.display = 'none'
           }
-          ScrollTrigger && ScrollTrigger.refresh()
+          document.querySelectorAll('.anim-fade-in').forEach((item) => {
+            gsap.to(item, { opacity: 1, stagger: 0.2, duration: 0.5 })
+          })
+          ScrollTrigger.refresh()
         })
     })
   })

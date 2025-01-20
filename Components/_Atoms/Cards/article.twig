@@ -1,0 +1,57 @@
+{% set thematicAreaTerms = [] %}
+
+{% for term in post.terms %}
+  {% if term.taxonomy == 'thematic_area' %}
+      {% set thematicAreaTerms = thematicAreaTerms | merge([term]) %}
+  {% endif %}
+{% endfor %}
+
+{% set categoryTerms = [] %}
+
+{% for term in post.terms %}
+  {% if term.taxonomy == 'category' %}
+    {% set categoryTerms = categoryTerms | merge([term]) %}
+  {% endif %}
+{% endfor %}
+
+{% if as == 'li' %} <li class="list-none h-full group anim-fade-in"> {% else %} <div class="h-full group anim-fade-in"> {% endif %}
+  <a href="{{post.url}}" target="_blank">
+  <div class="p-5 {% if post.thumbnail %} bg-brandGreen {% else %} bg-green {% endif %} rounded-[2rem] h-full flex flex-col">
+    {% if  post.thumbnail %}
+      <div class="aspect-video relative rounded-[2rem] overflow-hidden -m-5 mb-0">
+        <img class="lazyload w-full h-full object-cover object-center"
+        src="{{ post.thumbnail.src|resize(32) }}" 
+        data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" 
+        data-sizes="auto" 
+        data-src="{{ post.thumbnail.src }}" 
+        alt="{{ post.thumbnail.alt|e }}"
+      />
+      {% if post.related_project %}
+        <div class="absolute right-5 top-5 ml-5  font-smallLabel rounded-[1.25rem] bg-brandGreen text-white px-[calc(1rem*12/16)] py-[calc(1rem*6/16)] ">
+          {{ post.related_project.title }}
+        </div>
+      {% endif %}
+      </div>
+    {% else %}
+      {% if post.related_project %}
+      <div class="ml-auto w-fit font-smallLabel rounded-[1.25rem] bg-brandGreen text-white px-[calc(1rem*12/16)] py-[calc(1rem*6/16)]">
+        {{ post.related_project.title }}
+      </div>
+      {% endif %}
+    {% endif %}
+    <div class="pb-sm">
+      <h3 class="pt-md px-[0.625rem] font-sectionTitle text-white"> {{ post.title }} </h3>
+    </div>
+    <div class="mt-auto pl-[0.625rem] flex justify-between items-center pt-sm">
+      <div class="text-white font-caption">{{ categoryTerms[0].name }} </div>
+
+      <div class="cursor-pointer text-lightMint hover:text-coldGreen group-hover:text-coldGreen h-[3rem] w-[3rem]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 48 47" fill="none">
+        <circle cx="24" cy="23.5" r="23.5" fill="currentColor"/>
+        <path d="M16.6497 28.4864L26.9751 18.161L17.1309 18.186C16.4811 18.1793 15.9626 17.6497 15.9726 16.9999C15.9825 16.35 16.5147 15.8288 17.1646 15.8355L29.8292 15.8033C30.468 15.81 30.981 16.323 30.9877 16.9617L30.9555 29.6264C30.8599 30.2682 30.267 30.7177 29.6257 30.6253C29.1088 30.5519 28.7061 30.1492 28.6327 29.6323L28.63 19.8159L18.3046 30.1413C17.8444 30.6015 17.1034 30.6034 16.6455 30.1455C16.1876 29.6876 16.1895 28.9466 16.6497 28.4864Z" fill="#1D1D1D"/>
+      </svg>
+      </div>
+    </div>
+  </div>
+  </a>
+{% if as == 'li' %} </li> {% else %} </div> {% endif %}

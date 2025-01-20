@@ -143,6 +143,73 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'width' => 25
                 ]
             ],
+            [
+                'label' => __('Project Link', 'flynt'),
+                'name' => 'projectLink',
+                'type' => 'link',
+                'instructions' => __('Enter the project URL.', 'flynt'),
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ],
+            [
+                'label' => __('Info Box Text', 'flynt'),
+                'name' => 'infoBoxTexts',
+                'type' => 'repeater',
+                'instructions' => __('Add title and text for each info box text.', 'flynt'),
+                'button_label' => __('Add Info Box Text', 'flynt'),
+                'sub_fields' => [
+                    [
+                        'label' => __('Title', 'flynt'),
+                        'name' => 'title',
+                        'type' => 'text',
+                        'wrapper' => [
+                            'width' => '30',
+                        ],
+                    ],
+                    [
+                        'label' => __('Text', 'flynt'),
+                        'name' => 'text',
+                        'type' => 'textarea',
+                        'rows' => 3,
+                        'wrapper' => [
+                            'width' => '70',
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'label' => __('Show Related News', 'flynt'),
+                'name' => 'showRelatedNews',
+                'type' => 'true_false',
+                'instructions' => __('Show related news on the bottom of the project page.', 'flynt'),
+                'ui' => 1, // Enable UI toggle switch
+                'default_value' => true,
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ],
+            [
+                'label' => __('File Download', 'flynt'),
+                'name' => 'fileDownload',
+                'type' => 'file',
+                'instructions' => __('Upload a file for users to download.', 'flynt'),
+                'return_format' => 'array',
+                'library' => 'all',
+                'mime_types' => '', // Leave empty for all file types
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('Button Label', 'flynt'),
+                'name' => 'buttonLabel',
+                'type' => 'text',
+                'instructions' => __('Enter the label for the download button.', 'flynt'),
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
         ],
         'location' => [
             [
@@ -170,6 +237,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockCards\getACFLayout(),
                     Components\BlockCarousel\getACFLayout(),
                     Components\BlockStatistics\getACFLayout(),
+                    Components\BlockListingAuto\getACFLayout(),
                 ],
             ],
         ],
@@ -184,3 +252,12 @@ add_action('Flynt/afterRegisterComponents', function () {
         ],
     ]);
 });
+
+// Hide Categories from Project post type in editor and admin menu
+// add_action('admin_menu', function () {
+//     // Remove Categories meta box from the Project editor
+//     remove_meta_box('categorydiv', 'project', 'side');
+    
+//     // Remove Categories from the Project in the admin menu
+//     remove_submenu_page('edit.php?post_type=project', 'edit-tags.php?taxonomy=category&post_type=project');
+// });

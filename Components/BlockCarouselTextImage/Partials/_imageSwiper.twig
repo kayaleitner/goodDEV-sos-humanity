@@ -1,0 +1,38 @@
+{% import "Components/_Containers/GridElement.twig" as ge %}
+
+{% set imageSwiper %}
+    <div
+    data-ref="slider"
+    class="swiper-container relative overflow-hidden rounded-b md:rounded z-0 imageSlider h-full"
+    data-swiper='{{ options.carouselOptions | json_encode }}'>        
+        <div class="slider swiper-wrapper mb-2 md:mb-0">
+            {# Carousel Loop #}
+            {% for textImageCard in textImageCards %}
+                <div class="swiper-slide relative overflow-hidden group">
+                    {# Image Content #}
+                     <img class="lazyload w-full h-full sm:aspect-video md:aspect-auto object-cover object-center"
+                        src="{{ textImageCard.image.src|resize(32) }}" 
+                        data-srcset="{{ function('wp_get_attachment_image_srcset', textImageCard.image.id) }}" 
+                        data-sizes="auto" 
+                        data-src="{{ textImageCard.image.src }}" 
+                        alt="{{ textImageCard.image.alt|e }}"
+                        title="{{textImageCard.image.title|e}}"
+                        />
+                </div>
+            {% endfor %}
+        </div>
+        <div
+            class="hidden md:block w-full h-full absolute top-0 left-0 z-10 pointer-events-none"
+            style="background: linear-gradient(174deg, rgba(0, 0, 0, 0) 67.32%, rgba(0, 0, 0, 1) 105%);"
+        ></div>        
+    </div>
+{% endset %}
+
+{{ ge.gridElement(imageSwiper, {
+    'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 1, 'end': 8},
+        'desktop': {'start': 5, 'end': 12},
+    },
+    'class': 'row-start-2 row-end-4 md:row-start-1 md:row-end-2 -mb-md md:mb-0 -translate-y-md md:translate-y-0',
+}) }}

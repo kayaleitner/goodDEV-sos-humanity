@@ -28,4 +28,30 @@
       transform: translateX(-4rem);
     }
   }
+  .modal-overflow-gradient-top {
+    &::before {
+      content: '';
+      position: fixed;
+      @apply top-[8rem] md:top-0;      
+      right: 0;
+      @apply w-full md:w-[59%];
+      height: 4rem;
+      @apply rounded-t;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 62.25%, rgb(255, 255, 255) 100%);
+    }
+  }
+
+  .modal-overflow-gradient-bottom {
+
+    &::after {
+      content: '';
+      @apply fixed;
+      bottom: 0;
+      right: 0;
+      @apply w-[59%];
+      height: 8rem;
+      @apply rounded-b;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 70.25%, rgb(255, 255, 255) 100%);
+    }
+  }
   
