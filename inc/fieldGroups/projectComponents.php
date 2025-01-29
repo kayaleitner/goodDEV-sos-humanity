@@ -43,11 +43,19 @@ add_action('Flynt/afterRegisterComponents', function () {
                 ],
             ],
             [
+                'label' => __('Client Name', 'flynt'),
+                'name' => 'client',
+                'type' => 'text',
+                'wrapper' => [
+                    'width' => 33
+                ],
+            ],
+            [
                 'label' => __('Website URL', 'flynt'),
                 'name' => 'websiteUrl',
                 'type' => 'url',
                 'wrapper' => [
-                    'width' => 50
+                    'width' => 33
                 ],
             ],
             [
@@ -55,7 +63,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'name' => 'maintenance',
                 'type' => 'true_false',
                 'wrapper' => [
-                    'width' => 50
+                    'width' => 33
                 ],
                 'ui' => 1,
             ],
