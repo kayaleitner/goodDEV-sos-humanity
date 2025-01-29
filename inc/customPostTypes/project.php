@@ -39,7 +39,7 @@ function registerProjectPostType()
         'description'           => __('Projects Custom Post Type', 'flynt'),
         'labels'                => $labels,
         'supports'              => ['title', 'excerpt', 'thumbnail', 'revisions'],
-        'public'                => true,
+        'public'                => false,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 6,

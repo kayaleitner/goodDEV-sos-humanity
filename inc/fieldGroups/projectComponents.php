@@ -32,184 +32,120 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'name' => 'introTab',
                 'type' => 'tab',
                 'placement' => 'top',
-                'endpoint' => 0,
-            ],
+                'endpoint' => 0,   
+            ],  
             [
                 'label' => __('Intro', 'flynt'),
                 'name' => 'intro',
                 'type' => 'textarea',
                 'wrapper' => [
                     'width' => 100
-                ]
+                ],
             ],
             [
-                'label' => __('Coordinates', 'flynt'),
-                'name' => 'coordinatesTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0,
-            ],
-            [
-                'label' => __('Coordinates', 'flynt'),
-                'name' => 'coordinates',
-                'type' => 'google_map',
-                'center_lat' => '',
-                'center_lng' => '',
-                'required' => 1,
-                'zoom' => '',
-                'wrapper' => [
-                    'width' => 100
-                ]
-            ],
-            [
-                'label' => __('Data', 'flynt'),
-                'name' => 'dataTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0,
-            ],
-            [
-                'label' => __('Location URL', 'flynt'),
-                'name' => 'boxLocation',
+                'label' => __('Website URL', 'flynt'),
+                'name' => 'websiteUrl',
                 'type' => 'url',
                 'wrapper' => [
-                    'width' => 25
-                ]
+                    'width' => 50
+                ],
             ],
             [
-                'label' => __('Generation Size', 'flynt'),
-                'name' => 'boxGenerationSize',
-                'type' => 'number',
+                'label' => __('Longterm Maintenance', 'flynt'),
+                'name' => 'maintenance',
+                'type' => 'true_false',
                 'wrapper' => [
-                    'width' => 25
-                ]
-            ],
-            [
-                'label' => __('Mounting Type', 'flynt'),
-                'name' => 'boxMountingType',
-                'type' => 'select',
-                'allow_null' => 0,
-                'multiple' => 0,
+                    'width' => 50
+                ],
                 'ui' => 1,
-                // 'allow_custom' => 1,
-                // 'layout' => 'horizontal',
-                'return_format' => 'array',
-                'choices' => [
-                    'roof' => 'Roof',
-                    'ground' => 'Ground',
-                    'carport' => 'Carport'
+            ],
+            [
+                'label' => __('Agency Partner', 'flynt'),
+                'name' => 'agencyPartner',
+                'type' => 'group',
+                'wrapper' => [
+                    'width' => 50
                 ],
-                'wrapper' => [
-                    'width' => 25
-                ]
-            ],
-            [
-                'label' => __('Storage Size', 'flynt'),
-                'name' => 'boxStorageSize',
-                'type' => 'number',
-                'wrapper' => [
-                    'width' => 25
-                ]
-            ],
-            [
-                'label' => __('Panel Count', 'flynt'),
-                'name' => 'boxPanelCount',
-                'type' => 'number',
-                'wrapper' => [
-                    'width' => 25
-                ]
-            ],
-            [
-                'label' => __('Commission Date', 'flynt'),
-                'name' => 'boxCommissionDate',
-                'type' => 'text',
-                'wrapper' => [
-                    'width' => 25
-                ]
-            ],
-            [
-                'label' => __('Partners', 'flynt'),
-                'name' => 'boxPartners',
-                'type' => 'text',
-                'wrapper' => [
-                    'width' => 25
-                ]
-            ],
-            [
-                'label' => __('Estimated overall renewable energy contribution (%)', 'flynt'),
-                'name' => 'boxReEnContr',
-                'type' => 'text',
-                'wrapper' => [
-                    'width' => 25
-                ]
-            ],
-            [
-                'label' => __('Project Link', 'flynt'),
-                'name' => 'projectLink',
-                'type' => 'link',
-                'instructions' => __('Enter the project URL.', 'flynt'),
-                'wrapper' => [
-                    'width' => '100',
-                ],
-            ],
-            [
-                'label' => __('Info Box Text', 'flynt'),
-                'name' => 'infoBoxTexts',
-                'type' => 'repeater',
-                'instructions' => __('Add title and text for each info box text.', 'flynt'),
-                'button_label' => __('Add Info Box Text', 'flynt'),
+                'layout' => 'row',
                 'sub_fields' => [
                     [
-                        'label' => __('Title', 'flynt'),
-                        'name' => 'title',
+                        'label' => __('Name', 'flynt'),
+                        'name' => 'name',
                         'type' => 'text',
-                        'wrapper' => [
-                            'width' => '30',
-                        ],
                     ],
                     [
-                        'label' => __('Text', 'flynt'),
-                        'name' => 'text',
-                        'type' => 'textarea',
-                        'rows' => 3,
-                        'wrapper' => [
-                            'width' => '70',
-                        ],
+                        'label' => __('Website', 'flynt'),
+                        'name' => 'website',
+                        'type' => 'url',
                     ],
                 ],
             ],
             [
-                'label' => __('Show Related News', 'flynt'),
-                'name' => 'showRelatedNews',
-                'type' => 'true_false',
-                'instructions' => __('Show related news on the bottom of the project page.', 'flynt'),
-                'ui' => 1, // Enable UI toggle switch
-                'default_value' => true,
+                'label' => __('Time Frame', 'flynt'),
+                'name' => 'timeFrame',
+                'type' => 'group',
                 'wrapper' => [
-                    'width' => '100',
+                    'width' => 50
+                ],
+                'layout' => 'row',
+                'sub_fields' => [
+                    [
+                        'label' => __('Project Start', 'flynt'),
+                        'name' => 'projectStart',
+                        'type' => 'date_picker',
+                    ],
+                    [
+                        'label' => __('Website Launch', 'flynt'),
+                        'name' => 'websiteLaunch',
+                        'type' => 'date_picker',
+                    ],
                 ],
             ],
-            [
-                'label' => __('File Download', 'flynt'),
-                'name' => 'fileDownload',
-                'type' => 'file',
-                'instructions' => __('Upload a file for users to download.', 'flynt'),
-                'return_format' => 'array',
-                'library' => 'all',
-                'mime_types' => '', // Leave empty for all file types
-                'wrapper' => [
-                    'width' => '50',
+        [
+            'label' => __('Features', 'flynt'),
+            'name' => 'featuresTab',
+            'type' => 'tab',
+            'placement' => 'top',
+            'endpoint' => 0,
+        ],
+        [
+            'label' => __('Features', 'flynt'),
+            'name' => 'features',
+            'type' => 'repeater',
+            'sub_fields' => [
+                [
+                    'label' => __('Title', 'flynt'),
+                    'name' => 'title',
+                    'type' => 'text',
+                    'wrapper' => [
+                        'width' => 50
+                    ],
+                ],
+                [
+                    'label' => __('Description', 'flynt'),
+                    'name' => 'description',
+                    'type' => 'textarea',
+                    'wrapper' => [
+                        'width' => 50
+                    ],
+                ],
+                [
+                    'label' => __('Image', 'flynt'),
+                    'name' => 'image',
+                    'type' => 'image',
+                    'return_format' => 'array',
+                    'preview_size' => 'medium',
+                    'library' => 'all',
+                    'wrapper' => [
+                        'width' => 50
+                    ],
                 ],
             ],
-            [
-                'label' => __('Button Label', 'flynt'),
-                'name' => 'buttonLabel',
-                'type' => 'text',
-                'instructions' => __('Enter the label for the download button.', 'flynt'),
-                'wrapper' => [
-                    'width' => '50',
-                ],
-            ],
+            'min' => 0,
+            'max' => 0,
+            'layout' => 'row',
+            'button_label' => __('Add Feature', 'flynt'),
+        ],
         ],
         'location' => [
             [
@@ -221,36 +157,37 @@ add_action('Flynt/afterRegisterComponents', function () {
             ],
         ],
     ]);
-    ACFComposer::registerFieldGroup([
-        'name' => 'projectComponents',
-        'title' => __('Project Blocks', 'flynt'),
-        'style' => 'seamless',
-        'fields' => [
-            [
-                'name' => 'projectComponents',
-                'label' => __('Project Blocks', 'flynt'),
-                'type' => 'flexible_content',
-                'button_label' => __('Add Block', 'flynt'),
-                'layouts' => [
-                    Components\BlockWysiwyg\getACFLayout(),
-                    Components\BlockImageText\getACFLayout(),
-                    Components\BlockCards\getACFLayout(),
-                    Components\BlockCarousel\getACFLayout(),
-                    Components\BlockStatistics\getACFLayout(),
-                    Components\BlockListingAuto\getACFLayout(),
-                ],
-            ],
-        ],
-        'location' => [
-            [
-                [
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'project',
-                ],
-            ],
-        ],
-    ]);
+
+    // ACFComposer::registerFieldGroup([
+    //     'name' => 'projectComponents',
+    //     'title' => __('Project Blocks', 'flynt'),
+    //     'style' => 'seamless',
+    //     'fields' => [
+    //         [
+    //             'name' => 'projectComponents',
+    //             'label' => __('Project Blocks', 'flynt'),
+    //             'type' => 'flexible_content',
+    //             'button_label' => __('Add Block', 'flynt'),
+    //             'layouts' => [
+    //                 Components\BlockWysiwyg\getACFLayout(),
+    //                 Components\BlockImageText\getACFLayout(),
+    //                 Components\BlockCards\getACFLayout(),
+    //                 Components\BlockCarousel\getACFLayout(),
+    //                 Components\BlockStatistics\getACFLayout(),
+    //                 Components\BlockListingAuto\getACFLayout(),
+    //             ],
+    //         ],
+    //     ],
+    //     'location' => [
+    //         [
+    //             [
+    //                 'param' => 'post_type',
+    //                 'operator' => '==',
+    //                 'value' => 'project',
+    //             ],
+    //         ],
+    //     ],
+    // ]);
 });
 
 // Hide Categories from Project post type in editor and admin menu
