@@ -28,12 +28,12 @@ add_action('Flynt/afterRegisterComponents', function () {
         'position' => 'acf_after_title',
         'fields' => [
             [
-                'label' => __('Intro', 'flynt'),
-                'name' => 'introTab',
+                'label' => __('Project Info', 'flynt'),
+                'name' => 'projectTab',
                 'type' => 'tab',
                 'placement' => 'top',
-                'endpoint' => 0,   
-            ],  
+                'endpoint' => 0,
+            ],
             [
                 'label' => __('Intro', 'flynt'),
                 'name' => 'intro',
@@ -66,6 +66,23 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'width' => 33
                 ],
                 'ui' => 1,
+            ],
+            
+            [
+                'label' => __('Features', 'flynt'),
+                'name' => 'features',
+                'type' => 'text',
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
+            [
+                'label' => __('Desgined by', 'flynt'),
+                'name' => 'designedBy',
+                'type' => 'text',
+                'wrapper' => [
+                    'width' => 50
+                ],
             ],
             [
                 'label' => __('Agency Partner', 'flynt'),
@@ -109,51 +126,115 @@ add_action('Flynt/afterRegisterComponents', function () {
                     ],
                 ],
             ],
-        [
-            'label' => __('Features', 'flynt'),
-            'name' => 'featuresTab',
-            'type' => 'tab',
-            'placement' => 'top',
-            'endpoint' => 0,
-        ],
-        [
-            'label' => __('Features', 'flynt'),
-            'name' => 'features',
-            'type' => 'repeater',
-            'sub_fields' => [
-                [
-                    'label' => __('Title', 'flynt'),
-                    'name' => 'title',
-                    'type' => 'text',
-                    'wrapper' => [
-                        'width' => 50
-                    ],
-                ],
-                [
-                    'label' => __('Description', 'flynt'),
-                    'name' => 'description',
-                    'type' => 'textarea',
-                    'wrapper' => [
-                        'width' => 50
-                    ],
-                ],
-                [
-                    'label' => __('Image', 'flynt'),
-                    'name' => 'image',
-                    'type' => 'image',
-                    'return_format' => 'array',
-                    'preview_size' => 'medium',
-                    'library' => 'all',
-                    'wrapper' => [
-                        'width' => 50
-                    ],
-                ],
+            [
+                'label' => __('Media Gallery', 'flynt'),
+                'name' => 'galleryTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
             ],
-            'min' => 0,
-            'max' => 0,
-            'layout' => 'row',
-            'button_label' => __('Add Feature', 'flynt'),
-        ],
+            [
+                'label' => '    ',
+                'name' => 'gallery',
+                'type' => 'repeater',
+                'layout' => 'row',
+                'sub_fields' => [
+
+                    [
+                        'label' => __('Type', 'flynt'),
+                        'name' => 'type',
+                        'type' => 'button_group',
+                        'allow_null' => 0,
+                        'default_value' => 'image',
+                        'choices' => [
+                            'image' => 'Image',
+                            'video' => 'Video',
+                        ]
+                    ],
+                    [
+                        'label' => __('Image', 'flynt'),
+                        'instructions' => __('Format: JPG, PNG, SVG.', 'flynt'),
+                        'name' => 'image',
+                        'type' => 'image',
+                        'preview_size' => 'medium',
+                        'mime_types' => 'jpg,jpeg,png',
+                        'required' => 1,
+                        'conditional_logic' => [
+                            [
+                                [
+                                    'fieldPath' => 'type',
+                                    'operator' => '==',
+                                    'value' => 'image',
+                                ],
+                            ]
+                        ],
+                    ],
+                    [
+                        'label' => __('Video', 'flynt'),
+                        'instructions' => __('Provide a poster image and various formats for best performance', 'flynt'),
+                        'name' => 'video',
+                        'type' => 'group',
+                        'layout' => 'row',
+                        'conditional_logic' => [
+                            [
+                                [
+                                    'fieldPath' => 'type',
+                                    'operator' => '==',
+                                    'value' => 'video',
+                                ],
+                            ]
+                        ],
+                        'sub_fields' => [
+                            [
+                                'label' => __('Aria-Label', 'flynt'),
+                                'name' => 'label',
+                                'type' => 'text',
+                                'required' => 1,
+                            ],
+                            [
+                                'label' => __('Poster image', 'flynt'),
+                                'instructions' => __('Image-Format: JPG, PNG, WEBM (choose smallest size!)', 'flynt'),
+                                'name' => 'posterImage',
+                                'type' => 'image',
+                                'preview_size' => 'medium',
+                                'required' => 0,
+                                'mime_types' => 'jpg,jpeg,png,webp'
+                            ],
+                            [
+                                'label' => __('Items', 'flynt'),
+                                'name' => 'videoFiles',
+                                'type' => 'repeater',
+                                'layout' => 'table',
+                                'min' => 1,
+                                'button_label' => __('Add video format', 'flynt'),
+                                'instructions' => __('Provide video in h264 (mp4), h265 (mp4), vp8 (webm) and vp9 (webm). Sort ascending by size!', 'flynt'),
+                                'sub_fields' => [
+                                    [
+                                        'label' => __('Video', 'flynt'),
+                                        'name' => 'videoFile',
+                                        'type' => 'file',
+                                        'required' => 1,
+                                        'mime_types' => 'mp4,webm',
+                                    ],
+                                    [
+                                        'label' => __('Codec', 'flynt'),
+                                        'name' => 'codec',
+                                        'type' => 'select',
+                                        'required' => 1,
+                                        'choices' => [
+                                            'avc1' => 'h264',
+                                            'hvc1' =>'h265',
+                                            'vp8' =>'vp8',
+                                            'vp9' => 'vp9',
+                                        ],
+                                        'default_value' => 'avc1',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ]
+            ],
         ],
         'location' => [
             [
