@@ -1,23 +1,23 @@
 <?php
 
-namespace Flynt\Components\BlockVideoOembed;
+namespace Flynt\Components\BlockOembed;
 
 use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 use Flynt\Utils\Oembed;
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=BlockVideoOembed', function (array $data): array {
+add_filter('Flynt/addComponentData?name=BlockOembed', function ($data) {
     $data['oembed'] = Oembed::setSrcAsDataAttribute(
         $data['oembed'],
-        ['autoplay' => 1, 'enablejsapi' => 1],
+        ['autoplay' => 'true']
     );
 
     return $data;
 });
 
 // WIP Solution (autoplay not working)
-// add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
+// add_filter('Flynt/addComponentData?name=BlockOembed', function ($data) {
 //     $oembed = Oembed::setSrcAsDataAttribute(
 //         $oembed,
 //         ['autoplay' => 'true']
@@ -35,27 +35,72 @@ add_filter('Flynt/addComponentData?name=BlockVideoOembed', function (array $data
 function getACFLayout()
 {
     return [
-        'name' => 'blockVideoOembed',
-        'label' =>  __('Video', 'flynt'),
+        'name' => 'blockOembed',
+        'label' =>  __('oEmbed (Video/Visualisation)', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('Imagery', 'flynt'),
-                'name' => 'imageryTab',
+                'label' => __('Text', 'flynt'),
+                'name' => 'textTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
             ],
             [
+                'label' => __('Title', 'flynt'),
+                'name' => 'blockTitle',
+                'instructions' => 'Displayed as H2',
+                'type' => 'text'
+            ],
+            [
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentHtml',
+                'type' => 'wysiwyg',
+                'tabs' => 'visual',
+                'media_upload' => 0,
+                'delay' => 1,
+            ],
+            [
+                'label' => __('Media', 'flynt'),
+                'name' => 'mediaTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => __('Video Mode', 'flynt'),
+                'instructions' => __('Places a play button and requires a poster image.', 'flynt'),
+                'name' => 'videoMode',
+                'type' => 'button_group',
+                'allow_null' => 0,
+                'default_value' => 'off',
+                'choices' => [
+                    'on' => 'On',
+                    'off' => 'Off',
+                ],
+                'wrapper' => [
+                    'width' => 35,
+                ],
+            ],
+            [
                 'label' => __('Poster Image', 'flynt'),
-                'instructions' => __('Image-Format: JPG, PNG, SVG, WebP. Aspect Ratio: 16:9. Recommended Size: 1920px × 1080px.', 'flynt'),
+                'instructions' => __('Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG, PNG. Aspect Ratio 16/9.', 'flynt'),
                 'name' => 'posterImage',
                 'type' => 'image',
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg,png',
                 'required' => 1,
                 'wrapper' => [
-                    'width' => 30,
-                ]
+                    'width' => 35,
+                ],
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'videoMode',
+                            'operator' => '==',
+                            'value' => 'on',
+                        ],
+                    ]
+                ],
             ],
             [
                 'label' => __('Video', 'flynt'),
@@ -70,14 +115,6 @@ function getACFLayout()
                 ]
             ],
             [
-                'label' => __('Content', 'flynt'),
-                'name' => 'contentHtml',
-                'type' => 'textarea',
-                'tabs' => 'visual',
-                'media_upload' => 0,
-                'delay' => 1,
-            ],
-            [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
@@ -90,15 +127,16 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    // FieldVariables\getTheme(),
-                    FieldVariables\getNavStyle(),
+                    FieldVariables\getComponentID(),
+                    FieldVariables\getColorBackground(),
+                    FieldVariables\getColorText(),
                 ]
             ]
         ]
     ];
 }
 
-Options::addTranslatable('BlockVideoOembed', [
+Options::addTranslatable('BlockOembed', [
     [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',

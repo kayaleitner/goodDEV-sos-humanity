@@ -136,14 +136,14 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                 'label' => __('Page Blocks', 'flynt'),
                 'type' => 'flexible_content',
                 'button_label' => __('Add Block', 'flynt'),
-                'layouts' => [
+                'layouts' => [                 
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
                     Components\BlockCards\getACFLayout(),
                     Components\BlockCarousel\getACFLayout(),
                     Components\BlockCarouselTextImage\getACFLayout(),
                     Components\BlockListingAuto\getACFLayout(),
-                    Components\BlockStatistics\getACFLayout(),
+					Components\BlockOembed\getACFLayout(),
                 ],
             ],
         ],

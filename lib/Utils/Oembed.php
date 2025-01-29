@@ -20,23 +20,26 @@ class Oembed
      *
      * @return string The modified oembed iframe HTML tag.
      */
-    public static function setSrcAsDataAttribute(string $iframeTagHtml, array $additionalGetParams): string
+    public static function setSrcAsDataAttribute(string $iframeTagHtml, array $additionalGetParams)
     {
         $output = '';
-        if ($iframeTagHtml !== '' && $iframeTagHtml !== '0') {
-            $domDocument = new DOMDocument();
-            $domDocument->loadHTML($iframeTagHtml);
-            $domNodes = $domDocument->getElementsByTagName('iframe');
-            foreach ($domNodes as $domNode) {
-                $src = $domNode->getAttribute('src');
+        if ($iframeTagHtml) {
+            $Dom = new DOMDocument();
+            $Dom->loadHTML($iframeTagHtml);
+            $domNodes = $Dom->getElementsByTagName('iframe');
+            foreach ($domNodes as $node) {
+                $src = $node->getAttribute('src');
                 // Add additional get parameters to existing oembed url.
                 $src = add_query_arg($additionalGetParams, $src);
-                $domNode->removeAttribute('src');
-                $domNode->setAttribute('data-src', $src);
-                $output .= $domDocument->saveHTML($domNode);
+                $node->removeAttribute('src');
+                $node->setAttribute('data-src', $src);
+                $aspectRatio = $node->getAttribute('width') / $node->getAttribute('height');
+                $node->removeAttribute('width');
+                $node->removeAttribute('height');
+                $node->setAttribute('style', 'width: 100%; aspect-ratio: ' . $aspectRatio . ';');
+                $output .= $Dom->saveHTML($node);
             }
         }
-
         return $output;
     }
 }
