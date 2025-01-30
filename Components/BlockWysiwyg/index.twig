@@ -1,27 +1,34 @@
 {% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+{% import "Components/_Containers/GridElement.twig" as ge %}
 
 {% set componentOptions = {
     name: 'BlockWysiwyg',
     loadOn: 'idle',
 } %}
 
-{% set content %}
-  <div class="container-grid">
-    {% if blockTitle %}
-      <div class="col-span-full md:col-span-5">
-          {{ h.h(blockTitle, { level: 2, class: '' }) }}
-        </div>
-    {% endif %}
-    <div class="wysiwyg col-span-full md:col-span-8 ">
-      {{ contentHtml|e('wp_kses_post') }}
-    </div>
+{% set textContent %}
+  {% if text.blockTitle %}
+    {{ h.h(text.blockTitle, { level: 2, class: '' }) }}
+  {% endif %}
+  <div class="wysiwyg">
+    {{ text.contentHtml }}
   </div>
 {% endset %}
 
+
+{% set content %}
+  <div class="container-grid relative items-start">
+    {{ ge.gridElement(textContent, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 1, 'end': 8},
+        'desktop': {'start': 3, 'end': 10}
+      }
+      }) }}
+  </div>
+{% endset %}
 
 {% include 'Components/_Containers/FlyntComponent.twig' with {
     content: content,
     componentOptions: componentOptions
 } %}
-
-

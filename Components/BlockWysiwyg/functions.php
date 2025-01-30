@@ -11,26 +11,34 @@ function getACFLayout(): array
         'label' => __('Text Editor', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('Content', 'flynt'),
-                'name' => 'contentTab',
+                'label' => __('Text', 'flynt'),
+                'name' => 'textTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
             [
-                'label' => __('Title', 'flynt'),
-                'name' => 'blockTitle',
-                'instructions' => 'Displayed as H2',
-                'type' => 'text'
-            ],
-            [
-                'label' => __('Content', 'flynt'),
-                'name' => 'contentHtml',
-                'type' => 'wysiwyg',
-                'tabs' => 'visual,text',
-                'delay' => 1,
-                'media_upload' => 0,
-                'required' => 0,
+                'label' => __('', 'flynt'),
+                'name' => 'text',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    [
+                        'label' => __('Title', 'flynt'),
+                        'name' => 'blockTitle',
+                        'instructions' => 'Displayed as H2',
+                        'type' => 'text'
+                    ],
+                    [
+                        'label' => __('Content', 'flynt'),
+                        'name' => 'contentHtml',
+                        'type' => 'wysiwyg',
+                        'tabs' => 'visual,text',
+                        'delay' => 1,
+                        'media_upload' => 0,
+                        'required' => 0,
+                    ],
+                ],
             ],
             [
                 'label' => __('Options', 'flynt'),
