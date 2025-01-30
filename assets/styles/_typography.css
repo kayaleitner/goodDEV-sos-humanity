@@ -1,4 +1,6 @@
-@font-face {
+@import url("https://use.typekit.net/tzp8fky.css");
+
+/* @font-face {
   font-display: auto;
   font-family: 'Inter';
   font-style: normal;
@@ -24,7 +26,7 @@
   font-family: 'EB Garamond';
   font-style: italic;
   src: url('/assets/fonts/EBGaramond-Italic-Variable.woff2') format('woff2');
-}
+} */
 
 
 @font-face {

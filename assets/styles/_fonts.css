@@ -12,8 +12,10 @@ html {
 
 @layer base {
 
+
   /* -- Paragraphs -- */
   .font-extraLarge {
+    @apply font-display;
     @apply font-medium;
     font-size: rem(60);
     line-height: rem(72);
