@@ -1,38 +1,24 @@
 {% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+{% import "Components/_Containers/GridElement.twig" as ge %}
 
 {% set componentOptions = {
     name: 'BlockCards',
     loadOn: 'idle',
 } %}
 
-{% set content %}
-  {% set hasText = content.blockTitle or content.textContent %}
+{% set titleContent %}
+  {% if content.blockTitle %}
+    {{ h.h(content.blockTitle, { level: 2, class: 'font-contentTitle uppercase' }) }}
+  {% endif %}
+{% endset %}
 
-  <div class="container-grid mx-auto">
-
-    {% if content.textContent or content.blockTitle %}
-      <div class="col-span-full">
-        {% if content.blockTitle %}
-          {{ h.h(content.blockTitle, { level: 2, class: 'mb-sm' }) }}
-        {% endif %}
-        {% if content.textContent %}
-        <p class="font-paragraph">
-          {{ content.textContent|e('wp_kses_post') }}
-        </p>
-        {% endif %}
-      </div>
-    {% endif %}
-
-    {% if cards %}
-      {% set layoutCardClass = '' %}
-      {% if options.layout == '3col' %}
-        {% set layoutCardClass = 'col-span-full md:col-span-4' %}
-      {% elseif options.layout == '4col' %}
-        {% set layoutCardClass = 'col-span-3' %}
-      {% endif %}
-
+{% set cardsContent %}
+    
+    {# TODO: Implement grid system for mobile and desktop  #}
+    {# TODO: Implement grid-cols-4  #}
+    <div class="grid grid-cols-3 gap-sm">
       {% for card in cards %}
-        <div class="anim-move-up rounded border {{ layoutCardClass }}" style="background-color: {{card.bgColor}}; color: {{card.color}};">
+        <div class="anim-move-up rounded border col-span-1" style="background-color: {{card.bgColor}}; color: {{card.color}};">
           <div class="flex flex-col gap-md p-md">
 
             <div class="w-full h-extra flex overflow-hidden">
@@ -61,11 +47,30 @@
           </div>
         </div>
       {% endfor %}
-
-  {% endif %}
-  </div>
+    </div>
 {% endset %}
 
+{% set content %}
+  <div class="container-grid relative items-start">
+    {{ ge.gridElement(titleContent, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 1, 'end': 8},
+        'desktop': {'start': 1, 'end': 2},
+        'max': {'start': 1, 'end': 2}
+      }
+    }) }}
+    
+    {{ ge.gridElement(cardsContent, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 1, 'end': 8},
+        'desktop': {'start': 3, 'end': 12},
+        'max': {'start': 3, 'end': 12}
+      }
+    }) }}
+  </div>
+{% endset %}
 
 {% include 'Components/_Containers/FlyntComponent.twig' with {
     content: content,
