@@ -27,13 +27,13 @@ html {
   }
 
   .font-pageTitle {
-    @apply font-medium;
+    @apply font-bold font-display;
     font-size: rem(36);
-    line-height: rem(45);
+    line-height: 80%;
+    letter-spacing: rem(1);
 
     @screen md {
       font-size: rem(54);
-      line-height: rem(56);
     }
   }
 
