@@ -14,18 +14,24 @@ add_action('init', function (): void {
 
 add_filter('Flynt/addComponentData?name=NavigationBurger', function (array $data): array {
     $data['menu'] = Timber::get_menu('navigation_burger') ?? Timber::get_pages_menu();
+        $data['logo'] = [
+            'src' => get_theme_mod('custom_logo') ? wp_get_attachment_image_url(get_theme_mod('custom_logo'), 'full') : Asset::requireUrl('assets/logo/logoBlack.svg'),
+            'alt' => get_bloginfo('name')
+        ];
+        // ];
+        $data['logo_secondary'] = [
+            'src' => get_theme_mod('logo_secondary') ? get_theme_mod('logo_secondary') : Asset::requireUrl('assets/logo/logoOrange.svg'),
+            'alt' => get_bloginfo('name')
+        ];
 
-    $data['logo'] = [
-        'src' => get_theme_mod('custom_logo') ? wp_get_attachment_image_url(get_theme_mod('custom_logo'), 'full') : Asset::requireUrl('assets/images/logo.svg'),
-        'alt' => get_bloginfo('name')
+         // Get Site Icon (Favicon)
+    $data['site_icon'] = [
+        'src' => get_site_icon_url() ?: Asset::requireUrl('assets/icons/default-favicon.png'),
+        'alt' => 'Site Icon'
     ];
-    $data['logo_dark'] = [
-        'src' => get_theme_mod('logo_dark') ? get_theme_mod('logo_dark') : Asset::requireUrl('assets/images/logo-dark.svg'),
-        'alt' => get_bloginfo('name')
-    ];
-
-    return $data;
-});
+    
+        return $data;
+    });
 
 Options::addTranslatable('NavigationBurger', [
     [
