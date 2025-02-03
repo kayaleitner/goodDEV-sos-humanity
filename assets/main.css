@@ -11,6 +11,5 @@
 @import 'styles/_borlabs-cookie.css';
 @import 'styles/_env-badge.css';
 
-@import '../Components/NavigationBurger/_style.css';
 @import '../Components/NewsletterMailchimp/_style.css';
 @import '../Components/FeatureListSearchResults/_style.css';

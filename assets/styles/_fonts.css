@@ -94,12 +94,20 @@ html {
   }
 
   .font-mainMenuText {
-    @apply font-contentTitle;
+    @apply font-medium;
+    font-size: rem(18);
+    line-height: rem(24);
+
+    @screen md {
+      font-size: rem(20);
+      line-height: rem(28);
+    }
   }
 
   .font-caption {
     @apply font-smallParagraph;
   }
+
 
   .link {
     text-decoration: underline;

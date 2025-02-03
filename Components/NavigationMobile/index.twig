@@ -1,0 +1,63 @@
+{% set componentOptions = {
+    name: 'NavigationMobile',
+    loadOn: 'idle',
+    loadOnMedia: '(max-width: 1180px)',
+    class: '!fixed bottom-[2rem] left-1/2 '
+} %}
+
+{% set content %}
+  <nav 
+    aria-label="{{ labels.ariaLabel|e }}"
+    class="flex flex-row gap-4 mx-auto -translate-x-1/2" 
+  >
+
+  <button class="rounded border  border-paperColor bg-brandColor hover:bg-hoverColor text-bgColor hover:text-brandColor transition-all px-[0.78rem] py-4 h-[3.625rem] w-[3.625rem]">  
+    <a href="{{ site.link|e('esc_url') }}" class="py-4">
+    <svg class="h-full w-full" viewBox="0 0 45 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M39.7166 5.48297V5.80341H44.0602V9.04335H39.7166V22.5372H35.907V9.04335H33.2367V5.80341H35.907V5.51858C35.907 2.24303 37.7584 0 41.6748 0C42.9209 0 43.7042 0.142415 44.3806 0.28483L44.0602 3.06192C43.3837 2.95511 42.8141 2.8839 42.1732 2.8839C40.4642 2.8839 39.7166 3.774 39.7166 5.48297Z" fill="currentColor"/>
+        <path d="M25.7176 8.61616C23.1898 8.61616 21.5876 9.86229 21.1604 12.5682H29.9189C29.7052 9.9691 28.3523 8.61616 25.7176 8.61616ZM25.8244 22.9645C20.6975 22.9645 17.2795 19.9025 17.2795 14.384C17.2795 8.72297 20.6263 5.37622 25.8244 5.37622C30.9158 5.37622 33.4792 8.58056 33.4792 13.1734C33.4792 13.8499 33.4792 14.5264 33.408 15.4165H21.1247C21.4808 18.2292 23.1186 19.6177 25.86 19.6177C28.5303 19.6177 29.5272 18.3004 30.0257 16.5914L33.3724 17.5527C32.5179 20.757 30.2393 22.9645 25.8244 22.9645Z" fill="currentColor"/>
+        <path d="M8.33128 19.5465C11.2152 19.5465 12.6393 17.5171 12.6393 14.0992C12.6393 10.7524 11.2864 8.82981 8.33128 8.82981C5.55418 8.82981 3.8452 10.6812 3.8452 13.9924V14.2772C3.8452 17.4815 5.55418 19.5465 8.33128 19.5465ZM3.8452 0.712158V10.5388H3.91641C4.69969 7.15644 6.6223 5.37625 9.89784 5.37625C14.2059 5.37625 16.4489 8.68739 16.4489 14.0992C16.4489 19.6533 14.0991 23.0001 9.86224 23.0001C6.51548 23.0001 4.66409 21.1843 3.91641 17.7663H3.8452V22.5372H0V0.712158H3.8452Z" fill="currentColor"/>
+      </svg>
+    </a>
+  </button>
+
+    <ul class="flex items-center gap-2 p-2 rounded border border-paperColor bg-brandColor text-bgColor">
+
+    {% for item in menu.items %}
+      <li
+        class="relative"
+        x-data="{ id: {{ loop.index }} }">
+          <button class="px-4 py-2 no-underline rounded {{ item.current ? '!bg-paperColor !text-brandColor' }} text-bgColor hover:text-brandColor hover:bg-hoverColor transition-all relative z-20">
+            <a class="no-underline font-mainMenuText"
+              href="{{ item.url|e }}"
+              title="{{ item.title|e }}">
+                {{ item.title|e }}
+            </a>
+          </button>
+        </li>
+      {% endfor %}
+
+    {% if ctaLink %}
+      <li class="">
+        <button class="p-2 no-underline rounded bg-hoverColor text-brandColor group transition-all relative z-20">
+          <a class="no-underline font-mainMenuText relative"
+            href="{{ ctaLink.url|e }}"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:opacity-0" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-0 group-hover:opacity-100 absolute -top-[0.125rem]" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M2.94 6.412A2 2 0 002 8.108V16a2 2 0 002 2h12a2 2 0 002-2V8.108a2 2 0 00-.94-1.696l-6-3.75a2 2 0 00-2.12 0l-6 3.75zm2.615 2.423a1 1 0 10-1.11 1.664l5 3.333a1 1 0 001.11 0l5-3.333a1 1 0 00-1.11-1.664L10 11.798 5.555 8.835z" clip-rule="evenodd" />
+            </svg>
+            </a>
+      </li>
+    {% endif %}
+
+  </nav>
+{% endset %}
+
+{% include "Components/_Containers/FlyntComponent.twig" with {
+    content: content,
+    componentOptions: componentOptions
+} %}
