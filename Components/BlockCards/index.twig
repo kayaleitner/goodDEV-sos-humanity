@@ -16,7 +16,8 @@
     
     {# TODO: Implement grid system for mobile and desktop  #}
     {# TODO: Implement grid-cols-4  #}
-    <div class="grid grid-cols-3 gap-sm">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-sm">
       {% for card in cards %}
         <div class="anim-move-up rounded border col-span-1" style="background-color: {{card.bgColor}}; color: {{card.color}};">
           <div class="flex flex-col gap-md p-md">
@@ -55,7 +56,7 @@
     {{ ge.gridElement(titleContent, {
       'cols': {
         'mobile': {'start': 1, 'end': 6},
-        'tablet': {'start': 1, 'end': 8},
+        'tablet': {'start': 1, 'end': 12},
         'desktop': {'start': 1, 'end': 2},
         'max': {'start': 1, 'end': 2}
       }
@@ -64,7 +65,7 @@
     {{ ge.gridElement(cardsContent, {
       'cols': {
         'mobile': {'start': 1, 'end': 6},
-        'tablet': {'start': 1, 'end': 8},
+        'tablet': {'start': 1, 'end': 12},
         'desktop': {'start': 3, 'end': 12},
         'max': {'start': 3, 'end': 12}
       }
