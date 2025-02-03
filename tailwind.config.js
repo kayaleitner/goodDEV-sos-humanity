@@ -28,17 +28,14 @@ export const theme = {
     borderColor: 'var(--borderColor)',
     uiColor: 'var(--grey)',
 
-    bgColor: 'var(--bgColor)',
-    paperColor: 'var(--paperColor)',
-
     errorColor: 'var(--errorColor)',
     successColor: 'var(--successColor)',
   },
   fontFamily: {
-    sans: ['neue-haas-grotesk-text', 'Inter', 'Roboto', 'Open Sans', 'Helvetica', 'Arial', 'Sans'],
+    sans: ['neue-haas-grotesk-text', 'Helvetica', 'Sans'],
     serif: ['EB Garamond', 'Georgia', 'Times New Roman', 'Serif'],
     mono: ['IBM Plex Mono', 'Menlo', 'courier', 'monospace'],
-    display: ['degular-display', 'Inter', 'Roboto', 'Open Sans', 'Helvetica', 'Arial', 'Sans'],
+    display: ['degular-display',  'Helvetica', 'Sans'],
   },
   borderRadius: {
     DEFAULT: '2rem',

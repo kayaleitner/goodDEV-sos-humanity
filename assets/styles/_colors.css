@@ -8,7 +8,7 @@
 
   --blue: #1E26A1;
 
-  --mint-light: #E7ECE7;
+  --mint-light: #F4F6F4;
   --mint: #C0F6C0;
 
   --purple: #ac4399;
@@ -30,7 +30,7 @@
 
   --bgColor: var(--bgColorDefault);
   --bgColorDefault: var(--white);
-  --paperColor: var(--grey);
+  --paperColor: var(--mint-light);
   --borderColor: var(--brandLight);
   --uiColor: var(--brandLight);
 
