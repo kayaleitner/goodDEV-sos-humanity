@@ -12,9 +12,6 @@ add_filter('Flynt/addComponentData?name=NavigationMain', function ($data) {
         'src' => get_theme_mod('custom_logo') ? wp_get_attachment_image_url(get_theme_mod('custom_logo'), 'full') : Asset::requireUrl('assets/logo/logoBlack.svg'),
         'alt' => get_bloginfo('name')
     ];
-    // $data['logo_dark'] = [
-    //     'src' => get_theme_mod('logo_dark') ? get_theme_mod('logo_dark') : Asset::requireUrl('assets/logo/logoGreen.svg'),
-    //     'alt' => get_bloginfo('name')
     // ];
     $data['logo_secondary'] = [
         'src' => get_theme_mod('logo_secondary') ? get_theme_mod('logo_secondary') : Asset::requireUrl('assets/logo/logoOrange.svg'),

@@ -3,8 +3,6 @@
 {% set componentOptions = {
     name: 'NavigationMain',
     loadOn: "load",
-    loadOnMedia: "(min-width: 1180px)",
-    class: "hidden md:block"
 } %}
 
 {% set content %}
@@ -14,7 +12,7 @@
       <img data-ref="logo" class="h-full" src="{{ logo.src }}" alt="{{ logo.alt }}">
       <img data-ref="logoSecondary" class="hidden h-full" src="{{ logo_secondary.src ? logo_secondary.src : logo.src }}" alt="{{ logo_secondary.alt }}">
     </a>
-
+{# 
     <nav data-ref="nav" class="bg-paperColor rounded border border-borderColor fixed" aria-label="{{ labels.ariaLabel|e }}" >
       {% if menu %}
         <ul class="flex items-center gap-3 p-2 rounded text-textColor" x-data="{ openSubmenu: null }">
@@ -68,7 +66,7 @@
         </ul>
       {% endif %}
 
-    </nav>
+    </nav> #}
   </div>
 {% endset %}
 
