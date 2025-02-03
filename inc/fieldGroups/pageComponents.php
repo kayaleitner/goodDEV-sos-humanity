@@ -142,6 +142,7 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                     Components\BlockCards\getACFLayout(),
                     Components\BlockCarousel\getACFLayout(),
                     Components\BlockCarouselTextImage\getACFLayout(),
+                    Components\BlockCarouselLogo\getACFLayout(),
                     Components\BlockListingAuto\getACFLayout(),
 					Components\BlockOembed\getACFLayout(),
                 ],

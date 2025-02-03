@@ -67,3 +67,20 @@ export function hideElement(child) {
   )
   child.classList.remove('opacity-100', 'z-10')
 }
+
+export function remToPx(rem) {
+  const baseFontSize = 16 // Default base font size for html is 16px
+  const screenWidth = window.innerWidth
+
+  // Handle the font size adjustment based on screen size
+  // Based on your clamp, calculate the font-size for the screen width.
+  let fontSize
+  if (screenWidth >= 1440) {
+    const vw = screenWidth / 100
+    fontSize = Math.max(16, Math.min(1.111111 * vw, 48)) // Using 1rem = 16px, 1.111111vw, 3rem = 48px
+  } else {
+    fontSize = baseFontSize // Default 16px font size for smaller screens
+  }
+
+  return rem * fontSize
+}
