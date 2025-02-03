@@ -3,11 +3,11 @@
     col-start-{{ args.cols.mobile.start }}
     sm:col-start-{{ args.cols.tablet.start }}
     md:col-start-{{ args.cols.desktop.start }}
-    max:col-start-{{ args.cols.wide.start }}
+    {% if args.cols.wide.start %} max:col-start-{{ args.cols.wide.start }} {% endif %}
     col-end-{{ args.cols.mobile.end + 1 }}
     sm:col-end-{{ args.cols.tablet.end + 1 }}
     md:col-end-{{ args.cols.desktop.end + 1 }}
-    max:col-end-{{ args.cols.wide.end + 1 }}
+    {% if args.cols.wide.end %} max:col-end-{{ args.cols.wide.end + 1 }} {% endif %}
   {% endwith %}
 {% endmacro %}
 
