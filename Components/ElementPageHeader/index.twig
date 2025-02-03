@@ -1,4 +1,5 @@
-{% if post.displayPageHeader %}
+{% import "Components/_Atoms/Titles/title/macro.twig" as h %}
+{% import "Components/_Containers/GridElement.twig" as ge %}
 
 {% set componentOptions = {
     name: 'ElementPageHeader',
@@ -11,35 +12,50 @@
     colorBackground: 'var(--paperColor)',
 } %}
 
-{% set content %}
+{% set headerTitle %}
+  {% if post.header.longTitle %}
+    {{ h.h(post.header.longTitle, { level: 1, class: 'pt-48' }) }}
+  {% else %}
+    {{ h.h(post.title, { level: 1, class: 'pt-48 font-extraLarge' }) }}
+  {% endif %}
+{% endset %}
 
-  <div class="container-grid items-end prose mt-max">
-    <h1 class="col-span-6 md:col-span-8 sm:!mb-0 pt-48">
-      {% if post.header.longTitle %}
-        {{ post.header.longTitle }}
-      {% else %}
-        <span class="font-extraLarge">{{ post.title }}</span>
-      {% endif %}
-    </h1>
+{% set headerIntro %}
+  {% if post.header.intro %}
+    {{ h.h(post.header.intro, { level: 2, class: '' }) }}
+  {% endif %}
+{% endset %}
+
+{% set content %}
+  <div class="container-grid relative items-end prose mt-max">
+    {{ ge.gridElement(headerTitle, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 1, 'end': 7},
+        'desktop': {'start': 1, 'end': 7}
+      }
+    }) }}
+    
     {% if post.header.intro %}
-      <h2 class="col-span-6 md:col-span-3  sm:!mb-0">
-        {{ post.header.intro }}
-      </h2>
+      {{ ge.gridElement(headerIntro, {
+        'cols': {
+          'mobile': {'start': 1, 'end': 6},
+          'tablet': {'start': 8, 'end': 12},
+          'desktop': {'start': 8, 'end': 12}
+        }
+      }) }}
     {% endif %}
   </div>
 
   <div class="absolute -right-[12rem] -top-[18rem] w-[60rem] h-[60rem]">
-  {% include 'Components/ElementPageHeader/shape.twig' with {
-    image: post.header.shape,
-    stretch: post.header.stretch,
-  } %}
+    {% include 'Components/ElementPageHeader/shape.twig' with {
+      image: post.header.shape,
+      stretch: post.header.stretch,
+    } only %}
   </div>
-
 {% endset %}
 
 {% include 'Components/_Containers/FlyntComponent.twig' with {
     content: content,
     componentOptions: componentOptions
 } %}
-
-{% endif %}
