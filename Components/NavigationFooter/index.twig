@@ -1,96 +1,112 @@
 {% import "Components/_Atoms/Button/macro.twig" as btn %}
 {% import "Components/_Atoms/macroIcon.twig" as icon %}
+{% import "Components/_Containers/GridElement.twig" as ge %}
 
 {% set componentOptions = {
     name: 'NavigationFooter',
     loadOn: 'visible',
-    class: "w-full left-0 bottom-0" 
+    class: "w-full left-0 bottom-0"
 } %}
 
-{% set content %}
-  <div class="mx-auto container-grid gap-y-md items-start">
-    <div class="col-start-1 col-end-4 sm:col-end-7 md:col-start-1 md:col-end-4 flex flex-col gap-p">
-      {% if logoFooter %}
-        <a class="" href="{{ site.link|e('esc_url') }}" aria-label="Go to Homepage">
-          <img class="logo lazyload"
-          src="{{ logoFooter.src | resize(32) }}"
-          data-srcset="{{function('wp_get_attachment_image_srcset', logoFooter.id)}}"
-          data-sizes="auto">
-        </a>
-      {% endif %}
-    
-       {% if social %}
-        <div class="flex flex-row gap-sm  align-center">
-          <div class="flex flex-row">
-            <p>{{ socialMediaTitle }}</p>
-          </div>
-          <div class="flex flex-row gap-sm">
-            {% for socials in social %}
-              <a href="{{ socials.url.href }}" class="block w-md h-md" aria-label="{{ socials.title }}">
-                {{ icon.icon(socials.platform.value) }}
-              </a>
-            {% endfor %}
-          </div>
-          </div>
-      {% endif %}
+{% set options = {
+    colorText: 'var(--brandColor)',
+    colorBackground: 'var(--paperColor)',
+} %}
 
-      {% if cta %}
-      <div>
-      {# Contact Form Modal #}
-      {# <a class="btn-primary overflow-hidden whitespace-nowrap min-w-[8rem] text-center" href="?modal=form&slug=contactFormCta" data-refs="modalLink">Open Modal</a>
-      <div id="contactFormCta" class="hidden bg-paperColor max-h-full md:max-h-[unset] overflow-y-auto px-sm py-md md:py-lg md:px-xl md:w-[60rem]">
-          {{ function('do_shortcode', '[wpforms id="' ~ contactForm.id ~ '" title="true" description="true"]') }}
-      </div> #}
+{% set logoContent %}
+  {% if logoFooter %}
+    <a class="h-8" href="{{ site.link|e('esc_url') }}" aria-label="Go to Homepage">
+      <img class="logo lazyload h-8   mb-4" 
+      src="{{ logoFooter.src | resize(32) }}"
+      data-srcset="{{function('wp_get_attachment_image_srcset', logoFooter.id)}}"
+      data-sizes="auto">
+    </a>
+  {% endif %}
+{% endset %}
 
-        <a class="btn-primary" href="{{ cta.url }}" >{{ cta.title }}</a>
+{% set socialContent %}
+  {% if social %}
+    <div class="flex flex-row gap-sm items-center">
+      <div class="flex flex-row">
+        <p>{{ socialMediaTitle }}</p>
       </div>
-      {% endif %}
-    </div>
-
-    <div class="col-start-1 col-end-4 sm:col-end-7 md:col-start-5 md:col-end-8 md:row-start-1">
-      <h3 class="font-bold uppercase pb-sm"> {{linkTitle}} </h3>
-      <ul>
-        {% for item in links %}
-          <li class="pb-xs" >
-            <a class="link" href="{{ item.link.url }}">{{ item.link.title }}</a>
-          </li>
+      <div class="flex flex-row gap-sm">
+        {% for socials in social %}
+          <a href="{{ socials.url.href }}" class="block w-md h-md" aria-label="{{ socials.title }}">
+            {{ icon.icon(socials.platform.value) }}
+          </a>
         {% endfor %}
-      </ul>
-    </div>
-
-    <div class="col-start-1 col-end-4 sm:col-start-7 sm:col-end-13 md:col-start-8 md:col-end-11 md:row-start-1">
-      <h3 class="font-bold uppercase pb-sm"> {{contactTitle}}</h3>
-      <div class="wysiwyg">
-        {{ contactInfo|e('wp_kses_post')  }}
       </div>
     </div>
+  {% endif %}
+{% endset %}
 
-    {% if menu %}
-      <div class="col-start-1 col-end-5 sm:col-end-13 md:flex justify-between border-t pt-md">
-          <nav aria-label="{{ labels.ariaLabel }}">
-          <ul class="flex gap-xs flex-col md:flex-row md:gap-p ">
-          {% set items = menu.get_items %}
-          
-            {% for item in items %}
-              <li class="{{ item.classes | join(' ') }}">
-                <a class="hover:text-hoverColor focus:text-hoverColor active:text-activeColor" href="{{ item.link|e('esc_url')|e('esc_url') }}"{% if item.target %} target="{{ item.target }}"{% endif %}>{{ item.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-          </nav>
+{% set linksContent %}
+  <h3 class="font-bold uppercase pb-sm"> {{ linkTitle }} </h3>
+  <ul>
+    {% for item in links %}
+      <li class="pb-xs">
+        <a class="link" href="{{ item.link.url }}">{{ item.link.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endset %}
 
-          <div class="mt-md md:mt-0">
-            {{ 'now' | date('Y') }} - {{ site.name }} | All rights reserved
-          </div>
-      </div>
-    {% endif %}
+{% set contactContent %}
+  <h3 class="font-bold uppercase pb-sm"> {{ contactTitle }}</h3>
+  <div class="wysiwyg">
+    {{ contactInfo|e('wp_kses_post') }}
   </div>
 {% endset %}
 
+{% set menuContent %}
+  {% if menu %}
+    <div class="md:flex justify-between pt-md">
+      <div class="mt-md md:mt-0">
+        {{ 'now' | date('Y') }} - {{ site.name }} | All rights reserved
+      </div>
+    </div>
+  {% endif %}
+{% endset %}
+
+{% set content %}
+  <div class="container-grid gap-y-md items-start">
+    {{ ge.gridElement(logoContent ~ socialContent, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 4},
+        'tablet': {'start': 1, 'end': 5},
+        'desktop': {'start': 1, 'end': 4}
+      }
+    }) }}
+
+    {{ ge.gridElement(linksContent, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 6, 'end': 8},
+        'desktop': {'start': 7, 'end': 9}
+      }
+    }) }}
+
+    {{ ge.gridElement(contactContent, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 9, 'end': 12},
+        'desktop': {'start': 10, 'end': 12}
+      }
+    }) }}
+
+    {{ ge.gridElement(menuContent, {
+      'cols': {
+        'mobile': {'start': 1, 'end': 6},
+        'tablet': {'start': 1, 'end': 12},
+        'desktop': {'start': 1, 'end': 12}
+      },
+      'class': ''
+    }) }}
+  </div>
+{% endset %}
 
 {% include 'Components/_Containers/FlyntComponent.twig' with {
     content: content,
     componentOptions: componentOptions
 } %}
-
-
