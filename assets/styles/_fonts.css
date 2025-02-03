@@ -44,8 +44,8 @@ html {
     line-height: rem(28);
 
     @screen md {
-      font-size: rem(28);
-      line-height: rem(32);
+      font-size: rem(26);
+      line-height: rem(28);
     }
   }
 
@@ -55,15 +55,15 @@ html {
     line-height: rem(28);
 
     @screen md {
-      font-size: rem(20);
+      font-size: rem(22);
       line-height: rem(28);
     }
   }
 
   .font-quoteParagraph {
     @apply font-medium;
-    font-size: rem(20);
-    line-height: rem(28);
+    font-size: rem(18);
+    line-height: rem(22);
 
     @screen md {
       font-size: rem(20);
