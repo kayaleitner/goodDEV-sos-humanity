@@ -18,10 +18,10 @@
     data-swiper='{{ options.carouselOptions | json_encode }}'>
     <ul class="swiper-wrapper flex">
       {% for logo in logos %}
-        <li class="swiper-slide !h-auto">
+        <li class="swiper-slide !h-auto mr-24 md:mr-12 sm:mr-6">
           <div class="h-full w-full flex items-center justify-center anim-fade-in">
             <img
-              class="lazyload w-full object-contain"
+              class="lazyload object-contain"
               src="{{ logo.logo.src }}"
               alt="{{ logo.logo.alt|e }}"
             >

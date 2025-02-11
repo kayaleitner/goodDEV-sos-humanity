@@ -110,11 +110,9 @@ html {
 
 
   .link {
-    text-decoration: underline;
     @apply text-linkColor;
     &:hover {
-      text-decoration: none;
-      @apply text-hoverColor;
+      text-decoration: underline;
     }
   }
 
