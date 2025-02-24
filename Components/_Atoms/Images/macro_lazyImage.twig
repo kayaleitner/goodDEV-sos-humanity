@@ -1,0 +1,16 @@
+
+{% macro lazyImage(params = {}) %}
+    <img 
+        class="{{ params.lazyload ? 'lazyload' : '' }} w-full h-full object-cover {{ params.class | default('') }}"
+        src="{{ params.image.src|resize(32) }}"
+        data-src="{{ params.image.src }}"
+        data-srcset="{{ function('wp_get_attachment_image_srcset', params.image.id) }}" 
+        data-sizes="auto" 
+        alt="{{ params.image.alt|e | default('') }}"
+        width="{{ params.width | default('') }}"
+        height="{{ params.height | default('') }}"
+        loading="{{ params.lazyload ? 'lazy' : 'eager' }}"
+    />
+{% endmacro %}
+
+
