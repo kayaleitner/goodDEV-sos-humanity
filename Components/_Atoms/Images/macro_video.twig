@@ -1,0 +1,21 @@
+{% macro video(params = {}) %}
+    <div class="aspect-square rounded-full overflow-hidden">
+        <video 
+            class="object-cover w-full h-full {{ params.class | default('') }}"
+            {{ params.video.posterImage ? 'poster="' ~ params.video.posterImage.src ~ '"' }}
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            disablepictureinpicture
+            aria-label="{{ params.video.label|e }}"
+        >
+            {% for item in params.video.videoFiles %}
+                <source 
+                    src="{{ item.videoFile.url }}"
+                    type="{{ item.videoFile.mime_type }};codecs={{ item.codec }}"
+                >
+            {% endfor %}
+        </video>
+    </div>
+{% endmacro %}
