@@ -1,7 +1,7 @@
 {% import "Components/_Containers/GridElement.twig" as ge %}
 {% import "Components/_Atoms/Titles/title/macro.twig" as h %}
-{% import "Components/_Atoms/Images/macro_lazyImage.twig" as mediaImage %}
-{% import "Components/_Atoms/Images/macro_video.twig" as mediaVideo %}
+{% import "Components/_Atoms/Images/lazyImage.twig" as mediaImage %}
+{% import "Components/_Atoms/Images/video.twig" as mediaVideo %}
 
 {% set componentOptions = {
     name: 'BlockImageText',
@@ -11,16 +11,9 @@
 
 {% set mediaContent %}
     {% if media.type == 'image' %}
-        {{ mediaImage.lazyImage({
-            image: media.image,
-            class: '',
-            loading: 'eager'
-        }) }}
+        {{ mediaImage.lazyImage({ image: media.image }) }}
     {% elseif media.type == 'video' %}
-        {{ mediaVideo.video({
-            video: media.video,
-            class: ''
-        }) }}
+        {{ mediaVideo.video({ video: media.video }) }}
     {% endif %}
 
     {% set caption = media.type == 'image' ? media.image.caption : media.video.posterImage.caption %}
