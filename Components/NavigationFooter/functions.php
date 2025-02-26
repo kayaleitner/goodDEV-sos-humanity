@@ -29,6 +29,7 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
     if (!empty($data['social'])) {
         $data['social'] = array_map(function ($item) use ($componentPath) {
             $item['icon'] = Asset::getContents("{$componentPath}Assets/{$item['platform']['value']}.svg");
+            $item['linkLabel'] = $item['url'];
             return $item;
         }, $data['social']);
     }

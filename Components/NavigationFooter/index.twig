@@ -32,7 +32,7 @@
       </div>
       <div class="flex flex-row gap-sm">
         {% for socials in social %}
-          <a href="{{ socials.url.href }}" class="block w-md h-md" aria-label="{{ socials.title }}">
+            <a href="{{ socials.url }}" class="block w-md h-md" aria-label="{{ socials.title }}">
             {{ icon.icon(socials.platform.value) }}
           </a>
         {% endfor %}
