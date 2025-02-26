@@ -17,39 +17,9 @@ function getACFLayout(): array
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
-            // [
-            //     'label' => __('Title', 'flynt'),
-            //     'instructions' => 'Displayed as H2',
-            //     'name' => 'blockTitle',
-            //     'type' => 'text',
-            // ],
-            // [
-            //     'label' => __('Media Position', 'flynt'),
-            //     'name' => 'mediaPosition',
-            //     'type' => 'button_group',
-            //     'choices' => [
-            //         'left' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
-            //         'right' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
-            //     ],
-            //     'wrapper' => [
-            //         'width' => 50,
-            //     ]
-            // ],
-            // [
-            //     'label' => __('Media Position (mobile)', 'flynt'),
-            //     'name' => 'mediaPositionMobile',
-            //     'type' => 'button_group',
-            //     'choices' => [
-            //         'top' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
-            //         'bottom' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
-            //     ],
-            //     'wrapper' => [
-            //         'width' => 50,
-            //     ]
-            // ],
 
             [
-                'label' => 'Media',
+                'label' => '',
                 'name' => 'media',
                 'type' => 'group',
                 'layout' => 'row',
@@ -156,7 +126,6 @@ function getACFLayout(): array
                             ],
                         ],
                     ],
-                    // FieldVariables\getColumnLayout([1, 4], [1, 8], [7, 12], [7, 12]),
                 ]
             ],
             [
@@ -167,11 +136,16 @@ function getACFLayout(): array
                 'endpoint' => 0,
             ],
             [
-                'label' => 'Content',
-                'name' => 'content',
+                'label' => '',
+                'name' => 'text',
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
+                    [
+                        'label' => __('Block Title', 'flynt'),
+                        'name' => 'blockTitle',
+                        'type' => 'text',
+                    ],
                     [
                         'label' => __('Content', 'flynt'),
                         'name' => 'contentHtml',
@@ -180,7 +154,6 @@ function getACFLayout(): array
                         'media_upload' => 0,
                         'required' => 0,
                     ],
-                    // FieldVariables\getColumnLayout([1, 4], [1, 8], [1, 4], [1, 4]),
                 ]
             ],
             [
@@ -196,16 +169,7 @@ function getACFLayout(): array
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    [
-                        'label' => __('Background Effect', 'flynt'),
-                        'name' => 'backgroundEffect',
-                        'type' => 'true_false',
-                        'ui' => 1,
-                        'default_value' => 0,
-                        'wrapper' => [
-                            'width' => '50',
-                        ],
-                    ],
+                    FieldVariables\getComponentID(),
                     FieldVariables\getColorText(),
                     FieldVariables\getColorBackground(),
                 ]
