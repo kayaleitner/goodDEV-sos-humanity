@@ -32,11 +32,11 @@ export const theme = {
     successColor: 'var(--successColor)',
   },
   fontFamily: {
-    sans: ['neue-haas-grotesk-text', 'Helvetica', 'Sans'],
-    serif: ['EB Garamond', 'Georgia', 'Times New Roman', 'Serif'],
-    mono: ['IBM Plex Mono', 'Menlo', 'courier', 'monospace'],
-    display: ['degular-display',  'Helvetica', 'Sans'],
-  },
+    sans: ['Source Sans Pro', 'Helvetica', 'Arial', 'sans-serif'],
+    serif: ['EB Garamond', 'Georgia', 'Times New Roman', 'serif'],
+    mono: ['Ubuntu Mono', 'IBM Plex Mono', 'Menlo', 'Courier', 'monospace'],
+    display: ['Source Sans Pro', 'Helvetica', 'Arial', 'sans-serif'],
+  },  
   borderRadius: {
     DEFAULT: '2rem',
   },
@@ -45,14 +45,14 @@ export const theme = {
     0: '0',
   },
   screens: {
-    min: '375px',
-    xs: '680px',
-    sm: '780px',
-    md: '1180px',
-    lg: '1280px',
-    xl: '1440px',
-    max: '1600px',
-  },
+    min: '354px',     // Keeping this as is
+    xs: '540px',      // Matches $breakpoint-mobile
+    sm: '768px',      // Updated from 780px to match $breakpoint-tablet
+    md: '1024px',     // Updated from 1180px to match $breakpoint-desktop
+    lg: '1280px',     // Keeping this as is
+    xl: '1440px',     // Matches $breakpoint-desktop-large
+    max: '1920px',    // Updated from 1600px to match $breakpoint-desktop-xlarge
+  },  
   extend: {
     aspectRatio: {
       '4/3': '4 / 3',
@@ -63,36 +63,36 @@ export const theme = {
       70: '.70',
     },
     height: {
-      min: '.125rem',
-      xs: '.5rem',
-      sm: '1rem',
-      md: '2rem',
-      lg: '3rem',
-      xl: '4rem',
-      max: '6rem',
-      extra: '12rem',
+      xs: '5px',
+      sm: '10px',
+      md: '20px',
+      lg: '30px',
+      xl: '60px',
+      xxl: '100px',
+      max: '120px',
+      extra: '250px',
     },
     width: {
-      min: '.125rem',
-      xs: '.5rem',
-      sm: '1rem',
-      md: '2rem',
-      lg: '3rem',
-      xl: '4rem',
-      max: '6rem',
-      extra: '12rem',
+      xs: '5px',
+      sm: '10px',
+      md: '20px',
+      lg: '30px',
+      xl: '60px',
+      xxl: '100px',
+      max: '120px',
+      extra: '250px',
     },
-    spacing: {
-      min: '.125rem',
-      xs: '.5rem',
-      sm: '1rem',
-      md: '2rem',
-      lg: '3rem',
-      xl: '4rem',
-      max: '6rem',
-      extra: '12rem',
-      navBar: 'var(--navBarHeight)',
-    },
+    spacing: { 
+      xs: '5px',
+      sm: '10px',
+      md: '20px',
+      lg: '30px',
+      xl: '60px',
+      xxl: '100px',
+      max: '120px',
+      extra: '250px',
+      navBar: 'var(--navBarHeight)', 
+    },    
   },
 }
 export const safelist = [
