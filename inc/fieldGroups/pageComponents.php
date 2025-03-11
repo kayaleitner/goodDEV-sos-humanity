@@ -3,148 +3,101 @@
 use ACFComposer\ACFComposer;
 use Flynt\Components;
 
-add_action('Flynt/afterRegisterComponents', function (): void {
+add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
-        'name' => 'pageHeader',
-        'title' => 'Page Header',
-        'style' => 'seamless',
-        'menu_order' => 0,
-        'position' => 'normal',
+        'name' => 'pageExcerpt',
+        'title' => 'Page Excerpt',
+        'style' => '',
+        'menu_order' => 3,
+        'position' => 'side',
         'fields' => [
             [
-                'label' => __('Display Page Header', 'flynt'),
-                'instructions' => __('If enabled, the navigation is rendered with a blue text on light background', 'flynt'),
-                'name' => 'displayPageHeader',
-                'type' => 'true_false',
-                'ui' => 1,
-                'ui_on_text' => 'Yes',
-                'ui_off_text' => 'No',
-                'default_value' => 1,
-                'wrapper' => [
-                    'width' => 50,
-                ]
-            ],
-            [
-                'label' => __('Logo is on dark', 'flynt'),
-                'instructions' => __('If enabled, the dark version of the logo is rendered', 'flynt'),
-                'name' => 'logoOnDark',
-                'type' => 'true_false',
-                'ui' => 1,
-                'ui_on_text' => 'Yes',
-                'ui_off_text' => 'No',
-                'default_value' => 0,
-                'wrapper' => [
-                    'width' => 50,
-                ]
-            ],
-            [
-                'label' => __('Header', 'flynt'),
-                'name' => 'header',
-                'type' => 'group',
-                // 'layout' => '',
-                'conditional_logic' => [
-                    [
-                        [
-                            'fieldPath' => 'displayPageHeader',
-                            'operator' => '==',
-                            'value' => 1
-                        ]
-                    ]
-                ],
-                'sub_fields' => [
-                    [
-                        'label' => __('Long Title', 'flynt'),
-                        'instructions' => __('Displayed as H1, falls back to page title if none provided', 'flynt'),
-                        'name' => 'longTitle',
-                        'type' => 'textarea',
-                        "rows" => 6,
-                        'new_lines' => 'br',
-                        'wrapper' => [
-                            'width' => 33,
-                        ],
-                    ],
-                    [
-                        'label' => __('Intro', 'flynt'),
-                        'instructions' => __('Short Paragraph', 'flynt'),
-                        'name' => 'intro',
-                        'type' => 'textarea',
-                        "rows" => 6,
-                        'new_lines' => 'br',
-                        'wrapper' => [
-                            'width' => 33,
-                        ],
-                    ],
-                    [
-                        'label' => __('Shape', 'flynt'),
-                        'instructions' => __('Shape for the animation - should consist of a single thin colored stroke - but open for experiments', 'flynt'),
-                        'name' => 'shape',
-                        'type' => 'image',
-                        'wrapper' => [
-                            'width' => 20,
-                        ],
-                    ],
-                    [
-                        'label' => __('Stretch', 'flynt'),
-                        'instructions' => __('Stretch of the animation', 'flynt'),
-                        'name' => 'stretch',
-                        'type' => 'number',
-                        'default_value' => 20,
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 1,
-                        'append' => '%',
-                        'wrapper' => [
-                            'width' => 10,
-                        ],
-                    ],
-                ]
+                'label' => __('Excerpt', 'flynt'),
+                'name' => 'pageExcerpt',
+                'type' => 'textarea',
+                'maxlength' => 150,
             ],
         ],
         'location' => [
             [
                 [
                     'param' => 'post_type',
-                    'operator' => '!=',
-                    'value' => 'post'
-                ],
-                [
-                    'param' => 'post_type',
-                    'operator' => '!=',
-                    'value' => 'project'
-                ],
-                [
-                    'param' => 'post_type',
-                    'operator' => '!=',
-                    'value' => 'people'
-                ],
-                [
-                    'param' => 'post_type',
-                    'operator' => '!=',
-                    'value' => 'reusable-components'
+                    'operator' => '==',
+                    'value' => 'page',
                 ],
             ],
         ],
     ]);
     ACFComposer::registerFieldGroup([
         'name' => 'pageComponents',
-        'title' => __('Page Blocks', 'flynt'),
+        'title' => 'Page Components',
         'style' => 'seamless',
-        'menu_order' => 1,
         'fields' => [
             [
                 'name' => 'pageComponents',
-                'label' => __('Page Blocks', 'flynt'),
+                'label' => __('Page Components', 'flynt'),
                 'type' => 'flexible_content',
-                'button_label' => __('Add Block', 'flynt'),
-                'layouts' => [                 
-                    Components\BlockWysiwyg\getACFLayout(),
-                    Components\BlockImageText\getACFLayout(),
-                    Components\BlockCards\getACFLayout(),
-                    Components\BlockCarousel\getACFLayout(),
-                    Components\BlockCarouselTextImage\getACFLayout(),
-                    Components\BlockCarouselLogo\getACFLayout(),
-                    Components\BlockListingAuto\getACFLayout(),
-					Components\BlockOembed\getACFLayout(),
+                'button_label' => __('Add Component', 'flynt'),
+                'layouts' => [
+                    // Components\BlockAnchor\getACFLayout(),
+                    Components\HeroImageText\getACFLayout(),
+                    // Components\AccordionDefault\getACFLayout(),
+                    // Components\BlockFactSheet\getACFLayout(),
+                    // Components\BlockTicker\getACFLayout(),
+                    // Components\BlockImage\getACFLayout(),
+                    // Components\BlockTextImageCrop\getACFLayout(),
+                    // Components\BlockImageTextPageLink\getACFLayout(),
+                    // Components\BlockImageTextTitle\getACFLayout(),
+                    // Components\BlockImageTitleQuote\getACFLayout(),
+                    // Components\BlockIframe\getACFLayout(),
+                    // Components\BlockQuote\getACFLayout(),
+                    // Components\BlockVideoOembed\getACFLayout(),
+                    // Components\BlockWysiwyg\getACFLayout(),
+                    // Components\BlockWysiwygRepeater\getACFLayout(),
+                    // Components\CtaDonate\getACFLayout(),
+                    // Components\ListNumbers\getACFLayout(),
+                    // Components\SliderImages\getACFLayout(),
+                    // Components\SliderVoices\getACFLayout(),
+                    // Components\FullBleedImageTitleTextParallax\getACFLayout(),
+                    // Components\GridIcons\getACFLayout(),
+                    // Components\GridImageText\getACFLayout(),
+                    // Components\GridPostsLatest\getACFLayout(),
+                    // Components\GridJobs\getACFLayout(),
+                    // Components\GridPostsSelector\getACFLayout(),
+                    // Components\WidgetPetition\getACFLayout(),
+                    // Components\ProgressDonation\getACFLayout(),
+                    // Components\DonationSlider\getACFLayout(),
+                    // Components\BlockContinousDonation\getACFLayout(),
+                ]
+            ]
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page'
+                ]
+            ]
+        ]
+    ]);
+    ACFComposer::registerFieldGroup([
+        'name' => 'appearance',
+        'title' => 'Appearance',
+        'style' => '',
+        'menu_order' => 4,
+        'position' => 'side',
+        'fields' => [
+            [
+                'label' => 'Menu Text Color',
+                'name' => 'menuTextColor',
+                'type' => 'button_group',
+                'choices' => [
+                    'lightText' => '<i  title=\'Light Text\'>light</i>',
+                    'darkText' => '<i  title=\'Dark Text\'>dark</i>',
+                ],
+                'wrapper' => [
+                    'width' => '100',
                 ],
             ],
         ],
@@ -152,23 +105,8 @@ add_action('Flynt/afterRegisterComponents', function (): void {
             [
                 [
                     'param' => 'post_type',
-                    'operator' => '!=',
-                    'value' => 'post'
-                ],
-                [
-                    'param' => 'post_type',
-                    'operator' => '!=',
-                    'value' => 'project'
-                ],
-                [
-                    'param' => 'post_type',
-                    'operator' => '!=',
-                    'value' => 'people'
-                ],
-                [
-                    'param' => 'post_type',
-                    'operator' => '!=',
-                    'value' => 'reusable-components'
+                    'operator' => '==',
+                    'value' => 'page',
                 ],
             ],
         ],

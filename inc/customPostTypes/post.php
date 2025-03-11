@@ -83,5 +83,5 @@ function post_rename_labels($labels)
     return $labels;
 }
 
-add_filter('post_type_labels_post', 'post_rename_labels');
+// add_filter('post_type_labels_post', 'post_rename_labels');
 

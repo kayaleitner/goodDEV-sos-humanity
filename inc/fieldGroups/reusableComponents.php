@@ -16,11 +16,11 @@ add_action('Flynt/afterRegisterComponents', function (): void {
                 'type' => 'flexible_content',
                 'button_label' => __('Add Block', 'flynt'),
                 'layouts' => [
-                    Components\BlockWysiwyg\getACFLayout(),
-                    Components\BlockImageText\getACFLayout(),
-                    Components\BlockCards\getACFLayout(),
-                    Components\BlockCarousel\getACFLayout(),
-                    Components\BlockStatistics\getACFLayout(),
+                    // Components\BlockWysiwyg\getACFLayout(),
+                    // Components\BlockImageText\getACFLayout(),
+                    // Components\BlockCards\getACFLayout(),
+                    // Components\BlockCarousel\getACFLayout(),
+                    // Components\BlockStatistics\getACFLayout(),
                 ],
             ]
         ],
