@@ -4,10 +4,10 @@ html {
   font-size: 16px;
   text-wrap: balance;
 
-  @screen xl {
-    /* font-size: 1.1111vw; */
+  /* @screen xl {
+    font-size: 1.1111vw;
     font-size: clamp(1rem, 1.111111vw, 3rem); 
-  }
+  } */
 }
 
 @layer base {
@@ -16,14 +16,9 @@ html {
   /* -- Paragraphs -- */
   .font-extraLarge {
     @apply font-display;
-    @apply font-medium;
-    font-size: rem(60);
-    line-height: rem(72);
-
-    @screen md {
-      font-size: rem(90);
-      line-height: rem(100);
-    }
+    @apply font-black;
+    font-size: 10vw;
+    line-height: 1;
   }
 
   .font-pageTitle {

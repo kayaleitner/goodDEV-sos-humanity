@@ -1,0 +1,16 @@
+@layer components {
+    .title-big {
+
+      @apply uppercase whitespace-nowrap;
+      @apply font-extraLarge;
+      color: transparent;
+      width: fit-content;
+      -webkit-text-stroke: 2px var(--yellow);
+      margin: 0;
+  
+      @screen md {
+        -webkit-text-stroke-width: 1px;
+      }
+    }
+  }
+  

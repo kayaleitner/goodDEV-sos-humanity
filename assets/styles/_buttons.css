@@ -1,8 +1,12 @@
 @layer components {
-
     .btn-primary {
-        @apply bg-brandColor hover:bg-hoverColor text-white hover:text-textColor;
-        @apply transition-colors duration-300;
-        @apply px-sm md:px-md py-sm md:py-sm rounded;
+      @apply bg-brandColor hover:bg-hoverColor text-white hover:text-textColor;
+      @apply transition-colors duration-300;
+      @apply px-sm md:px-md py-sm md:py-sm rounded;
     }
-}
+  
+    .btn-secondary {
+      @apply bg-yellow text-blue font-bold px-md py-sm rounded-md;
+      @apply transition-colors duration-300 hover:bg-blue hover:text-yellow;
+    }
+  }

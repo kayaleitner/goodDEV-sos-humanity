@@ -1,12 +1,17 @@
 :root {
   /* Colors (Primitives) */
-  --error: #f05252;
-  --danger: #ffb900;
 
-  --black: #262626;
-  --white: #fff;
+    --error: #f05252;
+    --danger: #ffb900;
 
-  --blue: #1E26A1;
+    --black: #262626;
+    --white: #fff;
+    --blue: #1c2445;
+    --yellow: #ebeb00;
+    --warmwhite: #ebe8e3;
+    --border-grey: #838594;
+
+
 
   --mint-light: #F4F6F4;
   --mint: #C0F6C0;
@@ -21,15 +26,16 @@
   --mint-transparent: #f3f8fead;
 
   /* Colors (Tokens) */
-  --brandColor: var(--blue);
+  --brandColor: var(--yellow);
   --accentColor: var(--mint);
 
   --textColor: var(--textColorDefault);
-  --textColorDefault: var(--brandGreen);
+  --textColorDefault: var(--black);
   --linkColor: var(--black);
 
   --bgColor: var(--bgColorDefault);
-  --bgColorDefault: var(--white);
+  --bgColor: var(--warmwhite);
+
   --paperColor: var(--mint-light);
   --borderColor: var(--brandLight);
   --uiColor: var(--brandLight);
