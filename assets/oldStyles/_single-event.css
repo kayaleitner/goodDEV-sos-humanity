@@ -1,0 +1,40 @@
+/* Custom styling for event post layouts */
+.post-event .post-header {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    max-width: var(--maxWidthContainer_wide);
+    padding: var(--padding_large) var(--padding_large);
+    width: auto;
+}
+@media (max-width: 540px) {
+    .post-event .post-header {
+        flex-direction: column;
+        margin: 80px auto 0;
+   }
+}
+.post-event .post-header .featuredImage {
+    padding-right: 2rem;
+    width: 30%;
+}
+@media (max-width: 540px) {
+    .post-event .post-header .featuredImage {
+        margin-bottom: var(--padding_small);
+        padding-right: 0;
+        width: 100%;
+   }
+}
+.post-event .post-header .meta-header {
+    padding-left: 2rem;
+    width: 70%;
+}
+@media (max-width: 540px) {
+    .post-event .post-header .meta-header {
+        padding-left: 0;
+        width: 100%;
+   }
+}
+.post-event .post-header .meta-header .post-excerpt {
+    margin-top: var(--padding_small);
+}

@@ -1,0 +1,64 @@
+/* Base Colors */
+:root {
+  --white: #fff;
+  --warmwhite: #ebe8e3;
+  --blue: #1c2445;
+  --yellow: #ebeb00;
+  --border-grey: #838594;
+ /* Colors */
+  --themeBase_colorBackground: #ebe8e3;
+  --themeBase_colorText: #1c2445;
+  --themeLight_colorBackground: #ebe8e3;
+  --themeLight_colorText: #1c2445;
+  --themeDark_colorBackground: #1c2445;
+  --themeDark_colorText: #ebe8e3;
+  --themeBrand_colorBackground: #ebeb00;
+  --themeBrand_colorText: #1c2445;
+  --pageBackground: #ebe8e3;
+  --navBackground: #1c2445;
+  --navColorText: #fff;
+  --subnavColorText: #ebeb00;
+  --menuBackground: #ebe8e3;
+ /* Buttons */
+  --themeBase_buttonBackground: #1c2445;
+  --themeBase_buttonText: #ebeb00;
+  --themeLight_buttonBackground: #ebeb00;
+  --themeLight_buttonText: #1c2445;
+  --themeDark_buttonBackground: #ebeb00;
+  --themeDark_buttonText: #1c2445;
+  --themeBrand_buttonBackground: #1c2445;
+  --themeBrand_buttonText: #ebeb00;
+ /* Paddings */
+  --innerContainer_desktop: 8rem;
+  --innerContainer_mobile: 4rem;
+  --innerBlock_desktop: 4rem;
+  --innerBlock_mobile: 2rem;
+  --padding_none: 0;
+  --padding_xxsmall: 2rem;
+  --padding_xsmall: 3rem;
+  --padding_small: 6rem;
+  --padding_medium: 10rem;
+  --padding_large: 12rem;
+  --padding_xlarge: 20rem;
+  --padding_xxlarge: 25rem;
+ /* Margin */
+ /* CSS Grid */
+  --columnGap_desktop: 4rem;
+  --rowGap_mobile: 2rem;
+ /* CSS Flexbox */
+  --gap_desktop: 4rem;
+  --gap_mobile: 2rem;
+ /* CSS Dimensions */
+  --maxWidthContainer_full: 100%;
+  --maxWidthContainer_wide: 1300px;
+  --maxWidthContainer_narrow: 800px;
+  --navHeight: 16rem;
+  --navHeightMobile: 22rem;
+ /* Fonts Sizes*/
+  --fontSize_hero: 10vw;
+  --fontSizeBody1: 2.2rem;
+  --fontSizeBody1Mobile: 4rem;
+  --fontSizeBody2: 1.8rem;
+  --fontSize_h3_desktop: 3.6rem;
+  --fontSize_h3_mobile: 6rem;
+}

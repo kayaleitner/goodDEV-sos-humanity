@@ -1,0 +1,55 @@
+.wave-container {
+  position: absolute;
+  width: 100%;
+  height: 400px;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+.wave-container .background {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  background-color: #1c2445;
+}
+.wave-container svg {
+  width: 100%;
+  height: auto;
+  background: transparent;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-80%);
+  left: 0;
+}
+.wave-container svg path {
+  stroke: none;
+  stroke-width: 5px;
+  fill: rgba(28, 36, 69, 0.35);
+}
+.wave-container svg:last-child path {
+  fill: #1c2445;
+}
+.upper-footer-bar {
+  position: relative;
+  padding: var(--padding_small) 0 0;
+  text-align: center;
+  color: #1c2445;
+}
+.upper-footer-bar .container > *:first-child {
+  margin-top: 0;
+}
+.upper-footer-bar .infovisual-footer .wave-container {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(to bottom, rgba(235, 232, 227, 0.35) 0%, rgba(28, 36, 69, 0.35) 100%);
+  position: relative;
+  padding-top: 20.83333333%;
+  min-height: 100px;
+}
+.upper-footer-bar .infovisual-footer .wave-container .background {
+  height: 40%;
+}
+.upper-footer-bar .infovisual-footer .wave-container svg {
+  transform: translateY(-70%);
+}

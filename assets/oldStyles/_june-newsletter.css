@@ -1,0 +1,114 @@
+.june-scope {
+    font-size: var(--fontSizeBody1);
+}
+@media (max-width: 540px) {
+    .june-scope {
+        font-size: 3.2rem;
+   }
+}
+.june-scope .flex {
+    display: flex;
+    gap: var(--padding_small);
+}
+.june-scope .flex-column {
+    flex-direction: column;
+}
+.june-scope .flex-row {
+    flex-direction: row;
+}
+.june-scope .font-small {
+    font-size: var(--fontSizeBody1);
+}
+.june-scope .font-data {
+    font-size: 1.4rem;
+}
+@media screen and (max-width: 1024px) {
+    .june-scope .font-data {
+        font-size: 2.5rem;
+   }
+}
+.june-scope .justify-between {
+    justify-content: space-between;
+}
+.june-scope fieldset {
+    justify-content: space-between;
+}
+.june-scope span {
+    width: calc(50% - 2rem);
+}
+.june-scope input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--blue);
+    color: var(--blue);
+    margin: 0 0 var(--padding_xsmall) 0;
+    padding: 0;
+    width: 100%;
+}
+.june-scope input::placeholder {
+    font-weight: normal;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.june-scope .jc-form-field__error {
+    font-size: 1.4rem;
+    color: red;
+}
+.june-scope button {
+    height: 100%;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    color: var(--blue);
+    display: flex;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: var(--fontSizeBody1);
+    font-weight: normal;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+@media (max-width: 1024px) {
+    .june-scope button {
+        font-size: var(--fontSizeBody1Mobile);
+   }
+}
+.june-scope button:hover, .june-scope button:focus {
+    background-color: transparent;
+    border: 0;
+    color: var(--blue);
+}
+.june-scope button:hover::after, .june-scope button:focus::after {
+    transform: translateX(5px);
+}
+.june-scope button::after {
+    content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 32 24"%3E%3Cg id="arrow-blue" opacity="0.5"%3E%3Cpath id="Path_13" data-name="Path 13" d="M0,0H32V24H0Z" fill="none" fill-rule="evenodd"/%3E%3Cpath id="Path_14" data-name="Path 14" d="M23,5,21.59,6.41,26.17,11H2v2H26.17l-4.59,4.59L23,19l7-7Z" fill="%231c2445"/%3E%3C/g%3E%3C/svg%3E%0A');
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: 10px;
+    margin-top: 3.5px;
+    transition: all 0.3s ease-in-out;
+}
+.june-scope.dark {
+    color: white !important;
+}
+.june-scope.dark input {
+    color: white !important;
+}
+.june-scope.dark button {
+    color: white !important;
+}
+.june-scope.dark button::after {
+    content: url('data:image/svg+xml,%3Csvg width="32" height="24" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cpath d="M0 0h32v24H0z"/%3E%3Cpath fill="%23EBEB00" fill-rule="nonzero" d="m23 5-1.41 1.41L26.17 11H2v2h24.17l-4.59 4.59L23 19l7-7z"/%3E%3C/g%3E%3C/svg%3E') !important;
+}
+.june-scope.only-email input {
+    margin-bottom: 1rem;
+}
+.june-scope.only-email .email-div {
+    margin-bottom: 1rem;
+}
+.june-scope.only-email .submit-div {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid white;
+    padding-bottom: 1rem;
+}

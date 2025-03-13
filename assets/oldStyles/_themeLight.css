@@ -1,0 +1,78 @@
+/* Theme Light */
+.themeLight {
+  background-color: var(--warmwhite);
+}
+.themeLight self, .themeLight h1, .themeLight h2, .themeLight .h1, .themeLight .h2 {
+  color: var(--blue);
+}
+.themeLight .button {
+  background-color: var(--themeBrand_colorBackground);
+  border-color: var(--themeBrand_colorBackground);
+  color: var(--themeBrand_colorText);
+}
+.themeLight .button:hover, .themeLight .button:focus {
+  background-color: transparent;
+  border-color: var(--themeBrand_colorBackground);
+  color: var(--themeBrand_colorBackground);
+}
+.themeLight .button--ghost {
+  background-color: transparent;
+  border-color: var(--themeBrand_colorBackground);
+  color: var(--themeBrand_colorBackground);
+}
+.themeLight .button--ghost:hover, .themeLight .button--ghost:focus {
+  background-color: var(--themeBrand_colorBackground);
+  border-color: var(--themeBrand_colorBackground);
+  color: var(--themeBrand_colorText);
+}
+.themeLight .button--link {
+  background-color: transparent;
+  border: 0;
+  color: var(--themeBrand_colorBackground);
+  padding: 0;
+  position: relative;
+  text-transform: none;
+  transition: all 0.2s ease-out;
+}
+.themeLight .button--link:hover, .themeLight .button--link:focus {
+  background-color: transparent;
+  color: var(--themeBrand_colorBackground);
+  opacity: 0.6;
+  text-decoration: none;
+}
+.themeLight .button--link:hover::before, .themeLight .button--link:focus::before {
+  background-color: var(--themeBrand_colorBackground);
+}
+.themeLight .button--link:hover::after, .themeLight .button--link:focus::after {
+  background-position: right center;
+}
+.themeLight .button--link::before {
+  background-color: var(--themeBrand_colorBackground);
+  bottom: 0;
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+.themeLight .pill {
+  background-color: var(--warmwhite);
+}
+.themeLight .slider-button {
+  background-color: inherit;
+}
+@media (min-width: 1024px) {
+  .themeLight .slider-button:hover, .themeLight .slider-button:focus {
+    background-color: var(--warmwhite);
+ }
+}
+.themeLight .slider-button.swiper-button-disabled {
+  opacity: 0.5;
+}
+.themeLight .slider-button .feather {
+  color: var(--blue);
+}
+.themeLight .figure {
+  background-color: inherit;
+}
