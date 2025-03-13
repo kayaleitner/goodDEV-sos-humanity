@@ -1,0 +1,10 @@
+<div class="flyntComponent componentSpacing" is="flynt-block-not-found">
+  <div class="container narrowWidthContainer">
+    <div class="content blockMaxWidth">
+      {{ contentHtml|wp_kses_custom }}
+      <p>
+        <a class="button button--link" href="{{ function('home_url') }}">{{ backLinkLabel|e }}</a>
+      </p>
+    </div>
+  </div>
+</div>

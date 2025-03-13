@@ -1,0 +1,91 @@
+[is='flynt-grid-posts-selector'] {
+  margin: auto;
+}
+[is='flynt-grid-posts-selector'] .preContent {
+  margin-left: 0;
+}
+@media (max-width: 1024px) {
+  [is='flynt-grid-posts-selector'] .container {
+    display: flex;
+    flex-flow: column wrap;
+    padding: 0;
+ }
+}
+[is='flynt-grid-posts-selector'] .container .allPostsLink {
+  display: none;
+  align-items: center;
+  display: flex;
+  margin-bottom: var(--padding_large);
+  margin-left: 10px;
+  margin-right: var(--padding_small) / 2;
+  margin-top: var(--padding_large);
+}
+[is='flynt-grid-posts-selector'] .container .allPostsLink::after {
+  color: currentColor;
+  content: '>';
+  margin-left: 10px;
+}
+[is='flynt-grid-posts-selector'] .container .grid {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin: 0 0 0 -24px;
+}
+@media (min-width: 768px) {
+  [is='flynt-grid-posts-selector'] .container .grid--columns2 .grid-item, [is='flynt-grid-posts-selector'] .container .grid--columns3 .grid-item, [is='flynt-grid-posts-selector'] .container .grid--columns4 .grid-item {
+    width: 50%;
+ }
+}
+@media (min-width: 1024px) {
+  [is='flynt-grid-posts-selector'] .container .grid--columns3 .grid-item {
+    width: 33.33%;
+ }
+}
+[is='flynt-grid-posts-selector'] .container .grid--columns4 {
+ /* ensure 2 columns stacking up until $breakpoint-desktop */
+}
+[is='flynt-grid-posts-selector'] .container .grid--columns4 .grid-item {
+  max-width: 50%;
+}
+@media (min-width: 1024px) {
+  [is='flynt-grid-posts-selector'] .container .grid--columns4 .grid-item {
+    width: 25%;
+ }
+}
+[is='flynt-grid-posts-selector'] .container .grid-item {
+  max-width: 675px;
+  padding: 24px 0 0 24px;
+  width: 100%;
+}
+[is='flynt-grid-posts-selector'] .container .grid-item a {
+  text-decoration: none;
+}
+[is='flynt-grid-posts-selector'] .container .grid-item .content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100%;
+}
+[is='flynt-grid-posts-selector'] .container .grid-item .content-image {
+  aspect-ratio: 1.7777777778;
+  height: fit-content;
+  object-fit: cover;
+  width: 100%;
+}
+[is='flynt-grid-posts-selector'] .container .grid-item .content-title {
+  margin-top: var(--padding_xsmall);
+  margin-bottom: 0;
+}
+[is='flynt-grid-posts-selector'] .container .grid-item .content-inner {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+[is='flynt-grid-posts-selector'] .artist .content-date {
+  display: none;
+}

@@ -1,0 +1,16 @@
+<nav is="flynt-navigation-pre-nav" class="flyntComponent preNav" aria-label="{{ __("Pre Navigation", "flynt") }}">
+  <div class="wrapper">
+    <div class="container centerMaxWidthContainer">
+      {% if menu %}
+        <ul class="menu">
+          {% for item in menu.items %}
+            <li class="menu-item {{ item.current ? 'menu-item--current' }}">
+              <a class="menu-link {% if post.field_appearance_menuTextColor %} {{ post.field_appearance_menuTextColor }} {% else %} darkText {% endif %}" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>{{ item.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% include 'Partials/_search.twig' with { searchInputPlaceholder: searchInputPlaceholder } %}
+    </div>
+  </div>
+</nav>

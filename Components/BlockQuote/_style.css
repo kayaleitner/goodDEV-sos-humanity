@@ -1,0 +1,40 @@
+[is='flynt-block-quote'] .content {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+[is='flynt-block-quote'] .content > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+[is='flynt-block-quote'] .content > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+[is='flynt-block-quote'] .content::before, [is='flynt-block-quote'] .content::after {
+  border: 1.6rem solid var(--yellow);
+  bottom: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 7.1rem;
+}
+[is='flynt-block-quote'] .content::before {
+  border-right: none;
+  transform: translateX(-35vw);
+}
+[is='flynt-block-quote'] .content::after {
+  border-left: none;
+  transform: translateX(35vw);
+}
+[is='flynt-block-quote'] .content-author {
+  background-color: var(--yellow);
+  padding: 2px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+[is='flynt-block-quote'] .content > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

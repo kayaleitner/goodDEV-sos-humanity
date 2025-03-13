@@ -1,0 +1,47 @@
+<flynt-component
+  class="flyntComponent {{ options.theme }}" 
+  style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" 
+  is="flynt-accordion-default"
+  name="AccordionDefault"
+  load:on="visible"
+  >
+  <div class="container blockMaxWidth" style="padding: var(--padding_small);">
+    {% if preContentHtml %}
+      <div class="preContent">
+        <h2>{{ preContentHtml|wp_kses_custom }}</h2>
+      </div>
+    {% endif %}
+    <div class="content">
+      <ul class="accordion">
+        {% for panel in accordionPanels %}
+          <li class="panel {% if panel.panelDirectLinkId %} anchor {% endif %}" id="{{ panel.panelDirectLinkId|lower|replace({' ': ''}) }}">
+            <button class="panel-trigger h3" type="button" aria-expanded="false" aria-controls="content-{{ loop.index }}">
+              <div class="panel-title">{{ panel.panelTitle|e }}</div>
+              <svg class="panel-trigger-arrow" width="47" height="30" viewBox="0 0 47 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4.5L23.5 23.5L43 4.5" stroke="currentColor" stroke-width="8" stroke-linecap="round" />
+              </svg>
+            </button>
+            <div class="panel-content" aria-hidden="true" id="content-{{ loop.index }}">
+              <div class="panel-inner">
+              {{ panel.panelContent|wp_kses_custom }}
+              {% if panel.salesforceIsEnabled %}
+                <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+                <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+                <input type=hidden name="orgid" value="00D2o000000a6mP">
+                <input type=hidden name="retURL" value="http://">
+                <label for="name">Contact Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" /><br>
+                <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+                <label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+                <label for="subject">Subject</label><input  id="subject" maxlength="80" name="subject" size="20" type="text" /><br>
+                <label for="description">Description</label><textarea name="description"></textarea><br>
+                <input type="submit" name="submit">
+                </form>                
+              {% endif %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</flynt-component >

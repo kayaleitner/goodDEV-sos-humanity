@@ -1,0 +1,43 @@
+<div class="flyntComponent {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-image-title-quote">
+  {% if topTitle %}
+    <div class="top-title">
+      <h2 class="title title-big" data-text="{{ topTitle|e }}">{{ topTitle|e }}</h2>
+    </div>
+  {% endif %}
+  <div class="container" style="max-width: var(--maxWidthContainer_wide);">
+    {# <div class="container-left"> #}
+      {% if image %}
+      <figure class="figure">
+        <img class="figure-image lazyload"
+          src="{{ image.src | resize(32) }}"
+          data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
+          data-sizes="auto"
+          alt="{{ image.alt|e }}">
+        {% if image.caption %}
+          <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+        {% endif %}
+      </figure>
+      {% endif %}
+    {# </div> #}
+    {# <div class="container-right"> #}
+      {# <div class="content"> #}
+        {% if contentTitle %}
+          <div class="content-title {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">{{ contentTitle|wp_kses_custom }}</div>
+        {% endif %}
+        {% if contentText %}
+          <div class="content-text {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+            {{ contentText|wp_kses_custom }}
+          </div>
+        {% endif %}
+        {% if ctaLink %}
+          <a class="content-link paragraph {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" href="{{ ctaLink.url }}">{{ ctaLink.title }}</a>
+        {% endif %}
+      {# </div> #}
+    {# </div> #}
+  </div>
+  {% if bottomTitle %}
+    <div class="bottom-title">
+      <h2 class="title title-big">{{ bottomTitle|e }}</h2>
+    </div>
+  {% endif %}
+</div>

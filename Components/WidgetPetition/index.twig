@@ -1,0 +1,13 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" style="background-color: {{ options.colorBrandBackground }}; color: {{ options.colorBrandText }}; margin: var(--padding_large) auto;" is="flynt-widget-petition">
+  <div class="container {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" style="padding: var(--padding_small); var(--maxWidthContainer_wide);">
+    <div class="content">
+      {% if preContentHtml %}
+        <div class="preContent">
+          <h2>{{ preContentHtml|wp_kses_custom }}</h2>
+        </div>
+      {% endif %}
+      {{ html }}
+    </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="flyntComponent componentSpacing" is="flynt-donation-slider">
+<div is="flynt-hero-image-title-text-parallax">
+  <picture class="picture">
+    {% if images.imageDesktop.id %}
+      <source data-srcset=" {{function('wp_get_attachment_image_srcset', images.imageDesktop.id)}}" {# {{ images.imageDesktop.src | resizeDynamic(1440, 400, 'center') }} 1440w, {{ images.imageDesktop.src | resizeDynamic(1440*2, 400*2, 'center') }} 2880w" #}
+              media=" (min-width: 768px)"
+              sizes=" 100vw">
+    {% endif %}
+    {% if images.imageMobile.src %}
+    <img class="image lazyload" data-srcset="
+                  {{function('wp_get_attachment_image_srcset', images.imageMobile.id)}}" {# {{ images.imageMobile.src | resizeDynamic(375*2, 400*2) }} 750w, {{ images.imageMobile.src | resizeDynamic(375*3, 400*3) }} 1125w" #}
+                src=" {{ images.imageMobile.src | resize(32) }} "
+                {# src=" {{ images.imageMobile.src | resizeDynamic(1440, 400) }} " #}
+                sizes="100vw"
+                data-object-fit=" cover"
+                alt=" {{ images.imageDesktop.alt|e }} ">
+    {% else %}
+     <div class="image-background" ></div>
+    {% endif %}
+    
+  </picture>
+  {% if images.imageDesktop.caption %}
+  <div class="content-caption">
+    <span class="caption">{{ images.imageDesktop.caption|e }}</span>
+  </div>
+  {% endif %}
+  {% if contentTitle %}
+    <div class="content-title">
+      <h2 class="title" data-text="{{ contentTitle|e }}">{{ contentTitle|e }}</h2>
+    </div>
+  {% endif %}
+  {% if contentText %}
+    <div class="content" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }};">
+      <div class="content-inner">
+        {{ contentText }}
+      </div>
+    </div>
+  {% endif %}
+</div>
+<div is="flynt-cta-donate">
+  <div class="container" style="max-width: {{ options.containerMaxWidth }};">
+    <div class="col">
+      {% if contentHtml %}
+        {{ contentHtml|wp_kses_custom }}
+      {% endif %}
+    </div>
+    <div class="col">
+      <div class="donate">
+        <div class="donate-pre">
+          {% if ctaLink %}
+            <a href="{{ ctaLink.url ~ '?amount=' ~ fixedDonations.amount1 }}" class="donate-pre-amount h4">{{ fixedDonations.amount1 }}&#32;€</a>
+            <a href="{{ ctaLink.url ~ '?amount=' ~ fixedDonations.amount2 }}" class="donate-pre-amount h4">{{ fixedDonations.amount2 }}&#32;€</a>
+            <a href="{{ ctaLink.url ~ '?amount=' ~ fixedDonations.amount3 }}" class="donate-pre-amount h4">{{ fixedDonations.amount3 }}&#32;€</a>
+            <a href="{{ ctaLink.url ~ '?amount=' ~ fixedDonations.amount4 }}" class="donate-pre-amount h4">{{ fixedDonations.amount4 }}&#32;€</a>
+          {% else %}
+            <a href="/spenden/?amount={{ fixedDonations.amount1 }}" class="donate-pre-amount h4">{{ fixedDonations.amount1 }}&#32;€</a>
+            <a href="/spenden/?amount={{ fixedDonations.amount2 }}" class="donate-pre-amount h4">{{ fixedDonations.amount2 }}&#32;€</a>
+            <a href="/spenden/?amount={{ fixedDonations.amount3 }}" class="donate-pre-amount h4">{{ fixedDonations.amount3 }}&#32;€</a>
+            <a href="/spenden/?amount={{ fixedDonations.amount4 }}" class="donate-pre-amount h4">{{ fixedDonations.amount4 }}&#32;€</a>
+          {% endif %}
+        </div>
+        <form class="donate-select">
+          <input class="donate-custom-amount" type="number" placeholder="{{ placeholderText|e }}" name="donation" id="donation"/>
+          <input class="donate-submit button button--yellow" type="button" name="donate" id="donate" value="{{ buttonText|e }}" data-cta-link={{ ctaLink.url }}/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div is="flynt-progress-donation" data-level="{{donationLevel}}" data-goal="{{donationGoal}}">
+  <div class="top">
+    <div class="container">
+      <div class="goal">
+        <div class="panel">
+          <div class="text">
+            {{ donationGoal|number_format(0, '.', '.') }}
+            €
+          </div>
+        </div>
+        <div class="post"></div>
+      </div>
+      <div class="ship"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="container">
+      <div class="level">
+        <div class="post"></div>
+        <div class="panel">
+          <div class="text">
+            {{ donationLevel|number_format(0, '.', '.') }}
+            €
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

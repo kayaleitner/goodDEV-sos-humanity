@@ -1,0 +1,40 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-fact-sheet">
+  <picture class="picture">
+    <source srcset="
+      {{function('wp_get_attachment_image_srcset', images.imageDesktop.id)}}"
+      media="(min-width: 768px)"
+      sizes="100vw">
+    <img class="image parallax-hero"
+      srcset="
+        {{function('wp_get_attachment_image_srcset', images.imageMobile.id)}}"
+        src="{{ images.imageMobile.src | resize(32) }}"
+        sizes="100vw"
+        data-object-fit="cover"
+        alt="{{ images.imageDesktop.alt|e }}">
+    {% if images.imageDesktop.caption %}
+      <figcaption class="figure-caption">{{ images.imageDesktop.caption|e }}</figcaption>
+    {% endif %}
+  </picture>
+  {% if sideTitle %}
+    <div class="side-title">
+      <h2 class="title parallax-text-top-bottom">{{ sideTitle|e }}</h2>
+    </div>
+  {% endif %}
+  <div class="container" style="padding: var(--padding_large) var(--padding_small); max-width: var(--maxWidthContainer_wide);">
+    <div class="content">
+    {% if preContent %}
+      <div class="preContent h1 {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+        {{ preContent|e }}
+      </div>
+    {% endif %}
+    <div class="content-container content-container--{{ options.columns }}">
+    {% for panel in contentPanels %}
+      <div class="content-block {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+        <div class="content-headline paragraph">{{ panel.panelHeadline }}</div>
+        <div class="content-text body-2">{{ panel.panelTexteditor|e('wp_kses_post') }}</div>
+      </div>
+    {% endfor %}
+     </div>
+    </div>
+  </div>
+</div>

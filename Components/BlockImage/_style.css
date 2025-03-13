@@ -1,0 +1,23 @@
+[is='flynt-block-image'].flyntComponent--sizeSmall .figure {
+  max-width: 375px;
+}
+[is='flynt-block-image'].flyntComponent--sizeMedium .figure {
+  max-width: 600px;
+}
+[is='flynt-block-image'].flyntComponent--sizeLarge .figure {
+  max-width: 800px;
+}
+[is='flynt-block-image'] .figure {
+  margin: 0 auto;
+}
+[is='flynt-block-image'] figcaption {
+  bottom: 20px;
+  position: absolute;
+  right: 30px;
+}
+@media (max-width: 540px) {
+  [is='flynt-block-image'] figcaption {
+    bottom: 10px;
+    right: 10px;
+ }
+}

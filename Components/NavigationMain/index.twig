@@ -1,0 +1,43 @@
+<nav is="flynt-navigation-main" class="flyntComponent" aria-label="{{ __("Main", "flynt") }}">
+  <div class="wrapper">
+    <div class="container container--main" style="max-width: var(--maxWidthContainer_wide);">
+      <a class="logo" href="{{ site.link }}">
+        <img class="logo-image" src="{{ logo.src }}" alt="{{ logo.alt }}">
+      </a>
+      {% if menu %}
+        <ul class="menu">
+          {% for item in menu.items %}
+            {# regular menu item #}
+            {% if not item.children %}
+              <li class="menu-item no-submenu {{ item.current ? 'menu-item--current'}}">
+                <a class="menu-link body {% if post.field_appearance_menuTextColor %} {{ post.field_appearance_menuTextColor }} {% else %} darkText {% endif %}" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }}>
+                  {{ item.title }}
+                </a>
+              </li>
+            {% endif %}
+            {# menu with submenu item #}
+            {% if item.children %}
+              <li class="menu-item open-submenu {{ item.current ? 'menu-item--current'}}" >
+                <a class="menu-link {% if post.field_appearance_menuTextColor %} {{ post.field_appearance_menuTextColor }} {% else %} darkText {% endif %}" data-slug="{{item.slug}}" href="{{item.link}}" id="sub-{{item.slug}}">
+                  {{ item.title }}
+                </a>
+                <ul class="menu menu-submenu">
+                  {% for subitem in item.children %}
+                    <li class="menu-item {{ subitem.current ? 'menu-item--current' }}">
+                      <a class="menu-link" href="{{ subitem.link }}">{{ subitem.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% if ctaLink and ctaText %}
+        <div class="cta">
+          <a class="button button--blue" href="{{ ctaLink }}">{{ ctaText }}</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>

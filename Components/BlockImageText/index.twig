@@ -1,0 +1,29 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-image-text">
+  <div class="container" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }};  max-width: {{ options.containerMaxWidth }};">
+    <div class="box box--{{ imagePosition }}">
+      <div class="box-inner box-inner--content">
+        {{ contentHtml|wp_kses_custom }}
+      </div>
+      <div class="box-inner box-inner--image">
+        {% if titleOverImage %}
+          <div class="h1 box-inner--image-titleOver">{{ titleOverImage }}</div>
+        {% endif %}
+        <figure class="figure">
+          {% if image.post_mime_type == 'image/svg+xml' %}
+            <img
+              class="image lazyload"
+              src="{{ placeholderImage(500, (500 * 0.75)|round) }}"
+              data-src="{{ image.src }}"
+              alt="{{ image.alt|e }}">
+          {% else %}
+            <img class="figure-image lazyload"
+              src="{{ image.src | resize(32) }}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
+              data-sizes="auto"
+              alt="{{ image.alt|e }}">
+            {% endif %}
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>

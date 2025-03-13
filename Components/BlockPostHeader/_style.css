@@ -1,0 +1,45 @@
+[is='flynt-block-post-header'] .container {
+  margin-top: var(--padding_xlarge);
+  max-width: 100vw;
+}
+[is='flynt-block-post-header'] .container .content {
+  padding: 0;
+  text-align: center;
+}
+[is='flynt-block-post-header'] .container .content .post-title {
+  color: var(--warmwhite);
+  position: absolute;
+  z-index: 100;
+}
+[is='flynt-block-post-header'] .container .content .meta {
+  font-size: 4rem;
+  max-width: var(--maxWidthContainer_wide);
+  margin: 0 auto;
+  display: flex;
+  padding: 0 var(--padding_small);
+}
+@media screen and (min-width: 1024px) {
+  [is='flynt-block-post-header'] .container .content .meta {
+    font-size: var(--fontSizeBody1);
+ }
+}
+[is='flynt-block-post-header'] .container .content .meta .meta-date {
+  margin-left: var(--padding_medium);
+}
+[is='flynt-block-post-header'] .container .content .excerpt {
+  color: #414751;
+  font-weight: normal;
+}
+[is='flynt-block-post-header'] .container .featuredImage {
+  margin-bottom: var(--padding_large);
+  width: 100%;
+}
+[is='flynt-block-post-header'] .container .featuredImage .container {
+  margin-top: var(--padding_medium);
+}
+[is='flynt-block-post-header'] .container .featuredImage img {
+  width: 100%;
+  max-height: 56.25vw;
+  object-fit: cover;
+  object-position: center;
+}

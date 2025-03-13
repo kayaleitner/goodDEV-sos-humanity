@@ -1,0 +1,92 @@
+[is='flynt-donation-slider'] {
+
+    [is='flynt-hero-image-title-text-parallax'] {
+        height: unset;
+        padding-bottom: 6rem;
+
+        .picture {
+            height: 60rem;
+            overflow: unset;
+        }
+
+        .image {
+            height: calc(100%);
+            object-position: unset;
+        }
+
+        .content-caption {
+            position: absolute;
+            right: 0;
+            padding-right: 1rem;
+            top: 60rem;
+        }
+        
+        .content-title {
+            padding-bottom: 5rem;
+        }
+
+        .content {
+            margin-top: 0;
+        }
+
+        .content-inner {
+            width: 90rem;
+        }
+
+        .image-background {
+            height: 100%;
+            width: 100%;
+            background-color: var(--blue);
+        }
+
+        @media screen and (max-width: 1024px) {
+            
+            padding-bottom: 0;
+
+            .picture {
+                height: 100%;
+            }
+            
+            .image {
+                height: calc(100% - 12rem);
+            }
+
+            .content-caption {
+                top: unset;
+                bottom: 2rem;
+                padding-top: 2rem;
+            }
+
+            .image-background {
+                height: calc(100% - 12rem);
+            }
+
+            .content-inner {
+                max-width: unset;
+                width: unset;
+            }
+        }
+
+        @media screen and (min-width: 1025px) {
+            min-height: unset;
+        }
+    }
+
+    [is='flynt-cta-donate'] {
+        padding-top: 0;
+        padding-bottom: 0;
+
+        @media screen and (max-width: 1024px) {
+            padding: 0;
+        }
+
+        .donate-submit {
+            padding: 0;
+            word-break: break-word;
+        }
+    }
+
+    [is='flynt-progress-donation'] {
+
+    }
+}

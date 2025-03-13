@@ -1,0 +1,90 @@
+[is='flynt-accordion-default'] .accordion {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+[is='flynt-accordion-default'] .panel {
+  padding-bottom: 15px;
+  padding: 0rem 3rem;
+  border: solid 0.5px var(--border-grey);
+  border-bottom: none;
+}
+[is='flynt-accordion-default'] .panel.opened {
+  border: 1.5px solid var(--blue);
+  padding-bottom: var(--padding_xsmall);
+}
+[is='flynt-accordion-default'] .panel.opened + .panel.opened {
+  border-top: none;
+}
+[is='flynt-accordion-default'] .panel.opened + .panel {
+  border-top: none;
+}
+[is='flynt-accordion-default'] .panel + .panel.opened {
+  border-top: 1px solid var(--blue);
+}
+[is='flynt-accordion-default'] .panel:first-child {
+  border-top: solid 0.5px var(--border-grey);
+}
+[is='flynt-accordion-default'] .panel:first-child.opened {
+  border-top: 1.5px solid var(--blue);
+}
+[is='flynt-accordion-default'] .panel:last-child {
+  border-bottom: solid 0.5px var(--border-grey);
+}
+[is='flynt-accordion-default'] .panel:last-child.opened {
+  border-bottom: 1.5px solid var(--blue);
+}
+[is='flynt-accordion-default'] .panel-trigger {
+  align-items: flex-end;
+  cursor: pointer;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: 15px 0;
+  position: relative;
+  width: 100%;
+}
+[is='flynt-accordion-default'] .panel-trigger .panel-title {
+  padding-right: 1rem;
+}
+[is='flynt-accordion-default'] .panel-trigger-arrow {
+  align-self: center;
+  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  width: 20px;
+  min-width: 20px;
+  padding-top: 4px;
+}
+[is='flynt-accordion-default'] .panel-trigger[aria-expanded='true'] .panel-trigger-arrow {
+  transform: rotate(180deg) translateY(-4px);
+}
+[is='flynt-accordion-default'] .panel-content {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+[is='flynt-accordion-default'] .panel-inner {
+  padding: 0;
+}
+[is='flynt-accordion-default'] .panel-inner img {
+  height: auto;
+  width: auto;
+}
+[is='flynt-accordion-default'] .panel-inner [type='submit'] {
+  background-color: var(--yellow);
+  border: 1px solid var(--blue);
+  transition: all 0.2s linear;
+}
+[is='flynt-accordion-default'] .panel-inner [type='submit']:hover, [is='flynt-accordion-default'] .panel-inner [type='submit']:focus {
+  background-color: var(--blue);
+  color: var(--yellow);
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+[is='flynt-accordion-default'] .panel-inner form {
+  padding-top: var(--padding_xsmall);
+}
+[is='flynt-accordion-default'] .anchor {
+  scroll-margin-top: 150px;
+}

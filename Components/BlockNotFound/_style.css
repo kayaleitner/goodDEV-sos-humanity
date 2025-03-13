@@ -1,0 +1,15 @@
+[is='flynt-block-not-found'] {
+  margin-top: var(--padding_small);
+  padding-top: var(--padding_xlarge);
+}
+[is='flynt-block-not-found'] .content {
+  text-align: center;
+}
+[is='flynt-block-not-found'] .content > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+[is='flynt-block-not-found'] .content > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

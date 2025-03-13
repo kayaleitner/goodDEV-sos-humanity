@@ -1,0 +1,17 @@
+{% set search_action_url = (site.language == 'de_DE') ? '/' : '/en' %}
+<form class="searchForm" role="search" action="{{ search_action_url }}">
+  <div class="searchForm-field">
+    <button class="searchForm-submit {% if post.field_appearance_menuTextColor %} {{ post.field_appearance_menuTextColor }} {% else %} darkText {% endif %}" type="submit">
+      <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fill-rule="evenodd">
+              <path d="M0 0h16v16H0z"/>
+              <path d="M10.333 9.333h-.526l-.187-.18a4.314 4.314 0 0 0 1.047-2.82 4.333 4.333 0 1 0-4.334 4.334c1.074 0 2.06-.394 2.82-1.047l.18.187v.526l3.334 3.327.993-.993-3.327-3.334zm-4 0c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" fill="currentColor" fill-rule="nonzero"/>
+          </g>
+      </svg>
+    </button>
+    <div class="searchForm-box {% if post.field_appearance_menuTextColor %} {{ post.field_appearance_menuTextColor }} {% else %} darkText {% endif %}">
+      {# <label class="visuallyHidden" for="searchForm-input">{{ searchPlaceholder }}</label> #}
+      <input name="s" id="searchForm-input" class="searchForm-input " type="search" required placeholder="{{ searchInputPlaceholder }}" value="{{ searchQuery }}">
+    </div>
+  </div>
+</form>

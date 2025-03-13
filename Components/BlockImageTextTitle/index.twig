@@ -1,0 +1,25 @@
+<flynt-component
+  class="flyntComponent {{ options.theme }}"
+  is="flynt-block-image-text-title"#
+  name="BlockImageTextTitle"  
+>
+  <div class="container" style="background-color: {{ contentBackgroundColor }}; max-width: 100%;">
+    <div class="box">
+      <div class="box-inner box-inner--image">
+        <img class="figure-image lazyload"
+          src="{{ image.src | resize(32) }}"
+          data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
+          data-sizes="auto"
+          alt="{{ image.alt|e }}">
+          {% if image.caption %}
+            <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+          {% endif %}
+        <div class="box-inner box-inner--content">
+          <div class="box-copy">
+            <span class="{% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">{{ contentHtml|wp_kses_custom }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</flynt-component>

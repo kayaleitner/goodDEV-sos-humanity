@@ -1,0 +1,182 @@
+[is='flynt-cta-donate'] {
+  padding: var(--padding_small) var(--padding_small);
+}
+@media (max-width: 540px) {
+  [is='flynt-cta-donate'] {
+    padding: var(--padding_xsmall) var(--padding_xsmall);
+ }
+}
+[is='flynt-cta-donate'] .side-title {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: rotate(90deg) translateX(100%);
+  transform-origin: top right;
+  z-index: 20;
+}
+@media (max-width: 540px) {
+  [is='flynt-cta-donate'] .side-title {
+    top: 75%;
+ }
+}
+[is='flynt-cta-donate'] .side-title .title {
+  -webkit-text-stroke: 1px var(--blue);
+  font-size: 20rem;
+  line-height: 1;
+  color: transparent;
+  margin: -4rem auto 0 auto;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: fit-content;
+}
+@media screen and (max-width: 1024px) {
+  [is='flynt-cta-donate'] .side-title .title {
+    -webkit-text-stroke-width: 1px;
+ }
+}
+[is='flynt-cta-donate'] .container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: relative;
+  z-index: 21;
+}
+[is='flynt-cta-donate'] .container > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+[is='flynt-cta-donate'] .container > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+[is='flynt-cta-donate'] .container .col {
+  align-items: center;
+  text-align: left;
+  width: 50%;
+  padding: var(--padding_xsmall) !important;
+  display: flex;
+  flex-flow: column wrap;
+}
+[is='flynt-cta-donate'] .container .col h2 {
+  width: 100%;
+}
+[is='flynt-cta-donate'] .container .col:first-child {
+  width: 40%;
+}
+@media (max-width: 768px) {
+  [is='flynt-cta-donate'] .container .col {
+    width: 100%;
+ }
+  [is='flynt-cta-donate'] .container .col:first-child {
+    width: 100%;
+ }
+}
+@media (max-width: 1024px) {
+  [is='flynt-cta-donate'] .donate {
+    width: 100%;
+ }
+}
+[is='flynt-cta-donate'] .donate-pre {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+[is='flynt-cta-donate'] .donate-pre-amount {
+  background-color: var(--warmwhite);
+  border-right: 1px solid var(--blue);
+  border-top: 1px solid var(--blue);
+  color: var(--blue);
+  margin: 0;
+  padding: var(--padding_xsmall) 0;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: 25%;
+}
+@media (max-width: 540px) {
+  [is='flynt-cta-donate'] .donate-pre-amount {
+    padding: var(--padding_small) 0;
+ }
+}
+[is='flynt-cta-donate'] .donate-pre-amount:first-child {
+  border-left: 1px solid var(--blue);
+}
+[is='flynt-cta-donate'] .donate-pre-amount:hover {
+  background-color: var(--blue);
+  color: var(--warmwhite);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+[is='flynt-cta-donate'] .donate-select {
+  border: 1px solid var(--blue);
+  padding: 1px !important;
+  display: flex;
+  padding: var(--padding_xsmall);
+}
+@media (max-width: 540px) {
+  [is='flynt-cta-donate'] .donate-select {
+    width: 100%;
+ }
+}
+[is='flynt-cta-donate'] .donate-select .donate-custom-amount {
+  background-color: var(--warmwhite);
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 1px solid var(--blue);
+  border-top: 0;
+  font-size: 3.6rem;
+  margin: 0;
+  padding: 3rem var(--padding_xsmall) 3rem var(--padding_xsmall) !important;
+  width: 50%;
+}
+[is='flynt-cta-donate'] .donate-select .donate-custom-amount::placeholder {
+  font-size: 2rem;
+  transform: translateY(-6px);
+}
+@media (max-width: 1024px) {
+  [is='flynt-cta-donate'] .donate-select .donate-custom-amount::placeholder {
+    transform: unset;
+    font-size: var(--fontSizeBody1Mobile);
+ }
+}
+[is='flynt-cta-donate'] .donate-select .donate-custom-amount:focus {
+  outline: 0;
+}
+@media (max-width: 768px) {
+  [is='flynt-cta-donate'] .donate-select .donate-custom-amount {
+    font-size: 6rem;
+ }
+}
+[is='flynt-cta-donate'] .donate-select .donate-submit {
+  margin: 0;
+  width: 50%;
+}
+@media (max-width: 540px) {
+  [is='flynt-cta-donate'] .donate-select .donate-submit {
+    padding: 6rem 0;
+ }
+}
+[is='flynt-cta-donate'] .donate-select .label {
+  background-color: var(--warmwhite);
+  margin: 0;
+}
+[is='flynt-cta-donate'] .donate-select .label-1 {
+  grid-area: amt1;
+}
+[is='flynt-cta-donate'] .donate-select .label-2 {
+  grid-area: amt2;
+}
+[is='flynt-cta-donate'] .donate-select .label-3 {
+  grid-area: amt3;
+}
+[is='flynt-cta-donate'] .donate-select .label-4 {
+  grid-area: amt4;
+}
+@media (max-width: 599px) {
+  [is='flynt-cta-donate'] br {
+    content: '\00a0';
+ }
+}

@@ -1,0 +1,35 @@
+[is='flynt-block-wysiwyg'] .container {
+  padding: var(--padding_small);
+}
+@media (max-width: 540px) {
+  [is='flynt-block-wysiwyg'] .container {
+    padding: var(--padding_large) var(--padding_small);
+ }
+}
+[is='flynt-block-wysiwyg'] .content {
+  padding-left: var(--padding_medium);
+  text-align: inherit;
+}
+[is='flynt-block-wysiwyg'] .content > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+[is='flynt-block-wysiwyg'] .content > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+@media (max-width: 540px) {
+  [is='flynt-block-wysiwyg'] .content {
+    padding-left: 0;
+ }
+}
+[is='flynt-block-wysiwyg'] .content--textLeft {
+  text-align: left;
+}
+[is='flynt-block-wysiwyg'] .content--textCenter {
+  text-align: center;
+}
+[is='flynt-block-wysiwyg'] .content > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

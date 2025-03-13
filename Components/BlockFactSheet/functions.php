@@ -1,21 +1,32 @@
 <?php
 
-namespace Flynt\Components\HeroImageText;
+namespace Flynt\Components\BlockFactSheet;
 
 use Flynt\FieldVariables;
 
 function getACFLayout()
 {
     return [
-        'name' => 'heroImageText',
-        'label' => 'Hero: Header Headline',
+        'name' => 'BlockFactSheet',
+        'label' => 'Block: Fact Sheet',
         'sub_fields' => [
             [
-                'label' => __('Images', 'flynt'),
-                'name' => 'accordionImages',
+                'label' => __('General', 'flynt'),
+                'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
-                'endpoint' => 0
+                'endpoint' => 0,
+            ],
+            [
+                'label' => __('Side Title', 'flynt'),
+                'name' => 'sideTitle',
+                'type' => 'text',
+            ],
+            [
+                'label' => __('Title', 'flynt'),
+                'name' => 'preContent',
+                'type' => 'text',
+                'instructions' => __('Want to add a headline? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
             ],
             [
                 'label' => __('Images', 'flynt'),
@@ -48,25 +59,34 @@ function getACFLayout()
                 ]
             ],
             [
-                'label' => __('Content', 'flynt'),
-                'name' => 'accordionContent',
+                'label' => __('Text Editor', 'flynt'),
+                'name' => 'texteditorTab',
                 'type' => 'tab',
                 'placement' => 'top',
-                'endpoint' => 0
+                'endpoint' => 0,
             ],
             [
-                'label' => __('Line 1', 'flynt'),
-                'name' => 'line1',
-                'type' => 'text',
-                'tabs' => 'visual,text',
-                'instructions' => __('The content overlaying the image. Character Recommendations: 5-15.', 'flynt'),
-            ],
-            [
-                'label' => __('Line 2', 'flynt'),
-                'name' => 'line2',
-                'type' => 'text',
-                'tabs' => 'visual,text',
-                'instructions' => __('The content overlaying the image. Character Recommendations: 5-15', 'flynt'),
+                'label' => __('Text Editor Panels', 'flynt'),
+                'name' => 'contentPanels',
+                'type' => 'repeater',
+                'layout' => 'row',
+                'min' => 1,
+                'button_label' => __('Add Text Editor', 'flynt'),
+                'sub_fields' => [
+                    [
+                        'label' => __('Headline', 'flynt'),
+                        'name' => 'panelHeadline',
+                        'type' => 'text'
+                    ],
+                    [
+                        'label' => __('Text Editor', 'flynt'),
+                        'name' => 'panelTexteditor',
+                        'type' => 'wysiwyg',
+                        'tabs' => 'visual',
+                        'media_upload' => 0,
+                        'delay' => 1,
+                    ],
+                ],
             ],
             [
                 'label' => __('Options', 'flynt'),
@@ -84,9 +104,17 @@ function getACFLayout()
                     FieldVariables\getTheme(),
                     FieldVariables\getColorBrandBackground(),
                     FieldVariables\getColorBrandText(),
-                    // FieldVariables\getMaxWidthContainer(),
-                    FieldVariables\getPaddingTopBottom(),
-                    FieldVariables\getPaddingLeftRight(),
+                    FieldVariables\getMoveIn(),
+                    FieldVariables\getFadeIn(),
+                    [
+                        'label' => __('Columns', 'flynt'),
+                        'name' => 'columns',
+                        'type' => 'number',
+                        'default_value' => 2,
+                        'min' => 2,
+                        'max' => 3,
+                        'step' => 1
+                    ]
                 ]
             ]
         ]

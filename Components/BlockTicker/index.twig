@@ -1,0 +1,53 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-ticker">
+  <picture class="picture">
+    <source srcset="
+      {{function('wp_get_attachment_image_srcset', images.imageDesktop.id)}}"
+      media="(min-width: 768px)"
+      sizes="100vw">
+    <img class="image parallax-hero"
+      srcset="
+      {{function('wp_get_attachment_image_srcset', images.imageMobile.id)}}"
+      src="{{ images.imageMobile.src | resize(32) }}"
+      sizes="100vw"
+      data-object-fit="cover"
+      alt="{{ images.imageDesktop.alt|e }}">
+  </picture>
+  {% if sideTitle %}
+    <div class="side-title ">
+      <h2 class="title parallax-text-top-bottom">{{ sideTitle|e }}</h2>
+    </div>
+  {% endif %}
+  <div class="container" style="max-width: var(--maxWidthContainer_wide);">
+    <div class="content">
+      <div class="left-tab">
+        {% if preContentLeft %}
+        <div class="preContent h2 {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+          {{ preContentLeft }}
+        </div>
+        {% endif %}
+        {% if preContentLeft %}
+        <div class="preContent h4 {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+          {{ leftContent }}
+        </div>
+        {% endif %}
+        {% if ctaLink %}
+          <a class="cta-link paragraph {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" href="{{ ctaLink.url }}">{{ ctaLink.title }}</a>
+        {% endif %}
+      </div>
+      <div class="right-tab">
+        <div class="right-tab--header {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+          <div class="preHeadline white h6">{{ preContentSubtitleRight }}</div>
+          <div class="headline white h4">{{ preContentRight }}</div>
+        </div>
+        <ul class="ticker-container">
+          {% for panel in tickerPanels %}
+            <li class="ticker-news {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+              <div class="title h6">{{ panel.panelTitle }}</div>
+              <div class="text quote-small white">{{ panel.panelContent|wp_kses_custom }}</div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

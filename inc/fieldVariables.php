@@ -7,7 +7,8 @@
 namespace Flynt\FieldVariables;
 use function Flynt\Components\Grid\gridCol;
 
-function getTheme($default = ''): array
+
+function getTheme()
 {
     return [
         'label' => __('Theme', 'flynt'),
@@ -18,13 +19,160 @@ function getTheme($default = ''): array
         'ui' => 0,
         'ajax' => 0,
         'choices' => [
-            '' => __('(none)', 'flynt'),
-            'cbe' => __('CrossBoundary Energy', 'flynt'),
-            'cbg' => __('CrossBoundary Group', 'flynt'),
+            '' => __('Base', 'flynt'),
+            'themeLight' => __('Light', 'flynt'),
+            'themeDark' => __('Dark', 'flynt'),
+            'themeBrand' => __('Brand', 'flynt'),
         ],
-        'default_value' => $default,
+        'wrapper' => [
+            'width' => '33',
+        ],
     ];
 }
+
+function getColorBrandBackground()
+{
+    return [
+        'label' => __('Brand Color - Background', 'flynt'),
+        'name' => 'colorBrandBackground',
+        'type' => 'color_picker',
+        'wrapper' => [
+            'width' => '33',
+        ],
+    ];
+}
+
+function getColorBrandText()
+{
+    return [
+        'label' => __('Brand Color - Text', 'flynt'),
+        'name' => 'colorBrandText',
+        'type' => 'color_picker',
+        'wrapper' => [
+            'width' => '33',
+        ],
+    ];
+}
+
+function getPaddingTopBottom($default = 'var(--padding_small)')
+{
+    return [
+        'label' => __('Padding Top/Bottom', 'flynt'),
+        'name' => 'paddingTopBottom',
+        'type' => 'select',
+        'instructions' => '',
+        'choices' => array(
+            'var(--padding_none)' => 'None',
+            'var(--padding_xsmall)' => 'Extra Small',
+            'var(--padding_small)' => 'Small',
+            'var(--padding_medium)' => 'Medium',
+            'var(--padding_large)' => 'Large',
+            'var(--padding_xlarge)' => 'Extra Large'
+        ),
+        'default_value' => $default,
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 1,
+        'ajax' => 0,
+        'return_format' => 'value',
+        'wrapper' => [
+            'width' => '33',
+        ],
+    ];
+}
+
+function getPaddingLeftRight()
+{
+    return [
+        'label' => __('Padding Left/Right', 'flynt'),
+        'name' => 'paddingLeftRight',
+        'type' => 'select',
+        'instructions' => '',
+        'choices' => array(
+            'var(--padding_none)' => 'None',
+            'var(--padding_xsmall)' => 'Extra Small',
+            'var(--padding_small)' => 'Small',
+            'var(--padding_medium)' => 'Medium',
+            'var(--padding_large)' => 'Large',
+            'var(--padding_xlarge)' => 'Extra Large'
+        ),
+        'default_value' => 'var(--padding_small)',
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 1,
+        'ajax' => 0,
+        'return_format' => 'value',
+        'wrapper' => [
+            'width' => '33',
+        ],
+    ];
+}
+
+function getMaxWidthContainer()
+{
+    return [
+        'label' => __('Container Max Width', 'flynt'),
+        'name' => 'containerMaxWidth',
+        'type' => 'select',
+        'instructions' => '',
+        'choices' => array(
+            'var(--maxWidthContainer_full)' => 'Full',
+            'var(--maxWidthContainer_wide)' => 'Wide',
+            'var(--maxWidthContainer_narrow)' => 'Narrow'
+        ),
+        'default_value' => 'var(--maxWidthContainer_wide)',
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 1,
+        'ajax' => 0,
+        'return_format' => 'value',
+        'wrapper' => [
+            'width' => '33',
+        ],
+    ];
+}
+
+function getFadeIn() 
+{
+    return [
+        'label' => __('Fade In', 'flynt'),
+        'name' => 'fadeIn',
+        'type' => 'true_false',
+        'instructions' => '',
+        'default_value' => '1',
+        'ui' => 1,
+        'wrapper' => [
+            'width' => '33',
+        ],
+    ];
+}
+
+function getMoveIn() 
+{
+    return [
+        'label' => __('Move In', 'flynt'),
+        'name' => 'moveIn',
+        'type' => 'true_false',
+        'instructions' => '',
+        'default_value' => '1',
+        'ui' => 1,
+        'wrapper' => [
+            'width' => '33',
+        ],
+    ];
+}
+
+function getIcon()
+{
+    return [
+        'label' => __('Icon', 'flynt'),
+        'name' => 'icon',
+        'type' => 'text',
+        'instructions' => __('Enter a valid icon name from <a href="https://feathericons.com">Feather Icons</a> (e.g. `check-circle`).', 'flynt'),
+        'required' => 1
+    ];
+}
+
 
 function getSize($default = 'medium'): array
 {

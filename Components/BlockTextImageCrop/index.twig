@@ -1,0 +1,34 @@
+{# Text Image (Overlap) TextImageOverlap #}
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-block-text-image-crop" >
+  <div style="padding: var(--padding_small) 0;">
+  {% for item in items %}
+    <div class="box box--{% if imagePosition == 'imageRight' %}{% if loop.index % 2 %}imageRight{% else %}imageLeft{% endif %}{% else %}{% if loop.index % 2 %}imageLeft{% else %}imageRight{% endif %}{% endif %} {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+      <div class="box-inner box-inner--image">
+        <figure class="figure">
+          <img class="figure-image lazyload"
+            src="{{ item.image.src|resizeDynamic(1280) }}"
+            srcset="{{ placeholderImage(1280, 1280 / item.image.aspect) }}"
+            data-aspectratio="{{ item.image.aspect }}"
+            data-srcset="
+              {{ item.image.src|resizeDynamic(1920) }} 1920w,
+              {{ item.image.src|resizeDynamic(1440) }} 1440w,
+              {{ item.image.src|resizeDynamic(1280) }} 1280w,
+              {{ item.image.src|resizeDynamic(1024) }} 1024w,
+              {{ item.image.src|resizeDynamic(768) }} 768w,
+              {{ item.image.src|resizeDynamic(375) }} 375w"
+            data-sizes="auto"
+            alt="{{ item.image.alt|e }}">
+          {% if item.image.caption %}
+            <figcaption class="figure-caption">{{ item.image.caption|e }}</figcaption>
+          {% endif %}
+        </figure>
+      </div>
+      <div class="box-inner box-inner--content">
+        <div class="box-contentWrapper">
+          {{ item.contentHtml|e('wp_kses_custom') }}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>

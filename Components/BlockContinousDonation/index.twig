@@ -1,0 +1,64 @@
+<div 
+  x-data
+  class="flyntComponent componentSpacing" 
+  is="flynt-continous-donation" 
+  style="padding: {{ options.paddingTopBottom }} 0; --themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};"
+>
+  {% if donationItems %}
+    <div 
+      class="donation-items"
+      x-data="donationVerticalScroll"
+      x-ref="donationItems"
+      x-intersect.once.half="
+        this.startTime = performance.now();
+        this.startPosition = $refs.donationItems.scrollLeft;
+        this.targetPosition= $refs.donationItems.querySelector('.currentPosition').getBoundingClientRect().x - window.innerWidth / 2 + $refs.donationItems.querySelector('.currentPosition').getBoundingClientRect().width / 2 + {{ currentPositionOffset }};
+        this.donationItems = $refs.donationItems;
+        this.animateScroll = animateScroll.bind(this);
+        requestAnimationFrame(animateScroll.bind(this));"
+      @scroll="scrollX = $refs.donationItems.scrollY; checkElementPosition();"
+      @mousedown="startDrag"
+      @mousemove="drag"
+      @mouseup="endDrag"
+      @mouseleave="endDrag"
+    >
+      <div class="rope"></div>
+      <div class="empty-box"></div>
+      <div class="empty-box"></div>
+      {% for item in donationItems %}
+        <div 
+          class="box {{ item.donationItem.spacing }} 
+            {% if item.donationItem.currentPosition %} currentPosition {% endif %} 
+            {% if item.donationItem.goalReached %} goalReached {% endif %}"
+        >
+          <div class="checkbox">
+            <div class="checkbox-icon {% if item.donationItem.goalReached %} checked {% endif %}"></div>
+            <div class="checkbox-line"></div>
+          </div>
+          {% if item.donationItem.link %} <a href="{{ item.donationItem.link.url }}"> {% endif %}
+          <div class="item">
+            <div class="icon">
+              <img src="{{ item.donationItem.icon.src }}" alt="{{ item.donationItem.icon.alt }}">
+            </div>
+            <div class="info">
+              {% if item.donationItem.title %} <div class="title paragraph">{{ item.donationItem.title }}</div> {% endif %}
+              {% if item.donationItem.amount %} <div class="amount h5">{{ item.donationItem.amount | number_format(0, ',','.') }} €</div> {% endif %}
+              {% if item.donationItem.link %} <div class="link"> {{ linkLabel }} </div> {% endif %}
+            </div>
+          </div>
+        {% if item.donationItem.link %} </a> {% endif %}
+        </div>
+      {% endfor %}
+      <div class="empty-box"></div>
+      <div class="empty-box"></div>
+      <div class="hands"></div>
+      <div class="rope-labels">
+       <div class="label-sum"> {{ sumLabel }} </div>
+       <div class="label-amount">
+          <span>{{ currentAmount | number_format(0, ',','.') }} €</span>
+          {% if cta %}  <span class="cta"><a href="{{ cta.url }}" target="{{cta.target}}">{{ cta.title }}</a></span> {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>

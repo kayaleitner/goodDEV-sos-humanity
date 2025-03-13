@@ -1,0 +1,18 @@
+<div class="flyntComponent{{ options.theme }} {{ noComponentSpacing == true ? '' : 'componentSpacing' }}" is="flynt-block-iframe">
+  <div class="container {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" style="max-width: var(--maxWidthContainer_wide); padding: {{options.paddingTopBottom}} {{options.paddingLeftRight}};">
+    {% if preContentHtml %}
+      <div class=" ">
+        <h2>{{ preContentHtml|wp_kses_custom }}</h2>
+      </div>
+    {% endif %}
+    
+    <div class="iframe-container">
+      <iframe
+        class="iframe"
+        src="{{ iframeUrl|e('esc_url') }}" 
+        width="100%"
+        height="100%"
+        ></iframe>
+    </div>
+  </div>
+</div>

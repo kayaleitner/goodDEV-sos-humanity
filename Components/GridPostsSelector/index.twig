@@ -1,0 +1,31 @@
+{% if items|length > 0 %}
+  <div class="flyntComponent {{ options.theme }}" id="filter{{ title|e }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-grid-posts-selector">
+    <div class="container" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }}; max-width: {{ options.containerMaxWidth }};">
+      {% if preContentHtml %}
+      <div class="preContent">
+        <h2>{{ preContentHtml|wp_kses_custom }}</h2>
+      </div>
+      {% endif %}
+      <ul class="grid grid--columns{{ options.columns }}">
+        {% for item in items %}
+          <li class="grid-item {{ item.post_type }}">
+            <div class="content">
+              <a href="{{ item.link }}" class="content-link" title="{{ item.title }}">
+                <img class="content-image lazyload"
+                  src="{{ item.thumbnail.src | resize(32) }}"
+                  data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
+                  data-sizes="auto"
+                  alt="{{ item.thumbnail.alt|e }}">
+                <div class="content-inner">
+                  <h3 class="content-title">{{ item.title }}</h3>
+                  {% if item.post_excerpt %}<p class="content-excerpt body-2">{{ item.post_excerpt|truncate(12) }}</p>{% endif %}
+                  {% if item.pageExcerpt %}<p class="content-excerpt body-2">{{ item.pageExcerpt|truncate(12) }}</p>{% endif %}
+                </div>
+              </a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endif %}

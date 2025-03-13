@@ -1,0 +1,98 @@
+[is='flynt-block-image-text'] .container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 530px;
+  padding-left: var(--innerContainer_desktop);
+  padding-right: var(--innerContainer_desktop);
+}
+[is='flynt-block-image-text'] .box-inner > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+@media (max-width: 768px) {
+  [is='flynt-block-image-text'] .box {
+    display: flex;
+    flex-direction: column-reverse;
+ }
+  [is='flynt-block-image-text'] .box-inner--image {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+ }
+  [is='flynt-block-image-text'] .box-inner--image-titleOver {
+    color: var(--warmwhite);
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: calc(50% - (var(--padding_large))*2);
+    transform: translate(-50%, -50%);
+    width: calc(100% - (var(--padding_large))*2);
+ }
+  [is='flynt-block-image-text'] .box-inner--image .figure {
+    width: 100%;
+ }
+}
+@media (max-width: 1024px) {
+  [is='flynt-block-image-text'] {
+    margin: 80px 0;
+ }
+}
+@media (min-width: 1024px) {
+  [is='flynt-block-image-text'] .container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    padding-left: 40px;
+    padding-right: 40px;
+ }
+  [is='flynt-block-image-text'] .box {
+    align-items: center;
+    display: flex;
+    margin: 0;
+ }
+  [is='flynt-block-image-text'] .box-inner {
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: 50%;
+ }
+  [is='flynt-block-image-text'] .box-inner > :first-child {
+    margin-top: 0;
+    padding-top: 0;
+ }
+  [is='flynt-block-image-text'] .box-inner > :last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+ }
+  [is='flynt-block-image-text'] .box-inner--content {
+    padding: 0 var(--padding_large);
+ }
+  [is='flynt-block-image-text'] .box-inner--image {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+ }
+  [is='flynt-block-image-text'] .box-inner--image-titleOver {
+    color: var(--warmwhite);
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - (var(--padding_large))*2);
+ }
+  [is='flynt-block-image-text'] .box-inner--image .figure {
+    width: 100%;
+ }
+  [is='flynt-block-image-text'] .box--imageRight {
+    flex-direction: row;
+ }
+  [is='flynt-block-image-text'] .box--imageLeft {
+    flex-direction: row-reverse;
+ }
+  [is='flynt-block-image-text'] .figure-caption {
+    position: absolute;
+ }
+}

@@ -1,0 +1,12 @@
+{# <div class="preContent">
+  {{ preContentHtml|wp_kses_custom }}
+</div> #}
+<form class="searchFormResults" role="search" action="{{ bloginfo('url') }}">
+  <div class="searchFormResults-field">
+    <div class="searchFormResults-box">
+      <label class="visuallyHidden" for="searchForm-input">{{ searchPlaceholder }}</label>
+      <input name="s" id="searchFormResults-input" class="searchFormResults-input" type="search" required placeholder="{{ searchPlaceholder }}" value="{{ searchQuery }}">
+    </div>
+    <button class="searchFormResults-submit button" type="submit">{{ labels.search }}</button>
+  </div>
+</form>

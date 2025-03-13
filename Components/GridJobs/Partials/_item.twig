@@ -1,0 +1,29 @@
+<li class="grid-item {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" data-category="{{item.category.id}}">
+  <div class="content">
+      <div class="content-container">
+        <div class="content-imagebox">
+          <img class="content-image lazyload" src="{{ item.thumbnail.src|resize(32) }}" data-srcset="{{ function('wp_get_attachment_image_srcset', item.thumbnail.id) }}" data-sizes="auto" alt="{{ item.thumbnail.alt|e }}" />
+          {% if item.positionOpen %}
+            <div class="content-hiring"> {{ labels.labelJobOpen }} </div>
+          {% endif %}
+          {% if item.thumbnail.caption %}
+            <figcaption class="figure-caption">{{ item.thumbnail.caption|e }}</figcaption>
+          {% endif %}
+        </div>
+        <div class="content-inner">
+          <div>
+            {% if item.taxonomies %}<h5 class="content-category"><span class="content-category-title">{{ item.taxonomies[0].name }}</span></h5> {% endif %}
+          </div>
+          <h3 class="content-title">{{ item.title }}</h3>
+          {% if item.jobDescription %}
+            <p class="content-subtitle body-2">{{ item.jobDescription }}</p>
+          {% endif %}
+          <div>
+            <a href="{{ item.link }}" class="content-link" title="{{ item.title }}">
+              <button class="button button--blue"> {{ labels.labelJobDetails }} </button>
+            </a>
+          </div>
+        </div> 
+      </div>
+  </div>
+</li>

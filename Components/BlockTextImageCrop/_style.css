@@ -1,0 +1,153 @@
+[is='flynt-block-text-image-crop'] {
+  overflow: hidden;
+}
+@media (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'].componentSpacing {
+    margin: 0;
+    padding: 0;
+ }
+}
+[is='flynt-block-text-image-crop'] .box {
+  margin-top: calc(-1 * var(--padding_medium));
+}
+@media screen and (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'] .box {
+    margin-top: 0;
+ }
+}
+[is='flynt-block-text-image-crop'] .box:first-child {
+  margin-top: 0;
+}
+[is='flynt-block-text-image-crop'] .box:first-child .box-contentWrapper {
+  margin-top: calc(-1 * var(--padding_medium));
+}
+@media screen and (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'] .box:first-child .box-contentWrapper {
+    margin-top: 0;
+ }
+}
+[is='flynt-block-text-image-crop'] .box:last-child .box-contentWrapper {
+  margin-top: 0;
+}
+[is='flynt-block-text-image-crop'] .box:last-child .box-inner--content {
+  padding-bottom: var(--padding_medium);
+}
+[is='flynt-block-text-image-crop'] .box:first-child:last-child .box-contentWrapper {
+  margin-top: 0;
+}
+@media screen and (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'] .box:first-child:last-child .box-contentWrapper {
+    margin-top: 0;
+ }
+}
+[is='flynt-block-text-image-crop'] .box:first-child:last-child .box-inner--content {
+  padding-bottom: calc(2 * var(--padding_medium));
+}
+@media (min-width: 1024px) {
+  [is='flynt-block-text-image-crop'] .box {
+    display: flex;
+    min-height: 50vw;
+ }
+}
+[is='flynt-block-text-image-crop'] .box-inner--image {
+  position: relative;
+  width: calc((100% - var(--padding_medium)) / 2);
+}
+@media screen and (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'] .box-inner--image {
+    width: 100%;
+ }
+}
+[is='flynt-block-text-image-crop'] .box-inner--content {
+  margin-top: auto;
+  margin-bottom: auto;
+  max-width: calc((var(--maxWidthContainer_wide) + var(--padding_medium)) / 2);
+  padding: calc(2 * var(--padding_medium)) var(--padding_small);
+  padding-left: var(--padding_medium);
+  width: calc((100% - var(--padding_medium)) / 2 + 2 * var(--padding_small));
+}
+@media screen and (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'] .box-inner--content {
+    margin-top: calc(var(--padding_medium) / 2);
+    margin-bottom: calc(var(--padding_medium) / 2);
+ }
+}
+@media screen and (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'] .box-inner--content {
+    width: 100%;
+    padding: var(--padding_small);
+ }
+}
+[is='flynt-block-text-image-crop'] .box-contentWrapper {
+  max-width: 600px;
+}
+[is='flynt-block-text-image-crop'] .box-contentWrapper > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+[is='flynt-block-text-image-crop'] .box-contentWrapper > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+@media (min-width: 1024px) {
+  [is='flynt-block-text-image-crop'] .box--imageRight {
+    flex-direction: row-reverse;
+ }
+  [is='flynt-block-text-image-crop'] .box--imageRight .figure-caption {
+    text-align: right;
+ }
+  [is='flynt-block-text-image-crop'] .box--imageRight .box-inner--content {
+    padding-left: var(--padding_small);
+    padding-right: var(--padding_medium);
+ }
+  [is='flynt-block-text-image-crop'] .box--imageRight .box-contentWrapper {
+    margin-left: auto;
+ }
+}
+@media screen and (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'] .box--imageRight .figure-image {
+    margin-left: auto;
+ }
+  [is='flynt-block-text-image-crop'] .box--imageRight figcaption {
+    bottom: 10px;
+    position: absolute;
+    right: 10px;
+ }
+}
+@media screen and (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'] .box--imageLeft figcaption {
+    bottom: 10px;
+    position: absolute;
+    right: calc(25% + 10px);
+ }
+}
+[is='flynt-block-text-image-crop'] .figure {
+  margin: 0;
+}
+@media (min-width: 1024px) {
+  [is='flynt-block-text-image-crop'] .figure {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+ }
+}
+[is='flynt-block-text-image-crop'] .figure-image {
+  font-family: 'object-fit: cover';
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  width: 100%;
+}
+@media screen and (max-width: 1023px) {
+  [is='flynt-block-text-image-crop'] .figure-image {
+    aspect-ratio: 1;
+    width: 75%;
+ }
+}
+[is='flynt-block-text-image-crop'] .figure-caption {
+  bottom: 20px;
+  position: absolute;
+  right: 30px;
+}

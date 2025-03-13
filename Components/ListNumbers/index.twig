@@ -1,0 +1,15 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-list-numbers">
+  <div class="container" style="padding: var(--padding_small) var(--padding_medium); max-width: var(--maxWidthContainer_wide);">
+    <div class="content">
+      <ul class="list">
+        {% for panel in panelNumbers %}
+          <li class="item {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+              <div class="item-title h6">{{ panel.numberTitle }}</div>
+              <div class="item-content h2">{{ panel.numberContent }}</div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

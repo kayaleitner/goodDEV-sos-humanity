@@ -1,0 +1,62 @@
+{% if posts|length > 0 %}
+  <ul class="searchList grid">
+    {% for post in posts  %}
+      <li class="grid-item {{ post.type }}" data-category="{{post.category.id}}">
+        <div class="content">
+          <a href="{{ post.link }}" class="content-link" title="{{ post.title }}">
+            <div class="content-container">
+              <div class="content-imagebox">
+                {% if post.thumbnail %}
+                <img class="content-image lazyload" src="{{ post.thumbnail.src|resize(32) }}" data-srcset="{{ function('wp_get_attachment_image_srcset', post.thumbnail.id) }}" data-sizes="auto" alt="{{ post.thumbnail.alt|e }}" />
+                {% endif %}
+              </div>
+              {% if options.displayDate and post.field_meta_date %}
+                <time class="content-date meta-date" datetime="{{ post.field_meta_date }}">
+                  {{ post.field_meta_date|date('d.m.Y')}}
+                </time>
+              {% else %} 
+                <time class="content-date meta-date" datetime="{{ post.date('d.m.y') }}"> 
+                  {{ post.date('d.m.y') }}
+                </time> 
+              {% endif %}
+              <div class="content-inner">
+                <div>
+                  {% if post.category %}
+                    <h5 class="content-category" style="padding-bottom: 10px;"><span class="content-category-title">{{ post.category }}</span></h5>
+                    <h4 class="content-title" style="margin: 0;">{{ post.title }}</h4>
+                  {% else %}
+                    {# <h5 class="content-category" style="padding-bottom: 10px; margin-top: 4rem;"><span class="content-category-title">{{ post.parent.title }}</span></h5> #}
+                    <h4 class="content-title">{{ post.title }}</h4>
+                  {% endif %}
+
+                  {% if post.type == 'page' %}
+                    {% if post.pageExcerpt %}
+                      <p class="body-2"style="margin-top: 10px;">{{ post.pageExcerpt }}</p>
+                    {% else %}
+                      <p class="body-2"style="margin-top: 10px;">{{ post.preview.read_more(false).length(12) }}</p>
+                    {% endif %}
+                  {% else %}
+                    {% if post.pageExcerpt %}
+                      <p class="body-2" style="margin-top: 10px;">{{ post.excerpt }}</p>
+                    {% else %}
+                       <p class="body-2" style="margin-top: 10px;">{{ post.content|striptags|truncate(16) }}</p>
+                    {% endif %}
+                  {% endif %}
+                </div>
+                {% if post.field_meta_text %}
+                  <p class="content-subtitle meta-text body-2">{{ post.field_meta_text }}</p>
+                {% elseif post.field_meta_file %}
+                  <p class="content-subtitle meta-file body-2"><span class="meta-file-subtype">{{post.field_meta_file.subtype}}</span> download</p>
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <div class="noResults boxed">
+    <p>{{ labels.noResults }}</p>
+  </div>
+{% endif %}

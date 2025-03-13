@@ -1,0 +1,11 @@
+<div class="flyntComponent componentSpacing"  style="{}" is="flynt-list-search-results">
+  <div class="container narrowWidthContainer" >
+    <div>
+      {% include 'Partials/_header.twig' %}
+      {% include 'Partials/_results.twig' %}
+      {% if pagination %}
+        {% include 'Partials/_pagination.twig' %}
+      {% endif %}
+    </div>
+  </div>
+</div>

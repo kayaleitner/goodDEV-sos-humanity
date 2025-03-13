@@ -1,43 +1,31 @@
-{% set componentOptions = {
-    name: 'HeroImageText',
-    loadOn: 'idle',
-} %}
-
-{% set content %}
-<div class="relative h-screen overflow-hidden">
-  <picture class="block h-full w-full">
-    <source srcset="{{ function('wp_get_attachment_image_srcset', images.imageDesktop.id) }}"
-            media="(min-width: 768px)"
-            sizes="100vw">
-    <img class="w-full h-full sm:h-[calc(100vh+320px)] object-cover sm:object-[center_-160px] bg-contrast"
-         srcset="{{ function('wp_get_attachment_image_srcset', images.imageMobile.id) }}"
-         src="{{ images.imageMobile.src | resize(32) }}"
-         sizes="100vw"
-         alt="{{ images.imageDesktop.alt|e }}">
-    {% if images.imageDesktop.caption %}
-      <figcaption class="absolute bottom-sm right-sm text-white text-sm xs:bottom-[10px] xs:right-[10px]">
-        {{ images.imageDesktop.caption|wp_kses_custom }}
-      </figcaption>
-    {% endif %}
+<div class="flyntComponent {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-hero-image-text">
+  <picture class="picture">
+    <source srcset="
+      {{function('wp_get_attachment_image_srcset', images.imageDesktop.id)}}"
+      media="(min-width: 768px)"
+      sizes="100vw">
+    <img class="image parallax-hero-text"
+      srcset="
+        {{function('wp_get_attachment_image_srcset', images.imageMobile.id)}}"
+      src="{{ images.imageMobile.src | resize(32) }}"
+      sizes="100vw"
+      data-object-fit="cover"
+      alt="{{ images.imageDesktop.alt|e }}">
+      {% if images.imageDesktop.caption %}
+        <figcaption class="figure-caption">{{ images.imageDesktop.caption|e }}</figcaption>
+      {% endif %}
   </picture>
-
-  <div class="absolute top-0 left-0 w-full h-full flex items-end p-md pb-lg  sm:p-xl"
-    style="background: linear-gradient(to top, rgba(28, 36, 69, 0.75), rgba(28, 36, 69, 0.3));"
-  >
+  <div class="content" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }}; padding-bottom: {{ options.paddingTopBottom }})">
     {% if post.title != "Home" and post.title != "Home EN" and post.title != "SOS Humanity" %}
-      <h1 class="absolute left-0 w-full text-center text-white font-h3" style="top: max(20rem, min(var(--extra), calc(100vh - 32vw)));">
-        {{ post.title }}
-      </h1>
+      <h1 class="title h3" style="top: max(20rem, min(calc(var(--padding_xxlarge)), calc(100vh - 32vw)));">{{ post.title }}</h1>
     {% endif %}
-    <div class="w-full">
-      <h2 class="title-big">{{ line1|wp_kses_custom }}</h2>
-      <h2 class="title-big w-full text-center text-yellow">{{ line2|wp_kses_custom }}</h2>
+    <div class="content-inner">
+      <h4 class="title-big line-1">
+        {{ line1|wp_kses_custom }}
+      </h4>
+      <h4 class="title-big line-2">
+        {{ line2|wp_kses_custom }}
+      </h4>
     </div>
   </div>
 </div>
-{% endset %}
-
-{% include 'Components/_Containers/FlyntComponent.twig' with {
-    content: content,
-    componentOptions: componentOptions
-} %}

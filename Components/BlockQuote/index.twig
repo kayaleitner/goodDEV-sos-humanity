@@ -1,0 +1,8 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }}; margin: var(--padding_large) auto;" is="flynt-block-quote">
+  <div class="container {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" style="padding: var(--padding_small); max-width: 75vw;">
+    <div class="content">
+      <div class="content-author h5">{{ author }}</div>
+      <div class="content-quote {{ quoteSize }}">{{ quote|e }}</div>
+    </div>
+  </div>
+</div>

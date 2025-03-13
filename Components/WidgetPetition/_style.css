@@ -1,0 +1,16 @@
+[is='flynt-widget-petition'] {
+
+  background-color: var(--white);
+  
+  .content {
+    width: 100%;
+  }
+  
+  #controlshift-embed-sign-form {
+    width: 100%;
+  }
+
+  img {
+    width: unset;
+  }
+}

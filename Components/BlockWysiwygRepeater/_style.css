@@ -1,0 +1,15 @@
+[is='flynt-block-wysiwyg-repeater'] .content {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  text-align: inherit;
+}
+[is='flynt-block-wysiwyg-repeater'] .content > div {
+  width: calc(50% - var(--fontSizeBody1));
+}
+@media (max-width: 540px) {
+  [is='flynt-block-wysiwyg-repeater'] .content > div {
+    width: 100%;
+ }
+}

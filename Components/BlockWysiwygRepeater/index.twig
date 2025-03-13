@@ -1,0 +1,25 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-wysiwyg-repeater">
+  <div class="container" style="padding: var(--padding_small); max-width: var(--maxWidthContainer_wide);">
+    {% if preContent %}
+      <div class="preContent h1 {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+        {{ preContent|e }}
+      </div>
+    {% endif %}
+    <div class="content">
+    {% for panel in contentPanels %}
+      <div class="{% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+        {% if panel.formOrText %}
+          <script type="text/javascript" src="https://secure.fundraisingbox.com/app/paymentJS?hash={{ panel.formId }}"></script>
+          <noscript>Bitte Javascript aktivieren</noscript>
+          <a target="_blank" href="https://www.fundraisingbox.com/?utm_source=donation_form">
+            <img border="0" style="border: 0 !important" src="https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png" alt="FundraisingBox Logo" />
+          </a>
+        {% else %}
+          {{ panel.panelTexteditor|wp_kses_custom }}
+        {% endif %}
+      
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
