@@ -1,0 +1,61 @@
+[is='flynt-navigation-footer'] {
+  background-color: var(--blue);
+
+  .container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (max-width: 540px) {
+      flex-direction: column;
+    }
+
+    &-left {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      @media (max-width: 1024px) {
+        align-items: flex-start;
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+  }
+
+  .copyyrights > :first-child {
+    margin-top: 0;
+    padding-top: 0;
+ }
+  .copyyrights > :last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+ }
+  
+
+  .copyrights {
+    color: var(--border-grey);
+    display: block;
+    margin: 10px 0;
+    text-align: left;
+
+    @media (min-width: 1024px) {
+      margin: 0;
+    }
+
+    @media (max-width: 540px) {
+      margin-left: 0;
+      margin-right: 0;
+      width: 30%;
+    }
+
+    p {
+      color: var(--border-grey);
+    }
+  }
+
+  @import 'Partials/_menu.css';
+  @import 'Partials/_backtotop.css';
+}

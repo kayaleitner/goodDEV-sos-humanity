@@ -1,0 +1,79 @@
+[is='flynt-navigation-footer-linklist'] {
+  background-color: var(--blue);
+
+  .container {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    .column {
+      @media (max-width: 1024px) {
+        width: 50%;
+      }
+
+      @media (max-width: 540px) {
+        padding-top: var(--padding_small);
+        width: 100%;
+
+        &:first-child {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  .logo {
+    display: block;
+    height: 100%;
+    width: 20%;
+  
+    &-image {
+      height: 100%;
+      width: 15.8rem;
+    }
+
+    .content {
+      .h2,
+      .h5 {
+        font-weight: normal;
+      }
+    }
+  }
+  
+  .preContent {
+    color: var(--yellow);
+    margin: 0 0 2.5rem;
+    text-transform: uppercase;
+  }
+
+  .partners {
+    .logos {
+      display: flex;
+      flex-flow: column;
+
+      @media (max-width: 540px) {
+        flex-flow: row;
+        margin-top: var(--padding_small);
+      }
+
+      .figure {
+        padding-bottom: var(--padding_xsmall);
+
+        @media (max-width: 540px) {
+          &:not(:last-child) {
+            padding-right: var(--padding_large);
+          }
+        }
+
+        &-logo {
+          max-width: 15.3rem;
+
+          @media (max-width: 540px) {
+            max-width: 30rem;
+          }
+        }
+      }
+    }
+  }
+}

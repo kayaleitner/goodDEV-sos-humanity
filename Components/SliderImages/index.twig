@@ -1,0 +1,42 @@
+<div 
+  class="flyntComponent componentSpacing {{ options.theme }}" 
+  style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" 
+  is="flynt-slider-images"
+  name="SliderImages"  
+>
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <div class="container {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" style="padding: var(--padding_small); max-width: var(--maxWidthContainer_wide);">
+    {% if preContentHtml %}
+      <div class="preContent">
+       <h2 class="rougeHighlight">{{ preContentHtml|wp_kses_custom }}</h2>
+      </div>
+    {% endif %}
+
+    <div data-slider class="slider swiper-container">
+      <div class="swiper-wrapper">
+        {% for image in images %}
+          <div class="slider-item swiper-slide">
+              <figure class="figure">
+                <img class="figure-image lazyload"
+                  src="{{ image.src | resize(32) }}"
+                  data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
+                  alt="{{ image.alt|e }}">
+              </figure>
+            {% if image.caption %}
+              <figcaption class="figure-caption">
+                {{ image.caption|e}}
+              </figcaption>
+            {% endif %}
+          {% if image.post_content %}
+            <div class="description-box slider-caption">
+              {{ image.post_content|e }}
+            </div>
+          {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      <button type="button" data-slider-button="prev" class="slider-button slider-button--prev" />
+      <button type="button" data-slider-button="next" class="slider-button slider-button--next" />
+    </div>
+  </div>
+</div>

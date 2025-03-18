@@ -1,0 +1,15 @@
+<div class="flyntComponent" is="flynt-navigation-footer">
+  <div class="container" style="padding: var(--padding_small); max-width: var(--maxWidthContainer_wide);">
+    <div class="container-left">
+      {% if menu %}
+        <nav class="navigation" aria-label="{{ __("Footer", "flynt") }}">
+          {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
+        </nav>
+      {% endif %}
+      {% if contentHtml %}
+        <div class="copyrights body-2">{{ contentHtml|wp_kses_custom }}</div>
+      {% endif %}
+    </div>
+    {% include 'Partials/_backtotop.twig' %}
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="flyntComponent componentSpacing {{ options.card ? 'flyntComponent--card' }} {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-grid-icons">
+  <div class="container" style="padding: var(--padding_small); max-width: var(--maxWidthContainer_wide);">
+    {% if preContent %}
+      <div class="preContent h2 {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+        {{ preContent|e }}
+      </div>
+    {% endif %}
+    <div class="content">
+      <ul class="list">
+        {% for panel in iconPanels %}
+          <li class="item {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+            <div class="fig-box">
+                <img class="image-tag lazyload lazyload--fade"
+                  src="{{ panel.image.src | resize(32) }}"
+                  data-aspectratio="{{ panel.image.aspect }}"
+                  data-srcset="{{function('wp_get_attachment_image_srcset', panel.image.id)}}"
+                  data-sizes="auto"
+                  alt="{{ panel.image.alt|e }}">
+            </div>
+            {% if panel.content %}
+              {{ panel.content|wp_kses_custom }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,341 @@
+[is='flynt-hero-image-title-text-parallax'] {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(30vw + 6rem);
+  height: 44vw;
+}
+[is='flynt-hero-image-title-text-parallax'].is-contact-form {
+  height: auto;
+  overflow: visible !important;
+  margin-top: 15rem;
+}
+[is='flynt-hero-image-title-text-parallax'].is-contact-form .content-caption {
+  display: none;
+}
+@media screen and (max-width: 980px) {
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form picture, [is='flynt-hero-image-title-text-parallax'].is-contact-form .picture {
+    height: 600px !important;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .image {
+    height: 600px !important;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form textarea {
+    height: 170px;
+ }
+}
+@media screen and (max-width: 600px) {
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form picture, [is='flynt-hero-image-title-text-parallax'].is-contact-form .picture {
+    height: 400px !important;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .image {
+    height: 400px !important;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form textarea {
+    height: 170px;
+ }
+}
+@media screen and (min-width: 981px) {
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .image, [is='flynt-hero-image-title-text-parallax'].is-contact-form .picture {
+    height: 720px !important;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .contactForm {
+    margin-top: 10rem;
+ }
+}
+@media screen and (min-width: 1600px) {
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .content-title .title {
+    font-size: 160px !important;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .picture {
+    height: 750px !important;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .image {
+    height: 950px !important;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'].is-contact-form .content {
+  height: auto !important;
+}
+[is='flynt-hero-image-title-text-parallax'].is-contact-form .contactForm {
+  position: relative;
+  width: 60vw;
+  max-width: 80em;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 49;
+}
+[is='flynt-hero-image-title-text-parallax'].is-contact-form .contactForm .contactForm-inner {
+  padding: 0.1rem 2rem;
+  background-color: var(--yellow);
+}
+[is='flynt-hero-image-title-text-parallax'].is-contact-form input {
+  margin-bottom: 1rem !important;
+  color: var(--blue) !important;
+}
+[is='flynt-hero-image-title-text-parallax'].is-contact-form textarea {
+  background: var(--yellow) !important;
+  color: var(--blue) !important;
+  margin-top: 2%;
+}
+[is='flynt-hero-image-title-text-parallax'].is-contact-form button {
+  margin-top: 2rem;
+}
+@media screen and (max-width: 1024px) {
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .contactForm {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 10rem;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .contactForm-inner {
+    padding: 4rem;
+    margin: 0 5rem;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form textarea {
+    margin-top: 4rem;
+ }
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form button {
+    margin-top: 4rem;
+ }
+}
+@media screen and (max-width: 540px) {
+  [is='flynt-hero-image-title-text-parallax'] {
+    height: 100vw;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .picture {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  overflow: hidden;
+  height: 38vw;
+}
+@media screen and (max-width: 540px) {
+  [is='flynt-hero-image-title-text-parallax'] .picture {
+    height: 95vw;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .image {
+  height: 60vw;
+  object-fit: cover;
+  object-position: 0 -15vw;
+  width: 100%;
+  min-height: 50rem;
+}
+@media screen and (max-width: 540px) {
+  [is='flynt-hero-image-title-text-parallax'] .image {
+    height: 120vw;
+    object-position: bottom;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .content-title {
+  position: relative;
+  z-index: 20;
+  top: 0;
+}
+[is='flynt-hero-image-title-text-parallax'] .content-title .title {
+  -webkit-text-stroke: 2px var(--yellow);
+  font-family: 'Source Sans Pro Black', sans-serif;
+  font-size: var(--fontSize_hero);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  margin: -2vw auto 0 auto;
+  position: relative;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: fit-content;
+}
+@media screen and (max-width: 540px) {
+  [is='flynt-hero-image-title-text-parallax'] .content-title .title {
+    margin: -6.5pt auto 0 auto;
+    -webkit-text-stroke-width: 1px;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .content {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  width: 100%;
+}
+@media screen and (max-width: 540px) {
+  [is='flynt-hero-image-title-text-parallax'] .content {
+    font-size: 58pt;
+    margin: auto;
+    margin-top: 62pt;
+    padding: 0 24pt;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .content-inner {
+  padding: 6rem;
+  width: 66.7rem;
+  min-height: calc(30vw + 6rem - 25rem);
+  background-color: var(--yellow);
+  text-align: left;
+}
+[is='flynt-hero-image-title-text-parallax'] .content-inner > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+[is='flynt-hero-image-title-text-parallax'] .content-inner > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+@media screen and (max-width: 1024px) {
+  [is='flynt-hero-image-title-text-parallax'] .content-inner {
+    width: 50vw;
+ }
+}
+@media screen and (max-width: 540px) {
+  [is='flynt-hero-image-title-text-parallax'] .content-inner {
+    width: 100%;
+    min-height: 100%;
+    margin: auto;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .content-caption {
+  height: 6rem;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 3rem;
+  position: relative;
+  z-index: 30;
+}
+@media screen and (max-width: 540px) {
+  [is='flynt-hero-image-title-text-parallax'] .content-caption {
+    position: absolute;
+    right: 0;
+    transform: rotate(90deg);
+    transform-origin: right;
+    padding-top: 16pt;
+    padding-right: 16pt;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter {
+  margin-bottom: -3rem;
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter br {
+  display: none;
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-name {
+  font-size: var(--fontSizeBody1);
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-name p {
+  display: flex;
+  gap: var(--padding_xsmall);
+  justify-content: space-between;
+}
+@media (max-width: 540px) {
+  [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-name {
+    font-size: 3.2rem;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-name span {
+  width: calc(50% - 2rem);
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-name input {
+  background-color: transparent;
+  border-bottom: 1px solid var(--blue);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  color: var(--blue);
+  margin: 0 0 var(--padding_xsmall) 0;
+  padding: 0;
+  width: 100%;
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit {
+  border-bottom: 1px solid var(--blue);
+  font-size: var(--fontSizeBody1);
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit p {
+  display: flex;
+  gap: var(--padding_xsmall);
+  justify-content: space-between;
+}
+@media (max-width: 540px) {
+  [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit {
+    font-size: 3.2rem;
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit input {
+  background-color: transparent;
+  border: 0;
+  color: var(--blue);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  color: var(--blue);
+  display: flex;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: var(--fontSizeBody1);
+  font-weight: normal;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+@media (max-width: 1024px) {
+  [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button {
+    font-size: var(--fontSizeBody1Mobile);
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button:hover, [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button:focus {
+  background-color: transparent;
+  border: 0;
+  color: var(--blue);
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button:hover::after, [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button:focus::after {
+  transform: translateX(5px);
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button::after {
+  content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 32 24"%3E%3Cg id="arrow-blue" opacity="0.5"%3E%3Cpath id="Path_13" data-name="Path 13" d="M0,0H32V24H0Z" fill="none" fill-rule="evenodd"/%3E%3Cpath id="Path_14" data-name="Path 14" d="M23,5,21.59,6.41,26.17,11H2v2H26.17l-4.59,4.59L23,19l7-7Z" fill="%231c2445"/%3E%3C/g%3E%3C/svg%3E%0A');
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 10px;
+  margin-top: 12.5px;
+  transition: all 0.3s ease-in-out;
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .disclaimer {
+  background-color: transparent;
+  border: 0;
+  color: var(--blue);
+  line-height: 2.5rem;
+  margin-top: var(--padding_xsmall);
+  opacity: 0.5;
+  padding: 0;
+}
+[is='flynt-hero-image-title-text-parallax'] .form--newsletter .disclaimer p {
+  font-size: 1.5rem;
+}
+@media (max-width: 1023px) {
+  [is='flynt-hero-image-title-text-parallax'] .form--newsletter .disclaimer p {
+    font-size: 1.5rem;
+ }
+}
+@media (max-width: 599px) {
+  [is='flynt-hero-image-title-text-parallax'] br {
+    content: '\00a0';
+ }
+}
+[is='flynt-hero-image-title-text-parallax'] .screen-reader-response {
+  display: none;
+}
+[is='flynt-hero-image-title-text-parallax'] .wpcf7-response-output {
+  color: var(--blue);
+  font-size: 1.5rem;
+  margin-top: var(--padding_xsmall);
+  opacity: 0.5;
+  padding: 0;
+}
+[is='flynt-hero-image-title-text-parallax'] .wpcf7-tel {
+  outline: 0 !important;
+}

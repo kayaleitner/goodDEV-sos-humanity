@@ -10,6 +10,8 @@ export default function (component) {
   // @marbleton
 
   // initParallax();
+
+  console.log('asdf')
 }
 
 function initParallax() {

@@ -1,0 +1,25 @@
+<div class="flyntComponent componentSpacing" is="flynt-progress-donation" data-level="{{donationLevel}}" data-goal="{{donationGoal}}">
+  <div class="top" style="padding-top: {{ options.paddingTopBottom }}">
+    <div class="container">
+      <div class="goal">
+        <div class="panel">
+          <div class="text"> {{ donationGoal|number_format(0, '.', '.') }} € </div>
+        </div>
+        <div class="post"></div>
+      </div>
+      <div class="ship"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+  <div class="bottom" style="padding-bottom: {{ options.paddingTopBottom }}">
+    <div class="container">
+      <div class="level">
+        <div class="post"></div>
+        <div class="panel">
+          <div class="text">
+            {{ donationLevel|number_format(0, '.', '.') }} €
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

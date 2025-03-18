@@ -1,0 +1,45 @@
+<div 
+  class="flyntComponent componentSpacing {{ options.theme }} {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" 
+  is="flynt-slider-voices"
+  name="SliderVoices"
+  >
+    <div class="container" style="padding: var(--padding_none); max-width: var(--maxWidthContainer_wide);">
+    {% if preContent %}
+      <div class="preContent">
+          <h2>{{ preContent }}</h2>
+      </div>
+    {% endif %}
+    </div>
+    <script type="application/json">{{ jsonData|json_encode }}</script>
+    <div data-slider class="slider swiper-container themeLight " style="background-image: url('{{ backgroundImage }}');">
+      <div class="swiper-wrapper">
+        {% for slide in slides %}
+        {% set notFirstSlide = loop.index > 1 %}
+          <div class="slider-item swiper-slide">
+            <figure class="figure">
+              <img class="figure-image lazyload"
+                src="{{ slide.image.src | resize(32) }}"
+                data-srcset="{{function('wp_get_attachment_image_srcset', slide.image.id)}}"
+                alt="{{ slide.image.alt|e }}">
+            </figure>
+            <div class="content">
+              <div class="content-author h5">{{ slide.author }}</div>
+              <div class="content-quote quote-small">{{ slide.quote|e }}</div>
+            </div>
+            {# <div class="content">
+              <div class="left"></div>
+              <div class="center">
+                <div class="content-author h5">{{ slide.author }}</div>
+                <div class="content-quote quote-small">{{ slide.quote|e }}</div>
+              </div>
+              <div class="right"></div>
+            </div> #}
+          </div>
+        {% endfor %}
+      </div>
+      {% if slides|length > 1 %}
+        <div data-slider-pagination class="slider-pagination"></div>
+      {% endif %}
+    </div>
+  </div>
+</div>

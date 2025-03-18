@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\NavigationPreNav;
 
-use Timber\Menu;
+use Timber\Timber;
 use Flynt\Utils\Options;
 
 add_action('init', function () {
@@ -12,7 +12,7 @@ add_action('init', function () {
 });
 
 add_filter('Flynt/addComponentData?name=NavigationPreNav', function ($data) {
-    $data['menu'] = new Menu('navigation_pre');
+    $data['menu'] = Timber::get_menu('navigation_pre');
 
     return $data;
 });

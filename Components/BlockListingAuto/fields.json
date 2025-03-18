@@ -1,0 +1,524 @@
+{
+  "ID": 0,
+  "key": "field_pageComponents_pageComponents",
+  "label": "Page Blocks",
+  "name": "pageComponents",
+  "aria-label": "",
+  "prefix": "acf",
+  "type": "flexible_content",
+  "value": null,
+  "menu_order": 0,
+  "instructions": "",
+  "required": false,
+  "id": "",
+  "class": "",
+  "conditional_logic": false,
+  "parent": "group_pageComponents",
+  "wrapper": {
+      "width": "",
+      "class": "",
+      "id": ""
+  },
+  "button_label": "Add Block",
+  "layouts": [
+      {
+          "key": "field_pageComponents_pageComponents_BlockListingAuto",
+          "name": "BlockListingAuto",
+          "label": "Listing: Auto",
+          "display": "block",
+          "sub_fields": [
+              {
+                  "ID": 0,
+                  "key": "field_pageComponents_pageComponents_BlockListingAuto_blockTitle",
+                  "label": "Title",
+                  "name": "blockTitle_listingAuto",
+                  "aria-label": "",
+                  "prefix": "acf",
+                  "type": "text",
+                  "value": null,
+                  "menu_order": 0,
+                  "instructions": "Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.",
+                  "required": false,
+                  "id": "",
+                  "class": "",
+                  "conditional_logic": false,
+                  "parent": "field_pageComponents_pageComponents",
+                  "wrapper": {
+                      "width": "",
+                      "class": "",
+                      "id": ""
+                  },
+                  "parent_layout": "field_pageComponents_pageComponents_BlockListingAuto",
+                  "_name": "blockTitle",
+                  "_valid": 1,
+                  "default_value": "",
+                  "maxlength": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": ""
+              },
+              {
+                  "ID": 0,
+                  "key": "field_pageComponents_pageComponents_BlockListingAuto_post_types",
+                  "label": "Content Types",
+                  "name": "post_types",
+                  "aria-label": "",
+                  "prefix": "acf",
+                  "type": "select",
+                  "value": null,
+                  "menu_order": 1,
+                  "instructions": "",
+                  "required": 1,
+                  "id": "",
+                  "class": "",
+                  "conditional_logic": false,
+                  "parent": "field_pageComponents_pageComponents",
+                  "wrapper": {
+                      "width": "100%",
+                      "class": "",
+                      "id": ""
+                  },
+                  "relevanssi_exclude": 0,
+                  "return_format": "value",
+                  "multiple": 1,
+                  "allow_null": 0,
+                  "ui": 1,
+                  "ajax": 0,
+                  "placeholder": "",
+                  "parent_layout": "field_pageComponents_pageComponents_BlockListingAuto",
+                  "_name": "post_types",
+                  "_valid": 1,
+                  "choices": [],
+                  "default_value": ""
+              },
+              {
+                  "ID": 0,
+                  "key": "field_pageComponents_pageComponents_BlockListingAuto_flexTaxonomies",
+                  "label": "Taxonomies to display",
+                  "name": "flexTaxonomies",
+                  "aria-label": "",
+                  "prefix": "acf",
+                  "type": "flexible_content",
+                  "value": null,
+                  "menu_order": 2,
+                  "instructions": "",
+                  "required": 0,
+                  "id": "",
+                  "class": "",
+                  "conditional_logic": false,
+                  "parent": "field_pageComponents_pageComponents",
+                  "wrapper": {
+                      "width": "",
+                      "class": "",
+                      "id": "flexTaxonomiesSelector"
+                  },
+                  "relevanssi_exclude": 0,
+                  "hide_collapse": 1,
+                  "collapse_all_flexible": 0,
+                  "btn-icon-only": 0,
+                  "min": "",
+                  "max": "",
+                  "button_label": "Add Pre-Filter",
+                  "parent_layout": "field_pageComponents_pageComponents_BlockListingAuto",
+                  "_name": "flexTaxonomies",
+                  "_valid": 1,
+                  "layouts": [
+                      {
+                          "name": "category",
+                          "label": "Categories",
+                          "sub_fields": [
+                              {
+                                  "key": "flexTax_category",
+                                  "label": "",
+                                  "name": "category",
+                                  "aria-label": "",
+                                  "type": "taxonomy",
+                                  "instructions": "",
+                                  "required": 0,
+                                  "wrapper": {
+                                      "width": "",
+                                      "class": "",
+                                      "id": ""
+                                  },
+                                  "relevanssi_exclude": 0,
+                                  "taxonomy": "category",
+                                  "add_term": 0,
+                                  "save_terms": 0,
+                                  "load_terms": 0,
+                                  "return_format": "id",
+                                  "field_type": "checkbox",
+                                  "multiple": 1,
+                                  "allow_null": 0
+                              }
+                          ]
+                      },
+                      {
+                          "name": "post_tag",
+                          "label": "Tags",
+                          "sub_fields": [
+                              {
+                                  "key": "flexTax_post_tag",
+                                  "label": "",
+                                  "name": "post_tag",
+                                  "aria-label": "",
+                                  "type": "taxonomy",
+                                  "instructions": "",
+                                  "required": 0,
+                                  "wrapper": {
+                                      "width": "",
+                                      "class": "",
+                                      "id": ""
+                                  },
+                                  "relevanssi_exclude": 0,
+                                  "taxonomy": "post_tag",
+                                  "add_term": 0,
+                                  "save_terms": 0,
+                                  "load_terms": 0,
+                                  "return_format": "id",
+                                  "field_type": "checkbox",
+                                  "multiple": 1,
+                                  "allow_null": 0
+                              }
+                          ]
+                      },
+                      {
+                          "name": "country",
+                          "label": "Countries",
+                          "sub_fields": [
+                              {
+                                  "key": "flexTax_country",
+                                  "label": "",
+                                  "name": "country",
+                                  "aria-label": "",
+                                  "type": "taxonomy",
+                                  "instructions": "",
+                                  "required": 0,
+                                  "wrapper": {
+                                      "width": "",
+                                      "class": "",
+                                      "id": ""
+                                  },
+                                  "relevanssi_exclude": 0,
+                                  "taxonomy": "country",
+                                  "add_term": 0,
+                                  "save_terms": 0,
+                                  "load_terms": 0,
+                                  "return_format": "id",
+                                  "field_type": "checkbox",
+                                  "multiple": 1,
+                                  "allow_null": 0
+                              }
+                          ]
+                      },
+                      {
+                          "name": "customer_segment",
+                          "label": "Customer Segments",
+                          "sub_fields": [
+                              {
+                                  "key": "flexTax_customer_segment",
+                                  "label": "",
+                                  "name": "customer_segment",
+                                  "aria-label": "",
+                                  "type": "taxonomy",
+                                  "instructions": "",
+                                  "required": 0,
+                                  "wrapper": {
+                                      "width": "",
+                                      "class": "",
+                                      "id": ""
+                                  },
+                                  "relevanssi_exclude": 0,
+                                  "taxonomy": "customer_segment",
+                                  "add_term": 0,
+                                  "save_terms": 0,
+                                  "load_terms": 0,
+                                  "return_format": "id",
+                                  "field_type": "checkbox",
+                                  "multiple": 1,
+                                  "allow_null": 0
+                              }
+                          ]
+                      },
+                      {
+                          "name": "division",
+                          "label": "Division",
+                          "sub_fields": [
+                              {
+                                  "key": "flexTax_division",
+                                  "label": "",
+                                  "name": "division",
+                                  "aria-label": "",
+                                  "type": "taxonomy",
+                                  "instructions": "",
+                                  "required": 0,
+                                  "wrapper": {
+                                      "width": "",
+                                      "class": "",
+                                      "id": ""
+                                  },
+                                  "relevanssi_exclude": 0,
+                                  "taxonomy": "division",
+                                  "add_term": 0,
+                                  "save_terms": 0,
+                                  "load_terms": 0,
+                                  "return_format": "id",
+                                  "field_type": "checkbox",
+                                  "multiple": 1,
+                                  "allow_null": 0
+                              }
+                          ]
+                      },
+                      {
+                          "name": "location",
+                          "label": "Locations",
+                          "sub_fields": [
+                              {
+                                  "key": "flexTax_location",
+                                  "label": "",
+                                  "name": "location",
+                                  "aria-label": "",
+                                  "type": "taxonomy",
+                                  "instructions": "",
+                                  "required": 0,
+                                  "wrapper": {
+                                      "width": "",
+                                      "class": "",
+                                      "id": ""
+                                  },
+                                  "relevanssi_exclude": 0,
+                                  "taxonomy": "location",
+                                  "add_term": 0,
+                                  "save_terms": 0,
+                                  "load_terms": 0,
+                                  "return_format": "id",
+                                  "field_type": "checkbox",
+                                  "multiple": 1,
+                                  "allow_null": 0
+                              }
+                          ]
+                      }
+                  ]
+              },
+              {
+                  "ID": 0,
+                  "key": "field_pageComponents_pageComponents_BlockListingAuto_flexFilters",
+                  "label": "User Filters",
+                  "name": "flexFilters",
+                  "aria-label": "",
+                  "prefix": "acf",
+                  "type": "select",
+                  "value": null,
+                  "menu_order": 3,
+                  "instructions": "",
+                  "required": 0,
+                  "id": "",
+                  "class": "",
+                  "conditional_logic": false,
+                  "parent": "field_pageComponents_pageComponents",
+                  "wrapper": {
+                      "width": "100%",
+                      "class": "",
+                      "id": ""
+                  },
+                  "relevanssi_exclude": 0,
+                  "return_format": "array",
+                  "multiple": 1,
+                  "allow_null": 0,
+                  "ui": 1,
+                  "ajax": 0,
+                  "placeholder": "",
+                  "parent_layout": "field_pageComponents_pageComponents_BlockListingAuto",
+                  "_name": "flexFilters",
+                  "_valid": 1,
+                  "choices": {
+                      "category": "Categories",
+                      "post_tag": "Tags",
+                      "country": "Countries",
+                      "customer_segment": "Customer Segments",
+                      "division": "Division",
+                      "location": "Locations"
+                  },
+                  "default_value": ""
+              },
+              {
+                  "ID": 0,
+                  "key": "field_pageComponents_pageComponents_BlockListingAuto_maxPosts",
+                  "label": "Max Number of Items",
+                  "name": "maxPosts",
+                  "aria-label": "",
+                  "prefix": "acf",
+                  "type": "number",
+                  "value": null,
+                  "menu_order": 4,
+                  "instructions": "Set to -1 for unlimited",
+                  "required": false,
+                  "id": "",
+                  "class": "",
+                  "conditional_logic": false,
+                  "parent": "field_pageComponents_pageComponents",
+                  "wrapper": {
+                      "width": "25%",
+                      "class": "",
+                      "id": ""
+                  },
+                  "default_value": 3,
+                  "min": -1,
+                  "step": 1,
+                  "parent_layout": "field_pageComponents_pageComponents_BlockListingAuto",
+                  "_name": "maxPosts",
+                  "_valid": 1,
+                  "max": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": ""
+              },
+              {
+                  "ID": 0,
+                  "key": "field_pageComponents_pageComponents_BlockListingAuto_orderby",
+                  "label": "Sort By",
+                  "name": "orderby",
+                  "aria-label": "",
+                  "prefix": "acf",
+                  "type": "select",
+                  "value": null,
+                  "menu_order": 6,
+                  "instructions": "",
+                  "required": 0,
+                  "id": "",
+                  "class": "",
+                  "conditional_logic": false,
+                  "parent": "field_pageComponents_pageComponents",
+                  "wrapper": {
+                      "width": "25%",
+                      "class": "",
+                      "id": ""
+                  },
+                  "relevanssi_exclude": 0,
+                  "choices": {
+                      "title": "Alphabetical",
+                      "date": "Publishing Date",
+                      "relevance": "Relevance",
+                      "rand": "Random",
+                      "menu_order": "Custom Order"
+                  },
+                  "default_value": "title",
+                  "return_format": "value",
+                  "multiple": 0,
+                  "allow_null": 0,
+                  "ui": 0,
+                  "ajax": 0,
+                  "placeholder": "",
+                  "parent_layout": "field_pageComponents_pageComponents_BlockListingAuto",
+                  "_name": "orderby",
+                  "_valid": 1
+              },
+              {
+                  "ID": 0,
+                  "key": "field_pageComponents_pageComponents_BlockListingAuto_order",
+                  "label": "Order",
+                  "name": "order",
+                  "aria-label": "",
+                  "prefix": "acf",
+                  "type": "button_group",
+                  "value": null,
+                  "menu_order": 7,
+                  "instructions": "",
+                  "required": false,
+                  "id": "",
+                  "class": "",
+                  "conditional_logic": false,
+                  "parent": "field_pageComponents_pageComponents",
+                  "wrapper": {
+                      "width": "33%",
+                      "class": "",
+                      "id": ""
+                  },
+                  "choices": {
+                      "ASC": "Asc.",
+                      "DESC": "Desc."
+                  },
+                  "default_value": "ASC",
+                  "return_format": "value",
+                  "layout": "horizontal",
+                  "parent_layout": "field_pageComponents_pageComponents_BlockListingAuto",
+                  "_name": "order",
+                  "_valid": 1,
+                  "allow_null": 0
+              },
+              {
+                  "ID": 0,
+                  "key": "field_pageComponents_pageComponents_BlockListingAuto_show_load_more",
+                  "label": "Show \"Load More\"",
+                  "name": "show_load_more",
+                  "aria-label": "",
+                  "prefix": "acf",
+                  "type": "true_false",
+                  "value": null,
+                  "menu_order": 8,
+                  "instructions": "",
+                  "required": 0,
+                  "id": "",
+                  "class": "",
+                  "conditional_logic": false,
+                  "parent": "field_pageComponents_pageComponents",
+                  "wrapper": {
+                      "width": "20%",
+                      "class": "",
+                      "id": ""
+                  },
+                  "relevanssi_exclude": 0,
+                  "message": "",
+                  "default_value": 0,
+                  "ui": 1,
+                  "ui_on_text": "",
+                  "ui_off_text": "",
+                  "parent_layout": "field_pageComponents_pageComponents_BlockListingAuto",
+                  "_name": "show_load_more",
+                  "_valid": 1
+              },
+              {
+                  "ID": 0,
+                  "key": "field_pageComponents_pageComponents_BlockListingAuto_viewAllLink",
+                  "label": "\"View All\"-Link",
+                  "name": "viewAllLink",
+                  "aria-label": "",
+                  "prefix": "acf",
+                  "type": "link",
+                  "value": null,
+                  "menu_order": 9,
+                  "instructions": "",
+                  "required": 0,
+                  "id": "",
+                  "class": "",
+                  "conditional_logic": false,
+                  "parent": "field_pageComponents_pageComponents",
+                  "wrapper": {
+                      "width": "20%",
+                      "class": "",
+                      "id": ""
+                  },
+                  "relevanssi_exclude": 0,
+                  "message": "",
+                  "ui": 1,
+                  "ui_on_text": "",
+                  "ui_off_text": "",
+                  "parent_layout": "field_pageComponents_pageComponents_BlockListingAuto",
+                  "_name": "viewAllLink",
+                  "_valid": 1,
+                  "return_format": "array"
+              }
+          ],
+          "min": "",
+          "max": ""
+      }
+  ],
+  "_name": "pageComponents",
+  "_valid": 1,
+  "min": "",
+  "max": "",
+  "choices": {
+      "post": "Insights",
+      "people": "People",
+      "project": "Projects"
+  }
+}

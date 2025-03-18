@@ -1,0 +1,43 @@
+[is='flynt-grid-icons'] {
+  .list {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .item {
+      align-items: center;
+      display: flex;
+      flex-flow: row;
+      padding: var(--padding_xsmall);
+      width: 50%;
+      @media (max-width: 540px) {
+          width: 100%;
+      }
+
+      .fig-box {
+          position: absolute;
+          width: 14rem;
+          height: 14rem;
+          display: flex;
+          align-items: center;
+      }
+      
+      p {
+        margin: 0;
+        transform: translateX(14rem);
+        width: calc(100% - 12rem);
+        padding-left: var(--padding_xsmall);
+      }
+      @media (max-width: 540px) {
+        p {
+          padding-left: var(--padding_xxsmall)
+        }
+      }
+
+    }
+  }
+}

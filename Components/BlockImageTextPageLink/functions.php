@@ -10,12 +10,22 @@ const POST_TYPE = 'page';
 
 add_filter('Flynt/addComponentData?name=BlockImageTextPageLink', function ($data) {
 
-    $postType = POST_TYPE;
+    $postId = $data['pageId'];
 
-    $data['items'] = Timber::get_posts($data[$postType]);
+    $data['item'] = [
+        'title' => get_the_title($postId),
+        'link' => get_permalink($postId),
+        'thumbnail' => [
+            'src' => get_the_post_thumbnail_url($postId),
+            'id' => get_post_thumbnail_id($postId),
+            'alt' => get_the_title($postId),
+            'caption' => get_the_post_thumbnail_caption($postId)
+        ]
+    ];
 
     return $data;
 });
+
 
 function getACFLayout()
 {
@@ -50,7 +60,7 @@ function getACFLayout()
             ],
             [
                 'label' => __('Page', 'flynt'),
-                'name' => 'page',
+                'name' => 'pageId',
                 'type' => 'post_object',
                 'post_type' => [
                     'page'

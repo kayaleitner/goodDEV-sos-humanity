@@ -1,0 +1,22 @@
+{% import "Components/_Atoms/macroIcon.twig" as icon %}
+
+<li class="anim-fade-in">
+  <div class="bg-grey p-md flex flex-col h-full rounded-[1.875rem]">
+    <div class="wysiwyg">
+        {{ fallBackText|e('wp_kses_post') }}
+    </div>
+    <div class="flex justify-end items-center gap-xs mt-auto">
+        {% if contactForm %}
+            <a class="btn-primary overflow-hidden whitespace-nowrap min-w-[8rem] text-center" href="?modal=form&slug=contactFormCta" data-refs="modalLink">{{contactCta.title}}</a>
+            <div id="contactFormCta" class="hidden bg-paperColor max-h-full md:max-h-[unset] overflow-y-auto px-sm py-md md:py-lg md:px-xl md:w-[60rem]">
+                {{ function('do_shortcode', '[wpforms id="' ~ contactForm.id ~ '" title="true" description="true"]') }}
+            </div>
+        {% else %}
+            <a class="btn btn-primary whitespace-nowrap self-end" href="{{ contactCta.url }}" target="{{contactCta.target}}"> {{ contactCta.title }} </a>
+        {% endif %}
+        <a href="{{ linkedin }}" class="h-[2.25rem]" aria-label="linkedIn" target="_blank">
+            {{ icon.icon('linkedin' ~ "-circle") }}
+        </a>
+    </div>
+  </div>
+</li>

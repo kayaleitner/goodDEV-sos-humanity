@@ -1,12 +1,14 @@
-{% if items|length > 0 %}
-<div class="flyntComponent {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-image-text-page-link">
+
+<div class="flyntComponent {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-image-text-page-link" 
+name="BlockImageTextPageLink"
+>
   <div class="container" style="padding: var(--padding_small); max-width: var(--maxWidthContainer_wide);">
     {% if preContent %}
       <div class="preContent h1 {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
         {{ preContent|e }}
       </div>
     {% endif %}
-    {% for item in items %}
+
     <a class="box box--{{ imagePosition }} {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" href="{{ item.link }}" aria-hidden="true" tabindex="-1">
       <div class="box-inner box-inner--image" aria-hidden="true" tabindex="-1">
         <img class="figure-image lazyload"
@@ -25,11 +27,11 @@
         <div class="box-copy">
           <h4>{{ item.title }}</h4>
           <div class="content">{{ contentHtml|wp_kses_custom }}</div>
-          {# <a href="{{ item.link }}" class="button button--link content-readMore" aria-hidden="true" tabindex="-1">{{ readMoreText }}</a> #}
         </div>
       </div>
     </a>
-    {% endfor %}
+    
+
   </div>
 </div>
-{% endif %}
+

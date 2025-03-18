@@ -1,0 +1,45 @@
+{# Störer #}
+<div class="flyntComponent {{ options.theme }} {% if isContactForm %} is-contact-form {% endif %}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-hero-image-title-text-parallax">
+
+  <picture class="picture">
+    <source srcset="
+      {{function('wp_get_attachment_image_srcset', images.imageDesktop.id)}}"
+      {# {{ images.imageDesktop.src | resizeDynamic(1440, 400, 'center') }} 1440w,
+      {{ images.imageDesktop.src | resizeDynamic(1440*2, 400*2, 'center') }} 2880w" #}
+    media="(min-width: 768px)"
+    sizes="100vw">
+    <img class="image  {% if not isContactForm %} parallax {% endif %}"
+      srcset="
+        {{function('wp_get_attachment_image_srcset', images.imageMobile.id)}}"
+        {# {{ images.imageMobile.src | resizeDynamic(375*2, 400*2) }} 750w,
+        {{ images.imageMobile.src | resizeDynamic(375*3, 400*3) }} 1125w" #}
+      src="{{ images.imageMobile.src | resize(32) }}"
+      {# src="{{ images.imageMobile.src | resizeDynamic(1440, 400) }}" #}
+      sizes="100vw"
+      data-object-fit="cover"
+      alt="{{ images.imageDesktop.alt|e }}">
+    <div class="content-caption">
+        <span class="caption">{{ images.imageDesktop.caption|e }}</span>
+    </div>
+  </picture>
+  {% if contentTitle %}
+    <div class="content-title">
+      <h2 class="title" data-text="{{ contentTitle|e }}">{{ contentTitle|e }}</h2>
+    </div>
+  {% endif %}   
+  {% if isContactForm %}
+    <div class="contactForm">
+      <div class="contactForm-inner">
+          {{ contentText }}
+        </div>
+    </div>
+  {% else %}
+    {% if contentText %}
+      <div class="content" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }};">
+        <div class="content-inner">
+          {{ contentText }}
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+</div>

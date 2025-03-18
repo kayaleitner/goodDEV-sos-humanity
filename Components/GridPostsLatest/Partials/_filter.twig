@@ -1,0 +1,16 @@
+<ul class="filters" data-type="{{filter.type}}">
+  <li>
+    <a href="#" class="filters-term active" data-term="" data-action="loadFilter">Alle</a>
+  </li>
+  {% for term in filter.terms %}
+    <li>
+      <a href="#" class="filters-term" data-term="{{ term.value }}" data-action="loadFilter">
+        {% if term.term.name %}
+          {{ term.term.name }}
+        {% else %}
+          {{ term.term }}
+        {% endif %}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

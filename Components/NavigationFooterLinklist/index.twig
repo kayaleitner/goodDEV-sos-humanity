@@ -1,0 +1,47 @@
+<div class="flyntComponent" is="flynt-navigation-footer-linklist">
+  <div class="container" style="padding: var(--padding_small); max-width: var(--maxWidthContainer_wide);">
+    <div class="column logo">
+      <img class="logo-image" src="{{ logo.src }}" alt="{{ logo.alt }}">
+      {% if aboutHtml %}
+        <div class="content">
+          {{ aboutHtml|wp_kses_custom }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="column contact">
+      <div class="preContent h5">
+        {{ contactPreContent|e }}
+      </div>
+      <div class="content">
+        {{ contactContentHtml|wp_kses_custom }}
+      </div>
+    </div>
+    <div class="column donations">
+      <div class="preContent h5">
+        {{ donationsPreContent|e }}
+      </div>
+      <div class="content">
+        {{ donationsContentHtml|wp_kses_custom }}
+      </div>
+    </div>
+    <div class="column partners">
+      {% if partnersPreContent %}
+        <div class="preContent h5">
+          {{ partnersPreContent|e }}
+        </div>
+        <div class="logos">
+        {% for panel in partnersPanels %}
+        {% if panel.panelLink %} <a href="{{ panel.panelLink.url }}" target="{{ panel.panelLink.target }}"> {% endif %}
+          <figure class="figure">
+            <img class="figure-logo lazyload"
+              src="{{ panel.panelLogo.src | resize(32) }}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', panel.panelLogo.id)}}"
+              alt="{{ panel.panelLogo.alt|e }}">
+          </figure>
+        {% if panel.panelLink %} </a> {% endif %}
+        {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+[is='flynt-slider-images'] {
+  .slider {
+    position: relative;
+
+    &-item {
+      overflow: hidden;
+      position: relative;
+    }
+
+    &-button {
+      align-items: center;
+      background-color: transparent;
+      border-radius: 50%;
+      border: 1px solid var(--yellow);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      outline: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.2s ease-out;
+      width: 15.75rem;
+      height: 15.75rem;
+      z-index: 10;
+
+      @media (min-width: 1024px) {
+
+        height: 6.3rem;
+        width: 6.3rem;
+        &:hover {
+          background-color: var(--blue) !important;
+        }
+
+        &:focus {
+          background-color: transparent !important;
+        }
+      }
+
+      &.swiper-button-disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      &--prev {
+        left: 3rem;
+        background-image: url('../assets/icons/arrow-slideshow-left.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 3rem;
+        @media screen and (min-width: 1024px) {
+          background-size: 1.2rem;
+        }
+      }
+
+      &--next {
+        right: 3rem;
+        background-image: url('../assets/icons/arrow-slideshow-right.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-size: 3rem;
+        @media screen and (min-width: 1024px) {
+          background-size: 1.2rem;
+        }
+      }
+
+      .feather {
+        color: var(--blue);
+        height: auto;
+        top: 0;
+        width: 80%;
+      }
+    }
+  }
+
+  .figure {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    &-image {
+      height: 100%;
+      width: 100%;
+
+    }
+
+    &-caption {
+      position: absolute;
+      right: 20px;
+      transform: translateY(calc(-100% - 20px));
+
+      @media (max-width: 540px) {
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+  }
+
+  .description-box {
+    padding: var(--padding_xsmall);
+    border: 1px solid var(--blue);
+  }
+}

@@ -1,0 +1,31 @@
+{% if items|length > 0 %}
+  <flynt-component 
+    class="flyntComponent componentSpacing {{ options.theme }}" 
+    style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" 
+    is="flynt-grid-posts-latest"
+    name="GridPostsLatest"
+    load:on="visible"
+  >
+    <div class="container" style="padding: var(--padding_small) var(--padding_small) var(--padding_medium) var(--padding_small); max-width: var(--maxWidthContainer_wide);">
+      {% if preContentHtml %}
+        <div class="preContent {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+          {{ preContentHtml|wp_kses_custom }}
+        </div>
+      {% endif %}
+      {% for filterItem in filterTabs %}
+          {% include 'Partials/_filter.twig' with {filter: filterItem} %}
+      {% endfor %}
+      <ul class="grid" data-category="{{category}}"
+        data-taxonomies="{{taxonomies|json_encode()}}"
+        data-filters="{{filters|json_encode()}}"
+      >
+        {% for item in items %}
+          {% include 'Partials/_item.twig' with {item: item} %}
+        {% endfor %}
+      </ul>
+      <div class="allPostsLink {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+        <a {# href="#" #} class="button button--link" data-action="loadMore">{{ labels.allPosts }}</a>
+      </div>
+    </div>
+  </flynt-component>
+{% endif %}
