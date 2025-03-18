@@ -15,8 +15,9 @@
       <div class="pageWrapper env_badge env_{{function('wp_get_environment_type')}}">
         <header class="mainHeader top-0 left-0 z-[9999] w-full h-0 absolute">
           {% block header %}
+            {{ renderComponent('NavigationPreNav') }}
             {{ renderComponent('NavigationMain') }}
-            {{ renderComponent('NavigationMobile') }}
+            {# {{ renderComponent('NavigationMobile') }} #}
             {# {{ renderComponent('NewsletterMailchimp') }} #}
           {% endblock %}
         </header>
@@ -29,9 +30,10 @@
             {% endblock %}
           {% endif %}
         </main>
-          {{ renderComponent('ElementModal') }}
         <footer class="mainFooter">
           {% block footer %}
+            {{ renderComponent('NavigationFooterColumns') }}
+            {{ renderComponent('NavigationFooterLinklist') }}
             {{ renderComponent('NavigationFooter') }}
           {% endblock %}
         </footer>
