@@ -1,16 +1,22 @@
 @import 'styles/_tw-directives.css';
-@import 'styles/_fonts.css';
+/* @import 'styles/_fonts.css'; */
 @import 'styles/_colors.css';
 @import 'styles/_variables.css';
 @import 'styles/_typography.css';
 @import 'styles/_buttons.css';
+
+@import 'oldStyles/_variables.css';
+
+html {
+  font-size: 10px;
+}
 
 /**
  * Classic editor styles
  */
 
 #tinymce.wp-editor {
-  background-color: #cdcdcd;
+  background-color: #e3e3e3;
   box-sizing: border-box;
   overflow-wrap: break-word;
   padding: 1rem;
@@ -33,3 +39,300 @@
   margin: 0;
 }
 
+
+
+/** OLD FONT STYLES **/
+
+h1, h2, .h1, .h2 {
+  color: var(--blue);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  letter-spacing: -2.5px;
+  line-height: 1.125;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+h1 a, h2 a, .h1 a, .h2 a, h1 a:hover, h2 a:hover, .h1 a:hover, .h2 a:hover, h1 a:focus, h2 a:focus, .h1 a:focus, .h2 a:focus {
+  color: var(--blue);
+  text-decoration: none;
+}
+.title-big {
+  -webkit-text-stroke: 2px var(--yellow);
+  font-size: var(--fontSize_hero);
+  line-height: 1;
+  color: transparent;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: fit-content;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 900;
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  .title-big {
+    -webkit-text-stroke-width: 1px;
+ }
+}
+h1, .h1, h2, .h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 7.2rem;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.11;
+  letter-spacing: -1px;
+  color: var(--blue);
+}
+@media (max-width: 1024px) {
+  h1, .h1, h2, .h2 {
+    font-size: 10rem;
+    letter-spacing: 0;
+    line-height: 1;
+ }
+}
+.quote-big {
+  font-family: 'Ubuntu Mono Bold', monospace;
+  font-size: 7.2rem;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.11;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--blue);
+}
+@media (max-width: 1024px) {
+  .quote-big {
+    font-size: 10rem;
+    letter-spacing: 0;
+    line-height: 1;
+ }
+}
+.quote-medium {
+  font-family: 'Ubuntu Mono Bold', monospace;
+  font-size: 3.6rem;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--blue);
+}
+@media (max-width: 1024px) {
+  .quote-medium {
+    font-size: 4rem;
+    line-height: 1.25;
+ }
+}
+h3, .h3, h4, .h4 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 3.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: var(--blue);
+}
+@media (max-width: 1024px) {
+  h3, .h3, h4, .h4 {
+    font-size: 6rem;
+    letter-spacing: 0;
+ }
+}
+h5, .h5, h6, .h6 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.18;
+  letter-spacing: normal;
+  color: var(--blue);
+}
+@media (max-width: 1024px) {
+  h5, .h5, h6, .h6 {
+    font-size: 3.25rem;
+ }
+}
+a {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+  transition: all 0.2s ease-out;
+}
+a:hover, a:focus {
+  opacity: 0.6;
+}
+p, .paragraph, table {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: var(--fontSizeBody1);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.59;
+  letter-spacing: normal;
+  color: var(--blue);
+}
+p:last-child, .paragraph:last-child, table:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 1024px) {
+  p, .paragraph, table {
+    font-size: 4rem;
+    line-height: 1.25;
+ }
+}
+figure {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: var(--fontSizeBody1);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.59;
+  letter-spacing: normal;
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  figure {
+    font-size: 3rem;
+    line-height: 1.25;
+ }
+}
+.quote-small {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: var(--fontSizeBody1);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.59;
+  letter-spacing: normal;
+  text-align: center;
+  color: inherit;
+}
+@media (max-width: 1024px) {
+  .quote-small {
+    font-size: 4rem;
+ }
+}
+.white {
+  color: var(--warmwhite);
+}
+.body-2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: var(--fontSizeBody2);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  color: var(--blue);
+}
+@media (max-width: 1024px) {
+  .body-2 {
+    font-size: 4.25rem;
+    line-height: 1.25;
+ }
+}
+.caption {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.92;
+  letter-spacing: normal;
+  color: var(--blue);
+}
+@media (max-width: 1024px) {
+  .caption {
+    font-size: 2.5rem;
+ }
+}
+.slider-caption {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.92;
+  letter-spacing: normal;
+  color: var(--blue);
+}
+@media (max-width: 1024px) {
+  .slider-caption {
+    font-size: 3rem;
+ }
+}
+hr {
+  background-color: var(--warmwhite);
+  border: 0;
+  display: block;
+  height: 1px;
+  margin: 1em 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+figcaption {
+  color: var(--white);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  margin: 0;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+figcaption::before {
+  content: '©';
+  margin-right: 5px;
+}
+@media (max-width: 1024px) {
+  figcaption {
+    font-size: 2.5rem;
+ }
+}
+code {
+  background-color: rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  padding: 0 0.3rem;
+}
+blockquote, .blockquote {
+  border-left: 4px solid var(--blue);
+  font-family: 'Source Sans Pro Italic', sans-serif;
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.16px;
+  line-height: 1.55;
+  margin: 2.4rem auto;
+  max-width: 28rem;
+  padding: 0.8rem 1.5rem;
+}
+blockquote p:last-child, .blockquote p:last-child {
+  margin-bottom: 0;
+}
+/** * 1.1 Lists & Tables * * Default and custom styled list and table elements. */
+ul, ol {
+  font-size: var(--fontSizeBody1);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.59;
+  margin: 0 0 1.2rem;
+  padding-left: 1.5rem;
+}
+@media (max-width: 1024px) {
+  ul, ol {
+    font-size: 4rem;
+    line-height: 1.25;
+ }
+}
+ul ul, ol ul, ul ol, ol ol {
+  margin-bottom: 0;
+}

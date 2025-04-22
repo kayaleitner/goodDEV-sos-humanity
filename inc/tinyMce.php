@@ -156,108 +156,155 @@ function getConfig(): array
             __('Section Title (H2)', 'flynt') => 'h2',
             __('Content Title (H3)', 'flynt') => 'h3',
         ],
+        
+        'blockformats' => [
+            'Paragraph' => 'p',
+            'Heading 1' => 'h1',
+            'Heading 2' => 'h2',
+            'Heading 3' => 'h3',
+            'Heading 4' => 'h4',
+            'Heading 5' => 'h5',
+            'Heading 6' => 'h6'
+        ],
         'styleformats' => [
             [
-                'title' => __('Text', 'flynt'),
+                'title' => 'Headings',
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => __('Body', 'flynt'),
-                        'classes' => 'font-paragraph',
+                        'title' => 'Heading 1',
+                        'classes' => 'h1',
                         'selector' => '*'
                     ],
                     [
-                        'title' => __('Title Large', 'flynt'),
-                        'classes' => 'font-pageTitle',
+                        'title' => 'Heading 2',
+                        'classes' => 'h2',
                         'selector' => '*'
                     ],
                     [
-                        'title' => __('Title Small', 'flynt'),
-                        'classes' => 'font-sectionTitle',
+                        'title' => 'Heading 3',
+                        'classes' => 'h3',
                         'selector' => '*'
                     ],
                     [
-                        'title' => __('Subtitle', 'flynt'),
-                        'classes' => 'font-contentTitle',
+                        'title' => 'Heading 4',
+                        'classes' => 'h4',
                         'selector' => '*'
                     ],
                     [
-                        'title' => __('Caption', 'flynt'),
-                        'classes' => 'font-caption',
+                        'title' => 'Heading 5',
+                        'classes' => 'h5',
                         'selector' => '*'
                     ],
                     [
-                        'title' => __('Mono', 'flynt'),
-                        'classes' => 'font-mono',
+                        'title' => 'Heading 6',
+                        'classes' => 'h6',
                         'selector' => '*'
                     ],
                 ]
             ],
             [
-                'title' => __('Buttons', 'flynt'),
+                'title' => 'Bodies',
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => __('Button Primary', 'flynt'),
-                        'classes' => 'button button--brand',
-                        'selector' => 'a'
+                        'title' => 'Body 2',
+                        'classes' => 'body-2',
+                        'selector' => '*'
                     ],
                     [
-                        'title' => __('Button Accent', 'flynt'),
-                        'classes' => 'button button--accent',
-                        'selector' => 'a'
+                        'title' => 'Caption',
+                        'classes' => 'caption',
+                        'selector' => '*'
                     ],
                     [
-                        'title' => __('Button Arrow Icon', 'flynt'),
-                        'classes' => 'button button--icon',
-                        'selector' => 'a'
+                        'title' => 'Quote Small',
+                        'classes' => 'quote-small',
+                        'selector' => '*'
                     ],
                 ]
             ],
             [
-                'title' => __('Horizontal Line', 'flynt'),
+                'title' => 'Quotes',
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => __('Dark Blue', 'flynt'),
-                        'classes' => 'bg-textColor',
-                        'selector' => 'hr'
+                        'title' => 'Quote Big',
+                        'classes' => 'quote-big',
+                        'selector' => '*'
                     ],
                     [
-                        'title' => __('Light Blue', 'flynt'),
-                        'classes' => 'bg-hoverColor',
-                        'selector' => 'hr'
+                        'title' => 'Quote Medium',
+                        'classes' => 'quote-medium',
+                        'selector' => '*'
                     ],
                     [
-                        'title' => __('Orange', 'flynt'),
-                        'classes' => 'bg-tangerine',
-                        'selector' => 'hr'
-                    ],
-                    [
-                        'title' => __('Yellow', 'flynt'),
-                        'classes' => 'bg-yellow',
-                        'selector' => 'hr'
+                        'title' => 'Quote Small',
+                        'classes' => 'quote-small',
+                        'selector' => '*'
                     ],
                 ]
             ],
+            [
+                'title' => 'Buttons',
+                'icon' => '',
+                'items' => [
+                    [
+                        'title' => 'Button Blue',
+                        'classes' => 'button',
+                        'selector' => 'a,button'
+                    ],
+                    [
+                        'title' => 'Button Yellow',
+                        'classes' => 'button--yellow',
+                        'selector' => '.button'
+                    ],
+                    // [
+                    //     'title' => 'Button Ghost',
+                    //     'classes' => 'button--ghost',
+                    //     'selector' => '.button'
+                    // ],
+                    // [
+                    //     'title' => 'Button Small',
+                    //     'classes' => 'button--small',
+                    //     'selector' => '.button'
+                    // ],
+                    // [
+                    //     'title' => 'Button Link',
+                    //     'classes' => 'button--link',
+                    //     'selector' => '.button'
+                    // ]
+                ]
+            ],
+            [
+                'title' => 'Icon Lists',
+                'icon' => '',
+                'items' => [
+                    [
+                        'title' => 'Check Circle',
+                        'classes' => 'iconList iconList--checkCircle',
+                        'selector' => 'ul,ol'
+                    ]
+                ]
+            ]
         ],
         'toolbars' => [
             'default' => [
                 [
                     'formatselect',
                     'styleselect',
+                    'forecolor backcolor',
                     'bold',
                     'italic',
+                    // 'strikethrough',
                     // 'blockquote',
-                    'forecolor',
                     '|',
                     'alignleft',
                     'aligncenter',
                     'alignright',
+//                    'justifyfull',
+//                    'justify',
                     'alignjustify',
-                    '|',
-                    'hr',
-                    'charmap',
                     '|',
                     'bullist',
                     'numlist',
@@ -265,33 +312,29 @@ function getConfig(): array
                     'link',
                     'unlink',
                     '|',
-                    'removeformat'
+                    'pastetext',
+                    'removeformat',
+                    '|',
+                    'nonbreaking',
+                    'charmap',
+                    '|',
+                    'undo',
+                    'redo',
+                    'fullscreen'
                 ]
             ],
             'basic' => [
                 [
-                    'formatselect',
-                    'styleselect',
                     'bold',
                     'italic',
-                    // 'blockquote',
-                    'forecolor',
-                    '|',
-                    'alignleft',
-                    'aligncenter',
-                    'alignright',
-                    'alignjustify',
-                    '|',
-                    'hr',
-                    'charmap',
-                    '|',
-                    'bullist',
-                    'numlist',
+                    'strikethrough',
                     '|',
                     'link',
                     'unlink',
                     '|',
-                    'removeformat'
+                    'undo',
+                    'redo',
+                    'fullscreen'
                 ]
             ]
         ],
