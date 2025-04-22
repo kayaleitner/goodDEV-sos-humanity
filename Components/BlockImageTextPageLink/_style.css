@@ -49,7 +49,7 @@
 }
 [is='flynt-block-image-text-page-link'] .box-inner--arrow::after {
   align-items: center;
-  content: '➔';
+  content: "➔";
   background-color: var(--blue);
   color: var(--warmwhite);
   display: flex;
