@@ -2,80 +2,80 @@
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('../assets/fonts/SourceSansProRegular.woff2') format('woff2'),
-       url('../assets/fonts/SourceSansProRegular.woff') format('woff');
+  src: url('/assets/fonts/SourceSansProRegular.woff2') format('woff2'),
+       url('/assets/fonts/SourceSansProRegular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('../assets/fonts/SourceSansProItalic.woff2') format('woff2'),
-       url('../assets/fonts/SourceSansProItalic.woff') format('woff');
+  src: url('/assets/fonts/SourceSansProItalic.woff2') format('woff2'),
+       url('/assets/fonts/SourceSansProItalic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('../assets/fonts/SourceSansProBold.woff2') format('woff2'),
-       url('../assets/fonts/SourceSansProBold.woff') format('woff');
+  src: url('/assets/fonts/SourceSansProBold.woff2') format('woff2'),
+       url('/assets/fonts/SourceSansProBold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('../assets/fonts/SourceSansProBoldItalic.woff2') format('woff2'),
-       url('../assets/fonts/SourceSansProBoldItalic.woff') format('woff');
+  src: url('/assets/fonts/SourceSansProBoldItalic.woff2') format('woff2'),
+       url('/assets/fonts/SourceSansProBoldItalic.woff') format('woff');
   font-weight: 700;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('../assets/fonts/SourceSansProBlack.woff2') format('woff2'),
-       url('../assets/fonts/SourceSansProBlack.woff') format('woff');
+  src: url('/assets/fonts/SourceSansProBlack.woff2') format('woff2'),
+       url('/assets/fonts/SourceSansProBlack.woff') format('woff');
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('../assets/fonts/SourceSansProBlackItalic.woff2') format('woff2'),
-       url('../assets/fonts/SourceSansProBlackItalic.woff') format('woff');
+  src: url('/assets/fonts/SourceSansProBlackItalic.woff2') format('woff2'),
+       url('/assets/fonts/SourceSansProBlackItalic.woff') format('woff');
   font-weight: 900;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Ubuntu Mono';
-  src: url('../assets/fonts/UbuntuMonoRegular.woff2') format('woff2'),
-       url('../assets/fonts/UbuntuMonoRegular.woff') format('woff');
+  src: url('/assets/fonts/UbuntuMonoRegular.woff2') format('woff2'),
+       url('/assets/fonts/UbuntuMonoRegular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Ubuntu Mono';
-  src: url('../assets/fonts/UbuntuMonoItalic.woff2') format('woff2'),
-       url('../assets/fonts/UbuntuMonoItalic.woff') format('woff');
+  src: url('/assets/fonts/UbuntuMonoItalic.woff2') format('woff2'),
+       url('/assets/fonts/UbuntuMonoItalic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Ubuntu Mono';
-  src: url('../assets/fonts/UbuntuMonoBold.woff2') format('woff2'),
-       url('../assets/fonts/UbuntuMonoBold.woff') format('woff');
+  src: url('/assets/fonts/UbuntuMonoBold.woff2') format('woff2'),
+       url('/assets/fonts/UbuntuMonoBold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Ubuntu Mono';
-  src: url('../assets/fonts/UbuntuMonoBoldItalic.woff2') format('woff2'),
-       url('../assets/fonts/UbuntuMonoBoldItalic.woff') format('woff');
+  src: url('/assets/fonts/UbuntuMonoBoldItalic.woff2') format('woff2'),
+       url('/assets/fonts/UbuntuMonoBoldItalic.woff') format('woff');
   font-weight: 700;
   font-style: italic;
 }
