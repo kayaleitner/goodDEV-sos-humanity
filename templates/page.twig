@@ -1,6 +1,14 @@
 {% extends 'templates/_document.twig' %}
 
 {% block content %}
+  {% set array = [] %}
+  {% for comp in post.meta('pageComponents') %}
+      {% set array = array|merge([comp|first]) %}
+  {% endfor %}
+
+  {% if 'heroImageText' not in array %}
+    {{ renderComponent('BlockPostHeader', {'post': post}) }}
+  {% endif %} 
   {% for component in post.meta('pageComponents') %}
     {{ renderComponent(component) }}
   {% endfor %}
