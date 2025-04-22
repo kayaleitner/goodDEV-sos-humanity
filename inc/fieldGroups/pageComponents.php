@@ -65,7 +65,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\GridJobs\getACFLayout(),
                     Components\GridPostsSelector\getACFLayout(),
                     Components\WidgetPetition\getACFLayout(),
-                    // Components\ProgressDonation\getACFLayout(),
+                    Components\ProgressDonation\getACFLayout(),
                     Components\DonationSlider\getACFLayout(),
                     Components\BlockContinousDonation\getACFLayout(),
                 ]

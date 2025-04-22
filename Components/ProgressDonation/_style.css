@@ -1,6 +1,7 @@
 [is='flynt-progress-donation'] {
 
-    height: 60rem; 
+    height: 60rem;
+    display: block;
 
     --shipWidth: 276px;
     --shipHeight: 124px;
@@ -98,7 +99,6 @@
         .ship {
             position: absolute;
             z-index: 10;
-            // animation: ship 2.5s linear 2;
             transition: left 6s ease-in-out;
             bottom: 0;
             left: 0;
