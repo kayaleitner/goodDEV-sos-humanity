@@ -1,6 +1,7 @@
  @import 'styles/_tw-directives.css';
  @import 'styles/_typography.css';
 
+ @import 'styles/_global.css';
 
  /* @import 'styles/_fonts.css'; */
 /*@import 'styles/_container.css';
@@ -39,6 +40,7 @@
 @import '../Components/BlockQuote/_style.css';
 @import '../Components/BlockTextImageCrop/_style.css';
 @import '../Components/BlockTicker/_style.css';
+@import '../Components/BlockVideoOembed/_style.css';
 @import '../Components/BlockWysiwyg/_style.css';
 @import '../Components/BlockWysiwygRepeater/_style.css';
 @import '../Components/CtaDonate/_style.css';
@@ -52,11 +54,13 @@
 @import '../Components/HeroImageText/_style.css';
 @import '../Components/ListNumbers/_style.css';
 @import '../Components/ListSearchResults/_style.css';
+@import '../Components/NavigationBurger/_style.css';
 @import '../Components/NavigationFooter/_style.css';
 @import '../Components/NavigationFooterColumns/_style.css';
 @import '../Components/NavigationFooterLinklist/_style.css';
 @import '../Components/NavigationMain/_style.css';
 @import '../Components/NavigationPreNav/_style.css';
-@import '../Components/WidgetPetition/_style.css';
+@import '../Components/ProgressDonation/_style.css';
 @import '../Components/SliderImages/_style.css';
 @import '../Components/SliderVoices/_style.css';
+@import '../Components/WidgetPetition/_style.css';

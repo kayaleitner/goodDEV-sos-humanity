@@ -691,6 +691,7 @@ select::-ms-expand {
   position: fixed;
   top: 0;
   width: 100%;
+  height: fit-content;
   z-index: 1000;
   transition: all 0.3s ease-in-out;
 }

@@ -8,7 +8,7 @@
 }
 .june-scope .flex {
     display: flex;
-    gap: var(--padding_small);
+    gap: 20px;
 }
 .june-scope .flex-column {
     flex-direction: column;

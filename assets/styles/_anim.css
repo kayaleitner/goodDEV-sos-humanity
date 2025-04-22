@@ -1,33 +1,29 @@
 /**
 * Animateables
 */
-
 .anim {
-    /* Initial styles for animateables, will be changed via JS */
-    &-fade-in {
-      opacity: 0;
-    }
-  
-    &-move-up {
-      opacity: 0;
-      transform: translateY(4rem);
-    }
-  
-    &-move-down {
-      opacity: 0;
-      transform: translateY(-4rem);
-    }
-  
-    &-move-left {
-      opacity: 0;
-      transform: translateX(4rem);
-    }
-  
-    &-move-right {
-      opacity: 0;
-      transform: translateX(-4rem);
-    }
-  }
+	/* Initial styles for animateables, will be changed via JS */
+}
+ .anim-fade-in {
+	 opacity: 0;
+}
+ .anim-move-up {
+	 opacity: 0;
+	 transform: translateY(4rem);
+}
+ .anim-move-down {
+	 opacity: 0;
+	 transform: translateY(-4rem);
+}
+ .anim-move-left {
+	 opacity: 0;
+	 transform: translateX(4rem);
+}
+ .anim-move-right {
+	 opacity: 0;
+	 transform: translateX(-4rem);
+}
+ 
   .modal-overflow-gradient-top {
     &::before {
       content: '';

@@ -26,3 +26,10 @@ window.customElements.define('flynt-component', FlyntComponent)
 
 window.Alpine = Alpine
 Alpine.start()
+
+import './scripts/scroll.js'
+import './scripts/nav.js'
+import './scripts/waves.js'
+import './scripts/scrollTrigger.js'
+import './scripts/june-newsletter.js'
+import './scripts/react-form.js'
