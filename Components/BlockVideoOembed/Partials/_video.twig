@@ -1,0 +1,6 @@
+<div class="video video_{{ aspectRatio }}">
+  {% include 'Partials/_figure.twig' ignore missing with {image: image, aspectRatio: aspectRatio} only %}
+  <div class="video-player video-player_{{ aspectRatio }}">
+    {{ video }}
+  </div>
+</div>

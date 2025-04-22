@@ -51,7 +51,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockImageTitleQuote\getACFLayout(),
                     Components\BlockIframe\getACFLayout(),
                     Components\BlockQuote\getACFLayout(),
-                    // Components\BlockVideoOembed\getACFLayout(),
+                    Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\BlockWysiwygRepeater\getACFLayout(),
                     Components\CtaDonate\getACFLayout(),

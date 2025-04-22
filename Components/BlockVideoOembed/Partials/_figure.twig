@@ -1,0 +1,8 @@
+<figure class="figure figure-{{ aspectRatio }}" {% if not image %}" {% endif %}>
+  <button class="figure-playButton" type="button" aria-label="Play Video" {% if not image %}style="opacity:0;"{% endif %}></button>
+  <img class="figure-image lazyload"
+    src="{{ image.src | resize(32) }}"
+    data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
+    data-sizes="auto"
+    alt="{{ image.alt|e }}">
+</figure>

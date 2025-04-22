@@ -1,0 +1,18 @@
+<flynt-component
+  class="flyntComponent flyntComponent--{{ options.size }} componentSpacing {{ options.theme }}" 
+  style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};"   
+  is="flynt-block-video-oembed"
+  name="BlockVideoOembed"
+>
+  <div class="container {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }}; max-width: {{ options.containerMaxWidth }};">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|wp_kses_custom}}
+      </div>
+    {% endif %}
+    {% include 'Partials/_video.twig' ignore missing with {video: video, aspectRatio: aspectRatio, image: posterImage} only %}
+    {% if caption %}
+      <div class="caption">{{ caption }}</div>
+    {% endif %}
+  </div>
+</flynt-component>
