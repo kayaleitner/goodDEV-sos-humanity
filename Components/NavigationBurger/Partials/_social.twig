@@ -1,0 +1,9 @@
+<ul class="socialList">
+  {% for socials in social %}
+    <li class="socialList-item">
+      <a class="socialList-item-link socialList--item-link--{{ socials.platform }}" href="{{ socials.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ socials.platform.label }}">
+        {{- socials.icon -}}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

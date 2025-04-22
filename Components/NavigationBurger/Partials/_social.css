@@ -1,0 +1,60 @@
+.social {
+  &-mobile {
+    display: none;
+  }
+
+  @media (max-width: 540px) {
+    display: none;
+
+    &-mobile {
+      display: block;
+    }
+  }
+
+
+  &List {
+    @include reset-list;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+    @media (max-width: 540px) {
+      display: block;
+    }
+  
+    .socialList-item {
+      align-content: center;
+      display: flex;
+      margin: 0 2.5px;
+  
+      &-link {
+        display: inline-block;
+    
+        svg {
+          display: block;
+          height: 30px;
+          max-width: 30px;
+          width: auto;
+    
+          path {
+            transition: opacity 0.2s cubic-bezier(0.175, 0.885, 0.32, 0.275);
+          }
+        }
+    
+        &:hover {
+          svg {
+            opacity: 0.7;
+          }
+        }
+    
+        &--mail {
+          svg {
+            transform: translateY(5px);
+          }
+        }
+      }
+    }
+  }
+}
