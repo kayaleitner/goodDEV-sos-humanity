@@ -11,3 +11,8 @@ add_filter('Flynt/addComponentData', function ($data, $componentName): array {
 
     return array_merge($options, $data);
 }, 9, 2);
+
+
+add_filter('acf/settings/current_language', function ($lang) {
+    return function_exists('pll_current_language') ? pll_current_language() : $lang;
+});
