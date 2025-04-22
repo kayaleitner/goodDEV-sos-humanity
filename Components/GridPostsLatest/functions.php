@@ -27,24 +27,32 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
 // Fetch latest posts with filters
 function get_filtered_posts($category, $count = 7)
 {
-    return Timber::get_posts([
-        'post_status'        => 'publish',
-        'post_type'          => POST_TYPE,
-        'tax_query' => [
+
+    $args = [
+        'post_status'         => 'publish',
+        'post_type'           => POST_TYPE,
+        'posts_per_page'      => $count,
+        'ignore_sticky_posts' => 1,
+        'meta_key'            => 'date',
+        'orderby'             => 'meta_value',
+        'order'               => 'DESC',
+        'post__not_in'        => [get_the_ID()],
+    ];
+
+    if ($category) {
+        $args['tax_query'] = [
             [
                 'taxonomy' => 'category',
                 'field'    => 'id',
                 'terms'    => $category,
-            ]
-        ],
-        'posts_per_page'     => $count,
-        'ignore_sticky_posts'=> 1,
-        'meta_key'           => 'date',
-        'orderby'            => 'meta_value',
-        'order'              => 'DESC',
-        'post__not_in'       => [get_the_ID()]
-    ]);
+            ],
+        ];
+    }
+
+    return Timber::get_posts($args);
 }
+
+
 
 // Get category string from taxonomies
 function get_category_string($taxonomies)
