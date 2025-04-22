@@ -45,9 +45,6 @@
     width: 33.33%;
  }
 }
-[is='flynt-grid-posts-selector'] .container .grid--columns4 {
- /* ensure 2 columns stacking up until $breakpoint-desktop */
-}
 [is='flynt-grid-posts-selector'] .container .grid--columns4 .grid-item {
   max-width: 50%;
 }

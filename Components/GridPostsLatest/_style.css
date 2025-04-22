@@ -249,6 +249,7 @@
 }
 [is='flynt-grid-posts-latest'] .content-category {
   margin: 0;
+  margin-bottom: 1rem;
   width: fit-content;
   text-transform: uppercase;
 }
