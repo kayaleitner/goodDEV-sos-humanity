@@ -20,7 +20,7 @@
 }
 
 [is='flynt-navigation-pre-nav'] .container {
-  align-items: flex-end;
+  align-items: flex-start;
   display: flex;
   height: 100%;
   justify-content: flex-end;
@@ -89,6 +89,12 @@
     display: flex;
     flex-direction: column-reverse;
     padding: 100px 60px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    [is='flynt-navigation-pre-nav'] .container {
+      padding: 40px 24px;
+    }
   }
 
   [is='flynt-navigation-pre-nav'] .menu {
