@@ -1,6 +1,7 @@
-import 'core-js/es/number';
-import Swiper, { Navigation, A11y, Autoplay } from 'swiper/swiper.esm';
-import 'swiper/swiper-bundle.css';
+import 'core-js/es/number'
+import Swiper from 'swiper'
+import { Navigation, A11y, Autoplay } from 'swiper/modules'
+import 'swiper/css'
 
 Swiper.use([Navigation, A11y, Autoplay]);
 

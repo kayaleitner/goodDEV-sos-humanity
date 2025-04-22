@@ -7,13 +7,13 @@ function enqueue_react_app_assets() {
 
     if (is_singular() && strpos($content, 'react-apply-button') !== false) {
          // Enqueue the main CSS file
-        wp_enqueue_style('react-app-css', get_stylesheet_directory_uri() . '/assets/react-form/css/main.a3309844.css');
+        wp_enqueue_style('react-app-css', get_stylesheet_directory_uri() . '/public/react-form/css/main.a3309844.css');
 
         // Enqueue the main JavaScript file (make sure to list any dependencies your React app may have, e.g., 'wp-element' for React)
-        wp_enqueue_script('react-app-js', get_stylesheet_directory_uri() . '/assets/react-form/js/main.3bd9520c.js', array(), null, true);
+        wp_enqueue_script('react-app-js', get_stylesheet_directory_uri() . '/public/react-form/js/main.3bd9520c.js', array(), null, true);
 
         // If your React app is split into chunks (as create-react-app does), enqueue each chunk
-        wp_enqueue_script('react-app-chunk-js', get_stylesheet_directory_uri() . '/assets/react-form/js/453.ba332da2.chunk.js', array('react-app-js'), null, true);
+        wp_enqueue_script('react-app-chunk-js', get_stylesheet_directory_uri() . '/assets/public/js/453.ba332da2.chunk.js', array('react-app-js'), null, true);
     }
 }
 

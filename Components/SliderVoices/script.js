@@ -1,6 +1,8 @@
 import $ from 'jquery'
 import 'core-js/es/number'
-import Swiper, { Navigation, A11y, Autoplay, Pagination } from 'swiper/swiper.esm'
+import Swiper from 'swiper'
+import { Navigation, A11y, Autoplay } from 'swiper/modules'
+import 'swiper/css'
 import 'swiper/swiper-bundle.css'
 
 Swiper.use([Navigation, A11y, Autoplay, Pagination])
