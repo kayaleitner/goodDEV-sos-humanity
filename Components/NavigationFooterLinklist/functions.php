@@ -14,7 +14,7 @@ add_filter('Flynt/addComponentData?name=NavigationFooterLinklist', function ($da
     $componentPath = str_replace(trailingslashit(get_template_directory()), '', $componentPathFull);
 
     $data['logo'] = [
-        'src' => get_theme_mod('custom_header_logo') ? get_theme_mod('custom_header_logo') : Asset::requireUrl("{$componentPath}Assets/logo.svg"),
+        'src' => get_theme_mod('custom_logo') ? wp_get_attachment_image_url(get_theme_mod('custom_logo')) : Asset::requireUrl("{$componentPath}Assets/logo.svg"),
         'alt' => get_bloginfo('name')
     ];
 
