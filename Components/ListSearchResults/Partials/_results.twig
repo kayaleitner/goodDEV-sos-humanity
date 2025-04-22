@@ -33,14 +33,12 @@
                     {% if post.pageExcerpt %}
                       <p class="body-2"style="margin-top: 10px;">{{ post.pageExcerpt }}</p>
                     {% else %}
-                      <p class="body-2"style="margin-top: 10px;">{{ post.preview.read_more(false).length(12) }}</p>
+                      <p class="body-2"style="margin-top: 10px;">{{ post.excerpt.read_more(false).length(12) }}</p>
                     {% endif %}
                   {% else %}
-                    {% if post.pageExcerpt %}
-                      <p class="body-2" style="margin-top: 10px;">{{ post.excerpt }}</p>
-                    {% else %}
-                       <p class="body-2" style="margin-top: 10px;">{{ post.content|striptags|truncate(16) }}</p>
-                    {% endif %}
+                    
+                      <p class="body-2" style="margin-top: 10px;">{{  post.excerpt ?: post.preview|striptags|truncate(160) }}</p>
+                    
                   {% endif %}
                 </div>
                 {% if post.field_meta_text %}
