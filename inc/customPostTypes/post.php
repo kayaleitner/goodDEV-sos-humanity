@@ -23,8 +23,8 @@
 
 function edit_default_post_type($args, $postType) {
     if ($postType === 'post') {
-        $args['public']                = false;
-        $args['publicly_queryable']    = false;
+        $args['public']                = true;
+        $args['publicly_queryable']    = true;
         $args['show_ui']               = true;
         $args['show_in_menu']          = true;
         $args['show_in_admin_bar']     = true;
