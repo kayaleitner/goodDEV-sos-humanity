@@ -11,6 +11,7 @@ function disable_rest_api($access)
         '/wp-json/redirection/v1/',
         '/wp-json/yoast/v1/',
         '/wp-json/wp/v2/media',
+        '/wp-json/flynt/v1/submit_form', 
     ];
 
     // Check if the current request URI matches any allowed endpoints
