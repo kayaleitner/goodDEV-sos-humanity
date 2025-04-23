@@ -35,7 +35,8 @@
  }
 }
 [is='flynt-block-image-text-page-link'] .box-inner h4 {
-  font-weight: bold;
+  font-weight: 700;
+  margin-bottom: .8em;
 }
 [is='flynt-block-image-text-page-link'] .box-inner--content {
   padding: var(--padding_xxsmall);

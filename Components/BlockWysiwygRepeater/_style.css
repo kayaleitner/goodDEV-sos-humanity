@@ -4,6 +4,7 @@
   flex-flow: row wrap;
   justify-content: space-between;
   text-align: inherit;
+  row-gap: var(--padding_xsmall);
 }
 [is='flynt-block-wysiwyg-repeater'] .content > div {
   width: calc(50% - var(--fontSizeBody1));

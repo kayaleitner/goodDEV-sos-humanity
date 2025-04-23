@@ -66,7 +66,7 @@
   z-index: 49;
 }
 [is='flynt-hero-image-title-text-parallax'].is-contact-form .contactForm .contactForm-inner {
-  padding: 0.1rem 2rem;
+  padding: 1rem 2rem;
   background-color: var(--yellow);
 }
 [is='flynt-hero-image-title-text-parallax'].is-contact-form input {
@@ -87,7 +87,7 @@
     max-width: 500px;
     margin-top: 10rem;
  }
-  [is='flynt-hero-image-title-text-parallax'].is-contact-form .contactForm-inner {
+  [is='flynt-hero-image-title-text-parallax'].is-contact-form .contactForm .contactForm-inner {
     padding: 4rem;
     margin: 0 5rem;
  }

@@ -105,6 +105,12 @@
   aspect-ratio: 1.5;
   object-fit: cover;
 }
+
+[is='flynt-grid-image-text'] .content-inner--top h3 {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
 [is='flynt-grid-image-text'] .content-inner--top {
   align-items: center;
   display: flex;
