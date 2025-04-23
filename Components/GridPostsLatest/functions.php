@@ -14,7 +14,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
     $data['taxonomies'] = $data['taxonomies'] ?? [];
     $data['category'] = get_category_string($data['taxonomies']);
 
-    $data['items'] = get_filtered_posts($data['taxonomies']);
+    $data['items'] = get_filtered_posts($data['category']);
 
     $data['filterTabs'] = array_map(fn ($filter) => get_filter_data($filter, $data), $data['filters']);
 
