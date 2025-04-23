@@ -1,6 +1,6 @@
-<flynt-component name="FeatureNotFound" class="flyntComponent py-[--padding_xlarge] mt-[--padding_small]">
+<flynt-component name="FeatureNotFound" class="flyntComponent py-[--padding_xlarge] mt-[--padding_small] block">
   <div class="container max-w-3xl mx-auto">
-    <div class="text-center [&>*:first-child]:mt-0 [&>*:first-child]:pt-0 [&>*:last-child]:mb-0 [&>*:last-child]:pb-0">
+    <div class="text-center  [&>*:first-child]:mt-0 [&>*:first-child]:pt-0 [&>*:last-child]:mb-0 [&>*:last-child]:pb-0">
       {{ contentHtml|wp_kses_custom }}
       <p>
         <a class="button button--link" href="{{ function('home_url') }}">{{ backLinkLabel|e }}</a>
