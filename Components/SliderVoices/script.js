@@ -1,69 +1,60 @@
-import $ from 'jquery'
-import 'core-js/es/number'
-import Swiper from 'swiper'
-import { Navigation, A11y, Autoplay } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/swiper-bundle.css'
+import 'core-js/es/number';
+import Swiper from 'swiper';
+import { Navigation, A11y, Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/swiper-bundle.css';
 
-Swiper.use([Navigation, A11y, Autoplay, Pagination])
+Swiper.use([Navigation, A11y, Autoplay, Pagination]);
 
-class SliderVoices extends window.HTMLDivElement {
-  constructor (...args) {
-    const self = super(...args)
-    self.init()
-    return self
-  }
+export default function (component) {
+  const props = getInitialProps(component);
+  const slider = component.querySelector('[data-slider]');
+  const buttonNext = component.querySelector('[data-slider-button="next"]');
+  const buttonPrev = component.querySelector('[data-slider-button="prev"]');
+  const pagination = component.querySelector('[data-slider-pagination]');
+  const slides = component.querySelectorAll('.swiper-slide');
 
-  init () {
-    this.$ = $(this)
-    this.props = this.getInitialProps()
-    this.resolveElements()
-  }
+  if (!slider || slides.length <= 1) return;
 
-  getInitialProps () {
-    let data = {}
-    try {
-      data = JSON.parse($('script[type="application/json"]', this).text())
-    } catch (e) {}
-    return data
-  }
-
-  resolveElements () {
-    this.$slider = $('[data-slider]', this)
-    this.$sliderItems = $('.swiper-slide', this)
-    this.$buttonNext = $('[data-slider-button="next"]', this)
-    this.$buttonPrev = $('[data-slider-button="prev"]', this)
-    this.$pagination = $('[data-slider-pagination]', this)
-  }
-
-  connectedCallback () {
-    if (this.$sliderItems.length > 1) {
-      this.initSlider()
-    }
-  }
-
-  initSlider () {
-    const { options } = this.props
-    const config = {
-      a11y: options.a11y,
-      loop: true,
-      navigation: {
-        nextEl: this.$buttonNext.get(0),
-        prevEl: this.$buttonPrev.get(0)
-      },
-      slidesPerView: 1,
-      pagination: {
-        el: this.$pagination.get(0),
-        clickable: true
-      }
-    }
-    if (options.autoplay && options.autoplaySpeed) {
-      config.autoplay = {
-        delay: options.autoplaySpeed
-      }
-    }
-    this.slider = new Swiper(this.$slider.get(0), config)
-  }
+  initSlider(slider, buttonNext, buttonPrev, pagination, props);
 }
 
-window.customElements.define('flynt-slider-voices', SliderVoices, { extends: 'div' })
+function getInitialProps(component) {
+  let data = {};
+  try {
+    const script = component.querySelector('script[type="application/json"]');
+    if (script) {
+      data = JSON.parse(script.textContent);
+    }
+  } catch (e) {
+    console.error('Error parsing slider props JSON:', e);
+  }
+  return data;
+}
+
+function initSlider(slider, buttonNext, buttonPrev, pagination, props) {
+  const { options } = props;
+  if (!options) return;
+
+  const config = {
+    a11y: options.a11y,
+    loop: true,
+    slidesPerView: 1,
+    navigation: {
+      nextEl: buttonNext,
+      prevEl: buttonPrev,
+    },
+    pagination: {
+      el: pagination,
+      clickable: true,
+    },
+  };
+
+  if (options.autoplay && options.autoplaySpeed) {
+    config.autoplay = {
+      delay: options.autoplaySpeed,
+    };
+  }
+
+  new Swiper(slider, config);
+}
