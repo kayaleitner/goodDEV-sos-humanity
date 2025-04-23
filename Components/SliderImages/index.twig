@@ -1,8 +1,8 @@
-<div 
+<flynt-component 
   class="flyntComponent componentSpacing {{ options.theme }}" 
   style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" 
   is="flynt-slider-images"
-  name="SliderImages"  
+  name="SliderImages" 
 >
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div class="container {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" style="padding: var(--padding_small); max-width: var(--maxWidthContainer_wide);">
@@ -12,7 +12,7 @@
       </div>
     {% endif %}
 
-    <div data-slider class="slider swiper-container">
+    <div data-slider class="slider swiper-container" style="overflow: hidden;">
       <div class="swiper-wrapper">
         {% for image in images %}
           <div class="slider-item swiper-slide">
@@ -39,4 +39,4 @@
       <button type="button" data-slider-button="next" class="slider-button slider-button--next" />
     </div>
   </div>
-</div>
+</flynt-component>
