@@ -33,3 +33,9 @@
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
+[is='flynt-block-wysiwyg']  {
+  ul {
+    list-style-type: disc;
+  }
+}
