@@ -1,10 +1,10 @@
-<flynt-component name="FeatureNotFound" class="mt-navBar min-h-[calc(100vh_-_50rem)]">
-  <div class="max-w-screen-max mx-auto p-sm sm:p-md lg:p-lg">
-    <div class="wysiwyg">
+<flynt-component name="FeatureNotFound" class="flyntComponent py-[--padding_xlarge] mt-[--padding_small]">
+  <div class="container max-w-3xl mx-auto">
+    <div class="text-center [&>*:first-child]:mt-0 [&>*:first-child]:pt-0 [&>*:last-child]:mb-0 [&>*:last-child]:pb-0">
       {{ contentHtml|wp_kses_custom }}
+      <p>
+        <a class="button button--link" href="{{ function('home_url') }}">{{ backLinkLabel|e }}</a>
+      </p>
     </div>
-    <a class="button button--outlineBlack mt-lg" href="{{ function('home_url') }}">
-      {{ backLinkLabel|e }}
-    </a>
   </div>
 </flynt-component>
