@@ -23,6 +23,14 @@
     }
   }
 
+  .logo-image {
+    margin-bottom: 20px;
+  }
+
+  .body-2 {
+    line-height: 1;
+  }
+
   .logo {
     display: block;
     height: 100%;
