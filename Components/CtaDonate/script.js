@@ -1,41 +1,13 @@
-import $ from 'jquery'
+export default function (component) {
+  const donateButton = component.querySelector('#donate');
+  const donationInput = document.getElementById('donation');
 
-class CtaDonate extends window.HTMLElement {
-  constructor (...args) {
-    const self = super(...args)
-    self.init()
-    return self
-  }
+  if (!donateButton || !donationInput) return;
 
-  init () {
-    this.$ = $(this)
-    this.resolveElements()
-    this.bindFunctions()
-    this.bindEvents()
-  }
-
-  resolveElements () {
-    this.$button = $('#donate', this)
-  }
-
-  bindFunctions () {
-    this.customDonate = this.customDonate.bind(this)
-  }
-
-  bindEvents () {
-    this.$.on('click', '#donate', this.customDonate)
-  }
-
-  connectedCallback () {}
-
-  customDonate (e) {
-    var ctaLink = this.$button[0].getAttribute('data-cta-link')
-    var linkOrFallback = ctaLink ? ctaLink + '?amount=' : '/spenden/?amount='
-    var customdonation = linkOrFallback + document.getElementById('donation').value
-    window.location.href = customdonation
-  }
+  donateButton.addEventListener('click', () => {
+    const ctaLink = donateButton.getAttribute('data-cta-link');
+    const linkOrFallback = ctaLink ? `${ctaLink}?amount=` : '/spenden/?amount=';
+    const customDonation = linkOrFallback + donationInput.value;
+    window.location.href = customDonation;
+  });
 }
-
-window.customElements.define('flynt-cta-donate', CtaDonate, {
-  extends: 'div'
-})
