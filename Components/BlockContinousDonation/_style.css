@@ -27,7 +27,7 @@
 	top: calc(50% - var(--deviationCenter));
 	left: 0;
 	transform: translateY(-50%);
-	background-image: url('../assets/icons/rope.svg');
+	background-image: url('/assets/icons/rope.svg');
 	background-repeat: repeat-x;
 }
 [is='flynt-continous-donation'] .hands {
@@ -37,7 +37,7 @@
 	top: calc(50% - var(--deviationCenter));
 	left: 50%;
 	transform: translate(-100%, -50%);
-	background-image: url('../assets/icons/hands.svg');
+	background-image: url('/assets/icons/hands.svg');
 	background-position: center;
 	background-size: contain;
 }
@@ -216,7 +216,7 @@
 	height: 37px;
 	opacity: 0;
 	transition: opacity 0.8s ease-in-out;
-	background-image: url('../assets/icons/checked.svg');
+	background-image: url('/assets/icons/checked.svg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
@@ -237,7 +237,7 @@
 [is='flynt-continous-donation'] .donation-items .item {
 	display: grid;
 	grid-template-columns: repeat(2, 100px);
-	background-image: url('../assets/icons/shape_1.svg');
+	background-image: url('/assets/icons/shape_1.svg');
 	background-size: contain;
 	transition: background-image 0.8s ease-in-out;
 	background-repeat: no-repeat;
@@ -314,7 +314,7 @@
    }
 }
 [is='flynt-continous-donation'] .donation-items .item:hover {
-	background-image: url('../assets/icons/shape_1_hover.svg');
+	background-image: url('/assets/icons/shape_1_hover.svg');
 }
 [is='flynt-continous-donation'] .donation-items .item:hover .icon {
 	overflow: hidden;
@@ -329,7 +329,7 @@
    }
 }
 [is='flynt-continous-donation'] .donation-items {
-	cursor: url('../assets/icons/cursor.svg') 50 50, auto;
+	cursor: url('/assets/icons/cursor.svg') 50 50, auto;
 	scrollbar-color: var(--blue) var(--white);
 }
 [is='flynt-continous-donation'] .donation-items::-webkit-scrollbar {

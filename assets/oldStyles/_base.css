@@ -345,7 +345,7 @@ ul ul, ol ul, ul ol, ol ol {
   width: 1rem;
 }
 .iconList--checkCircle li::before {
-  background-image: url('../assets/icons/check-circle.svg');
+  background-image: url('/assets/icons/check-circle.svg');
 }
 /* Tables */
 table {

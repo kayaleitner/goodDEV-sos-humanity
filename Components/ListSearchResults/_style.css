@@ -252,7 +252,7 @@
   text-transform: uppercase;
 }
 [is='flynt-list-search-results'] .content-subtitle.meta-file::after {
-  content: url('../assets/icons/download.svg');
+  content: url('/assets/icons/download.svg');
   padding-left: 5px;
   transform: translateY(5px);
   display: inline-block;
