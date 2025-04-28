@@ -1,29 +1,19 @@
 :root {
   /* Colors (Primitives) */
 
-    --error: #f05252;
-    --danger: #ffb900;
-
-    --black: #262626;
-    --white: #fff;
+    
     --blue: #1c2445;
     --yellow: #ebeb00;
     --warmwhite: #ebe8e3;
     --border-grey: #838594;
 
+    
+    --black: #262626;
+    --white: #fff;
 
-
-  --mint-light: #F4F6F4;
-  --mint: #C0F6C0;
-
-  --purple: #ac4399;
-  --tangerine: #f55200;
-  --pink: #f357ca;
-  --green: #03ab3d;
-  --yellow: #e8f000;
-
-  --lightgrey: #f3f8fe;
-  --mint-transparent: #f3f8fead;
+    /*     
+    --error: #f05252;
+    --danger: #ffb900; */
 
   /* Colors (Tokens) */
   --brandColor: var(--yellow);
