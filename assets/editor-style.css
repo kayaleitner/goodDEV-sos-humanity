@@ -317,6 +317,16 @@ blockquote, .blockquote {
 blockquote p:last-child, .blockquote p:last-child {
   margin-bottom: 0;
 }
+
+
+ul {
+  list-style: bullet;
+}
+
+ol {
+  list-style: decimal;
+}
+
 /** * 1.1 Lists & Tables * * Default and custom styled list and table elements. */
 ul, ol {
   font-size: var(--fontSizeBody1);
