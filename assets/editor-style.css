@@ -336,3 +336,61 @@ ul, ol {
 ul ul, ol ul, ul ol, ol ol {
   margin-bottom: 0;
 }
+
+/** * 1.2 Buttons * * Global button elements, including reset on standard button element. */
+button {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  font-family: 'GTAmericaMediumExtended', Helvetica, Arial, sans-serif;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+  text-align: inherit;
+}
+.button {
+  appearance: none;
+  background-color: var(--blue);
+  border: 2px solid var(--blue);
+  border-radius: 0;
+  color: var(--yellow);
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  padding: 1.5rem 5rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  user-select: none;
+}
+@media (max-width: 1024px) {
+  .button {
+    font-size: 4rem;
+ }
+}
+.button:disabled, .button--disabled {
+  cursor: default;
+  opacity: 0.65;
+  pointer-events: none;
+}
+.button:hover, .button:focus {
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--blue);
+  text-decoration: none;
+}
+.button--yellow {
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--blue);
+}
+.button--yellow:hover, .button--yellow:focus {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: var(--yellow);
+  text-decoration: none;
+}
