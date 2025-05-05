@@ -120,6 +120,27 @@ Options::addTranslatable('HeroImageText', [
                     'width' => 100
                 ],
             ],
+            [
+                'label' => __('Label', 'flynt'),
+                'instructions' => __('Provide an aria-label for accessibility.', 'flynt'),
+                'name' => 'ariaLabel',
+                'type' => 'text',
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
+            [
+                'label' => __('Page Link', 'flynt'),
+                'instructions' => __('Select a page to link to.', 'flynt'),
+                'name' => 'pageLink',
+                'type' => 'link',
+                'post_type' => [],
+                'allow_null' => 1,
+                'multiple' => 0,
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
         ],
     ],
 ]);
