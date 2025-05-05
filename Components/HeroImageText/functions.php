@@ -3,6 +3,7 @@
 namespace Flynt\Components\HeroImageText;
 
 use Flynt\FieldVariables;
+use Flynt\Utils\Options;
 
 function getACFLayout()
 {
@@ -69,6 +70,22 @@ function getACFLayout()
                 'instructions' => __('The content overlaying the image. Character Recommendations: 5-15', 'flynt'),
             ],
             [
+                'label' => __('Animation', 'flynt'),
+                'name' => 'animationTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => __('Show Lottie Animation', 'flynr'),
+                'name' => 'showLottieAnimation',
+                'type' => 'true_false',
+                'ui' => 1,
+                'ui_on_text' => __('Yes', 'flynt'),
+                'ui_off_text' => __('No', 'flynt'),
+                'default_value' => 0,
+            ],
+            [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
@@ -91,4 +108,55 @@ function getACFLayout()
             ]
         ]
     ];
-}
+}   
+
+
+Options::addTranslatable('HeroImageText', [
+    [
+        'label' => __('Animations'),
+        'name' => 'AnimationTab',
+        'type' => 'tab',
+    ],
+    [
+        'label' => __('Lottie', 'flynt'),
+        'instructions' => __('Provide a lottie file', 'flynt'),
+        'name' => 'lottie',
+        'type' => 'group',
+        'layout' => 'row',
+        'sub_fields' => [
+            [
+                'label' => __('Lottie Animation', 'flynt'),
+                'instructions' => __('Upload the lottie animation file here.', 'flynt'),
+                'name' => 'lottieAnimationLink',
+                'type' => 'file',
+                'return_format' => 'array',
+                'library' => 'all',
+                'mime_types' => 'json',
+                'wrapper' => [
+                    'width' => 100
+                ],
+            ],
+            [
+                'label' => __('Label', 'flynt'),
+                'instructions' => __('Provide an aria-label for accessibility.', 'flynt'),
+                'name' => 'ariaLabel',
+                'type' => 'text',
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
+            [
+                'label' => __('Page Link', 'flynt'),
+                'instructions' => __('Select a page to link to.', 'flynt'),
+                'name' => 'pageLink',
+                'type' => 'link',
+                'post_type' => [],
+                'allow_null' => 1,
+                'multiple' => 0,
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ],
+        ],
+    ],
+]);
