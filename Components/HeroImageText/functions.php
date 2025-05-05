@@ -70,6 +70,22 @@ function getACFLayout()
                 'instructions' => __('The content overlaying the image. Character Recommendations: 5-15', 'flynt'),
             ],
             [
+                'label' => __('Animation', 'flynt'),
+                'name' => 'animationTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => __('Show Lottie Animation', 'flynr'),
+                'name' => 'showLottieAnimation',
+                'type' => 'true_false',
+                'ui' => 1,
+                'ui_on_text' => __('Yes', 'flynt'),
+                'ui_off_text' => __('No', 'flynt'),
+                'default_value' => 0,
+            ],
+            [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',

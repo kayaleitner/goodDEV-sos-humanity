@@ -33,7 +33,7 @@
       </h4>
     </div>
   </div>
-{% if lottie.lottieAnimationLink %}
+{% if lottie.lottieAnimationLink and showLottieAnimation %}
 <a class="hover:opacity-100" href="{{ lottie.pageLink.url }}" >
   <div class="lottieWrapper w-[130vw] sm:w-[110vw] md:w-[50vw] h-[130vw] sm:h-[110vw] md:h-[50vw] absolute right-[-30vw] md:right-0 bottom-[-10vw] sm:bottom-[-20vw] md:bottom-0 group cursor-pointer" aria-label="{{ lottie.ariaLabel }}">
     <lottie-player
