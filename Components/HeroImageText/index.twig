@@ -1,4 +1,9 @@
-<div class="flyntComponent {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-hero-image-text">
+<flynt-component
+  class="flyntComponent {{ options.theme }}" 
+  style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" 
+  is="flynt-hero-image-text"
+  name="HeroImageText"
+>
   <picture class="picture">
     <source srcset="
       {{function('wp_get_attachment_image_srcset', images.imageDesktop.id)}}"
@@ -28,4 +33,14 @@
       </h4>
     </div>
   </div>
-</div>
+{% if lottie.lottieAnimationLink %}
+  <div class="lottieWrapper relative w-[50vw] h-[50vw] absolute -right-[10vw] bottom-0 group">
+    <lottie-player
+      class="lottieAnimation w-full h-full"
+      src="{{ lottie.lottieAnimationLink }}"
+      speed="1"
+    ></lottie-player>
+  </div>
+{% endif %}
+
+</flynt-component>

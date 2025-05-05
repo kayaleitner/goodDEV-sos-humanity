@@ -3,6 +3,7 @@
 namespace Flynt\Components\HeroImageText;
 
 use Flynt\FieldVariables;
+use Flynt\Utils\Options;
 
 function getACFLayout()
 {
@@ -91,4 +92,34 @@ function getACFLayout()
             ]
         ]
     ];
-}
+}   
+
+
+Options::addTranslatable('HeroImageText', [
+    [
+        'label' => __('Animations'),
+        'name' => 'AnimationTab',
+        'type' => 'tab',
+    ],
+    [
+        'label' => __('Lottie', 'flynt'),
+        'instructions' => __('Provide a lottie file', 'flynt'),
+        'name' => 'lottie',
+        'type' => 'group',
+        'layout' => 'row',
+        'sub_fields' => [
+            [
+                'label' => __('Lottie Animation', 'flynt'),
+                'instructions' => __('Upload the lottie animation file here.', 'flynt'),
+                'name' => 'lottieAnimationLink',
+                'type' => 'file',
+                'return_format' => 'array',
+                'library' => 'all',
+                'mime_types' => 'json',
+                'wrapper' => [
+                    'width' => 100
+                ],
+            ],
+        ],
+    ],
+]);
