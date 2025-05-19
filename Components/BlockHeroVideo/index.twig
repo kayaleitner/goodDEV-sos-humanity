@@ -1,0 +1,52 @@
+<flynt-component
+  class="flyntComponent {{ options.theme }} block relative overflow-hidden h-screen"
+  name="BlockHeroVideo"
+>
+  <video 
+    class="w-full h-full object-cover" 
+    autoplay 
+    muted 
+    loop 
+    playsinline 
+    aria-hidden="true"
+  >
+    <source 
+      src="{{ videos.videoDesktop }}" 
+      media="(min-width: 768px)" 
+      type="{{ videos.videoDesktop.mime_type }}" />
+    <source 
+      src="{{ videos.videoMobile }}" 
+      media="(max-width: 767px)" 
+      type="{{ videos.videoMobile.mime_type }}" />
+    {% if images.imageMobile %}
+      <img 
+        src="{{ images.imageMobile.src | resize(32) }}" 
+        alt="{{ images.imageDesktop.alt|e }}" 
+        class="w-full h-full object-cover" />
+    {% endif %}
+  </video>
+
+  {% if videos.caption %}
+    <figcaption class="absolute bottom-[10px] sm:bottom-[20px] right-[20px] sm:right-[30px]">
+      {{ videos.caption|e }}
+    </figcaption>
+  {% endif %}
+
+  <div 
+    class="absolute inset-0 flex items-end w-full bg-gradient-to-t from-[rgba(28,36,69,0.75)] to-[rgba(28,36,69,0.3)] px-[15px]"
+    style="padding: var(--padding_small);"
+  >
+    <div class="w-full text-center text-[#f6f8fa]">
+      <h1 
+        class="absolute left-0 w-full !text-white text-center h3"
+        style="top: max(20rem, min(calc(var(--padding_xxlarge)), calc(100vh - 32vw)));"
+      >
+        {{ post.title }}
+      </h1>
+      <p class="title-big !w-full">
+        <span class="block text-start">{{ line1|wp_kses_custom }}</span>
+        <span class="block text-yellow w-full">{{ line2|wp_kses_custom }}</span>
+      </p>
+    </div>
+  </div>
+</flynt-component>

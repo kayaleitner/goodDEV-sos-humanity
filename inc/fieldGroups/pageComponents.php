@@ -41,6 +41,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'layouts' => [
                     Components\BlockAnchor\getACFLayout(),
                     Components\HeroImageText\getACFLayout(),
+                    Components\BlockHeroVideo\getACFLayout(),
                     Components\AccordionDefault\getACFLayout(),
                     Components\BlockFactSheet\getACFLayout(),
                     Components\BlockTicker\getACFLayout(),
