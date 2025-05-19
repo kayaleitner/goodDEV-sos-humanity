@@ -50,6 +50,7 @@ function send_custom_email_with_attachment($request) {
         'firstName' => '00N2o000009CT4m',
         'lastName' => '00N2o000009CT4r',
         'pronouns' => '00NOj000000icOA',
+        'birthdate' => '00NOj00000GzfoD',
         'email' => 'email',
         'phone' => 'phone',
         'nationality' => '00N9J000000QEZE',
