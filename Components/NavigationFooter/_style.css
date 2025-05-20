@@ -36,7 +36,7 @@
   
 
   .copyrights {
-    color: var(--border-grey);
+    color: var(--white);
     display: block;
     margin: 10px 0;
     text-align: left;
@@ -52,7 +52,7 @@
     }
 
     p {
-      color: var(--border-grey);
+      color: var(--white);
     }
   }
 

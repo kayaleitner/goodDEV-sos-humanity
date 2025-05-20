@@ -19,7 +19,7 @@
         {% endif %}
         <div class="content-inner">
           <div>
-            <h5 class="content-category"><span class="content-category-title">{{ item.category }}</span></h5>
+            <h3 class="content-category h5"><span class="content-category-title">{{ item.category }}</span></h5>
             {% if item.title %}
               <p class="content-excerpt body-2">{{ item.post_excerpt|truncate(12) }}</p>
             {% elseif item.post_excerpt %}

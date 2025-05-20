@@ -31,7 +31,7 @@
         </div>
         <div class="logos">
         {% for panel in partnersPanels %}
-        {% if panel.panelLink %} <a href="{{ panel.panelLink.url }}" target="{{ panel.panelLink.target }}"> {% endif %}
+        {% if panel.panelLink %} <a href="{{ panel.panelLink.url }}" target="{{ panel.panelLink.target }}" aria-label="{{panel.panelLink.title}}> {% endif %}
           <figure class="figure">
             <img class="figure-logo lazyload"
               src="{{ panel.panelLogo.src | resize(32) }}"
