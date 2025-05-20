@@ -39,7 +39,7 @@
           <div class="preHeadline white h6">{{ preContentSubtitleRight }}</div>
           <div class="headline white h4">{{ preContentRight }}</div>
         </div>
-        <ul class="ticker-container">
+        <ul class="ticker-container" tabindex="0">
           {% for panel in tickerPanels %}
             <li class="ticker-news {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
               <div class="title h6">{{ panel.panelTitle }}</div>
