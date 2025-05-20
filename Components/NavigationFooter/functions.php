@@ -60,3 +60,13 @@ Options::addTranslatable('NavigationFooter', [
         ]
     ]),
 ]);
+
+Options::addTranslatable('NavigationFooter', [
+    [
+        'label' => __('Back to Top Aria Label', 'flynt'),
+        'name' => 'backToTopAriaLabel',
+        'type' => 'text',
+        'instructions' => __('Aria label for the Back to Top button.', 'flynt'),
+        'default_value' => __('Back to top', 'flynt')
+    ]
+]);
