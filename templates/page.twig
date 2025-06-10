@@ -6,9 +6,12 @@
       {% set array = array|merge([comp|first]) %}
   {% endfor %}
 
-  {% if 'heroImageText' not in array %}
+  {% set excludedFirstComponents = ['heroImageText', 'BlockHeroVideo'] %}
+  {% if array[0] not in excludedFirstComponents %}
     {{ renderComponent('BlockPostHeader', {'post': post}) }}
-  {% endif %} 
+  {% endif %}
+
+
   {% for component in post.meta('pageComponents') %}
     {{ renderComponent(component) }}
   {% endfor %}
