@@ -1,8 +1,8 @@
 @tailwind base;
 
 html {
-  font-size: 16px;
   text-wrap: balance;
+  @apply font-sans;
 
   /* @screen xl {
     font-size: 1.1111vw;
@@ -10,48 +10,79 @@ html {
   } */
 }
 
-@layer base {
+body {
+  @apply font-paragraph;
+}
 
+@layer base {
 
   /* -- Paragraphs -- */
   .font-extraLarge {
-    @apply font-display;
-    @apply font-black;
-    font-size: 10vw;
-    line-height: 1;
+    
   }
 
   .font-pageTitle {
-    @apply font-bold font-display;
-    font-size: rem(36);
-    line-height: 80%;
-    letter-spacing: rem(1);
+    font-weight: 900;
+    font-style: normal;
+    line-height: 1;
+    font-size: 10rem;
 
     @screen md {
-      font-size: rem(54);
+      line-height: 1.11;
+      font-size: 7.2rem;
+      letter-spacing: -1px;
     }
   }
 
 
   .font-sectionTitle {
-    @apply font-medium;
-    font-size: rem(22);
-    line-height: rem(28);
+    font-size: 6rem;
+    letter-spacing: 0;
+    line-height: 1.25;
 
     @screen md {
-      font-size: rem(26);
-      line-height: rem(28);
+      letter-spacing: normal;
+      font-size: 3.6rem;
     }
   }
 
   .font-contentTitle {
-    @apply font-medium;
-    font-size: rem(20);
-    line-height: rem(28);
+    font-size: 3.75rem;
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: normal;
 
     @screen md {
-      font-size: rem(22);
-      line-height: rem(28);
+      font-size: 2rem;
+    }
+  }
+  
+  .font-paragraph {
+    font-size: 4.5rem;
+    line-height: 1.25;
+    
+    @screen md {
+      font-size: 2.2rem;
+      line-height: 1.59;
+    }
+  }
+
+  .font-paragraphSmall {
+    font-size: 4rem;
+    line-height: 1.25;
+    
+    @screen md {
+      font-size: 1.8rem;
+      line-height: 1.56;
+    }
+  }
+
+  .font-caption {
+    font-size: 3rem;
+    line-height: 1.25;
+
+    @screen md {
+      font-size: 1.5rem;
     }
   }
 
@@ -66,17 +97,6 @@ html {
     }
   }
 
-  .font-paragraph {
-    @apply font-light;
-    font-size: rem(16);
-    line-height: rem(22);
-
-    @screen md {
-      font-size: rem(16);
-      line-height: rem(22);
-    }
-  }
-
   .font-smallParagraph {
     @apply font-light;
     font-size: rem(12);
@@ -88,21 +108,49 @@ html {
     }
   }
 
-  .font-mainMenuText {
-    @apply font-medium;
-    font-size: rem(18);
-    line-height: rem(24);
+  .font-button {
+    @apply font-bold;
+    font-size: 4rem;
+    line-height: 1.5;
 
     @screen md {
-      font-size: rem(20);
-      line-height: rem(28);
+      font-size: 2rem;
+    }
+
+  }
+
+  .font-quoteBig {
+    @apply font-mono font-bold;
+    
+      line-height: 1;
+      font-size: 10rem;
+      letter-spacing: 0;
+    
+    @screen md {
+      line-height: 1.11;
+      font-size: 7.2rem;
+      letter-spacing: normal;
     }
   }
 
-  .font-caption {
-    @apply font-smallParagraph;
+  .font-quoteMedium {
+    @apply font-mono font-bold;
+    line-height: 1.25;
+    font-size: 4rem;
+
+    @screen md {
+      font-size: 3.6rem;
+    }
   }
 
+  .font-quoteSmall {
+    @apply font-mono;
+    font-size: 4rem;
+    line-height: 1.59;
+    @screen md {
+      font-size: 2.2rem;
+    }
+  }
 
   .link {
     @apply text-linkColor;
@@ -181,10 +229,6 @@ html {
 
     .contentTitle {
       @apply font-contentTitle;
-    }
-
-    .mainMenuText {
-      @apply font-mainMenuText;
     }
 
     .caption {
