@@ -237,7 +237,7 @@
 [is='flynt-list-search-results'] .content-category {
   margin: 0;
   width: fit-content;
-  text-transform: uppercase;
+  -text-transform: uppercase;
 }
 [is='flynt-list-search-results'] .content-category-title {
   background: var(--yellow);
@@ -249,7 +249,7 @@
   font-weight: bold;
 }
 [is='flynt-list-search-results'] .content-subtitle .meta-file-subtype {
-  text-transform: uppercase;
+  -text-transform: uppercase;
 }
 [is='flynt-list-search-results'] .content-subtitle.meta-file::after {
   content: url('/assets/icons/download.svg');

@@ -99,7 +99,7 @@
       background-color: var(--yellow);
       margin-bottom: var(--padding_xxsmall);
       padding: 2px;
-      text-transform: uppercase;
+      -text-transform: uppercase;
       width: fit-content;
     }
 

@@ -251,7 +251,7 @@
   margin: 0;
   margin-bottom: 1rem;
   width: fit-content;
-  text-transform: uppercase;
+  -text-transform: uppercase;
 }
 [is='flynt-grid-posts-latest'] .content-category-title {
   background: var(--yellow);
@@ -261,7 +261,7 @@
   font-weight: 700;
 }
 [is='flynt-grid-posts-latest'] .content-subtitle .meta-file-subtype {
-  text-transform: uppercase;
+  -text-transform: uppercase;
 }
 [is='flynt-grid-posts-latest'] .content-subtitle.meta-file::after {
   content: url('/assets/icons/download.svg');

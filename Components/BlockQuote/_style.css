@@ -31,7 +31,7 @@
 [is='flynt-block-quote'] .content-author {
   background-color: var(--yellow);
   padding: 2px;
-  text-transform: uppercase;
+  -text-transform: uppercase;
   width: fit-content;
 }
 [is='flynt-block-quote'] .content > :last-child {
