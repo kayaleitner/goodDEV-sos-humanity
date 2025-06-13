@@ -52,7 +52,7 @@
   .preContent {
     color: var(--yellow);
     margin: 0 0 2.5rem;
-    -text-transform: uppercase;
+    text-transform: uppercase;
   }
 
   .partners {

@@ -145,7 +145,7 @@
 }
 [is='flynt-block-ticker'] .content .right-tab .ticker-container .ticker-news .title {
   color: var(--yellow);
-  -text-transform: uppercase;
+  text-transform: uppercase;
 }
 [is='flynt-block-ticker'] .content .right-tab .ticker-container .ticker-news .text {
   text-align: left;

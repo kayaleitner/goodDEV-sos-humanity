@@ -32,5 +32,5 @@
 }
 [is='flynt-list-numbers'] .list .item-title {
   background-color: var(--themeBase_buttonText);
-  -text-transform: uppercase;
+  text-transform: uppercase;
 }

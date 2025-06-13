@@ -49,7 +49,7 @@
   margin: 0;
   padding: 0 var(--padding_xsmall);
   text-decoration: none;
-  -text-transform: uppercase;
+  text-transform: uppercase;
   transition: color 0.2s ease-out;
 }
 
