@@ -135,7 +135,6 @@
 }
 [is='flynt-hero-image-title-text-parallax'] .content-title .title {
   -webkit-text-stroke: 2px var(--yellow);
-  font-family: 'Source Sans Pro Black', sans-serif;
   font-size: var(--fontSize_hero);
   font-weight: 900;
   line-height: 1;

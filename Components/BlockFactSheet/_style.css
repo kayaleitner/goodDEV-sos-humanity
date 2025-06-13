@@ -34,21 +34,7 @@
   transform: rotate(-90deg) translateX(-50%);
   z-index: 20;
 }
-[is='flynt-block-fact-sheet'] .side-title .title {
-  -webkit-text-stroke: 2px var(--yellow);
-  font-size: 24rem;
-  line-height: 1;
-  color: transparent;
-  margin: -4rem auto 0 auto;
-  text-transform: uppercase;
-  white-space: nowrap;
-  width: fit-content;
-}
-@media screen and (max-width: 540px) {
-  [is='flynt-block-fact-sheet'] .side-title .title {
-    -webkit-text-stroke-width: 1px;
- }
-}
+
 [is='flynt-block-fact-sheet'] .preContent {
   color: var(--white);
 }

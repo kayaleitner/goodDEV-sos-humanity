@@ -264,13 +264,6 @@
       padding: var(--padding_xsmall) var(--padding_small);
     }
   
-    .pill {
-      background-color: transparent;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: all 0.2s all;
-    }
-  
     &-mobile {
       padding: var(--padding_small) var(--padding_small) 0;
   
@@ -286,13 +279,7 @@
         .button {
           width: 100%;
         }
-  
-        .pill {
-          background-color: transparent;
-          text-decoration: none;
-          text-transform: uppercase;
-          transition: all 0.2s all;
-        }
+
       }
     }
   }

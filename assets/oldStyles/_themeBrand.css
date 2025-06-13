@@ -59,9 +59,6 @@
   transition: all 0.2s ease-out;
   width: 100%;
 }
-.themeBrand .pill:hover, .themeBrand .pill:focus {
-  color: var(--blue);
-}
 .themeBrand .slider-button {
   background-color: inherit;
 }

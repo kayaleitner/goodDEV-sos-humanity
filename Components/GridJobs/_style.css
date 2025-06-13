@@ -167,16 +167,7 @@
   flex-grow: 1;
   text-decoration: none;
 }
-[is='flynt-grid-jobs'] .grid-item .content-subtitle-readingTime {
-  color: #7b838d;
-  font-size: 0.9rem;
-}
-[is='flynt-grid-jobs'] .grid-item .content-subtitle-readingTime .feather {
-  color: #7b838d;
-  height: 1rem;
-  margin-right: 2px;
-  width: 1rem;
-}
+
 [is='flynt-grid-jobs'] .grid-item .content-subtitle-footer {
   align-items: center;
   align-self: flex-end;
