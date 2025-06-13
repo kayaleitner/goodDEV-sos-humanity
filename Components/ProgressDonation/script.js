@@ -13,7 +13,7 @@ export default function (component) {
       level.style.transition = 'unset';
     }
 
-    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const isMobile = window.matchMedia('(max-width: 1023px)').matches;
     const goal = parseFloat(component.dataset.goal) || 0;
     const levelValue = parseFloat(component.dataset.level) || 0;
 

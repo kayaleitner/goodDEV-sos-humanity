@@ -5,7 +5,7 @@
   overflow: hidden;
   padding: 0 var(--padding_small);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-ticker'] {
     padding: var(--padding_large) var(--padding_small);
  }
@@ -63,7 +63,7 @@
   position: relative;
   z-index: 21;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-ticker'] .content {
     padding: 0;
  }
@@ -73,7 +73,7 @@
   padding: var(--padding_large) var(--padding_small);
   width: 50%;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-ticker'] .content .left-tab {
     width: 100%;
  }
@@ -101,7 +101,7 @@
   padding: var(--padding_small) 0;
   width: 50%;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-ticker'] .content .right-tab {
     max-height: 100%;
     padding: var(--padding_small) 0;
@@ -112,7 +112,7 @@
   margin-bottom: var(--padding_small);
   padding: 0 var(--padding_small);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-ticker'] .content .right-tab--header {
     margin-bottom: var(--padding_small);
     padding: 0 var(--padding_small);
@@ -135,7 +135,7 @@
   scrollbar-width: 0.8rem;
   scrollbar-color: var(--yellow) var(--blue);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-ticker'] .content .right-tab .ticker-container {
     max-height: calc(var(--padding_medium)*3);
  }

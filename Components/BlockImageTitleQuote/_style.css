@@ -5,7 +5,7 @@
   justify-content: center;
   height: 100vh;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] {
     height: fit-content;
  }
@@ -21,7 +21,7 @@
   position: relative;
   z-index: 21;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .container {
     flex-flow: column wrap;
     height: fit-content;
@@ -34,7 +34,7 @@
   position: relative;
   width: 50%;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .container .figure {
     order: 2;
     width: 100%;
@@ -44,7 +44,7 @@
   aspect-ratio: 1;
   object-fit: cover;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .container .figure-image {
     aspect-ratio: 1.5;
  }
@@ -72,7 +72,7 @@
   position: relative;
   width: 50%;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .container .content-title {
     order: 1;
     width: 100%;
@@ -90,7 +90,7 @@
   border-right: none;
   left: calc(var(--padding_xsmall) * -1);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .container .content-title::before {
     left: calc(var(--padding_xsmall) * -1);
  }
@@ -99,7 +99,7 @@
   border-left: none;
   right: 0;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .container .content-title::after {
     right: calc(var(--padding_xsmall) * -1);
  }
@@ -110,7 +110,7 @@
   padding: var(--padding_xsmall);
   width: 50%;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .container .content-text {
     width: 100%;
  }
@@ -126,7 +126,7 @@
   transition: all 0.3s ease-in-out;
   width: 50%;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .container .content-link {
     width: 100%;
  }
@@ -149,7 +149,7 @@
   top: 0;
   z-index: 20;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .top-title {
     top: calc(50% - 17rem);
  }
@@ -173,7 +173,7 @@
   right: 0;
   z-index: 20;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-title-quote'] .bottom-title {
     bottom: calc(50% - 17rem);
  }

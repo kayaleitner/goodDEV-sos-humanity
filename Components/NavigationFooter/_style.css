@@ -17,7 +17,7 @@
       flex-direction: row;
       justify-content: flex-start;
 
-      @media (max-width: 1024px) {
+      @media (max-width: 1023px) {
         align-items: flex-start;
         flex-direction: column;
         width: 100%;
@@ -59,7 +59,7 @@
   .navigation {
     padding-right: var(--padding_medium);
   
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
       padding-bottom: var(--padding_xsmall);
     }
   

@@ -15,7 +15,7 @@
         height: 100%;
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1023px) {
         
         height: 60rem;
 
@@ -66,7 +66,7 @@
 
         }
 
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 1023px) {
             .goal {
                 left: calc(100% - var(--padding_small) - var(--shipWidth) / 2);
                 .panel {
@@ -119,7 +119,7 @@
             transform: translateY(100%);
         }
 
-        @media  screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1023px) {
             .ship {
                 left: var(--padding_small);
             }
@@ -163,7 +163,7 @@
                         padding: 0 var(--padding_xxsmall);
                         white-space: nowrap;
                     }
-                    @media screen and (max-width: 1024px) {
+                    @media screen and (max-width: 1023px) {
                         .level {
                             left: calc(var(--shipWidth) / 4 + var(--padding_small));
                             transform: translateX(-50%);

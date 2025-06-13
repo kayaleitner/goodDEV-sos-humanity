@@ -37,7 +37,7 @@
     margin: 0;
     width: 25.6rem;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
       height: 50rem;
       margin: 0;
       width: 50rem;
@@ -120,7 +120,7 @@
     transform: translateX(13.5rem);
     z-index: 1;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
       transform: translateX(0);
     }
 

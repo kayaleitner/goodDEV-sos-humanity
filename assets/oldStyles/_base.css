@@ -13,7 +13,7 @@ html {
   scroll-behavior: smooth;
   word-wrap: break-word;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   html {
     font-size: 4px;
  }
@@ -43,7 +43,7 @@ h1 a, h2 a, .h1 a, .h2 a, h1 a:hover, h2 a:hover, .h1 a:hover, .h2 a:hover, h1 a
   margin: 0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .title-big {
     -webkit-text-stroke-width: 1px;
  }
@@ -499,7 +499,7 @@ select::-ms-expand {
   color: var(--yellow);
   text-decoration: none;
 }
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
   .slideUp {
     transform: translateY(-55px);
  }

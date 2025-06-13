@@ -53,7 +53,7 @@
   transition: color 0.2s ease-out;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-navigation-pre-nav'] .menu-link {
     padding: 0 10px;
     text-align: center;
@@ -71,14 +71,14 @@
   text-underline-offset: 5px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-navigation-pre-nav'] .menu-item {
     text-align: center;
     width: auto;
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   [is='flynt-navigation-pre-nav'] {
     margin-top: auto;
   }
@@ -91,7 +91,7 @@
     padding: 100px 60px;
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1023px) {
     [is='flynt-navigation-pre-nav'] .container {
       padding: 40px 24px;
     }

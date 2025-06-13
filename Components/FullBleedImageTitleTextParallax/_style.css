@@ -81,7 +81,7 @@
 [is='flynt-hero-image-title-text-parallax'].is-contact-form button {
   margin-top: 2rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   [is='flynt-hero-image-title-text-parallax'].is-contact-form .contactForm {
     width: 100%;
     max-width: 500px;
@@ -185,7 +185,7 @@
   margin-bottom: 0;
   padding-bottom: 0;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   [is='flynt-hero-image-title-text-parallax'] .content-inner {
     width: 50vw;
  }
@@ -283,7 +283,7 @@
   padding: 0;
   transition: all 0.3s ease-in-out;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button {
     font-size: var(--fontSizeBody1Mobile);
  }

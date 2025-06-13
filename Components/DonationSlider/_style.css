@@ -39,7 +39,7 @@
             background-color: var(--blue);
         }
 
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 1023px) {
             
             padding-bottom: 0;
 
@@ -67,7 +67,7 @@
             }
         }
 
-        @media screen and (min-width: 1025px) {
+        @media screen and (min-width: 1024px) {
             min-height: unset;
         }
     }
@@ -76,7 +76,7 @@
         padding-top: 0;
         padding-bottom: 0;
 
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 1023px) {
             padding: 0;
         }
 

@@ -11,7 +11,7 @@
   grid-template-columns: repeat(1, 1fr);
   row-gap: var(--padding_medium);
 }
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1024px) {
   [is='flynt-grid-jobs'] .grid {
     grid-template-columns: repeat(2, 1fr);
     row-gap: var(--padding_xsmall);
@@ -115,7 +115,7 @@
   font-weight: 700;
   transition: all 0.2s linear;
 }
-@media screen and (min-width: 541px) and (max-width: 1024px) {
+@media screen and (min-width: 541px) and (max-width: 1023px) {
   [is='flynt-grid-jobs'] .grid-item .content-date.meta-date {
     font-size: 4.75rem;
  }
@@ -221,7 +221,7 @@
     right: 10px;
  }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   [is='flynt-grid-jobs'] .grid-item .content-container {
     display: flex;
     flex-flow: column wrap;

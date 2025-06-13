@@ -24,7 +24,7 @@
     justify-content: flex-start;
  }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-text-page-link'] .box {
     height: auto;
  }
@@ -62,7 +62,7 @@
   transition: all 0.2s linear;
   width: var(--padding_small);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-text-page-link'] .box-inner--arrow::after {
     font-size: 8rem;
     height: var(--padding_medium);
