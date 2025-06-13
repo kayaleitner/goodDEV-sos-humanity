@@ -19,19 +19,17 @@
         {% endif %}
         <div class="content-inner">
           <div>
-            <h3 class="content-category h5"><span class="content-category-title">{{ item.category }}</span></h5>
-            {% if item.title %}
-              <p class="content-excerpt body-2">{{ item.post_excerpt|truncate(12) }}</p>
-            {% elseif item.post_excerpt %}
-              <p class="content-excerpt body-2">{{ item.post_excerpt|truncate(12) }}</p>
+            <h3 class="content-category h5 mb-sm md:mb-4"><span class="content-category-title normal-case px-3">{{ item.category }}</span></h5>
+            {% if item.post_excerpt %}
+              <p class="content-excerpt {% if loop.index > 1 %} md:font-paragraphSmall {% else %} md:font-sectionTitle {% endif %}">{{ item.post_excerpt|truncate(12) }}</p>
             {% else %}
-              <p class="content-excerpt body-2">{{ item.preview.read_more(false).length(12) }}</p>
+              <p class="content-excerpt md:font-paragraphSmall">{{ item.preview.read_more(false).length(12) }}</p>
             {% endif %}
           </div>
           {% if item.field_meta_text %}
-            <p class="content-subtitle meta-text body-2">{{ item.field_meta_text }}</p>
+            <p class="content-subtitle meta-text md:font-paragraphSmall">{{ item.field_meta_text }}</p>
           {% elseif item.field_meta_file %}
-            <p class="content-subtitle meta-file body-2"><span class="meta-file-subtype">{{item.field_meta_file.subtype}}</span> download</p>
+            <p class="content-subtitle meta-file md:font-paragraphSmall"><span class="meta-file-subtype">{{item.field_meta_file.subtype}}</span> download</p>
           {% endif %}
         </div>
       </div>

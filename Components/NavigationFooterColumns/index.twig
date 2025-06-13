@@ -28,9 +28,9 @@
             </div>
           {% endif %}
           {% if social %}
-            <ul class="socialList">
+            <ul class="socialList flex-wrap gap-xs m-0 p-0">
               {% for socials in social %}
-                <li class="socialList-item">
+                <li class="socialList-item min-h-8">
                   <a class="socialList-link" href="{{ socials.url }}" aria-label="{{ socials.platform.label }}" target="_blank">
                     {{- socials.icon -}}
                   </a>

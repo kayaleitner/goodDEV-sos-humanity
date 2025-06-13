@@ -16,7 +16,7 @@
   }
   
   .searchForm-box {
-    padding: 2.5px 0;
+    
     width: 15rem;
   }
   
@@ -25,7 +25,7 @@
   }
   
   .searchForm-box.darkText .searchForm-input::placeholder {
-    color: var(--blue);
+    color: var(--blue); 
   }
   
   .searchForm-box.darkText .searchForm-input:focus,
@@ -39,7 +39,7 @@
     border: 0;
     color: var(--white);
     font-family: inherit;
-    font-size: 1.5rem;
+    @apply font-caption;
     margin: 0;
     min-height: 25px;
     padding: 0;
@@ -74,7 +74,7 @@
   }
   
   .searchForm::placeholder {
-    color: var(--white);
+    color: var(--white) !important;
   }
   
   @media screen and (max-width: 1023px) {

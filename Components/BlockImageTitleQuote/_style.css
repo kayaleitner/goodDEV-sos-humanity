@@ -162,9 +162,6 @@
   white-space: break-spaces;
 }
 [is='flynt-block-image-title-quote'] .top-title .title {
-  font-family: 'Source Sans Pro Black', sans-serif;
-  font-size: var(--fontSize_hero);
-  font-weight: 900;
   margin: -2vw auto 0 auto;
 }
 [is='flynt-block-image-title-quote'] .bottom-title {

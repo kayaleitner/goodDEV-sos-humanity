@@ -3,7 +3,7 @@
 
  @import 'styles/_global.css';
 
- /* @import 'styles/_fonts.css'; */
+ @import 'styles/_fonts.css';
 /*@import 'styles/_container.css';
 
 @import 'styles/_buttons.css';
@@ -13,8 +13,9 @@
 @import 'styles/_global.css';
 @import 'styles/_anim.css';
 @import 'styles/_borlabs-cookie.css';
-@import 'styles/_env-badge.css';
-@import 'styles/_components.css'; */
+@import 'styles/_env-badge.css'; */
+
+@import 'styles/_components.css'; 
 
 
 @import 'oldStyles/_styles.css';

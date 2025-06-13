@@ -125,7 +125,7 @@ header.mainHeader.mainHeader--open [is='flynt-navigation-main'] .menu .open-subm
   color: var(--yellow);
   padding: 0 var(--padding_xsmall);
   text-transform: none;
-  font-size: var(--fontSizeBody2);
+  @apply font-paragraphSmall;
 }
 
 [is='flynt-navigation-main'] .menu-submenu.display--flex {
@@ -155,13 +155,10 @@ header.mainHeader.mainHeader--open [is='flynt-navigation-main'] .menu .open-subm
   display: none;
 }
 
-@media (max-width: 1280px) and (min-width: 1025px) {
-  [is='flynt-navigation-main'] .menu {
-    font-size: var(--fontSizeBody2);
-  }
+@media (max-width: 1280px) and (min-width: 1024px) {
 
   [is='flynt-navigation-main'] .menu-link {
-    padding: 0 23px;
+    padding: 0 14px;
   }
 
   [is='flynt-navigation-main'] .menu-submenu .menu-link {
@@ -169,9 +166,9 @@ header.mainHeader.mainHeader--open [is='flynt-navigation-main'] .menu .open-subm
   }
 
   [is='flynt-navigation-main'] .cta>.button {
-    padding: 0 20px !important;
-    width: 170px !important;
-    font-size: var(--fontSizeBody2) !important;
+    padding: 0 18px !important;
+    white-space: nowrap;
+    @apply font-paragraphSmall;
   }
 }
 

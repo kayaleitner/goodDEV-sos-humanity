@@ -11,7 +11,6 @@
     align-items: flex-start;
     border-bottom: 2px solid var(--yellow);
     display: flex;
-    flex-flow: row wrap;
     justify-content: space-between;
 
     @media (max-width: 540px) {
@@ -20,16 +19,10 @@
     }
 
     &-menu {
-      align-self: flex-start;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
       padding-bottom: var(--padding_small);
-      width: 45%;
 
       @media (max-width: 540px) {
         padding-bottom: 0;
-        width: 100%;
       }
     }
 
@@ -37,7 +30,6 @@
       display: flex;
       flex-direction: column;
       padding-bottom: var(--padding_small);
-      width: 30%;
 
       @media (max-width: 1023px) {
         width: 50%;
@@ -168,12 +160,12 @@
       @include reset-list;
       display: flex;
       justify-content: flex-start;
+      @apply gap-8 md:gap-6;
+
   
       &-link {
         box-sizing: content-box;
         display: block;
-        padding-bottom: 1.7rem;
-        padding-right: 5rem;
   
         &:hover,
         &:focus {
@@ -189,10 +181,6 @@
   
       &-item {
         display: inline-block;
-  
-        &:not(:last-child) {
-          margin-right: 5px;
-        }
       }
   
       svg {
@@ -200,7 +188,11 @@
         border-radius: 50%;
         display: block;
         height: auto;
-        width: 5.2rem;
+        width: 8rem;
+
+        @screen md  {
+          width: 5.2rem;
+        }
       }
     }
   }
