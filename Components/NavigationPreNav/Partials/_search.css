@@ -39,7 +39,7 @@
     border: 0;
     color: var(--white);
     font-family: inherit;
-    @apply font-caption;
+    @apply font-paragraphSmall md:font-caption;
     margin: 0;
     min-height: 25px;
     padding: 0;
@@ -90,7 +90,6 @@
     }
   
     .searchForm-input {
-      font-size: var(--fontSize_h3_mobile);
       text-align: left;
       border: none !important;
     }
@@ -105,10 +104,6 @@
     .searchForm-submit svg {
       height: 100%;
       width: 100%;
-    }
-  
-    .searchForm::placeholder {
-      font-size: var(--fontSize_h3_mobile);
     }
   }  
 

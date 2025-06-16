@@ -44,7 +44,7 @@
 }
 @media screen and (min-width: 1600px) {
   [is='flynt-hero-image-title-text-parallax'].is-contact-form .content-title .title {
-    font-size: 160px !important;
+    @apply font-pageTitle;
  }
   [is='flynt-hero-image-title-text-parallax'].is-contact-form .picture {
     height: 750px !important;
@@ -221,18 +221,14 @@
   display: none;
 }
 [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-name {
-  font-size: var(--fontSizeBody1);
+  @apply font-paragraph;
 }
 [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-name p {
   display: flex;
   gap: var(--padding_xsmall);
   justify-content: space-between;
 }
-@media (max-width: 540px) {
-  [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-name {
-    font-size: 3.2rem;
- }
-}
+
 [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-name span {
   width: calc(50% - 2rem);
 }
@@ -249,17 +245,12 @@
 }
 [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit {
   border-bottom: 1px solid var(--blue);
-  font-size: var(--fontSizeBody1);
+  @apply font-paragraph;
 }
 [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit p {
   display: flex;
   gap: var(--padding_xsmall);
   justify-content: space-between;
-}
-@media (max-width: 540px) {
-  [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit {
-    font-size: 3.2rem;
- }
 }
 [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit input {
   background-color: transparent;
@@ -276,17 +267,13 @@
   border-radius: 0;
   color: var(--blue);
   display: flex;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: var(--fontSizeBody1);
+  @apply font-paragraph;
+
   font-weight: normal;
   padding: 0;
   transition: all 0.3s ease-in-out;
 }
-@media (max-width: 1023px) {
-  [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button {
-    font-size: var(--fontSizeBody1Mobile);
- }
-}
+
 [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button:hover, [is='flynt-hero-image-title-text-parallax'] .form--newsletter .group-submit .button:focus {
   background-color: transparent;
   border: 0;
@@ -313,13 +300,9 @@
   padding: 0;
 }
 [is='flynt-hero-image-title-text-parallax'] .form--newsletter .disclaimer p {
-  font-size: 1.5rem;
+  @apply font-caption;
 }
-@media (max-width: 1023px) {
-  [is='flynt-hero-image-title-text-parallax'] .form--newsletter .disclaimer p {
-    font-size: 1.5rem;
- }
-}
+
 @media (max-width: 599px) {
   [is='flynt-hero-image-title-text-parallax'] br {
     content: '\00a0';
@@ -330,7 +313,7 @@
 }
 [is='flynt-hero-image-title-text-parallax'] .wpcf7-response-output {
   color: var(--blue);
-  font-size: 1.5rem;
+  @apply font-caption;
   margin-top: var(--padding_xsmall);
   opacity: 0.5;
   padding: 0;

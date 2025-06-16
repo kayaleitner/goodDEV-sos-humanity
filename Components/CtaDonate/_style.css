@@ -21,7 +21,7 @@
 }
 [is='flynt-cta-donate'] .side-title .title {
   -webkit-text-stroke: 1px var(--blue);
-  font-size: 20rem;
+  @apply text-[24rem]; 
   line-height: 1;
   color: transparent;
   margin: -4rem auto 0 auto;
@@ -127,29 +127,24 @@
   border-left: 0;
   border-right: 1px solid var(--blue);
   border-top: 0;
-  font-size: 3.6rem;
+  @apply font-sectionTitle;
   margin: 0;
   padding: 3rem var(--padding_xsmall) 3rem var(--padding_xsmall) !important;
   width: 50%;
 }
 [is='flynt-cta-donate'] .donate-select .donate-custom-amount::placeholder {
-  font-size: 2rem;
+  @apply font-paragraph;
   transform: translateY(-6px);
 }
 @media (max-width: 1023px) {
   [is='flynt-cta-donate'] .donate-select .donate-custom-amount::placeholder {
     transform: unset;
-    font-size: var(--fontSizeBody1Mobile);
  }
 }
 [is='flynt-cta-donate'] .donate-select .donate-custom-amount:focus {
   outline: 0;
 }
-@media (max-width: 768px) {
-  [is='flynt-cta-donate'] .donate-select .donate-custom-amount {
-    font-size: 6rem;
- }
-}
+
 [is='flynt-cta-donate'] .donate-select .donate-submit {
   margin: 0;
   width: 50%;

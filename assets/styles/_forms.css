@@ -92,7 +92,7 @@
 
 .wpforms-field-medium p,
 .wpforms-field-label-inline {
-        @apply !font-smallParagraph;
+        @apply !font-paragraphSmall;
         @apply !my-0;
         display: block;
         white-space: normal;

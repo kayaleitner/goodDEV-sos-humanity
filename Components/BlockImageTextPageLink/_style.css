@@ -54,7 +54,6 @@
   background-color: var(--blue);
   color: var(--warmwhite);
   display: flex;
-  font-size: 5rem;
   height: var(--padding_small);
   justify-content: center;
   position: absolute;
@@ -64,7 +63,6 @@
 }
 @media (max-width: 1023px) {
   [is='flynt-block-image-text-page-link'] .box-inner--arrow::after {
-    font-size: 8rem;
     height: var(--padding_medium);
     margin-top: 50px;
     right: 0;
@@ -75,7 +73,6 @@
 }
 @media (max-width: 540px) {
   [is='flynt-block-image-text-page-link'] .box-inner--arrow::after {
-    font-size: 8rem;
     height: var(--padding_medium);
     margin-top: 0;
     right: 0;
