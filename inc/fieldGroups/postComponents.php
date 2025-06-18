@@ -79,7 +79,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\GridPostsSelector\getACFLayout(),
                     Components\WidgetPetition\getACFLayout(),
                     Components\ProgressDonation\getACFLayout(),
-                    Components\DonationSlider\getACFLayout(),
+                    // Components\DonationSlider\getACFLayout(),
                 ],
             ],
         ],
