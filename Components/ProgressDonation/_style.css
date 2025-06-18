@@ -1,29 +1,29 @@
 [is='flynt-progress-donation'] {
 
-    height: 60rem;
+    height: 37.5rem;
     display: block;
 
     --shipWidth: 276px;
     --shipHeight: 124px;
     --progressBar: 14px;
-    --panelHeight: 5rem;
-    --panelMinWidth: 15rem;
+    --panelHeight: 3.125rem;
+    --panelMinWidth: 9.375rem;
 
     .container {
         position: relative;
-        width: 90rem;
+        width: 56.25rem;
         height: 100%;
     }
 
     @media screen and (max-width: 1023px) {
         
-        height: 60rem;
+        height: 15rem;
 
         --shipWidth: 73px;
         --shipHeight: 34px;
         --progressBar: 6px;
         --panelHeight: 30px;
-        --panelMinWidth: 20rem;
+        --panelMinWidth: 5rem;
 
         .container {
             padding: 0 var(--padding_small);
@@ -72,7 +72,7 @@
                 .panel {
                     height: unset;
                     min-width: unset;
-                    padding: 0 1rem;
+                    padding: 0 0.25rem;
     
                     .text {
                         padding: 0;
@@ -171,7 +171,7 @@
                         .panel {
                             height: unset;
                             min-width: unset;
-                            padding: 0 1rem;
+                            padding: 0 0.25rem;
                         }
                         .text {
                             padding: 0;

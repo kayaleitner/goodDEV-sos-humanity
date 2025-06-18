@@ -1,6 +1,7 @@
 [is='flynt-navigation-pre-nav'] {
   .searchForm {
-    margin-left: 3rem;
+    margin-left: 0.75rem;
+    @screen md { margin-left: 1.875rem;}
   }
   
   .searchForm-field {
@@ -16,8 +17,8 @@
   }
   
   .searchForm-box {
-    
-    width: 15rem;
+    width: 3.75rem;
+    @screen md { width: 9.375rem}
   }
   
   .searchForm-box.darkText .searchForm-input {
@@ -46,7 +47,8 @@
     text-align: left;
     width: 100%;
     border-radius: 0;
-    padding-right: 2.5rem;
+    padding-right: 0.625rem;
+    @screen md {padding-right: 1.5625rem;}
   }
   
 
@@ -95,8 +97,8 @@
     }
   
     .searchForm-submit {
-      height: 8rem;
-      width: 8rem;
+      height: 2rem;
+      width: 2rem;
       padding: 0;
       transform: unset;
     }

@@ -25,88 +25,85 @@ body {
     font-weight: 900;
     font-style: normal;
     line-height: 1;
-    font-size: 10rem;
+    font-size: 2.5rem;
 
     @screen md {
       line-height: 1.11;
-      font-size: 7.2rem;
-      letter-spacing: -1px;
+      font-size: 4.5rem;
+      letter-spacing: -0.0625rem;
     }
   }
 
-
   .font-sectionTitle {
-    font-size: 6rem;
+    font-size: 1.5rem;
     letter-spacing: 0;
     line-height: 1.25;
 
     @screen md {
       letter-spacing: normal;
-      font-size: 3.6rem;
+      font-size: 2.25rem;
     }
   }
 
   .font-contentTitle {
-    font-size: 3.75rem;
+    font-size: 0.9375rem;
     font-weight: 700;
     line-height: 1.18;
     letter-spacing: normal;
 
     @screen md {
-      font-size: 2rem;
+      font-size: 1.25rem;
     }
   }
-  
+
   .font-paragraph {
-    font-size: 4.5rem;
+    font-size: 1.125rem;
     line-height: 1.25;
-    
+
     @screen md {
-      font-size: 2.2rem;
+      font-size: 1.375rem;
       line-height: 1.59;
     }
   }
 
   .font-paragraphSmall {
-    font-size: 4rem;
+    font-size: 1rem;
     line-height: 1.25;
-    
+
     @screen md {
-      font-size: 1.8rem;
+      font-size: 1.125rem;
       line-height: 1.56;
     }
   }
 
   .font-caption {
-    font-size: 3rem;
+    font-size: 0.75rem;
     line-height: 1.25;
 
     @screen md {
-      font-size: 1.5rem;
+      font-size: 0.9375rem;
     }
   }
 
   .font-button {
     @apply font-bold;
-    font-size: 4rem;
+    font-size: 1rem;
     line-height: 1.5;
 
     @screen md {
-      font-size: 2rem;
+      font-size: 1.25rem;
     }
-
   }
 
   .font-quoteBig {
     @apply font-mono font-bold;
-    
-      line-height: 1;
-      font-size: 10rem;
-      letter-spacing: 0;
-    
+    line-height: 1;
+    font-size: 2.5rem;
+    letter-spacing: 0;
+
     @screen md {
       line-height: 1.11;
-      font-size: 7.2rem;
+      font-size: 4.5rem;
       letter-spacing: normal;
     }
   }
@@ -114,19 +111,20 @@ body {
   .font-quoteMedium {
     @apply font-mono font-bold;
     line-height: 1.25;
-    font-size: 4rem;
+    font-size: 1rem;
 
     @screen md {
-      font-size: 3.6rem;
+      font-size: 2.25rem;
     }
   }
 
   .font-quoteSmall {
     @apply font-mono;
-    font-size: 4rem;
+    font-size: 1rem;
     line-height: 1.59;
+
     @screen md {
-      font-size: 2.2rem;
+      font-size: 1.375rem;
     }
   }
 
@@ -225,8 +223,8 @@ body {
           content: "";
           position: absolute;
           display: inline-block;
-          width: rem(10);
-          height: rem(10);
+          width: 0.625rem;
+          height: 0.625rem;
           left: -1em;
           top: 0.5em;
           margin-right: 0.5em;
@@ -247,7 +245,7 @@ body {
       li {
         @apply font-paragraph;
         list-style: inherit;
-        margin-block-end: .25em;
+        margin-block-end: 0.25em;
 
         &::marker {
           font-weight: bold;
@@ -258,7 +256,5 @@ body {
         }
       }
     }
-
   }
-
 }

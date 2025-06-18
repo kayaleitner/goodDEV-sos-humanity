@@ -1,4 +1,17 @@
-[is='flynt-hero-image-title-text-parallax'] {
+[is='flynt-hero-image-title-text-parallax'] .content-title .title {
+  -webkit-text-stroke: 2px var(--yellow);
+  font-size: var(--fontSize_hero);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  margin: -2vw auto 0 auto;
+  position: relative;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+/* [is='flynt-hero-image-title-text-parallax'] {
   position: relative;
   overflow: hidden;
   min-height: calc(30vw + 6rem);
@@ -133,18 +146,7 @@
   z-index: 20;
   top: 0;
 }
-[is='flynt-hero-image-title-text-parallax'] .content-title .title {
-  -webkit-text-stroke: 2px var(--yellow);
-  font-size: var(--fontSize_hero);
-  font-weight: 900;
-  line-height: 1;
-  color: transparent;
-  margin: -2vw auto 0 auto;
-  position: relative;
-  text-transform: uppercase;
-  white-space: nowrap;
-  width: fit-content;
-}
+
 @media screen and (max-width: 540px) {
   [is='flynt-hero-image-title-text-parallax'] .content-title .title {
     margin: -6.5pt auto 0 auto;
@@ -320,4 +322,4 @@
 }
 [is='flynt-hero-image-title-text-parallax'] .wpcf7-tel {
   outline: 0 !important;
-}
+} */

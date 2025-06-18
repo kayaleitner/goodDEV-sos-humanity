@@ -2,10 +2,10 @@
 
     [is='flynt-hero-image-title-text-parallax'] {
         height: unset;
-        padding-bottom: 6rem;
+        padding-bottom: 3.75rem;
 
         .picture {
-            height: 60rem;
+            height: 37.5rem;
             overflow: unset;
         }
 
@@ -17,12 +17,12 @@
         .content-caption {
             position: absolute;
             right: 0;
-            padding-right: 1rem;
-            top: 60rem;
+            padding-right: 0.625rem;
+            top: 37.5rem;
         }
         
         .content-title {
-            padding-bottom: 5rem;
+            padding-bottom: 3.125rem;
         }
 
         .content {
@@ -30,7 +30,8 @@
         }
 
         .content-inner {
-            width: 90rem;
+            width: 56.25rem;
+            margin: auto
         }
 
         .image-background {
@@ -48,17 +49,17 @@
             }
             
             .image {
-                height: calc(100% - 12rem);
+                height: calc(100% - 3rem);
             }
 
             .content-caption {
                 top: unset;
-                bottom: 2rem;
-                padding-top: 2rem;
+                bottom: .5rem;
+                padding-top: .5rem;
             }
 
             .image-background {
-                height: calc(100% - 12rem);
+                height: calc(100% - 3rem);
             }
 
             .content-inner {

@@ -26,16 +26,16 @@ ScrollTrigger.batch('.move-in', {
 const parallaxBoxes = gsap.utils.toArray('.parallax')
 parallaxBoxes.forEach((box, i) => {
   // Set up your animation
-  const anim = gsap.to(box, { y: '-20vh', scaleX: 1.1, scaleY: 1.1, ease: 'none' })
+  const anim = gsap.to(box, { y: '-20%', scaleX: 1.2, scaleY: 1.2, ease: 'none' })
   // Use callbacks to control the state of the animation
   ScrollTrigger.create({
     trigger: box,
     animation: anim,
     scrub: 0.1,
-    start: '-15vh bottom',
+    start: '0 bottom',
     end: 'top top',
     ease: 'none',
-    markers: false
+    markers: true
   })
 })
 
@@ -60,7 +60,7 @@ parallaxTextTopBottom.forEach((box, i) => {
 const parallaxHero = gsap.utils.toArray('.parallax-hero')
 parallaxHero.forEach((box, i) => {
   // Set up your animation
-  const anim = gsap.to(box, { y: '-32rem', scaleX: 1, scaleY: 1, ease: 'none' })
+  const anim = gsap.to(box, { y: '-20rem', scaleX: 1, scaleY: 1, ease: 'none' })
   // Use callbacks to control the state of the animation
   ScrollTrigger.create({
     trigger: box,
@@ -93,7 +93,7 @@ parallaxHero.forEach((box, i) => {
 const parallaxHeroText = gsap.utils.toArray('.parallax-hero-text')
 parallaxHeroText.forEach((box, i) => {
   // Set up your animation
-  const anim = gsap.to(box, { y: '32rem', ease: 'none' })
+  const anim = gsap.to(box, { y: '20rem', ease: 'none' })
   // Use callbacks to control the state of the animation
   ScrollTrigger.create({
     trigger: box,

@@ -77,7 +77,7 @@
 @media (min-width: 1024px) {
   [is='flynt-grid-jobs'] .grid-item .content-hiring {
     @apply font-paragraphSmall;
-    padding-right: 3rem;
+    padding-right: 1.875rem;
     top: var(--padding_xxsmall);
     right: var(--padding_xxsmall);
  }
@@ -88,8 +88,8 @@
   top: 0;
   right: 0;
   display: block;
-  height: 4.3rem;
-  width: 4.3rem;
+  height: 1.1rem;
+  width: 1.1rem;
   background-color: #e0f8e7;
   border-radius: 50%;
   animation: blink 2s infinite;
@@ -98,8 +98,8 @@
 @media (min-width: 1024px) {
   [is='flynt-grid-jobs'] .grid-item .content-hiring::after {
     transform: translate(-6px, 5px);
-    height: 1.9rem;
-    width: 1.9rem;
+    height: 1.2rem;
+    width: 1.2rem;
  }
 }
 [is='flynt-grid-jobs'] .grid-item .content-date.meta-date {
@@ -236,7 +236,7 @@
     @apply font-paragraph;
     position: relative;
     right: 0;
-    bottom: 3rem;
+    bottom: 1.875rem;
     top: auto;
     height: fit-content;
     width: fit-content;

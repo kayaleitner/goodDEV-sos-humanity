@@ -72,7 +72,7 @@
     @apply font-paragraph;
     position: relative;
     right: 0;
-    bottom: 3rem;
+    bottom: 1.875rem;
     top: auto;
     height: fit-content;
     width: fit-content;
@@ -200,7 +200,7 @@
 }
 @media (min-width: 1024px) {
   [is='flynt-grid-posts-latest'] .content-image {
-    max-height: 35rem;
+    max-height: 21.875rem;
   }
 }
 [is='flynt-grid-posts-latest'] .content-inner {
