@@ -57,11 +57,7 @@ Options::addTranslatable('NavigationBurger', [
         'placement' => 'top',
         'endpoint' => 0
     ],
-    array_merge(FieldVariables\getMaxWidthContainer(), [
-        'wrapper' => [
-            'width' => 100
-        ]
-    ]),
+
     [
         'label' => __('CTA', 'flynt'),
         'name' => 'ctaTab',

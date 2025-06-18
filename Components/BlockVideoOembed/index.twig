@@ -4,7 +4,7 @@
   is="flynt-block-video-oembed"
   name="BlockVideoOembed"
 >
-  <div class="container {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }}; max-width: {{ options.containerMaxWidth }};">
+  <div class="container {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }}; ">
     {% if preContentHtml %}
       <div class="preContent">
         {{ preContentHtml|wp_kses_custom}}

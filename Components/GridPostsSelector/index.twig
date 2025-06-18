@@ -1,6 +1,6 @@
 {% if items|length > 0 %}
   <div class="flyntComponent {{ options.theme }}" id="filter{{ title|e }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-grid-posts-selector">
-    <div class="container" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }}; max-width: {{ options.containerMaxWidth }};">
+    <div class="container" style="padding: {{ options.paddingTopBottom }} {{ options.paddingLeftRight }}; ">
       {% if preContentHtml %}
       <div class="preContent">
         <h2>{{ preContentHtml|wp_kses_custom }}</h2>

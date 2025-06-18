@@ -44,11 +44,6 @@ Options::addTranslatable('NavigationFooter', [
         'placement' => 'top',
         'endpoint' => 0
     ],
-    array_merge(FieldVariables\getMaxWidthContainer(), [
-        'wrapper' => [
-            'width' => 50
-        ]
-    ]),
     array_merge(FieldVariables\getPaddingTopBottom(), [
         'wrapper' => [
             'width' => 50

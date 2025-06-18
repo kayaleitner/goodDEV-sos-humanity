@@ -1,6 +1,6 @@
 <flynt-component class"flyntComponent" is="flynt-navigation-burger" name="NavigationBurger">
   <nav aria-label="{{ __("Main", "flynt") }}">
-    <div class="container" style="max-width: {{ containerMaxWidth }};">
+    <div class="container">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
       <div class="right">
       {% if menu %}
