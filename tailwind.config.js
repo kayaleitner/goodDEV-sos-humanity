@@ -54,6 +54,31 @@ export const theme = {
     max: '1920px',    // Updated from 1600px to match $breakpoint-desktop-xlarge
   },  
   extend: {
+     colors: {
+    /** Colors (Primitives) */
+    current: 'currentColor',
+    transparent: 'transparent',
+    tangerine: 'var(--tangerine)',
+    yellow: 'var(--yellow)',
+    white: 'var(--white)',
+
+    /** Colors (Tokens) */
+    brandColor: 'var(--brandColor)',
+    accentColor: 'var(--accentColor)',
+
+    textColor: 'var(--textColor)',
+    linkColor: 'var(--linkColor)',
+    hoverColor: 'var(--hoverColor)',
+    activeColor: 'var(--bluepressed)',
+
+    bgColor: 'var(--bgColor)',
+    paperColor: 'var(--paperColor)',
+    borderColor: 'var(--borderColor)',
+    uiColor: 'var(--grey)',
+
+    errorColor: 'var(--errorColor)',
+    successColor: 'var(--successColor)',
+  },
     aspectRatio: {
       '4/3': '4 / 3',
       '3/4': '3 / 4',
