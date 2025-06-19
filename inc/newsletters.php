@@ -26,8 +26,8 @@ add_shortcode('newsletter', function ($atts, $content = null) {
             'lastname' => ['label' => 'Nachname', 'placeholder' => 'Nachname*'],
             'phone' => ['label' => 'Telefonnummer', 'placeholder' => 'Telefonnummer'],
             'email' => ['label' => 'E-Mail', 'placeholder' => 'E-Mail*'],
-            'address' => ['label' => 'Postadresse', 'placeholder' => 'Postadresse'],
-            'outreach' => 'Ich möchte per Telefon kontaktiert werden',
+            'address' => ['label' => 'Postadresse', 'placeholder' => 'Straße Hausnummer, Postleitzahl Ort*'],
+            'outreach' => 'Ich bin damit einverstanden, dass SOS Humanity mich kontaktiert, um mir ein Aktionspaket zuzusenden.',
             'submit' => 'Senden',
         ]
         : (($locale === 'it_IT')
@@ -36,8 +36,8 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                 'lastname' => ['label' => 'Cognome', 'placeholder' => 'Cognome*'],
                 'phone' => ['label' => 'Telefono', 'placeholder' => 'Telefono'],
                 'email' => ['label' => 'E-mail', 'placeholder' => 'E-mail*'],
-                'address' => ['label' => 'Indirizzo postale', 'placeholder' => 'Indirizzo postale'],
-                'outreach' => 'Vorrei essere contattato telefonicamente',
+                'address' => ['label' => 'Indirizzo postale', 'placeholder' => '"Nome della via numero civico, CAP città, paese*'],
+                'outreach' => 'Accetto che SOS Humanity mi contatti per inviarmi un pacchetto di sensibilizzazione.',
                 'submit' => 'Iscriviti',
             ]
             : [
@@ -45,8 +45,8 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                 'lastname' => ['label' => 'Last Name', 'placeholder' => 'Last Name*'],
                 'phone' => ['label' => 'Phone Number', 'placeholder' => 'Phone Number'],
                 'email' => ['label' => 'Email', 'placeholder' => 'Email*'],
-                'address' => ['label' => 'Postal Address', 'placeholder' => 'Postal Address'],
-                'outreach' => 'I would like to be contacted via phone',
+                'address' => ['label' => 'Postal Address', 'placeholder' => 'Street name house number, ZIP code city, country*'],
+                'outreach' => 'I agree that SOS Humanity may contact me to send me an outreach package.',
                 'submit' => 'Submit',
             ]);
 
@@ -86,6 +86,7 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                     id="newsletter-address" name="adresse" placeholder="' . esc_attr($fields['address']['placeholder']) . '" 
                     rows="3"
                     style="background-color: var(--yellow);"
+                    required aria-required="true"
                 ></textarea>
             </div>
         ';
@@ -96,7 +97,7 @@ add_shortcode('newsletter', function ($atts, $content = null) {
     if ($attributes['outreach'] === 'true') {
         $outreachField = '
             <div class="jc-form-field outreach-checkbox" style="margin-bottom: 20px;">
-                <input type="checkbox" id="newsletter-outreach" name="outreach" value="yes">
+                <input type="checkbox" id="newsletter-outreach" name="outreach" value="yes" required aria-required="true">
                 <label for="newsletter-outreach">' . esc_html($fields['outreach']) . '</label>
             </div>
         ';
