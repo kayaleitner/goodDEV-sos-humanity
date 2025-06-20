@@ -408,7 +408,7 @@ select::-ms-expand {
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 4px;
+  top: 0;
   transition: border-color 0.2s ease, background-color 0.2s ease;
   width: 15px;
 }
