@@ -13,6 +13,7 @@ export const theme = {
     tangerine: 'var(--tangerine)',
     yellow: 'var(--yellow)',
     white: 'var(--white)',
+    blue: 'var(--blue)',
 
     /** Colors (Tokens) */
     brandColor: 'var(--brandColor)',
@@ -61,6 +62,7 @@ export const theme = {
     tangerine: 'var(--tangerine)',
     yellow: 'var(--yellow)',
     white: 'var(--white)',
+    blue: 'var(--blue)',
 
     /** Colors (Tokens) */
     brandColor: 'var(--brandColor)',
@@ -96,6 +98,13 @@ export const theme = {
       xxl: '100px',
       max: '120px',
       extra: '250px',
+      xxsmall: 'var(--padding_xsmall)',
+      xsmall: 'var(--padding_xsmall)',
+      small: 'var(--padding_small)',
+      medium: 'var(--padding_medium)',
+      large: 'var(--padding_large)',
+      xlarge: 'var(--padding_xlarge)',
+      xxlarge: 'var(--padding_xxlarge)',
     },
     width: {
       xs: '5px',
@@ -106,6 +115,13 @@ export const theme = {
       xxl: '100px',
       max: '120px',
       extra: '250px',
+      xxsmall: 'var(--padding_xsmall)',
+      xsmall: 'var(--padding_xsmall)',
+      small: 'var(--padding_small)',
+      medium: 'var(--padding_medium)',
+      large: 'var(--padding_large)',
+      xlarge: 'var(--padding_xlarge)',
+      xxlarge: 'var(--padding_xxlarge)',
     },
     spacing: { 
       xs: '5px',
@@ -115,8 +131,14 @@ export const theme = {
       xl: '60px',
       xxl: '100px',
       max: '120px',
-      extra: '250px',
-      navBar: 'var(--navBarHeight)', 
+      extra: '250px', 
+      xxsmall: 'var(--padding_xsmall)',
+      xsmall: 'var(--padding_xsmall)',
+      small: 'var(--padding_small)',
+      medium: 'var(--padding_medium)',
+      large: 'var(--padding_large)',
+      xlarge: 'var(--padding_xlarge)',
+      xxlarge: 'var(--padding_xxlarge)',
     },    
   },
 }
