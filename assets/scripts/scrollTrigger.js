@@ -35,7 +35,7 @@ parallaxBoxes.forEach((box, i) => {
     start: '0 bottom',
     end: 'top top',
     ease: 'none',
-    markers: true
+    markers: false
   })
 })
 
