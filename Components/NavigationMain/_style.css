@@ -27,6 +27,10 @@
   width: 139px;
 }
 
+[is='flynt-navigation-main'] .menu-link {
+  white-space: nowrap;
+}
+
 [is='flynt-navigation-main'] .logo-image {
   height: 100%;
   width: 100%;
@@ -123,7 +127,10 @@ header.mainHeader.mainHeader--open [is='flynt-navigation-main'] .menu .open-subm
 [is='flynt-navigation-main'] .menu-submenu .menu-link {
   margin-top: var(--padding_xxsmall);
   color: var(--yellow);
-  padding: 0 var(--padding_xsmall);
+  padding: 0 var(--padding_xxsmall);
+  @screen lg {
+    padding: 0 var(--padding_xsmall);
+  }
   text-transform: none;
   @apply font-paragraphSmall;
 }
