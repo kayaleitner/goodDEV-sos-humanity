@@ -70,7 +70,7 @@
 
     &::before,
     &::after {
-      border: 1.6rem solid var(--yellow);
+      border: 0.4rem solid var(--yellow);
       bottom: 0;
       content: '';
       position: absolute;
@@ -79,32 +79,49 @@
       
       @screen md {
         width: 3.1875rem;
+        border: 1rem solid var(--yellow);
       }
     }
 
     &::after {
       border-left: none;
-      transform: translateX(27.5rem);
+      
+      @screen xs {
+        transform: translateX(8rem);
+      }
+
+      @screen md {
+        transform: translateX(17.2rem);
+      }
 
       @media (max-width: 540px) {
-        transform: translateX(40rem);
+        transform: translateX(10rem);
       }
     }
 
     &::before {
       border-right: none;
-      transform: translateX(-27.5rem);
+      
+      @screen xs {
+        transform: translateX(-8rem);
+      }
+
+      @screen md {
+        transform: translateX(-17.2rem);
+      }
 
       @media (max-width: 540px) {
-        transform: translateX(-40rem);
+        transform: translateX(-10rem);
       }
     }
 
     &-author {
       background-color: var(--yellow);
+      color: var(--blue);
       margin-bottom: var(--padding_xxsmall);
-      padding: 2px;
-      text-transform: uppercase;
+      padding: 2px 4px;
+
+      
       width: fit-content;
     }
 
@@ -115,14 +132,17 @@
   }
 
   .slider-pagination {
-    bottom: var(--padding_large);
+    bottom: 1rem !important;
     display: block;
-    left: 0;
     margin-top: 0;
     position: absolute;
+    left: 0; 
+    top: unset !important;
+    @screen md {left: calc(50% + 8rem) !important; bottom: 5.5rem !important;}
+    transform: translateX(-50%);
     right: 0;
     text-align: center;
-    transform: translateX(13.5rem);
+    
     z-index: 1;
 
     @media (max-width: 1023px) {
@@ -153,8 +173,4 @@
       margin: 0 2px;
     }
   }
-}
-
-[is=flynt-slider-voices] .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
-  bottom: var(--padding_medium) !important;
 }

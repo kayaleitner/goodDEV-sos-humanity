@@ -19,7 +19,7 @@
         {% endif %}
         <div class="content-inner">
           <div>
-            <h3 class="content-category h5 mb-sm md:mb-4"><span class="content-category-title normal-case px-3">{{ item.category }}</span></h5>
+            <h3 class="content-category h5 mb-sm md:mb-4"><span class="content-category-title normal-case px-1 box-decoration-clone">{{ item.category }}</span></h5>
             {% if item.post_excerpt %}
               <p class="content-excerpt {% if loop.index > 1 %} md:font-paragraphSmall {% else %} md:font-sectionTitle {% endif %}">{{ item.post_excerpt|truncate(12) }}</p>
             {% else %}

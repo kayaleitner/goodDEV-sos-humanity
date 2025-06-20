@@ -4,7 +4,7 @@
       <ul class="list">
         {% for panel in panelNumbers %}
           <li class="item {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
-              <div class="item-title h6">{{ panel.numberTitle }}</div>
+              <div class="item-title h6 px-2 !normal-case">{{ panel.numberTitle }}</div>
               <div class="item-content h2">{{ panel.numberContent }}</div>
             </a>
           </li>

@@ -1,14 +1,16 @@
-<div class="flyntComponent {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-image-title-quote">
-  {% if topTitle %}
-    <div class="top-title">
-      <h2 class="title title-big" data-text="{{ topTitle|e }}">{{ topTitle|e }}</h2>
-    </div>
-  {% endif %}
-  <div class="container" style="max-width: var(--maxWidthContainer_wide);">
-    {# <div class="container-left"> #}
-      {% if image %}
+{% import "Components/_Containers/GridElement.twig" as ge %}
+
+<flynt-component 
+  class="flyntComponent {{ options.theme }} block bg-blue" 
+  style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};
+  " 
+  is="flynt-block-image-title-quote"
+  name="BlockImageTitleQuote"  
+>
+  {% set imageContent %}
+    {% if image %}
       <figure class="figure">
-        <img class="figure-image lazyload"
+        <img class="figure-image lazyload md:aspect-square aspect-video object-cover"
           src="{{ image.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', image.id)}}"
           data-sizes="auto"
@@ -18,26 +20,70 @@
         {% endif %}
       </figure>
       {% endif %}
-    {# </div> #}
-    {# <div class="container-right"> #}
-      {# <div class="content"> #}
-        {% if contentTitle %}
-          <div class="content-title {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">{{ contentTitle|wp_kses_custom }}</div>
-        {% endif %}
-        {% if contentText %}
-          <div class="content-text {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
-            {{ contentText|wp_kses_custom }}
-          </div>
-        {% endif %}
-        {% if ctaLink %}
-          <a class="content-link paragraph {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" href="{{ ctaLink.url }}">{{ ctaLink.title }}</a>
-        {% endif %}
-      {# </div> #}
-    {# </div> #}
+  {% endset %}
+
+  {% set titleContent %}
+    {% if contentTitle %}
+      <div class="content-title py-xsmall px-xxsmall {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">{{ contentTitle|wp_kses_custom }}</div>
+    {% endif %}
+  {% endset %}
+  
+  {% set textContent %}
+    {% if contentText %}
+      <div class="content-text p-xxsmall {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+        {{ contentText|wp_kses_custom }}
+      </div>
+    {% endif %}
+    {% if ctaLink %}
+    <div class="mt-lg mb-md md:mb-0 px-xxsmall">
+      <a class="content-link font-paragraph relative no-underline text-white {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" href="{{ ctaLink.url }}">{{ ctaLink.title }}</a>
+    </div>
+    {% endif %}
+  {% endset %}
+
+
+  <div class="container-grid pb-medium md:py-[12rem] md:gap-0">
+
+    {{ge.GridElement(imageContent, {
+      'cols': {
+        mobile: { start: 1, end: 4 },
+        tablet: { start: 1, end: 12 },
+        desktop: { start: 1, end: 6 },
+      },
+      'class': 'row-start-2 md:row-start-1 md:row-end-4',
+    })}}
+
+    {{ ge.GridElement(titleContent, {
+      'cols': {
+        mobile: { start: 1, end: 4 },
+        tablet: { start: 1, end: 12 },
+        desktop: { start: 7, end: 12 },
+      },
+      'class': 'row-start-1',
+    })}}
+
+    {{ ge.GridElement(textContent, {
+      'cols': {
+        mobile: { start: 1, end: 4 },
+        tablet: { start: 1, end: 12 },
+        desktop: { start: 7, end: 12 },
+      },
+      'class': '',
+    })}}
   </div>
+
+
+
+  {% if topTitle %}
+    <div class="top-title">
+      <h2 class="title title-big" data-text="{{ topTitle|e }}">{{ topTitle|e }}</h2>
+    </div>
+  {% endif %}
+
+
   {% if bottomTitle %}
     <div class="bottom-title">
       <h2 class="title title-big">{{ bottomTitle|e }}</h2>
     </div>
   {% endif %}
-</div>
+</flynt-component>

@@ -19,8 +19,7 @@
   top: 0;
   border: 0.4rem solid var(--yellow);
   width: 1.75rem;
-  @screen md { border-width: 1rem; width: 4.4rem; }
-  
+  @screen md { border-width: 1rem; width: 4.4rem; } 
 }
 [is='flynt-block-quote'] .content::before {
   border-right: none;

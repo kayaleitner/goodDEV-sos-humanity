@@ -74,7 +74,7 @@
   font-weight: bold;
 }
 [is='flynt-block-fact-sheet'] figcaption {
-  bottom: 2rem;
+  @apply bottom-4 md:bottom-6;
   position: absolute;
   right: 30px;
 }

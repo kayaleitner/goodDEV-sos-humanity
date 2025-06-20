@@ -129,7 +129,10 @@
   border-top: 0;
   @apply font-sectionTitle;
   margin: 0;
-  padding: 3rem var(--padding_xsmall) 3rem var(--padding_xsmall) !important;
+  padding: 0.75rem var(--padding_xsmall) 0.75rem var(--padding_xsmall) !important;
+  @screen md {
+    padding: 1.875rem var(--padding_small) 1.875rem var(--padding_small) !important;
+  }
   width: 50%;
 }
 [is='flynt-cta-donate'] .donate-select .donate-custom-amount::placeholder {
@@ -151,7 +154,7 @@
 }
 @media (max-width: 540px) {
   [is='flynt-cta-donate'] .donate-select .donate-submit {
-    padding: 6rem 0;
+    padding: 1.5rem 0;
  }
 }
 [is='flynt-cta-donate'] .donate-select .label {

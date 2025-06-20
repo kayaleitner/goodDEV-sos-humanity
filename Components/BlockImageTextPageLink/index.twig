@@ -1,6 +1,6 @@
 
-<div class="flyntComponent {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-image-text-page-link" 
-name="BlockImageTextPageLink"
+<flynt-component class="flyntComponent {{ options.theme }}" style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }};" is="flynt-block-image-text-page-link" 
+  name="BlockImageTextPageLink"
 >
   <div class="container" style="padding: var(--padding_small); max-width: var(--maxWidthContainer_wide);">
     {% if preContent %}
@@ -9,9 +9,40 @@ name="BlockImageTextPageLink"
       </div>
     {% endif %}
 
-    <a class="box box--{{ imagePosition }} {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" href="{{ item.link }}" aria-hidden="true" tabindex="-1">
-      <div class="box-inner box-inner--image" aria-hidden="true" tabindex="-1">
-        <img class="figure-image lazyload"
+    <a class="no-underline box--{{ imagePosition }} {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" href="{{ item.link }}" aria-hidden="true" tabindex="-1">
+      <div class="relative hover:bg-[#d3d3d3] transition-all sm:flex {% if imagePosition == 'imageLeft' %} flex-row {% else %} flex-row-reverse {% endif %}">
+        <div class="relative basis-1/2">
+            <img class="figure-image lazyload h-full w-full"
+              src="{{ item.thumbnail.src | resize(32) }}"
+              data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
+              data-sizes="auto"
+              alt="{{ item.thumbnail.alt|e }}">
+              {% if item.thumbnail.caption %}
+                <figcaption class="font-caption absolute bottom-2  right-3">{{ item.thumbnail.caption|e }}</figcaption>
+              {% endif %} 
+              <div class="sm:hidden absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2">
+                <div class="arrow h-[40px] w-[40px]"></div>
+              </div>
+        </div>
+
+          <div class="sm:p-xxsmall basis-1/2 {% if imagePosition == 'imageLeft' %} sm:pl-small {% endif %} ">
+            <h4 class="font-sectionTitle font-bold mt-[0.8em] sm:mt-0 mb-[0.8em]">{{ item.title }}</h4>
+            <div class="">{{ contentHtml|wp_kses_custom }}</div>
+          </div>
+
+        <div class="hidden sm:block sm:absolute sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2">
+          <div class="arrow h-[40px] w-[40px] md:h-small md:w-small"></div>
+        </div>
+      </div>
+    </a>
+    
+    
+
+  </div>
+</flynt-component>
+
+      {# <div class="box-inner box-inner--image h-full w-full" aria-hidden="true" tabindex="-1">
+        <img class="figure-image lazyload h-full w-full"
           src="{{ item.thumbnail.src | resize(32) }}"
           data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
           data-sizes="auto"
@@ -20,18 +51,12 @@ name="BlockImageTextPageLink"
             <figcaption class="figure-caption">{{ item.thumbnail.caption|e }}</figcaption>
           {% endif %}
       </div>
-      <div class="box-inner box-inner--arrow">
-        <div class="arrow"></div>
+      <div class="box-inner box-inner--arrow xs:absolute xs:top-1/2 xs:-translate-y-1/2">
+        <div class="arrow h-small"></div>
       </div>
       <div class="box-inner box-inner--content">
         <div class="box-copy">
           <h4>{{ item.title }}</h4>
           <div class="content">{{ contentHtml|wp_kses_custom }}</div>
         </div>
-      </div>
-    </a>
-    
-
-  </div>
-</div>
-
+      </div> #}

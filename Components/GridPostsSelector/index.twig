@@ -9,15 +9,15 @@
       <ul class="grid grid--columns{{ options.columns }}">
         {% for item in items %}
           <li class="grid-item {{ item.post_type }}">
-            <div class="content">
-              <a href="{{ item.link }}" class="content-link" title="{{ item.title }}">
+            <div class="content hover:bg-[#d3d3d3] transition-all">
+              <a href="{{ item.link }}" class="content-link !opacity-100" title="{{ item.title }}">
                 <img class="content-image lazyload"
                   src="{{ item.thumbnail.src | resize(32) }}"
                   data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
                   data-sizes="auto"
                   alt="{{ item.thumbnail.alt|e }}">
-                <div class="content-inner">
-                  <h3 class="content-title">{{ item.title }}</h3>
+                <div class="content-inner pl-2 pb-2">
+                  <h3 class="content-title pb-[0.8rem]  !mt-4">{{ item.title }}</h3>
                   {% if item.post_excerpt %}<p class="content-excerpt body-2">{{ item.post_excerpt|truncate(12) }}</p>{% endif %}
                   {% if item.pageExcerpt %}<p class="content-excerpt body-2">{{ item.pageExcerpt|truncate(12) }}</p>{% endif %}
                 </div>
