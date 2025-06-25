@@ -121,3 +121,26 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+
+.june-scope .wpcf7-submit {
+    background-color: var(--blue);
+    border: 0;
+    color: var(--yellow);
+    cursor: pointer;
+    display: inline-block;
+    @apply font-button;
+    font-weight: bold;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    width: fit-content;
+    border: 2px solid var(--yellow);
+}
+
+.june-scope .wpcf7-submit:hover, .june-scope .wpcf7-submit:focus {
+    background-color: var(--yellow);
+    color: var(--blue);
+    text-decoration: none;
+    border: 2px solid var(--blue);
+}
