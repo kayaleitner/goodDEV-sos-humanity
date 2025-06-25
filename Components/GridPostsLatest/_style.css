@@ -4,7 +4,7 @@
 [is='flynt-grid-posts-latest'] .filters {
   display: block;
   list-style: none;
-  margin: 0;
+  @apply mb-4 md:mb-6;
   padding: 0;
   align-items: center;
   display: flex;
