@@ -31,7 +31,7 @@
         }
 
         &:focus {
-          background-color: transparent !important;
+          background-color: var(--blue) !important;
         }
       }
 
@@ -50,7 +50,7 @@
       }
 
       &--next {
-        right: 0.75;
+        right: 0.75rem;
         background-image: url('/assets/icons/arrow-slideshow-right.svg');
         background-position: center;
         background-repeat: no-repeat;
