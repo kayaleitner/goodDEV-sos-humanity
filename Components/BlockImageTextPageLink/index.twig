@@ -12,7 +12,7 @@
     <a class="no-underline box--{{ imagePosition }} {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}" href="{{ item.link }}" aria-hidden="true" tabindex="-1">
       <div class="relative hover:bg-[#d3d3d3] transition-all sm:flex {% if imagePosition == 'imageLeft' %} flex-row {% else %} flex-row-reverse {% endif %}">
         <div class="relative basis-1/2">
-            <img class="figure-image lazyload h-full w-full"
+            <img class="figure-image lazyload h-full w-full object-cover"
               src="{{ item.thumbnail.src | resize(32) }}"
               data-srcset="{{function('wp_get_attachment_image_srcset', item.thumbnail.id)}}"
               data-sizes="auto"
@@ -25,8 +25,9 @@
               </div>
         </div>
 
-          <div class="sm:p-xxsmall basis-1/2 {% if imagePosition == 'imageLeft' %} sm:pl-small {% endif %} ">
-            <h4 class="font-sectionTitle font-bold mt-[0.8em] sm:mt-0 mb-[0.8em]">{{ item.title }}</h4>
+          <div class="sm:p-xxsmall basis-1/2 {% if imagePosition == 'imageLeft' %} sm:pl-8 md:pl-16
+           {% else %} sm:pr-8 md:md:pr-16 {% endif %} ">
+            <h4 class="font-sectionTitle font-bold mt-[0.8em] sm:mt-0">{{ item.title }}</h4>
             <div class="">{{ contentHtml|wp_kses_custom }}</div>
           </div>
 
