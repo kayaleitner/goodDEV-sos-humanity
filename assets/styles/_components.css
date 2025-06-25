@@ -15,10 +15,11 @@
 
     .yellow-side-title {
       -webkit-text-stroke: 1px var(--yellow);
-      font-size: 24rem;
+      @apply text-[6rem] md:text-[15rem];
       line-height: 1;
       color: transparent;
-      margin: -4rem auto 0 auto;
+      @apply mx-auto;
+      @apply -mt-4 md:-mt-10;
       text-transform: uppercase;
       white-space: nowrap;
       width: fit-content;

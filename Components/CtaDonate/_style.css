@@ -21,7 +21,7 @@
 }
 [is='flynt-cta-donate'] .side-title .title {
   -webkit-text-stroke: 1px var(--blue);
-  @apply text-[24rem]; 
+  @apply text-[6rem] md:text-[15rem]; 
   line-height: 1;
   color: transparent;
   margin: -4rem auto 0 auto;
@@ -56,8 +56,6 @@
   text-align: left;
   width: 50%;
   padding: var(--padding_xsmall) !important;
-  display: flex;
-  flex-flow: column wrap;
 }
 [is='flynt-cta-donate'] .container .col h2 {
   width: 100%;
