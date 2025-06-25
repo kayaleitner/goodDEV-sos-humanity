@@ -108,7 +108,7 @@
 
 [is='flynt-grid-image-text'] .content-inner--top h3 {
   margin-block-start: 1em;
-  margin-block-end: 1em;
+  margin-block-end: 1.5rem;
 }
 
 [is='flynt-grid-image-text'] .content-inner--top {
