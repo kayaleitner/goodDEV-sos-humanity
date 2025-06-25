@@ -133,7 +133,7 @@ function get_posts()
     ]);
 
     foreach ($context['posts'] as $item) {
-        Timber::render('/Partials/_item.twig', ['item' => $item]);
+        Timber::render('/Partials/_item.twig', ['item' => $item, 'loopIndex' => 2 ]);
     }
 
     wp_die();
