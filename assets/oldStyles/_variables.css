@@ -63,7 +63,7 @@
 
   /* Fonts Sizes*/
 
-  --fontSize_hero: 12vw;
+  --fontSize_hero: 11vw;
 
   @screen md {
     --fontSize_hero: 10vw;
