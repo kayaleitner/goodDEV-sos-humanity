@@ -37,12 +37,12 @@
     style="padding: var(--padding_small);"
   >
     <div class="w-full text-center text-[#f6f8fa]">
-      <h1 
-        class="absolute left-0 w-full !text-white text-center h3"
+      {% if not fn('is_front_page') %} <h1 
+        class="absolute left-0 w-full !text-white text-center h3 font-normal"
         style="top: max(20rem, min(calc(var(--padding_xxlarge)), calc(100vh - 32vw)));"
       >
         {{ post.title }}
-      </h1>
+      </h1> {% endif %}
       <p class="title-big !w-full">
         <span class="block text-start">{{ line1|wp_kses_custom }}</span>
         <span class="block text-yellow w-full">{{ line2|wp_kses_custom }}</span>
