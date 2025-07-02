@@ -9,7 +9,7 @@
           {{function('wp_get_attachment_image_srcset', images.imageDesktop.id)}}"
         media="(min-width: 768px)"
         sizes="100vw">
-        <img class="image w-full h-full parallax"
+        <img class="image w-full h-full parallax object-cover"
           srcset="
             {{function('wp_get_attachment_image_srcset', images.imageMobile.id)}}"
           src="{{ images.imageMobile.src | resize(32) }}"
