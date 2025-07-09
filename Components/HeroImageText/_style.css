@@ -26,9 +26,9 @@
 }
 [is='flynt-hero-image-text'] .image {
   background: #414751;
-  height: calc(100vh + 32rem);
+  height: calc(100vh + 20rem);
   object-fit: cover;
-  object-position: center -16rem;
+  object-position: center -10rem;
   width: 100%;
 }
 [is='flynt-hero-image-text'] .content {

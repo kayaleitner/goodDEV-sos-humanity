@@ -43,10 +43,9 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    // FieldVariables\getTheme(),
-                    // FieldVariables\getColorBrandBackground(),
-                    // FieldVariables\getColorBrandText(),
-                    FieldVariables\getMaxWidthContainer(),
+                    FieldVariables\getTheme(),
+                    FieldVariables\getColorBrandBackground(),
+                    FieldVariables\getColorBrandText(),
                     FieldVariables\getPaddingTopBottom(),
                     FieldVariables\getPaddingLeftRight(),
                     FieldVariables\getFadeIn(),

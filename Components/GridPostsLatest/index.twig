@@ -8,7 +8,7 @@
   >
     <div class="container" style="padding: var(--padding_small) var(--padding_small) var(--padding_medium) var(--padding_small); max-width: var(--maxWidthContainer_wide);">
       {% if preContentHtml %}
-        <div class="preContent {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
+        <div class="preContent !mb-xsmall {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
           {{ preContentHtml|wp_kses_custom }}
         </div>
       {% endif %}
@@ -20,7 +20,7 @@
         data-filters="{{filters|json_encode()}}"
       >
         {% for item in items %}
-          {% include 'Partials/_item.twig' with {item: item} %}
+          {% include 'Partials/_item.twig' with {item: item, loopIndex: loop.index} %}
         {% endfor %}
       </ul>
       <div class="allPostsLink {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">

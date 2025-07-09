@@ -133,7 +133,7 @@ function get_posts()
     ]);
 
     foreach ($context['posts'] as $item) {
-        Timber::render('/Partials/_item.twig', ['item' => $item]);
+        Timber::render('/Partials/_item.twig', ['item' => $item, 'loopIndex' => 2 ]);
     }
 
     wp_die();
@@ -219,7 +219,7 @@ function getACFLayout()
                     FieldVariables\getTheme(),
                     FieldVariables\getColorBrandBackground(),
                     FieldVariables\getColorBrandText(),
-                    FieldVariables\getMaxWidthContainer(),
+                    
                     FieldVariables\getPaddingTopBottom(),
                     FieldVariables\getPaddingLeftRight(),
                     [
@@ -247,7 +247,6 @@ Options::addTranslatable('GridPostsLatest', [
         'name' => 'labels',
         'type' => 'group',
         'sub_fields' => [
-            ['label' => __('Reading Time', 'flynt'), 'name' => 'readingTime', 'type' => 'text', 'default_value' => 'min'],
             ['label' => __('All Posts', 'flynt'), 'name' => 'allPosts', 'type' => 'text', 'default_value' => 'See More Posts'],
             ['label' => __('Read More', 'flynt'), 'name' => 'readMore', 'type' => 'text', 'default_value' => 'Read More']
         ],

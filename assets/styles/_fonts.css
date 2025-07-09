@@ -1,8 +1,8 @@
 @tailwind base;
 
 html {
-  font-size: 16px;
   text-wrap: balance;
+  @apply font-sans;
 
   /* @screen xl {
     font-size: 1.1111vw;
@@ -10,99 +10,123 @@ html {
   } */
 }
 
-@layer base {
+body {
+  @apply font-paragraph;
+}
 
+@layer base {
 
   /* -- Paragraphs -- */
   .font-extraLarge {
-    @apply font-display;
-    @apply font-black;
-    font-size: 10vw;
-    line-height: 1;
+    
   }
 
   .font-pageTitle {
-    @apply font-bold font-display;
-    font-size: rem(36);
-    line-height: 80%;
-    letter-spacing: rem(1);
+    font-weight: 900;
+    font-style: normal;
+    line-height: 1;
+    font-size: 2.5rem;
 
     @screen md {
-      font-size: rem(54);
+      line-height: 1.11;
+      font-size: 4.5rem;
+      letter-spacing: -0.0625rem;
     }
   }
 
-
   .font-sectionTitle {
-    @apply font-medium;
-    font-size: rem(22);
-    line-height: rem(28);
+    font-size: 1.5rem;
+    letter-spacing: 0;
+    line-height: 1.25;
 
     @screen md {
-      font-size: rem(26);
-      line-height: rem(28);
+      letter-spacing: normal;
+      font-size: 2.25rem;
     }
   }
 
   .font-contentTitle {
-    @apply font-medium;
-    font-size: rem(20);
-    line-height: rem(28);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: normal;
 
     @screen md {
-      font-size: rem(22);
-      line-height: rem(28);
-    }
-  }
-
-  .font-quoteParagraph {
-    @apply font-medium;
-    font-size: rem(18);
-    line-height: rem(22);
-
-    @screen md {
-      font-size: rem(20);
-      line-height: rem(28);
+      font-size: 1.25rem;
     }
   }
 
   .font-paragraph {
-    @apply font-light;
-    font-size: rem(16);
-    line-height: rem(22);
+    font-size: 1.125rem;
+    line-height: 1.25;
 
     @screen md {
-      font-size: rem(16);
-      line-height: rem(22);
+      font-size: 1.375rem;
+      line-height: 1.59;
     }
   }
 
-  .font-smallParagraph {
-    @apply font-light;
-    font-size: rem(12);
-    line-height: rem(18);
+  .font-paragraphSmall {
+    font-size: 1rem;
+    line-height: 1.25;
 
     @screen md {
-      font-size: rem(12);
-      line-height: rem(18);
-    }
-  }
-
-  .font-mainMenuText {
-    @apply font-medium;
-    font-size: rem(18);
-    line-height: rem(24);
-
-    @screen md {
-      font-size: rem(20);
-      line-height: rem(28);
+      font-size: 1.125rem;
+      line-height: 1.56;
     }
   }
 
   .font-caption {
-    @apply font-smallParagraph;
+    font-size: 0.75rem;
+    line-height: 1.25;
+
+    @screen md {
+      font-size: 0.9375rem;
+    }
   }
 
+  .font-button {
+    @apply font-bold;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    @screen md {
+      font-size: 1.25rem;
+    }
+  }
+
+  .font-quoteBig {
+    @apply font-mono font-bold;
+    line-height: 1;
+    font-size: 2.5rem;
+    letter-spacing: 0;
+
+    @screen md {
+      line-height: 1.11;
+      font-size: 4.5rem;
+      letter-spacing: normal;
+    }
+  }
+
+  .font-quoteMedium {
+    @apply font-mono font-bold;
+    line-height: 1.25;
+    font-size: 1rem;
+
+    @screen md {
+      font-size: 2.25rem;
+    }
+  }
+
+  .font-quoteSmall {
+    @apply font-mono;
+    font-size: 1rem;
+    line-height: 1.59;
+
+    @screen md {
+      font-size: 1.375rem;
+    }
+  }
 
   .link {
     @apply text-linkColor;
@@ -128,11 +152,11 @@ html {
     }
 
     .button {
-      @apply font-smallParagraph;
+      @apply font-paragraphSmall;
     }
 
     pre {
-      @apply font-smallParagraph;
+      @apply font-paragraphSmall;
       @apply font-mono;
       display: block;
       text-wrap: wrap;
@@ -140,7 +164,7 @@ html {
       white-space: pre-wrap;
     }
 
-    h1 {
+    h1, .h1 {
       @apply font-pageTitle;
       @apply mb-lg;
 
@@ -149,7 +173,7 @@ html {
       }
     }
 
-    h2 {
+    h2, .h2 {
       @apply font-sectionTitle;
       @apply my-md;
 
@@ -158,17 +182,13 @@ html {
       }
     }
 
-    h3 {
+    h3, .h3 {
       @apply font-contentTitle;
       @apply my-sm;
 
       &:last-child {
         margin-block-end: 0;
       }
-    }
-
-    .quoteParagraph {
-      @apply font-quoteParagraph;
     }
 
     .pageTitle {
@@ -183,10 +203,6 @@ html {
       @apply font-contentTitle;
     }
 
-    .mainMenuText {
-      @apply font-mainMenuText;
-    }
-
     .caption {
       @apply font-caption;
     }
@@ -196,25 +212,25 @@ html {
     }
 
     ul {
-      list-style: none;
+      list-style: disc;
       margin-block-end: 1em;
       margin-left: 2rem;
 
       li {
         position: relative;
 
-        &:before {
+        /* &:before {
           content: "";
           position: absolute;
           display: inline-block;
-          width: rem(10);
-          height: rem(10);
+          width: 0.625rem;
+          height: 0.625rem;
           left: -1em;
           top: 0.5em;
           margin-right: 0.5em;
           margin-bottom: 0.05em;
           background-color: currentColor;
-        }
+        } */
       }
     }
 
@@ -229,7 +245,7 @@ html {
       li {
         @apply font-paragraph;
         list-style: inherit;
-        margin-block-end: .25em;
+        margin-block-end: 0.25em;
 
         &::marker {
           font-weight: bold;
@@ -240,7 +256,5 @@ html {
         }
       }
     }
-
   }
-
 }

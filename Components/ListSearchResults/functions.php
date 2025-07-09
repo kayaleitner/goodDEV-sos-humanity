@@ -106,7 +106,7 @@ Options::addTranslatable('ListSearchResults', [
     //     'placement' => 'top',
     //     'endpoint' => 0
     // ],
-    // array_merge(FieldVariables\getMaxWidthContainer(), [
+    // array_merge( [
     //     'wrapper' => [
     //         'width' => 50
     //     ]

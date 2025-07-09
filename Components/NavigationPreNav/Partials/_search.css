@@ -1,6 +1,7 @@
 [is='flynt-navigation-pre-nav'] {
   .searchForm {
-    margin-left: 3rem;
+    margin-left: 0.75rem;
+    @screen md { margin-left: 1.875rem;}
   }
   
   .searchForm-field {
@@ -16,8 +17,8 @@
   }
   
   .searchForm-box {
-    padding: 2.5px 0;
-    width: 15rem;
+    width: 3.75rem;
+    @screen md { width: 9.375rem}
   }
   
   .searchForm-box.darkText .searchForm-input {
@@ -25,7 +26,7 @@
   }
   
   .searchForm-box.darkText .searchForm-input::placeholder {
-    color: var(--blue);
+    color: var(--blue); 
   }
   
   .searchForm-box.darkText .searchForm-input:focus,
@@ -39,21 +40,18 @@
     border: 0;
     color: var(--white);
     font-family: inherit;
-    font-size: 1.5rem;
+    @apply font-paragraphSmall md:font-caption;
     margin: 0;
     min-height: 25px;
     padding: 0;
     text-align: left;
     width: 100%;
     border-radius: 0;
-    padding-right: 2.5rem;
+    padding-right: 0.625rem;
+    @screen md {padding-right: 1.5625rem;}
   }
   
-  @media (max-width: 1024px) {
-    .searchForm-input {
-      font-size: 2.25rem;
-    }
-  }
+
   
   .searchForm-input:focus,
   .searchForm-input:active {
@@ -78,7 +76,7 @@
   }
   
   .searchForm::placeholder {
-    color: var(--white);
+    color: var(--white) !important;
   }
   
   @media screen and (max-width: 1023px) {
@@ -94,14 +92,13 @@
     }
   
     .searchForm-input {
-      font-size: var(--fontSize_h3_mobile);
       text-align: left;
       border: none !important;
     }
   
     .searchForm-submit {
-      height: 8rem;
-      width: 8rem;
+      height: 2rem;
+      width: 2rem;
       padding: 0;
       transform: unset;
     }
@@ -109,10 +106,6 @@
     .searchForm-submit svg {
       height: 100%;
       width: 100%;
-    }
-  
-    .searchForm::placeholder {
-      font-size: var(--fontSize_h3_mobile);
     }
   }  
 

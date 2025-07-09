@@ -42,5 +42,5 @@ function setParallax() {
 }
 
 function isMobile() {
-  return window.matchMedia('(max-width: 1024px)').matches;
+  return window.matchMedia('(max-width: 1023px)').matches;
 }

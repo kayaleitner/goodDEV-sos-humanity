@@ -56,9 +56,6 @@
   transition: all 0.2s ease-out;
   width: 100%;
 }
-.themeLight .pill {
-  background-color: var(--warmwhite);
-}
 .themeLight .slider-button {
   background-color: inherit;
 }

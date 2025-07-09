@@ -12,5 +12,21 @@
         -webkit-text-stroke-width: 1px;
       }
     }
+
+    .yellow-side-title {
+      -webkit-text-stroke: 1px var(--yellow);
+      @apply text-[6rem] md:text-[15rem];
+      line-height: 1;
+      color: transparent;
+      @apply mx-auto;
+      @apply -mt-4 md:-mt-10;
+      text-transform: uppercase;
+      white-space: nowrap;
+      width: fit-content;
+      
+      @screen md {
+        -webkit-text-stroke-width: 2px;
+      }
+    }
   }
   

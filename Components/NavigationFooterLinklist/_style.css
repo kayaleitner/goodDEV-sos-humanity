@@ -6,10 +6,11 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    gap: 1.5rem; 
 
     .column {
-      @media (max-width: 1024px) {
-        width: 50%;
+      @media (max-width: 1023px) {
+        width: calc(50% - 1rem);
       }
 
       @media (max-width: 540px) {
@@ -38,7 +39,7 @@
   
     &-image {
       height: 100%;
-      width: 15.8rem;
+      width: 10rem;
     }
 
     .content {
@@ -51,8 +52,9 @@
   
   .preContent {
     color: var(--yellow);
-    margin: 0 0 2.5rem;
     text-transform: uppercase;
+    margin: 0 0 0.625rem;
+    @screen md {margin: 0 0 1.5rem}
   }
 
   .partners {
@@ -75,10 +77,10 @@
         }
 
         &-logo {
-          max-width: 15.3rem;
+          max-width: 10rem;
 
           @media (max-width: 540px) {
-            max-width: 30rem;
+            max-width: 10rem;
           }
         }
       }

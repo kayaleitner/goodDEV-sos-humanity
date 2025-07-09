@@ -1,29 +1,29 @@
 [is='flynt-progress-donation'] {
 
-    height: 60rem;
+    height: 37.5rem;
     display: block;
 
     --shipWidth: 276px;
     --shipHeight: 124px;
     --progressBar: 14px;
-    --panelHeight: 5rem;
-    --panelMinWidth: 15rem;
+    --panelHeight: 3.125rem;
+    --panelMinWidth: 9.375rem;
 
     .container {
         position: relative;
-        width: 90rem;
+        width: 56.25rem;
         height: 100%;
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1023px) {
         
-        height: 60rem;
+        height: 15rem;
 
         --shipWidth: 73px;
         --shipHeight: 34px;
         --progressBar: 6px;
         --panelHeight: 30px;
-        --panelMinWidth: 20rem;
+        --panelMinWidth: 5rem;
 
         .container {
             padding: 0 var(--padding_small);
@@ -48,7 +48,7 @@
                 align-items: center;
                 .text {
                     color: var(--yellow);
-                    font-size: var(--fontSize_h3_desktop);
+                    @apply font-contentTitle;
                     font-weight: bold;
                     text-align: center;
                     width: 100%;
@@ -66,16 +66,15 @@
 
         }
 
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 1023px) {
             .goal {
                 left: calc(100% - var(--padding_small) - var(--shipWidth) / 2);
                 .panel {
                     height: unset;
                     min-width: unset;
-                    padding: 0 1rem;
+                    padding: 0 0.25rem;
     
                     .text {
-                        font-size: var(--fontSize_h3_mobile);
                         padding: 0;
                     }
                 }
@@ -119,7 +118,7 @@
             transform: translateY(100%);
         }
 
-        @media  screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1023px) {
             .ship {
                 left: var(--padding_small);
             }
@@ -156,14 +155,14 @@
                     }
                     .text {
                         color: var(--blue);
-                        font-size: var(--fontSize_h3_desktop);
+                        @apply font-contentTitle;
                         font-weight: bold;
                         text-align: center;
                         width: 100%;
                         padding: 0 var(--padding_xxsmall);
                         white-space: nowrap;
                     }
-                    @media screen and (max-width: 1024px) {
+                    @media screen and (max-width: 1023px) {
                         .level {
                             left: calc(var(--shipWidth) / 4 + var(--padding_small));
                             transform: translateX(-50%);
@@ -172,10 +171,9 @@
                         .panel {
                             height: unset;
                             min-width: unset;
-                            padding: 0 1rem;
+                            padding: 0 0.25rem;
                         }
                         .text {
-                            font-size: var(--fontSize_h3_mobile);
                             padding: 0;
                         }
                     }

@@ -20,16 +20,25 @@
 
       .fig-box {
           position: absolute;
-          width: 14rem;
-          height: 14rem;
+          width: 3.75rem;
+          height: 3.75rem;
+
+          @screen md {
+            width: 8.75rem;
+            height: 8.75rem;
+          }
           display: flex;
           align-items: center;
       }
       
       p {
         margin: 0;
-        transform: translateX(14rem);
-        width: calc(100% - 12rem);
+        transform: translateX(3.75rem);
+        width: calc(100% - 3rem);
+        @screen md {
+          transform: translateX(8.75rem);
+        width: calc(100% - 7.5rem);
+        }
         padding-left: var(--padding_xsmall);
       }
       @media (max-width: 540px) {

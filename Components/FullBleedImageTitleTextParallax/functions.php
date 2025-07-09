@@ -60,13 +60,6 @@ function getACFLayout()
                 'type' => 'text',
             ],
             [
-                'label' => __('isContactForm', 'flynt'),
-                'name' => 'isContactForm',
-                'type' => 'true_false',
-                'instructions' => __('If this is a contact form, please check this box.', 'flynt'),
-                'default_value' => 0,
-            ],
-            [
                 'label' => __('Text in box', 'flynt'),
                 'name' => 'contentText',
                 'type' => 'wysiwyg',
@@ -91,7 +84,7 @@ function getACFLayout()
                     FieldVariables\getTheme(),
                     FieldVariables\getColorBrandBackground(),
                     FieldVariables\getColorBrandText(),
-                    // FieldVariables\getMaxWidthContainer(),
+                    // 
                     // FieldVariables\getPaddingTopBottom(),
                     // FieldVariables\getPaddingLeftRight(),
                 ]

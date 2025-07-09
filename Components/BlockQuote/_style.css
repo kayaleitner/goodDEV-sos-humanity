@@ -13,12 +13,13 @@
   padding-bottom: 0;
 }
 [is='flynt-block-quote'] .content::before, [is='flynt-block-quote'] .content::after {
-  border: 1.6rem solid var(--yellow);
   bottom: 0;
   content: '';
   position: absolute;
   top: 0;
-  width: 7.1rem;
+  border: 0.4rem solid var(--yellow);
+  width: 1.75rem;
+  @screen md { border-width: 1rem; width: 4.4rem; } 
 }
 [is='flynt-block-quote'] .content::before {
   border-right: none;

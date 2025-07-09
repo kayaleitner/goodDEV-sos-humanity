@@ -6,10 +6,10 @@
 >
   {% if sideTitle %}
     <div class="side-title">
-      <h2 class="title">{{ sideTitle|e }}</h2>
+      <h2 class="title m-0">{{ sideTitle|e }}</h2>
     </div>
   {% endif %}
-  <div class="container" style="max-width: {{ options.containerMaxWidth }};">
+  <div class="container" style="">
     <div class="col">
       {% if contentHtml %}
         {{ contentHtml|wp_kses_custom }}

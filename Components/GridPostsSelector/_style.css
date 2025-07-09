@@ -4,7 +4,7 @@
 [is='flynt-grid-posts-selector'] .preContent {
   margin-left: 0;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-grid-posts-selector'] .container {
     display: flex;
     flex-flow: column wrap;

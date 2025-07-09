@@ -12,17 +12,13 @@
   z-index: 100;
 }
 [is='flynt-block-post-header'] .container .content .meta {
-  font-size: 4rem;
+  @apply font-paragraph;
   max-width: var(--maxWidthContainer_wide);
   margin: 0 auto;
   display: flex;
   padding: 0 var(--padding_small);
 }
-@media screen and (min-width: 1024px) {
-  [is='flynt-block-post-header'] .container .content .meta {
-    font-size: var(--fontSizeBody1);
- }
-}
+
 [is='flynt-block-post-header'] .container .content .meta .meta-date {
   margin-left: var(--padding_medium);
 }

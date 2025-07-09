@@ -46,7 +46,7 @@
 }
 @media (min-width: 1024px) {
   [is='flynt-block-image-text-title'] .box-inner--image .figure-image {
-    height: 70rem;
+    height: 43.75rem;
     width: 100%;
  }
 }
@@ -55,16 +55,16 @@
   display: flex;
   justify-content: flex-end;
   max-width: 100%;
-  margin-left: 5vw;
+  padding-left: 5vw;
   margin-right: auto;
   z-index: 0;
 }
 @media (min-width: 1024px) {
   [is='flynt-block-image-text-title'] .box-inner--content {
-    height: 70rem;
+    height: 43.75rem;
  }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-text-title'] .box-inner--content {
     margin: 0 auto;
     padding: 0 var(--padding_xsmall);
@@ -90,7 +90,7 @@
   margin-bottom: 0;
   padding-bottom: 0;
 }
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
   [is='flynt-block-image-text-title'] .box-inner--content .box-copy {
     border: 15px solid var(--yellow);
     padding: calc(var(--padding_medium)*4) var(--padding_medium) var(--padding_small);
@@ -101,9 +101,9 @@
 [is='flynt-block-image-text-title'] figcaption {
   position: absolute;
   right: 30px;
-  top: calc(70rem - 40px);
+  top: calc(43.75rem - 40px);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   [is='flynt-block-image-text-title'] figcaption {
     position: absolute;
     right: 10px;

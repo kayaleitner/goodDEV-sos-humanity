@@ -71,7 +71,6 @@ function getACFLayout()
                     FieldVariables\getTheme(),
                     FieldVariables\getColorBrandBackground(),
                     FieldVariables\getColorBrandText(),
-                    FieldVariables\getMaxWidthContainer(),
                     FieldVariables\getPaddingTopBottom(),
                     FieldVariables\getPaddingLeftRight(),
                 ]

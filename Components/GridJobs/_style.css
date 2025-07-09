@@ -11,7 +11,7 @@
   grid-template-columns: repeat(1, 1fr);
   row-gap: var(--padding_medium);
 }
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1024px) {
   [is='flynt-grid-jobs'] .grid {
     grid-template-columns: repeat(2, 1fr);
     row-gap: var(--padding_xsmall);
@@ -42,7 +42,7 @@
 [is='flynt-grid-jobs'] .grid-item .content-title {
   margin: 0;
   padding-top: var(--padding_xxsmall);
-  font-size: 2.6rem;
+  @apply font-contentTitle;
 }
 [is='flynt-grid-jobs'] .grid-item .content-imagebox {
   overflow: hidden;
@@ -76,8 +76,8 @@
 }
 @media (min-width: 1024px) {
   [is='flynt-grid-jobs'] .grid-item .content-hiring {
-    font-size: 1.8rem;
-    padding-right: 3rem;
+    @apply font-paragraphSmall;
+    padding-right: 1.875rem;
     top: var(--padding_xxsmall);
     right: var(--padding_xxsmall);
  }
@@ -88,8 +88,8 @@
   top: 0;
   right: 0;
   display: block;
-  height: 4.3rem;
-  width: 4.3rem;
+  height: 1.1rem;
+  width: 1.1rem;
   background-color: #e0f8e7;
   border-radius: 50%;
   animation: blink 2s infinite;
@@ -98,8 +98,8 @@
 @media (min-width: 1024px) {
   [is='flynt-grid-jobs'] .grid-item .content-hiring::after {
     transform: translate(-6px, 5px);
-    height: 1.9rem;
-    width: 1.9rem;
+    height: 1.2rem;
+    width: 1.2rem;
  }
 }
 [is='flynt-grid-jobs'] .grid-item .content-date.meta-date {
@@ -110,15 +110,13 @@
   top: 50%;
   right: 50%;
   transform: translateY(-50%);
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 2.25rem;
-  font-weight: 700;
+  @apply font-paragraphSmall font-bold;
   transition: all 0.2s linear;
 }
-@media screen and (min-width: 541px) and (max-width: 1024px) {
+@media screen and (min-width: 541px) and (max-width: 1023px) {
   [is='flynt-grid-jobs'] .grid-item .content-date.meta-date {
-    font-size: 4.75rem;
- }
+    @apply font-paragraph;
+  }
 }
 [is='flynt-grid-jobs'] .grid-item .content-image {
   aspect-ratio: 1.5;
@@ -167,16 +165,6 @@
   flex-grow: 1;
   text-decoration: none;
 }
-[is='flynt-grid-jobs'] .grid-item .content-subtitle-readingTime {
-  color: #7b838d;
-  font-size: 0.9rem;
-}
-[is='flynt-grid-jobs'] .grid-item .content-subtitle-readingTime .feather {
-  color: #7b838d;
-  height: 1rem;
-  margin-right: 2px;
-  width: 1rem;
-}
 [is='flynt-grid-jobs'] .grid-item .content-subtitle-footer {
   align-items: center;
   align-self: flex-end;
@@ -221,7 +209,7 @@
     right: 10px;
  }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   [is='flynt-grid-jobs'] .grid-item .content-container {
     display: flex;
     flex-flow: column wrap;
@@ -237,18 +225,18 @@
   [is='flynt-grid-jobs'] .grid-item .content-title {
     margin: 0;
     padding-top: var(--padding_xsmall);
-    font-size: 24px;
+    @apply font-contentTitle;
  }
   [is='flynt-grid-jobs'] .grid-item .content-excerpt.body-2 {
-    font-size: 6rem;
+    @apply font-sectionTitle;
     letter-spacing: 0;
     margin-block-start: var(--padding_xxsmall);
  }
   [is='flynt-grid-jobs'] .grid-item .content-date.meta-date {
-    font-size: 4.75rem;
+    @apply font-paragraph;
     position: relative;
     right: 0;
-    bottom: 3rem;
+    bottom: 1.875rem;
     top: auto;
     height: fit-content;
     width: fit-content;

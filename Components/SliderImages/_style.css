@@ -20,20 +20,18 @@
       top: 50%;
       transform: translateY(-50%);
       transition: opacity 0.2s ease-out;
-      width: 15.75rem;
-      height: 15.75rem;
+      width: 4rem;
+      height: 4rem;
       z-index: 10;
 
       @media (min-width: 1024px) {
 
-        height: 6.3rem;
-        width: 6.3rem;
         &:hover {
           background-color: var(--blue) !important;
         }
 
         &:focus {
-          background-color: transparent !important;
+          background-color: var(--blue) !important;
         }
       }
 
@@ -43,26 +41,21 @@
       }
 
       &--prev {
-        left: 3rem;
+        left: 0.75rem;
         background-image: url('/assets/icons/arrow-slideshow-left.svg');
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 3rem;
-        @media screen and (min-width: 1024px) {
-          background-size: 1.2rem;
-        }
+        background-size: 0.75rem;
+
       }
 
       &--next {
-        right: 3rem;
+        right: 0.75rem;
         background-image: url('/assets/icons/arrow-slideshow-right.svg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
-        background-size: 3rem;
-        @media screen and (min-width: 1024px) {
-          background-size: 1.2rem;
-        }
+        background-size: 0.75rem;
       }
 
       .feather {

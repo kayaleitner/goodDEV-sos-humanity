@@ -2,21 +2,14 @@ html {
   background-color: var(--warmwhite);
   box-sizing: border-box;
   color: var(--blue);
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 10px;
+  font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
-  line-height: 1.25;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-wrap: break-word;
   scroll-behavior: smooth;
   word-wrap: break-word;
-}
-@media (max-width: 1024px) {
-  html {
-    font-size: 4px;
- }
 }
 html *, html *::before, html *::after {
   box-sizing: inherit;
@@ -25,21 +18,7 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
-@media (max-width: 1024px) {
-  ::placeholder {
-    font-size: var(--fontSizeBody1Mobile);
- }
-}
-/** * 1.0 Typography * * Styling all likely used content flow elements. */
-h1, h2, .h1, .h2 {
-  color: var(--blue);
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 700;
-  letter-spacing: -2.5px;
-  line-height: 1.125;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
-}
+
 h1 a, h2 a, .h1 a, .h2 a, h1 a:hover, h2 a:hover, .h1 a:hover, .h2 a:hover, h1 a:focus, h2 a:focus, .h1 a:focus, .h2 a:focus {
   color: var(--blue);
   text-decoration: none;
@@ -49,100 +28,42 @@ h1 a, h2 a, .h1 a, .h2 a, h1 a:hover, h2 a:hover, .h1 a:hover, .h2 a:hover, h1 a
   font-size: var(--fontSize_hero);
   line-height: 1;
   color: transparent;
-  text-transform: uppercase;
+  -text-transform: uppercase;
   white-space: nowrap;
   width: fit-content;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 900;
   margin: 0;
 }
-@media (max-width: 1024px) {
+
+@media (max-width: 1023px) {
   .title-big {
     -webkit-text-stroke-width: 1px;
  }
 }
 h1, .h1, h2, .h2 {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 7.2rem;
-  font-weight: 900;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.11;
-  letter-spacing: -1px;
-  color: var(--blue);
+  @apply font-pageTitle;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
-@media (max-width: 1024px) {
-  h1, .h1, h2, .h2 {
-    font-size: 10rem;
-    letter-spacing: 0;
-    line-height: 1;
- }
-}
+
 .quote-big {
-  font-family: 'Ubuntu Mono Bold', monospace;
-  font-size: 7.2rem;
-  font-weight: 700;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.11;
-  letter-spacing: normal;
+  @apply font-quoteBig;
   text-align: center;
   color: var(--blue);
-}
-@media (max-width: 1024px) {
-  .quote-big {
-    font-size: 10rem;
-    letter-spacing: 0;
-    line-height: 1;
- }
 }
 .quote-medium {
-  font-family: 'Ubuntu Mono Bold', monospace;
-  font-size: 3.6rem;
-  font-weight: 700;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
+  @apply font-quoteMedium;
   text-align: center;
   color: var(--blue);
 }
-@media (max-width: 1024px) {
-  .quote-medium {
-    font-size: 4rem;
-    line-height: 1.25;
- }
-}
+
 h3, .h3, h4, .h4 {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 3.6rem;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  color: var(--blue);
+  @apply font-sectionTitle;
 }
-@media (max-width: 1024px) {
-  h3, .h3, h4, .h4 {
-    font-size: 6rem;
-    letter-spacing: 0;
- }
-}
+
 h5, .h5, h6, .h6 {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.7rem;
-  font-weight: 700;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.18;
-  letter-spacing: normal;
-  color: var(--blue);
-}
-@media (max-width: 1024px) {
-  h5, .h5, h6, .h6 {
-    font-size: 3.25rem;
- }
+  @apply font-contentTitle;
 }
 a {
   color: inherit;
@@ -154,104 +75,34 @@ a:hover, a:focus {
   opacity: 0.6;
 }
 p, .paragraph, table {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: var(--fontSizeBody1);
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.59;
-  letter-spacing: normal;
-  color: var(--blue);
+  @apply font-paragraph;
 }
 p:last-child, .paragraph:last-child, table:last-child {
   margin-bottom: 0;
 }
-@media (max-width: 1024px) {
-  p, .paragraph, table {
-    font-size: 4rem;
-    line-height: 1.25;
- }
-}
+
 figure {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: var(--fontSizeBody1);
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.59;
-  letter-spacing: normal;
+  @apply font-paragraph;
   margin: 0;
 }
-@media (max-width: 1024px) {
-  figure {
-    font-size: 3rem;
-    line-height: 1.25;
- }
-}
+
 .quote-small {
-  font-family: 'Ubuntu Mono', monospace;
-  font-size: var(--fontSizeBody1);
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.59;
-  letter-spacing: normal;
+  @apply font-quoteSmall;
   text-align: center;
-  color: inherit;
 }
-@media (max-width: 1024px) {
-  .quote-small {
-    font-size: 4rem;
- }
-}
+
 .white {
   color: var(--warmwhite);
 }
 .body-2 {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: var(--fontSizeBody2);
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.56;
-  letter-spacing: normal;
-  color: var(--blue);
+  @apply font-paragraphSmall;
 }
-@media (max-width: 1024px) {
-  .body-2 {
-    font-size: 4.25rem;
-    line-height: 1.25;
- }
-}
+
 .caption {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2.92;
-  letter-spacing: normal;
-  color: var(--blue);
-}
-@media (max-width: 1024px) {
-  .caption {
-    font-size: 2.5rem;
- }
+  @apply font-caption;
 }
 .slider-caption {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.5rem;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2.92;
-  letter-spacing: normal;
-  color: var(--blue);
-}
-@media (max-width: 1024px) {
-  .slider-caption {
-    font-size: 3rem;
- }
+  @apply font-caption;
 }
 hr {
   background-color: var(--warmwhite);
@@ -266,13 +117,8 @@ img {
   width: 100%;
 }
 figcaption {
+  @apply font-caption;
   color: var(--white);
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
   margin: 0;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
 }
@@ -280,11 +126,7 @@ figcaption::before {
   content: '©';
   margin-right: 5px;
 }
-@media (max-width: 1024px) {
-  figcaption {
-    font-size: 2.5rem;
- }
-}
+
 code {
   background-color: rgba(0, 0, 0, 0.05);
   display: inline-block;
@@ -307,20 +149,10 @@ blockquote p:last-child, .blockquote p:last-child {
 }
 /** * 1.1 Lists & Tables * * Default and custom styled list and table elements. */
 ul, ol {
-  font-size: var(--fontSizeBody1);
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.59;
   margin: 0 0 1.2rem;
   padding-left: 1.5rem;
 }
-@media (max-width: 1024px) {
-  ul, ol {
-    font-size: 4rem;
-    line-height: 1.25;
- }
-}
+
 ul ul, ol ul, ul ol, ol ol {
   margin-bottom: 0;
 }
@@ -374,13 +206,13 @@ button {
   background-color: transparent;
   border: 0;
   color: inherit;
-  font-family: 'GTAmericaMediumExtended', Helvetica, Arial, sans-serif;
   font-size: inherit;
   line-height: inherit;
   padding: 0;
   text-align: inherit;
 }
 .button {
+  @apply font-button;
   appearance: none;
   background-color: var(--blue);
   border: 2px solid var(--blue);
@@ -388,20 +220,14 @@ button {
   color: var(--yellow);
   cursor: pointer;
   display: inline-block;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.5;
-  padding: 1.5rem 5rem;
+  padding: calc(1.5rem/4) 1.25rem;
+  @screen md {
+    padding: 0.9375rem 3.125rem;
+  }
   text-align: center;
   text-decoration: none;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   user-select: none;
-}
-@media (max-width: 1024px) {
-  .button {
-    font-size: 4rem;
- }
 }
 .button:disabled, .button--disabled {
   cursor: default;
@@ -437,13 +263,9 @@ button {
   text-decoration: none;
 }
 .button--small {
-  font-size: 3.6rem;
+  @apply font-paragraphSmall;
+  @apply font-bold;
   padding: 1rem 2rem;
-}
-@media screen and (min-width: 1024px) {
-  .button--small {
-    font-size: var(--fontSizeBody2);
- }
 }
 .button--link {
   background-color: transparent;
@@ -480,25 +302,7 @@ p .button:not(:last-child) {
   margin-bottom: var(--padding_xsmall);
   margin-right: var(--padding_xsmall);
 }
-/* Pills */
-.pill {
-  background-color: var(--warmwhite);
-  border-radius: 1rem;
-  color: var(--blue);
-  display: inline-block;
-  font-size: 2.5rem;
-  line-height: 1.5;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0.125rem 1rem;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-.pill:hover, .pill:focus {
-  color: var(--blue);
-}
+
 /* Icons */
 .feather {
   color: var(--warmwhite);
@@ -508,7 +312,6 @@ p .button:not(:last-child) {
 }
 /** * 1.3 Forms * * Global form elements, including structering wrapper elements. */
 form {
-  font-size: var(--fontSizeBody1);
   margin: 0;
 }
 fieldset {
@@ -525,16 +328,12 @@ fieldset input, fieldset select, fieldset textarea {
 }
 legend {
   display: inline-block;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
+  @apply font-caption;
   margin-bottom: 0.9375rem;
 }
 label {
   display: inline-block;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 700;
-  line-height: 1.5;
+  @apply font-caption;
   margin-bottom: 0.5rem;
 }
 [type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select {
@@ -552,7 +351,6 @@ input, select {
   border-left: 0;
   border-right: 0;
   border-top: 0;
-  font-size: var(--fontSizeBody1);
   margin: 0 0 1rem;
   padding: 10px 0;
   width: 100%;
@@ -579,7 +377,6 @@ select::-ms-expand {
 }
 [type='file'] {
   border: 0;
-  font-size: var(--fontSizeBody1);
   margin: 0;
   padding: 0;
   width: auto;
@@ -611,7 +408,7 @@ select::-ms-expand {
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 4px;
+  top: 0;
   transition: border-color 0.2s ease, background-color 0.2s ease;
   width: 15px;
 }
@@ -624,22 +421,10 @@ select::-ms-expand {
   border-radius: 50%;
 }
 [type='email'] {
-  font-size: var(--fontSizeBody1);
   outline: 0;
-}
-@media (max-width: 1023px) {
-  [type='email'] {
-    font-size: var(--fontSizeBody1Mobile);
- }
 }
 [type='text'] {
-  font-size: var(--fontSizeBody1);
   outline: 0;
-}
-@media (max-width: 1023px) {
-  [type='text'] {
-    font-size: var(--fontSizeBody1Mobile);
- }
 }
 [type='number'] {
   -webkit-appearance: none;
@@ -710,7 +495,7 @@ select::-ms-expand {
   color: var(--yellow);
   text-decoration: none;
 }
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
   .slideUp {
     transform: translateY(-55px);
  }
@@ -737,6 +522,7 @@ select::-ms-expand {
 }
 .flyntComponent {
   position: relative;
+  display: block;
 }
 .flyntComponent .container {
   margin-left: auto;
