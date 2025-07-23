@@ -26,7 +26,13 @@ add_shortcode('newsletter', function ($atts, $content = null) {
             'lastname' => ['label' => 'Nachname', 'placeholder' => 'Nachname*'],
             'phone' => ['label' => 'Telefonnummer', 'placeholder' => 'Telefonnummer'],
             'email' => ['label' => 'E-Mail', 'placeholder' => 'E-Mail*'],
-            'address' => ['label' => 'Postadresse', 'placeholder' => 'Straße Hausnummer, Postleitzahl Ort*'],
+            'address' => [
+                'street' => 'Straße',
+                'house_number' => 'Hausnummer',
+                'postal_code' => 'PLZ',
+                'city' => 'Ort',
+                'country' => 'Land'
+            ],
             'outreach' => 'Ich bin damit einverstanden, dass SOS Humanity mich kontaktiert, um mir ein Aktionspaket zuzusenden.',
             'submit' => 'Senden',
         ]
@@ -36,7 +42,13 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                 'lastname' => ['label' => 'Cognome', 'placeholder' => 'Cognome*'],
                 'phone' => ['label' => 'Telefono', 'placeholder' => 'Telefono'],
                 'email' => ['label' => 'E-mail', 'placeholder' => 'E-mail*'],
-                'address' => ['label' => 'Indirizzo postale', 'placeholder' => '"Nome della via numero civico, CAP città, paese*'],
+                'address' => [
+                    'street' => 'Via',
+                    'house_number' => 'Numero civico',
+                    'postal_code' => 'CAP',
+                    'city' => 'Città',
+                    'country' => 'Paese'
+                ],
                 'outreach' => 'Accetto che SOS Humanity mi contatti per inviarmi un pacchetto di sensibilizzazione.',
                 'submit' => 'Iscriviti',
             ]
@@ -45,7 +57,13 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                 'lastname' => ['label' => 'Last Name', 'placeholder' => 'Last Name*'],
                 'phone' => ['label' => 'Phone Number', 'placeholder' => 'Phone Number'],
                 'email' => ['label' => 'Email', 'placeholder' => 'Email*'],
-                'address' => ['label' => 'Postal Address', 'placeholder' => 'Street name house number, ZIP code city, country*'],
+                'address' => [
+                    'street' => 'Street',
+                    'house_number' => 'House Number',
+                    'postal_code' => 'ZIP Code',
+                    'city' => 'City',
+                    'country' => 'Country'
+                ],
                 'outreach' => 'I agree that SOS Humanity may contact me to send me an outreach package.',
                 'submit' => 'Submit',
             ]);
@@ -57,86 +75,126 @@ add_shortcode('newsletter', function ($atts, $content = null) {
             ? '<span>Registrandosi, l\'utente accetta i termini <a target="_blank" rel="noopener noreferrer" href="' . esc_url($attributes['datenschutz']) . '">dell\'Informativa sulla privacy.</a></span>'
             : '<span>By registering, you agree to the terms of the <a target="_blank" rel="noopener noreferrer" href="' . esc_url($attributes['datenschutz']) . '">Privacy Policy.</a></span>');
 
-    // Additional fields if not only-email
-    $additionalFields = '';
+    // Build main field block
+    $formFields = '';
+
     if ($attributes['only-email'] !== 'true') {
-        $additionalFields .= '
-            <div class="jc-form-field">
-                <label class="sr-only jc-form-field__wrapper" for="newsletter-firstname">' . esc_html($fields['firstname']['label']) . ' <span aria-hidden="true">*</span></label>
+        $formFields .= '
+            <div class="jc-form-field grow">
+                <label class="sr-only" for="newsletter-firstname">' . esc_html($fields['firstname']['label']) . '</label>
                 <input type="text" id="newsletter-firstname" name="firstname" placeholder="' . esc_attr($fields['firstname']['placeholder']) . '" required aria-required="true" autocomplete="given-name">
             </div>
-            <div class="jc-form-field">
-                <label class="sr-only jc-form-field__wrapper" for="newsletter-lastname">' . esc_html($fields['lastname']['label']) . ' <span aria-hidden="true">*</span></label>
+            <div class="jc-form-field grow">
+                <label class="sr-only" for="newsletter-lastname">' . esc_html($fields['lastname']['label']) . '</label>
                 <input type="text" id="newsletter-lastname" name="lastname" placeholder="' . esc_attr($fields['lastname']['placeholder']) . '" required aria-required="true" autocomplete="family-name">
             </div>
-            <div class="jc-form-field">
-                <label class="sr-only jc-form-field__wrapper" for="newsletter-phone">' . esc_html($fields['phone']['label']) . '</label>
+            <div class="jc-form-field grow">
+                <label class="sr-only" for="newsletter-phone">' . esc_html($fields['phone']['label']) . '</label>
                 <input type="tel" id="newsletter-phone" name="phone" placeholder="' . esc_attr($fields['phone']['placeholder']) . '" autocomplete="tel">
             </div>
         ';
     }
 
-    // Append address field if enabled
-    $adressField = '';
-    if ($attributes['address'] === 'true') {
-        $adressField = '
-            <div class="jc-form-field">
-                <label class="sr-only jc-form-field__wrapper" for="newsletter-address">' . esc_html($fields['address']['label']) . '</label>
-                <textarea 
-                    id="newsletter-address" name="adresse" placeholder="' . esc_attr($fields['address']['placeholder']) . '" 
-                    rows="3"
-                    style="background-color: var(--yellow);"
-                    required aria-required="true"
-                ></textarea>
-            </div>
-        ';
-    }
+    // Email (always shown)
+    $formFields .= '
+        <div class="jc-form-field grow">
+            <label class="sr-only" for="newsletter-email">' . esc_html($fields['email']['label']) . '</label>
+            <input type="email" id="newsletter-email" name="email" placeholder="' . esc_attr($fields['email']['placeholder']) . '" required aria-required="true" autocomplete="email">
+        </div>
+    ';
 
-    // Outreach checkbox if enabled
+    // Outreach field logic
     $outreachField = '';
+    $injectOutreachHidden = false;
+
     if ($attributes['outreach'] === 'true') {
         $outreachField = '
-            <div class="jc-form-field outreach-checkbox" style="margin-bottom: 20px;">
-                <input type="checkbox" id="newsletter-outreach" name="outreach" value="yes" required aria-required="true">
+            <div class="jc-form-field grow outreach-checkbox">
+                <input type="checkbox" id="newsletter-outreach" name="outreach" value="yes">
                 <label for="newsletter-outreach">' . esc_html($fields['outreach']) . '</label>
             </div>
         ';
+    } elseif ($attributes['address'] === 'true') {
+        // address = true but outreach = false → include hidden outreach=yes
+        $injectOutreachHidden = true;
     }
 
-    // Additional classes
+    // Address fields (conditionally shown)
+    $addressFields = '';
+    if ($attributes['address'] === 'true') {
+        $a = $fields['address'];
+        $style = ($attributes['outreach'] === 'true') ? 'display:none;' : 'display:flex;';
+        $addressFields = '
+            <div class="address-wrapper jc-form-field grow w-full gap-x-md gap-y-sm flex-wrap" style="' . $style . '">
+                <div class="jc-form-field grow" style="width: 70%">
+                    <label class="sr-only" for="newsletter-street">' . esc_html($a['street']) . '</label>
+                    <input type="text" id="newsletter-street" name="street" placeholder="' . esc_attr($a['street']) . '" required aria-required="true" autocomplete="address-line1">
+                </div>
+                <div class="jc-form-field grow" style="width: 25%">
+                    <label class="sr-only" for="newsletter-house-number">' . esc_html($a['house_number']) . '</label>
+                    <input type="text" id="newsletter-house-number" name="house_number" placeholder="' . esc_attr($a['house_number']) . '" required aria-required="true" autocomplete="address-line2">
+                </div>
+                <div class="jc-form-field grow">
+                    <label class="sr-only" for="newsletter-postal-code">' . esc_html($a['postal_code']) . '</label>
+                    <input type="text" id="newsletter-postal-code" name="postal_code" placeholder="' . esc_attr($a['postal_code']) . '" required aria-required="true" autocomplete="postal-code">
+                </div>
+                <div class="jc-form-field grow">
+                    <label class="sr-only" for="newsletter-city">' . esc_html($a['city']) . '</label>
+                    <input type="text" id="newsletter-city" name="city" placeholder="' . esc_attr($a['city']) . '" required aria-required="true" autocomplete="address-level2">
+                </div>
+                <div class="jc-form-field grow">
+                    <label class="sr-only" for="newsletter-country">' . esc_html($a['country']) . '</label>
+                    <input type="text" id="newsletter-country" name="country" placeholder="' . esc_attr($a['country']) . '" required aria-required="true" autocomplete="country-name">
+                </div>
+            </div>
+        ';
+    }
+
+    // JS logic to toggle address visibility if outreach is checked
+    $addressToggleScript = '';
+    if ($attributes['address'] === 'true' && $attributes['outreach'] === 'true') {
+        $addressToggleScript = '
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const checkbox = document.getElementById("newsletter-outreach");
+                    const addressWrapper = document.querySelector(".address-wrapper");
+                    const toggle = () => {
+                        if (checkbox && addressWrapper) {
+                            addressWrapper.style.display = checkbox.checked ? "flex" : "none";
+                        }
+                    };
+                    checkbox.addEventListener("change", toggle);
+                    toggle();
+                });
+            </script>
+        ';
+    }
+
+    // Theme / layout
     $additionalClasses = '';
     $additionalClasses .= ($attributes['only-email'] === 'true') ? ' only-email' : '';
     $additionalClasses .= ($attributes['theme'] === 'dark') ? ' dark' : '';
 
-    // Layout classes
-    $flexOrBlock = ($attributes['only-email'] === 'true') ? '' : 'flex flex-row justify-between';
-
-    // Render final HTML
+    // Final form HTML
     return '
         <form class="june-scope' . esc_attr($additionalClasses) . '" data-native-elements="true" data-collect-token="' . esc_attr($attributes['data-collect-token']) . '" data-redirect-url="' . esc_attr($attributes['data-redirect-url']) . '" aria-label="Newsletter Signup Form">
-            <fieldset>
+            <fieldset >
                 <legend class="sr-only">Newsletter Signup</legend>
-                <div class="flex flex-row">
-                    ' . $additionalFields . '
+                <div class="flex flex-wrap gap-x-md gap-y-sm">
+                ' . $formFields . '
+                ' . $outreachField . '
+                ' . ($injectOutreachHidden ? '<input type="hidden" name="outreach" value="yes">' : '') . '
+                ' . $addressFields . '
                 </div>
-                ' . $adressField . '
-                <div class="' . esc_attr($flexOrBlock) . '">
-                    <div class="jc-form-field email-div">
-                        <label class="jc-form-field__wrapp  er sr-only" for="newsletter-email">' . esc_html($fields['email']['label']) . ' <span aria-hidden="true">*</span></label>
-                        <input type="email" id="newsletter-email" name="email" placeholder="' . esc_attr($fields['email']['placeholder']) . '" required aria-required="true" autocomplete="email">
-                    </div>
-                    <div class="submit-div">
-                        <button type="submit" class="main-action-button je-btn-submit">' . esc_html($fields['submit']) . '</button>
-                    </div>
+                <div class="submit-div" style="margin-top: 20px">
+                    <button type="submit" class="main-action-button je-btn-submit button">' . esc_html($fields['submit']) . '</button>
                 </div>
             </fieldset>
             <fieldset>
                 <legend class="sr-only">Additional Options</legend>
-                ' . $outreachField . '
-                <div class="jc-form-field font-data">
-                    ' . $privacyText . '
-                </div>
+                <div class="jc-form-field grow font-data">' . $privacyText . '</div>
             </fieldset>
         </form>
+        ' . $addressToggleScript . '
     ';
 });

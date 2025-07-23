@@ -150,6 +150,9 @@ export const safelist = [
   'after-marker--dark',
   'bg-tangerine', // used in tinyMCE
   'bg-yellow', // used in tinyMCE
+  'gap-x-md',
+  'gap-y-sm',
+  '!gap-y-sm',
   {
     pattern: /col-span-\d/,
     variants: ['xs', 'sm', 'md', 'lg', 'xl', 'max'],
