@@ -27,13 +27,13 @@ add_shortcode('newsletter', function ($atts, $content = null) {
             'phone' => ['label' => 'Telefonnummer', 'placeholder' => 'Telefonnummer'],
             'email' => ['label' => 'E-Mail', 'placeholder' => 'E-Mail*'],
             'address' => [
-                'street' => 'Straße',
-                'house_number' => 'Hausnummer',
-                'postal_code' => 'PLZ',
-                'city' => 'Ort',
-                'country' => 'Land'
+                'street' => 'Straße*',
+                'house_number' => 'Hausnummer*',
+                'postal_code' => 'PLZ*',
+                'city' => 'Ort*',
+                'country' => 'Land*'
             ],
-            'outreach' => 'Ich bin damit einverstanden, dass SOS Humanity mich kontaktiert, um mir ein Aktionspaket zuzusenden.',
+            'outreach' => 'Ja, ich möchte auch ein kostenloses Aktionspaket von SOS Humanity bekommen.',
             'submit' => 'Senden',
         ]
         : (($locale === 'it_IT')
@@ -43,13 +43,13 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                 'phone' => ['label' => 'Telefono', 'placeholder' => 'Telefono'],
                 'email' => ['label' => 'E-mail', 'placeholder' => 'E-mail*'],
                 'address' => [
-                    'street' => 'Via',
-                    'house_number' => 'Numero civico',
-                    'postal_code' => 'CAP',
-                    'city' => 'Città',
-                    'country' => 'Paese'
+                    'street' => 'Via*',
+                    'house_number' => 'Numero civico*',
+                    'postal_code' => 'CAP*',
+                    'city' => 'Città*',
+                    'country' => 'Paese*'
                 ],
-                'outreach' => 'Accetto che SOS Humanity mi contatti per inviarmi un pacchetto di sensibilizzazione.',
+                'outreach' => "Vorrei ricevere anch'io un pacchetto informativo gratuito di SOS Humanity.",
                 'submit' => 'Iscriviti',
             ]
             : [
@@ -58,13 +58,13 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                 'phone' => ['label' => 'Phone Number', 'placeholder' => 'Phone Number'],
                 'email' => ['label' => 'Email', 'placeholder' => 'Email*'],
                 'address' => [
-                    'street' => 'Street',
-                    'house_number' => 'House Number',
-                    'postal_code' => 'ZIP Code',
-                    'city' => 'City',
-                    'country' => 'Country'
+                    'street' => 'Street*',
+                    'house_number' => 'House Number*',
+                    'postal_code' => 'ZIP Code*',
+                    'city' => 'City*',
+                    'country' => 'Country*'
                 ],
-                'outreach' => 'I agree that SOS Humanity may contact me to send me an outreach package.',
+                'outreach' => 'Yes, I would also like to receive a free outreach package of SOS Humanity.',
                 'submit' => 'Submit',
             ]);
 
