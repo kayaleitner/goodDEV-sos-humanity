@@ -3,7 +3,7 @@
     <div class="container" style="padding: var(--padding_small) var(--padding_small) var(--padding_medium) var(--padding_small); max-width: var(--maxWidthContainer_wide);">
       {% if preContentHtml %}
         <div class="preContent {% if options.fadeIn %} fade-in {% endif %} {% if options.moveIn %} move-in {% endif %}">
-          <<h2 class="preContent">{{ preContentHtml|wp_kses_custom }} </h2>
+          <h2 class="preContent">{{ preContentHtml|wp_kses_custom }} </h2>
         </div>
       {% endif %}
       <ul class="grid grid--columns{{ options.columns }}" data-category="{{category}}">
