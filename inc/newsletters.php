@@ -68,14 +68,12 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                 'submit' => 'Submit',
             ]);
 
-    // Privacy text based on locale
     $privacyText = ($locale === 'de_DE')
         ? '<span>Die <a target="_blank" rel="noopener noreferrer" href="' . esc_url($attributes['datenschutz']) . '">Datenschutzerklärung</a> wird mit der Registrierung zur Kenntnis genommen.</span>'
         : (($locale === 'it_IT')
             ? '<span>Registrandosi, l\'utente accetta i termini <a target="_blank" rel="noopener noreferrer" href="' . esc_url($attributes['datenschutz']) . '">dell\'Informativa sulla privacy.</a></span>'
             : '<span>By registering, you agree to the terms of the <a target="_blank" rel="noopener noreferrer" href="' . esc_url($attributes['datenschutz']) . '">Privacy Policy.</a></span>');
 
-    // Build main field block
     $formFields = '';
 
     if ($attributes['only-email'] !== 'true') {
@@ -95,7 +93,6 @@ add_shortcode('newsletter', function ($atts, $content = null) {
         ';
     }
 
-    // Email (always shown)
     $formFields .= '
         <div class="jc-form-field grow">
             <label class="sr-only" for="newsletter-email">' . esc_html($fields['email']['label']) . '</label>
@@ -103,7 +100,6 @@ add_shortcode('newsletter', function ($atts, $content = null) {
         </div>
     ';
 
-    // Outreach field logic
     $outreachField = '';
     $injectOutreachHidden = false;
 
@@ -115,17 +111,14 @@ add_shortcode('newsletter', function ($atts, $content = null) {
             </div>
         ';
     } elseif ($attributes['address'] === 'true') {
-        // address = true but outreach = false → include hidden outreach=yes
         $injectOutreachHidden = true;
     }
 
-    // Address fields (conditionally shown)
-    $addressFields = '';
-    if ($attributes['address'] === 'true') {
+    $addressToggleScript = '';
+    if ($attributes['address'] === 'true' && $attributes['outreach'] === 'true') {
         $a = $fields['address'];
-        $style = ($attributes['outreach'] === 'true') ? 'display:none;' : 'display:flex;';
-        $addressFields = '
-            <div class="address-wrapper jc-form-field grow w-full gap-x-md gap-y-sm flex-wrap" style="' . $style . '">
+        $addressFieldsHTML = '
+            <div class="address-wrapper jc-form-field flex grow w-full gap-x-md gap-y-sm flex-wrap">
                 <div class="jc-form-field grow" style="width: 70%">
                     <label class="sr-only" for="newsletter-street">' . esc_html($a['street']) . '</label>
                     <input type="text" id="newsletter-street" name="street" placeholder="' . esc_attr($a['street']) . '" required aria-required="true" autocomplete="address-line1">
@@ -146,45 +139,46 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                     <label class="sr-only" for="newsletter-country">' . esc_html($a['country']) . '</label>
                     <input type="text" id="newsletter-country" name="country" placeholder="' . esc_attr($a['country']) . '" required aria-required="true" autocomplete="country-name">
                 </div>
-            </div>
-        ';
-    }
+            </div>';
 
-    // JS logic to toggle address visibility if outreach is checked
-    $addressToggleScript = '';
-    if ($attributes['address'] === 'true' && $attributes['outreach'] === 'true') {
         $addressToggleScript = '
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
-                    const checkbox = document.getElementById("newsletter-outreach");
-                    const addressWrapper = document.querySelector(".address-wrapper");
-                    const toggle = () => {
-                        if (checkbox && addressWrapper) {
-                            addressWrapper.style.display = checkbox.checked ? "flex" : "none";
+                    const outreachCheckbox = document.getElementById("newsletter-outreach");
+                    const outreachContainer = outreachCheckbox?.closest(".jc-form-field");
+                    const addressHTML = ' . json_encode($addressFieldsHTML) . ';
+                    const getAddressWrapper = () => document.querySelector(".address-wrapper");
+
+                    const toggleAddressFields = () => {
+                        const existing = getAddressWrapper();
+                        if (outreachCheckbox.checked) {
+                            if (!existing && outreachContainer) {
+                                outreachContainer.insertAdjacentHTML("afterend", addressHTML);
+                            }
+                        } else {
+                            existing?.remove();
                         }
                     };
-                    checkbox.addEventListener("change", toggle);
-                    toggle();
+
+                    outreachCheckbox?.addEventListener("change", toggleAddressFields);
+                    toggleAddressFields();
                 });
             </script>
         ';
     }
 
-    // Theme / layout
     $additionalClasses = '';
     $additionalClasses .= ($attributes['only-email'] === 'true') ? ' only-email' : '';
     $additionalClasses .= ($attributes['theme'] === 'dark') ? ' dark' : '';
 
-    // Final form HTML
     return '
         <form class="june-scope' . esc_attr($additionalClasses) . '" data-native-elements="true" data-collect-token="' . esc_attr($attributes['data-collect-token']) . '" data-redirect-url="' . esc_attr($attributes['data-redirect-url']) . '" aria-label="Newsletter Signup Form">
-            <fieldset >
+            <fieldset>
                 <legend class="sr-only">Newsletter Signup</legend>
                 <div class="flex flex-wrap gap-x-md gap-y-sm">
-                ' . $formFields . '
-                ' . $outreachField . '
-                ' . ($injectOutreachHidden ? '<input type="hidden" name="outreach" value="yes">' : '') . '
-                ' . $addressFields . '
+                    ' . $formFields . '
+                    ' . $outreachField . '
+                    ' . ($injectOutreachHidden ? '<input type="hidden" name="outreach" value="yes">' : '') . '
                 </div>
                 <div class="submit-div" style="margin-top: 20px">
                     <button type="submit" class="main-action-button je-btn-submit button">' . esc_html($fields['submit']) . '</button>
