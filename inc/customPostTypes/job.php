@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * This is an example file showcasing how you can add custom post types to your Flynt theme.
+ *
+ * For a full list of parameters see https://developer.wordpress.org/reference/functions/register_post_type/ or use https://generatewp.com/post-type/ to generate the code for you.
+ */
+
 namespace Flynt\CustomPostTypes;
 
-function registerJobsPostType()
+function registerJobPostType()
 {
     $labels = [
         'name'                  => _x('Jobs', 'Post Type General Name', 'flynt'),
@@ -10,50 +16,50 @@ function registerJobsPostType()
         'menu_name'             => __('Jobs', 'flynt'),
         'name_admin_bar'        => __('Job', 'flynt'),
         'archives'              => __('Job Archives', 'flynt'),
-        'attributes'            => __('Job Attributes', 'flynt'),
-        'parent_item_colon'     => __('Parent Job:', 'flynt'),
-        'all_items'             => __('All Jobs', 'flynt'),
-        'add_new_item'          => __('Add New Job', 'flynt'),
+        'attributes'            => __('Items Attributes', 'flynt'),
+        'parent_item_colon'     => __('Parent Item:', 'flynt'),
+        'all_items'             => __('All Items', 'flynt'),
+        'add_new_item'          => __('Add New Item', 'flynt'),
         'add_new'               => __('Add New', 'flynt'),
-        'new_item'              => __('New Job', 'flynt'),
-        'edit_item'             => __('Edit Job', 'flynt'),
-        'update_item'           => __('Update Job', 'flynt'),
-        'view_item'             => __('View Job', 'flynt'),
-        'view_items'            => __('View Jobs', 'flynt'),
-        'search_items'          => __('Search Jobs', 'flynt'),
-        'not_found'             => __('No Jobs found', 'flynt'),
-        'not_found_in_trash'    => __('No Jobs found in Trash', 'flynt'),
-        'featured_image'        => __('Job Image', 'flynt'),
-        'set_featured_image'    => __('Set job image', 'flynt'),
-        'remove_featured_image' => __('Remove job image', 'flynt'),
-        'use_featured_image'    => __('Use as job image', 'flynt'),
-        'insert_into_item'      => __('Insert into job', 'flynt'),
-        'uploaded_to_this_item' => __('Uploaded to this job', 'flynt'),
-        'items_list'            => __('Jobs list', 'flynt'),
-        'items_list_navigation' => __('Jobs list navigation', 'flynt'),
-        'filter_items_list'     => __('Filter jobs list', 'flynt'),
+        'new_item'              => __('New Item', 'flynt'),
+        'edit_item'             => __('Edit Item', 'flynt'),
+        'update_item'           => __('Update Item', 'flynt'),
+        'view_item'             => __('View Item', 'flynt'),
+        'view_items'            => __('View Items', 'flynt'),
+        'search_items'          => __('Search Item', 'flynt'),
+        'not_found'             => __('Not found', 'flynt'),
+        'not_found_in_trash'    => __('Not found in Trash', 'flynt'),
+        'featured_image'        => __('Featured Image', 'flynt'),
+        'set_featured_image'    => __('Set featured image', 'flynt'),
+        'remove_featured_image' => __('Remove featured image', 'flynt'),
+        'use_featured_image'    => __('Use as featured image', 'flynt'),
+        'insert_into_item'      => __('Insert into item', 'flynt'),
+        'uploaded_to_this_item' => __('Uploaded to this item', 'flynt'),
+        'items_list'            => __('Items list', 'flynt'),
+        'items_list_navigation' => __('Items list navigation', 'flynt'),
+        'filter_items_list'     => __('Filter projects list', 'flynt'),
     ];
-
     $args = [
-        'label'                 => __('Jobs', 'flynt'),
-        'description'           => __('Job Listings', 'flynt'),
+        'label'                 => __('Job', 'flynt'),
+        'description'           => __('Job Description', 'flynt'),
         'labels'                => $labels,
-        'supports'              => ['title'],
-        'public'                => false,  // Publicly hidden
+        'supports'              => ['title', 'thumbnail', 'revisions'],
+        'taxonomies'            => ['jobCategory'],
+        'hierarchical'          => false,
+        'public'                => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
-        'menu_position'         => 7,
-        'menu_icon'             => 'dashicons-building',
+        'menu_position'         => 8,
+        'menu_icon'             => 'dashicons-businessperson',
         'show_in_admin_bar'     => true,
-        'show_in_nav_menus'     => false,
+        'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => false,
-        'exclude_from_search'   => true,
-        'publicly_queryable'    => false,
-        'capability_type'       => 'post',
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'page',
     ];
-
     register_post_type('job', $args);
 }
 
-add_action('init', '\\Flynt\\CustomPostTypes\\registerJobsPostType');
+add_action('init', '\\Flynt\\CustomPostTypes\\registerJobPostType');
