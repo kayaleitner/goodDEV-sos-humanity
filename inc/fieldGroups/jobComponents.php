@@ -1,47 +1,28 @@
 <?php
 
 use ACFComposer\ACFComposer;
+use Flynt\Components;
 
 add_action('Flynt/afterRegisterComponents', function () {
+
     ACFComposer::registerFieldGroup([
-        'name' => 'jobsMeta',
-        'title' => 'Job Info',
+        'name' => 'jobMeta',
+        'title' => 'Meta',
+        'style' => '',
+        'menu_order' => 3,
+        'position' => 'side',
         'fields' => [
             [
-                'label' => __('Job Category', 'flynt'),
-                'name' => 'jobCategory',
-                'type' => 'text',
-                'instructions' => __('Enter the job category.', 'flynt'),
-                'wrapper' => [
-                    'width' => '100',
-                ],
+                'label' => __('Position Offen?', 'flynt'),
+                'name' => 'positionOpen',
+                'type' => 'true_false',
+                'message' => __('Wenn angekreut, wird im Listing als offene Position angezeigt. ', 'flynt'),
             ],
             [
-                'label' => __('Location', 'flynt'),
-                'name' => 'location',
-                'type' => 'text',
-                'instructions' => __('Enter the location of the job.', 'flynt'),
-                'wrapper' => [
-                    'width' => '100',
-                ],
-            ],
-            [
-                'label' => __('Description', 'flynt'),
-                'name' => 'description',
+                'label' => __('Vorschau', 'flynt'),
+                'name' => 'jobDescription',
                 'type' => 'textarea',
-                'instructions' => __('Enter the job description.', 'flynt'),
-                'wrapper' => [
-                    'width' => '100',
-                ],
-            ],
-            [
-                'label' => __('URL', 'flynt'),
-                'name' => 'url',
-                'type' => 'url',
-                'instructions' => __('Enter the application URL.', 'flynt'),
-                'wrapper' => [
-                    'width' => '100',
-                ],
+                'message' => __('Kurze Beschreibung der Position', 'flynt'),
             ],
         ],
         'location' => [
@@ -50,6 +31,50 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'job',
+                ],
+            ],
+        ],
+    ]);
+
+    ACFComposer::registerFieldGroup([
+        'name' => 'jobComponents',
+        'title' => 'Job Components',
+        'style' => 'seamless',
+        'menu_order' => 2,
+        'fields' => [
+            [
+                'name' => 'jobComponents',
+                'label' => __('Job Components', 'flynt'),
+                'type' => 'flexible_content',
+                'button_label' => __('Add Component', 'flynt'),
+                'layouts' => [
+                    Components\BlockAnchor\getACFLayout(),
+                    Components\HeroImageText\getACFLayout(),
+                    Components\AccordionDefault\getACFLayout(),
+                    Components\BlockFactSheet\getACFLayout(),
+                    Components\BlockImage\getACFLayout(),
+                    Components\BlockTextImageCrop\getACFLayout(),
+                    Components\BlockImageTextPageLink\getACFLayout(),
+                    Components\BlockQuote\getACFLayout(),
+                    Components\BlockVideoOembed\getACFLayout(),
+                    Components\BlockWysiwyg\getACFLayout(),
+                    Components\BlockWysiwygRepeater\getACFLayout(),
+                    Components\ListNumbers\getACFLayout(),
+                    Components\SliderImages\getACFLayout(),
+                    Components\SliderVoices\getACFLayout(),
+                    Components\FullBleedImageTitleTextParallax\getACFLayout(),
+                    Components\GridIcons\getACFLayout(),
+                    Components\GridImageText\getACFLayout(),
+                    Components\GridPostsSelector\getACFLayout()
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'job'
                 ],
             ],
         ],
