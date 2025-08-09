@@ -115,9 +115,8 @@ add_shortcode('newsletter', function ($atts, $content = null) {
     }
 
     $addressToggleScript = '';
-    if ($attributes['address'] === 'true' && $attributes['outreach'] === 'true') {
-        $a = $fields['address'];
-        $addressFieldsHTML = '
+    $a = $fields['address'];
+    $addressFieldsHTML = '
             <div class="address-wrapper jc-form-field flex grow w-full gap-x-md gap-y-sm flex-wrap">
                 <div class="jc-form-field grow" style="width: 70%">
                     <label class="sr-only" for="newsletter-street">' . esc_html($a['street']) . '</label>
@@ -140,6 +139,9 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                     <input type="text" id="newsletter-country" name="country" placeholder="' . esc_attr($a['country']) . '" required aria-required="true" autocomplete="country-name">
                 </div>
             </div>';
+    if ($attributes['address'] === 'true' && $attributes['outreach'] === 'true') {
+        
+        
 
         $addressToggleScript = '
             <script>
@@ -178,7 +180,8 @@ add_shortcode('newsletter', function ($atts, $content = null) {
                 <div class="flex flex-wrap gap-x-md gap-y-sm">
                     ' . $formFields . '
                     ' . $outreachField . '
-                    ' . ($injectOutreachHidden ? '<input type="hidden" name="outreach" value="yes">' : '') . '
+                    ' . ($injectOutreachHidden ? '<input type="hidden" id="newsletter-outreach" name="outreach" value="yes">' : '') . '
+                    ' . ($injectOutreachHidden ? $addressFieldsHTML : '') . '
                 </div>
                 <div class="submit-div" style="margin-top: 20px">
                     <button type="submit" class="main-action-button je-btn-submit button">' . esc_html($fields['submit']) . '</button>
