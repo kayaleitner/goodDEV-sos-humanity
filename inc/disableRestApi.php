@@ -12,6 +12,9 @@ function disable_rest_api($access)
         '/wp-json/yoast/v1/',
         '/wp-json/wp/v2/media',
         '/wp-json/flynt/v1/submit_form', 
+
+        // Open API completely for HOTJAR to work. --> close afterwards
+        '/wp-json',
     ];
 
     // Check if the current request URI matches any allowed endpoints
