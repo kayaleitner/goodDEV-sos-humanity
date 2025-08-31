@@ -1,0 +1,36 @@
+[is="flynt-donation-form"] {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  .panel {
+    border-radius: 0.5rem;
+  }
+  [type="radio"], [type="checkbox"] {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+    width: auto;
+  }
+  .interval,
+  .amounts {
+    margin-bottom: 1rem;
+  }
+  .interval label,
+  .amounts label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+  .interval label span,
+  .amounts label span {
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
+

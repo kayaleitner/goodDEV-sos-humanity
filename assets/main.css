@@ -64,3 +64,7 @@
 @import '../Components/SliderImages/_style.css';
 @import '../Components/SliderVoices/_style.css';
 @import '../Components/WidgetPetition/_style.css';
+@import '../Components/DonationHeader/_style.css';
+@import '../Components/DonationForm/_style.css';
+@import '../Components/DonationLanguageSwitch/_style.css';
+@import '../Components/DonationHero/_style.css';

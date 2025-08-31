@@ -1,0 +1,37 @@
+<flynt-component
+  class="flyntComponent block donationLanguageSwitch"
+  is="flynt-donation-language-switch"
+  name="DonationLanguageSwitch"
+>
+  {% if languages is iterable and languages|length > 1 %}
+    <div class="donationLanguageSwitch__dropdown">
+      {# Trigger shows current language #}
+      {% set current = (languages|filter(l => l.current))|first %}
+      {% set ariaLabel = current ? (current.name ~ ' (' ~ current.code ~ ')') : __('Language','flynt') %}
+      <button class="donationLanguageSwitch__button" aria-label="{{ ariaLabel }}" aria-haspopup="listbox" aria-expanded="false">
+        {% if current and current.flag %}
+          <img src="{{ current.flag }}" alt="" class="donationLanguageSwitch__flag" />
+        {% else %}
+          <span class="donationLanguageSwitch__fallback">{{ current ? current.code : __('Lang','flynt') }}</span>
+        {% endif %}
+      </button>
+      <ul class="donationLanguageSwitch__menu" role="listbox">
+        {% for lang in languages %}
+          <li class="donationLanguageSwitch__item {{ lang.current ? 'is-current' : '' }}" role="option" aria-selected="{{ lang.current ? 'true' : 'false' }}">
+            {% if lang.current %}
+              <span class="donationLanguageSwitch__link is-disabled">
+                {% if lang.flag %}<img src="{{ lang.flag }}" alt="" class="donationLanguageSwitch__flag" />{% endif %}
+                <span class="donationLanguageSwitch__name">{{ lang.name }}</span>
+              </span>
+            {% else %}
+              <a href="{{ lang.url }}" class="donationLanguageSwitch__link">
+                {% if lang.flag %}<img src="{{ lang.flag }}" alt="" class="donationLanguageSwitch__flag" />{% endif %}
+                <span class="donationLanguageSwitch__name">{{ lang.name }}</span>
+              </a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</flynt-component>
