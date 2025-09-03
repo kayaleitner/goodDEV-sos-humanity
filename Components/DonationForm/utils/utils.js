@@ -7,6 +7,39 @@
  * @param {string} options.checkboxLabel - Label for the new checkbox
  * @param {string} options.checkedValue - Value that should trigger checked=true
  */
+// export function transformSelectToCheckbox(field, $container, { checkboxLabel, checkedValue }) {
+//   const $ = window.jQuery
+//   if (!$) {
+//     // eslint-disable-next-line no-console
+//     console.warn('utils: jQuery not available on window — cannot transform select to checkbox')
+//     return
+//   }
+//   if (!field?.id || !$container || !checkboxLabel || !checkedValue) {
+//     // eslint-disable-next-line no-console
+//     console.warn('utils: transformSelectToCheckbox called with invalid arguments')
+//     return
+//   }
+//
+//   const $select = $container.find(`#${field.id}`)
+//   if (!$select.length) return
+//
+//   const isChecked = $select.val() === checkedValue
+//   const $checkbox = $('<input>', {
+//     type: 'checkbox',
+//     name: $select.attr('name'),
+//     id: field.id,
+//     class: 'mr-2',
+//     checked: isChecked,
+//     value: checkedValue
+//   })
+//
+//   // Replace select with a checkbox
+//   $select.replaceWith($checkbox)
+//
+//   // Update label
+//   $container.find(`label[for="${field.id}"]`).text(checkboxLabel)
+// }
+
 export function transformSelectToCheckbox(field, $container, { checkboxLabel, checkedValue }) {
   const $ = window.jQuery
   if (!$) {
@@ -24,6 +57,8 @@ export function transformSelectToCheckbox(field, $container, { checkboxLabel, ch
   if (!$select.length) return
 
   const isChecked = $select.val() === checkedValue
+
+  // Neues Checkbox-Element
   const $checkbox = $('<input>', {
     type: 'checkbox',
     name: $select.attr('name'),
@@ -33,11 +68,18 @@ export function transformSelectToCheckbox(field, $container, { checkboxLabel, ch
     value: checkedValue
   })
 
-  // Replace select with checkbox
-  $select.replaceWith($checkbox)
+  // Neues Label hinter Checkbox
+  const $label = $('<label>', {
+    for: field.id,
+    text: checkboxLabel,
+  })
 
-  // Update label
-  $container.find(`label[for="${field.id}"]`).text(checkboxLabel)
+  const $wrapper = $('<div>')
+    .append($checkbox)
+    .append($label)
+
+  // Select ersetzen
+  $select.replaceWith($wrapper)
 }
 
 /**
@@ -53,6 +95,7 @@ export function transformSelectToCheckbox(field, $container, { checkboxLabel, ch
  * @param {string} [options.classes.wrapper] - Wrapper div classes
  * @param {string} [options.classes.radio] - Radio input class
  * @param {string} [options.classes.label] - Label span/text class
+ * @param {string} [options.classes.fieldWrapper] - Label span/text class
  */
 export function transformSelectToRadios(field, $container, { classes = {} } = {}) {
   const $ = window.jQuery
@@ -75,7 +118,7 @@ export function transformSelectToRadios(field, $container, { classes = {} } = {}
 
   // Build wrapper for radios
   const $group = $('<div>', {
-    class: classes.wrapper || 'flex flex-wrap gap-3'
+    class: classes.wrapper || ''
   })
 
   // Iterate options and create radios
@@ -86,31 +129,34 @@ export function transformSelectToRadios(field, $container, { classes = {} } = {}
 
     const id = `${field.id}__${value}` // unique per option
 
+    const $fieldWrapper = $('<div>', {
+      class: classes.fieldWrapper || 'radioWrapper',
+    })
+
     const $radio = $('<input>', {
       type: 'radio',
       name,
       id,
       value,
-      class: classes.radio || 'mr-2',
+      class: classes.radio || '',
       checked: current === value
     })
 
     const $label = $('<label>', {
       for: id,
-      class: 'inline-flex items-center border rounded px-3 py-2 cursor-pointer'
+      class: classes.label || '',
+      text,
     })
-
-    const $text = $('<span>', { class: classes.label || 'ml-2' }).text(text)
-    $label.append($radio).append($text)
-    $group.append($label)
+    $fieldWrapper.append($radio).append($label)
+    $group.append($fieldWrapper)
   })
 
-  // Replace select with radio group
+  // Replace select with a radio group
   $select.replaceWith($group)
 
   // Ensure the original field label still points to the first radio for a11y
-  const $firstRadio = $group.find('input[type="radio"]').first()
-  if ($firstRadio.length) {
-    $container.find(`label[for="${field.id}"]`).attr('for', $firstRadio.attr('id'))
-  }
+  // const $firstRadio = $group.find('input[type="radio"]').first()
+  // if ($firstRadio.length) {
+  //   $container.find(`label[for="${field.id}"]`).attr('for', $firstRadio.attr('id'))
+  // }
 }

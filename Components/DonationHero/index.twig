@@ -6,26 +6,27 @@
   <div class="donationHero">
     <figure class="donationHero__figure">
       <picture>
-        {# Mobile first source #}
         {% if mobile %}
           <source media="(max-width: 767px)" srcset="{{ mobile.srcset ?: mobile.src }}">
         {% endif %}
-        {# Desktop image fallback #}
         {% if desktop %}
-          <img class="donationHero__image" src="{{ desktop.src }}" srcset="{{ desktop.srcset ?: desktop.src }}" alt="{{ desktop.alt }}" loading="eager"/>
+          <img class="donationHero__image" src="{{ desktop.src }}" srcset="{{ desktop.srcset ?: desktop.src }}"
+               alt="{{ desktop.alt }}" loading="eager"/>
         {% elseif mobile %}
-          <img class="donationHero__image" src="{{ mobile.src }}" srcset="{{ mobile.srcset ?: mobile.src }}" alt="{{ mobile.alt }}" loading="eager"/>
+          <img class="donationHero__image" src="{{ mobile.src }}" srcset="{{ mobile.srcset ?: mobile.src }}"
+               alt="{{ mobile.alt }}" loading="eager"/>
         {% endif %}
         {% if copyright %}
           <figcaption class="donationHero__copyright">{{ copyright }}</figcaption>
         {% endif %}
       </picture>
     </figure>
-
-    {% if title %}
-      <div class="donationHero__titleWrapper">
+    <div class="donationHero__titleWrapper">
+      {% if title %}
         <h1 class="donationHero__title text-center">{{ title }}</h1>
-      </div>
-    {% endif %}
+      {% else %}
+        <h1 class="donationHero__title text-center">{{ post.title }}</h1>
+      {% endif %}
+    </div>
   </div>
 </flynt-component>
