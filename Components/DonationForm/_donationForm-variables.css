@@ -1,0 +1,51 @@
+[is="flynt-donation-form"] {
+  /* Borders */
+  --border-width: 1px;
+  --border-color: var(--border-grey, #838594);
+  --border-radius: 0.5rem;
+
+  /* Accessibility (focus styles) */
+  --outline-width: 2px;
+  --outline-color: #2563eb;
+  --outline-offset: 2px;
+  --outline-style: solid;
+  --outline: var(--outline-width) var(--outline-style) var(--outline-color);
+
+  /* Colors */
+  --color-default-background: #fff;
+  --color-default-text: var(--textColor, #262626);
+  --color-disabled: #666;
+  --color-disabled-surface: #fff;
+  --color-primary: var(--blue, #1c2445);
+  --color-secondary: var(--yellow, #ebeb00);
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+  --color-grey: #d9d9d9;
+
+  /* Typography */
+  --font-family: "Inter", sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --line-height: 1.5;
+
+  /* Spacing (padding / gaps) */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+
+  /* Payment icons */
+  --payment-icon-sepa: url("./Assets/paymethods/sepa.svg");
+  --payment-icon-paypal: url("./Assets/paymethods/paypal.svg");
+  --payment-icon-creditcard: url("./Assets/paymethods/kreditcard.svg");
+  --payment-icon-google-pay: url("./Assets/paymethods/google-pay.svg");
+  --payment-icon-apple-pay: url("./Assets/paymethods/apple-pay.svg");
+
+  /* Transitions */
+  --transition-duration: 0.2s;
+  --transition-timing-function: ease;
+
+  /* Filters */
+  --filter-brightness: brightness(0.95);
+}

@@ -1,4 +1,4 @@
-{% set panelClasses = 'p-4 bg-white shadow-md mb-6' %}
+{% set panelClasses = 'p-5 pb-8 bg-white shadow-md mb-6' %}
 {% set gridClasses = 'grid grid-cols-1 sm:grid-cols-2 gap-4' %}
 <flynt-component
   class="flyntComponent {{ options.theme }} block"
@@ -9,9 +9,8 @@
   {#    hash: de  y3fkgajfly2vnohz  it: pr31cc1oi4mxm9y4 en: 9qe7gtlxtyswnhld
 {#    hash: agh  r8lics3y58gk40ib
   #}
-  <form id="fbx-donation-form" data-fbx-form-hash="{{ hashs | default('r8lics3y58gk40ib') }}"
+  <form id="fbx-donation-form" data-fbx-form-hash="{{ hash | default('r8lics3y58gk40ib') }}"
         class="donationForm">
-    
     
     <div class="panel {{ panelClasses }}">
       {# Interval #}
@@ -19,66 +18,68 @@
       <div data-default-interval="{{ interval|default('0') }}"
            class="donationForm__interval mb-6 donationForm__radio"></div>
       
-        <div class="amount-block">
-          {% set current_interval = interval|default('0') %}
-          <div class="amount-suggestions">
-            {% for item in amounts %}
-              {% set interval_key = item.interval_type ? '1' : '0' %}
-              {% set is_active = current_interval == interval_key %}
-              <div class="amount-group-wrapper {{ is_active ? 'active' : '' }}" data-interval="{{ interval_key }}">
-                {% for amount in item.amount_options %}
-                  {% set btn_id = 'amount_'~ interval_key ~ '_' ~ loop.index %}
-                  <div class="amount-option">
-                    <input class="amount-radio" id="{{ btn_id }}" name="donation_amount_{{ interval_key }}" type="radio"
-                           value="{{ amount.value }}" {{ amount.default ? 'checked' : '' }}
-                           data-interval="{{ interval_key }}">
-                    <label class="amount-label" for="{{ btn_id }}">{{ amount.value }} €</label>
-                  </div>
-                {% endfor %}
-              </div>
-            {% endfor %}
-          </div>
-
-          <div class="amount-option custom-amount global-custom-amount">
-            <input autocomplete="off" min="3" max="50000" class="amount-input" name="donation_custom_amount"
-                   id="custom_amount" type="number" value="" inputmode="decimal" placeholder="{{ __('freier Betrag', 'flynt') }}">
-            <span class="currency-suffix">€</span>
-          </div>
-        </div>
-        <div class="error-wrapper text-center">
-          <span id="amount-error-text" class="error-text"></span>
-        </div>
-    </div>
-      
-      {# Persönliche Daten #}
-      <div class="panel {{ panelClasses }}">
-        <h3 class="text-center">{{ __('Meine Kontaktdaten', 'flynt') }}</h3>
-        <div id="person-section" class="space-y-6">
-          <div id="row-salutation" class="{{ gridClasses }}"></div>
-          <div class="{{ gridClasses }} row-person-data"></div>
-          <div class="row-wants-receipt donationForm__checkbox"></div>
-          <div class="row-wants-newsletter donationForm__checkbox"></div>
+      <div class="amount-block">
+        {% set current_interval = interval|default('0') %}
+        <div class="amount-suggestions w-full">
+          {% for item in amounts %}
+            {% set interval_key = item.interval_type ? '1' : '0' %}
+            {% set is_active = current_interval == interval_key %}
+            <div class="amount-group-wrapper {{ is_active ? 'active' : '' }}" data-interval="{{ interval_key }}">
+              {% for amount in item.amount_options %}
+                {% set btn_id = 'amount_'~ interval_key ~ '_' ~ loop.index %}
+                <div class="amount-option">
+                  <input class="amount-radio" id="{{ btn_id }}" name="donation_amount_{{ interval_key }}" type="radio"
+                         value="{{ amount.value }}" {{ amount.default ? 'checked' : '' }}
+                         data-interval="{{ interval_key }}">
+                  <label class="amount-label" for="{{ btn_id }}">{{ amount.value }} €</label>
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
         </div>
         
-        {# Adresse (versteckt, wenn weder Firma noch wants_receipt) #}
-        <div class="space-y-4 mt-6 hidden row-address-data-wrapper">
-          <div class="{{ gridClasses }} row-address-data"></div>
+        <div class="amount-option custom-amount global-custom-amount">
+          <input autocomplete="off" min="3" max="50000" class="amount-input" name="donation_custom_amount"
+                 id="custom_amount" type="number" value="" inputmode="decimal"
+                 placeholder="{{ __('freier Betrag', 'flynt') }}">
+          <span class="currency-suffix">€</span>
         </div>
+      </div>
+      <div class="error-wrapper text-center">
+        <span id="amount-error-text" class="error-text"></span>
+      </div>
+    </div>
+    
+    {# Persönliche Daten #}
+    <div class="panel {{ panelClasses }}">
+      <h3 class="text-center">{{ __('Meine Kontaktdaten', 'flynt') }}</h3>
+      <div id="person-section" class="space-y-6">
+        <div id="row-salutation" class="{{ gridClasses }}"></div>
+        <div class="{{ gridClasses }} row-person-data"></div>
+        <div class="row-wants-receipt donationForm__checkbox"></div>
+        <div class="row-wants-newsletter donationForm__checkbox"></div>
       </div>
       
-      {# Zahlmethoden #}
-      <div class="panel {{ panelClasses }}">
-        <h3 class="text-center">{{ __('Meine Zahlungsweise', 'flynt') }}</h3>
-        <div id="payment-section" class="mt-8 space-y-4 donationForm__paymethod">
-          <div id="payment-methods" class="space-y-2"></div>
-          <div id="sepa-fields" class="hidden {{ gridClasses }}"></div>
-          <div id="creditcard-fields" class="hidden {{ gridClasses }}"></div>
-        </div>
+      {# Adresse (versteckt, wenn weder Firma noch wants_receipt) #}
+      <div class="space-y-4 mt-6 hidden row-address-data-wrapper">
+        <div class="{{ gridClasses }} row-address-data"></div>
       </div>
-      <div class="mt-8 text-center">
-        <button type="submit" class="button button--small">{{ options.buttonText | default('Jetzt spenden') }}</button>
-      </div>
-      {# hidden fields e.g. amount, succesUrl, custom foelds #}
-      <div id="hidden-fields" class="hidden"></div>
+    </div>
+    
+    {# payment-methods #}
+    <div class="panel {{ panelClasses }}">
+      <h3 class="text-center">{{ __('Meine Zahlungsweise', 'flynt') }}</h3>
+      <div class="payment-methods mb-4"></div>
+      <div class="hidden {{ gridClasses }} donation-sepa-fields"></div>
+      <div class="hidden {{ gridClasses }} donation-creditcard-fields"></div>
+      <div class="hidden {{ gridClasses }} donation-creditcard-hidden"></div>
+    </div>
+    <div class="mt-8 text-center">
+      <button type="submit" class="button button--small">{{ options.buttonText | default('Jetzt spenden') }}</button>
+    </div>
+    {# Global FRBox error message #}
+    <div id="#errorMsg"></div>
+    {# hidden fields e.g. amount, succesUrl, custom foelds #}
+    <div id="hidden-fields" class="hidden"></div>
   </form>
 </flynt-component>

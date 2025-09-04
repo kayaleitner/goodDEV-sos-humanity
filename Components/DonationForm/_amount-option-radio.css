@@ -1,0 +1,70 @@
+[is="flynt-donation-form"] {
+  .donationForm__interval_wrapper { @apply flex flex-row gap-3 justify-center; }
+  .amount-block { @apply flex flex-col gap-2 sm:flex-row justify-center; }
+  .amount-group-wrapper { @apply grid grid-cols-3 gap-2; }
+  .amount-option {
+
+    position: relative;
+    .amount-input, label.amount-label {
+      @apply inline-flex items-center justify-center cursor-pointer max-w-full;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid #d1d5db;
+      border-radius: var(--border-radius);
+      background: #d9d9d9;
+      color: #6b7280;
+      line-height: 1;
+      font-size: 1.5rem;
+      font-weight: 600;
+      max-height: 50px;
+      margin: 0;
+      transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+      &:before { display: none; }
+      &:hover {
+        filter: var(--filter-brightness);
+        border-color: var(--color-primary);
+      }
+      &:focus-visible {
+        outline: var(--outline);
+        filter: var(--filter-brightness);
+      }
+    }
+    input.amount-radio {
+      &:checked + .amount-label {
+        background: var(--color-primary);
+        color: #fff;
+        border-color: var(--color-primary);
+        box-shadow: none;
+      }
+      &:focus-visible {
+        + .amount-label {
+          outline: var(--outline);
+          filter: var(--filter-brightness);
+        }
+      }
+    }
+  }
+
+  .global-custom-amount {
+    @apply relative;
+    .amount-input { width: 100%;
+      min-height: 48px;
+      text-align: left;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid #d1d5db;
+      border-radius: var(--border-radius);
+      color: #6b7280;
+      min-width: 11rem;
+    }
+    .currency-suffix {
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      font-weight: 600;
+      color: #6b7280;
+      font-size: 1.5rem;
+    }
+  }
+  /* Only show active amount group for the current interval */
+  .amount-group-wrapper:not(.active) { display: none; }
+}

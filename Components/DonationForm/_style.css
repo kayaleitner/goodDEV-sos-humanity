@@ -1,122 +1,17 @@
-@import '_mixings.css';
+@import '_donationForm-variables.css';
+@import '_default-form-elements.css';
+@import '_default-radio-elements.css';
+@import '_default-checkbox-elements.css';
+@import '_paymethods-radio-elements.css';
+@import '_amount-option-radio.css';
 
 [is="flynt-donation-form"] {
-  --border-width: 1px;
-  --border-color: #707070;
   @apply max-w-3xl mx-auto;
-
-  /* Inputs */
-  [type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select {
-    @apply appearance-none bg-white text-blue; /* relies on Tailwind color config */
-    border: 1px solid var(--border-color);
-    border-radius: 0;
-    font-family: inherit;
-    font-size: inherit;
-    min-height: 50px;
-    padding: 0.5rem 0.75rem;
-    width: 100%;
-    margin: 0;
+  .panel {
+    border-radius: var(--border-radius);
+    background-color: var(--color-default-background);
   }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
-  }
-
-  .panel { border-radius: 0.5rem; }
-
-  [type="radio"], [type="checkbox"] { opacity: 0; pointer-events: auto; position: absolute; width: auto; }
-
- .donationForm__interval_wrapper { @apply flex flex-row gap-3 justify-center; }
-  /* Amount selection layout and radio-as-button styling (nested) */
-  .amount-block { @apply flex flex-row gap-3 justify-center; }
-
-  .amount-suggestions { @apply flex flex-wrap gap-2; }
-
-  .amount-group-wrapper { @apply grid grid-cols-3 gap-2; }
-
-  .amount-option { position: relative; }
-
-  .amount-option .amount-input,
-  .amount-option label.amount-label {
-    @apply inline-flex items-center justify-center cursor-pointer;
-    padding: 0.75rem 1.25rem;
-    border: 1px solid #d1d5db; /* gray-300 */
-    border-radius: 0.25rem; /* slight radius like the reference */
-    background: #d9d9d9; /* light gray block like the mock */
-    color: #6b7280; /* gray-500 text */
-    min-width: 5.5rem;
-    line-height: 1;
-    font-size: 1.5rem;
-    font-weight: 600;
-    user-select: none;
-    max-height: 50px;
-    transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
-  }
-
-  .amount-option input.amount-radio:checked + .amount-label {
-    background: var(--blue);
-    color: #fff;
-    border-color: var(--blue);
-    box-shadow: none;
-  }
-
-  .amount-option .amount-label:hover { filter: brightness(0.97); }
-  .amount-option .amount-label:before { display: none; }
-
-  /* Place single custom amount next to the options */
-  .global-custom-amount {
-    @apply relative;
-    .amount-input { width: 12rem; min-height: 48px; text-align: left; padding: 0.5rem 0.75rem; border: 1px solid #d1d5db; border-radius: 0.25rem; color: #6b7280; }
-    .currency-suffix {
-      @apply absolute right-4 top-2;
-      margin-left: 0.5rem; color: #6b7280;
-
-    }
-  }
-
-
-  /* Only show active amount group for the current interval */
-  .amount-group-wrapper:not(.active) { display: none; }
-
-  /* Payment methods styling */
-  .donationForm__paymethod .payment-methods-wrapper { @apply grid gap-1; grid-template-columns: repeat(2, minmax(0,1fr)); }
-  @media (min-width: 640px) { /* sm */
-    .donationForm__paymethod .payment-methods-wrapper { grid-template-columns: repeat(3, minmax(0,1fr)); }
-  }
-  /* start hidden for smoother first reveal; JS controls visibility */
-  .donationForm__paymethod #sepa-fields.hidden, .donationForm__paymethod #creditcard-fields.hidden { display: none; }
-  .donationForm__paymethod .radioWrapper { @apply flex items-stretch; }
-  .donationForm__paymethod .radioWrapper input[type="radio"] { position: absolute; opacity: 0; }
-  .donationForm__paymethod .radioWrapper label {
-    @apply flex items-center justify-start w-full cursor-pointer select-none;
-    gap: 0.75rem;
-    padding: 0.875rem 1rem; /* a bit taller for bigger icon */
-    border: 2px solid #d1d5db;
-    border-radius: 0; /* no radius like requested */
-    background: #f3f4f6; /* gray-100/200 */
-    color: #374151; /* gray-700 */
-    transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
-  }
-  .donationForm__paymethod .radioWrapper label:hover { filter: brightness(0.98); }
-  .donationForm__paymethod .radioWrapper label:before { display: none; }
-  .donationForm__paymethod .radioWrapper.is-selected label,
-  .donationForm__paymethod .radioWrapper input[type="radio"]:checked + label {
-    border: 2px solid var(--blue);
-  }
-  .donationForm__paymethod .pm-icon { width: 40px; height: 26px; display: inline-block; background-size: contain; background-repeat: no-repeat; background-position: center; }
-  .donationForm__paymethod .pm-icon--sepa { background-image: url("./Assets/paymethods/sepa.svg"); }
-  .donationForm__paymethod .pm-icon--paypal { background-image: url("./Assets/paymethods/paypal.svg"); }
-  .donationForm__paymethod .pm-icon--stripe_credit_card, .donationForm__paymethod .pm-icon--creditcard { background-image: url("./Assets/paymethods/kreditcard.svg"); }
-  .donationForm__paymethod .pm-icon--stripe_google_pay { background-image: url("./Assets/paymethods/google-pay.svg"); }
-  .donationForm__paymethod .pm-icon--stripe_apple_pay { background-image: url("./Assets/paymethods/apple-pay.svg"); }
 }
-
-
 
 
 

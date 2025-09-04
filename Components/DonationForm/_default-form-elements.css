@@ -1,0 +1,81 @@
+[is="flynt-donation-form"] {
+  /* override Input styles */
+  [type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select,
+  [id="payment_credit_card_number"],
+  [id="payment_credit_card_expiry"],
+  [id="payment_credit_card_secure_id"] {
+    @apply appearance-none bg-white text-blue;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 18px;
+    min-height: 50px;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    margin: 0;
+    transition: border-color 120ms ease, filter 120ms ease;
+
+    &:hover,
+    &:focus-visible {
+      filter: var(--filter-brightness);
+      border-color: var(--blue);
+    }
+
+    &:focus-visible {
+      outline: var(--outline);
+      outline-offset: var(--outline-offset);
+    }
+
+    &:disabled {
+      background-color: var(--color-background-disabled);
+      color: var(--color-background-disabled-surface);
+      cursor: not-allowed;
+    }
+
+    /* Reset browser autofill styling across browsers */
+    &::-ms-clear {
+      display: none;
+    }
+
+    &::-webkit-contacts-auto-fill-button,
+    &::-webkit-credentials-auto-fill-button {
+      visibility: hidden;
+      display: none !important;
+      pointer-events: none;
+      height: 0;
+      width: 0;
+      margin: 0;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: inherit;
+      -webkit-box-shadow: 0 0 0 1000px inherit inset;
+      background-color: inherit !important;
+      transition: background-color 9999s ease-in-out 0s;
+    }
+
+    &:-moz-autofill {
+      -moz-text-fill-color: inherit;
+      box-shadow: 0 0 0 1000px inherit inset;
+      background-color: inherit !important;
+    }
+  }
+
+  /* Remove number spinners */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  /* stripe credit card fields */
+  [id="payment_credit_card_number"], [id="payment_credit_card_expiry"], [id="payment_credit_card_secure_id"] {
+    padding-top: 10px;
+  }
+}

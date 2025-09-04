@@ -1,0 +1,136 @@
+[is="flynt-donation-form"] {
+  .payment-methods {
+    .payment-methods-wrapper {
+      @apply grid gap-2;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      @media (min-width: 640px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* Show only the icon on the label */
+    label {
+      font-size: 0;
+      position: relative;
+      padding: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      /* Wikando SEPA */
+      &[for="payment_payment_method__wikando_direct_debit"] { background-image: var(--payment-icon-sepa); background-size: 40%; }
+
+      /* Paypal */
+      &[for="payment_payment_method__paypal"] { background-image: var(--payment-icon-paypal); background-size: 50%;}
+
+      /* credit card */
+      &[for="payment_payment_method__stripe_credit_card"] { background-image: var(--payment-icon-creditcard); background-size: 50%; }
+
+      /* Google pay */
+      &[for="payment_payment_method__stripe_google_pay"] { background-image: var(--payment-icon-google-pay); background-size: 30%; }
+
+      /* Apple pay */
+      &[for="payment_payment_method__stripe_apple_pay"] { background-image: var(--payment-icon-apple-pay); background-size: 30%; }
+    }
+
+    input[type="radio"] {
+      opacity: 0; /* hide native */
+      position: absolute;
+      width: 0; height: 0; pointer-events: none;
+      + label {
+        @apply flex items-center justify-center w-full cursor-pointer;
+        border: 1px solid var(--color-grey);
+        border-radius: var(--border-radius);
+        background-color: #fff;
+        color: var(--textColor);
+        height: 50px;
+        min-height: 50px;
+        line-height: 1;
+        overflow: hidden;
+        margin: 0;
+        transition: box-shadow 100ms ease, border-color 120ms ease, filter 120ms ease;
+        /* animated check mask in the top-left */
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 20px;
+          height: 20px;
+          background-color: var(--color-primary);
+          mask-image: url("./Assets/paymethods/checked-mask.svg");
+          -webkit-mask-image: url("./Assets/paymethods/checked-mask.svg");
+          mask-repeat: no-repeat;
+          -webkit-mask-repeat: no-repeat;
+          opacity: 0;
+          transform: scale(0.85);
+          will-change: transform, opacity;
+          transition: opacity .2s ease, transform .25s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        &:before {
+          content: "";
+          border-radius: 0;
+          box-shadow: none;
+          background-color: var(--color-primary);
+          border: none;
+          transition: transform 0.5s ease;
+          transform-origin: right;
+          width: 18px;
+          height: 18px;
+          top: 2px;
+          left: 2px;
+          transform: scaleX(1);
+          opacity: 0;
+          position: absolute;
+          z-index: 1;
+        }
+        &:hover {
+          filter: var(--filter-brightness);
+          border-color: var(--color-primary);
+          box-shadow: inset 0 0 0 2px var(--color-primary);
+        }
+      }
+      &:focus-visible {
+        + label {
+          outline: var(--outline);
+          outline-offset: var(--outline-offset);
+          filter: var(--filter-brightness);
+        }
+      }
+      &:checked, &:focus-visible:checked {
+        + label {
+          border-color: var(--color-primary);
+          box-shadow: inset 0 0 0 2px var(--color-primary);
+          &:after {
+            opacity: 1;
+            transform: scale(1);
+            animation: ff-check-pop 250ms ease-out;
+          }
+          &:before {
+            transform: scaleX(0);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [is="flynt-donation-form"] .payment-methods input[type="radio"] + label { transition: none; }
+  [is="flynt-donation-form"] .payment-methods input[type="radio"] + label:after { transition: none; animation: none; }
+}
+
+@keyframes ff-check-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,41 @@
+[is="flynt-donation-form"] {
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    + label {
+      position: relative;
+      cursor: pointer;
+      padding-left: 40px;
+      user-select: none;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+        background: var(--);
+        border: 1px solid var(--border-grey, #838594);
+        box-shadow: inset 0 0 0 20px #e4e4e4, 0 0 1px var(--border-grey, #838594);
+
+      }
+      &:hover:before {
+        border-color: var(--blue, #1c2445);
+      }
+    }
+    &:checked + label:before {
+      background: var(--blue, #1c2445);
+      box-shadow: inset 0 0 0 5px #e4e4e4, 0 0 1px var(--border-grey, #838594);
+    }
+    &:focus-visible {
+      + label:before {
+        outline: var(--outline);
+      }
+    }
+  }
+}
