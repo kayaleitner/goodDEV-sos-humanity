@@ -71,3 +71,21 @@ add_action('init', function (): void {
         pll_register_string($s, $s, $domain);
     }
 });
+
+add_action('wp_enqueue_scripts', function() {
+  if (is_admin()) return;
+
+  $script_url = get_stylesheet_directory_uri() . '/assets/scripts/tra.js';
+  wp_enqueue_script('tra', $script_url, [], '1.0.0', true);
+
+  // Allow themes/plugins to configure thank-you pages via filter.
+  $thanks_pages = apply_filters('facebook_capi_thanks_pages', ['/ddd', '/doo']);
+  if (!is_array($thanks_pages)) { $thanks_pages = []; }
+
+  $data = [
+    'endpoint' => esc_url_raw(rest_url('fb-capi/v1/event')),
+    'thanksPages' => array_values(array_unique(array_map('strval', $thanks_pages))),
+    'nonce' => wp_create_nonce('wp_rest'),
+  ];
+  wp_localize_script('tra', 'TRACKING_DATA', $data);
+});

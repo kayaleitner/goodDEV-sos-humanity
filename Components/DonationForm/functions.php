@@ -68,11 +68,18 @@ function getACFLayout(): array {
     'label' => 'Donation Form',
     'sub_fields' => [
       [
-        'label' => __('The Form-hash from the FundraisingBox form', 'flynt'),
-        'instructions' => __('Get the Form-hash for each language in the FundraisingBox dashboard', 'flynt'),
+        'label' => __('Select the FundraisingBox form', 'flynt'),
+        'instructions' => __('Choose the correct form for each language from the dropdown.', 'flynt'),
         'name' => 'hash',
-        'type' => 'text',
+        'type' => 'select',
+        'choices' => [
+          '0rtnskztep1awzb6' => 'Form Deutsch',
+          '4jppw6zr4ckbxmfl' => 'Form English',
+          'b8x47ctvkjzseldm' => 'Form Italian',
+        ],
         'required' => 1,
+        'ui' => 1,
+        'return_format' => 'value',
       ],
       [
         'label' => __('Interval', 'flynt'),
@@ -90,6 +97,8 @@ function getACFLayout(): array {
         'name' => 'amounts',
         'type' => 'repeater',
         'button_label' => __('Add Interval Amounts', 'flynt'),
+        'min' => 1,
+        'max' => 2,
         'sub_fields' => [
           [
             'label' => __('Interval Type', 'flynt'),
@@ -106,6 +115,8 @@ function getACFLayout(): array {
             'name' => 'amount_options',
             'type' => 'repeater',
             'button_label' => __('Add Amount Option', 'flynt'),
+            'min' => 3,
+            'max' => 4,
             'sub_fields' => [
               [
                 'label' => __('Amount', 'flynt'),
@@ -125,4 +136,8 @@ function getACFLayout(): array {
     ],
   ];
 }
+
+//add_action('wp_footer', function () {
+//    echo do_shortcode('[fb_capi_thanks_example]');
+//});
 

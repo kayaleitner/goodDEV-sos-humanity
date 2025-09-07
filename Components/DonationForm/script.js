@@ -69,6 +69,7 @@ export default function (component) {
   myForm.on('fundraisingBox:init', () => {
     const fields = myForm.getFormFields?.() || {};
     availableFields = Object.keys(fields);
+    console.log(fields)
 
     if (have('interval', availableFields)) {
       myForm.appendFieldRowsTo('.donationForm__interval', ['interval'], { row: 'text-center' });

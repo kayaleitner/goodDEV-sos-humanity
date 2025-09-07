@@ -79,7 +79,9 @@
     </div>
     {# Global FRBox error message #}
     <div id="#errorMsg"></div>
-    {# hidden fields e.g. amount, succesUrl, custom foelds #}
-    <div id="hidden-fields" class="hidden"></div>
+    {# hidden fields e.g. amount, succesUrl, custom fields #}
+    <div id="hidden-fields" class="hidden">
+      {% include 'Partials/_donationCustomFields.twig' %}
+    </div>
   </form>
 </flynt-component>

@@ -48,4 +48,8 @@
 
   /* Filters */
   --filter-brightness: brightness(0.95);
+
+  /* errors icons */
+  --succes-icon: url("./Assets/validate/success.svg");
+  --error-icon: url("./Assets/validate/error.svg");
 }
