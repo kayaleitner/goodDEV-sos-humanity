@@ -1,0 +1,141 @@
+[is="flynt-donation-form"] {
+  /* override Input styles */
+  [type="tel"], [type="text"], [type="email"], [type="number"], textarea, select,
+  [id="payment_credit_card_number"],
+  [id="payment_credit_card_expiry"],
+  [id="payment_credit_card_secure_id"] {
+    appearance: none;
+    background-color: #fff;
+    color: var(--color-primary);
+    border: var(--input-border-weight) solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    font: var(--input-font);
+    height: var(--input-height);
+    letter-spacing: 0.01em;
+    text-overflow: ellipsis;
+    width: 100%;
+    margin: 0;
+    transition: border-color var(--transition-duration) var(--transition-timing-function), filter var(--transition-duration) var(--transition-timing-function), background-position var(--transition-duration) var(--transition-timing-function);
+
+    /* Validation state icons */
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 32px 32px;
+    padding: 1.5rem 3rem 0.5rem 0.75rem;
+
+    &:hover {
+      border-color: var(--color-primary);
+      filter: var(--filter-brightness);
+    }
+
+    &:focus-visible {
+      border-color: var(--color-primary);
+      filter: var(--filter-brightness);
+      /*outline: var(--outline);*/
+      /*outline-offset: var(--outline-offset);*/
+    }
+
+    &:disabled {
+      background-color: var(--color-background-disabled);
+      color: var(--color-background-disabled-surface);
+      cursor: not-allowed;
+    }
+
+    /* Reset browser autofill styling across browsers */
+    &::-ms-clear {
+      display: none;
+    }
+
+    &::-webkit-contacts-auto-fill-button,
+    &::-webkit-credentials-auto-fill-button {
+      visibility: hidden;
+      display: none !important;
+      pointer-events: none;
+      height: 0;
+      width: 0;
+      margin: 0;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: inherit;
+      -webkit-box-shadow: 0 0 0 1000px inherit inset;
+      background-color: inherit !important;
+      transition: background-color 9999s ease-in-out 0s;
+    }
+
+    &:-moz-autofill {
+      -moz-text-fill-color: inherit;
+      box-shadow: 0 0 0 1000px inherit inset;
+      background-color: inherit !important;
+    }
+
+    &.is-valid {
+      /*border-color: var(--color-success);*/
+      background-image: var(--succes-icon);
+    }
+
+    &.is-invalid {
+      /*border-color: var(--color-error);*/
+      background-image: var(--error-icon);
+    }
+  }
+
+  /* Remove number spinners */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  /* stripe credit card fields */
+  [id="payment_credit_card_number"], [id="payment_credit_card_expiry"], [id="payment_credit_card_secure_id"] {
+    padding-top: 26px;
+  }
+  /* default label style */
+  label {
+    letter-spacing: 0.01em;
+    font: var(--input-font);
+  }
+
+  /* floating-label style */
+  .form-item {
+    &.floating-label {
+      position: relative;
+      label {
+        color: var(--imput-label-color);
+        position: absolute;
+        transition: font-size var(--transition-duration) var(--transition-timing-function), top var(--transition-duration) var(--transition-timing-function), opacity var(--transition-duration) var(--transition-timing-function);
+        font-size: 20px;
+        left: 0.8rem;
+        top: 16px;
+        z-index: 1;
+        margin: 0;
+      }
+      &.noEmpty, &.default-noEmpty {
+        label {
+          top: 5px;
+          font-size: 12px;
+        }
+      }
+    }
+    label.form-required {
+      &:after {
+        content: "*";
+      }
+    }
+  }
+
+  /* Validation error text */
+  .error-text, .error {
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    margin-top: 0.25rem;
+    display: block;
+  }
+}

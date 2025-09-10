@@ -1,0 +1,32 @@
+{# credit card hidden fields #}
+<div style="display: none;" class="grid donation-creditcard-hidden {{ gridClasses }}">
+  <div id="payment_credit_card_number_hidden_wrapper" class="form-item floating-label default-noEmpty" style="display: none;">
+    <label for="payment_credit_card_number_hidden" class="form-required">{{ labelCreditCardNumber }}</label>
+    <input readonly="readonly" type="text" name="payment[credit_card_number_hidden]" id="payment_credit_card_number_hidden">
+    <div id="payment_credit_card_number_hidden_error" class="error error-text"></div>
+  </div>
+  
+  <div id="payment_credit_card_secure_id_hidden_wrapper" class="form-item floating-label default-noEmpty" style="display: none;">
+    <label for="payment_credit_card_secure_id_hidden" class="form-required">{{ labelCreditCardSecureId }}</label>
+    <input readonly="readonly" type="text" name="payment[credit_card_secure_id_hidden]" id="payment_credit_card_secure_id_hidden">
+    <div id="payment_credit_card_secure_id_hidden_error" class="error error-text"></div>
+  </div>
+  
+  <div id="payment_credit_card_expiry_hidden_wrapper" class="form-item floating-label default-noEmpty" style="display: none;">
+    <label for="payment_credit_card_expiry_hidden" class="form-required">{{ labelCreditCardExpiry }}</label>
+    <input readonly="readonly" type="text" name="payment[credit_card_expiry_hidden]" id="payment_credit_card_expiry_hidden">
+    <div id="payment_credit_card_expiry_hidden_error" class="error error-text"></div>
+  </div>
+  
+  <div id="payment_credit_card_token_wrapper" class="form-item floating-label default-noEmpty" style="display: none;">
+    <label for="payment_credit_card_token" class="form-required">Credit card token</label>
+    <input type="hidden" name="payment[credit_card_token]" id="payment_credit_card_token">
+    <div id="payment_credit_card_token_error" class="error error-text"></div>
+  </div>
+  
+  <div id="payment_credit_card_network_wrapper" class="form-item floating-label default-noEmpty" style="display: none;">
+    <label for="payment_credit_card_network" class="form-required">Credit card network</label>
+    <input type="hidden" name="payment[credit_card_network]" id="payment_credit_card_network">
+    <div id="payment_credit_card_network_error" class="error error-text"></div>
+  </div>
+</div>

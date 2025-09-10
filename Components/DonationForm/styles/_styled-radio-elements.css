@@ -7,34 +7,42 @@
     + label {
       position: relative;
       cursor: pointer;
-      padding-left: 40px;
+      padding-left: 50px;
       user-select: none;
+      color: #757575;
+      font-weight: 600;
+      margin: 0;
       &:before {
         content: '';
         position: absolute;
         top: 50%;
         left: 0;
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         transform: translateY(-50%);
         transition: background 0.3s ease, box-shadow 0.3s ease;
-        background: var(--);
-        border: 1px solid var(--border-grey, #838594);
-        box-shadow: inset 0 0 0 20px #e4e4e4, 0 0 1px var(--border-grey, #838594);
+        background: #fff;
+        border: var(--input-border-weight) solid var(--input-border-color);
+        box-shadow: inset 0 0 0 16px #fff;
 
       }
       &:hover:before {
         border-color: var(--blue, #1c2445);
       }
     }
-    &:checked + label:before {
-      background: var(--blue, #1c2445);
-      box-shadow: inset 0 0 0 5px #e4e4e4, 0 0 1px var(--border-grey, #838594);
+    &:checked + label {
+      color: var(--color-primary);
+      &:before {
+        background: var(--blue, #1c2445);
+        box-shadow: inset 0 0 0 6px #fff;
+        border-color: var(--color-primary);
+      }
     }
     &:focus-visible {
       + label:before {
         outline: var(--outline);
+        outline-offset: var(--outline-offset);
       }
     }
   }

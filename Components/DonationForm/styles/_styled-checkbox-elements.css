@@ -1,5 +1,5 @@
 [is="flynt-donation-form"] {
-  .donationForm__checkbox {
+  .styled__checkbox {
     input[type="checkbox"] {
       position: absolute;
       opacity: 0;
@@ -21,9 +21,9 @@
           height: 30px;
           transform: translateY(-50%);
           transition: background 0.3s ease;
-          background: #e4e4e4;
-          border: 1px solid var(--border-grey, #838594);
-          border-radius: 6px;
+          background: #ffffff;
+          border: 2px solid #3d3d3d;
+          border-radius: var(--border-radius);
         }
 
         &:hover:before {

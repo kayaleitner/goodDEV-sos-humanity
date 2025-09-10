@@ -1,0 +1,64 @@
+[is="flynt-donation-form"] {
+  .switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+
+    &__label {
+      font-size: var(--input-font);
+      color: var(--color-primary);
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    &__slider {
+      position: relative;
+      width: 44px;
+      height: 26px;
+      border: 2px solid var(--color-primary);
+      background: #fff;
+      border-radius: 999px;
+      flex-shrink: 0;
+      transition: background var(--transition-duration) var(--transition-timing-function);
+    }
+
+    &__slider::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      transform: translateY(-50%);
+      transition: left 0.2s;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    input[type="checkbox"]:checked + .switch__slider {
+      background: var(--color-primary);
+    }
+    input[type="checkbox"]:checked + .switch__slider::after {
+      left: calc(100% - 22px);
+      background: #fff;
+    }
+
+    /*input[type="checkbox"]:focus + .switch__slider {*/
+    /*  outline: var(--outline);*/
+    /*  outline-offset: var(--outline-offset);*/
+    /*}*/
+
+    input[type="checkbox"]:disabled + .switch__slider {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

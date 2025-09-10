@@ -6,41 +6,10 @@
  * @param {object} options - Transformation options
  * @param {string} options.checkboxLabel - Label for the new checkbox
  * @param {string} options.checkedValue - Value that should trigger checked=true
+ * @param {boolean} [options.hideOriginalLabel=true] - Remove the original <label> associated with the select
  */
-// export function transformSelectToCheckbox(field, $container, { checkboxLabel, checkedValue }) {
-//   const $ = window.jQuery
-//   if (!$) {
-//     // eslint-disable-next-line no-console
-//     console.warn('utils: jQuery not available on window — cannot transform select to checkbox')
-//     return
-//   }
-//   if (!field?.id || !$container || !checkboxLabel || !checkedValue) {
-//     // eslint-disable-next-line no-console
-//     console.warn('utils: transformSelectToCheckbox called with invalid arguments')
-//     return
-//   }
-//
-//   const $select = $container.find(`#${field.id}`)
-//   if (!$select.length) return
-//
-//   const isChecked = $select.val() === checkedValue
-//   const $checkbox = $('<input>', {
-//     type: 'checkbox',
-//     name: $select.attr('name'),
-//     id: field.id,
-//     class: 'mr-2',
-//     checked: isChecked,
-//     value: checkedValue
-//   })
-//
-//   // Replace select with a checkbox
-//   $select.replaceWith($checkbox)
-//
-//   // Update label
-//   $container.find(`label[for="${field.id}"]`).text(checkboxLabel)
-// }
 
-export function transformSelectToCheckbox(field, $container, { checkboxLabel, checkedValue }) {
+export function transformSelectToCheckbox(field, $container, { checkboxLabel, checkedValue, hideOriginalLabel = true }) {
   const $ = window.jQuery
   if (!$) {
     // eslint-disable-next-line no-console
@@ -55,6 +24,9 @@ export function transformSelectToCheckbox(field, $container, { checkboxLabel, ch
 
   const $select = $container.find(`#${field.id}`)
   if (!$select.length) return
+
+  // Optionally remove/hide the original label rendered for the select
+  removeAssociatedLabel(field.id, $container, hideOriginalLabel)
 
   const isChecked = $select.val() === checkedValue
 
@@ -90,14 +62,14 @@ export function transformSelectToCheckbox(field, $container, { checkboxLabel, ch
  * @param {object} field - FundraisingBox field object ({ id, label, ... })
  * @param {jQuery} $container - Scope where the select is rendered
  * @param {object} options
- * @param {string} [options.groupLabel] - Optional legend/heading (defaults to existing label)
  * @param {object} [options.classes] - Optional class map
  * @param {string} [options.classes.wrapper] - Wrapper div classes
  * @param {string} [options.classes.radio] - Radio input class
  * @param {string} [options.classes.label] - Label span/text class
  * @param {string} [options.classes.fieldWrapper] - Label span/text class
+ * @param {boolean} [options.hideOriginalLabel=true] - Remove the original <label> associated with the select
  */
-export function transformSelectToRadios(field, $container, { classes = {} } = {}) {
+export function transformSelectToRadios(field, $container, { classes = {}, hideOriginalLabel = true } = {}) {
   const $ = window.jQuery
   if (!$) {
     // eslint-disable-next-line no-console
@@ -112,6 +84,9 @@ export function transformSelectToRadios(field, $container, { classes = {} } = {}
 
   const $select = $container.find(`#${field.id}`)
   if (!$select.length) return
+
+  // Optionally remove/hide the original label rendered for the select
+  removeAssociatedLabel(field.id, $container, hideOriginalLabel)
 
   const name = $select.attr('name') // e.g. payment[wants_receipt]
   const current = $select.val()
@@ -153,10 +128,21 @@ export function transformSelectToRadios(field, $container, { classes = {} } = {}
 
   // Replace select with a radio group
   $select.replaceWith($group)
+}
 
-  // Ensure the original field label still points to the first radio for a11y
-  // const $firstRadio = $group.find('input[type="radio"]').first()
-  // if ($firstRadio.length) {
-  //   $container.find(`label[for="${field.id}"]`).attr('for', $firstRadio.attr('id'))
-  // }
+function removeAssociatedLabel(fieldId, $container, hideOriginalLabel) {
+  if (!hideOriginalLabel) return;
+  const $directLabel = $container.find(`label[for="${fieldId}"]`).first();
+  if ($directLabel.length) {
+    $directLabel.remove();
+  } else {
+    const $select = $container.find(`#${fieldId}`);
+    const $prev = $select.prev();
+    if ($prev.length && $prev.prop('tagName')?.toLowerCase() === 'label') {
+      $prev.remove();
+    } else {
+      const $wrapper = $container.find(`#${fieldId}_wrapper`);
+      if ($wrapper.length) $wrapper.children(`label[for="${fieldId}"]`).remove();
+    }
+  }
 }

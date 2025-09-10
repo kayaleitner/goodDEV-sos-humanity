@@ -31,46 +31,6 @@ add_action('after_setup_theme', function (): void {
     load_theme_textdomain('flynt', get_template_directory() . '/languages');
 });
 
-// Register strings with Polylang so they appear in the Strings translations UI.
-add_action('init', function (): void {
-    if (!function_exists('pll_register_string')) {
-        return;
-    }
-
-    $domain = 'flynt';
-
-    // Core labels used across components (extend as needed)
-    $strings = [
-        // DonationForm component labels
-        'Labels',
-        'Submit Button Text',
-        'Placeholder Amount',
-        'FundraisingBox Hash per Language',
-        'Add Language Hash',
-        'The Form-hash from the FundraisingBox form',
-        'Get the Form-hash for each language in the FundraisingBox dashboard',
-        'Interval',
-        'One-Time',
-        'Monthly',
-        'Amounts per Interval',
-        'Add Interval Amounts',
-        'Interval Type',
-        'Amount Options',
-        'Add Amount Option',
-        'Amount',
-        'Default',
-        // Defaults used as field default values
-        'Jetzt spenden',
-        'Betrag eingeben',
-        'Meine Spende',
-        'Meine Kontaktdaten',
-        'Meine Zahlungsweise',
-    ];
-
-    foreach ($strings as $s) {
-        pll_register_string($s, $s, $domain);
-    }
-});
 
 add_action('wp_enqueue_scripts', function() {
   if (is_admin()) return;

@@ -1,0 +1,67 @@
+[is="flynt-donation-form"] {
+  /* Borders */
+  --border-width: 1px;
+  --border-color: var(--border-grey, #838594);
+  --border-radius: 0;
+
+  /* Accessibility (focus styles) */
+  --outline-width: 2px;
+  --outline-color: #2563eb;
+  --outline-offset: 2px;
+  --outline-style: solid;
+  --outline: var(--outline-width) var(--outline-style) var(--outline-color);
+
+  /* Colors */
+  --color-default-background: #fff;
+  --color-default-text: var(--textColor, #262626);
+  --color-background-disabled: #666;
+  --color-background-disabled-surface: #fff;
+  --color-primary: var(--blue, #1c2445);
+  --color-secondary: var(--yellow, #ebeb00);
+  --color-success: #548031;
+  --color-error: #C65138;
+  --color-grey: #d9d9d9;
+
+  /* input */
+  --input-border-weight: 2px;
+  --input-border-color: #757575;
+  --input-font: normal normal 600 1.25rem/1.9375rem 'Source Sans Pro', sans-serif;
+  --input-height: 64px;
+  --imput-label-color: #757575;
+
+  /* Typography */
+  --font-family: "Source Sans Pro", sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --line-height: 1.5;
+  --font-panel-heading: normal normal 900 2rem/2.4rem 'Source Sans Pro', sans-serif;
+
+  /* Spacing (padding / gaps) */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+
+  /* Payment icons */
+  --payment-icon-sepa: url("../Assets/paymethods/sepa.svg");
+  --payment-icon-paypal: url("../Assets/paymethods/paypal.svg");
+  --payment-icon-creditcard: url("../Assets/paymethods/kreditcard.svg");
+  --payment-icon-google-pay: url("../Assets/paymethods/google-pay.svg");
+  --payment-icon-apple-pay: url("../Assets/paymethods/apple-pay.svg");
+
+  /* Transitions */
+  --transition-duration: 0.2s;
+  --transition-timing-function: ease;
+
+  /* Filters */
+  --filter-brightness: brightness(0.95);
+
+  /* errors icons */
+  --succes-icon: url("../Assets/validate/success.svg");
+  --error-icon: url("../Assets/validate/error.svg");
+
+  @media screen and (min-width: 768px) {
+    --font-panel-heading: normal normal 900 2.75rem/5rem 'Source Sans Pro', sans-serif;
+  }
+}

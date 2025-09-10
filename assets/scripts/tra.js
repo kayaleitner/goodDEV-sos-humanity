@@ -5,7 +5,7 @@
   ['utm_source', 'utm_medium', 'utm_content', 'utm_campaign', 'utm_source_platform', 'utm_term'].forEach(key => {
     if (params.has(key)) utms[key] = params.get(key).replace(/[<>]/g, '');
   });
-  if (Object.keys(utms).length) sessionStorage.setItem('frb_params', JSON.stringify(utms));
+  if (Object.keys(utms).length) localStorage.setItem('frb_params', JSON.stringify(utms));
 
 
   // check if we are on the thank-you pages
