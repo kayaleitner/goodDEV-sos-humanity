@@ -3,12 +3,60 @@ export default function initAmountHandlers(component) {
   const $ = window.jQuery;
   const $root = $(component);
 
+  const $btn = $root.find('#donation-submit-btn');
+  const $btnLabel = $btn.find('.label');
+
   function setAmount(value) {
     const $hiddenAmount = $root.find('[name="payment[amount]"]');
     if ($hiddenAmount.length) $hiddenAmount.val(value);
+    updateButtonLabel();
   }
 
-  // Remember the custom amount per interval
+
+  function getAmount() {
+    const val = $root.find('[name="payment[amount]"]').val();
+    return val || '';
+  }
+
+  function updateButtonLabel() {
+    if (!$btn.length) return;
+
+    const amount = getAmount();
+    // Use per-interval templates coming from data attributes on the button
+    // data-one-time-text, data-montly-text (note: montly as provided in markup)
+    const oneTimeTpl = ($btn.data('one-time-text') || '').toString();
+    const monthlyTpl = ($btn.data('monthly-text') || '').toString();
+
+    // Determine selected interval; default to '0' if not found
+    const $checked = $root.find('input[name="payment[interval]"]:checked');
+    const intervalVal = $checked.length ? $checked.val() : '0';
+
+    // Helper to apply template
+    const applyTemplate = (tpl, amt) => {
+      if (!tpl) return '';
+      // Replace %amount% token with current amount
+      return tpl.replace(/%amount%/g, amt);
+    };
+
+    let nextLabel = '';
+    if (amount) {
+      if (intervalVal === '1') {
+        nextLabel = applyTemplate(monthlyTpl, amount);
+      } else {
+        nextLabel = applyTemplate(oneTimeTpl, amount);
+      }
+    }
+
+    if (nextLabel) {
+      $btnLabel.text(nextLabel);
+    } else {
+      // fallback to the default label if any
+      const fallback = $btnLabel.data('fallback') || $btnLabel.text();
+      if (!$btnLabel.data('fallback')) $btnLabel.attr('data-fallback', fallback);
+      $btnLabel.text(fallback);
+    }
+  }
+
   const customAmounts = {};
 
   // When an interval changes, show relevant group and restore value
@@ -34,6 +82,8 @@ export default function initAmountHandlers(component) {
       if ($checkedRadio.length) setAmount($checkedRadio.val());
       else setAmount('');
     }
+
+    updateButtonLabel();
   });
 
   // Sync custom amount inputs and deselect radios
@@ -60,7 +110,12 @@ export default function initAmountHandlers(component) {
     const $custom = $radio.closest('.amount-group-wrapper').find('input.amount-input');
     $custom.val('');
     customAmounts[interval] = '';
+
+    updateButtonLabel();
   });
+
+  // Initial label update on load
+  setTimeout(updateButtonLabel, 0);
 
   return { setAmount };
 }

@@ -1,0 +1,29 @@
+[is="flynt-donation-form"] {
+  .security_notice, .privacy_notice {
+    p {
+      font: var(--font-security-block);
+      text-align: center;
+      letter-spacing: var(--letter-spacing);
+      @media screen and (min-width: 768px) {
+        text-align: left;
+      }
+    }
+  }
+  .frbox_logo {
+    margin: 0 auto;
+    @media screen and (min-width: 768px) {
+      margin: 0;
+    }
+  }
+  .value_proposition {
+    .morse_code {
+      .item {
+        background-color: var(--color-primary);
+      }
+    }
+    p {
+      font: var(--font-value-proposition);
+      letter-spacing: var(--letter-spacing);
+    }
+  }
+}

@@ -1,15 +1,11 @@
-{% set gridClasses = 'grid grid-cols-1 sm:grid-cols-2 gap-8' %}
+{% set gridClasses = 'grid grid-cols-1 sm:grid-cols-2 gap-6' %}
 <flynt-component
   class="flyntComponent {{ options.theme }} block"
   is="flynt-donation-form"
   name="DonationForm"
 >
-  
-  {#    hash: de  y3fkgajfly2vnohz  it: pr31cc1oi4mxm9y4 en: 9qe7gtlxtyswnhld
-{#    hash: agh  r8lics3y58gk40ib
-  #}
-  <form id="fbx-donation-form" data-fbx-form-hash="{{ hash | default('r8lics3y58gk40ib') }}"
-        class="donationForm">
+  <form id="fbx-donation-form" data-fbx-form-hash="{{ hash | default('y3fkgajfly2vnohz') }}"
+        class="donationForm" data-success-redirect-recurring="{{ thx_recurring.url }}" data-success-redirect-one-time="{{ thx_one_time.url }}">
     
     <div class="panel">
       {% include 'Partials/_panelHeader.twig' with { panel_title: labelPanelInterval } only %}
@@ -33,16 +29,32 @@
       {% include 'Partials/_sepaDebitFieldsBlock.twig' with { gridClasses } %}
       {% include 'Partials/_creditCardFieldsBlock.twig' with { gridClasses } %}
       {% include 'Partials/_creditCardHiddenFieldsBlock.twig' with { gridClasses } %}
+      
+      {# Submit Button #}
+      <div class="mt-8 text-center">
+        <button id="donation-submit-btn" type="button"
+                class="button donation-submit-btn"
+                data-one-time-text="{{ submitButtonTextOneTime }}"
+                data-monthly-text="{{ submitButtonTextMonthly }}">
+          <span class="label">{{ submitButtonTextDefault }}</span>
+          <span class="heart" aria-hidden="true"></span>
+        </button>
+      </div>
+      {# Global FRBox error message #}
+      <div style="display: none" id="#errorMsg" class="error-text text-center">Es sind leider Fehler aufgetreten! Bitte
+        überprüfe deine Angaben.
+      </div>
+      
+      {#  value_proposition / Wertversprechen  #}
+      {% include 'Partials/_valuePropositionText.twig' %}
     </div>
-    <div class="mt-8 text-center">
-      <button id="donation-submit-btn" type="button"
-              class="button button--small">{{ options.buttonText | default( fn('pll__','Jetzt spenden', 'flynt')) }}</button>
-    </div>
-    {# Global FRBox error message #}
-    <div style="display: none" id="#errorMsg" class="error-text text-center">Es sind leider Fehler aufgetreten! Bitte überprüfe deine Angaben.</div>
+    {# securityText Block #}
+    {% include 'Partials/_securityText.twig' %}
+    
     {# hidden fields e.g. amount, succesUrl, custom fields #}
     <div id="hidden-fields" class="hidden">
       {% include 'Partials/_donationCustomFields.twig' %}
+      <input value="" type="hidden" name="payment[success_redirect_url]" id="payment_success_redirect_url">
       <input checked="checked" type="checkbox" id="payment_wants_newsletter" name="payment[wants_newsletter]">
     </div>
   </form>

@@ -6,6 +6,8 @@
 @import 'styles/_amount-option-radio.css';
 @import 'styles/_checkbox-switcher.css';
 @import 'styles/_panel.css';
+@import 'styles/_text-styles.css';
+@import 'styles/_submit-Button-styles.css';
 
 [is="flynt-donation-form"] {
   max-width: 56.5rem;

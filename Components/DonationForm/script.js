@@ -19,18 +19,33 @@ export default function (component) {
   if (!hash || typeof $form.fundraisingBoxForm !== 'function') return
 
   const classes = {
-    row: 'fbx-field-wrapper',
-    text: 'placeholder',
-    label: 'placeholder-label',
     error: 'error-text',
   }
-  const defaultSuccessUrlPrams = `?status=successful&fb_transaction_id=%fb_transaction_id%&amount=%amount%&interval=%interval%&nl=%wants_newsletter%`
-  const successUrl = `${window.location.origin}/ddd${defaultSuccessUrlPrams}`
+  const defaultSuccessUrlPrams = `?status=successful&fb_transaction_id=%fb_transaction_id%&amount=%amount%&interval=%interval%&nl=%wants_newsletter%`;
+
+  // set the dynamic success_redirect_url hidden field based on a selected interval
+  try {
+    const $hiddenSuccess = $form.find('#payment_success_redirect_url')
+    const oneTime = $form.data('success-redirect-one-time')
+    const recurring = $form.data('success-redirect-recurring')
+    const applySuccessUrl = () => {
+      const intervalVal = $(component).find('input[name="payment[interval]"]:checked').val() || '0'
+      const base = intervalVal === '1' ? recurring : oneTime
+      if ($hiddenSuccess.length && base) {
+        // Append FRBox default success params placeholders so backend can substitute
+        $hiddenSuccess.val(`${base}${defaultSuccessUrlPrams}`)
+      }
+    }
+    // initial set and on change
+    applySuccessUrl()
+    $(component).on('change', 'input[name="payment[interval]"]', applySuccessUrl)
+  } catch (e) {
+    // no-op
+  }
   const myForm = $form.fundraisingBoxForm({
     hash,
     generalErrorElement: '#errorMsg',
     classes,
-    successUrl,
   })
 
   const have = (key, available) => available.includes(key)
@@ -43,10 +58,45 @@ export default function (component) {
     // Initialize amount & interval
     initAmountHandlers(component)
 
-    const defaultInterval = $('#payment_interval').data('default-interval')
-    $(`input[name="payment[interval]"][value="${defaultInterval}"]`)
-      .prop('checked', true)
-      .trigger('change')
+    // Read URL parameters for interval and amount
+    const queryPrams = new URLSearchParams(window.location.search || '')
+    const urlInterval = queryPrams.get('interval')
+    const urlAmountRaw = queryPrams.get('amount')
+
+    const isValidInterval = urlInterval === '0' || urlInterval === '1'
+
+    if (isValidInterval) {
+      // Apply an interval from URL
+      $(`input[name="payment[interval]"][value="${urlInterval}"]`)
+        .prop('checked', true)
+        .trigger('change')
+    } else {
+      // Fallback to default interval from markup
+      const defaultInterval = $('#payment_interval').data('default-interval')
+      $(`input[name="payment[interval]"][value="${defaultInterval}"]`)
+        .prop('checked', true)
+        .trigger('change')
+    }
+
+    // Apply amount from URL if provided
+    if (urlAmountRaw !== null && urlAmountRaw !== '') {
+      // normalize the amount: keep digits and dot/comma, then unify comma to dot
+      const normalized = String(urlAmountRaw).replace(/[^0-9.,]/g, '').replace(',', '.')
+      if (normalized) {
+        const $activeGroup = $(component).find('.amount-group-wrapper.active')
+        // Try to select matching preset radio first
+        const $matchRadio = $activeGroup.find(`input.amount-radio[value="${normalized}"]`).first()
+        if ($matchRadio.length) {
+          $matchRadio.prop('checked', true).trigger('change')
+        } else {
+          // Otherwise, set a custom amount field for the active interval
+          const $custom = $activeGroup.find('input.amount-input').first()
+          if ($custom.length) {
+            $custom.val(normalized).trigger('input')
+          }
+        }
+      }
+    }
 
     const address = initAddressSection(component)
     address.initOnce()
@@ -74,18 +124,6 @@ export default function (component) {
       const payment = initPaymentFields(component, myForm)
       payment.bindMethodSelectionUI()
     }
-
-    const hiddenKeys = [
-      'success_redirect_url',
-      'failure_redirect_url',
-      'user_agent',
-      'element_hash',
-    ]
-    hiddenKeys.forEach((key) => {
-      if (have(key, availableFields)) {
-        myForm.appendFieldRowsTo('#hidden-fields', [key], { row: 'hidden' })
-      }
-    })
     
     // Initialize client-side validation
     if (typeof initDonationFormValidation === 'function') {
