@@ -1,0 +1,58 @@
+.copyButton {
+  border: 2px solid white;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  color: white;
+  padding: 3px 10px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.copyButton:hover {
+  background-color: white;
+  color: var(--blue);
+}
+
+.copyButton.is-copied:after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Icon container */
+.copyButton__icon {
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.5em;
+  position: relative;
+}
+/* Use CSS masks so SVG can be tinted with currentColor */
+.copyButton__icon::before,
+.copyButton__icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: currentColor; /* key for theming/hover */
+  -webkit-mask-size: 1em 1em;
+  mask-size: 1.1em;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+  opacity: 0;
+  transition: opacity 180ms ease-in-out;
+}
+/* default icon (copy) visible */
+.copyButton__icon::before {
+  opacity: 1;
+  -webkit-mask-image: url('./copy.svg');
+  mask-image: url('./copy.svg');
+}
+/* copied icon hidden by default */
+.copyButton__icon::after {
+  -webkit-mask-image: url('./copied.svg');
+  mask-image: url('./copied.svg');
+}
+/* when copied, fade between icons */
+.copyButton.is-copied .copyButton__icon::before { opacity: 0; }
+.copyButton.is-copied .copyButton__icon::after { opacity: 1; }

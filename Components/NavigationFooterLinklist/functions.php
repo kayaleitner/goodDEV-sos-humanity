@@ -75,6 +75,21 @@ Options::addTranslatable('NavigationFooterLinklist', [
         'media_upload' => 0,
     ],
     [
+      'label' => __('Organisation', 'flynt'),
+      'name' => 'donationsOrganisation',
+      'type' => 'text',
+    ],
+    [
+      'label' => __('IBAN', 'flynt'),
+      'name' => 'donationsIBAN',
+      'type' => 'text',
+    ],
+    [
+      'label' => __('BIC', 'flynt'),
+      'name' => 'donationsBIC',
+      'type' => 'text',
+    ],
+    [
         'label' => __('Partners', 'flynt'),
         'name' => 'partnersTab',
         'type' => 'tab',
@@ -111,6 +126,28 @@ Options::addTranslatable('NavigationFooterLinklist', [
                 'required' => 0,
             ]
         ],
+    ],
+    [
+      'label' => __('Banking-App', 'flynt'),
+      'name' => 'bankingAppTab',
+      'type' => 'tab',
+      'placement' => 'top',
+      'endpoint' => 0
+    ],
+    [
+      'label' => __('Title', 'flynt'),
+      'name' => 'bankingAppPreContent',
+      'type' => 'text',
+    ],
+    [
+      'label' => __('Banking-App QR-Code', 'flynt'),
+      'name' => 'bankingAppLogo',
+      'type' => 'image',
+      'return_format' => 'array',   // 'array' | 'id' | 'url' – je nach Bedarf
+      'preview_size' => 'small',
+      'instructions' => __('Image-Format: PNG, SVG', 'flynt'),
+      'required' => 0,
+      'mime_types' => 'png,svg',
     ],
     [
         'label' => __('Options', 'flynt'),
