@@ -1,0 +1,54 @@
+{# Salutation #}
+<div id="payment_salutation_wrapper" class="mb-6">
+  <div class="flex flex-wrap justify-start gap-6">
+    <div class="radioWrapper">
+      <input required type="radio" name="payment[salutation]" id="payment_salutation__mrs" value="Mrs.">
+      <label for="payment_salutation__mrs" class="">{{ salutationMrs }}</label>
+    </div>
+    <div class="radioWrapper">
+      <input required type="radio" name="payment[salutation]" id="payment_salutation__mr" value="Mr.">
+      <label for="payment_salutation__mr" class="">{{ salutationMr }}</label>
+    </div>
+    <div class="radioWrapper">
+      <input required type="radio" name="payment[salutation]" id="payment_salutation__diverse" value="diverse">
+      <label for="payment_salutation__diverse">{{ salutationDivers }}</label>
+    </div>
+  </div>
+  <div id="payment_salutation_error" class="error error-text"></div>
+</div>
+
+
+{# Person data #}
+<div class="{{ gridClasses }}">
+  <div id="payment_first_name_wrapper" class="form-item floating-label">
+    <label for="payment_first_name" class="form-required">{{ firstNameLabel }}</label>
+    <input required="required" maxlength="100" type="text" name="payment[first_name]" id="payment_first_name">
+    <div id="payment_first_name_error" class="error error-text"></div>
+  </div>
+  <div id="payment_last_name_wrapper" class="form-item floating-label">
+    <label for="payment_last_name" class="form-required">{{ lastNameLabel }}</label>
+    <input required="required" maxlength="100" type="text" name="payment[last_name]" id="payment_last_name">
+    <div id="payment_last_name_error" class="error error-text"></div>
+  </div>
+  <div id="payment_email_wrapper" class="form-item floating-label">
+    <label for="payment_email" class="form-required">{{ emailAddressLabel }}</label>
+    <input required="required" maxlength="100" type="text" name="payment[email]" id="payment_email">
+    <div id="payment_email_error" class="error error-text"></div>
+  </div>
+  <div id="payment_phone_wrapper" class="form-item floating-label">
+    <label for="payment_phone">{{ phoneLabel }}</label>
+    <input maxlength="50" type="text" name="payment[phone]" id="payment_phone">
+    <div id="payment_phone_error" class="error error-text"></div>
+  </div>
+</div>
+<label class="company switch my-4 ml-2">
+  <input type="checkbox" id="donate-as-company" name="donate_as_company">
+  <span class="switch__slider" aria-hidden="true"></span>
+  <span class="switch__label" data-checked="{{ labelPrivateDonation }}">{{ labelCompanyDonation }}</span>
+</label>
+<div id="payment_wants_receipt_wrapper" class="form-item styled__checkbox my-2 ml-2">
+  <input type="checkbox" name="receipt" id="payment_wants_receipt" value="receipt_end_of_year">
+  <label for="payment_wants_receipt">{{ labelWantsReceipt }}</label>
+  <input type="hidden" value="no_receipt" name="payment[wants_receipt]" id="hiddenreceipt"/>
+  <div id="payment_wants_receipt_error" class="error error-text"></div>
+</div>

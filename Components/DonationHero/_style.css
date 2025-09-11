@@ -1,0 +1,38 @@
+@layer components {
+  .DonationHero {
+    &__figure {
+      position: relative;
+      margin: 0;
+    }
+
+    &__image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    &__titleWrapper {
+      max-width: 1200px;
+      margin: 1rem auto 0;
+      padding: 0 1rem;
+    }
+
+    &__title {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      line-height: 1.2;
+    }
+
+    &__copyright {
+      position: absolute;
+      right: .5rem;
+      bottom: .5rem;
+      color: #fff;
+      font-size: 12px;
+      background: rgba(0, 0, 0, .35);
+      padding: .125rem .375rem;
+      border-radius: 2px;
+    }
+  }
+}

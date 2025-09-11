@@ -1,0 +1,79 @@
+[is="flynt-donation-form"] {
+  .donationForm__interval_wrapper { @apply flex flex-row gap-3 justify-center; }
+  .amount-group-wrapper {
+    @apply grid grid-cols-3 gap-6;
+  }
+  .amount-group-wrapper > :nth-child(4) {
+    @apply col-span-3;
+  }
+  .amount-group-wrapper > :nth-child(4):nth-last-child(2) {
+    @apply col-span-1;
+  }
+  .amount-group-wrapper > :nth-child(5) {
+    @apply col-span-2;
+  }
+  .amount-option {
+    position: relative;
+    .amount-input, label.amount-label {
+      @apply inline-flex items-center justify-center cursor-pointer max-w-full;
+      padding: 0.75rem 1.25rem;
+      border: 2px solid var(--color-primary);
+      border-radius: var(--border-radius);
+      background: #fff;
+      color: var(--color-primary);
+      font: var(--input-font);
+      line-height: 1;
+      letter-spacing: 0.01rem;
+      max-height: 50px;
+      margin: 0;
+      transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+      &:before { display: none; }
+      &:hover {
+        filter: var(--filter-brightness);
+        border-color: var(--color-primary);
+      }
+      &:focus-visible {
+        outline: var(--outline);
+        filter: var(--filter-brightness);
+      }
+    }
+    input.amount-radio {
+      &:checked + .amount-label {
+        background: var(--color-primary);
+        color: #fff;
+        border-color: var(--color-primary);
+        box-shadow: none;
+      }
+      &:focus-visible {
+        + .amount-label {
+          outline: var(--outline);
+          filter: var(--filter-brightness);
+        }
+      }
+    }
+  }
+
+  .global-custom-amount {
+    position: relative;
+    .amount-input { width: 100%;
+      min-height: 48px;
+      text-align: left;
+      padding: 0.75rem 1.25rem;
+      border: 2px solid #757575;
+      border-radius: var(--border-radius);
+      color: #6b7280;
+      min-width: 11rem;
+    }
+    .currency-suffix {
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      font-weight: 600;
+      color: #6b7280;
+      font-size: 1.5rem;
+    }
+  }
+  /* Only show active amount group for the current interval */
+  .amount-group-wrapper:not(.active) { display: none; }
+}

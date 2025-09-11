@@ -1,0 +1,49 @@
+{# company name #}
+<div style="display: none;" class="payment-company-name">
+  <div id="payment_company_name_wrapper" class="form-item floating-label">
+    <label for="payment_company_name" class="form-required">{{ labelCompanyName }}</label>
+    <input maxlength="1000" type="text" name="payment[company_name]" id="payment_company_name"
+           class="js-conditionally-mandatory">
+    <div id="payment_company_name_error" class="error error-text"></div>
+  </div>
+</div>
+
+{# address data #}
+<div style="display: none;" class="payment-address-data">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div id="payment_address_wrapper" class="form-item floating-label">
+      <label for="payment_address" class="form-required">{{ labelStreet }}</label>
+      <input maxlength="300" type="text" name="payment[address]" id="payment_address"
+             class="js-conditionally-mandatory">
+      <div id="payment_address_error" class="error error-text"></div>
+    </div>
+
+    <div id="payment_post_code_wrapper" class="form-item floating-label">
+      <label for="payment_post_code" class="form-required">{{ labelPostCode }}</label>
+      <input maxlength="100" type="text" name="payment[post_code]" id="payment_post_code"
+             class="js-conditionally-mandatory">
+      <div id="payment_post_code_error" class="error error-text"></div>
+    </div>
+
+    <div id="payment_city_wrapper" class="form-item floating-label">
+      <label for="payment_city" class="form-required">{{ labelCity }}</label>
+      <input maxlength="100" type="text" name="payment[city]" id="payment_city"
+             class="js-conditionally-mandatory">
+      <div id="payment_city_error" class="error error-text"></div>
+    </div>
+
+    <div id="payment_country_wrapper" class="form-item floating-label">
+      <label for="payment_country" class="form-required">{{ labelCountry }}</label>
+
+      {% if langcode == "en" %}
+        {% include 'Partials/locale/_countrySelectEN.twig' with { gridClasses } %}
+      {% elseif langcode == "it" %}
+        {% include 'Partials/locale/_countrySelectIT.twig' with { gridClasses } %}
+      {% else %}
+        {% include 'Partials/locale/_countrySelectDE.twig' with { gridClasses } %}
+      {% endif %}
+
+      <div id="payment_country_error" class="error error-text"></div>
+    </div>
+  </div>
+</div>

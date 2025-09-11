@@ -1,0 +1,15 @@
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-[776px] mx-auto">
+  {% if security_notice %}
+  <div class="security_notice order-1 sm:order-none sm:col-span-1 sm:row-start-1">
+    {{ security_notice }}
+  </div>
+  {% endif %}
+  <div class="frbox_logo order-2 sm:order-none sm:col-span-1 sm:col-start-1 sm:row-start-2 justify-self-start">
+    <img width="140" height="40" src="{{ fn('get_template_directory_uri') }}/Components/DonationForm/Assets/frbox.svg" alt="FundraisingBox Logo" title="FundraisingBox" loading="lazy" decoding="async" class="h-10 w-auto" />
+  </div>
+  {% if privacy_notice %}
+  <div class="privacy_notice order-3 sm:order-none sm:col-span-1 sm:row-start-1">
+    {{ privacy_notice }}
+  </div>
+  {% endif %}
+</div>

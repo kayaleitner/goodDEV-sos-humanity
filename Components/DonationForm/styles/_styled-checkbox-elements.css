@@ -1,0 +1,57 @@
+[is="flynt-donation-form"] {
+  .styled__checkbox {
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+
+      + label {
+        position: relative;
+        cursor: pointer;
+        padding-left: 40px;
+        user-select: none;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 30px;
+          height: 30px;
+          transform: translateY(-50%);
+          transition: background 0.3s ease;
+          background: #ffffff;
+          border: 2px solid #3d3d3d;
+          border-radius: var(--border-radius);
+        }
+
+        &:hover:before {
+          border-color: var(--blue, #1c2445);
+        }
+      }
+
+      &:checked + label:before {
+        background: var(--blue, #1c2445);
+        box-shadow: none;
+      }
+
+      &:focus-visible + label:before {
+        outline: var(--outline);
+      }
+
+      /* Check mark */
+      &:checked + label:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        width: 10px;
+        height: 18px;
+        border: solid #fff;
+        border-width: 0 3px 3px 0;
+        transform: translateY(-60%) rotate(45deg);
+      }
+    }
+  }
+}
