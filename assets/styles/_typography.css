@@ -95,3 +95,10 @@
   font-weight: 700;
   font-style: italic;
 }
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/assets/fonts/Caveat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}

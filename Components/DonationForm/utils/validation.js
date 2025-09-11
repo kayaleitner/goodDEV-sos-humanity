@@ -134,22 +134,67 @@ export default function initDonationFormValidation(component, myForm) {
       'payment[bank_iban]': {
         required: t.iban,
       },
+      donation_custom_amount_0: {
+        min: t.min,
+        max: t.max,
+        step: t.step,
+      },
+      donation_custom_amount_1: {
+        min: t.min,
+        max: t.max,
+        step: t.step,
+      }
     },
     highlight(element) {
       const $el = $(element)
-      setState($el, false)
+      const name = $el.attr('name') || ''
+      const isCustomAmount = $el.hasClass('amount-input') || /^donation_custom_amount_/.test(name)
+      if (!isCustomAmount) {
+        setState($el, false)
+      }
     },
     unhighlight(element) {
       const $el = $(element)
-      setState($el, true)
+      const name = $el.attr('name') || ''
+      const isCustomAmount = $el.hasClass('amount-input') || /^donation_custom_amount_/.test(name)
+      if (!isCustomAmount) {
+        setState($el, true)
+      }
+      if (name === 'payment[amount]' || /^donation_/.test(name)) {
+        const $wrap = $(component).find('#payment_amount_wrapper')
+        const $target = $(component).find('#payment_amount_error')
+        if ($target.length) $target.empty()
+        if ($wrap.length) $wrap.addClass('hidden')
+      }
     },
     success(label, element) {
       const $el = $(element)
-      setState($el, true)
+      const name = $el.attr('name') || ''
+      const isCustomAmount = $el.hasClass('amount-input') || /^donation_custom_amount_/.test(name)
+      if (!isCustomAmount) {
+        setState($el, true)
+      }
+      if (name === 'payment[amount]' || /^donation_/.test(name)) {
+        const $wrap = $(component).find('#payment_amount_wrapper')
+        const $target = $(component).find('#payment_amount_error')
+        if ($target.length) $target.empty()
+        if ($wrap.length) $wrap.addClass('hidden')
+      }
     },
     errorPlacement(error, element) {
       const $el = $(element)
       const name = $el.attr('name')
+
+      // Special rule: route all amount-related errors into #payment_amount_error and unhide its wrapper
+      if (name === 'payment[amount]' || name?.startsWith('donation_')) {
+        const $wrap = $(component).find('#payment_amount_wrapper')
+        const $target = $(component).find('#payment_amount_error')
+        if ($wrap.length) $wrap.removeClass('hidden')
+        if ($target.length) {
+          $target.empty().append(error)
+          return
+        }
+      }
 
       // Try to place the error into our standard wrapper: {fieldId}_wrapper or next to an explicit {fieldId}_error node
       const fieldId = $el.attr('id') || ''

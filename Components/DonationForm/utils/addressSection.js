@@ -15,12 +15,26 @@ export default function initAddressSection(component) {
   function toggleAddressSection() {
     const donateAsCompany = $root.find('#donate-as-company').is(':checked')
     const hasCompanyValue = ($root.find('[name="payment[company_name]"]').val() || '').trim().length > 0
-    const wantsReceipt = $root.find('#payment_wants_receipt').is(':checked')
+    const $receipt = $root.find('#payment_wants_receipt')
 
     const $addressWrapper = $root.find('.payment-address-data')
     const $companyWrapper = $root.find('.payment-company-name')
 
-    const showAddress = donateAsCompany || wantsReceipt
+    // Business rule:
+    // - If donating as company: force wants_receipt checked and mark as auto-receipt
+    // - If not donating as company: do not force, just remove auto-receipt and keep user choice
+    if (donateAsCompany) {
+      if (!$receipt.is(':checked')) {
+        $receipt.prop('checked', true).addClass('auto-receipt').trigger('change')
+      } else {
+        $receipt.addClass('auto-receipt')
+      }
+    } else {
+      // allow user to choose when donating as private person
+      $receipt.removeClass('auto-receipt')
+    }
+
+    const showAddress = donateAsCompany || $receipt.is(':checked')
 
     if (showAddress) {
       $addressWrapper.stop(true, true).slideDown(400, () => setMandatory($addressWrapper, true))
@@ -37,9 +51,9 @@ export default function initAddressSection(component) {
 
   // public API to allow script.js to trigger once on init
   function initOnce() {
-    $root.find('#payment_wants_receipt').addClass('auto-receipt')
-    syncReceiptHidden()
+    // Initialize according to current company switch state
     toggleAddressSection()
+    syncReceiptHidden()
   }
 
   // change listeners

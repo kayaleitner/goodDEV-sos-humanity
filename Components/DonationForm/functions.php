@@ -358,6 +358,23 @@ function getACFLayout(): array {
         ],
       ],
       [
+        'label' => __('Nudge Text', 'flynt'),
+        'name' => 'nudge_text',
+        'type' => 'wysiwyg',
+        'toolbar' => 'basic',
+        'tabs' => 'visual',
+        'media_upload' => 0,
+        'required' => 0,
+      ],
+      [
+        'label' => __('Nudge Text anzeigen', 'flynt'),
+        'name' => 'show_nudge_text',
+        'type' => 'true_false',
+        'ui' => 1,
+        'default_value' => 0,
+        'required' => 0,
+      ],
+      [
         'label' => __('Wertversprechen', 'flynt'),
         'name' => 'value_proposition',
         'type' => 'wysiwyg',
