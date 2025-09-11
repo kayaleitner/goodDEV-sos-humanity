@@ -16,6 +16,7 @@ add_action('Flynt/afterRegisterComponents', function() {
         'type' => 'flexible_content',
         'button_label' => __('Add Block', 'flynt'),
         'layouts' => [
+          Components\HeroLandingPage\getACFLayout(),
           Components\DonationHero\getACFLayout(),
           Components\DonationForm\getACFLayout(),
           Components\ProgressDonation\getACFLayout(),

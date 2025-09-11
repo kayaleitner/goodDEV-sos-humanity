@@ -1,0 +1,37 @@
+<flynt-component
+  class="flyntComponent HeroLandingPage {{ options.theme }} block"
+  is="flynt-hero-landing-page"
+  name="HeroLandingPage"
+  style="--themeBrand_colorBackground: {{ options.colorBrandBackground }}; --themeBrand_colorText: {{ options.colorBrandText }}; --hero_paddingTB: {{ options.paddingTopBottom }}; --hero_paddingLR: {{ options.paddingLeftRight }};"
+>
+  <div class="heroLandingPage">
+    <figure class="heroLandingPage__figure">
+      <picture>
+        {% if mobile %}
+          <source media="(max-width: 767px)" srcset="{{ mobile.srcset ?: mobile.src }}">
+        {% endif %}
+        {% if desktop %}
+          <img class="heroLandingPage__image" src="{{ desktop.src }}" srcset="{{ desktop.srcset ?: desktop.src }}"
+               alt="{{ desktop.alt }}" loading="eager"/>
+        {% elseif mobile %}
+          <img class="heroLandingPage__image" src="{{ mobile.src }}" srcset="{{ mobile.srcset ?: mobile.src }}"
+               alt="{{ mobile.alt }}" loading="eager"/>
+        {% endif %}
+        {% if copyright %}
+          <figcaption class="heroLandingPage__copyright">{{ copyright }}</figcaption>
+        {% endif %}
+      </picture>
+      <div class="heroLandingPage__titleOverlay">
+        <h1 class="heroLandingPage__title">{{ post.title }}</h1>
+      </div>
+    </figure>
+
+    {% if text %}
+      <div class="heroLandingPage__textBox">
+        <div class="heroLandingPage__textInner">
+          {{ text|wp_kses_custom }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</flynt-component>

@@ -1,0 +1,97 @@
+@layer components {
+  .flyntComponent.HeroLandingPage {
+    .heroLandingPage__figure {
+      position: relative;
+      margin: 0;
+    }
+
+    .heroLandingPage__image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Title overlay on the image */
+    .heroLandingPage__titleOverlay {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 0;
+      z-index: 1;
+      width: calc(100% - 32px);
+      pointer-events: none;
+    }
+
+    .heroLandingPage__title {
+      margin: 0;
+      display: inline-block;
+      background-color: var(--yellow, #EBEB00);
+      color: var(var(--blue), #1C2445);
+      padding: 10px;
+      border-radius: 0;
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      line-height: 1.15;
+      max-width: 100%;
+      box-shadow: 0 6px 18px rgba(0,0,0,.18);
+      letter-spacing: 0.01em;
+    }
+
+    @media (min-width: 768px) {
+      .heroLandingPage__titleOverlay {
+        top: 62%;
+        transform: translate(-50%, -62%);
+      }
+    }
+
+    .heroLandingPage__textBox {
+      width: 100%;
+      max-width: none;
+      margin: 0 auto 64px auto;
+      padding: 40px var(--hero_paddingLR, var(--padding_small)) 64px;
+      background-color: var(--themeBrand_colorBackground, #ebeb00);
+      color: var(--themeBrand_colorText, #fff);
+      position: relative;
+      border-radius: 0;
+      text-align: center;
+    }
+
+    .heroLandingPage__textBox:after {
+      content: "";
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background-color: inherit;
+      left: 50%;
+      bottom: -13px;
+      transform: translateX(calc(-50% - 1px)) rotate(45deg);
+      z-index: 1;
+      box-shadow: 0 6px 18px rgba(0,0,0,.10);
+    }
+
+    .heroLandingPage__textInner {
+      max-width: 772px;
+      margin-left: auto;
+      margin-right: auto;
+      a { color: inherit; text-decoration: underline; }
+      p { margin: 0 0 0.9rem 0; }
+      h1, h2, h3 { margin: 0 0 .5rem 0; line-height: 1.2; }
+      ul { margin: 0 0 .9rem 1.1rem; }
+      :last-child { margin-bottom: 0; }
+    }
+
+    .heroLandingPage__copyright {
+      position: absolute;
+      right: .5rem;
+      bottom: .5rem;
+      color: #fff;
+      font-size: 12px;
+      background: rgba(0, 0, 0, .35);
+      padding: .125rem .375rem;
+      border-radius: 2px;
+      backdrop-filter: blur(2px);
+    }
+  }
+}
