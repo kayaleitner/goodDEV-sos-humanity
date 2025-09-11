@@ -3,6 +3,19 @@
     .heroLandingPage__figure {
       position: relative;
       margin: 0;
+      height: 294px;
+      picture {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        width: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
     }
 
     .heroLandingPage__image {
@@ -17,14 +30,11 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 0;
+      bottom: 24px;
       text-align: center;
       padding: 0;
-      z-index: 1;
+      z-index: 10;
       pointer-events: none;
-      h1 {
-        width: 100%;
-      }
     }
 
     .heroLandingPage__title {
@@ -32,13 +42,15 @@
       display: inline-block;
       background-color: var(--yellow, #EBEB00);
       color: var(var(--blue), #1C2445);
-      padding: 10px;
+      padding: 12px 18px;
       border-radius: 0;
-      font-size: clamp(1.75rem, 5vw, 2.5rem);
-      line-height: 1.15;
       max-width: 100%;
       box-shadow: 0 6px 18px rgba(0,0,0,.18);
-      letter-spacing: 0.01em;
+      font-weight: 900;
+      font-size: 20px;
+      line-height: 120%;
+      text-align: center;
+      letter-spacing: 1%;
     }
 
     .heroLandingPage__textBox {
@@ -98,14 +110,20 @@
 
 @media screen and (min-width: 768px) {
     .flyntComponent.HeroLandingPage {
+      .heroLandingPage__figure {
+        height: 474px;
+      }
       .heroLandingPage__titleOverlay {
         bottom: 36px;
         left: 50%;
         transform: translate(-50%, 0);
         width: calc(100% - 32px);
-        h1 {
-          width: auto;
-        }
+      }
+      .heroLandingPage__title {
+        font-weight: 900;
+        font-size: 52px;
+        line-height: 74px;
+        padding: 0 13px;
       }
     }
 }
