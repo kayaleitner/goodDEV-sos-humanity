@@ -1,4 +1,17 @@
 [is="flynt-donation-form"] {
+  /* Hide wallet methods by default */
+  .pm-stripe_google_pay,
+  .pm-stripe_apple_pay {
+    display: none;
+  }
+  /* Show Google Pay when available */
+  &[data-wallet-google="1"] .pm-stripe_google_pay {
+    display: block;
+  }
+  /* Show Apple Pay when available */
+  &[data-wallet-apple="1"] .pm-stripe_apple_pay {
+    display: block;
+  }
   .payment-methods {
     .payment-methods-wrapper {
       @apply grid gap-2;

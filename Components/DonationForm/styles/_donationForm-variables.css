@@ -75,8 +75,9 @@
   --arrow-nudge-icon-desktop: url("../Assets/arrow-desktop.svg");
 
   /* button */
-  --font-button: normal normal 700 1.375rem/155% 'Source Sans Pro', sans-serif;
-  --button-heard-icon: url("../Assets/heard.svg");
+  --font-button: normal normal 700 1.375rem/130% 'Source Sans Pro', sans-serif;
+  --button-heard-icon: url("../Assets/heart-fill.svg");
+  --button-loader-icon: url("../Assets/loader.svg");
 
   @media screen and (min-width: 768px) {
     --font-panel-heading: normal normal 900 2.75rem/5rem 'Source Sans Pro', sans-serif;

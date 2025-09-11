@@ -9,6 +9,35 @@ export default function bindFbxEvents(component, myForm) {
     console.log('FBX error event', e)
   })
 
+  // Wallet pay readiness: expose availability and allow UI updates
+  myForm.on('fundraisingBox:walletPayReady', (_event, paymentMethods = {}) => {
+    try {
+      const $root = $(component)
+
+      // Add data flags on root for easy CSS/JS hooks
+      const canApple = !!paymentMethods?.stripe_apple_pay?.can_make_payment
+      const canGoogle = !!paymentMethods?.stripe_google_pay?.can_make_payment
+
+      $root.attr('data-wallet-apple', canApple ? '1' : '0')
+      $root.attr('data-wallet-google', canGoogle ? '1' : '0')
+
+      // Toggle optional logo elements if they exist
+      const $appleLogo = $root.find('[data-wallet-logo="apple"]')
+      const $googleLogo = $root.find('[data-wallet-logo="google"]')
+      if ($appleLogo.length) $appleLogo.toggle(!!canApple)
+      if ($googleLogo.length) $googleLogo.toggle(!!canGoogle)
+
+      // Hide any loading overlays/spinners that wait for wallet readiness
+      $root.find('[data-wallet-loading], .wallet-loading, .wallet-overlay').hide()
+
+      // Also emit a DOM event so themes can react without jQuery
+      const detail = { paymentMethods, canApple, canGoogle }
+      $root.get(0)?.dispatchEvent(new CustomEvent('walletPayReady', { detail }))
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.warn('walletPayReady handler error', err)
+    }
+  })
   myForm.on('fundraisingBox:payment', (event, json = {}) => {
     const $error = $('#errorMsg')
     $error.empty()

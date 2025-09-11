@@ -69,7 +69,7 @@ export function transformSelectToCheckbox(field, $container, { checkboxLabel, ch
  * @param {string} [options.classes.fieldWrapper] - Label span/text class
  * @param {boolean} [options.hideOriginalLabel=true] - Remove the original <label> associated with the select
  */
-export function transformSelectToRadios(field, $container, { classes = {}, hideOriginalLabel = true } = {}) {
+export function transformSelectToRadios(field, $container, { classes = {}, hideOriginalLabel = true, itemDataAttr = null, itemClassPrefix = null } = {}) {
   const $ = window.jQuery
   if (!$) {
     // eslint-disable-next-line no-console
@@ -91,6 +91,10 @@ export function transformSelectToRadios(field, $container, { classes = {}, hideO
   const name = $select.attr('name') // e.g. payment[wants_receipt]
   const current = $select.val()
 
+  // Determine effective tagging defaults for payment methods
+  const isPaymentMethodField = field.id === 'payment_payment_method'
+  const effectiveDataAttr = itemDataAttr ?? (isPaymentMethodField ? 'payment-method' : null)
+  const effectiveClassPrefix = itemClassPrefix ?? (isPaymentMethodField ? 'pm-' : null)
   // Build wrapper for radios
   const $group = $('<div>', {
     class: classes.wrapper || ''
@@ -107,6 +111,14 @@ export function transformSelectToRadios(field, $container, { classes = {}, hideO
     const $fieldWrapper = $('<div>', {
       class: classes.fieldWrapper || 'radioWrapper',
     })
+    // Add method-specific data attribute and/or class for styling hooks
+    if (effectiveDataAttr) {
+      $fieldWrapper.attr(`data-${effectiveDataAttr}`, value)
+    }
+    if (effectiveClassPrefix) {
+      const safeVal = String(value).toLowerCase().replace(/[^a-z0-9_-]+/g, '-')
+      $fieldWrapper.addClass(`${effectiveClassPrefix}${safeVal}`)
+    }
 
     const $radio = $('<input>', {
       type: 'radio',
