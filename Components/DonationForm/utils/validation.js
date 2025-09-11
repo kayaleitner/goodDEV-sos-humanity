@@ -10,6 +10,33 @@ export default function initDonationFormValidation(component, myForm) {
 
   const t = translationDict[['de', 'en', 'it'].includes(lang) ? lang : 'de']
 
+  // Add custom postcode-by-country validator
+  if ($.validator && typeof $.validator.addMethod === 'function') {
+    $.validator.addMethod(
+      'postcodeByCountry',
+      function (value, element) {
+        if (this.optional(element)) {
+          return true
+        }
+        // Find the country within the same component scope
+        const country = $(component).find('select[name="payment[country]"]').val()
+        const patterns = {
+          AT: /^\d{4}$/,
+          CH: /^\d{4}$/,
+          BE: /^\d{4}$/,
+          DE: /^\d{5}$/,
+          IT: /^\d{5}$/,
+          NL: /\d{4}\s?[a-z]{2}$/i,
+        }
+        const v = (value || '').trim()
+        const rx = patterns[country] || /([0-9a-z]){2,10}$/i
+        return rx.test(v)
+      },
+      // Localized message if available, else default German text
+      t.postcodeByCountry || 'Bitte gib eine gültige Postleitzahl ein.'
+    )
+  }
+
   // Helper to toggle valid/invalid classes and icons
   const setState = ($el, isValid) => {
     const isRequired = typeof $el.prop === 'function' ? !!$el.prop('required') : $el.is('[required]')
@@ -95,6 +122,7 @@ export default function initDonationFormValidation(component, myForm) {
           return $(component).find('.payment-address-data').is(':visible')
         },
         maxlength: 100,
+        postcodeByCountry: true,
       },
       'payment[city]': {
         required() {
@@ -141,6 +169,7 @@ export default function initDonationFormValidation(component, myForm) {
       'payment[post_code]': {
         required: t.postalCode,
         maxlength: t.maxlength.replace('{0}', 100),
+        postcodeByCountry: t.postcodeByCountry,
       },
       'payment[city]': {
         required: t.city || t.required,

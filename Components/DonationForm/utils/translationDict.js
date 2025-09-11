@@ -20,7 +20,8 @@ const translationDict = {
     maxlength: 'Bitte nur maximal {0} Zeichen eingeben.',
     iban: 'Bitte gib deine IBAN Nummer an.',
     bankAccountName: 'Bitte Kontoinhaber/-in eingeben.',
-    globalError: 'Ein unerwarteter Fehler ist aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.'
+    globalError: 'Ein unerwarteter Fehler ist aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.',
+    postcodeByCountry: 'Bitte gib eine gültige Postleitzahl ein.'
   },
   en: {
     company: 'Please enter your company name.',
@@ -42,7 +43,8 @@ const translationDict = {
     maxlength: 'Please enter a maximum of {0} characters.',
     iban: 'Please enter your IBAN number.',
     bankAccountName: 'Please enter bank account holder.',
-    globalError: 'An unexpected error occurred. Please reload the page and try again.'
+    globalError: 'An unexpected error occurred. Please reload the page and try again.',
+    postcodeByCountry: 'Please enter a valid postal code.'
   },
   it: {
     company: 'Inserisci il nome della tua azienda.',
@@ -64,7 +66,8 @@ const translationDict = {
     maxlength: 'Inserisci un massimo di {0} caratteri.',
     iban: 'Inserisci il tuo numero IBAN.',
     bankAccountName: 'Inserisci il titolare del conto bancario.',
-    globalError: 'Si è verificato un errore imprevisto. Ricarica la pagina e riprova.'
+    globalError: 'Si è verificato un errore imprevisto. Ricarica la pagina e riprova.',
+    postcodeByCountry: 'Inserisci un codice postale valido.'
   },
 }
 
