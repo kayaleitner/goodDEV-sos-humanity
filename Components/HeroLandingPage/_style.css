@@ -15,14 +15,16 @@
     /* Title overlay on the image */
     .heroLandingPage__titleOverlay {
       position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      left: 0;
+      right: 0;
+      bottom: 0;
       text-align: center;
       padding: 0;
       z-index: 1;
-      width: calc(100% - 32px);
       pointer-events: none;
+      h1 {
+        width: 100%;
+      }
     }
 
     .heroLandingPage__title {
@@ -39,13 +41,6 @@
       letter-spacing: 0.01em;
     }
 
-    @media (min-width: 768px) {
-      .heroLandingPage__titleOverlay {
-        top: 62%;
-        transform: translate(-50%, -62%);
-      }
-    }
-
     .heroLandingPage__textBox {
       width: 100%;
       max-width: none;
@@ -56,6 +51,7 @@
       position: relative;
       border-radius: 0;
       text-align: center;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,.01));
     }
 
     .heroLandingPage__textBox:after {
@@ -63,12 +59,15 @@
       position: absolute;
       width: 26px;
       height: 26px;
-      background-color: inherit;
+      background-color: transparent;
       left: 50%;
-      bottom: -13px;
-      transform: translateX(calc(-50% - 1px)) rotate(45deg);
+      top: 100%;
+      transform: translateX(calc(-50% - 1px));
       z-index: 1;
-      box-shadow: 0 6px 18px rgba(0,0,0,.10);
+
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid var(--themeBrand_colorBackground, #ebeb00);
     }
 
     .heroLandingPage__textInner {
@@ -94,4 +93,19 @@
       backdrop-filter: blur(2px);
     }
   }
+}
+
+
+@media screen and (min-width: 768px) {
+    .flyntComponent.HeroLandingPage {
+      .heroLandingPage__titleOverlay {
+        bottom: 36px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: calc(100% - 32px);
+        h1 {
+          width: auto;
+        }
+      }
+    }
 }

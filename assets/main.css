@@ -15,7 +15,7 @@
 @import 'styles/_borlabs-cookie.css';
 @import 'styles/_env-badge.css'; */
 
-@import 'styles/_components.css'; 
+@import 'styles/_components.css';
 
 
 @import 'oldStyles/_styles.css';
@@ -65,7 +65,9 @@
 @import '../Components/SliderVoices/_style.css';
 @import '../Components/WidgetPetition/_style.css';
 @import '../Components/DonationHeader/_style.css';
+@import '../Components/DonationFooter/_style.css';
 @import '../Components/DonationForm/_style.css';
 @import '../Components/DonationLanguageSwitch/_style.css';
 @import '../Components/HeroLandingPage/_style.css';
 @import '../Components/DonationHero/_style.css';
+@import '../Components/ContactPerson/_style.css';

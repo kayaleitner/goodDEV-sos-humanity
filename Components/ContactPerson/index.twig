@@ -1,0 +1,33 @@
+<flynt-component
+  class="flyntComponent ContactPerson {{ options.theme }} block"
+  is="flynt-contact-person"
+  name="ContactPerson"
+>
+  <div class="contactPerson">
+    {% if title %}
+      <h3 class="contactPerson__title">{{ title }}</h3>
+    {% endif %}
+
+    <div class="contactPerson__grid">
+      <div class="contactPerson__imageWrap">
+        {% if person.image %}
+          <img class="contactPerson__image" src="{{ person.image.src }}" srcset="{{ person.image.srcset ?: person.image.src }}" alt="{{ person.image.alt }}" loading="lazy"/>
+        {% endif %}
+      </div>
+      <div class="contactPerson__info">
+        {% if person.name %}
+          <div class="contactPerson__name">{{ person.name }}</div>
+        {% endif %}
+        {% if person.position %}
+          <div class="contactPerson__position">{{ person.position }}</div>
+        {% endif %}
+        {% if person.email %}
+          <div class="contactPerson__email"><a href="mailto:{{ person.email }}">{{ person.email }}</a></div>
+        {% endif %}
+        {% if person.phone %}
+          <div class="contactPerson__phone">T: <a href="tel:{{ person.phone|replace({' ': '', '/': '', '(': '', ')': ''}) }}">{{ person.phone }}</a></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</flynt-component>

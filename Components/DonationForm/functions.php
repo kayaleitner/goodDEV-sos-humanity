@@ -270,6 +270,13 @@ Options::addTranslatable('DonationForm', [
     'default_value' => __('Prüfnummer', 'flynt'),
     'wrapper' => ['width' => 50],
   ],
+  [
+    'label' => __('Pflichtfelder', 'flynt'),
+    'name' => 'mandatoryFields',
+    'type' => 'text',
+    'default_value' => __('Pflichtfelder', 'flynt'),
+    'wrapper' => ['width' => 50],
+  ],
 ]);
 
 

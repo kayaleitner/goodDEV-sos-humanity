@@ -131,11 +131,29 @@
     }
   }
 
+  .mandatoryInfo {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.55;
+    margin-top: 14px;
+    margin-bottom: 2px;
+    color: #757575;
+  }
+
   /* Validation error text */
   .error-text, .error {
     color: var(--color-error);
     font-size: var(--font-size-sm);
     margin-top: 0.25rem;
     display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  [is="flynt-donation-form"] {
+    .mandatoryInfo {
+      margin-top: 36px;
+      margin-bottom: 20px;
+    }
   }
 }

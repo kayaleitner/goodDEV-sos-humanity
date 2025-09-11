@@ -1,3 +1,5 @@
+@import 'styles/_accordionSecondaryStyle.css';
+
 [is='flynt-accordion-default'] .accordion {
   display: block;
   list-style: none;

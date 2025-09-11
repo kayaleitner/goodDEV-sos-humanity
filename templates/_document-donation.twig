@@ -30,6 +30,8 @@
         <footer class="mainFooter">
           {% block footer %}
             {{ renderComponent('DonationFooter') }}
+            {{ renderComponent('NavigationFooterLinklist') }}
+            {{ renderComponent('NavigationFooter') }}
           {% endblock %}
         </footer>
         <div class="wpFooter">{{ function('wp_footer') }}</div>

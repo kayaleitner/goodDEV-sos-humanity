@@ -1,0 +1,50 @@
+[is='flynt-accordion-default'].themeSecondary {
+  background: transparent;
+
+  .preContent h2 {
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1.35;
+  }
+
+  .container.blockMaxWidth {
+    padding-inline: 16px !important;
+    max-width: 808px !important;
+  }
+
+  .panel {
+    border-inline: none !important;
+
+    &:first-child {
+      border-top: solid 2px #000 !important;
+    }
+
+    &:last-child {
+      border-bottom: solid 2px #000 !important;
+    }
+
+    .panel-title {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.55;
+    }
+
+    .panel-inner {
+      p {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1.55;
+      }
+
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  [is='flynt-accordion-default'].themeSecondary {
+    .preContent h2 {
+      font-size: 36px;
+      line-height: 1.55;
+    }
+  }
+}

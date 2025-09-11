@@ -23,6 +23,7 @@ function getTheme()
             'themeLight' => __('Light', 'flynt'),
             'themeDark' => __('Dark', 'flynt'),
             'themeBrand' => __('Brand', 'flynt'),
+            'themeSecondary' => __('Secondary', 'flynt'),
         ],
         'wrapper' => [
             'width' => '33',
@@ -132,7 +133,7 @@ function getMaxWidthContainer()
     ];
 }
 
-function getFadeIn() 
+function getFadeIn()
 {
     return [
         'label' => __('Fade In', 'flynt'),
@@ -147,7 +148,7 @@ function getFadeIn()
     ];
 }
 
-function getMoveIn() 
+function getMoveIn()
 {
     return [
         'label' => __('Move In', 'flynt'),
@@ -471,7 +472,7 @@ function getCarouselOptions(int $speed = 300, int $autoplay = 0, int $delay = 40
                 ],
             ]
         ]
-        
+
     ];
 }
 
