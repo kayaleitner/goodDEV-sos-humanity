@@ -1,15 +1,22 @@
 [is="flynt-donation-form"] {
-  /* Submit button customizations */
   #donation-submit-btn.button {
     background-color: var(--color-secondary);
     color: var(--color-primary);
     border: none;
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    padding-right: 1rem;
+    gap: 0.625rem;
+    padding: 0.875rem 2.75rem;
     font: var(--font-button);
     letter-spacing: var(--letter-spacing);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 60px;
+    cursor: pointer;
+  }
+  #donation-submit-btn.button:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
   #donation-submit-btn .label {
     display: inline-block;
@@ -22,7 +29,25 @@
     background-size: contain;
     background-position: center;
     display: inline-block;
-    animation: heart-pulse 1.4s ease-in-out infinite;
-    filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+    animation: heart-pulse-origin 1.3s ease-in-out infinite;
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+  }
+  #donation-submit-btn[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: var(--color-background-disabled);
+    color: var(--color-background-disabled-surface);
+    .heart {
+      background-image: var(--button-loader-icon);
+      animation: none;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    #donation-submit-btn.button {
+      padding-right: 4rem;
+      padding-left: 4rem;
+    }
   }
 }

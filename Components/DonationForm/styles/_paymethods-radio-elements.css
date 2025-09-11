@@ -1,7 +1,20 @@
 [is="flynt-donation-form"] {
+  /* Hide wallet methods by default */
+  .pm-stripe_google_pay,
+  .pm-stripe_apple_pay {
+    display: none;
+  }
+  /* Show Google Pay when available */
+  &[data-wallet-google="1"] .pm-stripe_google_pay {
+    display: block;
+  }
+  /* Show Apple Pay when available */
+  &[data-wallet-apple="1"] .pm-stripe_apple_pay {
+    display: block;
+  }
   .payment-methods {
     .payment-methods-wrapper {
-      @apply grid gap-2;
+      @apply grid gap-4;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       @media (min-width: 640px) {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -112,6 +125,12 @@
         }
       }
     }
+  }
+  .donation-payment-info {
+    display: none;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
   }
 }
 

@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import translationDict from '@/Components/DonationForm/utils/translationDict.js'
+import translationDict from './translationDict'
 
 export default function attachSubmitHandler(component, myForm) {
   const $root = $(component)
