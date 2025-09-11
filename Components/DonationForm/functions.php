@@ -293,6 +293,33 @@ Options::addTranslatable('DonationForm', [
     'default_value' => __('Pflichtfelder', 'flynt'),
     'wrapper' => ['width' => 50],
   ],
+  [
+    'label' => __('PayPal Hinweistext', 'flynt'),
+    'name' => 'paypalInfoText',
+    'type' => 'wysiwyg',
+    'toolbar' => 'basic',
+    'media_upload' => 0,
+    'default_value' => __('Bitte klicken Sie den „Jetzt spenden“-Button. Sie werden automatisch zu PayPal weitergeleitet, wo Sie Ihre Spende abschließen können.', 'flynt'),
+    'wrapper' => ['width' => 100],
+  ],
+  [
+    'label' => __('Apple Pay Hinweistext', 'flynt'),
+    'name' => 'applePayInfoText',
+    'type' => 'wysiwyg',
+    'toolbar' => 'basic',
+    'media_upload' => 0,
+    'default_value' => __('Bitte klicken Sie den „Jetzt spenden“-Button. Die Zahlungsfreigabe erfolgt über Appl Pay. Folgen Sie den Anweisungen, um die Spende abzuschließen.', 'flynt'),
+    'wrapper' => ['width' => 100],
+  ],
+  [
+    'label' => __('Google Pay Hinweistext', 'flynt'),
+    'name' => 'googlePayInfoText',
+    'type' => 'wysiwyg',
+    'toolbar' => 'basic',
+    'media_upload' => 0,
+    'default_value' => __('Bitte klicken Sie den „Jetzt spenden“-Button. Die Zahlungsfreigabe erfolgt über Google Pay. Folgen Sie den Anweisungen, um die Spende abzuschließen.', 'flynt'),
+    'wrapper' => ['width' => 100],
+  ],
 ]);
 
 

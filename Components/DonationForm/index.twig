@@ -29,6 +29,16 @@
     <div class="panel last-child">
       {% include 'Partials/_panelHeader.twig' with { panel_title: labelPaymentMethodPanel } only %}
       <div class="payment-methods mb-6"></div>
+      <div class="donation-payment-info donation-paypal-info">
+        {{ paypalInfoText }}
+      </div>
+      <div class="donation-payment-info donation-applepay-info">
+        {{ applePayInfoText }}
+      </div>
+      <div class="donation-payment-info donation-googlepay-info">
+        {{ googlePayInfoText }}
+      </div>
+
       {% include 'Partials/_sepaDebitFieldsBlock.twig' with { gridClasses } %}
       {% include 'Partials/_creditCardFieldsBlock.twig' with { gridClasses } %}
       {% include 'Partials/_creditCardHiddenFieldsBlock.twig' with { gridClasses } %}
