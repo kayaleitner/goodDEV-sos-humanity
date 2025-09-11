@@ -46,7 +46,7 @@ export default function bindFbxEvents(component, myForm) {
         })
         .finally(() => {
           window.setTimeout(() => {
-            localStorage.removeItem('frb_params')
+            localStorage.removeItem('frb_utm_params')
           }, 0)
         })
     } else {

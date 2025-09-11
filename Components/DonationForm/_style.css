@@ -1,13 +1,13 @@
-@import 'styles/_donationForm-variables.css';
-@import 'styles/_default-form-elements.css';
-@import 'styles/_styled-radio-elements.css';
-@import 'styles/_styled-checkbox-elements.css';
-@import 'styles/_paymethods-radio-elements.css';
 @import 'styles/_amount-option-radio.css';
 @import 'styles/_checkbox-switcher.css';
+@import 'styles/_default-form-elements.css';
+@import 'styles/_donationForm-variables.css';
 @import 'styles/_panel.css';
-@import 'styles/_text-styles.css';
+@import 'styles/_paymethods-radio-elements.css';
+@import 'styles/_styled-checkbox-elements.css';
+@import 'styles/_styled-radio-elements.css';
 @import 'styles/_submit-Button-styles.css';
+@import 'styles/_text-styles.css';
 
 [is="flynt-donation-form"] {
   max-width: 56.5rem;

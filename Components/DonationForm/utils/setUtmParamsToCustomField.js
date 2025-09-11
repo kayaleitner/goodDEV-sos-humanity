@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 /**
- * Populate donation custom fields with UTM params from sessionStorage ('frb_params').
+ * Populate donation custom fields with UTM params from sessionStorage ('frb_utm_params').
  * Values are only written if the corresponding input is currently empty.
  * Test params
  * ?utm_source=source&utm_medium=medium&utm_content=content&utm_campaign=campaign&utm_source_platform=platform&utm_term=term
@@ -14,7 +14,7 @@ export default function setUtmParamsToCustomField(root) {
   // Read and parse UTM params from sessionStorage
   let utm = {};
   try {
-    utm = JSON.parse(localStorage.getItem('frb_params') || '{}') || {};
+    utm = JSON.parse(localStorage.getItem('frb_utm_params') || '{}') || {};
   } catch (e) {
     utm = {};
   }

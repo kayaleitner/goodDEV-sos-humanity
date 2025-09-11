@@ -1,8 +1,3 @@
-
-
-{#<div data-default-interval="{{ interval|default('0') }}"#}
-{#     class="donationForm__interval mb-6 donationForm__radio"></div>#}
-
 <div class="amount-block">
   {% set current_interval = interval|default('0') %}
   <div class="amount-suggestions w-full">
@@ -29,7 +24,7 @@
         {% endfor %}
       </div>
     {% endfor %}
-  
+
   </div>
 </div>
 <div class="error-wrapper text-center">

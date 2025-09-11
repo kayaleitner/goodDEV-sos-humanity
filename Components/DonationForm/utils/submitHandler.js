@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import translationDict from '@/Components/DonationForm/utils/translationDict.js'
 
 export default function attachSubmitHandler(component, myForm) {
   const $root = $(component)
@@ -10,6 +11,10 @@ export default function attachSubmitHandler(component, myForm) {
     const hasJqValidate = typeof $.fn.validate === 'function' && $domForm.data('validator')
       ? true
       : typeof $.fn.valid === 'function'
+
+    const lang = (document.documentElement.lang || 'de').slice(0, 2).toLowerCase()
+
+    const t = translationDict[['de', 'en', 'it'].includes(lang) ? lang : 'de']
 
     try {
       if (hasJqValidate) {
@@ -25,11 +30,11 @@ export default function attachSubmitHandler(component, myForm) {
         $domForm[0].submit()
       } else {
         const $error = $('#errorMsg')
-        $error.text('Ein unerwarteter Fehler ist aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.').show()
+        $error.text(t.globalError).show()
       }
     } catch (err) {
       const $error = $('#errorMsg')
-      $error.text('Ein Fehler ist aufgetreten. Bitte prüfen Sie Ihre Eingaben und versuchen Sie es erneut.').show()
+      $error.text(t.globalError).show()
       // eslint-disable-next-line no-console
       console.error('Donation submit error', err)
     }

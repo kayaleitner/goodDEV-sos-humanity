@@ -4,6 +4,15 @@ namespace Flynt\Components\DonationForm;
 
 use Flynt\Utils\Options;
 
+add_filter('Flynt/addComponentData?name=DonationForm', function ($data) {
+  $locale = get_locale();
+  $lang = substr($locale, 0, 2); // z. B. "de"
+
+  $data['langcode'] = $lang;
+
+  return $data;
+});
+
 add_action('wp_enqueue_scripts', function () {
 
   wp_enqueue_script('jquery');
@@ -11,7 +20,7 @@ add_action('wp_enqueue_scripts', function () {
   // jQuery Validate for client-side validation
   wp_enqueue_script(
     'jquery-validate',
-    'https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js',
+    get_template_directory_uri() . '/Components/DonationForm/Assets/scripts/jquery.validate.min.js',
     ['jquery'],
     null,
     true
@@ -398,6 +407,7 @@ function getACFLayout(): array {
   ];
 }
 
+// for debugging
 //add_action('wp_footer', function () {
 //    echo do_shortcode('[fb_capi_thanks_example]');
 //});

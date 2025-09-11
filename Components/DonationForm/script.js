@@ -53,6 +53,7 @@ export default function (component) {
   myForm.on('fundraisingBox:init', () => {
     const fields = myForm.getFormFields?.() || {}
     availableFields = Object.keys(fields)
+    // for debugging
     // console.log(fields)
 
     // Initialize amount & interval
@@ -101,7 +102,7 @@ export default function (component) {
     const address = initAddressSection(component)
     address.initOnce()
 
-    // Populate UTM params into custom fields (from sessionStorage 'frb_params')
+    // Populate UTM params into custom fields (from sessionStorage 'frb_utm_params')
     setUtmParamsToCustomField(component)
 
     floatingLabel(myForm)
