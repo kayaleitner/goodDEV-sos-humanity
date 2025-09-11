@@ -9,7 +9,7 @@ export default function initPaymentFields(component, myForm) {
     const sepaValues = ['sepa_direct_debit', 'wikando_direct_debit', 'bank']
     const creditCardValues = ['creditcard', 'credit_card', 'stripe_credit_card']
     const paypalValues = ['paypal']
-    const applePayValues = ['apple_pay', 'applepay', 'apple-pay']
+    const applePayValues = ['stripe_apple_pay']
     const googlePayValues = ['stripe_google_pay']
 
     const $sepaFields = $root.find('.donation-sepa-fields')

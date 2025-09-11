@@ -12,6 +12,28 @@ export default function initDonationFormValidation(component, myForm) {
 
   // Helper to toggle valid/invalid classes and icons
   const setState = ($el, isValid) => {
+    const isRequired = typeof $el.prop === 'function' ? !!$el.prop('required') : $el.is('[required]')
+
+    // Determine emptiness per input type
+    const isCheckable = $el.is && $el.is(':checkbox, :radio')
+    const isSelect = $el.is && $el.is('select')
+
+    let isEmpty = false
+    if (isCheckable) {
+      isEmpty = !$el.is(':checked')
+    } else if (isSelect) {
+      const v = $el.val?.()
+      isEmpty = v == null || (Array.isArray(v) ? v.length === 0 : String(v).trim() === '')
+    } else {
+      const v = $el.val?.() ?? ''
+      isEmpty = typeof v === 'string' ? v.trim() === '' : v == null || v === ''
+    }
+
+    if (!isRequired && isEmpty) {
+      $el.removeClass('is-valid is-invalid')
+      return
+    }
+
     $el.toggleClass('is-valid', !!isValid)
     $el.toggleClass('is-invalid', !isValid)
   }
@@ -108,7 +130,6 @@ export default function initDonationFormValidation(component, myForm) {
       },
       'payment[payment_method]': { required: t.paymentMethod },
 
-      // Address and company
       'payment[company_name]': {
         required: t.company,
         maxlength: t.maxlength.replace('{0}', 1000),
