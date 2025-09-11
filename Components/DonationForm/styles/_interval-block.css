@@ -21,6 +21,9 @@
         font: var(--font-nudge-text) !important;
         letter-spacing: var(--letter-spacing);
         text-align: center;
+        &:last-child {
+          margin: 0;
+        }
       }
       &:before {
         content: "";

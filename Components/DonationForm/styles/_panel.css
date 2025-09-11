@@ -19,16 +19,7 @@
       bottom: -15px;
       transform: translateX(calc(-50% - 1px)) rotate(45deg);
     }
-    &:last-of-type{
-      background-color: red;
-      &:after {
-        display: none;
-      }
-    }
-  }
-  .panel:last-child {
-    background-color: red;
-    &:after {
+    &.last-child:after {
       display: none;
     }
   }

@@ -156,7 +156,16 @@ Options::addTranslatable('DonationForm', [
     'name' => 'phoneLabel',
     'type' => 'text',
     'default_value' => __('Telefonnummer', 'flynt'),
-    'wrapper' => ['width' => 50],
+    'wrapper' => ['width' => 100],
+  ],
+  [
+    'label' => __('Telefonnummer Hinweis Text', 'flynt'),
+    'name' => 'phoneNoticeText',
+    'type' => 'wysiwyg',
+    'toolbar' => 'basic',
+    'media_upload' => 0,
+    'default_value' => __('Gern erlaube ich SOS-Humanity mich ggf. anzurufen und mich über Ihre Arbeit sowie Möglichkeiten der Unterstützung zu informieren. Diese Einwilligung kann ich jederzeit widerrufen.', 'flynt'),
+    'wrapper' => ['width' => 100],
   ],
   [
     'label' => __('Label Privat spende', 'flynt'),
@@ -177,6 +186,13 @@ Options::addTranslatable('DonationForm', [
     'name' => 'labelWantsReceipt',
     'type' => 'text',
     'default_value' => __('Ja, ich möchte eine Jahresspendenbescheinigung erhalten.', 'flynt'),
+    'wrapper' => ['width' => 100],
+  ],
+  [
+    'label' => __('Label Spendenbescheinigung wenn Unternehmensspende', 'flynt'),
+    'name' => 'labelWantsAutoReceipt',
+    'type' => 'text',
+    'default_value' => __('Ihre Spendenbescheinigung wird Ihnen automatisch zugeschickt.', 'flynt'),
     'wrapper' => ['width' => 100],
   ],
   [

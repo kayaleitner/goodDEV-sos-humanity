@@ -40,6 +40,7 @@
   --font-security-block: normal normal 400 0.875rem/155% 'Source Sans Pro', sans-serif;
   --font-value-proposition: normal normal 400 1rem/135% 'Source Sans Pro', sans-serif;
   --font-nudge-text: normal normal 700 1.25rem/135% 'Caveat', sans-serif;
+  --font-phone-notice-text: normal normal 400 0.75rem/155% 'Source Sans Pro', sans-serif;
 
 
   /* Spacing (padding / gaps) */
@@ -55,6 +56,8 @@
   --payment-icon-creditcard: url("../Assets/paymethods/kreditcard.svg");
   --payment-icon-google-pay: url("../Assets/paymethods/google-pay.svg");
   --payment-icon-apple-pay: url("../Assets/paymethods/apple-pay.svg");
+  /* icons */
+  --icon-phone: url("../Assets/phone.svg");
 
   /* Transitions */
   --transition-duration: 0.2s;
