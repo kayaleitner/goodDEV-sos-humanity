@@ -52,6 +52,18 @@
         border-width: 0 3px 3px 0;
         transform: translateY(-60%) rotate(45deg);
       }
+      &.auto-receipt {
+        pointer-events: none;
+        + label {
+          pointer-events: none;
+          &:before {
+            width: 32px;
+            height: 32px;
+            pointer-events: none;
+            border-radius: 50%;
+          }
+        }
+      }
     }
   }
 }

@@ -15,7 +15,7 @@
           </div>
           {% if loop.index == item.amount_options | length %}
           <div class="amount-option custom-amount global-custom-amount">
-            <input autocomplete="off" min="3" max="50000" class="amount-input" name="donation_custom_amount_{{ interval_key }}"
+            <input autocomplete="off" min="3" max="50000" step="0.01" class="amount-input" name="donation_custom_amount_{{ interval_key }}"
                    type="number" value="" inputmode="decimal"
                    placeholder="{{ customAmountPlaceholder }}">
             <span class="currency-suffix">€</span>
@@ -24,10 +24,10 @@
         {% endfor %}
       </div>
     {% endfor %}
-
+  </div>
+  <div id="payment_amount_wrapper">
+    <input type="hidden" name="payment[amount]" id="payment_amount">
+    <div id="payment_amount_error" class="error error-text text-center"></div>
   </div>
 </div>
-<div class="error-wrapper text-center">
-  <span id="amount-error-text" class="error-text"></span>
-</div>
-<div id="payment_amount_wrapper" class="hidden"><label for="payment_amount">Betrag</label><input type="text" name="payment[amount]" id="payment_amount"><div id="payment_amount_error" class="error"></div></div>
+
