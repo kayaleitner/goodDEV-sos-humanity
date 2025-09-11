@@ -21,6 +21,14 @@
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.8"
   },
+  "scripts": {
+    "post-install-cmd": [
+      "composer install -d plugins/facebook-capi --no-dev --no-interaction --prefer-dist"
+    ],
+    "post-update-cmd": [
+      "@post-install-cmd"
+    ]
+  },
   "extra": {
     "installer-paths": {
       "vendor/{$vendor}/{$name}/": [

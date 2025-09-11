@@ -5,6 +5,25 @@ namespace Flynt;
 use Flynt\Utils\FileLoader;
 
 require_once __DIR__ . '/vendor/autoload.php';
+//require_once __DIR__ . '/plugins/facebook-capi/vendor/autoload.php';
+
+// functions.php im Theme
+add_action('after_setup_theme', function () {
+  $plugin_base = get_template_directory() . '/plugins/facebook-capi';
+
+  // Composer-Autoload des Plugins (falls es eigenen vendor nutzt)
+  $plugin_autoload = $plugin_base . '/vendor/autoload.php';
+  if (file_exists($plugin_autoload)) {
+    require_once $plugin_autoload;
+  }
+
+  // Hauptdatei/Bootstrap des Plugins laden – Namen ggf. anpassen
+  $plugin_main = $plugin_base . '/facebook-capi.php';
+  if (file_exists($plugin_main)) {
+    require_once $plugin_main;
+  }
+});
+
 
 if (!defined('WP_ENV')) {
     define('WP_ENV', function_exists('wp_get_environment_type') ? wp_get_environment_type() : 'production');
