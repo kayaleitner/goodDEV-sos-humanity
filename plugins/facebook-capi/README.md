@@ -36,6 +36,29 @@ A lightweight WordPress plugin that sends server-side events to Facebook’s Con
    This installs the SDK and generates `vendor/autoload.php` which the plugin will load automatically.
 3. Activate the plugin in WordPress Admin → Plugins.
 
+## Installation workaround without access to `wp-content/plugins`
+
+We set a symlink via composer post install script:
+
+```json
+{
+  "scripts": {
+    "post-install-cmd": [
+      "composer install -d plugins/facebook-capi --no-dev --no-interaction --prefer-dist",
+      "./scripts/postinstall.sh"
+    ],
+    "post-update-cmd": [
+      "@post-install-cmd"
+    ]
+  }
+}
+```
+
+For correct symlink installation you have to execute composer inside docker container, you can do it with:
+```shell
+docker run --rm -it -v "${HOME}/DevKinsta/public/soshumanity:/www/kinsta/public/soshumanity" -w /www/kinsta/public/soshumanity/wp-content/themes/boilerplate-flynt-next  composer install
+```
+
 ## Configuration
 Go to Settings → Facebook CAPI and fill in:
 - Access Token: Your Facebook System User Access Token

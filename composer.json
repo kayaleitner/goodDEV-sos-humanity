@@ -23,7 +23,8 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "composer install -d plugins/facebook-capi --no-dev --no-interaction --prefer-dist"
+      "composer install -d plugins/facebook-capi --no-dev --no-interaction --prefer-dist",
+      "./scripts/postinstall.sh"
     ],
     "post-update-cmd": [
       "@post-install-cmd"
