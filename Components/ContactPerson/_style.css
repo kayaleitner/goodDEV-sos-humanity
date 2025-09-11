@@ -1,12 +1,11 @@
 @layer components {
   [is="flynt-contact-person"] {
     background: white;
-    padding: 48px 0 66px;
+    padding: 48px 1rem 66px;
 
     .contactPerson__title {
       margin: 0 0 24px 0;
       font-weight: 900;
-      font-style: Black;
       font-size: 28px;
       line-height: 1.35;
       text-align: center;
@@ -25,7 +24,8 @@
     }
 
     .contactPerson__imageWrap {
-      width: 142px;
+      width: 74px;
+      padding: 0 5px;
     }
 
     .contactPerson__image {
@@ -40,7 +40,10 @@
       display: grid;
       row-gap: 4px;
       align-content: start;
-      line-height: 1.5;
+      line-height: 1.55;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -3%;
     }
 
     .contactPerson__name {
@@ -67,20 +70,25 @@
 }
 
 @media screen and (min-width: 768px) {
-  @layer components {
-    [is="flynt-contact-person"] {
-      .contactPerson__grid {
-        column-gap: 54px;
-      }
-      .contactPerson__title {
-        margin: 0 0 36px 0;
-        font-size: 36px;
-        line-height: 1.55;
-      }
-      .contactPerson__image {
-        width: 142px;
-        height: 142px;
-      }
+  [is="flynt-contact-person"] {
+    .contactPerson__grid {
+      column-gap: 54px;
+    }
+    .contactPerson__title {
+      margin: 0 0 36px 0;
+      font-size: 36px;
+      line-height: 1.55;
+    }
+    .contactPerson__imageWrap {
+      width: 172px;
+      padding: 0 15px;
+    }
+    .contactPerson__image {
+      width: 142px;
+      height: 142px;
+    }
+    .contactPerson__info {
+      font-size: 22px;
     }
   }
 }
