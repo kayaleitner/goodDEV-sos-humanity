@@ -1,0 +1,57 @@
+[is="flynt-share-options"] {
+  .share-options__container {
+    max-width: 770px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .share-options__heading {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Row 1: copy button centered */
+  .share-options__row--copy {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Row 2: grid for other networks */
+  .share-options__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .share-options__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .share-options__button {
+    appearance: none;
+    border: 0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .share-options__button--copy { background: #6b7280; }
+  .share-options__button--facebook { background: #1877f2; }
+  .share-options__button--whatsapp { background: #25d366; color: #111; }
+  .share-options__button--linkedin { background: #0a66c2; }
+  .share-options__button--email { background: var(--color-primary, #1c2445); }
+
+  .share-options__button:disabled { opacity: 0.7; cursor: default; }
+}
+
+

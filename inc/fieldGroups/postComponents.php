@@ -81,6 +81,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\WidgetPetition\getACFLayout(),
                     Components\ProgressDonation\getACFLayout(),
                     // Components\DonationSlider\getACFLayout(),
+                    Components\ShareOptions\getACFLayout(),
                 ],
             ],
         ],
