@@ -1,0 +1,67 @@
+<flynt-component
+        class="flyntComponent DonationNavigationFooterLinklist"
+        is="flynt-donation-navigation-footer-linklist"
+        name="DonationNavigationFooterLinklist"
+>
+  <div class="container">
+    <hr>
+    <div class="columns">
+      <div class="column donations">
+        <div class="preContent h5">
+          {{ donationsPreContent|e }}
+        </div>
+        <div class="content">
+          <p>
+            {{ donationsOrganisation }}
+          </p>
+          <p>
+            <span class="beforeCopyButton">IBAN: {{ donationsIBAN }}</span>
+            {% include 'Components/CopyButton/index.twig' with { 'text': "DE04 1005 0000 0190 4184 51", label: 'IBAN kopieren' } only %}
+          </p>
+          <p>
+            <span class="beforeCopyButton">BIC: {{ donationsBIC }}</span>
+            {% include 'Components/CopyButton/index.twig' with { 'text': "BELADEBEXXX", label: 'BIC kopieren' } only %}
+          </p>
+        </div>
+      </div>
+      <div class="column bankapp">
+        <div class="preContent h5">
+          {{ bankingAppPreContent|e }}
+        </div>
+        <div class="content">
+          <figure class="figure">
+            <img class="figure-banklogo lazyload"
+                 src="{{ bankingAppLogo.src | resize(32) }}"
+                 data-srcset="{{ function('wp_get_attachment_image_srcset', bankingAppLogo.id) }}"
+                 alt="{{ bankingAppLogo.alt|e }}">
+          </figure>
+        </div>
+      </div>
+      <div class="column partners">
+        {% if partnersPreContent %}
+          <div class="preContent h5">
+            {{ partnersPreContent|e }}
+          </div>
+          <div class="logos">
+            {% for panel in partnersPanels %}
+              <figure class="figure">
+                <img class="figure-logo lazyload"
+                     src="{{ panel.panelLogo.src | resize(32) }}"
+                     data-srcset="{{ function('wp_get_attachment_image_srcset', panel.panelLogo.id) }}"
+                     alt="{{ panel.panelLogo.alt|e }}">
+              </figure>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      <div class="column logo">
+        <img class="logo-image" src="{{ logo.src }}" alt="{{ logo.alt }}">
+        {% if aboutHtml %}
+          <div class="content">
+            {{ aboutHtml|wp_kses_custom }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</flynt-component>

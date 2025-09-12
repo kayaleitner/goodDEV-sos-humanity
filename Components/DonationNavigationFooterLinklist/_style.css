@@ -1,0 +1,151 @@
+[is='flynt-donation-navigation-footer-linklist'] {
+  background-color: var(--blue);
+
+  .container {
+    max-width: var(--maxWidthContainer_medium);
+    padding-inline: 1rem;
+
+    hr {
+      height: 2px;
+      background-color: var(--yellow);
+      margin: 0 0 28px;
+    }
+
+    .columns {
+      align-items: flex-start;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .column {
+      @media (max-width: 1023px) {
+        width: calc(50% - 1rem);
+      }
+
+      @media (max-width: 540px) {
+        padding-top: var(--padding_small);
+        width: 100%;
+
+        &:first-child {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  .logo-image {
+    margin-bottom: 20px;
+  }
+
+  .body-2 {
+    line-height: 1.5;
+  }
+
+  .logo {
+    display: block;
+    height: 100%;
+    width: 20%;
+
+    &-image {
+      height: 100%;
+      width: 154px;
+    }
+
+    .content {
+      .h2,
+      .h5 {
+        font-weight: normal;
+        font-size: 16px;
+        letter-spacing: 1%;
+      }
+    }
+  }
+
+  .preContent {
+    color: var(--yellow);
+    text-transform: uppercase;
+    margin: 0 0 0.625rem;
+    @screen md {margin: 0 0 1.5rem}
+  }
+
+  .figure-banklogo {
+    mix-blend-mode: color-dodge;
+    max-width: 140px;
+  }
+
+  .donations {
+    p {
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.6;
+      letter-spacing: 1%;
+      color: #fff;
+      .beforeCopyButton {
+        margin-bottom: 10px;
+        display: block;
+      }
+    }
+  }
+
+  .bankapp {
+    display:none;
+  }
+
+  .partners {
+    .logos {
+      display: flex;
+      flex-flow: column;
+
+      @media (max-width: 540px) {
+        flex-flow: row;
+        margin-top: var(--padding_small);
+      }
+
+      .figure {
+        padding-bottom: var(--padding_xsmall);
+
+        @media (max-width: 540px) {
+          &:not(:last-child) {
+            padding-right: var(--padding_large);
+          }
+        }
+
+        &-logo {
+          max-width: 10rem;
+
+          @media (max-width: 540px) {
+            max-width: 10rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 541px) {
+  [is='flynt-donation-navigation-footer-linklist'] {
+    .bankapp {
+      display: block;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  [is='flynt-donation-navigation-footer-linklist'] {
+    .container {
+      hr {
+        margin: 0 0 48px;
+      }
+    }
+    .logo {
+      .content {
+        .h2,
+        .h5 {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
