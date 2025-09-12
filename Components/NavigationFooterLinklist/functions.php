@@ -56,7 +56,7 @@ Options::addTranslatable('NavigationFooterLinklist', [
         'media_upload' => 0,
     ],
     [
-        'label' => __('Donations', 'flynt'),
+        'label' => __('Landing Page', 'flynt'),
         'name' => 'donationsTab',
         'type' => 'tab',
         'placement' => 'top',

@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Components\DonationNavigationFooter;
+namespace Flynt\Components\FooterLandingPageNavigation;
 
 use Flynt\Utils\Options;
 use Timber\Timber;
@@ -12,7 +12,7 @@ use function Flynt\Components\DonationLanguageSwitch\null;
 //    ]);
 //});
 
-add_filter('Flynt/addComponentData?name=DonationNavigationFooter', function ($data) {
+add_filter('Flynt/addComponentData?name=FooterLandingPageNavigation', function ($data) {
   $data['maxLevel'] = 0;
   $data['menu'] = Timber::get_menu('navigation_footer');
   $data['languages'] = get_languages();

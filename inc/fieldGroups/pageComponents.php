@@ -41,6 +41,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'layouts' => [
                     Components\BlockAnchor\getACFLayout(),
                     Components\HeroImageText\getACFLayout(),
+                    Components\HeroLandingPage\getACFLayout(),
                     Components\BlockHeroVideo\getACFLayout(),
                     Components\AccordionDefault\getACFLayout(),
                     Components\BlockFactSheet\getACFLayout(),
@@ -56,6 +57,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockWysiwyg\getACFLayout(),
                     Components\BlockWysiwygRepeater\getACFLayout(),
                     Components\CtaDonate\getACFLayout(),
+                    Components\ContactPerson\getACFLayout(),
+                    Components\DonationForm\getACFLayout(),
                     Components\ListNumbers\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
                     Components\SliderVoices\getACFLayout(),

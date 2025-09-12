@@ -1,17 +1,17 @@
 <?php
 
-namespace Flynt\Components\DonationNavigationFooterLinklist;
+namespace Flynt\Components\FooterNavigationLandingPageLinklist;
 
 use Flynt\ComponentManager;
 use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
 
-add_filter('Flynt/addComponentData?name=DonationNavigationFooterLinklist', function ($data) {
+add_filter('Flynt/addComponentData?name=FooterNavigationLandingPageLinklist', function ($data) {
   $componentManager = ComponentManager::getInstance();
-  $componentPathFull = $componentManager->getComponentDirPath('DonationNavigationFooterLinklist');
+  $componentPathFull = $componentManager->getComponentDirPath('FooterNavigationLandingPageLinklist');
   $componentPath = str_replace(trailingslashit(get_template_directory()), '', $componentPathFull);
 
-  // we use the "Translatables" from NavigationFooterLinklist so not overuse different Setting-Groups and optimize content maintenance
+  // we use the "Translatables" from FooterNavigationLandingPageLinklist so not overuse different Setting-Groups and optimize content maintenance
   $options = Options::getTranslatable('NavigationFooterLinklist') ?: [];
 
   $data['logo'] = [

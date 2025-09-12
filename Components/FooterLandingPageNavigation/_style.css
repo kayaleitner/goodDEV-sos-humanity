@@ -1,4 +1,4 @@
-.donationNavigationFooter {
+.footerLandingPageNavigation {
   background-color: var(--blue);
 
   .container {
@@ -141,7 +141,7 @@
 }
 
 @media screen and (min-width: 541px) {
-  .donationNavigationFooter {
+  .footerLandingPageNavigation {
     .navigation {
       .menu {
         align-items: flex-start;
@@ -154,7 +154,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .donationNavigationFooter {
+  .footerLandingPageNavigation {
     .navigation {
       .menu {
         flex-direction: row;
