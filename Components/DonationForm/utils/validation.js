@@ -10,7 +10,18 @@ export default function initDonationFormValidation(component, myForm) {
 
   const t = translationDict[['de', 'en', 'it'].includes(lang) ? lang : 'de']
 
-  // Add custom postcode-by-country validator
+  // Extend global jQuery Validate messages using our translation dict
+  if ($.validator && typeof $.validator.messages === 'object') {
+    $.extend($.validator.messages, {
+      email: t.email || 'Bitte eine gültige E-Mail-Adresse eingeben.',
+      min: t.min || 'Bitte einen Betrag größer oder gleich {0} eingeben.',
+      max: t.max || 'Bitte einen Betrag kleiner oder gleich {0} eingeben.',
+      number: t.number || 'Bitte eine gültige Zahl eingeben.',
+      digits: t.number || 'Bitte eine gültige Zahl eingeben.',
+      step: t.step || 'Bitte einen gültigen Betrag mit maximal 2 Nachkommastellen eingeben.',
+    })
+  }
+
   if ($.validator && typeof $.validator.addMethod === 'function') {
     $.validator.addMethod(
       'postcodeByCountry',
@@ -154,7 +165,7 @@ export default function initDonationFormValidation(component, myForm) {
       'payment[amount]': {
         required: t.amount.replace('{0}', amountMin),
         number: t.number,
-        min: t.min.replace('{0}', amountMin),
+        min: t.min,
       },
       'payment[payment_method]': { required: t.paymentMethod },
 

@@ -1,0 +1,45 @@
+<flynt-component
+  class="flyntComponent {{ options.theme }} share-options"
+  is="flynt-share-options"
+  name="ShareOptions"
+>
+  {% set enabled = enabled is defined ? enabled : ['copy','facebook','whatsapp','linkedin','email'] %}
+  <div class="share-options__container">
+    {% if preheading or labels.heading %}
+      <div class="share-options__heading">
+        {{ preheading ?: labels.heading }}
+      </div>
+    {% endif %}
+
+    {% if 'copy' in enabled %}
+      <div class="share-options__row share-options__row--copy">
+        <button class="share-options__button share-options__button--copy" type="button" data-share-url="{{ links.copy }}" data-label-copied="{{ labels.copied }}">
+          {{ labels.copyLink }}
+        </button>
+      </div>
+    {% endif %}
+
+    <div class="share-options__grid">
+      {% if 'facebook' in enabled %}
+        <a class="share-options__button share-options__button--facebook" href="{{ links.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="{{ labels.facebook ?? 'Facebook' }}">
+          {{ labels.facebook ?? 'Facebook' }}
+        </a>
+      {% endif %}
+      {% if 'whatsapp' in enabled %}
+        <a class="share-options__button share-options__button--whatsapp" href="{{ links.whatsapp }}" target="_blank" rel="noopener noreferrer" aria-label="{{ labels.whatsapp ?? 'WhatsApp' }}">
+          {{ labels.whatsapp ?? 'WhatsApp' }}
+        </a>
+      {% endif %}
+      {% if 'linkedin' in enabled %}
+        <a class="share-options__button share-options__button--linkedin" href="{{ links.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="{{ labels.linkedin ?? 'LinkedIn' }}">
+          {{ labels.linkedin ?? 'LinkedIn' }}
+        </a>
+      {% endif %}
+      {% if 'email' in enabled %}
+        <a class="share-options__button share-options__button--email" href="{{ links.email }}" aria-label="{{ labels.email }}">
+          {{ labels.email }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</flynt-component>
