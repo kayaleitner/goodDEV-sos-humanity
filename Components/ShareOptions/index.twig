@@ -14,7 +14,8 @@
     {% if 'copy' in enabled %}
       <div class="share-options__row share-options__row--copy">
         <button class="share-options__button share-options__button--copy" type="button" data-share-url="{{ links.copy }}" data-label-copied="{{ labels.copied }}">
-          {{ labels.copyLink }}
+          <span class="share-options__button__icon"></span>
+          <span class="share-options__button__label">{{ labels.copyLink }}</span>
         </button>
       </div>
     {% endif %}
@@ -22,22 +23,26 @@
     <div class="share-options__grid">
       {% if 'facebook' in enabled %}
         <a class="share-options__button share-options__button--facebook" href="{{ links.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="{{ labels.facebook ?? 'Facebook' }}">
-          {{ labels.facebook ?? 'Facebook' }}
+          <span class="share-options__button__icon"></span>
+          <span class="share-options__button__label">{{ labels.facebook ?? 'Facebook' }}</span>
         </a>
       {% endif %}
       {% if 'whatsapp' in enabled %}
         <a class="share-options__button share-options__button--whatsapp" href="{{ links.whatsapp }}" target="_blank" rel="noopener noreferrer" aria-label="{{ labels.whatsapp ?? 'WhatsApp' }}">
-          {{ labels.whatsapp ?? 'WhatsApp' }}
+          <span class="share-options__button__icon"></span>
+          <span class="share-options__button__label">{{ labels.whatsapp ?? 'WhatsApp' }}</span>
         </a>
       {% endif %}
       {% if 'linkedin' in enabled %}
         <a class="share-options__button share-options__button--linkedin" href="{{ links.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="{{ labels.linkedin ?? 'LinkedIn' }}">
-          {{ labels.linkedin ?? 'LinkedIn' }}
+          <span class="share-options__button__icon"></span>
+          <span class="share-options__button__label">{{ labels.linkedin ?? 'LinkedIn' }}</span>
         </a>
       {% endif %}
       {% if 'email' in enabled %}
         <a class="share-options__button share-options__button--email" href="{{ links.email }}" aria-label="{{ labels.email }}">
-          {{ labels.email }}
+          <span class="share-options__button__icon"></span>
+          <span class="share-options__button__label">{{ labels.email }}</span>
         </a>
       {% endif %}
     </div>

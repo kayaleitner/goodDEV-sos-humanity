@@ -26,10 +26,10 @@
       </div>
     </figure>
 
-    {% if text %}
+    {% if introtext %}
       <div class="heroLandingPage__textBox">
         <div class="heroLandingPage__textInner">
-          {{ text|wp_kses_custom }}
+          {{ introtext|wp_kses_custom }}
         </div>
       </div>
     {% endif %}

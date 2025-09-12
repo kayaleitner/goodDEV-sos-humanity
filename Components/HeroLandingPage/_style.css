@@ -56,8 +56,8 @@
     .heroLandingPage__textBox {
       width: 100%;
       max-width: none;
-      margin: 0 auto 64px auto;
-      padding: 40px var(--hero_paddingLR, var(--padding_small)) 64px;
+      margin: 0 auto 54px;
+      padding: 30px var(--hero_paddingLR, var(--padding_small)) 54px;
       background-color: var(--themeBrand_colorBackground, #ebeb00);
       color: var(--themeBrand_colorText, #fff);
       position: relative;

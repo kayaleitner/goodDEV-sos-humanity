@@ -1,28 +1,58 @@
 function initShareOptions(el) {
   const copyBtn = el.querySelector('.share-options__button--copy')
   if (copyBtn) {
-    copyBtn.addEventListener('click', async () => {
+    const labelEl = copyBtn.querySelector('.share-options__button__label')
+
+    let revertTimer = null
+
+    copyBtn.addEventListener('click', async (e) => {
+      e.preventDefault()
       const url = copyBtn.getAttribute('data-share-url') || window.location.href
-      try {
-        await navigator.clipboard.writeText(url)
-        const prev = copyBtn.textContent
-        const copied = copyBtn.getAttribute('data-label-copied') || 'Copied!'
-        copyBtn.textContent = copied
-        copyBtn.disabled = true
-        setTimeout(() => {
-          copyBtn.textContent = prev
-          copyBtn.disabled = false
-        }, 1500)
-      } catch (e) {
-        // Fallback
-        const input = document.createElement('input')
-        input.value = url
-        document.body.appendChild(input)
-        input.select()
-        document.execCommand('copy')
-        document.body.removeChild(input)
+
+      const copied = await copyToClipboard(url)
+
+      if (copied) {
+        copyBtn.classList.add('is-copied')
+        const copiedText = copyBtn.getAttribute('data-label-copied') || 'Copied'
+        copyBtn.setAttribute('data-copy-button-text', copiedText)
+        if (labelEl) {
+          labelEl.setAttribute('aria-live', 'polite')
+          labelEl.setAttribute('aria-atomic', 'true')
+        }
       }
+
+      clearTimeout(revertTimer)
+      revertTimer = setTimeout(() => {
+        copyBtn.classList.remove('is-copied')
+      }, 2000)
     })
+  }
+}
+
+async function copyToClipboard(text) {
+  try {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      await navigator.clipboard.writeText(text)
+      return true
+    }
+  } catch (e) {
+    // ignore and try fallback
+  }
+
+  // Fallback for older browsers
+  try {
+    const ta = document.createElement('textarea')
+    ta.value = text
+    ta.setAttribute('readonly', '')
+    ta.style.position = 'fixed'
+    ta.style.top = '-9999px'
+    document.body.appendChild(ta)
+    ta.select()
+    document.execCommand('copy')
+    document.body.removeChild(ta)
+    return true
+  } catch (e) {
+    return false
   }
 }
 

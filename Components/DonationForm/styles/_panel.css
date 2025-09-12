@@ -4,7 +4,7 @@
     border-radius: var(--border-radius);
     background-color: var(--color-default-background);
     position: relative;
-    padding: 32px 16px 40px;
+    padding: 25px 16px 40px;
     &__header {
       font: var(--font-panel-heading);
       text-align: center;

@@ -55,8 +55,8 @@ function getACFLayout(): array
                 'endpoint' => 0
             ],
             [
-                'label' => __('Text', 'flynt'),
-                'name' => 'text',
+                'label' => __('Intro-Text', 'flynt'),
+                'name' => 'introtext',
                 'type' => 'wysiwyg',
                 'instructions' => __('Optional text displayed below the image with brand color options.', 'flynt'),
                 'media_upload' => 0,
