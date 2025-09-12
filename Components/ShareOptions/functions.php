@@ -37,38 +37,21 @@ add_filter('Flynt/addComponentData?name=ShareOptions', function($data) {
   $opts = Options::getGlobal('ShareOptions') ?: [];
 
   // Prefer per-instance fields over global options
-  $shareUrl = $data['overrideShareUrl'] ?? ($opts['overrideShareUrl'] ?? '');
-  if (empty($shareUrl)) {
-    $shareUrl = $currentUrl;
-  }
+  $shareUrl = $data['localShareSettings']['overrideShareUrl'] ?? ($opts['localShareSettings']['overrideShareUrl'] ?? $currentUrl);
 
-  $emailSubject = $data['emailSubject'] ?? ($opts['emailSubject'] ?? sprintf(__('Schau dir das an: %s', 'flynt'), $pageTitle));
-  $emailBody = $data['emailBody'] ?? ($opts['emailBody'] ?? sprintf(__('Ich wollte das mit dir teilen: %s', 'flynt'), $shareUrl));
+  $emailSubject = $data['localShareSettings']['emailSubject'] ?? ($opts['localShareSettings']['emailSubject'] ?? $pageTitle);
+  $emailBody = $data['localShareSettings']['emailBody'] ?? ($opts['localShareSettings']['emailBody'] ?? $shareUrl);
 
   $encodedUrl = rawurlencode($shareUrl);
   $encodedTitle = rawurlencode($pageTitle);
 
   // Per-network optional overrides (prefer per-instance over global)
-  $copyUrlOverride = $data['copyUrl'] ?? ($opts['copyUrl'] ?? '');
-  $facebookUrlOverride = $data['facebookUrl'] ?? ($opts['facebookUrl'] ?? '');
-  $whatsappUrlOverride = $data['whatsappUrl'] ?? ($opts['whatsappUrl'] ?? '');
-  $linkedinUrlOverride = $data['linkedinUrl'] ?? ($opts['linkedinUrl'] ?? '');
-  $emailUrlOverride = $data['emailUrl'] ?? ($opts['emailUrl'] ?? '');
-
   $links = [];
-  $links['copy'] = !empty($copyUrlOverride) ? $copyUrlOverride : $shareUrl;
-  $links['facebook'] = !empty($facebookUrlOverride)
-    ? $facebookUrlOverride
-    : "https://www.facebook.com/sharer/sharer.php?u={$encodedUrl}";
-  $links['whatsapp'] = !empty($whatsappUrlOverride)
-    ? $whatsappUrlOverride
-    : "https://api.whatsapp.com/send?text={$encodedTitle}%20{$encodedUrl}";
-  $links['linkedin'] = !empty($linkedinUrlOverride)
-    ? $linkedinUrlOverride
-    : "https://www.linkedin.com/sharing/share-offsite/?url={$encodedUrl}";
-  $links['email'] = !empty($emailUrlOverride)
-    ? $emailUrlOverride
-    : ('mailto:?subject=' . rawurlencode($emailSubject) . '&body=' . rawurlencode($emailBody));
+  $links['copy'] = $shareUrl;
+  $links['facebook'] = "https://www.facebook.com/sharer/sharer.php?u={$encodedUrl}";
+  $links['whatsapp'] = "https://api.whatsapp.com/send?text={$encodedTitle}%20{$encodedUrl}";
+  $links['linkedin'] = "https://www.linkedin.com/sharing/share-offsite/?url={$encodedUrl}";
+  $links['email'] = ('mailto:?subject=' . rawurlencode($emailSubject) . '&body=' . rawurlencode($emailBody));
 
   $data['links'] = $links;
 
