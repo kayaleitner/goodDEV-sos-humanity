@@ -16,11 +16,11 @@
           </p>
           <p>
             <span class="beforeCopyButton">IBAN: {{ donationsIBAN }}</span>
-            {% include 'Components/CopyButton/index.twig' with { 'text': "DE04 1005 0000 0190 4184 51", label: 'IBAN kopieren' } only %}
+            {% include 'Components/CopyButton/index.twig' with { 'text': "DE04 1005 0000 0190 4184 51", label: copyIBAN } only %}
           </p>
           <p>
             <span class="beforeCopyButton">BIC: {{ donationsBIC }}</span>
-            {% include 'Components/CopyButton/index.twig' with { 'text': "BELADEBEXXX", label: 'BIC kopieren' } only %}
+            {% include 'Components/CopyButton/index.twig' with { 'text': "BELADEBEXXX", label: copyBIC } only %}
           </p>
         </div>
       </div>
