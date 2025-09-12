@@ -20,6 +20,8 @@
     }
 
     .column {
+      text-align: center;
+      margin: 5px 0 0;
       @media (max-width: 1023px) {
         width: calc(50% - 1rem);
       }
@@ -51,6 +53,7 @@
     &-image {
       height: 100%;
       width: 154px;
+      display: inline-block;
     }
 
     .content {
@@ -67,6 +70,8 @@
     color: var(--yellow);
     text-transform: uppercase;
     margin: 0 0 0.625rem;
+    font-size: 18px;
+    letter-spacing: 2%;
     @screen md {margin: 0 0 1.5rem}
   }
 
@@ -97,28 +102,15 @@
     .logos {
       display: flex;
       flex-flow: column;
-
-      @media (max-width: 540px) {
-        flex-flow: row;
-        margin-top: var(--padding_small);
-      }
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 24px;
 
       .figure {
         padding-bottom: var(--padding_xsmall);
-
-        @media (max-width: 540px) {
-          &:not(:last-child) {
-            padding-right: var(--padding_large);
-          }
-        }
-
-        &-logo {
-          max-width: 10rem;
-
-          @media (max-width: 540px) {
-            max-width: 10rem;
-          }
-        }
+        width: 100%;
+        max-width: 150px;
       }
     }
   }
@@ -126,8 +118,19 @@
 
 @media screen and (min-width: 541px) {
   [is='flynt-donation-navigation-footer-linklist'] {
+    .container {
+      .column {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+    }
     .bankapp {
       display: block;
+    }
+    .partners {
+      .logos {
+        align-items: flex-start;
+      }
     }
   }
 }
@@ -145,6 +148,16 @@
         .h5 {
           font-size: 17px;
         }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  [is='flynt-donation-navigation-footer-linklist'] {
+    .container {
+      .column {
+        margin: 0;
       }
     }
   }

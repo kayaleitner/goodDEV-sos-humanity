@@ -11,6 +11,7 @@ add_filter('Flynt/addComponentData?name=DonationNavigationFooterLinklist', funct
   $componentPathFull = $componentManager->getComponentDirPath('DonationNavigationFooterLinklist');
   $componentPath = str_replace(trailingslashit(get_template_directory()), '', $componentPathFull);
 
+  // we use the "Translatables" from NavigationFooterLinklist so not overuse different Setting-Groups and optimize content maintenance
   $options = Options::getTranslatable('NavigationFooterLinklist') ?: [];
 
   $data['logo'] = [

@@ -1,11 +1,8 @@
-.footer {
-    &__actions {
-        background-color: var(--blue);
-        &__inner {
-            @apply h-full mx-auto px-4 flex items-center gap-6;
-            max-width: var(--maxWidthContainer_wide);
-            text-align: right;
-            justify-content: flex-end;
+.footer.footer-infovisual {
+    .wave-container {
+        padding-top: 15%;
+        .background {
+            height: 35%;
         }
     }
 }

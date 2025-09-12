@@ -90,6 +90,16 @@ Options::addTranslatable('NavigationFooterLinklist', [
       'type' => 'text',
     ],
     [
+      'label' => __('Copy IBAN', 'flynt'),
+      'name' => 'copyIBAN',
+      'type' => 'text',
+    ],
+    [
+      'label' => __('Copy BIC', 'flynt'),
+      'name' => 'copyBIC',
+      'type' => 'text',
+    ],
+    [
         'label' => __('Partners', 'flynt'),
         'name' => 'partnersTab',
         'type' => 'tab',
