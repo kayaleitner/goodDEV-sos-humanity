@@ -1,5 +1,4 @@
 [is="flynt-donation-form"] {
-  .donationForm__interval_wrapper { @apply flex flex-row gap-3 justify-center; }
   .amount-group-wrapper {
     @apply grid grid-cols-3 gap-4;
   }
@@ -33,7 +32,6 @@
         border-color: var(--color-primary);
       }
       &:focus-visible {
-        outline: var(--outline);
         filter: var(--filter-brightness);
       }
     }
@@ -46,7 +44,6 @@
       }
       &:focus-visible {
         + .amount-label {
-          outline: var(--outline);
           filter: var(--filter-brightness);
         }
       }
