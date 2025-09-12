@@ -76,7 +76,7 @@ add_filter('Flynt/addComponentData?name=ShareOptions', function($data) {
   $data['links'] = apply_filters('Flynt/ShareOptions/links', $data['links'], $data);
 
   // Enable/disable networks (prefer per-instance over global; fallback to default)
-  $enabled = $data['enabledNetworks'] ?? ($opts['enabledNetworks'] ?? [
+  $enabled = $data['localShareSettings']['enabledNetworks'] ?? ($opts['localShareSettings']['enabledNetworks'] ?? [
     'copy',
     'facebook',
     'whatsapp',
@@ -110,36 +110,6 @@ function getACFLayout() {
             'name' => 'overrideShareUrl',
             'type' => 'url',
             'instructions' => __('Optional. Wenn leer, wird die globale Option oder die aktuelle Seite verwendet.', 'flynt'),
-          ],
-          [
-            'label' => __('Optional: Link für "Link kopieren"', 'flynt'),
-            'name' => 'copyUrl',
-            'type' => 'url',
-            'instructions' => __('Wenn leer, wird die (lokale oder globale) Share URL verwendet.', 'flynt'),
-          ],
-          [
-            'label' => __('Optional: Facebook Link', 'flynt'),
-            'name' => 'facebookUrl',
-            'type' => 'url',
-            'instructions' => __('Wenn leer, wird der Standard-Facebook-Share-Link verwendet.', 'flynt'),
-          ],
-          [
-            'label' => __('Optional: WhatsApp Link', 'flynt'),
-            'name' => 'whatsappUrl',
-            'type' => 'url',
-            'instructions' => __('Wenn leer, wird der Standard-WhatsApp-Share-Link verwendet.', 'flynt'),
-          ],
-          [
-            'label' => __('Optional: LinkedIn Link', 'flynt'),
-            'name' => 'linkedinUrl',
-            'type' => 'url',
-            'instructions' => __('Wenn leer, wird der Standard-LinkedIn-Share-Link verwendet.', 'flynt'),
-          ],
-          [
-            'label' => __('Optional: E‑Mail Link', 'flynt'),
-            'name' => 'emailUrl',
-            'type' => 'url',
-            'instructions' => __('Wenn gesetzt, wird dieser Link verwendet und Betreff/Text-Felder ignoriert.', 'flynt'),
           ],
           [
             'label' => __('Aktive Netzwerke', 'flynt'),
