@@ -1,4 +1,4 @@
-[is='flynt-donation-navigation-footer-linklist'] {
+[is='flynt-footer-navigation-landing-page-linklist'] {
   background-color: var(--blue);
 
   .container {
@@ -117,7 +117,7 @@
 }
 
 @media screen and (min-width: 541px) {
-  [is='flynt-donation-navigation-footer-linklist'] {
+  [is='flynt-footer-navigation-landing-page-linklist'] {
     .container {
       .column {
         margin-bottom: 20px;
@@ -136,7 +136,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  [is='flynt-donation-navigation-footer-linklist'] {
+  [is='flynt-footer-navigation-landing-page-linklist'] {
     .container {
       hr {
         margin: 0 0 48px;
@@ -154,7 +154,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  [is='flynt-donation-navigation-footer-linklist'] {
+  [is='flynt-footer-navigation-landing-page-linklist'] {
     .container {
       .column {
         margin: 0;

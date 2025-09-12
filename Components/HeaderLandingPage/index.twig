@@ -1,0 +1,19 @@
+<div class="headerLandingPage__wrapper">
+  <div class="headerLandingPage__container">
+    <a class="headerLandingPage__logo" href="{{ site.link }}">
+      {% if logo.src %}
+        <img class="headerLandingPage__image" src="{{ logo.src }}" alt="{{ logo.alt }}">
+      {% else %}
+        <span class="headerLandingPage__siteTitle">{{ site.title }}</span>
+      {% endif %}
+    </a>
+    <div class="headerLandingPage__content">
+      {% if title %}
+        <h2 class="headerLandingPage__title">{{ title }}</h2>
+      {% endif %}
+      {% if subtitle %}
+        <p class="headerLandingPage__subtitle">{{ subtitle }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>

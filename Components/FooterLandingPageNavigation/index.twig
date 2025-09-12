@@ -1,4 +1,4 @@
-<flynt-component class="flyntComponent donationNavigationFooter" is="flynt-donation-navigation-footer">
+<flynt-component class="flyntComponent footerLandingPageNavigation" is="flynt-footer-landing-page-navigation">
   <div class="container">
     <div class="container-left md:pr-12 md:mr-0">
       {% if menu %}
@@ -7,10 +7,10 @@
         </nav>
       {% endif %}
       {% if languages %}
-        <div class="donationNavigationFooter__languages">
+        <div class="footerLandingPageNavigation__languages">
           {% for lang in languages %}
-            <a href="{{ lang.url }}" class="donationNavigationFooter__languages__link {{ lang.current ? "donationNavigationFooter__languages__link--active" : "" }}">
-              <span class="donationLanguageSwitch__name">{{ lang.name }}</span>
+            <a href="{{ lang.url }}" class="footerLandingPageNavigation__languages__link {{ lang.current ? "footerLandingPageNavigation__languages__link--active" : "" }}">
+              <span class="footerLandingPageNavigation__name">{{ lang.name }}</span>
             </a>
           {% endfor %}
         </div>

@@ -20,13 +20,13 @@
         {% if not footerVariant %}
           {% set footerVariant = function('get_field', 'footer_variant_default', 'option') ?: 'default' %}
         {% endif %}
-        <header class="{{ headerVariant == 'landing_page' ? 'donationHeader' : 'mainHeader headerVariant top-0 left-0 z-[9999] w-full h-0 absolute' }}">
+        <header class="{{ headerVariant == 'landing_page' ? 'headerLandingPage' : 'mainHeader headerVariant top-0 left-0 z-[9999] w-full h-0 absolute' }}">
          <a href="#mainContent" class="visuallyHidden visuallyHidden-focusable">
           {{- theme.labels.skipToMainContent|e -}}
         </a>
           {% block header %}
             {% if headerVariant == 'landing_page' %}
-              {{ renderComponent('DonationHeader') }}
+              {{ renderComponent('HeaderLandingPage') }}
             {% else %}
               {{ renderComponent('NavigationPreNav') }}
               {{ renderComponent('NavigationMain') }}
@@ -49,9 +49,9 @@
         <footer class="mainFooter">
           {% block footer %}
             {% if footerVariant == 'landing_page' %}
-              {{ renderComponent('DonationFooter') }}
-              {{ renderComponent('DonationNavigationFooterLinklist') }}
-              {{ renderComponent('NavigationFooter') }}
+              {{ renderComponent('FooterLandingPage') }}
+              {{ renderComponent('FooterNavigationLandingPageLinklist') }}
+              {{ renderComponent('FooterLandingPageNavigation') }}
             {% else %}
               {{ renderComponent('NavigationFooterColumns') }}
               {{ renderComponent('NavigationFooterLinklist') }}

@@ -1,10 +1,10 @@
 <?php
 
-namespace Flynt\Components\DonationHeader;
+namespace Flynt\Components\HeaderLandingPage;
 
 use Flynt\Utils\Asset;
 
-add_filter('Flynt/addComponentData?name=DonationHeader', function ($data) {
+add_filter('Flynt/addComponentData?name=HeaderLandingPage', function ($data) {
     $data['logo'] = [
         'src' => get_theme_mod('custom_logo') ? wp_get_attachment_image_url(get_theme_mod('custom_logo')) : Asset::requireUrl('assets/images/logo.svg'),
         'alt' => get_bloginfo('name')
@@ -16,8 +16,8 @@ add_filter('Flynt/addComponentData?name=DonationHeader', function ($data) {
 function getACFLayout(): array
 {
     return [
-        'name' => 'DonationHeader',
-        'label' => 'Donation Header',
+        'name' => 'HeaderLandingPage',
+        'label' => ' Header Landing Page',
         'sub_fields' => [
             [
                 'label' => __('Title', 'flynt'),

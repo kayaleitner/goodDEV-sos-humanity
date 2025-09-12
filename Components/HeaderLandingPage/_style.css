@@ -1,6 +1,6 @@
 @layer components {
   /* Block: Donation Header */
-  .donationHeader {
+  .headerLandingPage {
     @apply top-0 left-0 z-[9999] w-full;
     position: absolute;
     color: var(--white);
@@ -50,7 +50,7 @@
 
 @media screen and (min-width: 768px) {
   /* Block: Donation Header */
-  .donationHeader {
+  .headerLandingPage {
     &__logo {
       margin-top: 50px;
     }
