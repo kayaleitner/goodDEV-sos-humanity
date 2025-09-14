@@ -1,5 +1,6 @@
 @layer components {
   .flyntComponent.HeroLandingPage {
+    margin-bottom: 54px;
     .heroLandingPage__figure {
       position: relative;
       margin: 0;
@@ -50,14 +51,13 @@
       font-size: 20px;
       line-height: 120%;
       text-align: center;
-      letter-spacing: 1%;
+      letter-spacing: 0.01em;
     }
 
     .heroLandingPage__textBox {
       width: 100%;
       max-width: none;
-      margin: 0 auto 54px;
-      padding: 30px var(--hero_paddingLR, var(--padding_small)) 54px;
+      padding: 30px 16px 48px;
       background-color: var(--themeBrand_colorBackground, #ebeb00);
       color: var(--themeBrand_colorText, #fff);
       position: relative;
@@ -87,7 +87,12 @@
       margin-left: auto;
       margin-right: auto;
       a { color: inherit; text-decoration: underline; }
-      p { margin: 0 0 0.9rem 0; }
+      p {
+        margin: 0 0 0.9rem 0;
+        &:last-child {
+          margin: 0;
+        }
+      }
       h1, h2, h3 { margin: 0 0 .5rem 0; line-height: 1.2; }
       ul { margin: 0 0 .9rem 1.1rem; }
       :last-child { margin-bottom: 0; }
@@ -124,6 +129,9 @@
         font-size: 52px;
         line-height: 74px;
         padding: 0 13px;
+      }
+      .heroLandingPage__textBox {
+        padding: 30px var(--hero_paddingLR, var(--padding_small)) 54px;
       }
     }
 }

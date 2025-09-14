@@ -144,13 +144,12 @@
   .error-text, .error {
     color: var(--color-error);
     font-size: var(--font-size-sm);
-    margin-top: 0.25rem;
     display: block;
   }
 
   .phoneNoticeText {
     position: absolute;
-    bottom: 110%;
+    top: 110%;
     display: none;
     visibility: hidden;
     opacity: 0;

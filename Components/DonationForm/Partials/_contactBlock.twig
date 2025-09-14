@@ -37,7 +37,7 @@
   </div>
   <div id="payment_phone_wrapper" class="form-item floating-label">
     <label for="payment_phone">{{ phoneLabel }}</label>
-    <input maxlength="50" type="text" name="payment[phone]" id="payment_phone">
+    <input maxlength="50" type="tel" name="payment[phone]" id="payment_phone">
     <div id="payment_phone_error" class="error error-text"></div>
     {% if phoneNoticeText %}
       <div class="phoneNoticeText">
@@ -51,9 +51,12 @@
   <span class="switch__slider" aria-hidden="true"></span>
   <span class="switch__label" data-auto-receipt="{{ labelWantsAutoReceipt }}" data-checked="{{ labelPrivateDonation }}">{{ labelCompanyDonation }}</span>
 </label>
-<div id="payment_wants_receipt_wrapper" class="form-item styled__checkbox my-2 ml-2">
-  <input type="checkbox" name="receipt" id="payment_wants_receipt" value="receipt_end_of_year">
-  <label for="payment_wants_receipt" data-default-label="{{ labelWantsReceipt }}" data-auto-receipt="{{ labelWantsAutoReceipt }}">{{ labelWantsReceipt }}</label>
+<div id="payment_wants_receipt_wrapper" class="form-item">
+  <label for="payment_wants_receipt" data-default-label="{{ labelWantsReceipt }}"  data-auto-receipt="{{ labelWantsAutoReceipt }}" class="switch my-4 ml-2">
+    <input type="checkbox" name="receipt" id="payment_wants_receipt" value="receipt_end_of_year">
+    <span class="switch__slider" aria-hidden="true"></span>
+    <span class="receipt switch__label">{{ labelWantsReceipt }}</span>
+  </label>
   <input type="hidden" value="no_receipt" name="payment[wants_receipt]" id="hiddenreceipt"/>
   <div id="payment_wants_receipt_error" class="error error-text"></div>
 </div>

@@ -57,8 +57,14 @@
   --payment-icon-creditcard: url("../Assets/paymethods/kreditcard.svg");
   --payment-icon-google-pay: url("../Assets/paymethods/google-pay.svg");
   --payment-icon-apple-pay: url("../Assets/paymethods/apple-pay.svg");
+
+  /* nudge icons */
+  --arrow-nudge-icon-mobile: url("../Assets/arrow-mobile.svg");
+  --arrow-nudge-icon-desktop: url("../Assets/arrow-desktop.svg");
+
   /* icons */
   --icon-phone: url("../Assets/phone.svg");
+  --icon-checkmark: url("../Assets/checkmark.svg");
 
   /* Transitions */
   --transition-duration: 0.2s;
@@ -70,10 +76,6 @@
   /* errors icons */
   --succes-icon: url("../Assets/validate/success.svg");
   --error-icon: url("../Assets/validate/error.svg");
-
-  /* nudge icons */
-  --arrow-nudge-icon-mobile: url("../Assets/arrow-mobile.svg");
-  --arrow-nudge-icon-desktop: url("../Assets/arrow-desktop.svg");
 
   /* button */
   --font-button: normal normal 700 1.375rem/130% 'Source Sans Pro', sans-serif;

@@ -177,6 +177,13 @@ export default function initDonationFormValidation(component, myForm) {
         required: t.street,
         maxlength: t.maxlength.replace('{0}', 300),
       },
+      'street': {
+        required: t.street,
+        maxlength: t.maxlength.replace('{0}', 300),
+      },
+      'houseNumber': {
+        required: t.houseNumber,
+      },
       'payment[post_code]': {
         required: t.postalCode,
         maxlength: t.maxlength.replace('{0}', 100),

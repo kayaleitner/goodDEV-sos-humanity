@@ -3,88 +3,121 @@ import setMandatory from './setMandatory'
 
 export default function initAddressSection(component) {
   const $root = $(component)
+  const internalToggle = false
 
-  function updateTexts() {
-    const $companySwitchLabel = $root.find('.company .switch__label')
-    const $receiptLabel = $root.find('#payment_wants_receipt_wrapper label[for="payment_wants_receipt"]')
-    const donateAsCompany = $root.find('#donate-as-company').is(':checked')
+  /**
+   * Update the receipt checkbox UI: labels and auto-receipt classes
+   */
+  function updateReceiptUI() {
+    const $receipt = $root.find('input#payment_wants_receipt')
+    const $receiptWrapper = $root.find('[for="payment_wants_receipt"]')
+    const $receiptLabel = $receiptWrapper.find('span.receipt.switch__label')
+    const $company = $root.find('#donate-as-company')
+    if (!$receipt.length || !$receiptLabel.length || !$company.length) return
 
-    // Update the company switch label text: show company text by default, and when checked show the private text
-    if ($companySwitchLabel.length) {
-      const privateText = $companySwitchLabel.data('checked')
-      let companyText = $companySwitchLabel.data('default')
-      if (!companyText) {
-        companyText = $companySwitchLabel.text().trim()
-        $companySwitchLabel.data('default', companyText)
-      }
-      $companySwitchLabel.text(donateAsCompany ? privateText : companyText)
+    const autoClass = 'auto-receipt'
+    const defaultLabel = $receiptLabel.data('default-label') || 'Ja, ich möchte eine Jahresspendenbescheinigung erhalten.'
+    const autoLabel = $receiptLabel.data('auto-receipt') || 'Die Spendenbescheinigung wird automatisch zugeschickt.'
+
+    if ($company.is(':checked')) {
+      if (!$receipt.is(':checked')) $receipt.prop('checked', true)
+      $receipt.addClass(autoClass)
+      $receiptLabel.addClass(autoClass)
+      $receiptWrapper.addClass(autoClass)
+      syncReceiptHidden()
+    } else {
+      // Reset receipt when company is unchecked
+      $receipt.prop('checked', false)
+      $receipt.removeClass(autoClass)
+      $receiptLabel.removeClass(autoClass)
+      $receiptWrapper.removeClass(autoClass)
+      syncReceiptHidden()
     }
 
-    // Update receipt label text depending on auto-receipt state
-    if ($receiptLabel.length) {
-      const defaultLabel = $receiptLabel.data('default-label')
-      const autoReceipt = $receiptLabel.data('auto-receipt')
-      const isAuto = $root.find('#payment_wants_receipt').hasClass('auto-receipt')
-      $receiptLabel.text(isAuto ? autoReceipt : defaultLabel)
-    }
+    // Update receipt label text
+    $receiptLabel.text($receipt.hasClass(autoClass) ? autoLabel : defaultLabel)
   }
 
+  /**
+   * Update the company switch label text
+   * Currently not executed automatically; optional execution with active=true
+   */
+  function updateCompanyLabel(active = false) {
+    if (!active) return
+    const $company = $root.find('#donate-as-company')
+    const $companyLabel = $root.find('.company .switch__label')
+    if (!$company.length || !$companyLabel.length) return
+
+    const checkedTxt = $companyLabel.data('checked') || "Ich möchte doch als Privatperson spenden"
+    const uncheckedTxt = $companyLabel.data('default') || "Ich möchte als Unternehmen spenden"
+    $companyLabel.text($company.is(':checked') ? checkedTxt : uncheckedTxt)
+  }
+
+  /**
+   * Update hidden input for receipt
+   */
   function syncReceiptHidden() {
-    const $ui = $root.find('#payment_wants_receipt')
+    const $ui = $root.find('input#payment_wants_receipt')
     const $hidden = $root.find('#hiddenreceipt')
     if ($ui.length && $hidden.length) {
       $hidden.val($ui.is(':checked') ? 'receipt_end_of_year' : 'no_receipt')
     }
   }
 
-  function toggleAddressSection() {
+  /**
+   * Toggle visibility of company fields
+   */
+  function toggleCompanySection() {
+    if (internalToggle) return
     const donateAsCompany = $root.find('#donate-as-company').is(':checked')
-    const $receipt = $root.find('#payment_wants_receipt')
-
-    const $addressWrapper = $root.find('.payment-address-data')
     const $companyWrapper = $root.find('.payment-company-name')
 
-    // Business rule:
-    // - If donating as a company: force wants_receipt checked and mark as auto-receipt
-    // - If not donating as a company: do not force, just remove auto-receipt and keep user choice
     if (donateAsCompany) {
-      if (!$receipt.is(':checked')) {
-        $receipt.prop('checked', true).addClass('auto-receipt').trigger('change')
-      } else {
-        $receipt.addClass('auto-receipt')
-      }
-    } else {
-      // allow user to choose when donating as a private person
-      $receipt.removeClass('auto-receipt')
-    }
-
-    const showAddress = donateAsCompany || $receipt.is(':checked')
-
-    if (showAddress) {
-      $addressWrapper.stop(true, true).slideDown(400, () => setMandatory($addressWrapper, true))
-    } else {
-      $addressWrapper.stop(true, true).slideUp(400, () => setMandatory($addressWrapper, false))
-    }
-
-    if (donateAsCompany) {
-      $companyWrapper.stop(true, true).slideDown(400, () => setMandatory($companyWrapper, donateAsCompany))
+      $companyWrapper.stop(true, true).slideDown(400, () => setMandatory($companyWrapper, true))
     } else {
       $companyWrapper.stop(true, true).slideUp(400, () => setMandatory($companyWrapper, false))
     }
   }
 
-  function initOnce() {
-    // Initialize according to the current company switch state
-    toggleAddressSection()
-    syncReceiptHidden()
-    updateTexts()
+  /**
+   * Toggle visibility of address fields
+   */
+  function toggleAddressSection() {
+    if (internalToggle) return
+    const $receipt = $root.find('input#payment_wants_receipt')
+    const $addressWrapper = $root.find('.payment-address-data')
+
+    // Show address if receipt is checked
+    const showAddress = $receipt.is(':checked')
+    if (showAddress) {
+      $addressWrapper.stop(true, true).slideDown(400, () => setMandatory($addressWrapper, true))
+    } else {
+      $addressWrapper.stop(true, true).slideUp(400, () => setMandatory($addressWrapper, false))
+    }
   }
 
-  // change listeners
-  $root.on('change', '[name="donate_as_company"], #payment_wants_receipt', () => {
+  /**
+   * Initialize UI once
+   */
+  function initOnce() {
+    updateReceiptUI()
+    toggleCompanySection()
+    toggleAddressSection()
+    syncReceiptHidden()
+    // updateCompanyLabel() bleibt aktuell inaktiv
+  }
+
+  // Listen to changes on company and receipt checkboxes
+  $root.on('change', '#donate-as-company', () => {
+    updateReceiptUI()
+    updateCompanyLabel()
+    toggleCompanySection()
+    toggleAddressSection()
+  })
+
+  $root.on('change', '#payment_wants_receipt', () => {
     syncReceiptHidden()
     toggleAddressSection()
-    updateTexts()
   })
 
   return { syncReceiptHidden, toggleAddressSection, initOnce }

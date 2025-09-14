@@ -1,7 +1,7 @@
 [is="flynt-donation-form"] {
   .switch {
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.75rem;
     cursor: pointer;
     user-select: none;
@@ -20,8 +20,8 @@
 
     &__slider {
       position: relative;
-      width: 44px;
-      height: 26px;
+      width: 52px;
+      height: 32px;
       border: 2px solid var(--color-primary);
       background: #fff;
       border-radius: 999px;
@@ -34,8 +34,8 @@
       position: absolute;
       top: 50%;
       left: 4px;
-      width: 18px;
-      height: 18px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: var(--color-primary);
       transform: translateY(-50%);
@@ -47,18 +47,31 @@
       background: var(--color-primary);
     }
     input[type="checkbox"]:checked + .switch__slider::after {
-      left: calc(100% - 22px);
+      left: calc(100% - 25px);
       background: #fff;
     }
-
-    /*input[type="checkbox"]:focus + .switch__slider {*/
-    /*  outline: var(--outline);*/
-    /*  outline-offset: var(--outline-offset);*/
-    /*}*/
 
     input[type="checkbox"]:disabled + .switch__slider {
       opacity: 0.6;
       cursor: not-allowed;
+    }
+    &.auto-receipt {
+      pointer-events: none;
+      cursor: default;
+      gap: 2rem;
+      input[type="checkbox"]:checked + .switch__slider {
+        border-radius: 50%;
+        background: var(--color-primary);
+        background-image: var(--icon-checkmark);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        height: 32px;
+        width: 32px;
+        &::after {
+          display: none;
+        }
+      }
     }
   }
 }
