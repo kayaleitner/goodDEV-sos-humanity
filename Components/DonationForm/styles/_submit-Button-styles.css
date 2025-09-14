@@ -10,7 +10,7 @@
     font: var(--font-button);
     letter-spacing: var(--letter-spacing);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform var(--transition-duration) var(--transition-timing-function), box-shadow var(--transition-duration) var(--transition-timing-function);
     min-height: 60px;
     cursor: pointer;
   }
@@ -29,7 +29,7 @@
     background-size: contain;
     background-position: center;
     display: inline-block;
-    animation: heart-pulse-origin 2.3s ease-in-out infinite;
+    animation: heart-pulse-origin 1.8s ease infinite;
     filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
   }
   #donation-submit-btn[disabled] {

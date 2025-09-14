@@ -26,7 +26,7 @@ export default function initAddressSection(component) {
       $receiptWrapper.addClass(autoClass)
       syncReceiptHidden()
     } else {
-      // Reset receipt when company is unchecked
+      // Reset receipt when the company is unchecked
       $receipt.prop('checked', false)
       $receipt.removeClass(autoClass)
       $receiptLabel.removeClass(autoClass)
@@ -61,6 +61,18 @@ export default function initAddressSection(component) {
     const $hidden = $root.find('#hiddenreceipt')
     if ($ui.length && $hidden.length) {
       $hidden.val($ui.is(':checked') ? 'receipt_end_of_year' : 'no_receipt')
+    }
+  }
+
+  /**
+   * Update hidden input for address
+   */
+  function syncAddressHiddenField() {
+    const $street = $root.find('input[name="street"]')
+    const $houseNumber = $root.find('input[name="houseNumber"]')
+    const $hiddenAddress = $root.find('input[name="payment[address]"]')
+    if ($street.length && $houseNumber.length) {
+      $hiddenAddress.val(`${$street.val()} ${$houseNumber.val()}`)
     }
   }
 
@@ -104,6 +116,7 @@ export default function initAddressSection(component) {
     toggleCompanySection()
     toggleAddressSection()
     syncReceiptHidden()
+    syncAddressHiddenField()
     // updateCompanyLabel() bleibt aktuell inaktiv
   }
 
@@ -118,6 +131,10 @@ export default function initAddressSection(component) {
   $root.on('change', '#payment_wants_receipt', () => {
     syncReceiptHidden()
     toggleAddressSection()
+  })
+
+  $root.on('change input', '[name="street"], [name="houseNumber"]', () => {
+    syncAddressHiddenField()
   })
 
   return { syncReceiptHidden, toggleAddressSection, initOnce }

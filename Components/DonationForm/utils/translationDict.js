@@ -6,8 +6,9 @@ const translationDict = {
     lastName: 'Bitte gib deinen Nachnamen an.',
     company: 'Bitte gib den Namen deiner Firma an.',
     street: 'Bitte gib deine Straße an.',
-    houseNumber: 'Bitte gib deine Hausnummer an.',
-    postalCode: 'Bitte gib deine Postleitzahl an.',
+    houseNumber: 'Hausnummer ist erforderlich.',
+    postalCode: 'Postleitzahl ist erforderlich.',
+    postcodeByCountry: 'Bitte Postleitzahl prüfen.',
     country: 'Bitte wähle dein Land aus.',
     city: 'Bitte gib deine Stadt an.',
     email: 'Bitte gib eine gültige E-Mail-Adresse ein.',
@@ -21,7 +22,6 @@ const translationDict = {
     iban: 'Bitte gib deine IBAN-Nummer an.',
     bankAccountName: 'Bitte gib den Kontoinhaber/die Kontoinhaberin an.',
     globalError: 'Ein unerwarteter Fehler ist aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.',
-    postcodeByCountry: 'Bitte gib eine gültige Postleitzahl ein.'
   },
   en: {
     required: 'This field is required.',
@@ -30,8 +30,9 @@ const translationDict = {
     lastName: 'Please enter your last name.',
     company: 'Please enter your company name.',
     street: 'Please enter your street.',
-    houseNumber: 'Please enter your house number.',
-    postalCode: 'Please enter your postal code.',
+    houseNumber: 'House number is required.',
+    postalCode: 'Postal code is required.',
+    postcodeByCountry: 'Please check postal code.',
     country: 'Please select your country.',
     city: 'Please enter your city.',
     email: 'Please enter a valid email address.',
@@ -45,7 +46,6 @@ const translationDict = {
     iban: 'Please enter your IBAN number.',
     bankAccountName: 'Please enter the bank account holder.',
     globalError: 'An unexpected error occurred. Please reload the page and try again.',
-    postcodeByCountry: 'Please enter a valid postal code.'
   },
   it: {
     required: 'Questo campo è obbligatorio.',
@@ -56,6 +56,7 @@ const translationDict = {
     street: 'Inserisci la tua via.',
     houseNumber: 'Inserisci il numero civico.',
     postalCode: 'Inserisci il tuo CAP.',
+    postcodeByCountry: 'Inserisci un CAP valido.',
     country: 'Seleziona il tuo paese.',
     city: 'Inserisci la tua città.',
     email: 'Inserisci un indirizzo email valido.',
@@ -69,7 +70,6 @@ const translationDict = {
     iban: 'Inserisci il tuo numero IBAN.',
     bankAccountName: 'Inserisci l\'intestatario del conto bancario.',
     globalError: 'Si è verificato un errore imprevisto. Ricarica la pagina e riprova.',
-    postcodeByCountry: 'Inserisci un codice postale valido.'
   }
 }
 

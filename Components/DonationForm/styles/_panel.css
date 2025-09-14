@@ -19,8 +19,11 @@
       bottom: -15px;
       transform: translateX(calc(-50% - 1px)) rotate(45deg);
     }
-    &.last-child:after {
-      display: none;
+    &.last-child {
+      margin-bottom: 32px;
+      &:after {
+        display: none;
+      }
     }
   }
   @media  screen and (min-width: 768px) {

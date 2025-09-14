@@ -1,21 +1,31 @@
 [is="flynt-donation-form"] {
   .amount-group-wrapper {
-    @apply grid grid-cols-3 gap-3 md:gap-4;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
   }
+
   .amount-group-wrapper > :nth-child(4) {
-    @apply col-span-3;
+    grid-column: span 3;
   }
   .amount-group-wrapper > :nth-child(4):nth-last-child(2) {
-    @apply col-span-1;
+    grid-column: span 1;
   }
   .amount-group-wrapper > :nth-child(5) {
-    @apply col-span-2;
+    grid-column: span 2;
   }
+
   .amount-option {
     position: relative;
-    .amount-input, label.amount-label {
-      @apply inline-flex items-center justify-center cursor-pointer max-w-full;
-      padding: 0.75rem 1.25rem;
+    text-align: center;
+
+    label.amount-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      max-width: 100%;
+      padding: 0;
       border: 2px solid var(--color-primary);
       border-radius: var(--border-radius);
       background: #fff;
@@ -23,10 +33,15 @@
       font: var(--input-font);
       line-height: 1;
       letter-spacing: 0.01rem;
-      max-height: 50px;
+      height: 48px;
       margin: 0;
-      transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease, filter 120ms ease;
-      &:before { display: none; }
+      position: relative;
+      transition: background-color 120ms ease, color 120ms ease,
+      border-color 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+      &:before {
+        display: none;
+      }
+
       &:hover {
         filter: var(--filter-brightness);
         border-color: var(--color-primary);
@@ -35,32 +50,55 @@
         filter: var(--filter-brightness);
       }
     }
+
     input.amount-radio {
-      &:checked + .amount-label {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+
+      &:checked + label.amount-label {
         background: var(--color-primary);
         color: #fff;
         border-color: var(--color-primary);
         box-shadow: none;
-      }
-      &:focus-visible {
-        + .amount-label {
-          filter: var(--filter-brightness);
+        padding-right: 20px;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 5px;
+          transform: translateY(-50%);
+          width: 32px;
+          height: 32px;
+          background-image: var(--icon-checkmark);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          display: block;
         }
+      }
+
+      &:focus-visible + label.amount-label {
+        filter: var(--filter-brightness);
       }
     }
   }
 
   .global-custom-amount {
     position: relative;
-    .amount-input { width: 100%;
-      min-height: 48px;
+    .amount-input {
+      width: 100%;
+      height: 48px;
       text-align: left;
       padding: 0.75rem 1.25rem;
       border: 2px solid #757575;
       border-radius: var(--border-radius);
       color: #6b7280;
-      min-width: 11rem;
+      /*min-width: 11rem;*/
     }
+
     .currency-suffix {
       right: 0.75rem;
       top: 50%;
@@ -71,6 +109,26 @@
       font-size: 1.5rem;
     }
   }
-  /* Only show active amount group for the current interval */
-  .amount-group-wrapper:not(.active) { display: none; }
+
+  .amount-group-wrapper:not(.active) {
+    display: none;
+  }
+
+  /* Desktop Version */
+  @media screen and (min-width: 768px) {
+    .amount-option label.amount-label {
+      justify-content: center;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .amount-option input.amount-radio {
+      &:checked + label.amount-label {
+        padding-right: 1.25rem;
+        &:after {
+          right: 15%;
+        }
+      }
+    }
+  }
 }
