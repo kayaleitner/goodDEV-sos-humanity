@@ -55,7 +55,6 @@ function getACFLayout()
                     FieldVariables\getTheme(),
                     FieldVariables\getColorBrandBackground(),
                     FieldVariables\getColorBrandText(),
-                    
                     FieldVariables\getPaddingTopBottom(),
                     FieldVariables\getPaddingLeftRight(),
                     FieldVariables\getMoveIn(),

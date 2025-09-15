@@ -146,6 +146,16 @@
     display: block;
   }
 
+  div.error-text {
+    padding: 2px 0 0;
+  }
+
+  .floating-label {
+    > div.error-text {
+      padding: 2px 0 0 12px;
+    }
+  }
+
   .phoneNoticeText {
     position: absolute;
     top: 110%;

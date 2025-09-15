@@ -5,9 +5,9 @@
 >
   {% set enabled = enabled is defined ? enabled : ['copy','facebook','whatsapp','linkedin','email'] %}
   <div class="share-options__container">
-    {% if preheading or labels.heading %}
+    {% if preheading %}
       <div class="share-options__heading">
-        {{ preheading ?: labels.heading }}
+        {{ preheading }}
       </div>
     {% endif %}
 

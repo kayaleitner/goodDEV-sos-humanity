@@ -92,7 +92,7 @@ export default function initDonationFormValidation(component, myForm) {
     ignore: [],
     errorElement: 'span',
     errorClass: 'error-text',
-    focusInvalid: false,
+    focusInvalid: true,
     invalidHandler(form, validator) {
       if (!validator.numberOfInvalids()) {
         return

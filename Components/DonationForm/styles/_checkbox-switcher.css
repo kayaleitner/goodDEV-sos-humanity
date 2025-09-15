@@ -9,6 +9,7 @@
     &__label {
       font-size: var(--input-font);
       color: var(--color-primary);
+      text-wrap: initial;
     }
 
     input[type="checkbox"] {
