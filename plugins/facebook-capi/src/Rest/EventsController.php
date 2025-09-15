@@ -74,6 +74,7 @@ class EventsController
                     'event_time' => $payload['event_time'] ?? null,
                     'action_source' => $payload['action_source'] ?? null,
                     'has_user_data' => !empty($payload['user_data']),
+                    'em' => !empty($payload['user_data']['em'] ?? null),
                     'has_fbp' => !empty($payload['user_data']['fbp'] ?? null),
                     'has_fbc' => !empty($payload['user_data']['fbc'] ?? null),
                 ];
