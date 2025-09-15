@@ -230,7 +230,8 @@ export default function initDonationFormValidation(component, myForm) {
       if (!isCustomAmount) {
         setState($el, true)
       }
-      if (name === 'payment[amount]' || /^donation_/.test(name)) {
+      // Only clear the centralized amount error when the hidden payment[amount] itself becomes valid
+      if (name === 'payment[amount]') {
         const $target = $(component).find('#payment_amount_error')
         if ($target.length) $target.empty()
       }
@@ -240,7 +241,7 @@ export default function initDonationFormValidation(component, myForm) {
       const name = $el.attr('name')
 
       // Special rule: route all amount-related errors into #payment_amount_error and unhide its wrapper
-      if (name === 'payment[amount]' || name?.startsWith('donation_')) {
+      if (name === 'payment[amount]' || /^donation_/.test(name || '')) {
         const $target = $(component).find('#payment_amount_error')
         if ($target.length) {
           $target.empty().append(error)
@@ -288,4 +289,31 @@ export default function initDonationFormValidation(component, myForm) {
       }
     },
   })
+
+  // Live revalidation for amount fields so the error disappears immediately upon valid input/selection
+  try {
+    const validator = $form.validate()
+    const revalidateAmount = () => {
+      const $amt = $(component).find('input[name="payment[amount]"]')
+      if ($amt.length) {
+        // Revalidate the hidden payment[amount]; unhighlight handler will clear the central error
+        validator.element($amt[0])
+      }
+    }
+
+    // When a preset amount radio is selected, revalidate after handlers updated the hidden amount
+    $(component).on('change', '.amount-radio', () => {
+      setTimeout(revalidateAmount, 0)
+    })
+
+    // When typing a custom amount, validate that input and then the hidden amount
+    $(component).on('input change', '.amount-input', function () {
+      // Validate the custom input itself so min/step/number errors show/hide live
+      validator.element(this)
+      // Also revalidate the hidden amount which drives the required rule
+      setTimeout(revalidateAmount, 0)
+    })
+  } catch (e) {
+    // no-op
+  }
 }
