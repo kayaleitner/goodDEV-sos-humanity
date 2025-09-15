@@ -22,10 +22,10 @@
   };
 
   // check if we are on the thank-you pages
-  // TRACKING_DATA you can find in /boilerplate-flynt-next/functions.php
   const path = window.location.pathname;
   const validPages = window?.TRACKING_DATA?.thanksPages || [];
-  if (!validPages.includes(path)) return;
+  const normalizedPath = path.replace(/\/$/, '');
+  if (!validPages.includes(normalizedPath)) return;
 
   // required url parameters on thank-you pages
   const search = new URLSearchParams(window.location.search);
@@ -34,63 +34,79 @@
   const interval = parseInt(search.get('interval'), 10);
   if (!token?.startsWith('FB-T-') || Number.isNaN(amount) || amount <= 0 || (interval !== 0 && interval !== 1)) return;
 
+
   // Borlabs Cookie Consent
-  if (typeof window.BorlabsCookie !== 'object' || !window.BorlabsCookie.Consents.hasConsent('meta-pixel')) {
-    // eslint-disable-next-line no-console
-    console.warn('No Meta Pixel consent or Borlabs not loaded');
-    return;
-  }
+  // if (typeof window.BorlabsCookie !== 'object' || !window.BorlabsCookie.Consents.hasConsent('meta-pixel')) {
+  //   // eslint-disable-next-line no-console
+  //   console.warn('No Meta Pixel consent or Borlabs not loaded');
+  //   return;
+  // }
 
   // Read Meta Pixel cookies (optional; server also falls back to cookies)
   const fbp = getCookie('_fbp');
   const fbc = getCookie('_fbc');
 
-  // Payload
-  const utmData = JSON.parse(sessionStorage.getItem('frb_utm_params') || '{}');
-  const payload = {
-    event_name: 'Purchase',
-    event_time: Math.floor(Date.now()/1000),
-    action_source: 'website',
-    event_id: token,
-    event_source_url: window.location.href,
-    user_data: {},
-    custom_data: {
-      value: amount,
-      currency: 'EUR',
-      interval,
-      utm: utmData
-    }
-  };
+  const variant = interval === 0 ? 'Einmalspende' : 'Dauerspende';
+  const donateTyp = search.get('donate_typ') || 'Spende';
 
-  if (fbp) payload.user_data.fbp = fbp;
-  if (fbc) payload.user_data.fbc = fbc;
-
-  // Fetch
-  fetch(window.TRACKING_DATA.endpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-WP-Nonce': window.TRACKING_DATA.nonce
-    },
-    body: JSON.stringify(payload),
-    credentials: 'same-origin'
-  })
-    .then(r => {
-      if (!r.ok) throw new Error(`HTTP ${r.status}: ${r.statusText}`);
-      return r.json();
-    })
-    // eslint-disable-next-line no-console
-    .then(d => console.log('Tracking response', d))
-    // eslint-disable-next-line no-console
-    .catch(e => console.error('Tracking error', e));
-
-  // Tag Manager
-  if (window.dataLayer) {
-    window.dataLayer.push({
-      event: 'purchase',
-      value: amount,
-      currency: 'EUR',
-      interval
-    });
+  // Determine events to fire
+  const events = [];
+  // Purchase soll auf /doo und allen Varianten feuern
+  const purchasePaths = ['/doo', '/en/doo', '/it/doo'];
+  if (purchasePaths.includes(normalizedPath)) {
+    events.push('Purchase');
   }
+
+  // Donate nur auf /ddd und allen Varianten feuern
+  const donatePaths = ['/ddd', '/en/ddd', '/it/ddd'];
+  if (donatePaths.includes(normalizedPath)) {
+    events.push('Purchase', 'Donate');
+  }
+  
+
+  // Send each event
+  events.forEach(eventName => {
+    const payload = {
+      event_name: eventName,
+      event_time: Math.floor(Date.now()/1000),
+      action_source: 'website',
+      event_id: token,
+      event_source_url: window.location.href,
+      user_data: {
+        em: sessionStorage.getItem('em')
+      },
+      custom_data: {
+        content_name: donateTyp,
+        value: amount,
+        currency: 'EUR',
+        num_items: 1,
+        content_type: variant
+      }
+    };
+
+    if (fbp) payload.user_data.fbp = fbp;
+    if (fbc) payload.user_data.fbc = fbc;
+
+    // eslint-disable-next-line no-console
+    console.log('Debug tra.js payload: ', payload);
+
+    fetch(window.TRACKING_DATA.endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-WP-Nonce': window.TRACKING_DATA.nonce
+      },
+      body: JSON.stringify(payload),
+      credentials: 'same-origin'
+    })
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}: ${r.statusText}`);
+        return r.json();
+      })
+      // eslint-disable-next-line no-console
+      .then(d => console.log('Tracking response', d))
+      // eslint-disable-next-line no-console
+      .catch(e => console.error('Tracking error', e));
+  });
+
 })();

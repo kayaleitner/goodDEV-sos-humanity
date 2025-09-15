@@ -43,7 +43,7 @@ add_action('after_setup_theme', function (): void {
 
 
 add_action('wp_enqueue_scripts', function() {
-  if (is_admin()) return;
+//  if (is_admin()) return;
 
   $script_url = get_stylesheet_directory_uri() . '/assets/scripts/tra.js';
   wp_enqueue_script('tra', $script_url, [], '1.0.0', true);
