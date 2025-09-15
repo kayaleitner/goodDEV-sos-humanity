@@ -47,6 +47,7 @@ export default function initDonationFormValidation(component, myForm) {
       t.postcodeByCountry || 'Bitte gib eine gültige Postleitzahl ein.'
     )
   }
+  $.validator.addMethod('validatePhone', v => !v.trim() || /^[\d()+\-.\s]{10,}$/.test(v), t.validatePhone || 'Ungültige Telefonnummer, bitte Vorwahl mit angeben.');
 
   // Helper to toggle valid/invalid classes and icons
   const setState = ($el, isValid) => {
@@ -76,7 +77,7 @@ export default function initDonationFormValidation(component, myForm) {
     $el.toggleClass('is-invalid', !isValid)
   }
 
-  const amountMin = 3
+  const amountMin = 5
 
   // Available fields detection relies on FBX; fall back to finding fields in DOM
   const availableFields =
@@ -113,6 +114,7 @@ export default function initDonationFormValidation(component, myForm) {
       'payment[email]': { required: have('email'), email: true },
       'payment[amount]': { required: true, number: true, min: amountMin },
       'payment[payment_method]': { required: have('payment_method') },
+      'payment[phone]': { validatePhone: true },
 
       // Address and company (conditionally required via setMandatory + visibility)
       'payment[company_name]': {
@@ -229,24 +231,8 @@ export default function initDonationFormValidation(component, myForm) {
         setState($el, true)
       }
       if (name === 'payment[amount]' || /^donation_/.test(name)) {
-        const $wrap = $(component).find('#payment_amount_wrapper')
         const $target = $(component).find('#payment_amount_error')
         if ($target.length) $target.empty()
-        if ($wrap.length) $wrap.addClass('hidden')
-      }
-    },
-    success(label, element) {
-      const $el = $(element)
-      const name = $el.attr('name') || ''
-      const isCustomAmount = $el.hasClass('amount-input') || /^donation_custom_amount_/.test(name)
-      if (!isCustomAmount) {
-        setState($el, true)
-      }
-      if (name === 'payment[amount]' || /^donation_/.test(name)) {
-        const $wrap = $(component).find('#payment_amount_wrapper')
-        const $target = $(component).find('#payment_amount_error')
-        if ($target.length) $target.empty()
-        if ($wrap.length) $wrap.addClass('hidden')
       }
     },
     errorPlacement(error, element) {
@@ -255,9 +241,7 @@ export default function initDonationFormValidation(component, myForm) {
 
       // Special rule: route all amount-related errors into #payment_amount_error and unhide its wrapper
       if (name === 'payment[amount]' || name?.startsWith('donation_')) {
-        const $wrap = $(component).find('#payment_amount_wrapper')
         const $target = $(component).find('#payment_amount_error')
-        if ($wrap.length) $wrap.removeClass('hidden')
         if ($target.length) {
           $target.empty().append(error)
           return
