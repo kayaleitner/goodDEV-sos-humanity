@@ -36,11 +36,11 @@
 
 
   // Borlabs Cookie Consent
-  // if (typeof window.BorlabsCookie !== 'object' || !window.BorlabsCookie.Consents.hasConsent('meta-pixel')) {
-  //   // eslint-disable-next-line no-console
-  //   console.warn('No Meta Pixel consent or Borlabs not loaded');
-  //   return;
-  // }
+  if (typeof window.BorlabsCookie !== 'object' || !window.BorlabsCookie.Consents.hasConsent('meta-pixel')) {
+    // eslint-disable-next-line no-console
+    console.warn('No Meta Pixel consent or Borlabs not loaded');
+    return;
+  }
 
   // Read Meta Pixel cookies (optional; server also falls back to cookies)
   const fbp = getCookie('_fbp');
@@ -62,7 +62,7 @@
   if (donatePaths.includes(normalizedPath)) {
     events.push('Purchase', 'Donate');
   }
-  
+
 
   // Send each event
   events.forEach(eventName => {

@@ -16,6 +16,8 @@ export default function attachSubmitHandler(component, myForm) {
 
     const t = translationDict[['de', 'en', 'it'].includes(lang) ? lang : 'de']
 
+    const $btn = $('#donation-submit-btn')
+
     try {
       if (hasJqValidate) {
         const ok = typeof $domForm.valid === 'function' ? $domForm.valid() : $domForm.validate().form()
@@ -24,6 +26,12 @@ export default function attachSubmitHandler(component, myForm) {
         if (!myForm.valid()) return
       }
 
+      // Form is valid: disable button for ~10s to prevent duplicate submissions
+      $btn.prop('disabled', true).attr('disabled', 'disabled')
+      setTimeout(() => {
+        $btn.prop('disabled', false).removeAttr('disabled')
+      }, 10000)
+
       if (typeof myForm.submit === 'function') {
         myForm.submit()
       } else if ($domForm.length && typeof $domForm[0].submit === 'function') {
@@ -31,12 +39,16 @@ export default function attachSubmitHandler(component, myForm) {
       } else {
         const $error = $('#errorMsg')
         $error.text(t.globalError).show()
+        // Re-enable if we could not submit programmatically
+        $btn.prop('disabled', false).removeAttr('disabled')
       }
     } catch (err) {
       const $error = $('#errorMsg')
       $error.text(t.globalError).show()
       // eslint-disable-next-line no-console
       console.error('Donation submit error', err)
+      // Re-enable on unexpected error
+      $btn.prop('disabled', false).removeAttr('disabled')
     }
   })
 }

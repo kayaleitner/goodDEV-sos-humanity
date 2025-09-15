@@ -21,6 +21,7 @@ const translationDict = {
     maxlength: 'Bitte gib maximal {0} Zeichen ein.',
     iban: 'Bitte gib deine IBAN-Nummer an.',
     bankAccountName: 'Bitte gib den Kontoinhaber/die Kontoinhaberin an.',
+    validatePhone: 'Ungültige Telefonnummer, bitte Vorwahl mit angeben.',
     globalError: 'Ein unerwarteter Fehler ist aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.',
   },
   en: {
@@ -45,6 +46,7 @@ const translationDict = {
     maxlength: 'Please enter a maximum of {0} characters.',
     iban: 'Please enter your IBAN number.',
     bankAccountName: 'Please enter the bank account holder.',
+    validatePhone: 'Invalid phone number, please include area code.',
     globalError: 'An unexpected error occurred. Please reload the page and try again.',
   },
   it: {
@@ -69,6 +71,7 @@ const translationDict = {
     maxlength: 'Inserisci un massimo di {0} caratteri.',
     iban: 'Inserisci il tuo numero IBAN.',
     bankAccountName: 'Inserisci l\'intestatario del conto bancario.',
+    validatePhone: 'Numero di telefono non valido, si prega di includere il prefisso.',
     globalError: 'Si è verificato un errore imprevisto. Ricarica la pagina e riprova.',
   }
 }
