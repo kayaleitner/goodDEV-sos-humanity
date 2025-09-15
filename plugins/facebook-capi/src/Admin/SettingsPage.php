@@ -47,11 +47,6 @@ class SettingsPage
             'sanitize_callback' => 'sanitize_text_field',
             'default' => '',
         ]);
-        register_setting(self::GROUP, Options::SHARED_SECRET, [
-            'type' => 'string',
-            'sanitize_callback' => 'sanitize_text_field',
-            'default' => '',
-        ]);
 
         add_settings_section('fb_capi_main', __('General', 'facebook-capi'), '__return_false', self::PAGE);
 
@@ -76,11 +71,6 @@ class SettingsPage
                 esc_attr(Options::TEST_ID), esc_attr((string) get_option(Options::TEST_ID, '')));
         }, self::PAGE, 'fb_capi_main');
 
-        add_settings_field('shared_secret', __('Shared Secret (HMAC for /capi/event)', 'facebook-capi'), function () {
-            printf('<input type="text" class="regular-text" name="%s" value="%s" />',
-                esc_attr(Options::SHARED_SECRET), esc_attr((string) get_option(Options::SHARED_SECRET, '')));
-            echo '<p class="description">' . esc_html__('Optional. If set, endpoint expects header X-FB-CAPI-Signature = HMAC-SHA256(raw body, secret).', 'facebook-capi') . '</p>';
-        }, self::PAGE, 'fb_capi_main');
     }
 
     public function render(): void

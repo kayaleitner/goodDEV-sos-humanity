@@ -6,6 +6,16 @@ use Flynt\Utils\FileLoader;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+// Ensure bundled Facebook CAPI plugin is loaded when theme is active
+$fbCapiBootstrap = __DIR__ . '/plugins/facebook-capi/facebook-capi.php';
+if (file_exists($fbCapiBootstrap)) {
+    require_once $fbCapiBootstrap;
+    // If plugins_loaded has already fired (themes load after), boot the plugin directly
+    if (class_exists('FacebookCapiPlugin\\Plugin')) {
+        \FacebookCapiPlugin\Plugin::instance()->boot();
+    }
+}
+
 if (!defined('WP_ENV')) {
     define('WP_ENV', function_exists('wp_get_environment_type') ? wp_get_environment_type() : 'production');
 } elseif (!defined('WP_ENVIRONMENT_TYPE')) {

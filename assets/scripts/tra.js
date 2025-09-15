@@ -7,6 +7,19 @@
   });
   if (Object.keys(utms).length) localStorage.setItem('frb_utm_params', JSON.stringify(utms));
 
+  // cookie reader
+  const getCookie = (name) => {
+    if (!document.cookie) return undefined;
+    const parts = document.cookie.split('; ');
+    for (let i = 0; i < parts.length; i += 1) {
+      const idx = parts[i].indexOf('=');
+      const key = idx >= 0 ? parts[i].substring(0, idx) : parts[i];
+      if (key === name) {
+        return decodeURIComponent(idx >= 0 ? parts[i].substring(idx + 1) : '');
+      }
+    }
+    return undefined;
+  };
 
   // check if we are on the thank-you pages
   // TRACKING_DATA you can find in /boilerplate-flynt-next/functions.php
@@ -28,6 +41,10 @@
     return;
   }
 
+  // Read Meta Pixel cookies (optional; server also falls back to cookies)
+  const fbp = getCookie('_fbp');
+  const fbc = getCookie('_fbc');
+
   // Payload
   const utmData = JSON.parse(sessionStorage.getItem('frb_utm_params') || '{}');
   const payload = {
@@ -44,6 +61,9 @@
       utm: utmData
     }
   };
+
+  if (fbp) payload.user_data.fbp = fbp;
+  if (fbc) payload.user_data.fbc = fbc;
 
   // Fetch
   fetch(window.TRACKING_DATA.endpoint, {
