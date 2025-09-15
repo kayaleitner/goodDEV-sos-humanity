@@ -213,6 +213,14 @@ Options::addTranslatable('DonationForm', [
     'wrapper' => ['width' => 100],
   ],
   [
+    'label' => __('Leave No One Behind Newsletter Checkbox Text', 'flynt'),
+    'name' => 'labelWantsLNOBNewsletter',
+    'type' => 'text',
+    'instructions' => __('Text für die Option zur LNOB Newsletter, z. B. „Ich möchte auch von LeaveNoOneBehind Informationen über ihre Arbeit erhalten.“.', 'flynt'),
+    'default_value' => __('Ich möchte auch von LeaveNoOneBehind Informationen über ihre Arbeit erhalten.', 'flynt'),
+    'wrapper' => ['width' => 100],
+  ],
+  [
     'label' => __('Feld für Unternehmensname', 'flynt'),
     'name' => 'labelCompanyName',
     'type' => 'text',

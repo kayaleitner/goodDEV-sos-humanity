@@ -65,6 +65,17 @@ export default function initAddressSection(component) {
   }
 
   /**
+   * Update hidden input for LNOBNewsletter
+   */
+  function syncLNOBNewsletterHidden() {
+    const $ui = $root.find('input#payment_wants_lnob_newsletter')
+    const $hidden = $root.find('#payment_donation_custom_field_14610')
+    if ($ui.length && $hidden.length) {
+      $hidden.val($ui.is(':checked') ? 'on' : '')
+    }
+  }
+
+  /**
    * Update hidden input for address
    */
   function syncAddressHiddenField() {
@@ -117,6 +128,7 @@ export default function initAddressSection(component) {
     toggleAddressSection()
     syncReceiptHidden()
     syncAddressHiddenField()
+    syncLNOBNewsletterHidden()
     // updateCompanyLabel() bleibt aktuell inaktiv
   }
 
@@ -131,6 +143,10 @@ export default function initAddressSection(component) {
   $root.on('change', '#payment_wants_receipt', () => {
     syncReceiptHidden()
     toggleAddressSection()
+  })
+
+  $root.on('change input', '#payment_wants_lnob_newsletter', () => {
+    syncLNOBNewsletterHidden()
   })
 
   $root.on('change input', '[name="street"], [name="houseNumber"]', () => {

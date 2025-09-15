@@ -52,11 +52,19 @@
   <span class="switch__label" data-auto-receipt="{{ labelWantsAutoReceipt }}" data-checked="{{ labelPrivateDonation }}">{{ labelCompanyDonation }}</span>
 </label>
 <div id="payment_wants_receipt_wrapper" class="form-item">
-  <label for="payment_wants_receipt" data-default-label="{{ labelWantsReceipt }}"  data-auto-receipt="{{ labelWantsAutoReceipt }}" class="switch my-4 ml-2">
+  <label for="payment_wants_receipt" data-default-label="{{ labelWantsReceipt }}" data-auto-receipt="{{ labelWantsAutoReceipt }}" class="switch my-4 ml-2">
     <input type="checkbox" name="receipt" id="payment_wants_receipt" value="receipt_end_of_year">
     <span class="switch__slider" aria-hidden="true"></span>
     <span class="receipt switch__label">{{ labelWantsReceipt }}</span>
   </label>
   <input type="hidden" value="no_receipt" name="payment[wants_receipt]" id="hiddenreceipt"/>
   <div id="payment_wants_receipt_error" class="error error-text"></div>
+</div>
+<div id="payment_wants_lnob_newsletter_wrapper" class="form-item">
+  <label for="payment_wants_lnob_newsletter" data-default-label="{{ labelWantsLNOBNewsletter }}" class="switch my-4 ml-2">
+    <input type="checkbox" name="lnob_newsletter" id="payment_wants_lnob_newsletter" value="yes">
+    <span class="switch__slider" aria-hidden="true"></span>
+    <span class="lnob_newsletter switch__label">{{ labelWantsLNOBNewsletter }}</span>
+  </label>
+  <input type="hidden" name="payment[donation_custom_field_14610]" id="payment_donation_custom_field_14610">
 </div>
