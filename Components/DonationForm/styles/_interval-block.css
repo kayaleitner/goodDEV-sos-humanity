@@ -7,10 +7,6 @@
       gap: 1rem;
       align-items: center;
       justify-content: center;
-      @media screen and (min-width: 768px) {
-        grid-template-columns: auto 1fr;
-        justify-items: start;
-      }
     }
     .nudge_text {
       position: relative;
@@ -34,7 +30,16 @@
         width: 50px;
         height: 50px;
       }
-      @media screen and (min-width: 768px) {
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .interval-block {
+      padding: 0 20px;
+      &.has-nudge-text {
+        grid-template-columns: auto 1fr;
+        justify-items: start;
+      }
+      .nudge_text {
         width: 100%;
         padding: 0 0 0 35px;
         left: 0;

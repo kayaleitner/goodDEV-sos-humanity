@@ -12,6 +12,7 @@
 @import 'styles/_text-styles.css';
 
 [is="flynt-donation-form"] {
+  hyphens: auto;
   max-width: 56.5rem;
   padding: 0 var(--spacing-md) 72px;
   margin: 54px auto 0;

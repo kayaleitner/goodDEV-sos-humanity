@@ -7,7 +7,7 @@
     + label {
       position: relative;
       cursor: pointer;
-      padding-left: 48px;
+      padding-left: 40px;
       user-select: none;
       color: #757575;
       font-weight: 600;
@@ -43,6 +43,13 @@
       + label:before {
         outline: var(--outline);
         outline-offset: var(--outline-offset);
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    input[type="radio"] {
+      + label {
+        padding-left: 48px;
       }
     }
   }

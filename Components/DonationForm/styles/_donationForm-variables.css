@@ -20,7 +20,6 @@
   --color-secondary: var(--yellow, #ebeb00);
   --color-success: #548031;
   --color-error: #C65138;
-  --color-grey: #d9d9d9;
 
   /* input */
   --input-border-weight: 2px;
@@ -28,6 +27,8 @@
   --input-font: normal normal 600 1.25rem/1.9375rem 'Source Sans Pro', sans-serif;
   --input-height: 64px;
   --imput-label-color: #757575;
+  --imput-label-font: normal normal 400 1.25rem/1.9375rem 'Source Sans Pro', sans-serif;
+  --imput-label-font-no-empty: normal normal 600 0.75rem/1.9375rem 'Source Sans Pro', sans-serif;
 
   /* Typography */
   --font-family: "Source Sans Pro", sans-serif;
@@ -42,6 +43,7 @@
   --font-nudge-text: normal normal 700 1.25rem/135% 'Caveat', sans-serif;
   --font-phone-notice-text: normal normal 400 0.75rem/155% 'Source Sans Pro', sans-serif;
   --font-payment-info-text: var(--font-value-proposition);
+  --font-error-text: normal normal 400 0.75rem/155% 'Source Sans Pro', sans-serif;
 
 
   /* Spacing (padding / gaps) */
@@ -65,6 +67,7 @@
   /* icons */
   --icon-phone: url("../Assets/phone.svg");
   --icon-checkmark: url("../Assets/checkmark.svg");
+  --icon-arrow-select: url("../Assets/arrow-select.svg");
 
   /* Transitions */
   --transition-duration: 0.2s;

@@ -1,7 +1,7 @@
 {# Interval #}
 <div class="interval-block {{ show_nudge_text and nudge_text ? 'has-nudge-text' }}">
   <div data-default-interval="{{ interval|default('0') }}" id="payment_interval">
-    <div class="flex flex-row gap-3 justify-start">
+    <div class="flex flex-row gap-10 sm:gap-3 sm:justify-start">
       <div class="radioWrapper"><input type="radio" name="payment[interval]" id="payment_interval__0" value="0"
                                        checked="checked">
         <label for="payment_interval__0" class="">{{ oneTimeIntervalText }}</label></div>

@@ -301,6 +301,14 @@ export default function initDonationFormValidation(component, myForm) {
       }
     }
 
+    // revalidate salutation when a user changes radio/select so errors clear immediately
+    const revalidateSalutation = () => {
+      const $sal = $(component).find('#payment_salutation')
+      if ($sal.length) {
+        validator.element($sal[0])
+      }
+    }
+
     // When a preset amount radio is selected, revalidate after handlers updated the hidden amount
     $(component).on('change', '.amount-radio', () => {
       setTimeout(revalidateAmount, 0)
@@ -308,10 +316,13 @@ export default function initDonationFormValidation(component, myForm) {
 
     // When typing a custom amount, validate that input and then the hidden amount
     $(component).on('input change', '.amount-input', function () {
-      // Validate the custom input itself so min/step/number errors show/hide live
       validator.element(this)
-      // Also revalidate the hidden amount which drives the required rule
       setTimeout(revalidateAmount, 0)
+    })
+
+    // When a user changes salutation radio or select, revalidate the hidden salutation field
+    $(component).on('input change', 'input[name="salutation_radio"], #salutation_select', () => {
+      setTimeout(revalidateSalutation, 0)
     })
   } catch (e) {
     // no-op

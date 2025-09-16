@@ -115,6 +115,22 @@ Options::addTranslatable('DonationForm', [
     'wrapper' => ['width' => 100],
   ],
   [
+    'label' => __('Feld für Select Box mobil', 'flynt'),
+    'name' => 'labelSalutationSelectBox',
+    'type' => 'text',
+    'instructions' => __('Label für das Select Box Drop Down, z. B. „Anrede“.', 'flynt'),
+    'default_value' => __('Anrede', 'flynt'),
+    'wrapper' => ['width' => 50],
+  ],
+  [
+    'label' => __('Anrede Select Box leere Option „Anrede wählen“', 'flynt'),
+    'name' => 'salutationSelectEmptyOption',
+    'type' => 'text',
+    'instructions' => __('Text für die Anrede der Select Box leere Option „Anrede wählen“ im Formular. Wird nur mobil angezeigt.', 'flynt'),
+    'default_value' => __('Anrede wählen', 'flynt'),
+    'wrapper' => ['width' => 50],
+  ],
+  [
     'label' => __('Anrede „Frau“', 'flynt'),
     'name' => 'salutationMrs',
     'type' => 'text',
@@ -177,7 +193,7 @@ Options::addTranslatable('DonationForm', [
     'toolbar' => 'basic',
     'media_upload' => 0,
     'instructions' => __('Hinweistext unter dem Telefonfeld, z. B. Zustimmung für Rückrufe.', 'flynt'),
-    'default_value' => __('Gern erlaube ich SOS-Humanity mich ggf. anzurufen und mich über Ihre Arbeit sowie Möglichkeiten der Unterstützung zu informieren. Diese Einwilligung kann ich jederzeit widerrufen.', 'flynt'),
+    'default_value' => __('Gern erlaube ich SOS-Humanity mich ggf. anzurufen und mich über ihre Arbeit sowie Möglichkeiten der Unterstützung zu informieren. Diese Einwilligung kann ich jederzeit widerrufen.', 'flynt'),
     'wrapper' => ['width' => 100],
   ],
   [
@@ -438,6 +454,8 @@ function getACFLayout(): array {
                 'label' => __('Betrag (bitte 4 Beträge auswählen!)', 'flynt'),
                 'name' => 'value',
                 'type' => 'number',
+                'min' => 5,
+                'max' => 50000,
               ],
               [
                 'label' => __('Ausgewählter Betrag je Intervall (bitte nur einen auswählen)', 'flynt'),

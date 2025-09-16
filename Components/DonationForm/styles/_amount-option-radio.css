@@ -95,8 +95,7 @@
       padding: 0.75rem 1.25rem;
       border: 2px solid #757575;
       border-radius: var(--border-radius);
-      color: #6b7280;
-      /*min-width: 11rem;*/
+      color: var(--color-primary);
     }
 
     .currency-suffix {

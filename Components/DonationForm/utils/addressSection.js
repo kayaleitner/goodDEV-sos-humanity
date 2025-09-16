@@ -88,6 +88,42 @@ export default function initAddressSection(component) {
   }
 
   /**
+   * Sync Salutation hidden field
+   */
+  function syncSalutationHiddenAndSyncFields(source) {
+    const $hidden = $root.find('#payment_salutation');
+    const $radios = $root.find('input[name="salutation_radio"]');
+    const $select = $root.find('#salutation_select');
+
+    const $checkedRadio = $radios.filter(':checked');
+    const selectVal = $select.val();
+    const hasSelectVal = selectVal !== undefined && selectVal !== null && selectVal !== '';
+
+    let valToSet = '';
+
+    if (source === 'radio' && $checkedRadio.length) {
+      valToSet = $checkedRadio.val();
+      if ($select.val() !== valToSet) $select.val(valToSet);
+    } else if (source === 'select' && hasSelectVal) {
+      valToSet = selectVal;
+      $radios.prop('checked', false);
+      const $radioToCheck = $radios.filter(`[value="${valToSet}"]`);
+      if ($radioToCheck.length) $radioToCheck.prop('checked', true);
+    } else if ($checkedRadio.length) {
+      valToSet = $checkedRadio.val();
+      if ($select.val() !== valToSet) $select.val(valToSet);
+    } else if (hasSelectVal) {
+      valToSet = selectVal;
+      $radios.prop('checked', false);
+      const $radioToCheck = $radios.filter(`[value="${valToSet}"]`);
+      if ($radioToCheck.length) $radioToCheck.prop('checked', true);
+    }
+
+    // Hidden-Feld setzen (leer, falls kein Wert)
+    $hidden.val(valToSet);
+  }
+
+  /**
    * Toggle visibility of company fields
    */
   function toggleCompanySection() {
@@ -129,6 +165,7 @@ export default function initAddressSection(component) {
     syncReceiptHidden()
     syncAddressHiddenField()
     syncLNOBNewsletterHidden()
+    syncSalutationHiddenAndSyncFields()
     // updateCompanyLabel() bleibt aktuell inaktiv
   }
 
@@ -152,6 +189,11 @@ export default function initAddressSection(component) {
   $root.on('change input', '[name="street"], [name="houseNumber"]', () => {
     syncAddressHiddenField()
   })
+
+  $root.on('change input', 'input[name="salutation_radio"], #salutation_select', (e) => {
+    const source = $(e.target).is('#salutation_select') ? 'select' : 'radio';
+    syncSalutationHiddenAndSyncFields(source);
+  });
 
   return { syncReceiptHidden, toggleAddressSection, initOnce }
 }

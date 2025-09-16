@@ -51,7 +51,8 @@ add_filter('Flynt/addComponentData?name=ShareOptions', function($data) {
   $links['facebook'] = "https://www.facebook.com/sharer/sharer.php?u={$encodedUrl}";
   $links['whatsapp'] = "https://api.whatsapp.com/send?text={$encodedTitle}%20{$encodedUrl}";
   $links['linkedin'] = "https://www.linkedin.com/sharing/share-offsite/?url={$encodedUrl}";
-  $links['email'] = ('mailto:?subject=' . rawurlencode($emailSubject) . '&body=' . rawurlencode($emailBody));
+  $links['email'] = 'mailto:?subject=' . rawurlencode($emailSubject) . '&body=' . rawurlencode(htmlspecialchars_decode($emailBody));
+
 
   $data['links'] = $links;
 
