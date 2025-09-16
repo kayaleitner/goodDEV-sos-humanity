@@ -13,6 +13,8 @@ function disable_rest_api($access)
         '/wp-json/wp/v2/media',
         '/wp-json/flynt/v1/submit_form',
         '/wp-json/fb-capi/v1/',
+        // Allow Borlabs Cookie REST endpoints (needed for consent saving/statistics)
+        '/wp-json/borlabs-cookie/v1/',
     ];
 
     // Check if the current request URI matches any allowed endpoints
