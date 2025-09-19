@@ -40,18 +40,24 @@ add_filter('Flynt/addComponentData?name=ShareOptions', function($data) {
   $shareUrl = $data['localShareSettings']['overrideShareUrl'] ?? ($opts['localShareSettings']['overrideShareUrl'] ?? $currentUrl);
 
   $emailSubject = $data['localShareSettings']['emailSubject'] ?? ($opts['localShareSettings']['emailSubject'] ?? $pageTitle);
-  $emailBody = $data['localShareSettings']['emailBody'] ?? ($opts['localShareSettings']['emailBody'] ?? $shareUrl);
+  $emailBody = $data['localShareSettings']['emailBody'] ?? ($opts['localShareSettings']['emailBody'] ?? '{{title}} {{url}}');
+
+  $emailBody = str_replace(
+    ['{{title}}', '{{url}}'],
+    [$pageTitle, $shareUrl],
+    $emailBody
+  );
 
   $encodedUrl = rawurlencode($shareUrl);
-  $encodedTitle = rawurlencode($pageTitle);
+  $encodedBody = rawurlencode(htmlspecialchars_decode($emailBody));
 
-  // Per-network optional overrides (prefer per-instance over global)
+  // Build share links (all based on emailBody)
   $links = [];
   $links['copy'] = $shareUrl;
   $links['facebook'] = "https://www.facebook.com/sharer/sharer.php?u={$encodedUrl}";
-  $links['whatsapp'] = "https://api.whatsapp.com/send?text={$encodedTitle}%20{$encodedUrl}";
-  $links['linkedin'] = "https://www.linkedin.com/sharing/share-offsite/?url={$encodedUrl}";
-  $links['email'] = 'mailto:?subject=' . rawurlencode($emailSubject) . '&body=' . rawurlencode(htmlspecialchars_decode($emailBody));
+  $links['whatsapp'] = "https://api.whatsapp.com/send?text={$encodedBody}";
+  $links['linkedin'] = "https://www.linkedin.com/sharing/share-offsite/?url={$encodedUrl}&summary={$encodedBody}";
+  $links['email'] = 'mailto:?subject=' . rawurlencode($emailSubject) . '&body=' . $encodedBody;
 
 
   $data['links'] = $links;
@@ -116,9 +122,10 @@ function getACFLayout() {
             'type' => 'text',
           ],
           [
-            'label' => __('E‑Mail Nachricht', 'flynt'),
+            'label' => __('E‑Mail / WhatsApp Text', 'flynt'),
             'name' => 'emailBody',
             'type' => 'textarea',
+            'instructions' => __('Hier den Text eingeben, der beim Teilen verwendet wird. Verwende {{title}} für den Seitentitel und {{url}} für den Link.', 'flynt'),
             'rows' => 3,
           ],
         ],
