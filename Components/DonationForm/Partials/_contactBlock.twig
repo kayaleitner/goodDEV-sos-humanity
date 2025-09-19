@@ -31,15 +31,15 @@
 
 
 {# Person data #}
-<div class="{{ gridClasses }}">
+<div class="{{ gridClasses }} mb-4">
   <div id="payment_first_name_wrapper" class="form-item floating-label">
     <label for="payment_first_name" class="form-required">{{ firstNameLabel }}</label>
-    <input required="required" maxlength="100" type="text" name="payment[first_name]" id="payment_first_name">
+    <input required="required" maxlength="100" minlength="2" type="text" name="payment[first_name]" id="payment_first_name">
     <div id="payment_first_name_error" class="error error-text"></div>
   </div>
   <div id="payment_last_name_wrapper" class="form-item floating-label">
     <label for="payment_last_name" class="form-required">{{ lastNameLabel }}</label>
-    <input required="required" maxlength="100" type="text" name="payment[last_name]" id="payment_last_name">
+    <input required="required" maxlength="100" minlength="2" type="text" name="payment[last_name]" id="payment_last_name">
     <div id="payment_last_name_error" class="error error-text"></div>
   </div>
   <div id="payment_email_wrapper" class="form-item floating-label">

@@ -2,7 +2,7 @@
 <div style="display: none;" class="payment-company-name mb-4">
   <div id="payment_company_name_wrapper" class="form-item floating-label">
     <label for="payment_company_name" class="form-required">{{ labelCompanyName }}</label>
-    <input maxlength="1000" type="text" name="payment[company_name]" id="payment_company_name"
+    <input maxlength="1000" minlength="2" type="text" name="payment[company_name]" id="payment_company_name"
            class="js-conditionally-mandatory">
     <div id="payment_company_name_error" class="error error-text"></div>
   </div>
@@ -14,7 +14,7 @@
   <div class="grid grid-cols-1 sm:grid-cols-[1fr_35%] gap-4">
     <div id="payment_address_wrapper" class="form-item floating-label">
       <label for="payment_address" class="form-required">{{ labelStreet }}</label>
-      <input maxlength="300" type="text" name="street" id="payment_street"
+      <input maxlength="300" minlength="2" type="text" name="street" id="payment_street"
              class="js-conditionally-mandatory">
       <input maxlength="300" type="hidden" name="payment[address]" id="payment_address">
       <div id="payment_address_error" class="error error-text"></div>

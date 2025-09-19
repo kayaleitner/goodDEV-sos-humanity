@@ -19,6 +19,8 @@ export default function initDonationFormValidation(component, myForm) {
       number: t.number || 'Bitte eine gültige Zahl eingeben.',
       digits: t.number || 'Bitte eine gültige Zahl eingeben.',
       step: t.step || 'Bitte einen gültigen Betrag mit maximal 2 Nachkommastellen eingeben.',
+      minlength: t.minlength || 'Bitte gib mindestens {0} Zeichen ein.',
+      maxlength: t.maxlength || 'Bitte gib maximal {0} Zeichen ein.',
     })
   }
 
@@ -77,7 +79,8 @@ export default function initDonationFormValidation(component, myForm) {
     $el.toggleClass('is-invalid', !isValid)
   }
 
-  const amountMin = 5
+  const $amountInputs = $('[name^="donation_custom_amount_"]')
+  const amountMin = $amountInputs.length ? parseFloat($amountInputs.first().attr('min')) : 1
 
   // Available fields detection relies on FBX; fall back to finding fields in DOM
   const availableFields =
@@ -168,6 +171,7 @@ export default function initDonationFormValidation(component, myForm) {
         required: t.amount.replace('{0}', amountMin),
         number: t.number,
         min: t.min,
+        max: t.max,
       },
       'payment[payment_method]': { required: t.paymentMethod },
 

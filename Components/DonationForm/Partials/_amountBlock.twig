@@ -15,7 +15,7 @@
           </div>
           {% if loop.index == item.amount_options | length %}
           <div class="amount-option custom-amount global-custom-amount">
-            <input autocomplete="off" min="5" max="50000" step="0.01" class="amount-input" name="donation_custom_amount_{{ interval_key }}"
+            <input autocomplete="off" min="{{ minAmount ? minAmount : '3' }}" max="{{ maxAmount ? maxAmount : '50000' }}" step="0.01" class="amount-input" name="donation_custom_amount_{{ interval_key }}"
                    type="number" value="" inputmode="decimal"
                    placeholder="{{ customAmountPlaceholder }}">
             <span class="currency-suffix">€</span>

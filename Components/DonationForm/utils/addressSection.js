@@ -156,6 +156,32 @@ export default function initAddressSection(component) {
   }
 
   /**
+   * Phone notice show/hide
+   */
+  function initPhoneNotice() {
+    const $phoneInput = $root.find('#payment_phone')
+    const $noticeText = $root.find('.phoneNoticeText')
+
+    if (!$phoneInput.length || !$noticeText.length) return
+    let typed = false
+    $phoneInput.on('input', () => {
+      if (!typed) {
+        $noticeText.fadeOut(200)
+        typed = true
+      }
+    })
+    $phoneInput.on('focus', () => {
+      if (!typed) {
+        $noticeText.fadeIn(200)
+      }
+    })
+    $phoneInput.on('blur', () => {
+      typed = false
+      if ($noticeText.is(':visible')) $noticeText.hide()
+    })
+  }
+
+  /**
    * Initialize UI once
    */
   function initOnce() {
@@ -166,6 +192,7 @@ export default function initAddressSection(component) {
     syncAddressHiddenField()
     syncLNOBNewsletterHidden()
     syncSalutationHiddenAndSyncFields()
+    initPhoneNotice()
     // updateCompanyLabel() bleibt aktuell inaktiv
   }
 
