@@ -6,7 +6,7 @@
 
 if (!function_exists('render_how_to_page')) :
 
-  add_action('admin_menu', function () {
+  add_action('admin_menu', function() {
     add_menu_page(
       __('How-to', 'flynt'),
       __('How-to', 'flynt'),
@@ -20,7 +20,8 @@ if (!function_exists('render_how_to_page')) :
 
   function render_how_to_page(): void {
     // Private folder outside webroot (two levels above ABSPATH)
-    $private_dir = dirname(ABSPATH, 2) . '/private/how-to';
+    //    $private_dir = dirname(ABSPATH, 2) . '/private/how-to';
+    $private_dir = WP_CONTENT_DIR . '/private/how-to';
 
     // Ensure folder exists and is writable
     if (!file_exists($private_dir)) {
@@ -52,7 +53,8 @@ if (!function_exists('render_how_to_page')) :
 
           if ($filetype['ext'] !== 'json') {
             echo '<div class="notice notice-error"><p>Bitte nur JSON-Dateien hochladen.</p></div>';
-          } else {
+          }
+          else {
             // Zielpfad für die Datei (immer how-to.json)
             $target_file = $private_dir . '/how-to.json';
 
@@ -65,24 +67,51 @@ if (!function_exists('render_how_to_page')) :
             if (move_uploaded_file($file['tmp_name'], $target_file)) {
               update_option('how_to_json_file_path', $target_file);
               echo '<div class="notice notice-success"><p>JSON erfolgreich hochgeladen und gespeichert als how-to.json.</p></div>';
-            } else {
+            }
+            else {
               echo '<div class="notice notice-error"><p>Upload fehlgeschlagen. Überprüfe Schreibrechte für: ' . esc_html($target_file) . '</p></div>';
             }
           }
-        } else {
+        }
+        else {
           echo '<div class="notice notice-error"><p>Keine Datei ausgewählt.</p></div>';
         }
       }
 
-      echo '<form method="post" enctype="multipart/form-data">';
+      echo '<div style="
+    background: #fff8e1;
+    border-left: 4px solid #f7b600;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+">';
+
+      echo '<h2 style="margin-top:0;">Upload JSON</h2>';
+      echo '<p>Lade hier die JSON-Datei hoch, um die How-to-Anleitungen zu aktualisieren. Achte darauf, dass die Datei den Aufbau unter "Beispiel-JSON" hat.</p>';
+
+      echo '<form method="post" enctype="multipart/form-data" style="margin-top:10px;">';
       wp_nonce_field('save_how_to_json', 'how_to_json_nonce');
-      echo '<p><input type="file" name="how_to_json" accept=".json" /></p>';
+      echo '<p><input type="file" name="how_to_json" accept=".json" style="margin-bottom:10px;" /></p>';
       echo '<p><input type="submit" class="button button-primary" value="Hochladen & Speichern"></p>';
       echo '</form>';
 
-      // Admin-only Download
+      echo '</div>';
+
+      // Download
       if ($json_path_option && file_exists($json_path_option)) {
-        echo '<p><a class="button" href="' . esc_url(admin_url('admin-post.php?action=download_how_to_json')) . '">Download aktuelles JSON</a></p>';
+        echo '<div style="
+        background: #f1f7ff;
+        border-left: 4px solid #0073aa;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+    ">';
+        echo '<h3>How-to-Anleitungen bearbeiten!</h3>';
+        echo '<p style="margin: 0 0 10px 0;">Um die How-to-Anleitungen zu bearbeiten, lade die JSON-Datei herunter, erweitere die Links und beachte dabei den Aufbau des JSON unter <strong>Beispiel-JSON</strong>.</p>';
+        echo '<p style="margin: 0 0 10px 0;">Nach dem Bearbeiten kannst du die Datei über Upload JSON (siehe oben) wieder hochladen, damit die Änderungen wirksam werden.</p>';
+        echo '<p style="margin:0;"><a class="button button-primary" href="' . esc_url(admin_url('admin-post.php?action=download_how_to_json')) . '">Download aktuelles JSON</a></p>';
+        echo '</div>';
       }
 
       // Beispiel-JSON
@@ -111,9 +140,10 @@ if (!function_exists('render_how_to_page')) :
 
       if (!$json_path_option || !file_exists($json_path_option)) {
         echo '<div class="notice notice-warning"><p>Es ist noch kein JSON hochgeladen. Bitte im Tab „Upload JSON“ hochladen.</p></div>';
-      } else {
+      }
+      else {
         $json = file_get_contents($json_path_option);
-        $data = json_decode($json, true);
+        $data = json_decode($json, TRUE);
 
         if (!empty($data['how_to_links'])) {
           echo '<div class="how-to-grid">';
@@ -129,7 +159,8 @@ if (!function_exists('render_how_to_page')) :
             );
           }
           echo '</div>';
-        } else {
+        }
+        else {
           echo '<div class="notice notice-warning"><p>Die JSON-Datei enthält keine How-to Links.</p></div>';
         }
       }
@@ -137,7 +168,7 @@ if (!function_exists('render_how_to_page')) :
   }
 
   // Admin CSS
-  add_action('admin_head', function () {
+  add_action('admin_head', function() {
     $screen = get_current_screen();
     if ($screen && $screen->id === 'toplevel_page_how-to-links') {
       echo '<style>
