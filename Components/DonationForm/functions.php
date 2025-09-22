@@ -135,6 +135,13 @@ function getACFLayout(): array {
         'layout' => 'horizontal',
       ],
       [
+        'label' => __('Titel Intervall Panel (Meine Spende)', 'flynt'),
+        'name' => 'field_label_interval_panel',
+        'type' => 'text',
+        'instructions' => __('Bitte anpassen, wenn nur ein Intervall ausgewählt ist (Beispiel: Meine monatliche Spende, wenn nur monatlich ausgewählt). Wenn nicht ausgefüllt, wird der Titel "Meine Spende" angezeigt.', 'flynt'),
+        'required' => 0,
+      ],
+      [
         'label' => __('Mindestspendenbetrag', 'flynt'),
         'name' => 'minAmount',
         'type' => 'number',
@@ -326,14 +333,6 @@ function getACFLayout(): array {
             'ui' => 1,
           ],
         ],
-      ],
-
-      [
-        'label' => __('Titel Intervall Panel (Meine Spende)', 'flynt'),
-        'name' => 'field_label_interval_panel',
-        'type' => 'text',
-        'instructions' => __('Bitte anpassen, wenn nur ein Intervall ausgewählt ist (Beispiel: Meine monatliche Spende).', 'flynt'),
-        'required' => 0,
       ],
 
       // --- Nudge Text & Anzeigen ---
