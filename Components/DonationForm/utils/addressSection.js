@@ -39,21 +39,6 @@ export default function initAddressSection(component) {
   }
 
   /**
-   * Update the company switch label text
-   * Currently not executed automatically; optional execution with active=true
-   */
-  function updateCompanyLabel(active = false) {
-    if (!active) return
-    const $company = $root.find('#donate-as-company')
-    const $companyLabel = $root.find('.company .switch__label')
-    if (!$company.length || !$companyLabel.length) return
-
-    const checkedTxt = $companyLabel.data('checked') || "Ich möchte doch als Privatperson spenden"
-    const uncheckedTxt = $companyLabel.data('default') || "Ich möchte als Unternehmen spenden"
-    $companyLabel.text($company.is(':checked') ? checkedTxt : uncheckedTxt)
-  }
-
-  /**
    * Update hidden input for receipt
    */
   function syncReceiptHidden() {
@@ -193,13 +178,11 @@ export default function initAddressSection(component) {
     syncLNOBNewsletterHidden()
     syncSalutationHiddenAndSyncFields()
     initPhoneNotice()
-    // updateCompanyLabel() bleibt aktuell inaktiv
   }
 
   // Listen to changes on company and receipt checkboxes
   $root.on('change', '#donate-as-company', () => {
     updateReceiptUI()
-    updateCompanyLabel()
     toggleCompanySection()
     toggleAddressSection()
   })

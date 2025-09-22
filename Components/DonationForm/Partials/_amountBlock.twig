@@ -1,33 +1,44 @@
 <div class="amount-block">
   {% set current_interval = interval|default('0') %}
+  {% set active_intervals = active_intervals|default(['0', '1']) %}
+  {% set amounts_mapping = {
+    '0': amounts_one_time,
+    '1': amounts_monthly,
+    '3': amounts_quarterly,
+    '6': amounts_half_yearly,
+    '12': amounts_yearly
+  } %}
+  
+  <!-- Betragsvorschläge -->
   <div class="amount-suggestions w-full">
-    {% for item in amounts %}
-      {% set interval_key = item.interval_type ? '1' : '0' %}
-      {% set is_active = current_interval == interval_key %}
-      <div class="amount-group-wrapper {{ is_active ? 'active' : '' }}" data-interval="{{ interval_key }}">
-        {% for key, amount in item.amount_options %}
-          {% set btn_id = 'amount_'~ interval_key ~ '_' ~ loop.index %}
-          <div class="amount-option">
-            <input class="amount-radio" id="{{ btn_id }}" name="donation_amount_{{ interval_key }}" type="radio"
-                   value="{{ amount.value }}" {{ amount.default ? 'checked' : '' }}
-                   data-interval="{{ interval_key }}">
-            <label class="amount-label" for="{{ btn_id }}">{{ amount.value }}€</label>
-          </div>
-          {% if loop.index == item.amount_options | length %}
+    {% for key, amounts in amounts_mapping %}
+      {% if key in active_intervals %}
+        {% set is_active = current_interval == key %}
+        <div class="amount-group-wrapper {{ is_active ? 'active' : '' }}" data-interval="{{ key }}">
+          {% for amount in amounts %}
+            {% set btn_id = 'amount_' ~ key ~ '_' ~ loop.index %}
+            <div class="amount-option">
+              <input class="amount-radio" id="{{ btn_id }}" name="donation_amount_{{ key }}" type="radio"
+                     value="{{ amount.value }}" {{ amount.default ? 'checked' : '' }}
+                     data-interval="{{ key }}">
+              <label class="amount-label" for="{{ btn_id }}">{{ amount.value }}€</label>
+            </div>
+          {% endfor %}
+          <!-- Benutzerdefinierter Betrag -->
           <div class="amount-option custom-amount global-custom-amount">
-            <input autocomplete="off" min="{{ minAmount ? minAmount : '3' }}" max="{{ maxAmount ? maxAmount : '50000' }}" step="0.01" class="amount-input" name="donation_custom_amount_{{ interval_key }}"
-                   type="number" value="" inputmode="decimal"
-                   placeholder="{{ customAmountPlaceholder }}">
+            <input autocomplete="off" min="{{ minAmount|default(3) }}" max="{{ maxAmount|default(50000) }}" step="0.01"
+                   class="amount-input" name="donation_custom_amount_{{ key }}" type="number" value=""
+                   inputmode="decimal" placeholder="{{ customAmountPlaceholder|default('Eigener Betrag') }}">
             <span class="currency-suffix">€</span>
           </div>
-          {% endif %}
-        {% endfor %}
-      </div>
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
+  
+  <!-- Verstecktes Feld für den finalen Betrag -->
   <div id="payment_amount_wrapper" class="relative">
     <input type="text" name="payment[amount]" id="payment_amount">
     <div id="payment_amount_error" class="error error-text text-center"></div>
   </div>
 </div>
-

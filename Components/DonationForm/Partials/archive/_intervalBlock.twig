@@ -1,0 +1,18 @@
+{# Interval #}
+<div class="interval-block {{ show_nudge_text and nudge_text ? 'has-nudge-text' }}">
+  <div data-default-interval="{{ interval|default('0') }}" id="payment_interval">
+    <div class="flex flex-row gap-10 sm:gap-3 sm:justify-start">
+      <div class="radioWrapper"><input type="radio" name="payment[interval]" id="payment_interval__0" value="0"
+                                       checked="checked">
+        <label for="payment_interval__0" class="">{{ oneTimeIntervalText }}</label></div>
+      <div class="radioWrapper"><input type="radio" name="payment[interval]" id="payment_interval__1" value="1">
+        <label for="payment_interval__1" class="">{{ monthlyIntervalText }}</label></div>
+    </div>
+    <div id="payment_interval_error" class="error error-text"></div>
+  </div>
+  {% if show_nudge_text and nudge_text %}
+    <div class="nudge_text">
+      {{ nudge_text }}
+    </div>
+  {% endif %}
+</div>

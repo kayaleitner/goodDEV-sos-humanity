@@ -13,6 +13,43 @@ add_filter('Flynt/addComponentData?name=DonationForm', function ($data) {
   return $data;
 });
 
+/**
+ * Validates that exactly one default amount is selected per interval repeater.
+ */
+add_filter('acf/validate_value/type=repeater', function($valid, $value, $field, $input) {
+  $intervalRepeaters = [
+    'amounts_one_time',
+    'amounts_monthly',
+    'amounts_quarterly',
+    'amounts_half_yearly',
+    'amounts_yearly',
+  ];
+
+  if (!in_array($field['name'], $intervalRepeaters)) {
+    return $valid;
+  }
+
+  if (empty($value) || !is_array($value)) {
+    return $valid;
+  }
+
+  $defaultCount = 0;
+
+  foreach ($value as $row) {
+    foreach ($row as $key => $val) {
+      if (str_ends_with($key, '_default') && $val === '1') {
+        $defaultCount++;
+      }
+    }
+  }
+
+  if ($defaultCount !== 1) {
+    return 'Bitte wähle genau einen Standard-Betrag für dieses Intervall aus.';
+  }
+
+  return $valid;
+}, 10, 4);
+
 add_action('wp_enqueue_scripts', function () {
 
   wp_enqueue_script('jquery');
@@ -34,6 +71,338 @@ add_action('wp_enqueue_scripts', function () {
     false
   );
 }, 5);
+
+/**
+ * Provides the ACF (Advanced Custom Fields) layout definition for the DonationForm component.
+ *
+ * This layout is used to configure donation forms via the WordPress backend.
+ * It defines fields for the FundraisingBox form hash, donation intervals,
+ * and specific donation amount options per interval.
+ *
+ * @return array
+ *   The ACF layout definition array for the DonationForm component.
+ */
+function getACFLayout(): array {
+  return [
+    'name' => 'DonationForm',
+    'label' => 'Donation Form',
+    'sub_fields' => [
+      // --- Formular Auswahl ---
+      [
+        'label' => __('Bitte das Formular auswählen (je Sprache)', 'flynt'),
+        'name' => 'hash',
+        'type' => 'select',
+        'choices' => [
+          '0rtnskztep1awzb6' => 'Formular Deutsch',
+          '4jppw6zr4ckbxmfl' => 'Formular English',
+          'b8x47ctvkjzseldm' => 'Formular Italian',
+        ],
+        'required' => 1,
+        'ui' => 1,
+        'return_format' => 'value',
+      ],
+
+      // --- Aktive Intervalle (Checkbox) ---
+      [
+        'label' => __('Aktive Intervalle', 'flynt'),
+        'name' => 'active_intervals',
+        'type' => 'checkbox',
+        'choices' => [
+          '0' => __('einmalig', 'flynt'),
+          '12' => __('jährlich', 'flynt'),
+          '6' => __('halbjährlich', 'flynt'),
+          '3' => __('vierteljährlich', 'flynt'),
+          '1' => __('monatlich', 'flynt'),
+        ],
+        'default_value' => ['0','1'],
+        'layout' => 'horizontal',
+        'instructions' => __('Wähle aus, welche Intervalle im Formular angezeigt werden sollen. (max 3)', 'flynt'),
+      ],
+      [
+        'label' => __('Intervall', 'flynt'),
+        'instructions' => __('Wähle das Intervall aus welches zuerst angezeigt werden soll.', 'flynt'),
+        'name' => 'interval',
+        'type' => 'radio',
+        'choices' => [
+          '0' => __('einmalig', 'flynt'),
+          '12' => __('jährlich', 'flynt'),
+          '6' => __('halbjährlich', 'flynt'),
+          '3' => __('vierteljährlich', 'flynt'),
+          '1' => __('monatlich', 'flynt'),
+        ],
+        'required' => 1,
+        'default_value' => '0',
+        'layout' => 'horizontal',
+      ],
+      [
+        'label' => __('Mindestspendenbetrag', 'flynt'),
+        'name' => 'minAmount',
+        'type' => 'number',
+        'instructions' => __('Trage hier den Mindestbetrag ein. Bitte mit der Fundraisingbox abgleichen.', 'flynt'),
+        'required' => 1,
+        'step' => 1,
+        'min' => 1,
+      ],
+      [
+        'label' => __('Maximalspendenbetrag', 'flynt'),
+        'name' => 'maxAmount',
+        'type' => 'number',
+        'instructions' => __('Trage hier den Maximalbetrag ein. Bitte mit der Fundraisingbox abgleichen.', 'flynt'),
+        'required' => 1,
+        'step' => 1,
+        'min' => 1,
+      ],
+      // --- Betrags-Repeater pro Intervall ---
+      // Einmalig
+      [
+        'label' => __('Betragsvorschläge einmalig', 'flynt'),
+        'name' => 'amounts_one_time',
+        'type' => 'repeater',
+        'min' => 4,
+        'max' => 4,
+        'button_label' => __('Add Amount Option', 'flynt'),
+        'conditional_logic' => [
+          [
+            [
+              'field' => 'field_pageComponents_pageComponents_DonationForm_active_intervals',
+              'operator' => '==',
+              'value' => '0',
+            ],
+          ],
+        ],
+        'sub_fields' => [
+          [
+            'label' => __('Betrag', 'flynt'),
+            'name' => 'value',
+            'type' => 'number',
+            'min' => 5,
+            'default_value' => 10,
+            'required' => 1,
+          ],
+          [
+            'label' => __('Standard Betrag', 'flynt'),
+            'name' => 'default',
+            'type' => 'true_false',
+            'ui' => 1,
+          ],
+        ],
+      ],
+
+      // Jährlich
+      [
+        'label' => __('Betragsvorschläge jährlich', 'flynt'),
+        'name' => 'amounts_yearly',
+        'type' => 'repeater',
+        'min' => 4,
+        'max' => 4,
+        'button_label' => __('Add Amount Option', 'flynt'),
+        'conditional_logic' => [
+          [
+            [
+              'field' => 'field_pageComponents_pageComponents_DonationForm_active_intervals',
+              'operator' => '==',
+              'value' => '12',
+            ],
+          ],
+        ],
+        'sub_fields' => [
+          [
+            'label' => __('Betrag', 'flynt'),
+            'name' => 'value',
+            'type' => 'number',
+            'min' => 5,
+            'default_value' => 10,
+            'required' => 1,
+          ],
+          [
+            'label' => __('Standard Betrag', 'flynt'),
+            'name' => 'default',
+            'type' => 'true_false',
+            'ui' => 1,
+          ],
+        ],
+      ],
+
+      // Halbjährlich
+      [
+        'label' => __('Betragsvorschläge halbjährlich', 'flynt'),
+        'name' => 'amounts_half_yearly',
+        'type' => 'repeater',
+        'min' => 4,
+        'max' => 4,
+        'button_label' => __('Add Amount Option', 'flynt'),
+        'conditional_logic' => [
+          [
+            [
+              'field' => 'field_pageComponents_pageComponents_DonationForm_active_intervals',
+              'operator' => '==',
+              'value' => '6',
+            ],
+          ],
+        ],
+        'sub_fields' => [
+          [
+            'label' => __('Betrag', 'flynt'),
+            'name' => 'value',
+            'type' => 'number',
+            'min' => 5,
+            'default_value' => 10,
+            'required' => 1,
+          ],
+          [
+            'label' => __('Standard Betrag', 'flynt'),
+            'name' => 'default',
+            'type' => 'true_false',
+            'ui' => 1,
+          ],
+        ],
+      ],
+
+      // Vierteljährlich
+      [
+        'label' => __('Betragsvorschläge vierteljährlich', 'flynt'),
+        'name' => 'amounts_quarterly',
+        'type' => 'repeater',
+        'min' => 4,
+        'max' => 4,
+        'button_label' => __('Add Amount Option', 'flynt'),
+        'conditional_logic' => [
+          [
+            [
+              'field' => 'field_pageComponents_pageComponents_DonationForm_active_intervals',
+              'operator' => '==',
+              'value' => '3',
+            ],
+          ],
+        ],
+        'sub_fields' => [
+          [
+            'label' => __('Betrag', 'flynt'),
+            'name' => 'value',
+            'type' => 'number',
+            'min' => 5,
+            'default_value' => 10,
+            'required' => 1,
+          ],
+          [
+            'label' => __('Standard Betrag', 'flynt'),
+            'name' => 'default',
+            'type' => 'true_false',
+            'ui' => 1,
+          ],
+        ],
+      ],
+
+      // Monatlich
+      [
+        'label' => __('Betragsvorschläge monatlich', 'flynt'),
+        'name' => 'amounts_monthly',
+        'type' => 'repeater',
+        'min' => 4,
+        'max' => 4,
+        'button_label' => __('Add Amount Option', 'flynt'),
+        'conditional_logic' => [
+          [
+            [
+              'field' => 'field_pageComponents_pageComponents_DonationForm_active_intervals',
+              'operator' => '==',
+              'value' => '1',
+            ],
+          ],
+        ],
+        'sub_fields' => [
+          [
+            'label' => __('Betrag', 'flynt'),
+            'name' => 'value',
+            'type' => 'number',
+            'min' => 5,
+            'default_value' => 10,
+            'required' => 1,
+          ],
+          [
+            'label' => __('Standard Betrag', 'flynt'),
+            'name' => 'default',
+            'type' => 'true_false',
+            'ui' => 1,
+          ],
+        ],
+      ],
+
+      [
+        'label' => __('Titel Intervall Panel (Meine Spende)', 'flynt'),
+        'name' => 'field_label_interval_panel',
+        'type' => 'text',
+        'instructions' => __('Bitte anpassen, wenn nur ein Intervall ausgewählt ist (Beispiel: Meine monatliche Spende).', 'flynt'),
+        'required' => 0,
+      ],
+
+      // --- Nudge Text & Anzeigen ---
+      [
+        'label' => __('Nudge Text', 'flynt'),
+        'name' => 'nudge_text',
+        'type' => 'wysiwyg',
+        'toolbar' => 'basic',
+        'tabs' => 'visual',
+        'media_upload' => 0,
+        'required' => 0,
+      ],
+      [
+        'label' => __('Nudge Text anzeigen', 'flynt'),
+        'name' => 'show_nudge_text',
+        'type' => 'true_false',
+        'ui' => 1,
+        'default_value' => 0,
+        'required' => 0,
+      ],
+      [
+        'label' => __('Wertversprechen', 'flynt'),
+        'name' => 'value_proposition',
+        'type' => 'wysiwyg',
+        'tabs' => 'visual',
+        'media_upload' => 0,
+        'required' => 0,
+      ],
+      [
+        'label' => __('Wertversprechen anzeigen', 'flynt'),
+        'name' => 'show_value_proposition',
+        'type' => 'true_false',
+        'ui' => 1,
+        'default_value' => 0,
+        'required' => 0,
+      ],
+      [
+        'label' => __('Hinweis sicheres Spenden', 'flynt'),
+        'name' => 'security_notice',
+        'type' => 'wysiwyg',
+        'toolbar' => 'basic',
+        'tabs' => 'visual',
+        'media_upload' => 0,
+        'required' => 1,
+      ],
+      [
+        'label' => __('Datenschutz Hinweis', 'flynt'),
+        'name' => 'privacy_notice',
+        'type' => 'wysiwyg',
+        'toolbar' => 'basic',
+        'tabs' => 'visual',
+        'media_upload' => 0,
+        'required' => 1,
+      ],
+      [
+        'label' => __('Danke-Seite Einmalspende', 'flynt'),
+        'name' => 'thx_one_time',
+        'type' => 'link',
+        'required' => 1,
+      ],
+      [
+        'label' => __('Danke-Seite Dauerspende', 'flynt'),
+        'name' => 'thx_recurring',
+        'type' => 'link',
+        'required' => 1,
+      ],
+    ],
+  ];
+}
 
 Options::addTranslatable('DonationForm', [
   [
@@ -57,6 +426,30 @@ Options::addTranslatable('DonationForm', [
     'type' => 'text',
     'instructions' => __('Text für einmalige Spende, „%amount%“ wird durch den Betrag ersetzt, z. B. „Einmalig 50 Euro spenden“.', 'flynt'),
     'default_value' => __('Einmalig %amount% Euro spenden', 'flynt'),
+    'wrapper' => ['width' => 50],
+  ],
+  [
+    'label' => __('Text für Spendenbutton (Jährliche Spende)', 'flynt'),
+    'name' => 'submitButtonTextYearly',
+    'type' => 'text',
+    'instructions' => __('Text für jährliche Spende, „%amount%“ wird durch den Betrag ersetzt, z. B. „Jährlich 50 Euro spenden“.', 'flynt'),
+    'default_value' => __('Jährlich %amount% Euro spenden', 'flynt'),
+    'wrapper' => ['width' => 50],
+  ],
+  [
+    'label' => __('Text für Spendenbutton (Halbjährliche Spende)', 'flynt'),
+    'name' => 'submitButtonTextHalfYearly',
+    'type' => 'text',
+    'instructions' => __('Text für halbjährliche Spende, „%amount%“ wird durch den Betrag ersetzt, z. B. „Halbjährlich 50 Euro spenden“.', 'flynt'),
+    'default_value' => __('Halbjährlich %amount% Euro spenden', 'flynt'),
+    'wrapper' => ['width' => 50],
+  ],
+  [
+    'label' => __('Text für Spendenbutton (Vierteljährliche Spende)', 'flynt'),
+    'name' => 'submitButtonTextQuarterly',
+    'type' => 'text',
+    'instructions' => __('Text für vierteljährliche Spende, „%amount%“ wird durch den Betrag ersetzt, z. B. „Vierteljährlich 50 Euro spenden“.', 'flynt'),
+    'default_value' => __('Vierteljährlich %amount% Euro spenden', 'flynt'),
     'wrapper' => ['width' => 50],
   ],
   [
@@ -96,6 +489,30 @@ Options::addTranslatable('DonationForm', [
     'type' => 'text',
     'instructions' => __('Text für die Option „Monatliche Spende“ im Formular, z. B. „Monatlich“.', 'flynt'),
     'default_value' => __('Monatlich', 'flynt'),
+    'wrapper' => ['width' => 50],
+  ],
+  [
+    'label' => __('Text für Intervall „Monatlich“', 'flynt'),
+    'name' => 'quarterlyIntervalText',
+    'type' => 'text',
+    'instructions' => __('Text für die Option „Monatliche Spende“ im Formular, z. B. „Monatlich“.', 'flynt'),
+    'default_value' => __('Vierteljährlich', 'flynt'),
+    'wrapper' => ['width' => 50],
+  ],
+  [
+    'label' => __('Text für Intervall „Monatlich“', 'flynt'),
+    'name' => 'halfYearlyIntervalText',
+    'type' => 'text',
+    'instructions' => __('Text für die Option „Monatliche Spende“ im Formular, z. B. „Monatlich“.', 'flynt'),
+    'default_value' => __('Halbjährlich', 'flynt'),
+    'wrapper' => ['width' => 50],
+  ],
+  [
+    'label' => __('Text für Intervall „Monatlich“', 'flynt'),
+    'name' => 'yearlyIntervalText',
+    'type' => 'text',
+    'instructions' => __('Text für die Option „Monatliche Spende“ im Formular, z. B. „Monatlich“.', 'flynt'),
+    'default_value' => __('Jährlich', 'flynt'),
     'wrapper' => ['width' => 50],
   ],
   [
@@ -379,181 +796,3 @@ Options::addTranslatable('DonationForm', [
     'wrapper' => ['width' => 100],
   ],
 ]);
-
-
-/**
- * Provides the ACF (Advanced Custom Fields) layout definition for the DonationForm component.
- *
- * This layout is used to configure donation forms via the WordPress backend.
- * It defines fields for the FundraisingBox form hash, donation intervals,
- * and specific donation amount options per interval.
- *
- * @return array
- *   The ACF layout definition array for the DonationForm component.
- */
-function getACFLayout(): array {
-  return [
-    'name' => 'DonationForm',
-    'label' => 'Donation Form',
-    'sub_fields' => [
-      [
-        'label' => __('Bitte das Formular auswählen (je Sprache)', 'flynt'),
-        'name' => 'hash',
-        'type' => 'select',
-        'choices' => [
-          '0rtnskztep1awzb6' => 'Formular Deutsch',
-          '4jppw6zr4ckbxmfl' => 'Formular English',
-          'b8x47ctvkjzseldm' => 'Formular Italian',
-        ],
-        'required' => 1,
-        'ui' => 1,
-        'return_format' => 'value',
-      ],
-      [
-        'label' => __('Intervall', 'flynt'),
-        'instructions' => __('Wähle das Intervall aus welches zuerst angezeigt werden soll.', 'flynt'),
-        'name' => 'interval',
-        'type' => 'radio',
-        'choices' => [
-          '0' => __('einmalig', 'flynt'),
-          '1' => __('monatlich', 'flynt'),
-        ],
-        'required' => 1,
-        'default_value' => '0',
-        'layout' => 'horizontal',
-      ],
-      [
-        'label' => __('Mindestspendenbetrag', 'flynt'),
-        'name' => 'minAmount',
-        'type' => 'number',
-        'instructions' => __('Trage hier den Mindestbetrag ein. Bitte mit der Fundraisingbox abgleichen.', 'flynt'),
-        'required' => 1,
-        'step' => 1,
-        'min' => 1,
-      ],
-      [
-        'label' => __('Maximalspendenbetrag', 'flynt'),
-        'name' => 'maxAmount',
-        'type' => 'number',
-        'instructions' => __('Trage hier den Maximalbetrag ein. Bitte mit der Fundraisingbox abgleichen.', 'flynt'),
-        'required' => 1,
-        'step' => 1,
-        'min' => 1,
-      ],
-      [
-        'label' => __('Beitragsvorschläge je Intervall (max 2)', 'flynt'),
-        'name' => 'amounts',
-        'type' => 'repeater',
-        'button_label' => __('Add Interval Amounts', 'flynt'),
-        'min' => 2,
-        'max' => 2,
-        'sub_fields' => [
-          [
-            'label' => __('Interval Type', 'flynt'),
-            'name' => 'interval_type',
-            'type' => 'radio',
-            'choices' => [
-              '0' => __('einmalig', 'flynt'),
-              '1' => __('monatlich', 'flynt'),
-            ],
-            'default_value' => '0',
-            'layout' => 'horizontal',
-            'required' => 1,
-          ],
-          [
-            'label' => __('Betrags Vorschläge', 'flynt'),
-            'name' => 'amount_options',
-            'type' => 'repeater',
-            'button_label' => __('Add Amount Option', 'flynt'),
-            'min' => 4,
-            'max' => 4,
-            'sub_fields' => [
-              [
-                'label' => __('Betrag (bitte 4 Beträge auswählen!)', 'flynt'),
-                'name' => 'value',
-                'type' => 'number',
-                'min' => 5,
-                'max' => 50000,
-              ],
-              [
-                'label' => __('Ausgewählter Betrag je Intervall (bitte nur einen auswählen)', 'flynt'),
-                'name' => 'default',
-                'type' => 'true_false',
-                'ui' => 1,
-              ],
-            ],
-          ],
-        ],
-      ],
-      [
-        'label' => __('Nudge Text', 'flynt'),
-        'name' => 'nudge_text',
-        'type' => 'wysiwyg',
-        'toolbar' => 'basic',
-        'tabs' => 'visual',
-        'media_upload' => 0,
-        'required' => 0,
-      ],
-      [
-        'label' => __('Nudge Text anzeigen', 'flynt'),
-        'name' => 'show_nudge_text',
-        'type' => 'true_false',
-        'ui' => 1,
-        'default_value' => 0,
-        'required' => 0,
-      ],
-      [
-        'label' => __('Wertversprechen', 'flynt'),
-        'name' => 'value_proposition',
-        'type' => 'wysiwyg',
-        'tabs' => 'visual',
-        'media_upload' => 0,
-        'required' => 0,
-      ],
-      [
-        'label' => __('Wertversprechen anzeigen', 'flynt'),
-        'name' => 'show_value_proposition',
-        'type' => 'true_false',
-        'ui' => 1,
-        'default_value' => 0,
-        'required' => 0,
-      ],
-      [
-        'label' => __('Hinweis sicheres Spenden', 'flynt'),
-        'name' => 'security_notice',
-        'type' => 'wysiwyg',
-        'toolbar' => 'basic',
-        'tabs' => 'visual',
-        'media_upload' => 0,
-        'required' => 1,
-      ],
-      [
-        'label' => __('Datenschutz Hinweis', 'flynt'),
-        'name' => 'privacy_notice',
-        'type' => 'wysiwyg',
-        'toolbar' => 'basic',
-        'tabs' => 'visual',
-        'media_upload' => 0,
-        'required' => 1,
-      ],
-      [
-        'label' => __('Danke-Seite Einmalspende', 'flynt'),
-        'name' => 'thx_one_time',
-        'type' => 'link',
-        'required' => 1,
-      ],
-      [
-        'label' => __('Danke-Seite Dauerspende', 'flynt'),
-        'name' => 'thx_recurring',
-        'type' => 'link',
-        'required' => 1,
-      ],
-    ],
-  ];
-}
-
-// for debugging
-//add_action('wp_footer', function () {
-//    echo do_shortcode('[fb_capi_thanks_example]');
-//});
-

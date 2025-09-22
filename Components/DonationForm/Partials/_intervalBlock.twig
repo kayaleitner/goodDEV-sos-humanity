@@ -1,18 +1,33 @@
 {# Interval #}
-<div class="interval-block {{ show_nudge_text and nudge_text ? 'has-nudge-text' }}">
+{% if active_intervals|length == 1 %}
   <div data-default-interval="{{ interval|default('0') }}" id="payment_interval">
-    <div class="flex flex-row gap-10 sm:gap-3 sm:justify-start">
-      <div class="radioWrapper"><input type="radio" name="payment[interval]" id="payment_interval__0" value="0"
-                                       checked="checked">
-        <label for="payment_interval__0" class="">{{ oneTimeIntervalText }}</label></div>
-      <div class="radioWrapper"><input type="radio" name="payment[interval]" id="payment_interval__1" value="1">
-        <label for="payment_interval__1" class="">{{ monthlyIntervalText }}</label></div>
-    </div>
-    <div id="payment_interval_error" class="error error-text"></div>
+    <input type="hidden" name="payment[interval]" value="{{ active_intervals[0] }}">
   </div>
-  {% if show_nudge_text and nudge_text %}
-    <div class="nudge_text">
-      {{ nudge_text }}
+{% else %}
+  <div class="interval-block {{ show_nudge_text and nudge_text ? 'has-nudge-text' : '' }}">
+    <div data-default-interval="{{ interval|default('0') }}" id="payment_interval">
+      <div class="flex flex-row gap-10 sm:gap-3 sm:justify-start">
+        {% for value in ['0', '12', '6', '3', '1'] %}
+          {% if value in active_intervals %}
+            <div class="radioWrapper">
+              <input type="radio" name="payment[interval]" id="payment_interval__{{ value }}"
+                     value="{{ value }}" {{ interval == value ? 'checked' : '' }}>
+              <label for="payment_interval__{{ value }}">
+                {% if value == '0' %}{{ oneTimeIntervalText }}
+                {% elseif value == '1' %}{{ monthlyIntervalText }}
+                {% elseif value == '3' %}{{ quarterlyIntervalText }}
+                {% elseif value == '6' %}{{ halfYearlyIntervalText }}
+                {% elseif value == '12' %}{{ yearlyIntervalText }}
+                {% endif %}
+              </label>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div id="payment_interval_error" class="error error-text"></div>
     </div>
-  {% endif %}
-</div>
+    {% if show_nudge_text and nudge_text %}
+      <div class="nudge_text">{{ nudge_text }}</div>
+    {% endif %}
+  </div>
+{% endif %}
