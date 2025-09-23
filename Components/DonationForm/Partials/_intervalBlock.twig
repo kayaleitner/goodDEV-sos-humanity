@@ -4,9 +4,9 @@
     <input type="hidden" name="payment[interval]" value="{{ active_intervals[0] }}">
   </div>
 {% else %}
-  <div class="interval-block {{ show_nudge_text and nudge_text ? 'has-nudge-text' : '' }}">
+  <div class="interval-block {{ show_nudge_text and nudge_text ? 'interval-block__has-nudge-text' : '' }} {{ active_intervals|length == 3 ? 'interval-block__max-three' : '' }}">
     <div data-default-interval="{{ interval|default('0') }}" id="payment_interval">
-      <div class="flex flex-row gap-10 sm:gap-3 sm:justify-start">
+      <div class="flex flex-row gap-10 sm:gap-3 sm:justify-start wrapper-active-intervals">
         {% for value in ['0', '12', '6', '3', '1'] %}
           {% if value in active_intervals %}
             <div class="radioWrapper">

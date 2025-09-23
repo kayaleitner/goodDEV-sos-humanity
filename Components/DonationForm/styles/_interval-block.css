@@ -1,7 +1,7 @@
 [is="flynt-donation-form"] {
   .interval-block {
     margin-bottom: var(--spacing-xl);
-    &.has-nudge-text {
+    &__has-nudge-text {
       display: grid;
       grid-row: 1 / -1;
       gap: 1rem;
@@ -31,11 +31,38 @@
         height: 50px;
       }
     }
+    &__max-three {
+      justify-content: left;
+      .wrapper-active-intervals {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .nudge_text {
+        display: none;
+      }
+    }
+  }
+  @media screen and (min-width: 480px) {
+    .interval-block {
+      margin-bottom: var(--spacing-xl);
+      &__max-three {
+        justify-content: center;
+        .wrapper-active-intervals {
+          flex-direction: row;
+          justify-content: left;
+        }
+        .nudge_text {
+          display: block;
+          left: auto;
+          right: -70px;
+        }
+      }
+    }
   }
   @media screen and (min-width: 768px) {
     .interval-block {
       padding: 0 20px;
-      &.has-nudge-text {
+      &__has-nudge-text {
         grid-template-columns: auto 1fr;
         justify-items: start;
       }
@@ -49,6 +76,12 @@
           left: 0;
           right: auto;
           transform: translateY(-50%);
+        }
+      }
+      &__max-three {
+        .nudge_text {
+          left: 0;
+          right: auto;
         }
       }
     }
