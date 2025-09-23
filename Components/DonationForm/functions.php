@@ -4,7 +4,7 @@ namespace Flynt\Components\DonationForm;
 
 use Flynt\Utils\Options;
 
-add_filter('Flynt/addComponentData?name=DonationForm', function ($data) {
+add_filter('Flynt/addComponentData?name=DonationForm', function($data) {
   $locale = get_locale();
   $lang = substr($locale, 0, 2); // z. B. "de"
 
@@ -50,8 +50,64 @@ add_filter('acf/validate_value/type=repeater', function($valid, $value, $field, 
   return $valid;
 }, 10, 4);
 
-add_action('wp_enqueue_scripts', function () {
+/**
+ * Validate the "active_intervals" ACF field.
+ */
+add_filter('acf/validate_value/name=active_intervals', function($valid, $value, $field, $input) {
+  // Wenn bereits ein anderer Fehler vorliegt → direkt zurück
+  if ($valid !== TRUE) {
+    return $valid;
+  }
 
+  // Value kann als Array oder leer kommen
+  $count = is_array($value) ? count($value) : 0;
+
+  if ($count < 1) {
+    return __('Bitte wähle mindestens ein Intervall aus.', 'flynt');
+  }
+
+  if ($count > 3) {
+    return __('Du kannst maximal drei Intervalle auswählen.', 'flynt');
+  }
+
+  return $valid;
+}, 10, 4);
+
+/**
+ * Validate "interval" field → must be one of the selected "active_intervals".
+ */
+add_filter('acf/validate_value/name=interval', function ($valid, $value, $field, $input_name) {
+  if (!$valid) return $valid;
+
+  $active_intervals_key = 'field_pageComponents_pageComponents_DonationForm_active_intervals';
+  $acf_data = $_POST['acf'] ?? [];
+
+  $active_intervals = [];
+
+  if (!empty($acf_data['field_pageComponents_pageComponents'])) {
+    foreach ($acf_data['field_pageComponents_pageComponents'] as $row) {
+      if (($row['acf_fc_layout'] ?? '') === 'DonationForm' && isset($row[$active_intervals_key])) {
+        $active_intervals = $row[$active_intervals_key];
+        break;
+      }
+    }
+  }
+
+  if (empty($active_intervals) && !empty($_POST['post_id'])) {
+    $active_intervals = get_field('active_intervals', $_POST['post_id']) ?: [];
+  }
+
+  $active_intervals = array_map('strval', (array) $active_intervals);
+
+  if (!in_array((string)$value, $active_intervals, true)) {
+    return __('Das ausgewählte Intervall muss in den ausgewählten aktiven Intervallen enthalten sein.', 'flynt');
+  }
+
+  return $valid;
+}, 10, 4);
+
+
+add_action('wp_enqueue_scripts', function() {
   wp_enqueue_script('jquery');
 
   // jQuery Validate for client-side validation
@@ -59,21 +115,22 @@ add_action('wp_enqueue_scripts', function () {
     'jquery-validate',
     get_template_directory_uri() . '/Components/DonationForm/Assets/scripts/jquery.validate.min.js',
     ['jquery'],
-    null,
-    true
+    NULL,
+    TRUE
   );
 
   wp_enqueue_script(
     'fundraisingbox',
     'https://api.fundraisingbox.com/js/jquery.fundraisingbox.min.js',
     ['jquery'],
-    null,
-    false
+    NULL,
+    FALSE
   );
 }, 5);
 
 /**
- * Provides the ACF (Advanced Custom Fields) layout definition for the DonationForm component.
+ * Provides the ACF (Advanced Custom Fields) layout definition for the
+ * DonationForm component.
  *
  * This layout is used to configure donation forms via the WordPress backend.
  * It defines fields for the FundraisingBox form hash, donation intervals,
@@ -114,13 +171,13 @@ function getACFLayout(): array {
           '3' => __('vierteljährlich', 'flynt'),
           '1' => __('monatlich', 'flynt'),
         ],
-        'default_value' => ['0','1'],
+        'default_value' => ['0', '1'],
         'layout' => 'horizontal',
-        'instructions' => __('Wähle aus, welche Intervalle im Formular angezeigt werden sollen. (max 3)', 'flynt'),
+        'instructions' => __('Wähle aus, welche Intervalle im Formular angezeigt werden sollen. (min 1 - max 3)', 'flynt'),
       ],
       [
         'label' => __('Intervall', 'flynt'),
-        'instructions' => __('Wähle das Intervall aus welches zuerst angezeigt werden soll.', 'flynt'),
+        'instructions' => __('Wähle das Intervall aus welches zuerst angezeigt werden soll. Beachte, das es eins aus Aktiven Intervallen ausgewählt sein muss.', 'flynt'),
         'name' => 'interval',
         'type' => 'radio',
         'choices' => [
