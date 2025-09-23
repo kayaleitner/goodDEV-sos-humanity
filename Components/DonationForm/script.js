@@ -29,13 +29,23 @@ export default function (component) {
     const oneTime = $form.data('success-redirect-one-time')
     const recurring = $form.data('success-redirect-recurring')
     const applySuccessUrl = () => {
-      const intervalVal = $(component).find('input[name="payment[interval]"]:checked').val() || '0'
-      const base = intervalVal === '0' ? oneTime : recurring
-      if ($hiddenSuccess.length && base) {
-        // Append FRBox default success params placeholders so the backend can substitute
-        $hiddenSuccess.val(`${base}${defaultSuccessUrlPrams}`)
+      let intervalVal = '0';
+
+      const $checked = $(component).find('input[name="payment[interval]"]:checked');
+      if ($checked.length) {
+        intervalVal = $checked.val();
+      } else {
+        // 2. Fallback: Hidden-Feld auslesen
+        const $hiddenInterval = $(component).find('input[name="payment[interval]"][type="hidden"]');
+        if ($hiddenInterval.length) {
+          intervalVal = $hiddenInterval.val();
+        }
       }
-    }
+      const base = intervalVal === '0' ? oneTime : recurring;
+      if ($hiddenSuccess.length && base) {
+        $hiddenSuccess.val(`${base}${defaultSuccessUrlPrams}`);
+      }
+    };
     // initial set and on change
     applySuccessUrl()
     $(component).on('change', 'input[name="payment[interval]"]', applySuccessUrl)
