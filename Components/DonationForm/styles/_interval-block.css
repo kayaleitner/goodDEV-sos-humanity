@@ -1,6 +1,6 @@
 [is="flynt-donation-form"] {
   .interval-block {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: 1.5rem;
     &__has-nudge-text {
       display: grid;
       gap: 1rem;
@@ -53,7 +53,6 @@
   }
   @media screen and (min-width: 480px) {
     .interval-block {
-      margin-bottom: var(--spacing-xl);
       &__max-three {
         justify-content: center;
         grid-template-columns: auto;
@@ -98,7 +97,6 @@
   }
   @media screen and (min-width: 840px) {
     .interval-block {
-      padding: 0 20px;
       &__has-nudge-text {
         .nudge_text {
           width: 100%;
