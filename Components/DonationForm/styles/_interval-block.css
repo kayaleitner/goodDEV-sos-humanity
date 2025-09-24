@@ -3,7 +3,6 @@
     margin-bottom: var(--spacing-xl);
     &__has-nudge-text {
       display: grid;
-      grid-row: 1 / -1;
       gap: 1rem;
       align-items: center;
       justify-content: center;
@@ -33,12 +32,22 @@
     }
     &__max-three {
       justify-content: left;
+      grid-template-columns: 1fr  auto;
+      gap: 1rem;
       .wrapper-active-intervals {
         flex-direction: column;
         gap: 1rem;
       }
       .nudge_text {
-        display: none;
+        padding: 0 0 35px 0;
+        left: auto;
+        &:before {
+          background: var(--arrow-nudge-icon-desktop) no-repeat center;
+          top: auto;
+          bottom: -8px;
+          right: auto;
+          left: 0;
+        }
       }
     }
   }
@@ -47,14 +56,21 @@
       margin-bottom: var(--spacing-xl);
       &__max-three {
         justify-content: center;
+        grid-template-columns: auto;
         .wrapper-active-intervals {
           flex-direction: row;
           justify-content: left;
         }
         .nudge_text {
-          display: block;
+          padding: 0 35px 0 0;
           left: auto;
           right: -70px;
+          &:before {
+            background: var(--arrow-nudge-icon-mobile) no-repeat center;
+            right: 0;
+            left: auto;
+            bottom: auto;
+          }
         }
       }
     }
@@ -62,26 +78,51 @@
   @media screen and (min-width: 768px) {
     .interval-block {
       padding: 0 20px;
-      &__has-nudge-text {
+      &__has-nudge-text:not(.interval-block__max-three) {
         grid-template-columns: auto 1fr;
         justify-items: start;
-      }
-      .nudge_text {
-        width: 100%;
-        padding: 0 0 0 35px;
-        left: 0;
-        &:before {
-          background: var(--arrow-nudge-icon-desktop) no-repeat center;
-          top: 50%;
+        .nudge_text {
+          width: 100%;
+          padding: 0 0 0 35px;
           left: 0;
-          right: auto;
-          transform: translateY(-50%);
+          &:before {
+            background: var(--arrow-nudge-icon-desktop) no-repeat center;
+            top: 50%;
+            left: 0;
+            right: auto;
+            transform: translateY(-50%);
+          }
         }
       }
-      &__max-three {
+    }
+  }
+  @media screen and (min-width: 840px) {
+    .interval-block {
+      padding: 0 20px;
+      &__has-nudge-text {
         .nudge_text {
+          width: 100%;
+          padding: 0 0 0 35px;
           left: 0;
-          right: auto;
+          &:before {
+            background: var(--arrow-nudge-icon-desktop) no-repeat center;
+            top: 50%;
+            left: 0;
+            right: auto;
+            transform: translateY(-50%);
+          }
+        }
+        &.interval-block__max-three {
+          grid-template-columns: auto 1fr;
+          justify-items: start;
+          .nudge_text {
+            padding: 0 0 0 35px;
+            top: 50%;
+            left: 0;
+            bottom: auto;
+            right: auto;
+            transform: translateY(-50%);
+          }
         }
       }
     }

@@ -29,6 +29,8 @@ function getACFLayout(): array {
           '0rtnskztep1awzb6' => 'Formular Deutsch',
           '4jppw6zr4ckbxmfl' => 'Formular English',
           'b8x47ctvkjzseldm' => 'Formular Italian',
+          '24n2n3xvergvocld' => 'Formular Meta 1 DE',
+          'n42zax2yu8ticpnv' => 'Formular Meta 2 DE',
         ],
         'required' => 1,
         'ui' => 1,
