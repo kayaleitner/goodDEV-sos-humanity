@@ -74,6 +74,7 @@
   <input type="hidden" value="no_receipt" name="payment[wants_receipt]" id="hiddenreceipt"/>
   <div id="payment_wants_receipt_error" class="error error-text"></div>
 </div>
+{% if show_no_leave_behind %}
 <div id="payment_wants_lnob_newsletter_wrapper" class="form-item">
   <label for="payment_wants_lnob_newsletter" data-default-label="{{ labelWantsLNOBNewsletter }}"
          class="switch my-4 ml-2 sm:ml-5">
@@ -83,3 +84,4 @@
   </label>
   <input type="hidden" name="payment[donation_custom_field_14610]" id="payment_donation_custom_field_14610">
 </div>
+{% endif %}

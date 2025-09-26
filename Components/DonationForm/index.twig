@@ -4,7 +4,7 @@
   is="flynt-donation-form"
   name="DonationForm"
 >
-  <form id="fbx-donation-form" data-fbx-form-hash="{{ hash | default('y3fkgajfly2vnohz') }}"
+  <form id="fbx-donation-form" data-fbx-form-hash="{{ form_hash ? form_hash : hash | default('y3fkgajfly2vnohz') }}"
         class="donationForm" data-success-redirect-recurring="{{ thx_recurring.url }}" data-success-redirect-one-time="{{ thx_one_time.url }}">
 
     <div class="panel">

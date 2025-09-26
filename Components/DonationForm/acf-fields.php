@@ -36,6 +36,13 @@ function getACFLayout(): array {
         'ui' => 1,
         'return_format' => 'value',
       ],
+      [
+        'label' => __('Formular hash (optional, überschreibt die Dropdown-Auswahl)', 'flynt'),
+        'name' => 'form_hash',
+        'type' => 'text',
+        'instructions' => __('Trage hier einen spezifischen Formular-Hash ein, um die Auswahl oben zu überschreiben. Wird kein Wert eingegeben, wird die Dropdown-Auswahl verwendet.', 'flynt'),
+        'required' => 0,
+      ],
 
       // --- Aktive Intervalle (Checkbox) ---
       [
@@ -74,6 +81,14 @@ function getACFLayout(): array {
         'name' => 'field_label_interval_panel',
         'type' => 'text',
         'instructions' => __('Bitte anpassen, wenn nur ein Intervall ausgewählt ist (Beispiel: Meine monatliche Spende, wenn nur monatlich ausgewählt). Wenn nicht ausgefüllt, wird der Titel "Meine Spende" angezeigt.', 'flynt'),
+        'required' => 0,
+      ],
+      [
+        'label' => __('Leave No One Behind Newsletter Checkbox anzeigen', 'flynt'),
+        'name' => 'show_no_leave_behind',
+        'type' => 'true_false',
+        'ui' => 1,
+        'default_value' => 0,
         'required' => 0,
       ],
       [
