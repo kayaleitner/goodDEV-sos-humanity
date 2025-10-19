@@ -1,0 +1,56 @@
+.donation-barometer {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: sans-serif;
+
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    &__bar-container {
+        position: relative;
+        height: 30px;
+        background: #e0e0e0;
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+    &__fill {
+        background: #4caf50;
+        height: 100%;
+        width: 0;
+        border-radius: 15px 0 0 15px;
+        transition: width 1.5s ease-in-out;
+    }
+
+    &__ship {
+        position: absolute;
+        top: -12px;
+        width: 24px;
+        height: 24px;
+        background: url('/path-to-ship-icon.svg') no-repeat center center;
+        background-size: contain;
+        transition: left 1.5s ease-in-out;
+    }
+
+    &__level {
+        position: absolute;
+        top: -35px;
+        display: flex;
+        align-items: center;
+        transition: left 1.5s ease-in-out;
+
+        & .panel {
+            background: #4caf50;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+    }
+}

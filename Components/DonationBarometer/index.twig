@@ -1,0 +1,48 @@
+<flynt-component
+  class="flyntComponent componentSpacing donation-barometer"
+  is="flynt-donation-barometer"
+  data-goal="{{ goal_amount }}"
+  data-current="{{ current_amount }}"
+  data-donors="{{ donor_count }}"
+  name="DonationBarometer"
+>
+  {% if title %}
+    <h3 class="donation-barometer__title">{{ title }}</h3>
+  {% endif %}
+  
+  <div class="top" style="padding-top: {{ options.paddingTopBottom }}">
+    <div class="container">
+      <div class="goal">
+        <div class="panel">
+          <div class="text">
+            {% if display_type == 'count' %}
+            {{ goal_amount|number_format(0, '.', '.') }} Donors
+            {% else %}
+              {{ goal_amount|number_format(0, '.', '.') }} €
+            {% endif %}
+          </div>
+        </div>
+        <div class="post"></div>
+      </div>
+      <div class="ship"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+  
+  <div class="bottom" style="padding-bottom: {{ options.paddingTopBottom }}">
+    <div class="container">
+      <div class="level">
+        <div class="post"></div>
+        <div class="panel">
+          <div class="text">
+            {% if display_type == 'count' %}
+              {{ donor_count }} Donors
+            {% else %}
+              {{ current_amount|number_format(0, '.', '.') }} €
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</flynt-component>

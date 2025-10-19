@@ -16,6 +16,15 @@ if (file_exists($fbCapiBootstrap)) {
     }
 }
 
+// Ensure bundled FundraisingBox settings plugin is loaded when theme is active
+$frbBootstrap = __DIR__ . '/plugins/fundraisingbox/fundraisingbox.php';
+if (file_exists($frbBootstrap)) {
+    require_once $frbBootstrap;
+    if (class_exists('FundraisingBoxPlugin\\Plugin')) {
+        \FundraisingBoxPlugin\Plugin::instance()->boot();
+    }
+}
+
 if (!defined('WP_ENV')) {
     define('WP_ENV', function_exists('wp_get_environment_type') ? wp_get_environment_type() : 'production');
 } elseif (!defined('WP_ENVIRONMENT_TYPE')) {
