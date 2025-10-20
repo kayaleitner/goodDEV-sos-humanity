@@ -27,7 +27,7 @@ function get_cache_key(string $searchId, string $donationType): string
  *
  * @return array
  *   An associative array containing:
- *   - current_amount (float): Total amount of all matching donations.
+ *   - current_amount (float): Total number of all matching donations.
  *   - donor_count (int): Number of matching donations.
  */
 function fetch_donations(string $searchId, string $donationType = 'both'): array
@@ -123,7 +123,7 @@ function fetch_donations(string $searchId, string $donationType = 'both'): array
 
 
 /**
- * Store latest data per component instance on the parent post as post meta.
+ * Store the latest data per component instance on the parent post as post-meta.
  */
 function store_instance_data(int $postId, string $instanceId, array $data): void
 {
@@ -155,7 +155,7 @@ add_filter('Flynt/addComponentData?name=DonationBarometer', function (array $dat
     $data['current_amount'] = (float) ($apiData['current_amount'] ?? 0);
     $data['donor_count'] = (int) ($apiData['donor_count'] ?? 0);
 
-    // keep compatibility with existing index.twig which expects donationGoal/Level
+    // keep compatibility with the existing index.twig which expects donationGoal/Level
     $data['donationGoal'] = $goalAmount;
     $data['donationLevel'] = ($displayType === 'count') ? (float) $data['donor_count'] : (float) $data['current_amount'];
 

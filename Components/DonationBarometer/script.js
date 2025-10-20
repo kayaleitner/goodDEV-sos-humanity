@@ -1,9 +1,8 @@
 export default function (component) {
   const ship = component.querySelector('.donation-barometer__ship');
-  const level = component.querySelector('.donation-barometer__level');
   const fill = component.querySelector('.donation-barometer__fill');
 
-  if (!ship || !level || !fill) return;
+  if (!ship || !fill) return;
 
   let hasAnimated = false;
 
@@ -14,15 +13,12 @@ export default function (component) {
 
     const barWidth = component.querySelector('.donation-barometer__bar-container').offsetWidth;
     const shipWidth = ship.offsetWidth;
-    const levelWidth = level.offsetWidth;
 
     const shipPos = progressPercent * (barWidth - shipWidth);
-    const levelPos = shipPos + (shipWidth - levelWidth) / 2;
     const fillWidth = progressPercent * 100;
 
     fill.style.width = `${fillWidth}%`;
     ship.style.left = `${shipPos}px`;
-    level.style.left = `${levelPos}px`;
   }
 
   const observer = new IntersectionObserver(

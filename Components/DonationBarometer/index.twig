@@ -6,43 +6,39 @@
   data-donors="{{ donor_count }}"
   name="DonationBarometer"
 >
-  {% if title %}
-    <h3 class="donation-barometer__title">{{ title }}</h3>
-  {% endif %}
-  
-  <div class="top" style="padding-top: {{ options.paddingTopBottom }}">
-    <div class="container">
-      <div class="goal">
-        <div class="panel">
-          <div class="text">
-            {% if display_type == 'count' %}
-            {{ goal_amount|number_format(0, '.', '.') }} Donors
-            {% else %}
-              {{ goal_amount|number_format(0, '.', '.') }} €
-            {% endif %}
-          </div>
-        </div>
-        <div class="post"></div>
+  <div class="donation-barometer__panel">
+    {% if title %}
+      <h3 class="donation-barometer__title">{{ title }}</h3>
+    {% endif %}
+    
+    {% if barometer_text %}
+    <h3
+      class="donation-barometer__text">{{ barometer_text | replace({'{current_amount}': current_amount, '{donor_count}': donor_count, '{goal_amount}': goal_amount}) }}</h3>
+    {% endif %}
+    
+    {% if barometer_title_current %}
+      <div class="donation-barometer__current">
+        <div class="donation-barometer__current--title">{{ barometer_title_current }}</div>
+        {% if display_type == 'count' %}
+          <span class="donation-barometer__current--amount">{{ donor_count }}</span>
+        {% else %}
+          <span class="donation-barometer__current--amount">{{ current_amount|number_format(0, '.', '.') }} Euro</span>
+        {% endif %}
       </div>
-      <div class="ship"></div>
-      <div class="bar"></div>
+    {% endif %}
+    
+    <div class="donation-barometer__bar-container" style="padding: {{ options.paddingTopBottom }} 0;">
+      <div class="donation-barometer__fill"></div>
+      <div class="donation-barometer__waves"></div>
+      <div class="donation-barometer__ship" aria-hidden="true"></div>
     </div>
-  </div>
-  
-  <div class="bottom" style="padding-bottom: {{ options.paddingTopBottom }}">
-    <div class="container">
-      <div class="level">
-        <div class="post"></div>
-        <div class="panel">
-          <div class="text">
-            {% if display_type == 'count' %}
-              {{ donor_count }} Donors
-            {% else %}
-              {{ current_amount|number_format(0, '.', '.') }} €
-            {% endif %}
-          </div>
-        </div>
-      </div>
+    
+    <div class="donation-barometer__goal-note" aria-label="Goal">
+      {% if display_type == 'count' %}
+        {{ barometer_text_goal_amount }} {{ goal_amount|number_format(0, '.', '.') }}
+      {% else %}
+        {{ barometer_text_goal_amount }} {{ goal_amount|number_format(0, '.', '.') }} Euro
+      {% endif %}
     </div>
   </div>
 </flynt-component>
