@@ -12,7 +12,8 @@
         </div>
         <div class="content">
           <p>
-            {{ donationsOrganisation }}
+            <span class="beforeCopyButton">{{ accountHolderName }}: {{ donationsOrganisation }}</span>
+            {% include 'Components/CopyButton/index.twig' with { 'text': donationsOrganisation, label: copyAccountHolderName } only %}
           </p>
           <p>
             <span class="beforeCopyButton">IBAN: {{ donationsIBAN }}</span>

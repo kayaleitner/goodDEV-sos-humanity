@@ -11,7 +11,7 @@ add_filter('Flynt/addComponentData?name=FooterNavigationLandingPageLinklist', fu
   $componentPathFull = $componentManager->getComponentDirPath('FooterNavigationLandingPageLinklist');
   $componentPath = str_replace(trailingslashit(get_template_directory()), '', $componentPathFull);
 
-  // we use the "Translatables" from FooterNavigationLandingPageLinklist so not overuse different Setting-Groups and optimize content maintenance
+  // we use the "Translatables" from NavigationFooterLinklist so not overuse different Setting-Groups and optimize content maintenance
   $options = Options::getTranslatable('NavigationFooterLinklist') ?: [];
 
   $data['logo'] = [

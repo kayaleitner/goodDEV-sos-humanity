@@ -109,12 +109,7 @@
       position: absolute;
       right: .5rem;
       bottom: .5rem;
-      color: #fff;
-      font-size: 12px;
-      background: rgba(0, 0, 0, .35);
       padding: .125rem .375rem;
-      border-radius: 2px;
-      backdrop-filter: blur(2px);
     }
   }
 }
