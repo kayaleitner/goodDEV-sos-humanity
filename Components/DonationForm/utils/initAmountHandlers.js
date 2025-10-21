@@ -26,6 +26,31 @@ export default function initAmountHandlers(component) {
   }
 
   /**
+   * Format amount to German locale
+   */
+  function formatAmountDE(amount) {
+    if (amount == null || amount === '') return '';
+    const num = parseFloat(amount);
+    if (Number.isNaN(num)) return '';
+    const hasDecimals = num % 1 !== 0;
+
+    return num.toLocaleString('de-DE', {
+      minimumFractionDigits: hasDecimals ? 2 : 0,
+      maximumFractionDigits: hasDecimals ? 2 : 0
+    });
+  }
+
+  /**
+   * Helper function: measure text width
+   */
+  function getTextWidth(text, font) {
+    const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    const context = canvas.getContext("2d");
+    context.font = font;
+    return context.measureText(text).width;
+  }
+
+  /**
    * Update the donation button label based on selected interval and amount
    */
   function updateButtonLabel() {
@@ -55,7 +80,8 @@ export default function initAmountHandlers(component) {
 
     let nextLabel = '';
     if (amount && Object.prototype.hasOwnProperty.call(templates, intervalVal)) {
-      nextLabel = applyTemplate(templates[intervalVal], amount);
+      const formattedAmount = formatAmountDE(amount);
+      nextLabel = applyTemplate(templates[intervalVal], formattedAmount);
     }
 
     if (nextLabel) {
@@ -97,7 +123,7 @@ export default function initAmountHandlers(component) {
           $matchRadio.prop('checked', true).trigger('change');
         } else {
           const $custom = $activeGroup.find('input.amount-input').first();
-          if ($custom.length) $custom.val(normalized).trigger('input');
+          if ($custom.length) $custom.val(normalized).trigger('input').addClass('is-valid');
         }
       }
     }
@@ -137,12 +163,31 @@ export default function initAmountHandlers(component) {
   $root.on('input', '.amount-input', function () {
     const $input = $(this);
     const interval = $input.closest('.amount-group-wrapper').data('interval');
+    const $suffix = $input.siblings('.currency-suffix');
     const val = $input.val().trim().replace(/[^0-9.]/g, '');
-    $input.val(val);
+    // $input.val(val);
 
     customAmounts[interval] = val;
     $input.closest('.amount-group-wrapper').find('input.amount-radio').prop('checked', false);
     setAmount(val || '');
+
+    const valRaw = $input.val().trim();
+    const {font} = window.getComputedStyle($input[0]);
+    const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    const context = canvas.getContext("2d");
+    context.font = font;
+    const textWidth = context.measureText(valRaw).width;
+
+    const inputWidth = $input.width();
+    // Mitte des Inputs + halbe Textbreite
+    const offset = inputWidth / 2 + textWidth / 2 + 28;
+    $suffix.css({
+      left: `${offset  }px`,
+      top: '50%',
+      transform: 'translate(-50%, -50%)',
+      position: 'absolute',
+      pointerEvents: 'none',
+    });
   });
 
   /**

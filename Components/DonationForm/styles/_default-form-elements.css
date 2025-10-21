@@ -79,6 +79,13 @@
       /*border-color: var(--color-error);*/
       background-image: var(--error-icon);
     }
+    &.amount-input.is-invalid,
+    &.amount-input.is-valid:placeholder-shown {
+      background-image: none;
+    }
+    &.amount-input.is-valid {
+      background-image: var(--icon-checkmark);
+    }
   }
   /* select / drop down right arrow style */
   select {

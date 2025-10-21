@@ -221,19 +221,12 @@ export default function initDonationFormValidation(component, myForm) {
     },
     highlight(element) {
       const $el = $(element)
-      const name = $el.attr('name') || ''
-      const isCustomAmount = $el.hasClass('amount-input') || /^donation_custom_amount_/.test(name)
-      if (!isCustomAmount) {
-        setState($el, false)
-      }
+      setState($el, false)
     },
     unhighlight(element) {
       const $el = $(element)
       const name = $el.attr('name') || ''
-      const isCustomAmount = $el.hasClass('amount-input') || /^donation_custom_amount_/.test(name)
-      if (!isCustomAmount) {
-        setState($el, true)
-      }
+      setState($el, true)
       // Only clear the centralized amount error when the hidden payment[amount] itself becomes valid
       if (name === 'payment[amount]') {
         const $target = $(component).find('#payment_amount_error')
