@@ -64,6 +64,14 @@
       {#  value_proposition / Wertversprechen  #}
       {% include 'Partials/_valuePropositionText.twig' %}
     </div>
+    {# nested_components Block #}
+    {% if nested_components %}
+      {% for layout in nested_components %}
+        {% if layout.acf_fc_layout == 'DonationBarometer' %}
+          {{ renderComponent('DonationBarometer', layout) }}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
     {# securityText Block #}
     {% include 'Partials/_securityText.twig' %}
 

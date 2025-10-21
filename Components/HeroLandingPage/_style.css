@@ -32,7 +32,7 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 24px;
+      bottom: 34px;
       text-align: center;
       padding: 0;
       z-index: 10;
@@ -67,7 +67,7 @@
       filter: drop-shadow(0 6px 18px rgba(0,0,0,.01));
     }
 
-    .heroLandingPage__textBox:after {
+    .heroLandingPage__textBox:after, .heroLandingPage__nestedComponents:after {
       content: "";
       position: absolute;
       width: 26px;

@@ -1,33 +1,44 @@
 .donation-barometer {
     width: 100%;
-    max-width: 56.5rem;
-    margin: 0 auto;
-    font-family: sans-serif;
-    padding: 0 16px;
+    background: var(--themeBrand_colorBackground, transparent);
+    text-wrap: auto;
     &__panel {
-        background: white;
-        padding: 32px 48px 40px;
+        background-color: var(--themeBrand_colorBackground, #ffffff);
+        padding: 20px 16px 24px;
+        max-width: 56.5rem;
+        margin: 0 auto;
     }
 
     &__title {
-        font-size: 2.25rem;
-        margin-bottom: 36px;
+        font-size: 1.75rem;
+        margin-bottom: 23px;
         font-weight: 900;
+        color: var(--themeBrand_colorText, #1c2445);
+        text-shadow: 1px 1px 0 var(--text-shadow-color);
     }
     &__text {
         position: relative;
         z-index: 2;
-        font-size: 1.2rem;
+        margin-bottom: 25px;
         line-height: 1.5;
+        color: var(--themeBrand_colorText, #1c2445);
+        p {
+            font-size: 1.125rem;
+            line-height: 1.5;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
     }
     &__current {
         position: relative;
-        font-size: 1.75rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
         z-index: 2;
-        margin-bottom: 16px;
-        &--title {
-
-        }
+        margin-bottom: 12px;
+        color: var(--themeBrand_colorText, #1c2445);
+        text-shadow: 1px 1px 0 var(--text-shadow-color);
         &--amount {
             font-weight: 700;
         }
@@ -35,7 +46,7 @@
 
     &__bar-container {
         position: relative;
-        height: 24px;
+        height: 12px;
         background: transparent;
         border-radius: 15px;
         margin-bottom: 10px;
@@ -47,12 +58,11 @@
         width: 100%;
         height: 100%;
         border-radius: 15px;
-        background: url("./assets/waves.svg") no-repeat center/contain;
+        background: url("./assets/waves-small.svg") no-repeat center/cover;
         z-index: 2;
     }
 
     &__fill {
-        background: #2EB7EC;
         height: 100%;
         width: 0;
         border-radius: 15px;
@@ -63,18 +73,58 @@
 
     &__ship {
         position: absolute;
-        top: -135px;
-        width: 124px;
-        height: 148px;
+        top: -55px;
+        width: 58px;
+        height: 59px;
         left: 0;
         transition: left 1.5s ease-in-out;
-        background: url("./assets/ship.svg") no-repeat center/contain;
         z-index: 1;
+        &--light {
+            background: url("./assets/ship-light.svg") no-repeat center/contain;
+        }
+        &--dark {
+            background: url("./assets/ship.svg") no-repeat center/contain;
+        }
     }
 
     &__goal-note {
-        margin-top: 6px;
+        margin-top: 15px;
         text-align: right;
-        font-size: 1.75rem;
+        font-size: 1.25rem;
+        color: var(--themeBrand_colorText, #1c2445);
+    }
+    @media screen and (min-width: 768px) {
+        &__panel {
+            padding: 32px 48px 40px;
+        }
+        &__title {
+            font-size: 2.25rem;
+            margin-bottom: 36px;
+        }
+        &__text {
+            margin-bottom: 36px;
+            p {
+                font-size: 1.375rem;
+            }
+        }
+        &__current {
+            font-size: 1.75rem;
+            margin: 40px 0 16px;
+        }
+        &__bar-container {
+            height: 24px;
+        }
+        &__ship {
+            top: -135px;
+            width: 124px;
+            height: 148px;
+        }
+        &__waves {
+            background: url("./assets/waves.svg") no-repeat center/contain;
+        }
+        &__goal-note {
+            font-size: 1.75rem;
+            margin-top: 18px;
+        }
     }
 }

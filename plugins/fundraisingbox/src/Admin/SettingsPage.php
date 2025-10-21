@@ -34,6 +34,11 @@ class SettingsPage
             'sanitize_callback' => 'sanitize_text_field',
             'default' => '',
         ]);
+        register_setting(Options::GROUP, Options::BAROMETER_DATA_CACHE_EXPIRATION, [
+          'type' => 'integer',
+          'sanitize_callback' => 'intval',
+          'default' => '',
+        ]);
 
         add_settings_section('fundraisingbox_main', __('FundraisingBox API Settings', 'fundraisingbox'), '__return_false', Options::PAGE);
 
@@ -43,8 +48,13 @@ class SettingsPage
         }, Options::PAGE, 'fundraisingbox_main');
 
         add_settings_field('access_token', __('Access Token', 'fundraisingbox'), function () {
-            printf('<input type="text" class="regular-text" name="%s" value="%s" />',
+            printf('<input type="password" class="regular-text" name="%s" value="%s" />',
                 esc_attr(Options::ACCESS_TOKEN), esc_attr((string) get_option(Options::ACCESS_TOKEN, '')));
+        }, Options::PAGE, 'fundraisingbox_main');
+
+        add_settings_field('barometer_data_cache_expiration', __('Cache Lebenzeit für Barometer Daten (in min)', 'fundraisingbox'), function () {
+          printf('<input type="number" min="1" step="1" class="regular-text" name="%s" value="%s" />',
+            esc_attr(Options::BAROMETER_DATA_CACHE_EXPIRATION), esc_attr((int) get_option(Options::BAROMETER_DATA_CACHE_EXPIRATION, '')));
         }, Options::PAGE, 'fundraisingbox_main');
     }
 

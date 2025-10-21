@@ -5,32 +5,38 @@
   data-current="{{ current_amount }}"
   data-donors="{{ donor_count }}"
   name="DonationBarometer"
+  style="--themeBrand_colorBackground: {{ options.colorBrandBackground ?? '#fff' }}; --themeBrand_colorText: {{ options.colorBrandText ?? '#1c2445' }};"
 >
-  <div class="donation-barometer__panel">
+  {% set bgColor = options.colorBrandBackground ?? '#fff' %}
+  {% set isDarkBg = (bgColor|hex_to_luminance < 0.5) %}
+  {% set shipClass = isDarkBg ? 'donation-barometer__ship--light' : 'donation-barometer__ship--dark' %}
+  {% set textShadowColor = isDarkBg ? bgColor : 'transparent' %}
+  <div class="donation-barometer__panel" style="--text-shadow-color: {{ textShadowColor }};">
     {% if title %}
       <h3 class="donation-barometer__title">{{ title }}</h3>
     {% endif %}
     
     {% if barometer_text %}
-    <h3
-      class="donation-barometer__text">{{ barometer_text | replace({'{current_amount}': current_amount, '{donor_count}': donor_count, '{goal_amount}': goal_amount}) }}</h3>
+    <div
+      class="donation-barometer__text">{{ barometer_text | replace({'{current_amount}': current_amount|number_format(0, '.', '.'), '{donor_count}': donor_count|number_format(0, '.', '.'), '{goal_amount}': goal_amount|number_format(0, '.', '.') }) }}</div>
     {% endif %}
     
     {% if barometer_title_current %}
       <div class="donation-barometer__current">
         <div class="donation-barometer__current--title">{{ barometer_title_current }}</div>
         {% if display_type == 'count' %}
-          <span class="donation-barometer__current--amount">{{ donor_count }}</span>
+          <span class="donation-barometer__current--amount">{{ donor_count|number_format(0, '.', '.') }}</span>
         {% else %}
           <span class="donation-barometer__current--amount">{{ current_amount|number_format(0, '.', '.') }} Euro</span>
         {% endif %}
       </div>
     {% endif %}
     
-    <div class="donation-barometer__bar-container" style="padding: {{ options.paddingTopBottom }} 0;">
-      <div class="donation-barometer__fill"></div>
+    
+    <div class="donation-barometer__bar-container">
+      <div class="donation-barometer__fill" style="background: {{ options.colorBrandText ?? '#2EB7EC' }};"></div>
       <div class="donation-barometer__waves"></div>
-      <div class="donation-barometer__ship" aria-hidden="true"></div>
+      <div class="donation-barometer__ship {{ shipClass }}" aria-hidden="true"></div>
     </div>
     
     <div class="donation-barometer__goal-note" aria-label="Goal">

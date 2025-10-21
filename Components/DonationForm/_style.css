@@ -10,6 +10,7 @@
 @import 'styles/_styled-radio-elements.css';
 @import 'styles/_submit-Button-styles.css';
 @import 'styles/_text-styles.css';
+@import 'styles/_nested_components.css';
 
 [is="flynt-donation-form"] {
   hyphens: auto;

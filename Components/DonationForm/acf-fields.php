@@ -351,6 +351,19 @@ function getACFLayout(): array {
         'type' => 'link',
         'required' => 1,
       ],
+      [
+        'label' => __('Eingebettete Komponenten', 'flynt'),
+        'name' => 'nested_components',
+        'type' => 'flexible_content',
+        'button_label' => __('Komponente hinzufügen', 'flynt'),
+        'layouts' => [
+          [
+            'name' => 'DonationBarometer',
+            'label' => 'Donation Barometer',
+            'sub_fields' => \Flynt\Components\DonationBarometer\getACFLayout()['sub_fields'],
+          ],
+        ],
+      ],
     ],
   ];
 }

@@ -8,9 +8,9 @@ require_once __DIR__ . '/acf-fields.php';
 /**
  * Helper: Build a cache key per search/type to avoid mixing results across instances.
  */
-function get_cache_key(string $searchId, string $donationType): string
+function get_cache_key(string $searchId, string $displayType): string
 {
-    return 'donation_barometer_' . md5($searchId . '|' . $donationType);
+    return 'donation_barometer_' . md5($searchId . '|' . $displayType);
 }
 
 /**
@@ -22,18 +22,18 @@ function get_cache_key(string $searchId, string $donationType): string
  *
  * @param string $searchId
  *   The Smart Search ID configured in the component.
- * @param string $donationType
- *   The donation type filter: 'one_time', 'recurring', or 'both'.
+ * @param string $displayType
+ *   The display type filter: 'count' or 'sum'.
  *
  * @return array
  *   An associative array containing:
  *   - current_amount (float): Total number of all matching donations.
  *   - donor_count (int): Number of matching donations.
  */
-function fetch_donations(string $searchId, string $donationType = 'both'): array
+function fetch_donations(string $searchId, string $displayType = 'sum'): array
 {
   $searchId = trim($searchId);
-  $donationType = $donationType ?: 'both';
+  $cacheExpiration = (int) get_option('barometer_data_cache_expiration', 3);
 
   if ($searchId === '') {
     return [
@@ -42,7 +42,7 @@ function fetch_donations(string $searchId, string $donationType = 'both'): array
     ];
   }
 
-  $cacheKey = get_cache_key($searchId, $donationType);
+  $cacheKey = get_cache_key($searchId, $displayType);
   $cached = get_transient($cacheKey);
   if ($cached !== false && is_array($cached)) {
     return $cached;
@@ -54,6 +54,7 @@ function fetch_donations(string $searchId, string $donationType = 'both'): array
   $apiUrl = $baseUrl . $endpoint;
 
   if (empty($accessToken)) {
+    error_log('[fetch_donations] Missing API access token.');
     return [
       'current_amount' => 0.0,
       'donor_count' => 0,
@@ -63,58 +64,64 @@ function fetch_donations(string $searchId, string $donationType = 'both'): array
   $totalAmount = 0.0;
   $totalDonors = 0;
   $page = 1;
-  $perPage = 100; // max items per request, je nach API
+  $perPage = 100;
 
-  do {
-    $params = [
-      'search_id' => $searchId,
-      'page'      => $page,
-      'perPage'  => $perPage,
+  try {
+    do {
+      $params = [
+        'search_id' => $searchId,
+        'page'      => $page,
+        'perPage'   => $perPage,
+      ];
+
+      $url = $apiUrl . '?' . http_build_query($params);
+
+      $args = [
+        'headers' => [
+          'Authorization' => 'Basic ' . base64_encode($accessToken . ':X'),
+          'Accept' => 'application/json',
+        ],
+        'timeout' => 20,
+      ];
+
+      $response = wp_remote_get($url, $args);
+
+      if (is_wp_error($response)) {
+        throw new \Exception('WP Remote Error: ' . $response->get_error_message());
+      }
+
+      $body = wp_remote_retrieve_body($response);
+      $data = json_decode($body, true);
+
+      if (!is_array($data) || !isset($data['data'])) {
+        throw new \Exception('Invalid API response: ' . $body);
+      }
+
+      foreach ($data['data'] as $donation) {
+        $totalAmount += isset($donation['amount']) ? (float) $donation['amount'] : 0.0;
+      }
+
+      $totalDonors += count($data['data']);
+      $hasMore = $data['hasMore'] ?? false;
+      $page++;
+
+    } while ($hasMore);
+
+  } catch (\Exception $e) {
+    error_log('[fetch_donations] Error fetching donations: ' . $e->getMessage());
+    // Optional: vorherige Ergebnisse aus Cache zurückgeben oder 0
+    return [
+      'current_amount' => 0.0,
+      'donor_count' => 0,
     ];
-
-    if ($donationType !== 'both') {
-      $params['donation_type'] = $donationType;
-    }
-
-    $url = $apiUrl . '?' . http_build_query($params);
-
-    $args = [
-      'headers' => [
-        'Authorization' => 'Basic ' . base64_encode($accessToken . ':X'),
-        'Accept' => 'application/json',
-      ],
-      'timeout' => 20,
-    ];
-
-    $response = wp_remote_get($url, $args);
-
-    if (is_wp_error($response)) {
-      break;
-    }
-
-    $body = wp_remote_retrieve_body($response);
-    $data = json_decode($body, true);
-
-    if (!is_array($data) || !isset($data['data'])) {
-      break;
-    }
-
-    foreach ($data['data'] as $donation) {
-      $totalAmount += isset($donation['amount']) ? (float) $donation['amount'] : 0.0;
-    }
-
-    $totalDonors += count($data['data']);
-
-    $hasMore = $data['hasMore'] ?? false;
-    $page++;
-  } while ($hasMore);
+  }
 
   $result = [
     'current_amount' => round($totalAmount, 2),
     'donor_count' => $totalDonors,
   ];
 
-  set_transient($cacheKey, $result, 10 * MINUTE_IN_SECONDS);
+  set_transient($cacheKey, $result, $cacheExpiration * MINUTE_IN_SECONDS);
 
   return $result;
 }
@@ -140,54 +147,36 @@ function store_instance_data(int $postId, string $instanceId, array $data): void
  * Provide data to Twig via Flynt filter.
  */
 add_filter('Flynt/addComponentData?name=DonationBarometer', function (array $data): array {
-    $postId = isset($data['post']) && is_object($data['post']) ? (int) $data['post']->ID : (int) get_the_ID();
+  $postId = isset($data['post']) && is_object($data['post']) ? (int) $data['post']->ID : (int) get_the_ID();
 
-    $title = $data['title'] ?? '';
-    $goalAmount = (float) ($data['goal_amount'] ?? 0);
-    $searchId = (string) ($data['search_id'] ?? '');
-    $donationType = (string) ($data['donation_type'] ?? 'both');
-    $displayType = (string) ($data['display_type'] ?? 'sum');
+  $title = $data['title'] ?? '';
+  $goalAmount = (float) ($data['goal_amount'] ?? 0);
+  $searchId = (string) ($data['search_id'] ?? '');
+  $displayType = (string) ($data['display_type'] ?? 'sum');
 
-    $apiData = fetch_donations($searchId, $donationType);
-    // map required template vars
-    $data['title'] = $title;
-    $data['goal_amount'] = $goalAmount;
-    $data['current_amount'] = (float) ($apiData['current_amount'] ?? 0);
-    $data['donor_count'] = (int) ($apiData['donor_count'] ?? 0);
+  // synthetic instance ID
+  $instanceId = md5($postId . '|' . $searchId . '|' . $displayType);
 
-    // keep compatibility with the existing index.twig which expects donationGoal/Level
-    $data['donationGoal'] = $goalAmount;
-    $data['donationLevel'] = ($displayType === 'count') ? (float) $data['donor_count'] : (float) $data['current_amount'];
+  $apiData = fetch_donations($searchId, $displayType);
 
-    // persist per-instance meta (use a synthetic instance id from field values)
-    $instanceId = md5($postId . '|' . $searchId . '|' . $donationType . '|' . $displayType);
-    store_instance_data($postId, $instanceId, $apiData);
-
-    return $data;
-});
-
-/**
- * AJAX: Manual refresh for editors (nonce recommended; minimal implementation here).
- */
-add_action('wp_ajax_update_donation_barometer', function () {
-    if (!current_user_can('edit_posts')) {
-        wp_send_json_error('Unauthorized', 403);
+  if (($apiData['current_amount'] ?? 0) === 0 && ($apiData['donor_count'] ?? 0) === 0) {
+    $storedData = get_post_meta($postId, '_donation_barometer_' . $instanceId, true);
+    if (is_array($storedData)) {
+      $apiData = $storedData;
     }
+  }
 
-    $searchId = isset($_POST['search_id']) ? sanitize_text_field((string) $_POST['search_id']) : '';
-    $donationType = isset($_POST['donation_type']) ? sanitize_text_field((string) $_POST['donation_type']) : 'both';
+  $data['title'] = $title;
+  $data['goal_amount'] = $goalAmount;
+  $data['current_amount'] = (float) ($apiData['current_amount'] ?? 0);
+  $data['donor_count'] = (int) ($apiData['donor_count'] ?? 0);
 
-    // clear cache and refetch
-    delete_transient(get_cache_key($searchId, $donationType));
-    $data = fetch_donations($searchId, $donationType);
+  $data['donationGoal'] = $goalAmount;
+  $data['donationLevel'] = ($displayType === 'count') ? (float) $data['donor_count'] : (float) $data['current_amount'];
 
-    // optionally store on the current post if provided
-    $postId = isset($_POST['post_id']) ? (int) $_POST['post_id'] : 0;
-    if ($postId > 0) {
-        $instanceId = md5($postId . '|' . $searchId . '|' . $donationType);
-        store_instance_data($postId, $instanceId, $data);
-    }
+  // Store data permanently
+  store_instance_data($postId, $instanceId, $apiData);
 
-    wp_send_json_success($data);
+  return $data;
 });
 
