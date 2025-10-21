@@ -39,7 +39,7 @@
         margin-bottom: 12px;
         color: var(--themeBrand_colorText, #1c2445);
         text-shadow: 1px 1px 0 var(--text-shadow-color);
-        &--amount {
+        &--amount, .euro {
             font-weight: 700;
         }
     }

@@ -4,6 +4,7 @@
   data-goal="{{ goal_amount }}"
   data-current="{{ current_amount }}"
   data-donors="{{ donor_count }}"
+  data-display-type="{{ display_type }}"
   name="DonationBarometer"
   style="--themeBrand_colorBackground: {{ options.colorBrandBackground ?? '#fff' }}; --themeBrand_colorText: {{ options.colorBrandText ?? '#1c2445' }};"
 >
@@ -25,9 +26,9 @@
       <div class="donation-barometer__current">
         <div class="donation-barometer__current--title">{{ barometer_title_current }}</div>
         {% if display_type == 'count' %}
-          <span class="donation-barometer__current--amount">{{ donor_count|number_format(0, '.', '.') }}</span>
+          <span class="donation-barometer__current--amount">0</span>
         {% else %}
-          <span class="donation-barometer__current--amount">{{ current_amount|number_format(0, '.', '.') }} Euro</span>
+          <span class="donation-barometer__current--amount">0</span><span class="euro"> Euro</span>
         {% endif %}
       </div>
     {% endif %}
