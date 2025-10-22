@@ -72,6 +72,7 @@ function fetch_donations(string $searchId, string $displayType = 'sum'): array
         'search_id' => $searchId,
         'page'      => $page,
         'perPage'   => $perPage,
+        'is_test'   => 'no',
       ];
 
       $url = $apiUrl . '?' . http_build_query($params);
