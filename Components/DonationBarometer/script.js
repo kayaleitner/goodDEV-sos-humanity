@@ -1,65 +1,103 @@
+/**
+ * Donation Barometer Animation
+ * - Smooth number animation via JS
+ * - Fill and ship animations handled via CSS transitions
+ */
 export default function (component) {
   const ship = component.querySelector('.donation-barometer__ship');
   const fill = component.querySelector('.donation-barometer__fill');
   const amountEl = component.querySelector('.donation-barometer__current--amount');
   const displayType = component.dataset.displayType || 'count';
+  const barContainer = component.querySelector('.donation-barometer__bar-container');
 
-  if (!ship || !fill) return;
+  if (!ship || !fill || !barContainer) return;
 
   let hasAnimated = false;
 
-  function animateNumber(el, start, end, duration = 1500) {
+  /**
+   * Animate number increase (JS-driven)
+   */
+  function animateNumber(el, start, end, duration = 1200) {
     if (!el) return;
     let startTimestamp = null;
+
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
       const value = Math.floor(progress * (end - start) + start);
-      el.textContent = value.toLocaleString('de-DE'); // deutsches Format mit Punkt
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
+      el.textContent = value.toLocaleString('de-DE');
+      if (progress < 1) requestAnimationFrame(step);
     };
-    window.requestAnimationFrame(step);
+
+    requestAnimationFrame(step);
   }
 
-  function updateProgress() {
+  /**
+   * Update positions (CSS transition handles smoothness)
+   */
+  function updateProgress(animated = true) {
     const goal = parseFloat(component.dataset.goal) || 0;
     const current = parseFloat(component.dataset.current) || 0;
     const donors = parseInt(component.dataset.donors, 10) || 0;
     const progressValue = displayType === 'count' ? donors : current;
     const progressPercent = goal > 0 ? Math.min(progressValue / goal, 1) : 0;
 
-    const barWidth = component.querySelector('.donation-barometer__bar-container').offsetWidth;
-    const shipWidth = ship.offsetWidth;
-
+    const barWidth = barContainer.getBoundingClientRect().width;
+    const shipWidth = ship.getBoundingClientRect().width;
     const shipPos = progressPercent * (barWidth - shipWidth);
-    const fillWidth = progressPercent * 100;
 
-    fill.style.width = `${fillWidth}%`;
-    ship.style.left = `${shipPos}px`;
+    // CSS transitions handle the movement
+    if (animated) {
+      fill.style.transform = `scaleX(${progressPercent})`;
+      ship.style.transform = `translateX(${shipPos}px)`;
+    } else {
+      // Disable transitions temporarily for instant layout updates
+      fill.style.transition = 'none';
+      ship.style.transition = 'none';
+      fill.style.transform = `scaleX(${progressPercent})`;
+      ship.style.transform = `translateX(${shipPos}px)`;
+      // force reflow
+      // eslint-disable-next-line no-unused-expressions
+      fill.offsetWidth;
+      fill.style.transition = '';
+      ship.style.transition = '';
+    }
 
-    if (amountEl) {
-      if (displayType === 'count') {
-        animateNumber(amountEl, 0, donors);
-      } else {
-        animateNumber(amountEl, 0, current);
-      }
+    // Animate number once
+    if (!hasAnimated && animated) {
+      const target = displayType === 'count' ? donors : current;
+      animateNumber(amountEl, 0, target);
+      hasAnimated = true;
     }
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.intersectionRatio >= 0.5 && !hasAnimated) {
-          updateProgress();
-          hasAnimated = true;
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
+  /**
+   * Lazy trigger when visible
+   */
+  function startObserver() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            requestAnimationFrame(() => updateProgress(true));
+            observer.unobserve(component);
+          }
+        });
+      },
+      { threshold: 0.8 }
+    );
+    observer.observe(component);
+  }
 
-  observer.observe(component);
-  window.addEventListener('resize', updateProgress);
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(startObserver);
+  } else {
+    window.addEventListener('load', startObserver);
+  }
+
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => updateProgress(false), 100);
+  });
 }
