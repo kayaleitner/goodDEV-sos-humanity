@@ -39,9 +39,16 @@
         margin-bottom: 12px;
         color: var(--themeBrand_colorText, #1c2445);
         text-shadow: 0 0 3px var(--text-shadow-color);
-        &--amount, .euro {
-            font-weight: 700;
-        }
+    }
+    &__current-amount {
+        color: var(--themeBrand_colorText, #1c2445);
+        font-weight: 700;
+        font-size: 1.2em;
+    }
+    &__donor-count {
+        color: var(--themeBrand_colorText, #1c2445);
+        font-weight: 700;
+        font-size: 1.2em;
     }
 
     &__bar-container {
@@ -125,6 +132,12 @@
         &__current {
             font-size: 1.75rem;
             margin: 40px 0 16px;
+        }
+        &__current-amount {
+            font-size: 1.75rem;
+        }
+        &__donor-count {
+            font-size: 1.75rem;
         }
         &__bar-container {
             height: 24px;

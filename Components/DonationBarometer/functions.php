@@ -174,6 +174,7 @@ add_filter('Flynt/addComponentData?name=DonationBarometer', function (array $dat
 
   $data['donationGoal'] = $goalAmount;
   $data['donationLevel'] = ($displayType === 'count') ? (float) $data['donor_count'] : (float) $data['current_amount'];
+  $data['display_type'] = $displayType;
 
   // Store data permanently
   store_instance_data($postId, $instanceId, $apiData);

@@ -22,16 +22,18 @@
         class="donation-barometer__text">{{ barometer_text | replace({'{current_amount}': current_amount|number_format(0, '.', '.'), '{donor_count}': donor_count|number_format(0, '.', '.'), '{goal_amount}': goal_amount|number_format(0, '.', '.') }) }}</div>
     {% endif %}
     
-    {% if barometer_title_current %}
+    {% if barometer_text_current %}
       <div class="donation-barometer__current">
-        <div class="donation-barometer__current--title">{{ barometer_title_current }}</div>
-        {% if display_type == 'count' %}
-          <span class="donation-barometer__current--amount">0</span>
-        {% else %}
-          <span class="donation-barometer__current--amount">0</span><span class="euro"> Euro</span>
-        {% endif %}
+        {% set formatted_current = current_amount|number_format(0, '.', '.') %}
+        {% set formatted_donors = donor_count|number_format(0, '.', '.') %}
+        
+        {{ barometer_text_current
+        |replace({'{current_amount}': '<span class="donation-barometer__current-amount">' ~ formatted_current ~ '</span>',
+          '{donor_count}': '<span class="donation-barometer__donor-count">' ~ formatted_donors ~ '</span>'})
+        |raw }}
       </div>
     {% endif %}
+    
     
     
     <div class="donation-barometer__bar-container">

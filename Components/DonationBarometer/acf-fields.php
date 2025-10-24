@@ -32,10 +32,14 @@ function getACFLayout(): array {
         'required' => 0,
       ],
       [
-        'label' => __('Text über aktuellem Betrag/Anzahl', 'flynt'),
-        'name' => 'barometer_title_current',
-        'type' => 'text',
-        'instructions' => __('Je nach Einstellung unter Anzeigetyp wird der aktuelle Betrag/Anzahl als Euro oder Anzahl angezeigt.', 'flynt'),
+        'label' => __('Text aktueller Betrag/Anzahl', 'flynt'),
+        'name' => 'barometer_text_current',
+        'type' => 'wysiwyg',
+        'toolbar' => 'basic',
+        'tabs' => 'visual',
+        'media_upload' => 0,
+        'instructions' => __('Verwende die Variable {current_amount} oder {donor_count}, um den aktuellen Betrag/Anzahl einzusetzen. Der Wert wird automatisch hervorgehoben und größer dargestellt.', 'flynt'),
+        'required' => 1,
       ],
       [
         'label' => __('Text Zielbetrag oder Anzahl', 'flynt'),
