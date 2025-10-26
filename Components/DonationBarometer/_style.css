@@ -2,6 +2,8 @@
     width: 100%;
     background: var(--themeBrand_colorBackground, transparent);
     text-wrap: auto;
+    --font-barometer-text: normal normal 400 1.125rem/155% 'Source Sans Pro', sans-serif;
+    --font-barometer-title: normal normal 700 1.75rem/140% 'Source Sans Pro', sans-serif;
     &__panel {
         background-color: var(--themeBrand_colorBackground, #ffffff);
         padding: 20px 16px 24px;
@@ -10,7 +12,7 @@
     }
 
     &__title {
-        font-size: 1.75rem;
+        font: var(--font-barometer-title);
         margin-bottom: 23px;
         font-weight: 900;
         color: var(--themeBrand_colorText, #1c2445);
@@ -19,7 +21,6 @@
     &__text {
         position: relative;
         z-index: 2;
-        margin-bottom: 25px;
         line-height: 1.5;
         color: var(--themeBrand_colorText, #1c2445);
         p {
@@ -36,24 +37,36 @@
         font-size: 1.25rem;
         line-height: 1.4;
         z-index: 2;
-        margin-bottom: 12px;
+        margin: 23px 0 12px;
         color: var(--themeBrand_colorText, #1c2445);
         text-shadow: 0 0 3px var(--text-shadow-color);
+        p:last-of-type {
+            font: var(--font-barometer-text);
+            margin-bottom: 0;
+        }
+
     }
     &__current-amount {
         color: var(--themeBrand_colorText, #1c2445);
         font-weight: 700;
-        font-size: 1.2em;
     }
     &__donor-count {
         color: var(--themeBrand_colorText, #1c2445);
         font-weight: 700;
-        font-size: 1.2em;
+    }
+
+    &__bar-wrapper {
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: flex-end;
     }
 
     &__bar-container {
         position: relative;
         height: 12px;
+        width: 100%;
         background: transparent;
         border-radius: 15px;
         margin-bottom: 10px;
@@ -110,34 +123,37 @@
     }
 
     &__goal-note {
-        margin-top: 15px;
+        margin-top: 3px;
         text-align: right;
-        font-size: 1.25rem;
+        font: var(--font-barometer-text);
         color: var(--themeBrand_colorText, #1c2445);
     }
+    &__goal-note-value {
+        font-weight: 700;
+    }
     @media screen and (min-width: 768px) {
+        --font-barometer-text: normal normal 400 1.375rem/155% 'Source Sans Pro', sans-serif;
+        --font-barometer-title: normal normal 700 2.25rem/140% 'Source Sans Pro', sans-serif;
         &__panel {
             padding: 32px 48px 40px;
         }
         &__title {
-            font-size: 2.25rem;
+            font: var(--font-barometer-title);
             margin-bottom: 36px;
         }
         &__text {
-            margin-bottom: 36px;
             p {
-                font-size: 1.375rem;
+                font: var(--font-barometer-text);
             }
         }
         &__current {
-            font-size: 1.75rem;
-            margin: 40px 0 16px;
+            margin: 0 0 16px;
+            p {
+                font: var(--font-barometer-text);
+            }
         }
-        &__current-amount {
-            font-size: 1.75rem;
-        }
-        &__donor-count {
-            font-size: 1.75rem;
+        &__bar-wrapper {
+            min-height: 170px;
         }
         &__bar-container {
             height: 24px;
@@ -151,14 +167,8 @@
             background: url("./assets/waves.svg") no-repeat center/contain;
         }
         &__goal-note {
-            margin-top: 18px;
-        }
-        &__goal-note-text {
-            font-size: 1.25rem;
-        }
-        &__goal-note-value {
-            font-weight: 600;
-            font-size: 1.75rem;
+            margin-top: 10px;
+            font: var(--font-barometer-text);
         }
     }
 }

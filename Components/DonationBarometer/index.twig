@@ -19,36 +19,35 @@
     
     {% if barometer_text %}
       <div
-        class="donation-barometer__text">{{ barometer_text | replace({'{current_amount}': current_amount|number_format(0, '.', '.'), '{donor_count}': donor_count|number_format(0, '.', '.'), '{goal_amount}': goal_amount|number_format(0, '.', '.') }) }}</div>
+        class="donation-barometer__text">{{ barometer_text | replace({'{current_amount}': current_amount|number_format(0, '.', '.') ~ ' Euro', '{donor_count}': donor_count|number_format(0, '.', '.'), '{goal_amount}': goal_amount|number_format(0, '.', '.') }) }}</div>
     {% endif %}
     
-    {% if barometer_text_current %}
-      <div class="donation-barometer__current">
-        {% set formatted_current = current_amount|number_format(0, '.', '.') %}
-        {% set formatted_donors = donor_count|number_format(0, '.', '.') %}
-        
-        {{ barometer_text_current
-        |replace({'{current_amount}': '<span class="donation-barometer__current-amount">' ~ formatted_current ~ '</span>',
-          '{donor_count}': '<span class="donation-barometer__donor-count">' ~ formatted_donors ~ '</span>'})
-        |raw }}
+    <div class="donation-barometer__bar-wrapper">
+      {% if barometer_text_current %}
+        <div class="donation-barometer__current">
+          {% set formatted_current = current_amount|number_format(0, '.', '.') %}
+          {% set formatted_donors = donor_count|number_format(0, '.', '.') %}
+          
+          {{ barometer_text_current
+          |replace({'{current_amount}': '<span class="donation-barometer__current-amount">' ~ formatted_current ~ ' Euro</span>',
+            '{donor_count}': '<span class="donation-barometer__donor-count">' ~ formatted_donors ~ '</span>'})
+          |raw }}
+        </div>
+      {% endif %}
+      <div class="donation-barometer__bar-container">
+        <div class="donation-barometer__bar-clip">
+          <div class="donation-barometer__fill" style="background: {{ options.colorBrandText ?? '#2EB7EC' }};"></div>
+          <div class="donation-barometer__waves"></div>
+        </div>
+        <div class="donation-barometer__ship {{ shipClass }}" aria-hidden="true"></div>
       </div>
-    {% endif %}
-    
-    
-    
-    <div class="donation-barometer__bar-container">
-      <div class="donation-barometer__bar-clip">
-        <div class="donation-barometer__fill" style="background: {{ options.colorBrandText ?? '#2EB7EC' }};"></div>
-        <div class="donation-barometer__waves"></div>
-      </div>
-      <div class="donation-barometer__ship {{ shipClass }}" aria-hidden="true"></div>
     </div>
     
     <div class="donation-barometer__goal-note" aria-label="Goal">
       <span class="donation-barometer__goal-note-text">{{ barometer_text_goal_amount }}</span>
       <span class="donation-barometer__goal-note-value">
           {{ goal_amount|number_format(0, '.', '.') }}
-            {% if display_type != 'count' %} Euro{% endif %}
+        {% if display_type != 'count' %} Euro{% endif %}
       </span>
     </div>
   
