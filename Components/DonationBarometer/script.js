@@ -6,8 +6,12 @@
 export default function (component) {
   const ship = component.querySelector('.donation-barometer__ship');
   const fill = component.querySelector('.donation-barometer__fill');
-  const amountEl = component.querySelector('.donation-barometer__current--amount');
   const displayType = component.dataset.displayType || 'count';
+  const amountEl =
+    displayType === 'count'
+      ? (component.querySelector('.donation-barometer__donor-count') ||
+         component.querySelector('.donation-barometer__current-count'))
+      : component.querySelector('.donation-barometer__current-amount');
   const barContainer = component.querySelector('.donation-barometer__bar-container');
 
   if (!ship || !fill || !barContainer) return;

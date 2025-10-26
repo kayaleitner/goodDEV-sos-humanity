@@ -29,8 +29,8 @@
           {% set formatted_donors = donor_count|number_format(0, '.', '.') %}
           
           {{ barometer_text_current
-          |replace({'{current_amount}': '<span class="donation-barometer__current-amount">' ~ formatted_current ~ ' Euro</span>',
-            '{donor_count}': '<span class="donation-barometer__donor-count">' ~ formatted_donors ~ '</span>'})
+          |replace({'{current_amount}': '<span class="donation-barometer__current-amount">0 Euro</span>',
+            '{donor_count}': '<span class="donation-barometer__donor-count">0</span>'})
           |raw }}
         </div>
       {% endif %}
