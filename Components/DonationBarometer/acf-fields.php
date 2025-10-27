@@ -17,15 +17,9 @@ function getACFLayout(): array {
     'label' => __('Donation Barometer', 'flynt'),
     'sub_fields' => [
       [
-        'label' => __('Title', 'flynt'),
-        'name' => 'title',
-        'type' => 'text',
-      ],
-      [
         'label' => __('Barometer Text', 'flynt'),
         'name' => 'barometer_text',
         'type' => 'wysiwyg',
-        'toolbar' => 'basic',
         'tabs' => 'visual',
         'media_upload' => 0,
         'instructions' => __('Text, der über dem Barometer angezeigt wird. Mögliche Variablen: {donor_count}, {current_amount}, {goal_amount}', 'flynt'),
@@ -35,17 +29,16 @@ function getACFLayout(): array {
         'label' => __('Text aktueller Betrag/Anzahl', 'flynt'),
         'name' => 'barometer_text_current',
         'type' => 'wysiwyg',
-        'toolbar' => 'basic',
         'tabs' => 'visual',
         'media_upload' => 0,
-        'instructions' => __('Verwende die Variable {current_amount} oder {donor_count}, um den aktuellen Betrag/Anzahl einzusetzen. Der Wert wird automatisch hervorgehoben und größer dargestellt.', 'flynt'),
-        'required' => 1,
-      ],
-      [
-        'label' => __('Text Zielbetrag oder Anzahl', 'flynt'),
-        'name' => 'barometer_text_goal_amount',
-        'type' => 'text',
-        'instructions' => __('Dieser Text steht vor dem Zielbetrag.', 'flynt'),
+        'instructions' => __(
+          '<strong>Hinweis:</strong><br>
+          Verwende folgende Variablen, um dynamische Werte einzufügen:<br><br>
+          <code>{current_amount}</code> – zeigt den aktuellen Betrag<br>
+          <code>{donor_count}</code> – zeigt die Anzahl der Spender:innen<br><br>
+          Beispiel: <em>„Wir haben bereits {current_amount} € von {donor_count} Menschen gesammelt!“</em>',
+          'flynt'
+        ),
         'required' => 1,
       ],
       [
@@ -61,6 +54,15 @@ function getACFLayout(): array {
         'type' => 'text',
         'instructions' => __('Die ID des Smart Filters aus der FundraisingBox. Bitte sicherstellen, dass dieser Filter existiert.', 'flynt'),
         'required' => 1,
+      ],
+      [
+        'label' => __('Text Zielbetrag oder Anzahl', 'flynt'),
+        'name' => 'barometer_text_goal_amount',
+        'type' => 'wysiwyg',
+        'tabs' => 'visual',
+        'media_upload' => 0,
+        'instructions' => __('Mögliche Variablen: {goal_amount}', 'flynt'),
+        'required' => 0,
       ],
       [
         'label' => __('Anzeigetyp', 'flynt'),

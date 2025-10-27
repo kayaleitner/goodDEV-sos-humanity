@@ -12,24 +12,21 @@
   {% set isDarkBg = (bgColor|hex_to_luminance < 0.5) %}
   {% set shipClass = isDarkBg ? 'donation-barometer__ship--light' : 'donation-barometer__ship--dark' %}
   {% set textShadowColor = isDarkBg ? bgColor : '#fff' %}
+  {% set formatted_current = current_amount|number_format(0, '.', '.') %}
+  {% set formatted_donors = donor_count|number_format(0, '.', '.') %}
+  {% set formatted_goal = goal_amount|number_format(0, '.', '.') %}
   <div class="donation-barometer__panel" style="--text-shadow-color: {{ textShadowColor }};">
-    {% if title %}
-      <h3 class="donation-barometer__title">{{ title }}</h3>
-    {% endif %}
-    
     {% if barometer_text %}
       <div
-        class="donation-barometer__text">{{ barometer_text | replace({'{current_amount}': current_amount|number_format(0, '.', '.') ~ ' Euro', '{donor_count}': donor_count|number_format(0, '.', '.'), '{goal_amount}': goal_amount|number_format(0, '.', '.') }) }}</div>
+        class="donation-barometer__text">{{ barometer_text | replace({'{current_amount}': formatted_current, '{donor_count}': formatted_donors, '{goal_amount}': formatted_goal }) }}</div>
     {% endif %}
     
     <div class="donation-barometer__bar-wrapper">
       {% if barometer_text_current %}
         <div class="donation-barometer__current">
-          {% set formatted_current = current_amount|number_format(0, '.', '.') %}
-          {% set formatted_donors = donor_count|number_format(0, '.', '.') %}
           
           {{ barometer_text_current
-          |replace({'{current_amount}': '<span class="donation-barometer__current-amount">0 Euro</span>',
+          |replace({'{current_amount}': '<span class="donation-barometer__current-amount">0</span>',
             '{donor_count}': '<span class="donation-barometer__donor-count">0</span>'})
           |raw }}
         </div>
@@ -42,14 +39,9 @@
         <div class="donation-barometer__ship {{ shipClass }}" aria-hidden="true"></div>
       </div>
     </div>
-    
-    <div class="donation-barometer__goal-note" aria-label="Goal">
-      <span class="donation-barometer__goal-note-text">{{ barometer_text_goal_amount }}</span>
-      <span class="donation-barometer__goal-note-value">
-          {{ goal_amount|number_format(0, '.', '.') }}
-        {% if display_type != 'count' %} Euro{% endif %}
-      </span>
-    </div>
+    {% if barometer_text_goal_amount %}
+      <div class="donation-barometer__goal-note">{{ barometer_text_goal_amount | replace({'{current_amount}': formatted_current, '{donor_count}': formatted_donors, '{goal_amount}': formatted_goal }) }}</div>
+    {% endif %}
   
   </div>
 </flynt-component>

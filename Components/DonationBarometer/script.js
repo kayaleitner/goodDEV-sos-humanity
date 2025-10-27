@@ -9,8 +9,7 @@ export default function (component) {
   const displayType = component.dataset.displayType || 'count';
   const amountEl =
     displayType === 'count'
-      ? (component.querySelector('.donation-barometer__donor-count') ||
-         component.querySelector('.donation-barometer__current-count'))
+      ? component.querySelector('.donation-barometer__donor-count')
       : component.querySelector('.donation-barometer__current-amount');
   const barContainer = component.querySelector('.donation-barometer__bar-container');
 

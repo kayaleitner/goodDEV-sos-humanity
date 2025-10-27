@@ -3,7 +3,19 @@
     background: var(--themeBrand_colorBackground, transparent);
     text-wrap: auto;
     --font-barometer-text: normal normal 400 1.125rem/155% 'Source Sans Pro', sans-serif;
-    --font-barometer-title: normal normal 700 1.75rem/140% 'Source Sans Pro', sans-serif;
+    --font-h2: normal normal 900 2.5rem/110% 'Source Sans Pro', sans-serif;
+    --font-h3: normal normal 900 2rem/140% 'Source Sans Pro', sans-serif;
+    --font-h4: normal normal 700 1.6rem/140% 'Source Sans Pro', sans-serif;
+    --font-h5: normal normal 700 1.3rem/140% 'Source Sans Pro', sans-serif;
+    --font-h6: normal normal 600 1.1rem/140% 'Source Sans Pro', sans-serif;
+    h2 { font: var(--font-h2); }
+    h3 { font: var(--font-h3); }
+    h4 { font: var(--font-h4); }
+    h5 { font: var(--font-h5); }
+    h6 { font: var(--font-h6); }
+    h1, h2, h3, h4, h5, h6 { color: var(--themeBrand_colorText, #1c2445); margin: 0 0 23px; }
+    p { font: var(--font-barometer-text);  color: var(--themeBrand_colorText, #1c2445); }
+    p:last-of-type { margin-bottom: 0; }
     &__panel {
         background-color: var(--themeBrand_colorBackground, #ffffff);
         padding: 20px 16px 24px;
@@ -11,52 +23,23 @@
         margin: 0 auto;
     }
 
-    &__title {
-        font: var(--font-barometer-title);
-        margin-bottom: 23px;
-        font-weight: 900;
-        color: var(--themeBrand_colorText, #1c2445);
-        text-shadow: 0 0 3px var(--text-shadow-color);
-    }
     &__text {
         position: relative;
         z-index: 2;
-        line-height: 1.5;
-        color: var(--themeBrand_colorText, #1c2445);
-        p {
-            font-size: 1.125rem;
-            line-height: 1.5;
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-        }
-
     }
     &__current {
         position: relative;
-        font-size: 1.25rem;
-        line-height: 1.4;
         z-index: 2;
         margin: 23px 0 12px;
-        color: var(--themeBrand_colorText, #1c2445);
-        text-shadow: 0 0 3px var(--text-shadow-color);
-        p:last-of-type {
-            font: var(--font-barometer-text);
-            margin-bottom: 0;
+        h1, h2, h3, h4, h5, h6 {  margin: 0; }
+        p {
+            text-shadow: 0 0 3px var(--text-shadow-color);
+            /*-webkit-text-stroke: 2px var(--text-shadow-color);*/
         }
-
-    }
-    &__current-amount {
-        color: var(--themeBrand_colorText, #1c2445);
-        font-weight: 700;
-    }
-    &__donor-count {
-        color: var(--themeBrand_colorText, #1c2445);
-        font-weight: 700;
     }
 
     &__bar-wrapper {
-        min-height: 80px;
+        min-height: 70px;
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -69,7 +52,6 @@
         width: 100%;
         background: transparent;
         border-radius: 15px;
-        margin-bottom: 10px;
     }
 
     &__bar-clip {
@@ -124,36 +106,26 @@
 
     &__goal-note {
         margin-top: 3px;
-        text-align: right;
-        font: var(--font-barometer-text);
-        color: var(--themeBrand_colorText, #1c2445);
-    }
-    &__goal-note-value {
-        font-weight: 700;
+        p {
+            text-align: right;
+        }
     }
     @media screen and (min-width: 768px) {
         --font-barometer-text: normal normal 400 1.375rem/155% 'Source Sans Pro', sans-serif;
-        --font-barometer-title: normal normal 700 2.25rem/140% 'Source Sans Pro', sans-serif;
+        --font-h2: normal normal 900 3.25rem/110% 'Source Sans Pro', sans-serif;
+        --font-h3: normal normal 900 2.75rem/140% 'Source Sans Pro', sans-serif;
+        --font-h4: normal normal 700 2.25rem/140% 'Source Sans Pro', sans-serif;
+        --font-h5: normal normal 700 1.75rem/140% 'Source Sans Pro', sans-serif;
+        --font-h6: normal normal 600 1.5rem/140% 'Source Sans Pro', sans-serif;
+
         &__panel {
             padding: 32px 48px 40px;
         }
-        &__title {
-            font: var(--font-barometer-title);
-            margin-bottom: 36px;
-        }
-        &__text {
-            p {
-                font: var(--font-barometer-text);
-            }
-        }
         &__current {
-            margin: 0 0 16px;
-            p {
-                font: var(--font-barometer-text);
-            }
+            margin: 23px 0 16px;
         }
         &__bar-wrapper {
-            min-height: 170px;
+            min-height: 160px;
         }
         &__bar-container {
             height: 24px;
@@ -168,7 +140,6 @@
         }
         &__goal-note {
             margin-top: 10px;
-            font: var(--font-barometer-text);
         }
     }
 }
