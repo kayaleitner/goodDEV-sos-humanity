@@ -12,6 +12,11 @@ export default function (component) {
   const donorCountEl = component.querySelector('.donation-barometer__donor-count');
   const barContainer = component.querySelector('.donation-barometer__bar-container');
 
+  // Ensure the CSS custom property exists from the start (prevents undefined warnings)
+  if (ship) {
+    ship.style.setProperty('--ship-x', '0px');
+  }
+
   if (!ship || !fill || !barContainer) return;
 
   let hasAnimated = false;
@@ -51,18 +56,20 @@ export default function (component) {
     // CSS transitions handle the movement
     if (animated) {
       fill.style.transform = `scaleX(${progressPercent})`;
-      ship.style.transform = `translateX(${shipPos}px)`;
+      ship.style.setProperty('--ship-x', `${shipPos}px`);
     } else {
       // Disable transitions temporarily for instant layout updates
+      const prevFillTransition = fill.style.transition;
+      const prevShipTransition = ship.style.transition;
       fill.style.transition = 'none';
       ship.style.transition = 'none';
       fill.style.transform = `scaleX(${progressPercent})`;
-      ship.style.transform = `translateX(${shipPos}px)`;
+      ship.style.setProperty('--ship-x', `${shipPos}px`);
       // force reflow
       // eslint-disable-next-line no-unused-expressions
       fill.offsetWidth;
-      fill.style.transition = '';
-      ship.style.transition = '';
+      fill.style.transition = prevFillTransition;
+      ship.style.transition = prevShipTransition;
     }
 
     // Animate numbers once (support multiple variables)

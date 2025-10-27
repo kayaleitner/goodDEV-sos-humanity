@@ -75,7 +75,7 @@ function getACFLayout(): array {
           '<strong>Wichtiger Hinweis:</strong><br>
           Dieses Feld ist eng mit der Einstellung <code>Anzeigetyp</code> verknüpft.<br>
           - Wenn <strong>Gesamt Spendensumme</strong> gewählt wurde, wird der Wert als <strong>Eurobetrag {current_amount}</strong> interpretiert.<br>
-          - Wenn <strong>Anzahl Spender:innen</strong> gewählt wurde, wird der Wert als <strong>Anzahl {donor_count}</strong> interpretiert.<br>
+          – Wenn <strong>Anzahl Spender:innen</strong> gewählt wurde, wird der Wert als <strong>Anzahl {donor_count}</strong> interpretiert.<br>
           Das Barometer berechnet und visualisiert den Fortschritt automatisch auf Basis dieser Auswahl.',
           'flynt'
         ),
