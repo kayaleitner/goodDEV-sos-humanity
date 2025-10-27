@@ -7,10 +7,9 @@ export default function (component) {
   const ship = component.querySelector('.donation-barometer__ship');
   const fill = component.querySelector('.donation-barometer__fill');
   const displayType = component.dataset.displayType || 'count';
-  const amountEl =
-    displayType === 'count'
-      ? component.querySelector('.donation-barometer__donor-count')
-      : component.querySelector('.donation-barometer__current-amount');
+  // Support animating multiple variables independently if present in the markup
+  const currentAmountEl = component.querySelector('.donation-barometer__current-amount');
+  const donorCountEl = component.querySelector('.donation-barometer__donor-count');
   const barContainer = component.querySelector('.donation-barometer__bar-container');
 
   if (!ship || !fill || !barContainer) return;
@@ -66,10 +65,14 @@ export default function (component) {
       ship.style.transition = '';
     }
 
-    // Animate number once
+    // Animate numbers once (support multiple variables)
     if (!hasAnimated && animated) {
-      const target = displayType === 'count' ? donors : current;
-      animateNumber(amountEl, 0, target);
+      if (donorCountEl) {
+        animateNumber(donorCountEl, 0, donors);
+      }
+      if (currentAmountEl) {
+        animateNumber(currentAmountEl, 0, current);
+      }
       hasAnimated = true;
     }
   }

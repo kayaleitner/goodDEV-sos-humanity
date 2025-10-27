@@ -6,7 +6,7 @@ namespace Flynt\Components\DonationBarometer;
  * Provides the ACF (Advanced Custom Fields) layout definition for the
  * DonationBarometer component.
  *
- * This layout is used to configure Donation Barometer via the WordPress backend.
+ * This layout is used to configure the Donation Barometer via the WordPress backend.
  *
  * @return array
  *   The ACF layout definition array for the DonationBarometer component.
@@ -22,7 +22,15 @@ function getACFLayout(): array {
         'type' => 'wysiwyg',
         'tabs' => 'visual',
         'media_upload' => 0,
-        'instructions' => __('Text, der über dem Barometer angezeigt wird. Mögliche Variablen: {donor_count}, {current_amount}, {goal_amount}', 'flynt'),
+        'instructions' => __(
+          '<strong>Beschreibung:</strong><br>
+          Dieser Text wird <strong>oberhalb</strong> des Barometers angezeigt.<br>
+          Verwende folgende Variablen, um dynamische Werte einzufügen:<br>
+          <code>{donor_count}</code> – Anzahl der Spender:innen<br>
+          <code>{current_amount}</code> – aktueller Spendenbetrag<br>
+          <code>{goal_amount}</code> – Zielwert (abhängig vom Anzeigetyp)',
+          'flynt'
+        ),
         'required' => 0,
       ],
       [
@@ -32,27 +40,57 @@ function getACFLayout(): array {
         'tabs' => 'visual',
         'media_upload' => 0,
         'instructions' => __(
-          '<strong>Hinweis:</strong><br>
-          Verwende folgende Variablen, um dynamische Werte einzufügen:<br><br>
-          <code>{current_amount}</code> – zeigt den aktuellen Betrag<br>
-          <code>{donor_count}</code> – zeigt die Anzahl der Spender:innen<br><br>
-          Beispiel: <em>„Wir haben bereits {current_amount} € von {donor_count} Menschen gesammelt!“</em>',
+          '<strong>Beschreibung:</strong><br>
+          Dieser Text beschreibt den <strong>aktuellen Fortschritt</strong> des Barometers.<br>
+          Verwende folgende Variablen, um dynamische Werte einzufügen:<br>
+          <code>{current_amount}</code> – aktueller Spendenbetrag<br>
+          <code>{donor_count}</code> – aktuelle Anzahl der Spender:innen<br><br>
+          Beispiel:<br>
+          <em>„Wir haben bereits {current_amount} € von {donor_count} Menschen gesammelt!“</em>',
           'flynt'
         ),
+        'required' => 1,
+      ],
+      [
+        'label' => __('Anzeigetyp', 'flynt'),
+        'name' => 'display_type',
+        'type' => 'select',
+        'instructions' => __(
+          '<strong>Beschreibung:</strong><br>
+          Legt fest, ob das Barometer auf der <strong>Gesamtsumme</strong> der Spenden oder der <strong>Anzahl der Spender:innen</strong> basiert.<br>
+          Diese Einstellung beeinflusst die Berechnung und Darstellung im Frontend – insbesondere im Zusammenspiel mit dem Feld <code>Zielbetrag oder Anzahl</code>.',
+          'flynt'
+        ),
+        'choices' => [
+          'sum' => __('Gesamt Spendensumme', 'flynt'),
+          'count' => __('Anzahl Spender:innen', 'flynt'),
+        ],
         'required' => 1,
       ],
       [
         'label' => __('Zielbetrag oder Anzahl', 'flynt'),
         'name' => 'goal_amount',
         'type' => 'number',
-        'instructions' => __('Je nach Einstellung unter Anzeigetyp wird das Ziel als Euro oder Anzahl angezeigt.', 'flynt'),
+        'instructions' => __(
+          '<strong>Wichtiger Hinweis:</strong><br>
+          Dieses Feld ist eng mit der Einstellung <code>Anzeigetyp</code> verknüpft.<br>
+          - Wenn <strong>Gesamt Spendensumme</strong> gewählt wurde, wird der Wert als <strong>Eurobetrag {current_amount}</strong> interpretiert.<br>
+          - Wenn <strong>Anzahl Spender:innen</strong> gewählt wurde, wird der Wert als <strong>Anzahl {donor_count}</strong> interpretiert.<br>
+          Das Barometer berechnet und visualisiert den Fortschritt automatisch auf Basis dieser Auswahl.',
+          'flynt'
+        ),
         'required' => 1,
       ],
       [
         'label' => __('Search ID', 'flynt'),
         'name' => 'search_id',
         'type' => 'text',
-        'instructions' => __('Die ID des Smart Filters aus der FundraisingBox. Bitte sicherstellen, dass dieser Filter existiert.', 'flynt'),
+        'instructions' => __(
+          '<strong>Beschreibung:</strong><br>
+          Die <code>Search ID</code> ist die Kennung des Smart Filters aus der FundraisingBox.<br>
+          Stelle sicher, dass dieser Filter dort existiert und die passenden Spenden oder Kontakte liefert.',
+          'flynt'
+        ),
         'required' => 1,
       ],
       [
@@ -61,19 +99,14 @@ function getACFLayout(): array {
         'type' => 'wysiwyg',
         'tabs' => 'visual',
         'media_upload' => 0,
-        'instructions' => __('Mögliche Variablen: {goal_amount}', 'flynt'),
+        'instructions' => __(
+          '<strong>Beschreibung:</strong><br>
+          Text, der den <strong>Zielwert</strong> beschreibt (abhängig vom gewählten Anzeigetyp).<br>
+          Verwende die Variable:<br>
+          <code>{goal_amount}</code> – Zielbetrag (Euro) oder Zielanzahl (Spender:innen)',
+          'flynt'
+        ),
         'required' => 0,
-      ],
-      [
-        'label' => __('Anzeigetyp', 'flynt'),
-        'name' => 'display_type',
-        'type' => 'select',
-        'instructions' => __('Auswahl, ob der Spendenbetrag oder die Anzahl der Spender angezeigt werden soll.', 'flynt'),
-        'choices' => [
-          'sum' => __('Gesamt Spendensumme', 'flynt'),
-          'count' => __('Anzahl Spender', 'flynt'),
-        ],
-        'required' => 1,
       ],
     ],
   ];

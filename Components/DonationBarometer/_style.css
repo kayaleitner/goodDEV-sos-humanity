@@ -32,9 +32,21 @@
         z-index: 2;
         margin: 23px 0 12px;
         h1, h2, h3, h4, h5, h6 {  margin: 0; }
-        p {
-            text-shadow: 0 0 3px var(--text-shadow-color);
-            /*-webkit-text-stroke: 2px var(--text-shadow-color);*/
+        h1, h2, h3, h4, h5, h6, p {
+            -webkit-text-stroke: 3px var(--text-shadow-color);
+            paint-order: stroke fill;
+            text-shadow:
+              0 0 2px var(--text-shadow-color),
+              0 0 3px var(--text-shadow-color),
+              0 0 4px var(--text-shadow-color),
+              1px 0 0 var(--text-shadow-color),
+              -1px 0 0 var(--text-shadow-color),
+              0 1px 0 var(--text-shadow-color),
+              0 -1px 0 var(--text-shadow-color),
+              1px 1px 0 var(--text-shadow-color),
+              -1px 1px 0 var(--text-shadow-color),
+              1px -1px 0 var(--text-shadow-color),
+              -1px -1px 0 var(--text-shadow-color);
         }
     }
 
@@ -105,7 +117,7 @@
     }
 
     &__goal-note {
-        margin-top: 3px;
+        margin-top: 10px;
         p {
             text-align: right;
         }
@@ -137,9 +149,6 @@
         }
         &__waves {
             background: url("./assets/waves.svg") no-repeat center/contain;
-        }
-        &__goal-note {
-            margin-top: 10px;
         }
     }
 }
