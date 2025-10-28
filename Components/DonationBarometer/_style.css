@@ -186,16 +186,3 @@
   75%  { transform: translateY(-1.5px) rotate(-0.4deg); }
   100% { transform: translateY(0) rotate(0deg); }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .donation-barometer__waves {
-    animation: none !important;
-  }
-  .donation-barometer__ship::before {
-    animation: none !important;
-  }
-  .donation-barometer__fill,
-  .donation-barometer__ship {
-    transition: none !important;
-  }
-}

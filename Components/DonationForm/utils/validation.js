@@ -49,7 +49,7 @@ export default function initDonationFormValidation(component, myForm) {
       t.postcodeByCountry || 'Bitte gib eine gültige Postleitzahl ein.'
     )
   }
-  $.validator.addMethod('validatePhone', v => !v.trim() || /^[\d()+\-.\s]{10,}$/.test(v), t.validatePhone || 'Ungültige Telefonnummer, bitte Vorwahl mit angeben.');
+  $.validator.addMethod('validatePhone', v => !v.trim() || /^\+?[0-9()\-\s.]{6,20}$/.test(v), t.validatePhone || 'Ungültige Telefonnummer, bitte Vorwahl mit angeben.');
 
   // Helper to toggle valid/invalid classes and icons
   const setState = ($el, isValid) => {
