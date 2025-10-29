@@ -77,11 +77,18 @@ export default function initAmountHandlers(component) {
     }
 
     const applyTemplate = (tpl, amt) => tpl ? tpl.toString().replace(/%amount%/g, amt) : '';
+    const applyTemplateEmptyAmount = (tpl) => tpl ? tpl.toString().replace(/%amount%/g, '').replace(/\s*Euro\s*/g, ' ').trim() : '';
 
     let nextLabel = '';
-    if (amount && Object.prototype.hasOwnProperty.call(templates, intervalVal)) {
+    const tpl = templates?.[intervalVal] ?? '';
+
+    if (!tpl) {
+      nextLabel = ''; // kein Template vorhanden → nichts tun
+    } else if (amount != null && amount !== '') {
       const formattedAmount = formatAmountDE(amount);
-      nextLabel = applyTemplate(templates[intervalVal], formattedAmount);
+      nextLabel = applyTemplate(tpl, formattedAmount);
+    } else {
+      nextLabel = applyTemplateEmptyAmount(tpl);
     }
 
     if (nextLabel) {

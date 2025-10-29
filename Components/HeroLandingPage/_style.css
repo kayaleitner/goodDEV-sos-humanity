@@ -82,6 +82,10 @@
       border-right: 20px solid transparent;
       border-top: 20px solid var(--themeBrand_colorBackground, #ebeb00);
     }
+    .heroLandingPage__nestedComponents .donation-barometer__panel {
+      max-width: 872px;
+      margin: 0 auto;
+    }
 
     .heroLandingPage__textInner {
       max-width: 772px;
