@@ -160,7 +160,7 @@ export default function initAmountHandlers(component) {
   /**
    * Event: custom input → sync hidden amount, deselect radios
    */
-  $root.on('input', '.amount-input', function () {
+  $root.on('input focus', '.amount-input', function () {
     const $input = $(this);
     const interval = $input.closest('.amount-group-wrapper').data('interval');
     const $suffix = $input.siblings('.currency-suffix');

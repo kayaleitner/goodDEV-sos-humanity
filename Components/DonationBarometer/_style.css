@@ -81,10 +81,10 @@
         width: 100%;
         height: 100%;
         border-radius: 15px;
-        background: url("./assets/waves-small.svg") no-repeat 0 50%/cover;
+        background: url("./assets/waves.svg") no-repeat center/cover;
         z-index: 2;
         will-change: background-position;
-        animation: donation-barometer-waves-mobil 12s linear infinite;
+        animation: donation-barometer-waves 12s linear infinite;
     }
 
     &__fill {
@@ -102,9 +102,9 @@
 
     &__ship {
         position: absolute;
-        top: -54px;
-        width: 58px;
-        height: 59px;
+        top: -62px;
+        width: 63px;
+        height: 69px;
         left: 0;
         /* Ensure the CSS custom property exists even before JS runs */
         --ship-x: 0px;
@@ -136,6 +136,19 @@
             text-align: right;
         }
     }
+    @media screen and (min-width: 640px) {
+        &__bar-container {
+            height: 24px;
+        }
+        &__bar-wrapper {
+            min-height: 160px;
+        }
+        &__ship {
+            top: -135px;
+            width: 124px;
+            height: 148px;
+        }
+    }
     @media screen and (min-width: 768px) {
         --font-barometer-text: normal normal 400 1.375rem/155% 'Source Sans Pro', sans-serif;
         --font-h2: normal normal 900 3.25rem/110% 'Source Sans Pro', sans-serif;
@@ -150,33 +163,13 @@
         &__current {
             margin: 23px 0 16px;
         }
-        &__bar-wrapper {
-            min-height: 160px;
-        }
-        &__bar-container {
-            height: 24px;
-        }
-        &__ship {
-            top: -135px;
-            width: 124px;
-            height: 148px;
-        }
-        &__waves {
-            background: url("./assets/waves.svg") no-repeat center/contain;
-            animation: donation-barometer-waves 12s linear infinite;
-        }
     }
-}
-@keyframes donation-barometer-waves-mobil {
-    0% { background-position: 0 50%; transform: scale3d(1.1, 1, 1.1); }
-    50% { background-position: 100% 50%; transform: scale3d(1.2, 1, 1.2); }
-    100% { background-position: 0 50%; transform: scale3d(1.1, 1, 1.1); }
 }
 
 @keyframes donation-barometer-waves {
-    0% { background-position: 0 50%; transform: scale3d(1.1, 1, 1.1); }
-    50% { background-position: 300% 50%; transform: scale3d(1.2, 1, 1.2); }
-    100% { background-position: 0 50%; transform: scale3d(1.1, 1, 1.1); }
+    0% { background-position: 0 0; transform: scale3d(1.1, 1, 1.1); }
+    50% { background-position: 100% 0; transform: scale3d(1.2, 1, 1.2); }
+    100% { background-position: 0 0; transform: scale3d(1.1, 1, 1.1); }
 }
 
 @keyframes donation-barometer-ship-bob {
