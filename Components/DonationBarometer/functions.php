@@ -135,6 +135,11 @@ function fetch_donations(string $searchId, string $displayType = 'sum'): array
  */
 function store_instance_data(int $postId, string $instanceId, array $data): void
 {
+  // In REST/embed contexts there may be no global post. Avoid writing meta with invalid post IDs.
+  if ($postId <= 0) {
+    return;
+  }
+
     $metaKey = '_donation_barometer_' . sanitize_key($instanceId);
     $payload = [
         'current_amount' => (float) ($data['current_amount'] ?? 0),
