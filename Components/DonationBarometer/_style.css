@@ -2,6 +2,7 @@
     width: 100%;
     background: var(--themeBrand_colorBackground, transparent);
     text-wrap: auto;
+    color: var(--themeBrand_colorText, #1c2445);
     --font-barometer-text: normal normal 400 1.125rem/155% 'Source Sans Pro', sans-serif;
     --font-h2: normal normal 900 2.5rem/110% 'Source Sans Pro', sans-serif;
     --font-h3: normal normal 900 2rem/140% 'Source Sans Pro', sans-serif;
@@ -32,22 +33,20 @@
         z-index: 2;
         margin: 23px 0 12px;
         h1, h2, h3, h4, h5, h6 {  margin: 0; }
-        h1, h2, h3, h4, h5, h6, p {
-            -webkit-text-stroke: 3px var(--text-shadow-color);
-            paint-order: stroke fill;
-            text-shadow:
-              0 0 2px var(--text-shadow-color),
-              0 0 3px var(--text-shadow-color),
-              0 0 4px var(--text-shadow-color),
-              1px 0 0 var(--text-shadow-color),
-              -1px 0 0 var(--text-shadow-color),
-              0 1px 0 var(--text-shadow-color),
-              0 -1px 0 var(--text-shadow-color),
-              1px 1px 0 var(--text-shadow-color),
-              -1px 1px 0 var(--text-shadow-color),
-              1px -1px 0 var(--text-shadow-color),
-              -1px -1px 0 var(--text-shadow-color);
-        }
+        -webkit-text-stroke: 3px var(--text-shadow-color);
+        paint-order: stroke fill;
+        text-shadow:
+          0 0 2px var(--text-shadow-color),
+          0 0 3px var(--text-shadow-color),
+          0 0 4px var(--text-shadow-color),
+          1px 0 0 var(--text-shadow-color),
+          -1px 0 0 var(--text-shadow-color),
+          0 1px 0 var(--text-shadow-color),
+          0 -1px 0 var(--text-shadow-color),
+          1px 1px 0 var(--text-shadow-color),
+          -1px 1px 0 var(--text-shadow-color),
+          1px -1px 0 var(--text-shadow-color),
+          -1px -1px 0 var(--text-shadow-color);
     }
 
     &__bar-wrapper {
@@ -132,6 +131,7 @@
 
     &__goal-note {
         margin-top: 10px;
+        text-align: right;
         p {
             text-align: right;
         }

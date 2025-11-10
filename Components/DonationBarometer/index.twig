@@ -10,6 +10,7 @@
 >
   {% set bgColor = options.colorBrandBackground ?? '#fff' %}
   {% set isDarkBg = (bgColor|hex_to_luminance < 0.5) %}
+  {% set fillColor = isDarkBg ? '#ffffff' : '#2EB7EC' %}
   {% set shipClass = isDarkBg ? 'donation-barometer__ship--light' : 'donation-barometer__ship--dark' %}
   {% set textShadowColor = isDarkBg ? bgColor : '#fff' %}
   {% set formatted_current = current_amount|number_format(0, '.', '.') %}
@@ -33,7 +34,7 @@
       {% endif %}
       <div class="donation-barometer__bar-container">
         <div class="donation-barometer__bar-clip">
-          <div class="donation-barometer__fill" style="background: {{ options.colorBrandText ?? '#2EB7EC' }};"></div>
+          <div class="donation-barometer__fill" style="background: {{ fillColor }};"></div>
           <div class="donation-barometer__waves"></div>
         </div>
         <div class="donation-barometer__ship {{ shipClass }}" aria-hidden="true"></div>

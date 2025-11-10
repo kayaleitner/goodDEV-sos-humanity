@@ -2,156 +2,237 @@
 /**
  * REST endpoint to render the DonationBarometer component as an embeddable HTML page (for iframes/OBS).
  *
- * URL example:
- *  /wp-json/sos/v1/barometer/embed?search_id=ABC123&goal=10000&type=sum&title=Spenden&theme=dark&transparent=1
+ * @endpoint /wp-json/sos/v1/barometer/embed
+ * @method GET
+ *
+ * @param string  $search_id                  REQUIRED - FundraisingBox Search ID (e.g., "327242")
+ * @param number  $goal                       REQUIRED - Goal amount or count (e.g., 50000 or 100)
+ * @param string  $type                       REQUIRED - Display type: "sum" (amount) or "count" (donors)
+ * @param string  $barometer_text             OPTIONAL - Main headline text above the barometer
+ *                                                       Supports placeholders: {current_amount}, {donor_count}, {goal_amount}
+ * @param string  $barometer_text_current     OPTIONAL - Text showing current progress (e.g., "Wir haben bereits {current_amount} Dauerspender!")
+ *                                                       Supports placeholders: {current_amount}, {donor_count}
+ * @param string  $barometer_text_goal_amount OPTIONAL - Text showing goal (e.g., "Ziel {goal_amount} Dauerspenden")
+ *                                                       Supports placeholders: {current_amount}, {donor_count}, {goal_amount}
+ * @param string  $title                      OPTIONAL - Legacy parameter, mapped to barometer_text if barometer_text is empty
+ * @param string  $theme                      OPTIONAL - Color theme: "light" (default) or "dark"
+ *                                                       light: white background, dark text
+ *                                                       dark: dark blue background, white text
+ * @param boolean $transparent                OPTIONAL - Enable transparent background (default: false)
+ *                                                       Use 1 or true to enable
+ * @param number  $refresh_interval           OPTIONAL - Auto-refresh interval in seconds (0 = disabled, default: 0)
+ *                                                       Minimum: 60 seconds to prevent server overload
+ *
+ * @example Basic usage (amount-based):
+ *   /wp-json/sos/v1/barometer/embed?search_id=327242&goal=50000&type=sum
+ *
+ * @example Full featured (dark theme, transparent, auto-refresh):
+ *   /wp-json/sos/v1/barometer/embed?search_id=327242&goal=40000&type=sum&barometer_text=SOS%20Humanity%20erweitert%20die%20Flotte&barometer_text_current=Wir%20haben%20bereits%20{current_amount}%20Dauerspender!&barometer_text_goal_amount=Ziel%20{goal_amount}%20Dauerspenden&theme=dark&transparent=1&refresh_interval=60
+ *
+ * @example Count-based with custom text:
+ *   /wp-json/sos/v1/barometer/embed?search_id=327242&goal=100&type=count&barometer_text=Unser%20Spendenziel&barometer_text_current={donor_count}%20Spender&theme=light
+ *
+ * @example For OBS/Streaming (with auto-refresh every 60 seconds):
+ *   /wp-json/sos/v1/barometer/embed?search_id=327242&goal=50000&type=sum&theme=dark&transparent=1&refresh_interval=60
  */
 
 // Prevent direct access if not in WP context
 if (!defined('ABSPATH')) {
-    exit;
+  exit;
 }
 
 add_action('rest_api_init', function () {
-    register_rest_route('sos/v1', '/barometer/embed', [
-        'methods'  => 'GET',
-        'args'     => [
-            'search_id' => ['type' => 'string', 'required' => true],
-            'goal'      => ['type' => 'number', 'required' => true],
-            'type'      => ['type' => 'string', 'required' => true], // 'sum' | 'count'
-            // Text parameters used by the component
-            'barometer_text' => ['type' => 'string', 'default' => ''],
-            'barometer_text_current' => ['type' => 'string', 'default' => ''],
-            'barometer_text_goal_amount' => ['type' => 'string', 'default' => ''],
-            // Back-compat: optional title mapped to barometer_text if provided
-            'title'     => ['type' => 'string', 'default' => ''],
-            'theme'     => ['type' => 'string', 'default' => 'light'],
-            'transparent' => ['type' => 'boolean', 'default' => false],
+  register_rest_route('sos/v1', '/barometer/embed', [
+    'methods'  => 'GET',
+    'args'     => [
+      'search_id' => ['type' => 'string', 'required' => true],
+      'goal'      => ['type' => 'number', 'required' => true],
+      'type'      => ['type' => 'string', 'required' => true], // 'sum' | 'count'
+      // Text parameters used by the component
+      'barometer_text' => ['type' => 'string', 'default' => ''],
+      'barometer_text_current' => ['type' => 'string', 'default' => ''],
+      'barometer_text_goal_amount' => ['type' => 'string', 'default' => ''],
+      // Back-compat: optional title mapped to barometer_text if provided
+      'title'     => ['type' => 'string', 'default' => ''],
+      'theme'     => ['type' => 'string', 'default' => 'light'],
+      'transparent' => ['type' => 'boolean', 'default' => false],
+      // Auto-refresh interval in seconds (0 or not set = no refresh)
+      'refresh_interval' => ['type' => 'number', 'default' => 0],
+    ],
+    'permission_callback' => '__return_true',
+    'callback' => function ($request) {
+      // Validate required params
+      $searchId = sanitize_text_field($request['search_id'] ?? '');
+      $goal = $request->get_param('goal');
+      $type = $request->get_param('type');
+      if ($searchId === '' || $goal === null || $type === null || $type === '') {
+        return new WP_REST_Response('Missing required parameters: search_id, goal, type', 400, ['Content-Type' => 'text/plain; charset=UTF-8']);
+      }
+
+      // Map incoming params into component context
+      $barometerText = (string) ($request['barometer_text'] ?? '');
+      $title = (string) ($request['title'] ?? '');
+      if ($barometerText === '' && $title !== '') {
+        // Back-compat: use title as headline text
+        $barometerText = $title;
+      }
+
+      // Set colors based on theme
+      $theme = sanitize_text_field($request['theme'] ?? 'light');
+      $themeColors = [
+        'dark' => [
+          'background' => '#1c2445',
+          'text' => '#ffffff',
+          'brand' => '#2EB7EC'
         ],
-        'permission_callback' => '__return_true',
-        'callback' => function ($request) {
-            // Validate required params
-            $searchId = sanitize_text_field($request['search_id'] ?? '');
-            $goal = $request->get_param('goal');
-            $type = $request->get_param('type');
-            if ($searchId === '' || $goal === null || $type === null || $type === '') {
-                return new WP_REST_Response('Missing required parameters: search_id, goal, type', 400, ['Content-Type' => 'text/plain; charset=UTF-8']);
-            }
+        'light' => [
+          'background' => '#ffffff',
+          'text' => '#1c2445',
+          'brand' => '#2EB7EC'
+        ]
+      ];
+      $colors = $themeColors[$theme] ?? $themeColors['light'];
 
-            // Map incoming params into component context
-            $barometerText = (string) ($request['barometer_text'] ?? '');
-            $title = (string) ($request['title'] ?? '');
-            if ($barometerText === '' && $title !== '') {
-                // Back-compat: use title as headline text
-                $barometerText = $title;
-            }
+      $params = [
+        'goal_amount'  => (float) $goal,
+        'search_id'    => $searchId,
+        'display_type' => sanitize_text_field($type),
+        'theme'        => $theme,
+        'transparent'  => (bool) $request['transparent'],
+        // Texts used in Twig template
+        'barometer_text' => sanitize_text_field($barometerText),
+        'barometer_text_current' => isset($request['barometer_text_current']) ? wp_kses_post($request['barometer_text_current']) : '',
+        'barometer_text_goal_amount' => sanitize_text_field($request['barometer_text_goal_amount'] ?? ''),
+        // Theme colors (override options if set)
+        'options' => [
+          'colorBrandBackground' => $colors['background'],
+          'colorBrandText' => $colors['text'],
+          'colorBrandFill' => $colors['brand']
+        ]
+      ];
 
-            $params = [
-                'goal_amount'  => (float) $goal,
-                'search_id'    => $searchId,
-                'display_type' => sanitize_text_field($type),
-                'theme'        => sanitize_text_field($request['theme'] ?? 'light'),
-                'transparent'  => (bool) $request['transparent'],
-                // Texts used in Twig template
-                'barometer_text' => sanitize_text_field($barometerText),
-                'barometer_text_current' => isset($request['barometer_text_current']) ? wp_kses_post($request['barometer_text_current']) : '',
-                'barometer_text_goal_amount' => sanitize_text_field($request['barometer_text_goal_amount'] ?? ''),
-            ];
+      // Ensure component functions (including fetch_donations) are available
+      $componentFunctions = get_theme_file_path('/Components/DonationBarometer/functions.php');
+      if (!file_exists($componentFunctions)) {
+        // Also check parent theme (boilerplate-flynt-next)
+        $componentFunctions = get_template_directory() . '/Components/DonationBarometer/functions.php';
+      }
+      if (file_exists($componentFunctions)) {
+        require_once $componentFunctions;
+      }
 
-            // Ensure component functions (including fetch_donations) are available
-            $componentFunctions = get_theme_file_path('/Components/DonationBarometer/functions.php');
-            if (!file_exists($componentFunctions)) {
-                // Also check parent theme (boilerplate-flynt-next)
-                $componentFunctions = get_template_directory() . '/Components/DonationBarometer/functions.php';
-            }
-            if (file_exists($componentFunctions)) {
-                require_once $componentFunctions;
-            }
+      // Populate live data from FundraisingBox for REST embed (Timber::compile won't run Flynt data filters)
+      if (function_exists('Flynt\\Components\\DonationBarometer\\fetch_donations')) {
+        $apiData = \Flynt\Components\DonationBarometer\fetch_donations($searchId, $type);
+        $params['current_amount'] = (float) ($apiData['current_amount'] ?? 0);
+        $params['donor_count'] = (int) ($apiData['donor_count'] ?? 0);
+      } else {
+        // Fallback to zeros to avoid undefined variables in Twig
+        $params['current_amount'] = 0.0;
+        $params['donor_count'] = 0;
+      }
 
-            // Populate live data from FundraisingBox for REST embed (Timber::compile won't run Flynt data filters)
-            if (function_exists('Flynt\\Components\\DonationBarometer\\fetch_donations')) {
-                $apiData = \Flynt\Components\DonationBarometer\fetch_donations($searchId, $type);
-                $params['current_amount'] = (float) ($apiData['current_amount'] ?? 0);
-                $params['donor_count'] = (int) ($apiData['donor_count'] ?? 0);
-            } else {
-                // Fallback to zeros to avoid undefined variables in Twig
-                $params['current_amount'] = 0.0;
-                $params['donor_count'] = 0;
-            }
-
-            // Render the component using Timber or Flynt helper
-            $html = '';
-            if (class_exists('Timber\\Timber')) {
-                // Render the Twig of the component directly
-                $twigPathChild = get_theme_file_path('/Components/DonationBarometer/index.twig');
-                $twigPathParent = get_template_directory() . '/Components/DonationBarometer/index.twig';
-                $twigToUse = file_exists($twigPathChild) ? 'Components/DonationBarometer/index.twig' : (file_exists($twigPathParent) ? 'Components/DonationBarometer/index.twig' : '');
-                if ($twigToUse) {
-                    $html = \Timber\Timber::compile($twigToUse, $params);
-                }
-            }
-
-            if (!$html && function_exists('Flynt\\renderComponent')) {
-                $html = \Flynt\renderComponent('DonationBarometer', $params);
-            }
-
-            if (!$html) {
-                $html = '<div>DonationBarometer-Komponente nicht gefunden.</div>';
-            }
-
-            // Compose minimal HTML document with optional transparent background
-            $bg = $params['transparent'] ? 'transparent' : '#fff';
-
-            // Build a full HTML document and print enqueued assets so the component JS/CSS loads
-            ob_start();
-            echo '<!doctype html><html lang="de">';
-            echo '<head><meta charset="utf-8"/>';
-            echo '<meta name="viewport" content="width=device-width, initial-scale=1"/>';
-            echo '<title>Donation Barometer</title>';
-            echo '<style>html,body{margin:0;padding:0;background:' . esc_attr($bg) . ';}</style>';
-            // Ensure scripts/styles are enqueued for this REST context
-            if (function_exists('do_action')) {
-                do_action('wp_enqueue_scripts');
-            }
-            // Output head assets (styles/scripts) enqueued by the theme/components
-            if (function_exists('wp_head')) {
-                wp_head();
-            }
-            echo '</head><body>';
-
-            // Rendered component markup
-            echo $html;
-
-            // Output footer assets (usually component JS initializes here)
-            if (function_exists('wp_footer')) {
-                wp_footer();
-            }
-            echo '</body></html>';
-            $out = ob_get_clean();
-
-            return new WP_REST_Response($out, 200, [ 'Content-Type' => 'text/html; charset=UTF-8' ]);
+      // Render the component using Timber or Flynt helper
+      $html = '';
+      if (class_exists('Timber\\Timber')) {
+        // Render the Twig of the component directly
+        $twigPathChild = get_theme_file_path('/Components/DonationBarometer/index.twig');
+        $twigPathParent = get_template_directory() . '/Components/DonationBarometer/index.twig';
+        $twigToUse = file_exists($twigPathChild) ? 'Components/DonationBarometer/index.twig' : (file_exists($twigPathParent) ? 'Components/DonationBarometer/index.twig' : '');
+        if ($twigToUse) {
+          $html = \Timber\Timber::compile($twigToUse, $params);
         }
-    ]);
+      }
+
+      if (!$html && function_exists('Flynt\\renderComponent')) {
+        $html = \Flynt\renderComponent('DonationBarometer', $params);
+      }
+
+      if (!$html) {
+        $html = '<div>DonationBarometer-Komponente nicht gefunden.</div>';
+      }
+
+      // Compose minimal HTML document with optional transparent background
+      $bg = $params['transparent'] ? 'transparent' : '#fff';
+
+      // Get refresh interval (minimum 10 seconds to avoid server overload, 0 = disabled)
+      $refreshInterval = (int) ($request['refresh_interval'] ?? 0);
+      $refreshMs = $refreshInterval > 0 ? max(10, $refreshInterval) * 1000 : 0;
+
+      // Build a full HTML document and print enqueued assets so the component JS/CSS loads
+      ob_start();
+      echo '<!doctype html><html lang="de">';
+      echo '<head><meta charset="utf-8"/>';
+      echo '<meta name="viewport" content="width=device-width, initial-scale=1"/>';
+      echo '<title>Donation Barometer</title>';
+      echo '<style>
+                html,body{margin:0;padding:0;background:' . esc_attr($bg) . ' !important;}
+                body { opacity: 1; transition: opacity 0.3s ease-in-out; }
+                body.reloading { opacity: 0; }
+            </style>';
+
+      // Ensure scripts/styles are enqueued for this REST context
+      if (function_exists('do_action')) {
+        do_action('wp_enqueue_scripts');
+      }
+      // Output head assets (styles/scripts) enqueued by the theme/components
+      if (function_exists('wp_head')) {
+        wp_head();
+      }
+      echo '</head><body>';
+
+      // Rendered component markup
+      echo $html;
+
+      // Output footer assets (usually component JS initializes here)
+      if (function_exists('wp_footer')) {
+        wp_footer();
+      }
+
+      // Auto-reload script with fade transition (only if refresh_interval is set and > 0)
+      if ($refreshMs > 0) {
+        ?>
+        <script>
+          // Auto-refresh every <?php echo esc_js($refreshInterval); ?> seconds with smooth fade
+          (function() {
+            setTimeout(function() {
+              document.body.classList.add("reloading");
+              setTimeout(function() {
+                location.reload();
+              }, 300);
+            }, <?php echo esc_js($refreshMs); ?>);
+          })();
+        </script>
+        <?php
+      }
+
+      echo '</body></html>';
+      $out = ob_get_clean();
+
+      return new WP_REST_Response($out, 200, [ 'Content-Type' => 'text/html; charset=UTF-8' ]);
+    }
+  ]);
 });
 
 // Loosen frame embedding headers only for the above route
 // and serve raw HTML instead of JSON-encoded string
 add_action('rest_pre_serve_request', function ($served, $result, $request, $server) {
-    $route = is_object($request) && method_exists($request, 'get_route') ? $request->get_route() : '';
-    if (str_contains($route, '/sos/v1/barometer/embed')) {
-        if (function_exists('header_remove')) {
-            @header_remove('X-Frame-Options');
-        }
-        // Allow embedding from common streaming platforms, adjust as needed
-        header("Content-Security-Policy: frame-ancestors 'self' https://*.twitch.tv https://*.youtube.com https://studio.youtube.com https://streamlabs.com");
-
-        // If our callback returned a string (full HTML), output it directly and stop default JSON serving
-        $data = is_object($result) && method_exists($result, 'get_data') ? $result->get_data() : null;
-        if (is_string($data)) {
-            // Ensure proper content type
-            header('Content-Type: text/html; charset=UTF-8');
-            echo $data;
-            return true; // mark as served
-        }
+  $route = is_object($request) && method_exists($request, 'get_route') ? $request->get_route() : '';
+  if (str_contains($route, '/sos/v1/barometer/embed')) {
+    if (function_exists('header_remove')) {
+      @header_remove('X-Frame-Options');
     }
-    return $served;
+    // Allow embedding from common streaming platforms, adjust as needed
+    header("Content-Security-Policy: frame-ancestors 'self' https://*.twitch.tv https://*.youtube.com https://studio.youtube.com https://streamlabs.com");
+
+    // If our callback returned a string (full HTML), output it directly and stop default JSON serving
+    $data = is_object($result) && method_exists($result, 'get_data') ? $result->get_data() : null;
+    if (is_string($data)) {
+      // Ensure proper content type
+      header('Content-Type: text/html; charset=UTF-8');
+      echo $data;
+      return true; // mark as served
+    }
+  }
+  return $served;
 }, 10, 4);
