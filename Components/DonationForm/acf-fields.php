@@ -111,13 +111,21 @@ function getACFLayout(): array {
         'min' => 1,
         'default_value' => 10000,
       ],
+      [
+        'label' => __('Eigenen Betrag anzeigen', 'flynt'),
+        'name' => 'show_custom_amount',
+        'type' => 'true_false',
+        'ui' => 1,
+        'default_value' => 1,
+        'instructions' => __('Wenn deaktiviert, wird das Feld für den eigenen Betrag nicht angezeigt.', 'flynt'),
+      ],
       // --- Betrags-Repeater pro Intervall ---
       // Einmalig
       [
         'label' => __('Betragsvorschläge einmalig', 'flynt'),
         'name' => 'amounts_one_time',
         'type' => 'repeater',
-        'min' => 4,
+        'min' => 3,
         'max' => 4,
         'button_label' => __('Add Amount Option', 'flynt'),
         'conditional_logic' => [
@@ -152,7 +160,7 @@ function getACFLayout(): array {
         'label' => __('Betragsvorschläge jährlich', 'flynt'),
         'name' => 'amounts_yearly',
         'type' => 'repeater',
-        'min' => 4,
+        'min' => 3,
         'max' => 4,
         'button_label' => __('Add Amount Option', 'flynt'),
         'conditional_logic' => [
@@ -187,7 +195,7 @@ function getACFLayout(): array {
         'label' => __('Betragsvorschläge halbjährlich', 'flynt'),
         'name' => 'amounts_half_yearly',
         'type' => 'repeater',
-        'min' => 4,
+        'min' => 3,
         'max' => 4,
         'button_label' => __('Add Amount Option', 'flynt'),
         'conditional_logic' => [
@@ -222,7 +230,7 @@ function getACFLayout(): array {
         'label' => __('Betragsvorschläge vierteljährlich', 'flynt'),
         'name' => 'amounts_quarterly',
         'type' => 'repeater',
-        'min' => 4,
+        'min' => 3,
         'max' => 4,
         'button_label' => __('Add Amount Option', 'flynt'),
         'conditional_logic' => [
@@ -257,7 +265,7 @@ function getACFLayout(): array {
         'label' => __('Betragsvorschläge monatlich', 'flynt'),
         'name' => 'amounts_monthly',
         'type' => 'repeater',
-        'min' => 4,
+        'min' => 3,
         'max' => 4,
         'button_label' => __('Add Amount Option', 'flynt'),
         'conditional_logic' => [

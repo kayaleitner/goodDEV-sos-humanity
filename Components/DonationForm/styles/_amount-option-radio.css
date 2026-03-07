@@ -5,13 +5,12 @@
     gap: 0.75rem;
   }
 
-  .amount-group-wrapper > :nth-child(4) {
+  /* Custom Amount nach 3 Radios: volle Breite */
+  .amount-group-wrapper > .global-custom-amount:nth-child(4) {
     grid-column: span 3;
   }
-  .amount-group-wrapper > :nth-child(4):nth-last-child(2) {
-    grid-column: span 1;
-  }
-  .amount-group-wrapper > :nth-child(5) {
+  /* Custom Amount nach 4 Radios: 2 Spalten */
+  .amount-group-wrapper > .global-custom-amount:nth-child(5) {
     grid-column: span 2;
   }
 

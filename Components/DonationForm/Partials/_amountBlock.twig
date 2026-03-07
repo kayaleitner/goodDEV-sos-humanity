@@ -21,16 +21,18 @@
               <input class="amount-radio" id="{{ btn_id }}" name="donation_amount_{{ key }}" type="radio"
                      value="{{ amount.value }}" {{ amount.default ? 'checked' : '' }}
                      data-interval="{{ key }}">
-              <label class="amount-label" for="{{ btn_id }}">{{ amount.value }}€</label>
+              <label class="amount-label" for="{{ btn_id }}">{{ amount.value|number_format(0, ',', '.') }}€</label>
             </div>
           {% endfor %}
-          <!-- Benutzerdefinierter Betrag -->
-          <div class="amount-option custom-amount global-custom-amount">
-            <input autocomplete="off" min="{{ minAmount|default(3) }}" max="{{ maxAmount|default(50000) }}" step="0.01"
-                   class="amount-input" name="donation_custom_amount_{{ key }}" type="number" value=""
-                   inputmode="numeric" placeholder="{{ customAmountPlaceholder|default('Eigener Betrag') }}">
-            <span class="currency-suffix">€</span>
-          </div>
+          {% if show_custom_amount is not defined or show_custom_amount %}
+            <!-- Benutzerdefinierter Betrag -->
+            <div class="amount-option custom-amount global-custom-amount">
+              <input autocomplete="off" min="{{ minAmount|default(3) }}" max="{{ maxAmount|default(50000) }}" step="0.01"
+                     class="amount-input" name="donation_custom_amount_{{ key }}" type="number" value=""
+                     inputmode="numeric" placeholder="{{ customAmountPlaceholder|default('Eigener Betrag') }}">
+              <span class="currency-suffix">€</span>
+            </div>
+          {% endif %}
         </div>
       {% endif %}
     {% endfor %}
