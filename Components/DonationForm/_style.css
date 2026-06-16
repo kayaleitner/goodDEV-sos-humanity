@@ -10,11 +10,13 @@
 @import 'styles/_styled-radio-elements.css';
 @import 'styles/_submit-Button-styles.css';
 @import 'styles/_text-styles.css';
+@import 'styles/_nested_components.css';
 
 [is="flynt-donation-form"] {
+  hyphens: auto;
   max-width: 56.5rem;
   padding: 0 var(--spacing-md) 72px;
-  margin: 0 auto;
+  margin: 54px auto 0;
 }
 
 

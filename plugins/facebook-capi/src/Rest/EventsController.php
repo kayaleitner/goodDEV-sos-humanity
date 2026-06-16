@@ -53,6 +53,71 @@ class EventsController
 
     public function handle(WP_REST_Request $req)
     {
+        // Read payload early so we can honor a client-side consent hint when the cookie is not readable by the REST domain
+        $payload = (array) $req->get_json_params();
+        // Server-side Borlabs consent enforcement (production by default)
+        $enforceConsent = apply_filters('facebook_capi_enforce_consent', function_exists('wp_get_environment_type') ? (wp_get_environment_type() === 'production') : true);
+
+        if ($enforceConsent) {
+            $aliases = apply_filters('facebook_capi_borlabs_service_aliases', ['meta-pixel', 'facebook-pixel', 'facebook']);
+            $hasConsent = false;
+
+            // Helper to extract borlabs-cookie value from $_COOKIE or raw header if needed
+            $extractBorlabs = static function(): ?string {
+                // Standard PHP cookie bag
+                if (!empty($_COOKIE['borlabs-cookie'])) {
+                    return (string) $_COOKIE['borlabs-cookie'];
+                }
+                // parse from raw Cookie header if available
+                $httpCookie = isset($_SERVER['HTTP_COOKIE']) ? (string) $_SERVER['HTTP_COOKIE'] : '';
+                if ($httpCookie !== '') {
+                    // look for borlabs-cookie=...; boundary is semicolon or string end
+                    if (preg_match('/(?:^|;\s*)borlabs-cookie=([^;]*)/i', $httpCookie, $m)) {
+                        return $m[1];
+                    }
+                }
+                return null;
+            };
+
+            // 1) Try cookie-based consent (Borlabs v3 JSON in borlabs-cookie)
+            $rawCookie = $extractBorlabs();
+            if (!empty($rawCookie)) {
+                $raw = $rawCookie;
+
+                // Some setups double-encode
+                $val = urldecode($raw);
+                $val2 = urldecode($val);
+                $json = json_decode(is_string($val2) && strlen($val2) > 0 && $val2[0] === '{' ? $val2 : $val, true);
+                if (is_array($json) && !empty($json['consents']) && is_array($json['consents'])) {
+                    foreach ($json['consents'] as $group) {
+                        if (is_array($group)) {
+                            foreach ($aliases as $sid) {
+                                if (in_array($sid, $group, true)) { $hasConsent = true; break 2; }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Optional debug: show the presence of cookie/header when WP_DEBUG
+            if (defined('WP_DEBUG') && WP_DEBUG) {
+                $hasRawCookie = !empty($rawCookie);
+                $hdrLen = isset($_SERVER['HTTP_COOKIE']) ? strlen((string) $_SERVER['HTTP_COOKIE']) : 0;
+                error_log('[Facebook CAPI][Consent] borlabs-cookie present: ' . ($hasRawCookie ? 'yes' : 'no') . '; HTTP_COOKIE length: ' . $hdrLen);
+            }
+
+            // 2) Fallback: honor an explicit client hint if provided (helps when REST domain cannot read cookie)
+            if (!$hasConsent && !empty($payload['borlabs_consent'])) {
+                $hasConsent = (bool) $payload['borlabs_consent'];
+            }
+
+            if (!$hasConsent) {
+                if (defined('WP_DEBUG') && WP_DEBUG) {
+                    error_log('[Facebook CAPI] Skipping send: no consent (cookie nor client hint)');
+                }
+                return new WP_REST_Response(['ok' => true, 'skipped' => 'no_consent'], 200);
+            }
+        }
 
         $opts = Options::all();
         if (empty($opts['access_token']) || empty($opts['pixel_id'])) {
@@ -74,6 +139,7 @@ class EventsController
                     'event_time' => $payload['event_time'] ?? null,
                     'action_source' => $payload['action_source'] ?? null,
                     'has_user_data' => !empty($payload['user_data']),
+                    'em' => !empty($payload['user_data']['em'] ?? null),
                     'has_fbp' => !empty($payload['user_data']['fbp'] ?? null),
                     'has_fbc' => !empty($payload['user_data']['fbc'] ?? null),
                 ];

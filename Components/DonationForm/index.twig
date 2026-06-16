@@ -4,11 +4,11 @@
   is="flynt-donation-form"
   name="DonationForm"
 >
-  <form id="fbx-donation-form" data-fbx-form-hash="{{ hash | default('y3fkgajfly2vnohz') }}"
+  <form id="fbx-donation-form" data-fbx-form-hash="{{ form_hash ? form_hash : hash | default('y3fkgajfly2vnohz') }}"
         class="donationForm" data-success-redirect-recurring="{{ thx_recurring.url }}" data-success-redirect-one-time="{{ thx_one_time.url }}">
 
     <div class="panel">
-      {% include 'Partials/_panelHeader.twig' with { panel_title: labelPanelInterval } only %}
+      {% include 'Partials/_panelHeader.twig' with { panel_title: field_label_interval_panel ? field_label_interval_panel : labelPanelInterval } only %}
       {% include 'Partials/_intervalBlock.twig' %}
       {% include 'Partials/_amountBlock.twig' %}
     </div>
@@ -48,19 +48,30 @@
         <button id="donation-submit-btn" type="button"
                 class="button donation-submit-btn"
                 data-one-time-text="{{ submitButtonTextOneTime }}"
+                data-yearly-text="{{ submitButtonTextYearly }}"
+                data-half-yearly-text="{{ submitButtonTextHalfYearly }}"
+                data-quarterly-text="{{ submitButtonTextQuarterly }}"
                 data-monthly-text="{{ submitButtonTextMonthly }}">
           <span class="label">{{ submitButtonTextDefault }}</span>
           <span class="heart" aria-hidden="true"></span>
         </button>
       </div>
       {# Global FRBox error message #}
-      <div style="display: none" id="#errorMsg" class="error-text text-center">Es sind leider Fehler aufgetreten! Bitte
+      <div style="display: none" id="errorMsg" class="error-text text-center">Es sind leider Fehler aufgetreten! Bitte
         überprüfe deine Angaben.
       </div>
 
       {#  value_proposition / Wertversprechen  #}
       {% include 'Partials/_valuePropositionText.twig' %}
     </div>
+    {# nested_components Block #}
+    {% if nested_components %}
+      {% for layout in nested_components %}
+        {% if layout.acf_fc_layout == 'DonationBarometer' %}
+          {{ renderComponent('DonationBarometer', layout) }}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
     {# securityText Block #}
     {% include 'Partials/_securityText.twig' %}
 

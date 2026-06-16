@@ -11,6 +11,13 @@
     display: block;
   }
 
+  /* Recurring donations: wallet pay (Apple/Google Pay) is not supported by the
+     FRBox/Stripe integration → always hide, overriding the availability rule */
+  &[data-recurring="1"] .pm-stripe_google_pay,
+  &[data-recurring="1"] .pm-stripe_apple_pay {
+    display: none;
+  }
+
   .payment-methods {
     .payment-methods-wrapper {
       display: grid;
@@ -21,12 +28,14 @@
     label {
       font-size: 0;
       position: relative;
-      background: no-repeat center/90% 75%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 40px;
       &[for="payment_payment_method__wikando_direct_debit"] { background-image: var(--payment-icon-sepa); }
       &[for="payment_payment_method__paypal"] { background-image: var(--payment-icon-paypal); }
       &[for="payment_payment_method__stripe_credit_card"] { background-image: var(--payment-icon-creditcard); }
-      &[for="payment_payment_method__stripe_google_pay"] { background-image: var(--payment-icon-google-pay); }
-      &[for="payment_payment_method__stripe_apple_pay"] { background-image: var(--payment-icon-apple-pay); }
+      &[for="payment_payment_method__stripe_google_pay"] { background-image: var(--payment-icon-google-pay); background-size: 100% 30px; }
+      &[for="payment_payment_method__stripe_apple_pay"] { background-image: var(--payment-icon-apple-pay); background-size: 100% 30px; }
     }
 
     input[type="radio"] {
@@ -41,6 +50,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+        padding: 0;
         cursor: pointer;
         border: 2px solid var(--color-primary);
         border-radius: var(--border-radius);
@@ -49,34 +59,8 @@
         height: 50px;
         margin: 0;
         transition: box-shadow 0.1s ease, border-color 0.12s ease, filter 0.12s ease;
-
-        &:after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 20px;
-          height: 20px;
-          background-color: var(--color-primary);
-          mask: url("../Assets/paymethods/checked-mask.svg") no-repeat;
-          opacity: 0;
-          transform: scale(0.85);
-          transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
         &:before {
-          content: "";
-          position: absolute;
-          top: 2px;
-          left: 2px;
-          width: 18px;
-          height: 18px;
-          background-color: var(--color-primary);
-          transform: scaleX(1);
-          transform-origin: right;
-          opacity: 0;
-          transition: transform 0.5s ease;
-          z-index: 1;
+          display: none;
         }
 
         &:hover {
@@ -95,13 +79,19 @@
       &:focus-visible:checked + label {
         box-shadow: inset 0 0 0 2px var(--color-primary);
         &:after {
-          opacity: 1;
-          transform: scale(1);
-          animation: ff-check-pop 0.25s ease-out;
-        }
-        &:before {
-          transform: scaleX(0);
-          opacity: 1;
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: -2%;
+          transform: translate(-50%, -50%);
+          width: 32px;
+          height: 32px;
+          display: block;
+          mask-image: var(--icon-checkmark);
+          mask-repeat: no-repeat;
+          mask-position: center;
+          mask-size: contain;
+          background-color: var(--color-primary);
         }
       }
     }
@@ -131,6 +121,10 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+    /* Recurring: wallet methods are hidden → back to the 3-column layout */
+    &[data-recurring="1"] .payment-methods .payment-methods-wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   @media (min-width: 1024px) {
@@ -139,6 +133,10 @@
       .payment-methods .payment-methods-wrapper {
         grid-template-columns: repeat(4, 1fr);
       }
+    }
+    /* Recurring: wallet methods are hidden → back to the 3-column layout */
+    &[data-recurring="1"] .payment-methods .payment-methods-wrapper {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }

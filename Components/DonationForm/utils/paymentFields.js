@@ -4,6 +4,42 @@ import setMandatory from './setMandatory'
 export default function initPaymentFields(component, myForm) {
   const $root = $(component)
 
+  // Wallet pay (Apple/Google Pay via Stripe) is implemented as a one-time
+  // PaymentIntent in the FRBox SDK and does not support recurring intervals.
+  // → only offer these methods for one-time donations (interval '0').
+  const walletMethods = ['stripe_apple_pay', 'stripe_google_pay']
+
+  function getInterval() {
+    const $checked = $root.find('input[name="payment[interval]"]:checked')
+    if ($checked.length) return $checked.val()
+    const $hidden = $root.find('input[name="payment[interval]"][type="hidden"]')
+    return $hidden.length ? $hidden.val() : '0'
+  }
+
+  function applyWalletAvailability() {
+    const isRecurring = getInterval() !== '0'
+
+    // Visibility + grid layout are handled in CSS via this flag (keeps the
+    // device-based data-wallet-* availability rules intact). JS only needs to
+    // toggle the flag and deselect a wallet method when switching to recurring.
+    $root.attr('data-recurring', isRecurring ? '1' : '0')
+
+    if (!isRecurring) return
+
+    let unselectedWallet = false
+    walletMethods.forEach((method) => {
+      const $input = $root.find(`[data-payment-method="${method}"] input[type="radio"]`).first()
+      if ($input.is(':checked')) {
+        $input.prop('checked', false)
+        $input.closest('.radioWrapper').removeClass('is-selected')
+        unselectedWallet = true
+      }
+    })
+
+    // If we just removed a selected wallet method, refresh dependent fields/infos
+    if (unselectedWallet) togglePaymentFields()
+  }
+
   function togglePaymentFields() {
     const val = $root.find('[name="payment[payment_method]"]:checked').val()
     const sepaValues = ['sepa_direct_debit', 'wikando_direct_debit', 'bank']
@@ -76,8 +112,13 @@ export default function initPaymentFields(component, myForm) {
       })
       togglePaymentFields()
     })
+
+    // Hide Apple/Google Pay for recurring donations and react to interval changes
+    $root.on('change', 'input[name="payment[interval]"]', applyWalletAvailability)
+    applyWalletAvailability()
+
     togglePaymentFields()
   }
 
-  return { togglePaymentFields, bindMethodSelectionUI }
+  return { togglePaymentFields, bindMethodSelectionUI, applyWalletAvailability }
 }

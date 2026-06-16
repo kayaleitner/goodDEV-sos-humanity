@@ -9,18 +9,26 @@
       }
     }
   }
+
   .frbox_logo {
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     @media screen and (min-width: 768px) {
+      align-items: flex-start;
+      justify-content: flex-start;
       margin: 0;
     }
   }
+
   .value_proposition {
     .morse_code {
       .item {
         background-color: var(--color-primary);
       }
     }
+
     p {
       font: var(--font-value-proposition);
       letter-spacing: var(--letter-spacing);

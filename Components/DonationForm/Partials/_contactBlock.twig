@@ -1,33 +1,45 @@
 {# Salutation #}
-<div id="payment_salutation_wrapper" class="mb-6">
-  <div class="flex flex-wrap justify-start gap-6">
-    <div class="radioWrapper">
-      <input required type="radio" name="payment[salutation]" id="payment_salutation__mrs" value="Mrs.">
-      <label for="payment_salutation__mrs" class="">{{ salutationMrs }}</label>
-    </div>
-    <div class="radioWrapper">
-      <input required type="radio" name="payment[salutation]" id="payment_salutation__mr" value="Mr.">
-      <label for="payment_salutation__mr" class="">{{ salutationMr }}</label>
-    </div>
-    <div class="radioWrapper">
-      <input required type="radio" name="payment[salutation]" id="payment_salutation__diverse" value="diverse">
-      <label for="payment_salutation__diverse">{{ salutationDivers }}</label>
+<div id="payment_salutation_wrapper" class="mb-4 sm:mb-6 relative">
+  <div class="hidden sm:block pl-3 sm:pl-5">
+    <div class="flex flex-wrap justify-start gap-6">
+      <div class="radioWrapper">
+        <input type="radio" name="salutation_radio" id="salutation_radio__mrs" value="Mrs.">
+        <label for="salutation_radio__mrs" class="">{{ salutationMrs }}</label>
+      </div>
+      <div class="radioWrapper">
+        <input type="radio" name="salutation_radio" id="salutation_radio__mr" value="Mr.">
+        <label for="salutation_radio__mr" class="">{{ salutationMr }}</label>
+      </div>
+      <div class="radioWrapper">
+        <input type="radio" name="salutation_radio" id="salutation_radio__diverse" value="diverse">
+        <label for="salutation_radio__diverse">{{ salutationDivers }}</label>
+      </div>
     </div>
   </div>
-  <div id="payment_salutation_error" class="error error-text"></div>
+  <div class="salutation_select block sm:hidden form-item floating-label default-noEmpty">
+    <label for="salutation_select" class="form-required">{{ labelSalutationSelectBox }}</label>
+    <select name="salutation_select" id="salutation_select">
+      <option value="">{{ salutationSelectEmptyOption }}</option>
+      <option value="Mrs.">{{ salutationMrs }}</option>
+      <option value="Mr.">{{ salutationMr }}</option>
+      <option value="diverse">{{ salutationDivers }}</option>
+    </select>
+  </div>
+  <input required type="text" name="payment[salutation]" id="payment_salutation">
+  <div id="payment_salutation_error" class="error error-text salutation_error"></div>
 </div>
 
 
 {# Person data #}
-<div class="{{ gridClasses }}">
+<div class="{{ gridClasses }} mb-4">
   <div id="payment_first_name_wrapper" class="form-item floating-label">
     <label for="payment_first_name" class="form-required">{{ firstNameLabel }}</label>
-    <input required="required" maxlength="100" type="text" name="payment[first_name]" id="payment_first_name">
+    <input required="required" maxlength="100" minlength="2" type="text" name="payment[first_name]" id="payment_first_name">
     <div id="payment_first_name_error" class="error error-text"></div>
   </div>
   <div id="payment_last_name_wrapper" class="form-item floating-label">
     <label for="payment_last_name" class="form-required">{{ lastNameLabel }}</label>
-    <input required="required" maxlength="100" type="text" name="payment[last_name]" id="payment_last_name">
+    <input required="required" maxlength="100" minlength="2" type="text" name="payment[last_name]" id="payment_last_name">
     <div id="payment_last_name_error" class="error error-text"></div>
   </div>
   <div id="payment_email_wrapper" class="form-item floating-label">
@@ -46,17 +58,30 @@
     {% endif %}
   </div>
 </div>
-<label class="company switch my-4 ml-2">
+<label class="company switch my-4 ml-2 sm:ml-5">
   <input type="checkbox" id="donate-as-company" name="donate_as_company">
   <span class="switch__slider" aria-hidden="true"></span>
-  <span class="switch__label" data-auto-receipt="{{ labelWantsAutoReceipt }}" data-checked="{{ labelPrivateDonation }}">{{ labelCompanyDonation }}</span>
+  <span class="switch__label" data-auto-receipt="{{ labelWantsAutoReceipt }}"
+        data-checked="{{ labelPrivateDonation }}">{{ labelCompanyDonation }}</span>
 </label>
 <div id="payment_wants_receipt_wrapper" class="form-item">
-  <label for="payment_wants_receipt" data-default-label="{{ labelWantsReceipt }}"  data-auto-receipt="{{ labelWantsAutoReceipt }}" class="switch my-4 ml-2">
+  <label for="payment_wants_receipt" class="switch my-4 ml-2 sm:ml-5">
     <input type="checkbox" name="receipt" id="payment_wants_receipt" value="receipt_end_of_year">
     <span class="switch__slider" aria-hidden="true"></span>
-    <span class="receipt switch__label">{{ labelWantsReceipt }}</span>
+    <span class="receipt switch__label" data-default-label="{{ labelWantsReceipt }}"
+          data-auto-receipt="{{ labelWantsAutoReceipt }}">{{ labelWantsReceipt }}</span>
   </label>
   <input type="hidden" value="no_receipt" name="payment[wants_receipt]" id="hiddenreceipt"/>
   <div id="payment_wants_receipt_error" class="error error-text"></div>
 </div>
+{% if show_no_leave_behind %}
+<div id="payment_wants_lnob_newsletter_wrapper" class="form-item">
+  <label for="payment_wants_lnob_newsletter" data-default-label="{{ labelWantsLNOBNewsletter }}"
+         class="switch my-4 ml-2 sm:ml-5">
+    <input type="checkbox" name="lnob_newsletter" id="payment_wants_lnob_newsletter" value="yes">
+    <span class="switch__slider" aria-hidden="true"></span>
+    <span class="lnob_newsletter switch__label">{{ labelWantsLNOBNewsletter }}</span>
+  </label>
+  <input type="hidden" name="payment[donation_custom_field_14610]" id="payment_donation_custom_field_14610">
+</div>
+{% endif %}

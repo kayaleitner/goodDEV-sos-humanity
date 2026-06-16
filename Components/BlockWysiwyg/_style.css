@@ -7,8 +7,14 @@
  }
 }
 [is='flynt-block-wysiwyg'] .content {
-  padding-left: var(--padding_medium);
+  padding-left: 0;
   text-align: inherit;
+}
+[is='flynt-block-wysiwyg'] .move-in .content {
+  padding-left: var(--padding_medium);
+}
+[is='flynt-block-wysiwyg'] .container:not(.move-in) {
+  padding-block: var(--padding_xxsmall);
 }
 [is='flynt-block-wysiwyg'] .content > :first-child {
   margin-top: 0;

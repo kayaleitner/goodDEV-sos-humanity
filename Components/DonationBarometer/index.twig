@@ -1,0 +1,48 @@
+<flynt-component
+  class="flyntComponent componentSpacing donation-barometer"
+  is="flynt-donation-barometer"
+  data-goal="{{ goal_amount }}"
+  data-current="{{ current_amount }}"
+  data-donors="{{ donor_count }}"
+  data-display-type="{{ display_type }}"
+  name="DonationBarometer"
+  style="--themeBrand_colorBackground: {{ options.colorBrandBackground ?? '#fff' }}; --themeBrand_colorText: {{ options.colorBrandText ?? '#1c2445' }};"
+>
+  {% set bgColor = options.colorBrandBackground ?? '#fff' %}
+  {% set isDarkBg = (bgColor|hex_to_luminance < 0.5) %}
+  {% set fillColor = isDarkBg ? '#ffffff' : '#2EB7EC' %}
+  {% set shipClass = isDarkBg ? 'donation-barometer__ship--light' : 'donation-barometer__ship--dark' %}
+  {% set textShadowColor = isDarkBg ? bgColor : '#fff' %}
+  {% set formatted_current = current_amount|number_format(0, '.', '.') %}
+  {% set formatted_donors = donor_count|number_format(0, '.', '.') %}
+  {% set formatted_goal = goal_amount|number_format(0, '.', '.') %}
+  <div class="donation-barometer__panel" style="--text-shadow-color: {{ textShadowColor }};">
+    {% if barometer_text %}
+      <div
+        class="donation-barometer__text">{{ barometer_text | replace({'{current_amount}': formatted_current, '{donor_count}': formatted_donors, '{goal_amount}': formatted_goal }) }}</div>
+    {% endif %}
+    
+    <div class="donation-barometer__bar-wrapper">
+      {% if barometer_text_current %}
+        <div class="donation-barometer__current">
+          
+          {{ barometer_text_current
+          |replace({'{current_amount}': '<span class="donation-barometer__current-amount">0</span>',
+            '{donor_count}': '<span class="donation-barometer__donor-count">0</span>'})
+          |raw }}
+        </div>
+      {% endif %}
+      <div class="donation-barometer__bar-container">
+        <div class="donation-barometer__bar-clip">
+          <div class="donation-barometer__fill" style="background: {{ fillColor }};"></div>
+          <div class="donation-barometer__waves"></div>
+        </div>
+        <div class="donation-barometer__ship {{ shipClass }}" aria-hidden="true"></div>
+      </div>
+    </div>
+    {% if barometer_text_goal_amount %}
+      <div class="donation-barometer__goal-note">{{ barometer_text_goal_amount | replace({'{current_amount}': formatted_current, '{donor_count}': formatted_donors, '{goal_amount}': formatted_goal }) }}</div>
+    {% endif %}
+  
+  </div>
+</flynt-component>

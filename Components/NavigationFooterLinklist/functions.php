@@ -75,6 +75,12 @@ Options::addTranslatable('NavigationFooterLinklist', [
         'media_upload' => 0,
     ],
     [
+      'label' => __('Account holder name (e.g.: Empfängername)', 'flynt'),
+      'name' => 'accountHolderName',
+      'type' => 'text',
+      'default_value' => 'Empfängername',
+    ],
+    [
       'label' => __('Organisation', 'flynt'),
       'name' => 'donationsOrganisation',
       'type' => 'text',
@@ -88,6 +94,12 @@ Options::addTranslatable('NavigationFooterLinklist', [
       'label' => __('BIC', 'flynt'),
       'name' => 'donationsBIC',
       'type' => 'text',
+    ],
+    [
+      'label' => __('Copy Account holder name', 'flynt'),
+      'name' => 'copyAccountHolderName',
+      'type' => 'text',
+      'default_value' => 'Empfängername kopieren',
     ],
     [
       'label' => __('Copy IBAN', 'flynt'),

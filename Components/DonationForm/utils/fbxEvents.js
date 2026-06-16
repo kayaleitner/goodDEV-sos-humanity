@@ -1,7 +1,11 @@
 import $ from 'jquery'
 import hashSha256 from './hash'
+import translationDict from './translationDict'
 
 export default function bindFbxEvents(component, myForm) {
+
+  const lang = (document.documentElement.lang || 'de').slice(0, 2).toLowerCase()
+  const t = translationDict[['de', 'en', 'it'].includes(lang) ? lang : 'de']
 
   // Minimal FBX error handling (avoid duplicate inline errors)
   myForm.on('fundraisingBox:error', (e) => {
@@ -43,13 +47,18 @@ export default function bindFbxEvents(component, myForm) {
     $error.empty()
 
     const errs = myForm.getErrors?.()
-    const fieldErrors = errs?.current_fields || {}
-
-    if (errs && Object.keys(fieldErrors).length) {
+    if (errs) {
       $error.show()
-      $.each(fieldErrors, (key, value) => {
-        $error.append(`<div style="max-width: 300px; margin: 20px auto;">${value}</div>`)
-      })
+      $error.text(t.errorMsg || 'Es sind leider Fehler aufgetreten! Bitte überprüfe deine Formular Eingaben.')
+      const fieldErrors = errs.current_fields || {}
+      const firstFieldKey = Object.keys(fieldErrors)[0] || null
+
+      if (firstFieldKey && fieldErrors[firstFieldKey]) {
+        const $firstErrorEl = $(`#payment_${firstFieldKey}_error`)
+        if ($firstErrorEl.length && $firstErrorEl.is(':visible')) {
+          $('html, body').animate({ scrollTop: $firstErrorEl.offset().top - 200 }, 400)
+        }
+      }
       return
     }
 

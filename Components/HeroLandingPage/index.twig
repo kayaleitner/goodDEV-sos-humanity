@@ -17,8 +17,8 @@
           <img class="heroLandingPage__image" src="{{ mobile.src }}" srcset="{{ mobile.srcset ?: mobile.src }}"
                alt="{{ mobile.alt }}" loading="eager"/>
         {% endif %}
-        {% if copyright %}
-          <figcaption class="heroLandingPage__copyright">{{ copyright }}</figcaption>
+        {% if images.imageDesktop.caption %}
+          <figcaption class="heroLandingPage__copyright">{{ images.imageDesktop.caption }}</figcaption>
         {% endif %}
       </picture>
       <div class="heroLandingPage__titleOverlay">
@@ -31,6 +31,30 @@
         <div class="heroLandingPage__textInner">
           {{ introtext|wp_kses_custom }}
         </div>
+      </div>
+    {% endif %}
+
+    {% if nested_components %}
+      <div class="heroLandingPage__nestedComponents">
+        {% for layout in nested_components %}
+          {% if layout.acf_fc_layout == 'DonationBarometer' %}
+            {{ renderComponent('DonationBarometer', layout) }}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if show_donation_barometer and donation_barometer %}
+      <div class="heroLandingPage__barometer">
+        {{ renderComponent('DonationBarometer', {
+          title: donation_barometer.title,
+          barometer_text: donation_barometer.barometer_text,
+          barometer_title_current: donation_barometer.barometer_title_current,
+          barometer_text_goal_amount: donation_barometer.barometer_text_goal_amount,
+          goal_amount: donation_barometer.goal_amount,
+          search_id: donation_barometer.search_id,
+          display_type: donation_barometer.display_type
+        }) }}
       </div>
     {% endif %}
   </div>

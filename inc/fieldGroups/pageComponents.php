@@ -58,6 +58,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockWysiwygRepeater\getACFLayout(),
                     Components\CtaDonate\getACFLayout(),
                     Components\ContactPerson\getACFLayout(),
+                    Components\DonationBarometer\getACFLayout(),
                     Components\DonationForm\getACFLayout(),
                     Components\ListNumbers\getACFLayout(),
                     Components\SliderImages\getACFLayout(),

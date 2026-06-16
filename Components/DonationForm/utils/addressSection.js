@@ -39,21 +39,6 @@ export default function initAddressSection(component) {
   }
 
   /**
-   * Update the company switch label text
-   * Currently not executed automatically; optional execution with active=true
-   */
-  function updateCompanyLabel(active = false) {
-    if (!active) return
-    const $company = $root.find('#donate-as-company')
-    const $companyLabel = $root.find('.company .switch__label')
-    if (!$company.length || !$companyLabel.length) return
-
-    const checkedTxt = $companyLabel.data('checked') || "Ich möchte doch als Privatperson spenden"
-    const uncheckedTxt = $companyLabel.data('default') || "Ich möchte als Unternehmen spenden"
-    $companyLabel.text($company.is(':checked') ? checkedTxt : uncheckedTxt)
-  }
-
-  /**
    * Update hidden input for receipt
    */
   function syncReceiptHidden() {
@@ -61,6 +46,17 @@ export default function initAddressSection(component) {
     const $hidden = $root.find('#hiddenreceipt')
     if ($ui.length && $hidden.length) {
       $hidden.val($ui.is(':checked') ? 'receipt_end_of_year' : 'no_receipt')
+    }
+  }
+
+  /**
+   * Update hidden input for LNOBNewsletter
+   */
+  function syncLNOBNewsletterHidden() {
+    const $ui = $root.find('input#payment_wants_lnob_newsletter')
+    const $hidden = $root.find('#payment_donation_custom_field_14610')
+    if ($ui.length && $hidden.length) {
+      $hidden.val($ui.is(':checked') ? 'on' : '')
     }
   }
 
@@ -74,6 +70,42 @@ export default function initAddressSection(component) {
     if ($street.length && $houseNumber.length) {
       $hiddenAddress.val(`${$street.val()} ${$houseNumber.val()}`)
     }
+  }
+
+  /**
+   * Sync Salutation hidden field
+   */
+  function syncSalutationHiddenAndSyncFields(source) {
+    const $hidden = $root.find('#payment_salutation');
+    const $radios = $root.find('input[name="salutation_radio"]');
+    const $select = $root.find('#salutation_select');
+
+    const $checkedRadio = $radios.filter(':checked');
+    const selectVal = $select.val();
+    const hasSelectVal = selectVal !== undefined && selectVal !== null && selectVal !== '';
+
+    let valToSet = '';
+
+    if (source === 'radio' && $checkedRadio.length) {
+      valToSet = $checkedRadio.val();
+      if ($select.val() !== valToSet) $select.val(valToSet);
+    } else if (source === 'select' && hasSelectVal) {
+      valToSet = selectVal;
+      $radios.prop('checked', false);
+      const $radioToCheck = $radios.filter(`[value="${valToSet}"]`);
+      if ($radioToCheck.length) $radioToCheck.prop('checked', true);
+    } else if ($checkedRadio.length) {
+      valToSet = $checkedRadio.val();
+      if ($select.val() !== valToSet) $select.val(valToSet);
+    } else if (hasSelectVal) {
+      valToSet = selectVal;
+      $radios.prop('checked', false);
+      const $radioToCheck = $radios.filter(`[value="${valToSet}"]`);
+      if ($radioToCheck.length) $radioToCheck.prop('checked', true);
+    }
+
+    // Hidden-Feld setzen (leer, falls kein Wert)
+    $hidden.val(valToSet);
   }
 
   /**
@@ -109,6 +141,32 @@ export default function initAddressSection(component) {
   }
 
   /**
+   * Phone notice show/hide
+   */
+  function initPhoneNotice() {
+    const $phoneInput = $root.find('#payment_phone')
+    const $noticeText = $root.find('.phoneNoticeText')
+
+    if (!$phoneInput.length || !$noticeText.length) return
+    let typed = false
+    $phoneInput.on('input', () => {
+      if (!typed) {
+        $noticeText.fadeOut(200)
+        typed = true
+      }
+    })
+    $phoneInput.on('focus', () => {
+      if (!typed) {
+        $noticeText.fadeIn(200)
+      }
+    })
+    $phoneInput.on('blur', () => {
+      typed = false
+      if ($noticeText.is(':visible')) $noticeText.hide()
+    })
+  }
+
+  /**
    * Initialize UI once
    */
   function initOnce() {
@@ -117,13 +175,14 @@ export default function initAddressSection(component) {
     toggleAddressSection()
     syncReceiptHidden()
     syncAddressHiddenField()
-    // updateCompanyLabel() bleibt aktuell inaktiv
+    syncLNOBNewsletterHidden()
+    syncSalutationHiddenAndSyncFields()
+    initPhoneNotice()
   }
 
   // Listen to changes on company and receipt checkboxes
   $root.on('change', '#donate-as-company', () => {
     updateReceiptUI()
-    updateCompanyLabel()
     toggleCompanySection()
     toggleAddressSection()
   })
@@ -133,9 +192,18 @@ export default function initAddressSection(component) {
     toggleAddressSection()
   })
 
+  $root.on('change input', '#payment_wants_lnob_newsletter', () => {
+    syncLNOBNewsletterHidden()
+  })
+
   $root.on('change input', '[name="street"], [name="houseNumber"]', () => {
     syncAddressHiddenField()
   })
+
+  $root.on('change input', 'input[name="salutation_radio"], #salutation_select', (e) => {
+    const source = $(e.target).is('#salutation_select') ? 'select' : 'radio';
+    syncSalutationHiddenAndSyncFields(source);
+  });
 
   return { syncReceiptHidden, toggleAddressSection, initOnce }
 }

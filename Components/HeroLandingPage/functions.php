@@ -64,6 +64,19 @@ function getACFLayout(): array
                 'delay' => 0,
             ],
             [
+                'label' => __('Eingebettete Komponenten', 'flynt'),
+                'name' => 'nested_components',
+                'type' => 'flexible_content',
+                'button_label' => __('Komponente hinzufügen', 'flynt'),
+                'layouts' => [
+                    [
+                        'name' => 'DonationBarometer',
+                        'label' => 'Donation Barometer',
+                        'sub_fields' => \Flynt\Components\DonationBarometer\getACFLayout()['sub_fields'],
+                    ],
+                ],
+            ],
+            [
                 'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
@@ -82,12 +95,6 @@ function getACFLayout(): array
                     FieldVariables\getPaddingTopBottom(),
                     FieldVariables\getPaddingLeftRight(),
                 ]
-            ],
-            [
-                'label' => __('Copyright', 'flynt'),
-                'name' => 'copyright',
-                'type' => 'text',
-                'instructions' => __('Optional copyright text shown over the image similar to HeroImageText.', 'flynt'),
             ],
         ]
     ];

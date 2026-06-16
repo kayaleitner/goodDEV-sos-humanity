@@ -5,13 +5,12 @@
     gap: 0.75rem;
   }
 
-  .amount-group-wrapper > :nth-child(4) {
+  /* Custom Amount nach 3 Radios: volle Breite */
+  .amount-group-wrapper > .global-custom-amount:nth-child(4) {
     grid-column: span 3;
   }
-  .amount-group-wrapper > :nth-child(4):nth-last-child(2) {
-    grid-column: span 1;
-  }
-  .amount-group-wrapper > :nth-child(5) {
+  /* Custom Amount nach 4 Radios: 2 Spalten */
+  .amount-group-wrapper > .global-custom-amount:nth-child(5) {
     grid-column: span 2;
   }
 
@@ -91,27 +90,47 @@
     .amount-input {
       width: 100%;
       height: 48px;
-      text-align: left;
+      text-align: center;
       padding: 0.75rem 1.25rem;
-      border: 2px solid #757575;
+      border: 2px solid var(--color-primary);
       border-radius: var(--border-radius);
-      color: #6b7280;
-      /*min-width: 11rem;*/
+      color: var(--color-primary);
+      &:focus {
+        background-color: var(--color-primary);
+        color: white;
+      }
+      &:not(:placeholder-shown) {
+        background-color: var(--color-primary);
+        color: white;
+        border: 2px solid var(--color-primary);
+      }
+      &:placeholder-shown + .currency-suffix {
+        opacity: 0;
+      }
     }
 
     .currency-suffix {
-      right: 0.75rem;
       top: 50%;
+      left: 50%;
       transform: translateY(-50%);
       position: absolute;
-      font-weight: 600;
-      color: #6b7280;
-      font-size: 1.5rem;
+      font: var(--input-font);
+      color: white;
     }
   }
 
   .amount-group-wrapper:not(.active) {
     display: none;
+  }
+
+  /* Mobile: Checkmark bei langen Beträgen (>= 1000) ausblenden */
+  @media screen and (max-width: 767px) {
+    .amount-option input.amount-radio:checked + label.amount-label--long {
+      padding-right: 0;
+      &:after {
+        display: none;
+      }
+    }
   }
 
   /* Desktop Version */

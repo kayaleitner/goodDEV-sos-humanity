@@ -344,7 +344,7 @@ label {
   color: var(--blue);
   font-family: inherit;
   font-size: inherit;
-  min-height: 50px;
+  min-height: 48px;
 }
 input, select {
   border-bottom: 1px solid var(--blue);
