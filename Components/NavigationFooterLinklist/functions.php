@@ -56,7 +56,7 @@ Options::addTranslatable('NavigationFooterLinklist', [
         'media_upload' => 0,
     ],
     [
-        'label' => __('Donations', 'flynt'),
+        'label' => __('Landing Page', 'flynt'),
         'name' => 'donationsTab',
         'type' => 'tab',
         'placement' => 'top',
@@ -73,6 +73,43 @@ Options::addTranslatable('NavigationFooterLinklist', [
         'type' => 'wysiwyg',
         'delay' => 1,
         'media_upload' => 0,
+    ],
+    [
+      'label' => __('Account holder name (e.g.: Empfängername)', 'flynt'),
+      'name' => 'accountHolderName',
+      'type' => 'text',
+      'default_value' => 'Empfängername',
+    ],
+    [
+      'label' => __('Organisation', 'flynt'),
+      'name' => 'donationsOrganisation',
+      'type' => 'text',
+    ],
+    [
+      'label' => __('IBAN', 'flynt'),
+      'name' => 'donationsIBAN',
+      'type' => 'text',
+    ],
+    [
+      'label' => __('BIC', 'flynt'),
+      'name' => 'donationsBIC',
+      'type' => 'text',
+    ],
+    [
+      'label' => __('Copy Account holder name', 'flynt'),
+      'name' => 'copyAccountHolderName',
+      'type' => 'text',
+      'default_value' => 'Empfängername kopieren',
+    ],
+    [
+      'label' => __('Copy IBAN', 'flynt'),
+      'name' => 'copyIBAN',
+      'type' => 'text',
+    ],
+    [
+      'label' => __('Copy BIC', 'flynt'),
+      'name' => 'copyBIC',
+      'type' => 'text',
     ],
     [
         'label' => __('Partners', 'flynt'),
@@ -111,6 +148,28 @@ Options::addTranslatable('NavigationFooterLinklist', [
                 'required' => 0,
             ]
         ],
+    ],
+    [
+      'label' => __('Banking-App', 'flynt'),
+      'name' => 'bankingAppTab',
+      'type' => 'tab',
+      'placement' => 'top',
+      'endpoint' => 0
+    ],
+    [
+      'label' => __('Title', 'flynt'),
+      'name' => 'bankingAppPreContent',
+      'type' => 'text',
+    ],
+    [
+      'label' => __('Banking-App QR-Code', 'flynt'),
+      'name' => 'bankingAppLogo',
+      'type' => 'image',
+      'return_format' => 'array',   // 'array' | 'id' | 'url' – je nach Bedarf
+      'preview_size' => 'small',
+      'instructions' => __('Image-Format: PNG, SVG', 'flynt'),
+      'required' => 0,
+      'mime_types' => 'png,svg',
     ],
     [
         'label' => __('Options', 'flynt'),

@@ -1,0 +1,17 @@
+[is="flynt-donation-form"] {
+  [is="flynt-donation-barometer"] {
+    padding: 0;
+    position: relative;
+    margin: 48px 0 32px;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      background-color: var(--color-default-background);
+      left: 50%;
+      top: -15px;
+      transform: translateX(calc(-50% - 1px)) rotate(45deg);
+    }
+  }
+}

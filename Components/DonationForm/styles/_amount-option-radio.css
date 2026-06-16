@@ -1,0 +1,153 @@
+[is="flynt-donation-form"] {
+  .amount-group-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  /* Custom Amount nach 3 Radios: volle Breite */
+  .amount-group-wrapper > .global-custom-amount:nth-child(4) {
+    grid-column: span 3;
+  }
+  /* Custom Amount nach 4 Radios: 2 Spalten */
+  .amount-group-wrapper > .global-custom-amount:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .amount-option {
+    position: relative;
+    text-align: center;
+
+    label.amount-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      max-width: 100%;
+      padding: 0;
+      border: 2px solid var(--color-primary);
+      border-radius: var(--border-radius);
+      background: #fff;
+      color: var(--color-primary);
+      font: var(--input-font);
+      line-height: 1;
+      letter-spacing: 0.01rem;
+      height: 48px;
+      margin: 0;
+      position: relative;
+      transition: background-color 120ms ease, color 120ms ease,
+      border-color 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+      &:before {
+        display: none;
+      }
+
+      &:hover {
+        filter: var(--filter-brightness);
+        border-color: var(--color-primary);
+      }
+      &:focus-visible {
+        filter: var(--filter-brightness);
+      }
+    }
+
+    input.amount-radio {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+
+      &:checked + label.amount-label {
+        background: var(--color-primary);
+        color: #fff;
+        border-color: var(--color-primary);
+        box-shadow: none;
+        padding-right: 20px;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 5px;
+          transform: translateY(-50%);
+          width: 32px;
+          height: 32px;
+          background-image: var(--icon-checkmark);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          display: block;
+        }
+      }
+
+      &:focus-visible + label.amount-label {
+        filter: var(--filter-brightness);
+      }
+    }
+  }
+
+  .global-custom-amount {
+    position: relative;
+    .amount-input {
+      width: 100%;
+      height: 48px;
+      text-align: center;
+      padding: 0.75rem 1.25rem;
+      border: 2px solid var(--color-primary);
+      border-radius: var(--border-radius);
+      color: var(--color-primary);
+      &:focus {
+        background-color: var(--color-primary);
+        color: white;
+      }
+      &:not(:placeholder-shown) {
+        background-color: var(--color-primary);
+        color: white;
+        border: 2px solid var(--color-primary);
+      }
+      &:placeholder-shown + .currency-suffix {
+        opacity: 0;
+      }
+    }
+
+    .currency-suffix {
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      font: var(--input-font);
+      color: white;
+    }
+  }
+
+  .amount-group-wrapper:not(.active) {
+    display: none;
+  }
+
+  /* Mobile: Checkmark bei langen Beträgen (>= 1000) ausblenden */
+  @media screen and (max-width: 767px) {
+    .amount-option input.amount-radio:checked + label.amount-label--long {
+      padding-right: 0;
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  /* Desktop Version */
+  @media screen and (min-width: 768px) {
+    .amount-option label.amount-label {
+      justify-content: center;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .amount-option input.amount-radio {
+      &:checked + label.amount-label {
+        padding-right: 1.25rem;
+        &:after {
+          right: 15%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+[is="flynt-donation-form"] {
+  .switch {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+
+    &__label {
+      font-size: var(--input-font);
+      color: var(--color-primary);
+      text-wrap: initial;
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    &__slider {
+      position: relative;
+      width: 52px;
+      height: 32px;
+      border: 2px solid var(--color-primary);
+      background: #fff;
+      border-radius: 999px;
+      flex-shrink: 0;
+      transition: background var(--transition-duration) var(--transition-timing-function);
+    }
+
+    &__slider::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 4px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      transform: translateY(-50%);
+      transition: left 0.2s;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    input[type="checkbox"]:checked + .switch__slider {
+      background: var(--color-primary);
+    }
+    input[type="checkbox"]:checked + .switch__slider::after {
+      left: calc(100% - 25px);
+      background: #fff;
+    }
+
+    input[type="checkbox"]:disabled + .switch__slider {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    &.auto-receipt {
+      pointer-events: none;
+      cursor: default;
+      gap: 2rem;
+      input[type="checkbox"]:checked + .switch__slider {
+        border-radius: 50%;
+        background: var(--color-primary);
+        background-image: var(--icon-checkmark);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        height: 32px;
+        width: 32px;
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,36 +1,23 @@
+@import 'styles/_animate.css';
+@import 'styles/_amount-option-radio.css';
+@import 'styles/_checkbox-switcher.css';
+@import 'styles/_default-form-elements.css';
+@import 'styles/_donationForm-variables.css';
+@import 'styles/_panel.css';
+@import 'styles/_paymethods-radio-elements.css';
+@import 'styles/_interval-block.css';
+@import 'styles/_styled-checkbox-elements.css';
+@import 'styles/_styled-radio-elements.css';
+@import 'styles/_submit-Button-styles.css';
+@import 'styles/_text-styles.css';
+@import 'styles/_nested_components.css';
+
 [is="flynt-donation-form"] {
-  max-width: 48rem;
-  margin-left: auto;
-  margin-right: auto;
-  .panel {
-    border-radius: 0.5rem;
-  }
-  [type="radio"], [type="checkbox"] {
-    opacity: 1;
-    pointer-events: auto;
-    position: relative;
-    width: auto;
-  }
-  .interval,
-  .amounts {
-    margin-bottom: 1rem;
-  }
-  .interval label,
-  .amounts label {
-    display: inline-flex;
-    align-items: center;
-    margin-right: 1rem;
-    cursor: pointer;
-  }
-  .interval label span,
-  .amounts label span {
-    margin-left: 0.5rem;
-    font-weight: 500;
-    font-size: 1.5rem;
-  }
+  hyphens: auto;
+  max-width: 56.5rem;
+  padding: 0 var(--spacing-md) 72px;
+  margin: 54px auto 0;
 }
-
-
 
 
 

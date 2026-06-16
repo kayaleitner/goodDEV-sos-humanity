@@ -1,9 +1,9 @@
- @import 'styles/_tw-directives.css';
- @import 'styles/_typography.css';
+@import 'styles/_tw-directives.css';
+@import 'styles/_typography.css';
 
- @import 'styles/_global.css';
+@import 'styles/_global.css';
 
- @import 'styles/_fonts.css';
+@import 'styles/_fonts.css';
 @import 'styles/_container.css';
 /*
 @import 'styles/_buttons.css';
@@ -15,14 +15,12 @@
 @import 'styles/_borlabs-cookie.css';
 @import 'styles/_env-badge.css'; */
 
-@import 'styles/_components.css'; 
-
+@import 'styles/_components.css';
 
 @import 'oldStyles/_styles.css';
 
 /* @import '../Components/NewsletterMailchimp/_style.css'; */
 @import '../Components/FeatureListSearchResults/_style.css';
-
 
 /* Component CSS Import */
 
@@ -64,7 +62,14 @@
 @import '../Components/SliderImages/_style.css';
 @import '../Components/SliderVoices/_style.css';
 @import '../Components/WidgetPetition/_style.css';
-@import '../Components/DonationHeader/_style.css';
+@import '../Components/HeaderLandingPage/_style.css';
+@import '../Components/FooterLandingPage/_style.css';
 @import '../Components/DonationForm/_style.css';
 @import '../Components/DonationLanguageSwitch/_style.css';
-@import '../Components/DonationHero/_style.css';
+@import '../Components/FooterLandingPageNavigation/_style.css';
+@import '../Components/FooterNavigationLandingPageLinklist/_style.css';
+@import '../Components/CopyButton/_style.css';
+@import '../Components/HeroLandingPage/_style.css';
+@import '../Components/ContactPerson/_style.css';
+@import '../Components/ShareOptions/_style.css';
+@import '../Components/DonationBarometer/_style.css';
