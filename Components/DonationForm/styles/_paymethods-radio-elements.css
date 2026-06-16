@@ -11,6 +11,13 @@
     display: block;
   }
 
+  /* Recurring donations: wallet pay (Apple/Google Pay) is not supported by the
+     FRBox/Stripe integration → always hide, overriding the availability rule */
+  &[data-recurring="1"] .pm-stripe_google_pay,
+  &[data-recurring="1"] .pm-stripe_apple_pay {
+    display: none;
+  }
+
   .payment-methods {
     .payment-methods-wrapper {
       display: grid;
@@ -114,6 +121,10 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+    /* Recurring: wallet methods are hidden → back to the 3-column layout */
+    &[data-recurring="1"] .payment-methods .payment-methods-wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   @media (min-width: 1024px) {
@@ -122,6 +133,10 @@
       .payment-methods .payment-methods-wrapper {
         grid-template-columns: repeat(4, 1fr);
       }
+    }
+    /* Recurring: wallet methods are hidden → back to the 3-column layout */
+    &[data-recurring="1"] .payment-methods .payment-methods-wrapper {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }

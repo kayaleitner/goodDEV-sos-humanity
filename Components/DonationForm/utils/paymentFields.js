@@ -18,23 +18,21 @@ export default function initPaymentFields(component, myForm) {
 
   function applyWalletAvailability() {
     const isRecurring = getInterval() !== '0'
-    const $pmWrapper = $root.find('.payment-methods')
+
+    // Visibility + grid layout are handled in CSS via this flag (keeps the
+    // device-based data-wallet-* availability rules intact). JS only needs to
+    // toggle the flag and deselect a wallet method when switching to recurring.
+    $root.attr('data-recurring', isRecurring ? '1' : '0')
+
+    if (!isRecurring) return
+
     let unselectedWallet = false
-
     walletMethods.forEach((method) => {
-      const $wrap = $pmWrapper.find(`[data-payment-method="${method}"]`)
-      if (!$wrap.length) return
-      const $input = $wrap.find('input[type="radio"]').first()
-
-      if (isRecurring) {
-        if ($input.is(':checked')) {
-          $input.prop('checked', false)
-          $wrap.removeClass('is-selected')
-          unselectedWallet = true
-        }
-        $wrap.stop(true, true).hide()
-      } else {
-        $wrap.stop(true, true).show()
+      const $input = $root.find(`[data-payment-method="${method}"] input[type="radio"]`).first()
+      if ($input.is(':checked')) {
+        $input.prop('checked', false)
+        $input.closest('.radioWrapper').removeClass('is-selected')
+        unselectedWallet = true
       }
     })
 
