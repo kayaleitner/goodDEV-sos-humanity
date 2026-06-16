@@ -64,6 +64,7 @@ cfd aus URL (z.B. su995)
 | `inc/frboxFundraisingPageData.php` | Datenlayer (FRBox-API). Funktionen siehe unten. |
 | `inc/rest-embed-donation-barometer.php` | REST-Embed Barometer (Schiff). Quelle: `cfd` **oder** `search_id` (Legacy/OBS). |
 | `inc/rest-embed-donation-list.php` | REST-Embed Spenderliste mit Dauerspende/Einzelspende + Kommentar. |
+| `inc/rest-action-config.php` | JSON-Endpoint: per-Aktion-Flags aus FRBox-Custom-Fields (+ CORS). |
 | `inc/disableRestApi.php` | REST ist global gesperrt → unsere Routen stehen in der Allowlist. |
 | `Components/DonationBarometer/` | Wiederverwendete Barometer-Komponente (Schiff/Balken/Count-up). |
 
@@ -112,6 +113,29 @@ Optik (full-width, padding 0) ist auf `cfd`-Embeds gescopet (`body.sos-embed-com
   &title=Wir%20retten%20mit:%20({count})   {count} = Anzahl Einträge
 ```
 
+### Per-Aktion-Config (JSON + CORS)
+```
+/wp-json/sos/v1/action/config?cfd=su995
+  → { "cfd":"su995", "barometer":true, "list":true, "only_monthly":false }
+```
+Wird vom FRBox-JS abgefragt, um pro Aktion zu entscheiden, was eingeblendet wird.
+
+---
+
+## 4b. Per-Aktion-Steuerung über FRBox-Custom-Fields
+
+SOS entscheidet **pro Spendenaktion** per Häkchen, was angezeigt wird. Dafür gibt es
+3 FRBox-Custom-Fields (Checkbox, gesetzt = Wert `'1'`, sonst leer):
+
+| Custom-Field-ID | Bedeutung | Config-Flag |
+|---|---|---|
+| 16330 | „Dauerspenden-Barometer anzeigen" | `barometer` |
+| 16329 | „Anzeige von Dauer- & Einzelspenden in der Namensliste" | `list` |
+| 16328 | „Spenden-Intervall nur monatlich" (Wunsch 3, Formular) | `only_monthly` |
+
+Gelesen in `inc/frboxFundraisingPageData.php` (`get_action_flags()` / `custom_field_flags()`,
+IDs als Konstanten). Truthy-Check akzeptiert `1/ja/yes/true/on`.
+
 ---
 
 ## 5. FRBox-Backend-Snippets (einzufügen im FRBox-Backend, global)
@@ -121,57 +145,165 @@ Optik (full-width, padding 0) ist auf `cfd`-Embeds gescopet (`body.sos-embed-com
 > `https://sos-humanity.org/...` ändern.
 
 ### CSS-Feld
-```css
-/* Spenderliste (+ "mehr anzeigen") ausblenden – wird durch unsere Liste ersetzt */
-#page-data #donations-list,
-#page-data #jsShowMoreDonationsLink { display: none !important; }
-```
+**Leer.** Kein statisches Ausblenden mehr – das Ausblenden der FRBox-Liste passiert
+**bedingt im JS** (nur wenn das `list`-Flag der Aktion an ist), sonst würde die
+FRBox-Liste auch bei nicht-aktivierten Aktionen verschwinden.
 
-### JS-Feld
+### JS-Feld (config-gesteuert)
+Fragt pro Aktion `/action/config` ab und blendet **nur ein, was aktiviert ist**:
 ```js
-/* Dauerspenden-Barometer: ÜBER dem FRBox-Barometer einsetzen (FRBox-Barometer bleibt) */
+/* Dauerspenden: per-Aktion gesteuert über FRBox-Custom-Fields */
 (function () {
-  function run() {
-    if (!document.getElementById('sos-dauer-baro')) {
-      var cfd = new URLSearchParams(location.search).get('cfd');
-      var anchor = document.querySelector('#page-data .progress');
-      if (cfd && anchor && anchor.parentNode) {
-        var w = document.createElement('div'); w.id = 'sos-dauer-baro'; w.style.cssText = 'margin:0 0 16px;';
-        var f = document.createElement('iframe');
-        f.src = 'https://env-soshumanity-gooddev.kinsta.cloud/wp-json/sos/v1/barometer/embed'
-              + '?cfd=' + encodeURIComponent(cfd) + '&metric=count&transparent=1'
-              + '&barometer_text_current=' + encodeURIComponent('Schon {donor_count} Dauerspender:innen!');
-        f.style.cssText = 'width:100%;border:0;height:200px;display:block;';
-        w.appendChild(f);
-        anchor.parentNode.insertBefore(w, anchor);
-      }
-    }
-    /* Spenderliste: FRBox-Liste durch unsere ersetzen */
-    if (!document.getElementById('sos-dauer-liste')) {
-      var cfd2 = new URLSearchParams(location.search).get('cfd');
-      var list = document.querySelector('#donations-list');
-      if (cfd2 && list && list.parentNode) {
-        var lw = document.createElement('div'); lw.id = 'sos-dauer-liste'; lw.style.cssText = 'margin:0 0 16px;';
-        var lf = document.createElement('iframe');
-        lf.src = 'https://env-soshumanity-gooddev.kinsta.cloud/wp-json/sos/v1/donorlist/embed'
-               + '?cfd=' + encodeURIComponent(cfd2)
-               + '&transparent=1&title=' + encodeURIComponent('Wir retten mit: ({count})');
-        lf.style.cssText = 'width:100%;border:0;height:600px;display:block;';
-        lw.appendChild(lf);
-        list.style.display = 'none';
-        var more = document.getElementById('jsShowMoreDonationsLink');
-        if (more) more.style.display = 'none';
-        list.parentNode.insertBefore(lw, list);
-      }
-    }
+  var BASE = 'https://env-soshumanity-gooddev.kinsta.cloud';   // PROD: https://sos-humanity.org
+  var cfd = new URLSearchParams(location.search).get('cfd');
+  if (!cfd) return;
+  var flags = null;
+
+  function injectBarometer() {
+    if (document.getElementById('sos-dauer-baro')) return;
+    var anchor = document.querySelector('#page-data .progress');
+    if (!anchor || !anchor.parentNode) return;
+    var w = document.createElement('div'); w.id = 'sos-dauer-baro'; w.style.cssText = 'margin:0 0 16px;';
+    var f = document.createElement('iframe');
+    f.src = BASE + '/wp-json/sos/v1/barometer/embed?cfd=' + encodeURIComponent(cfd)
+          + '&metric=count&transparent=1&barometer_text_current=' + encodeURIComponent('Schon {donor_count} Dauerspender:innen!');
+    f.style.cssText = 'width:100%;border:0;height:200px;display:block;';
+    w.appendChild(f); anchor.parentNode.insertBefore(w, anchor);   // FRBox-Barometer bleibt darunter
   }
-  if (document.readyState !== 'loading') run(); else document.addEventListener('DOMContentLoaded', run);
-  setTimeout(run, 800); setTimeout(run, 2000);
+  function injectList() {
+    if (document.getElementById('sos-dauer-liste')) return;
+    var list = document.querySelector('#donations-list');
+    if (!list || !list.parentNode) return;
+    var lw = document.createElement('div'); lw.id = 'sos-dauer-liste'; lw.style.cssText = 'margin:0 0 16px;';
+    var lf = document.createElement('iframe');
+    lf.src = BASE + '/wp-json/sos/v1/donorlist/embed?cfd=' + encodeURIComponent(cfd)
+           + '&transparent=1&title=' + encodeURIComponent('Wir retten mit: ({count})');
+    lf.style.cssText = 'width:100%;border:0;height:600px;display:block;';
+    lw.appendChild(lf);
+    list.style.display = 'none';
+    var more = document.getElementById('jsShowMoreDonationsLink'); if (more) more.style.display = 'none';
+    list.parentNode.insertBefore(lw, list);
+  }
+  function apply() {
+    if (!flags) return;
+    if (flags.barometer) injectBarometer();
+    if (flags.list) injectList();
+    /* flags.only_monthly → Wunsch 3 (Formular auf monatlich beschränken) – folgt separat */
+  }
+  fetch(BASE + '/wp-json/sos/v1/action/config?cfd=' + encodeURIComponent(cfd))
+    .then(function (r) { return r.json(); })
+    .then(function (j) { flags = j; apply(); setTimeout(apply, 1000); setTimeout(apply, 2500); })
+    .catch(function () {});
 })();
 ```
 
 Relevante FRBox-DOM-Anker: `#page-data .progress` (FRBox-Barometer),
 `#donations-list` (Spenderliste), `#jsShowMoreDonationsLink` („mehr anzeigen").
+
+---
+
+## 5b. Wunsch 3 – Formular auf „nur monatlich" beschränken
+
+> ⚠️ Dieses Snippet kommt in das **Formular-CSS/JS-Feld der FRBox** – das ist ein
+> **eigenes Feld** (dort liegt auch `sosSpendenformular.js`), nicht das Aktionsseiten-Feld
+> aus Abschnitt 5. Das Formular wird unter `…/spendenaktion/?cfs=p&cfd=XXXXX#cff`
+> aufgerufen → der `cfd` ist im Formular-Kontext verfügbar.
+
+Greift bei Aktionen mit Flag `only_monthly` (Custom-Field 16328). Wirkung:
+Intervall-Auswahl ausblenden, im `#payment_interval` nur **monatlich** (Wert `1`)
+behalten/vorwählen, Panel-Überschrift „Meine Spende für …" → „Meine **monatliche**
+Spende für …" (DE/EN/IT). Ein `MutationObserver` hält den Titel, da
+`sosSpendenformular.js` (`applyPanelTitles`) ihn per Timer wiederholt neu setzt.
+
+### Variante A – einfach (kann kurz flackern)
+Intervall/Titel werden erst nach der Config-Antwort angepasst → auf `only_monthly`-Aktionen
+sieht man die Auswahl/den Titel **kurz**, dann wird umgestellt.
+
+```js
+/* Wunsch 3 (einfach) */
+(function () {
+  var BASE = 'https://env-soshumanity-gooddev.kinsta.cloud';   // PROD: https://sos-humanity.org
+  var cfd = new URLSearchParams(location.search).get('cfd');
+  if (!cfd) return;
+  function lang() { var l = (document.documentElement.getAttribute('lang') || 'de').toLowerCase(); return l.indexOf('en') === 0 ? 'en' : (l.indexOf('it') === 0 ? 'it' : 'de'); }
+  function isMonthly(v, t) { return String(v) === '1' || /monat|month|mensil/i.test(t || ''); }
+  function restrict() {
+    var sel = document.getElementById('payment_interval');
+    if (sel) {
+      Array.prototype.slice.call(sel.options).forEach(function (o) { if (!isMonthly(o.value, o.text)) o.remove(); });
+      var m = Array.prototype.slice.call(sel.options).filter(function (o) { return isMonthly(o.value, o.text); })[0];
+      if (m && sel.value !== m.value) { sel.value = m.value; sel.dispatchEvent(new Event('change', { bubbles: true })); }
+    }
+    var r = document.querySelector('.interval-radios'); if (r) r.style.display = 'none';
+  }
+  function fixTitle() {
+    var el = document.querySelector('#amountBox .panel-title'); if (!el) return;
+    var txt = el.textContent; if (/monatlich|monthly|mensil/i.test(txt)) return;
+    var l = lang(), n = l === 'en' ? txt.replace(/\bMy donation\b/i, 'My monthly donation')
+      : l === 'it' ? txt.replace(/\bdonazione\b/i, 'donazione mensile')
+      : txt.replace(/\bMeine Spende\b/i, 'Meine monatliche Spende');
+    if (n !== txt) el.textContent = n;
+  }
+  function enable() {
+    restrict(); fixTitle();
+    [400, 1000, 2000].forEach(function (ms) { setTimeout(function () { restrict(); fixTitle(); }, ms); });
+    var box = document.getElementById('amountBox');
+    if (box && window.MutationObserver) new MutationObserver(fixTitle).observe(box, { childList: true, subtree: true, characterData: true });
+  }
+  fetch(BASE + '/wp-json/sos/v1/action/config?cfd=' + encodeURIComponent(cfd))
+    .then(function (r) { return r.json(); }).then(function (j) { if (j && j.only_monthly) enable(); }).catch(function () {});
+})();
+```
+
+### Variante B – flackerfrei (empfohlen)
+Versteckt Intervall + Titel **sofort synchron** (CSS-Klasse `sos-pending`) und zeigt erst
+nach der Config-Antwort den finalen Zustand. Auf `only_monthly`-Aktionen sieht man die
+Auswahl gar nicht erst; der Titel reserviert via `visibility` seinen Platz (kein Layout-Sprung).
+Trade-off: auf Nicht-monatlichen Aktionen erscheinen Intervall/Titel ~200 ms verzögert.
+
+```js
+/* Wunsch 3 (flackerfrei) */
+(function () {
+  var BASE = 'https://env-soshumanity-gooddev.kinsta.cloud';   // PROD: https://sos-humanity.org
+  var cfd = new URLSearchParams(location.search).get('cfd');
+  if (!cfd) return;
+  var st = document.createElement('style');
+  st.textContent = '.sos-pending .interval-radios,.sos-monthly .interval-radios{display:none!important;}'
+                 + '.sos-pending #amountBox .panel-title{visibility:hidden!important;}';
+  (document.head || document.documentElement).appendChild(st);
+  var root = document.documentElement; root.classList.add('sos-pending');
+  function done() { root.classList.remove('sos-pending'); }
+  function lang() { var l = (root.getAttribute('lang') || 'de').toLowerCase(); return l.indexOf('en') === 0 ? 'en' : (l.indexOf('it') === 0 ? 'it' : 'de'); }
+  function isMonthly(v, t) { return String(v) === '1' || /monat|month|mensil/i.test(t || ''); }
+  function restrictSelect() {
+    var sel = document.getElementById('payment_interval'); if (!sel) return;
+    Array.prototype.slice.call(sel.options).forEach(function (o) { if (!isMonthly(o.value, o.text)) o.remove(); });
+    var m = Array.prototype.slice.call(sel.options).filter(function (o) { return isMonthly(o.value, o.text); })[0];
+    if (m && sel.value !== m.value) { sel.value = m.value; sel.dispatchEvent(new Event('change', { bubbles: true })); }
+  }
+  function fixTitle() {
+    var el = document.querySelector('#amountBox .panel-title'); if (!el) return;
+    var txt = el.textContent; if (/monatlich|monthly|mensil/i.test(txt)) return;
+    var l = lang(), n = l === 'en' ? txt.replace(/\bMy donation\b/i, 'My monthly donation')
+      : l === 'it' ? txt.replace(/\bdonazione\b/i, 'donazione mensile')
+      : txt.replace(/\bMeine Spende\b/i, 'Meine monatliche Spende');
+    if (n !== txt) el.textContent = n;
+  }
+  function enableMonthly() {
+    root.classList.add('sos-monthly'); restrictSelect(); fixTitle();
+    [400, 1000, 2000].forEach(function (ms) { setTimeout(function () { restrictSelect(); fixTitle(); }, ms); });
+    var box = document.getElementById('amountBox');
+    if (box && window.MutationObserver) new MutationObserver(fixTitle).observe(box, { childList: true, subtree: true, characterData: true });
+    done();
+  }
+  fetch(BASE + '/wp-json/sos/v1/action/config?cfd=' + encodeURIComponent(cfd))
+    .then(function (r) { return r.json(); }).then(function (j) { if (j && j.only_monthly) enableMonthly(); else done(); }).catch(done);
+  setTimeout(done, 4000);   // Sicherheitsnetz
+})();
+```
+
+Annahme: `payment_interval`-Wert `1` = monatlich (+ Text-Match `monat|month|mensil`).
+Falls andere Werte → Match in `isMonthly()` anpassen.
 
 ---
 
@@ -210,7 +342,9 @@ wenn man nichts ausblenden will). Nur im eigenen Browser, keine Live-Änderung.
 - [ ] **Ziel pro Aktion**: aktuell dynamisches Auto-Ziel. Optionen für individuelles Ziel:
       FRBox-Custom-Field je Aktion (aus `fb_custom_fields` lesen) **oder** WP-Mapping (cfd→Ziel),
       mit Auto-Ziel als Fallback.
-- [ ] **An/aus**: Barometer auf allen Aktionen automatisch vs. pro Aktion schaltbar.
+- [x] **An/aus pro Aktion**: gelöst über FRBox-Custom-Fields (16330 Barometer, 16329 Liste) → `/action/config`.
+- [x] **Wunsch 3**: Flag `only_monthly` (16328) + Formular-Snippet vorhanden (s. Abschnitt 5b,
+      2 Varianten) – ins **Formular-JS-Feld** der FRBox einsetzen + auf einer `only_monthly`-Aktion testen.
 - [ ] **Produktionsintegration**: Embeds auf Prod deployen, iframe-URLs auf `sos-humanity.org`
       umstellen, FRBox-Snippets dauerhaft setzen (CSS/JS ist **global für alle Aktionen**!).
 - [ ] **Auto-Höhe** der Listen-/Barometer-iframes via `postMessage` (lange Listen, z.B. srrds 900+).

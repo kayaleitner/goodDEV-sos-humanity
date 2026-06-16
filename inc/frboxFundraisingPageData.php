@@ -123,7 +123,8 @@ function get_fundraising_page_by_cfd(string $cfd): ?array
         return null;
     }
 
-    $cacheKey = 'frbox_page_by_cfd_' . md5($cfd);
+    // Note: version suffix (v2) busts older cached entries that predate the `flags` key.
+    $cacheKey = 'frbox_page_by_cfd_v2_' . md5($cfd);
     $cached = get_transient($cacheKey);
     if (is_array($cached)) {
         return $cached;
@@ -154,11 +155,62 @@ function get_fundraising_page_by_cfd(string $cfd): ?array
         'donation_count' => isset($match['donation_count']) ? (int) $match['donation_count'] : 0,
         'title'          => (string) ($match['title'] ?? ''),
         'status'         => (string) ($match['status'] ?? ''),
+        // Per-action display flags from FRBox custom fields (checkbox: '1' = on).
+        'flags'          => custom_field_flags($match['fb_custom_fields'] ?? []),
     ];
 
-    set_transient($cacheKey, $result, HOUR_IN_SECONDS);
+    // Short TTL so per-action flag toggles in FRBox take effect quickly (the page
+    // id/goal also refresh; the pages.json call is cheap, ~50 entries).
+    set_transient($cacheKey, $result, 5 * MINUTE_IN_SECONDS);
 
     return $result;
+}
+
+/**
+ * FRBox custom field IDs that control per-action display (set per Spendenaktion).
+ */
+const CF_LIST_MARKERS      = 16329; // "Anzeige von Dauer- & Einzelspenden in der Namensliste"
+const CF_RECURRING_BAROMETER = 16330; // "Dauerspenden-Barometer anzeigen"
+const CF_ONLY_MONTHLY      = 16328; // "Spenden-Intervall nur monatlich"
+
+/**
+ * Whether a FRBox custom field value counts as "on" (checkbox stores '1').
+ */
+function cf_is_on($value): bool
+{
+    $v = strtolower(trim((string) $value));
+    return in_array($v, ['1', 'ja', 'yes', 'true', 'on'], true);
+}
+
+/**
+ * Read the per-action display flags from a page's fb_custom_fields list.
+ *
+ * @return array{barometer:bool,list:bool,only_monthly:bool}
+ */
+function custom_field_flags(array $customFields): array
+{
+    $byId = [];
+    foreach ($customFields as $f) {
+        if (isset($f['id'])) {
+            $byId[(int) $f['id']] = $f['value'] ?? '';
+        }
+    }
+    return [
+        'barometer'    => cf_is_on($byId[CF_RECURRING_BAROMETER] ?? ''),
+        'list'         => cf_is_on($byId[CF_LIST_MARKERS] ?? ''),
+        'only_monthly' => cf_is_on($byId[CF_ONLY_MONTHLY] ?? ''),
+    ];
+}
+
+/**
+ * Per-action display flags by cfd. Returns all-false if the cfd cannot be resolved.
+ *
+ * @return array{barometer:bool,list:bool,only_monthly:bool}
+ */
+function get_action_flags(string $cfd): array
+{
+    $page = get_fundraising_page_by_cfd($cfd);
+    return $page['flags'] ?? ['barometer' => false, 'list' => false, 'only_monthly' => false];
 }
 
 /**
