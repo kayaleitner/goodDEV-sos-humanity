@@ -35,7 +35,7 @@
   --innerBlock_mobile: 2rem;
 
   --padding_none: 0;
-  
+
   --padding_xxsmall: 0.5rem;
   --padding_xsmall: 0.75rem;
   --padding_small: 1.5rem;
@@ -57,6 +57,7 @@
  /* CSS Dimensions */
   --maxWidthContainer_full: 100%;
   --maxWidthContainer_wide: 1300px;
+  --maxWidthContainer_medium: 1180px;
   --maxWidthContainer_narrow: 800px;
   --navHeight: 10rem;
   --navHeightMobile: 5.5rem;
@@ -68,5 +69,5 @@
   @screen md {
     --fontSize_hero: 10vw;
   }
-  
+
 }

@@ -6,6 +6,25 @@ use Flynt\Utils\FileLoader;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+// Ensure bundled Facebook CAPI plugin is loaded when theme is active
+$fbCapiBootstrap = __DIR__ . '/plugins/facebook-capi/facebook-capi.php';
+if (file_exists($fbCapiBootstrap)) {
+    require_once $fbCapiBootstrap;
+    // If plugins_loaded has already fired (themes load after), boot the plugin directly
+    if (class_exists('FacebookCapiPlugin\\Plugin')) {
+        \FacebookCapiPlugin\Plugin::instance()->boot();
+    }
+}
+
+// Ensure bundled FundraisingBox settings plugin is loaded when theme is active
+$frbBootstrap = __DIR__ . '/plugins/fundraisingbox/fundraisingbox.php';
+if (file_exists($frbBootstrap)) {
+    require_once $frbBootstrap;
+    if (class_exists('FundraisingBoxPlugin\\Plugin')) {
+        \FundraisingBoxPlugin\Plugin::instance()->boot();
+    }
+}
+
 if (!defined('WP_ENV')) {
     define('WP_ENV', function_exists('wp_get_environment_type') ? wp_get_environment_type() : 'production');
 } elseif (!defined('WP_ENVIRONMENT_TYPE')) {
@@ -29,4 +48,18 @@ add_action('after_setup_theme', function (): void {
     // Make theme available for translation.
     // Translations can be filed in the /languages/ directory.
     load_theme_textdomain('flynt', get_template_directory() . '/languages');
+});
+
+
+add_action('wp_enqueue_scripts', function() {
+//  if (is_admin()) return;
+
+  $script_url = get_stylesheet_directory_uri() . '/assets/scripts/tra.js';
+  wp_enqueue_script('tra', $script_url, [], '1.0.0', true);
+
+  $data = [
+    'endpoint' => esc_url_raw(rest_url('fb-capi/v1/event')),
+    'nonce' => wp_create_nonce('wp_rest'),
+  ];
+  wp_localize_script('tra', 'TRACKING_DATA', $data);
 });

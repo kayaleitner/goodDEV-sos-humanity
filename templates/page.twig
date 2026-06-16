@@ -7,7 +7,7 @@
   {% endfor %}
 
   {% set excludedFirstComponents = ['heroImageText', 'BlockHeroVideo'] %}
-  {% if array[0] not in excludedFirstComponents %}
+  {% if array[0] not in excludedFirstComponents and headerVariant != 'landing_page' %}
     {{ renderComponent('BlockPostHeader', {'post': post}) }}
   {% endif %}
 

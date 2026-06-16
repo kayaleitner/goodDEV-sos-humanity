@@ -3,7 +3,10 @@
 function enqueue_react_app_assets() {
 
     global $post;
-    $content = do_shortcode($post->post_content);
+    $content = '';
+    if ($post instanceof \WP_Post && isset($post->post_content)) {
+        $content = do_shortcode($post->post_content);
+    }
 
     if (is_singular() && strpos($content, 'react-apply-button') !== false) {
          // Enqueue the main CSS file

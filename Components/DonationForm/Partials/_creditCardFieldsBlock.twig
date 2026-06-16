@@ -1,0 +1,25 @@
+{# credit card fields #}
+<div style="display: none;" class="donation-creditcard-fields">
+  <div class="{{ gridClasses }}">
+    <div id="payment_credit_card_owner_wrapper" class="form-item floating-label">
+      <label for="payment_credit_card_owner" class="form-required">{{ labelCreditCardOwner }}</label>
+      <input autocomplete="ignore-me" type="text" name="payment[credit_card_owner]" id="payment_credit_card_owner" class="js-conditionally-mandatory">
+      <div id="payment_credit_card_owner_error" class="error error-text"></div>
+    </div>
+    <div id="payment_credit_card_number_wrapper" class="form-item floating-label default-noEmpty">
+      <label for="payment_credit_card_number" class="form-required">{{ labelCreditCardNumber }}</label>
+      <div id="payment_credit_card_number"></div>
+      <div id="payment_credit_card_number_error" class="error error-text"></div>
+    </div>
+    <div id="payment_credit_card_expiry_wrapper" class="form-item floating-label default-noEmpty">
+      <label for="payment_credit_card_expiry" class="form-required">{{ labelCreditCardExpiry }}</label>
+      <div id="payment_credit_card_expiry"></div>
+      <div id="payment_credit_card_expiry_error" class="error error-text"></div>
+    </div>
+    <div id="payment_credit_card_secure_id_wrapper" class="form-item floating-label default-noEmpty">
+      <label for="payment_credit_card_secure_id" class="form-required">{{ labelCreditCardSecureId }}</label>
+      <div id="payment_credit_card_secure_id"></div>
+      <div id="payment_credit_card_secure_id_error" class="error error-text"></div>
+    </div>
+  </div>
+</div>

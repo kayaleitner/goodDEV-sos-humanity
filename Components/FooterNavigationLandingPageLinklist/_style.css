@@ -1,0 +1,163 @@
+[is='flynt-footer-navigation-landing-page-linklist'] {
+  background-color: var(--blue);
+
+  .container {
+    max-width: var(--maxWidthContainer_medium);
+    padding-inline: 1rem;
+
+    hr {
+      height: 2px;
+      background-color: var(--yellow);
+      margin: 0 0 28px;
+    }
+
+    .columns {
+      align-items: flex-start;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .column {
+      text-align: center;
+      margin: 5px 0 0;
+      @media (max-width: 1023px) {
+        width: calc(50% - 1rem);
+      }
+
+      @media (max-width: 540px) {
+        padding-top: var(--padding_small);
+        width: 100%;
+
+        &:first-child {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  .logo-image {
+    margin-bottom: 20px;
+  }
+
+  .body-2 {
+    line-height: 1.5;
+  }
+
+  .logo {
+    display: block;
+    height: 100%;
+    width: 20%;
+
+    &-image {
+      height: 100%;
+      width: 154px;
+      display: inline-block;
+    }
+
+    .content {
+      .h2,
+      .h5 {
+        font-weight: normal;
+        font-size: 16px;
+        letter-spacing: 1%;
+      }
+    }
+  }
+
+  .preContent {
+    color: var(--yellow);
+    text-transform: uppercase;
+    margin: 0 0 0.625rem;
+    font-size: 18px;
+    letter-spacing: 2%;
+    @screen md {margin: 0 0 1.5rem}
+  }
+
+  .figure-banklogo {
+    max-width: 140px;
+  }
+
+  .donations {
+    p {
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.6;
+      letter-spacing: 1%;
+      color: #fff;
+      .beforeCopyButton {
+        margin-bottom: 10px;
+        display: block;
+      }
+    }
+  }
+
+  .bankapp {
+    display:none;
+  }
+
+  .partners {
+    .logos {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 24px;
+
+      .figure {
+        padding-bottom: var(--padding_xsmall);
+        width: 100%;
+        max-width: 150px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 541px) {
+  [is='flynt-footer-navigation-landing-page-linklist'] {
+    .container {
+      .column {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+    }
+    .bankapp {
+      display: block;
+    }
+    .partners {
+      .logos {
+        align-items: flex-start;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  [is='flynt-footer-navigation-landing-page-linklist'] {
+    .container {
+      hr {
+        margin: 0 0 48px;
+      }
+    }
+    .logo {
+      .content {
+        .h2,
+        .h5 {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  [is='flynt-footer-navigation-landing-page-linklist'] {
+    .container {
+      .column {
+        margin: 0;
+      }
+    }
+  }
+}

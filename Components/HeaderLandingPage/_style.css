@@ -1,0 +1,62 @@
+@layer components {
+  /* Block: Donation Header */
+  .headerLandingPage {
+    @apply top-0 left-0 z-[9999] w-full;
+    position: absolute;
+    color: var(--white);
+
+    /* Elements */
+    &__wrapper {
+      @apply w-full h-full;
+    }
+
+    &__container {
+      @apply h-full mx-auto px-4 flex items-center gap-6;
+      max-width: var(--maxWidthContainer_medium);
+    }
+
+    &__logo {
+      @apply block shrink-0;
+      margin-top: 18px;
+    }
+
+    &__image {
+      width: 108px;
+      height: auto;
+    }
+
+    &__content {
+      @apply flex-1 flex flex-col justify-center;
+    }
+
+    &__title {
+      @apply text-white text-xl font-semibold leading-tight m-0;
+    }
+
+    &__subtitle {
+      /* Kein Arbitrary Value in @apply. Wähle eine der beiden Varianten: */
+      /* Variante A: Utilities */
+      @apply text-white text-base leading-snug m-0 opacity-80;
+      /* Variante B (stattdessen): reine CSS-Farbe */
+      /* color: rgb(255 255 255 / 0.8); */
+    }
+
+    /* Example modifier */
+    &--compact {
+      height: 72px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Block: Donation Header */
+  .headerLandingPage {
+    &__logo {
+      margin-top: 50px;
+    }
+    &__image {
+      width: 140px;
+      height: auto;
+    }
+  }
+}

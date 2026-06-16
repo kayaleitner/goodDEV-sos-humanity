@@ -10,16 +10,30 @@
     {{ function('wp_body_open') }}
     {% block layout %}
       <div class="pageWrapper env_badge env_{{function('wp_get_environment_type')}}">
-        <header class="mainHeader top-0 left-0 z-[9999] w-full h-0 absolute">
+        {% set pid = function('get_queried_object_id') %}
+        {% set isPage = function('is_singular', 'page') %}
+        {% set headerVariant = isPage ? function('get_field', 'header_variant', pid) : null %}
+        {% set footerVariant = isPage ? function('get_field', 'footer_variant', pid) : null %}
+        {% if not headerVariant %}
+          {% set headerVariant = function('get_field', 'header_variant_default', 'option') ?: 'default' %}
+        {% endif %}
+        {% if not footerVariant %}
+          {% set footerVariant = function('get_field', 'footer_variant_default', 'option') ?: 'default' %}
+        {% endif %}
+        <header class="{{ headerVariant == 'landing_page' ? 'headerLandingPage' : 'mainHeader headerVariant top-0 left-0 z-[9999] w-full h-0 absolute' }}">
          <a href="#mainContent" class="visuallyHidden visuallyHidden-focusable">
           {{- theme.labels.skipToMainContent|e -}}
         </a>
           {% block header %}
-            {{ renderComponent('NavigationPreNav') }}
-            {{ renderComponent('NavigationMain') }}
-            {{ renderComponent('NavigationBurger') }}
-            {# {{ renderComponent('NavigationMobile') }} #}
-            {# {{ renderComponent('NewsletterMailchimp') }} #}
+            {% if headerVariant == 'landing_page' %}
+              {{ renderComponent('HeaderLandingPage') }}
+            {% else %}
+              {{ renderComponent('NavigationPreNav') }}
+              {{ renderComponent('NavigationMain') }}
+              {{ renderComponent('NavigationBurger') }}
+              {# {{ renderComponent('NavigationMobile') }} #}
+              {# {{ renderComponent('NewsletterMailchimp') }} #}
+            {% endif %}
           {% endblock %}
         </header>
         <main id="mainContent" class="mainContent" aria-label="{{- theme.labels.mainContentAriaLabel|e -}}">
@@ -34,9 +48,15 @@
         </main>
         <footer class="mainFooter">
           {% block footer %}
-            {{ renderComponent('NavigationFooterColumns') }}
-            {{ renderComponent('NavigationFooterLinklist') }}
-            {{ renderComponent('NavigationFooter') }}
+            {% if footerVariant == 'landing_page' %}
+              {{ renderComponent('FooterLandingPage') }}
+              {{ renderComponent('FooterNavigationLandingPageLinklist') }}
+              {{ renderComponent('FooterLandingPageNavigation') }}
+            {% else %}
+              {{ renderComponent('NavigationFooterColumns') }}
+              {{ renderComponent('NavigationFooterLinklist') }}
+              {{ renderComponent('NavigationFooter') }}
+            {% endif %}
           {% endblock %}
         </footer>
         <div class="wpFooter">{{ function('wp_footer') }}</div>

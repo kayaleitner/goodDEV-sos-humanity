@@ -1,0 +1,14 @@
+<div style="display: none;" class="donation-sepa-fields">
+  <div class="{{ gridClasses }}">
+    <div id="payment_bank_account_owner_wrapper" class="form-item floating-label">
+      <label for="payment_bank_account_owner" class="form-required">{{ labelBankAccountOwner }}</label>
+      <input maxlength="150" type="text" name="payment[bank_account_owner]" id="payment_bank_account_owner" class="js-conditionally-mandatory">
+      <div id="payment_bank_account_owner_error" class="error error-text"></div>
+    </div>
+    <div id="payment_bank_iban_wrapper" class="form-item floating-label">
+      <label for="payment_bank_iban" class="form-required">{{ labelBankIban }}</label>
+      <input type="text" name="payment[bank_iban]" id="payment_bank_iban" class="js-conditionally-mandatory">
+      <div id="payment_bank_iban_error" class="error error-text"></div>
+    </div>
+  </div>
+</div>
