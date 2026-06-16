@@ -15,7 +15,7 @@ add_action('wp_enqueue_scripts', function () {
 
   wp_enqueue_script(
     'fundraisingbox',
-    'https://api.fundraisingbox.com/js/jquery.fundraisingbox.min.js',
+    'https://secure.fundraisingbox.com/js/jquery.fundraisingbox.min.js',
     ['jquery'],
     null,
     false

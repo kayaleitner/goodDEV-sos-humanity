@@ -45,9 +45,12 @@ add_action('rest_api_init', function () {
   register_rest_route('sos/v1', '/barometer/embed', [
     'methods'  => 'GET',
     'args'     => [
-      'search_id' => ['type' => 'string', 'required' => true],
-      'goal'      => ['type' => 'number', 'required' => true],
-      'type'      => ['type' => 'string', 'required' => true], // 'sum' | 'count'
+      'search_id' => ['type' => 'string', 'required' => false, 'default' => ''],
+      'goal'      => ['type' => 'number', 'required' => false],
+      'type'      => ['type' => 'string', 'required' => false], // 'sum' | 'count'
+      // Per-action recurring source (alternative to search_id): campaign code from the page URL
+      'cfd'       => ['type' => 'string', 'required' => false, 'default' => ''],
+      'metric'    => ['type' => 'string', 'default' => 'count'], // 'count' (Dauerspender) | 'sum' (Intervallsumme)
       // Text parameters used by the component
       'barometer_text' => ['type' => 'string', 'default' => ''],
       'barometer_text_current' => ['type' => 'string', 'default' => ''],
@@ -61,12 +64,49 @@ add_action('rest_api_init', function () {
     ],
     'permission_callback' => '__return_true',
     'callback' => function ($request) {
-      // Validate required params
+      // Two data sources: a saved Smart Search (search_id) or a per-action cfd.
       $searchId = sanitize_text_field($request['search_id'] ?? '');
-      $goal = $request->get_param('goal');
+      $cfd = sanitize_text_field((string) ($request['cfd'] ?? ''));
+      $goalParam = $request->get_param('goal');
       $type = $request->get_param('type');
-      if ($searchId === '' || $goal === null || $type === null || $type === '') {
-        return new WP_REST_Response('Missing required parameters: search_id, goal, type', 400, ['Content-Type' => 'text/plain; charset=UTF-8']);
+
+      if ($cfd === '' && $searchId === '') {
+        return new WP_REST_Response('Missing required parameters: provide either cfd or search_id (+ goal, type)', 400, ['Content-Type' => 'text/plain; charset=UTF-8']);
+      }
+
+      // Resolve per-action recurring data when a cfd is given.
+      $cfdData = null;
+      if ($cfd !== '') {
+        $metric = sanitize_text_field((string) ($request['metric'] ?? 'count'));
+        $type = ($metric === 'sum') ? 'sum' : 'count';
+        if (function_exists('Flynt\\FRBox\\get_action_recurring_by_cfd')) {
+          $cfdData = \Flynt\FRBox\get_action_recurring_by_cfd($cfd);
+        }
+        if ($cfdData === null) {
+          return new WP_REST_Response('cfd could not be resolved to a fundraising page', 404, ['Content-Type' => 'text/plain; charset=UTF-8']);
+        }
+      } elseif ($type === null || $type === '') {
+        return new WP_REST_Response('Missing required parameter: type', 400, ['Content-Type' => 'text/plain; charset=UTF-8']);
+      }
+
+      // Goal: explicit param wins. For the cfd preview without a goal we derive a
+      // dynamic, "nice" round goal from the current value so the ship sits at a sensible
+      // fill per action (the real per-action recurring goal is a pending SOS decision).
+      if ($goalParam !== null && $goalParam !== '') {
+        $goal = (float) $goalParam;
+      } elseif ($cfdData !== null) {
+        $value = ($type === 'sum')
+          ? (float) ($cfdData['stats']['recurring_sum'] ?? 0)
+          : (int) ($cfdData['stats']['recurring_count'] ?? 0);
+        // Aim for ~70% fill, then round up to a nice number (1/2/2.5/5/10 × 10^n).
+        $target = $value > 0 ? $value / 0.7 : ($type === 'sum' ? 100 : 10);
+        $mag = pow(10, floor(log10(max($target, 1))));
+        $goal = 10 * $mag;
+        foreach ([1, 2, 2.5, 5] as $m) {
+          if ($target <= $m * $mag) { $goal = $m * $mag; break; }
+        }
+      } else {
+        return new WP_REST_Response('Missing required parameter: goal', 400, ['Content-Type' => 'text/plain; charset=UTF-8']);
       }
 
       // Map incoming params into component context
@@ -122,7 +162,12 @@ add_action('rest_api_init', function () {
       }
 
       // Populate live data from FundraisingBox for REST embed (Timber::compile won't run Flynt data filters)
-      if (function_exists('Flynt\\Components\\DonationBarometer\\fetch_donations')) {
+      if ($cfdData !== null) {
+        // Per-action recurring data: count = number of Dauerspende setups, sum = raw interval amounts.
+        $stats = $cfdData['stats'];
+        $params['donor_count'] = (int) ($stats['recurring_count'] ?? 0);
+        $params['current_amount'] = (float) ($stats['recurring_sum'] ?? 0);
+      } elseif (function_exists('Flynt\\Components\\DonationBarometer\\fetch_donations')) {
         $apiData = \Flynt\Components\DonationBarometer\fetch_donations($searchId, $type);
         $params['current_amount'] = (float) ($apiData['current_amount'] ?? 0);
         $params['donor_count'] = (int) ($apiData['donor_count'] ?? 0);
@@ -130,6 +175,16 @@ add_action('rest_api_init', function () {
         // Fallback to zeros to avoid undefined variables in Twig
         $params['current_amount'] = 0.0;
         $params['donor_count'] = 0;
+      }
+
+      // Pre-fill the placeholders in the progress text with the real values server-side,
+      // so the number is correct even if the component's count-up animation does not run
+      // in the embed/iframe context (the {…} tokens would otherwise render as an animated 0-span).
+      if (!empty($params['barometer_text_current'])) {
+        $params['barometer_text_current'] = strtr($params['barometer_text_current'], [
+          '{donor_count}'    => number_format((int) $params['donor_count'], 0, ',', '.'),
+          '{current_amount}' => number_format((float) $params['current_amount'], 0, ',', '.'),
+        ]);
       }
 
       // Render the component using Timber or Flynt helper
@@ -179,7 +234,16 @@ add_action('rest_api_init', function () {
       if (function_exists('wp_head')) {
         wp_head();
       }
-      echo '</head><body>';
+
+      // Compact layout overrides for the per-action (cfd) embed: less whitespace,
+      // bigger ship/bar. Emitted after wp_head so they win over the component CSS.
+      // Scoped to .sos-embed-compact so the OBS/search_id embeds stay unchanged.
+      echo '<style>
+        .sos-embed-compact .donation-barometer__panel{padding:0 !important;max-width:none !important;}
+      </style>';
+
+      $bodyClass = ($cfdData !== null) ? 'sos-embed-compact' : '';
+      echo '</head><body class="' . esc_attr($bodyClass) . '">';
 
       // Rendered component markup
       echo $html;
@@ -206,6 +270,41 @@ add_action('rest_api_init', function () {
         <?php
       }
 
+      // Robust progress setter for the embed: the component's IntersectionObserver-driven
+      // count-up does not reliably fire inside a nested/short iframe, so set fill, ship
+      // position and the numbers directly from the data attributes (no animation needed).
+      $fallbackJs = <<<'JS'
+<script>
+(function () {
+  function apply() {
+    var c = document.querySelector('[name="DonationBarometer"]') || document.querySelector('.donation-barometer');
+    if (!c) return;
+    var goal = parseFloat(c.dataset.goal) || 0;
+    var cur = parseFloat(c.dataset.current) || 0;
+    var don = parseInt(c.dataset.donors, 10) || 0;
+    var val = (c.dataset.displayType === 'count') ? don : cur;
+    var p = goal > 0 ? Math.min(val / goal, 1) : 0;
+    var fill = c.querySelector('.donation-barometer__fill');
+    var bar = c.querySelector('.donation-barometer__bar-container');
+    var ship = c.querySelector('.donation-barometer__ship');
+    if (fill) fill.style.transform = 'scaleX(' + p + ')';
+    if (bar && ship) {
+      var sx = p * (bar.getBoundingClientRect().width - ship.getBoundingClientRect().width);
+      ship.style.setProperty('--ship-x', sx + 'px');
+    }
+    var dc = c.querySelector('.donation-barometer__donor-count');
+    if (dc) dc.textContent = don.toLocaleString('de-DE');
+    var ca = c.querySelector('.donation-barometer__current-amount');
+    if (ca) ca.textContent = cur.toLocaleString('de-DE');
+  }
+  if (document.readyState !== 'loading') { setTimeout(apply, 300); } else { document.addEventListener('DOMContentLoaded', function(){ setTimeout(apply, 300); }); }
+  setTimeout(apply, 1000);
+  window.addEventListener('resize', apply);
+})();
+</script>
+JS;
+      echo $fallbackJs;
+
       echo '</body></html>';
       $out = ob_get_clean();
 
@@ -222,8 +321,9 @@ add_action('rest_pre_serve_request', function ($served, $result, $request, $serv
     if (function_exists('header_remove')) {
       @header_remove('X-Frame-Options');
     }
-    // Allow embedding from common streaming platforms, adjust as needed
-    header("Content-Security-Policy: frame-ancestors 'self' https://*.twitch.tv https://*.youtube.com https://studio.youtube.com https://streamlabs.com");
+    // Allow embedding on the SOS sites (incl. Kinsta staging), the FRBox action iframe,
+    // and common streaming platforms.
+    header("Content-Security-Policy: frame-ancestors 'self' https://sos-humanity.org https://*.sos-humanity.org https://*.kinsta.cloud https://secure.fundraisingbox.com https://*.twitch.tv https://*.youtube.com https://studio.youtube.com https://streamlabs.com");
 
     // If our callback returned a string (full HTML), output it directly and stop default JSON serving
     $data = is_object($result) && method_exists($result, 'get_data') ? $result->get_data() : null;
