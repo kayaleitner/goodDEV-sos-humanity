@@ -4,6 +4,44 @@ import setMandatory from './setMandatory'
 export default function initPaymentFields(component, myForm) {
   const $root = $(component)
 
+  // Wallet pay (Apple/Google Pay via Stripe) is implemented as a one-time
+  // PaymentIntent in the FRBox SDK and does not support recurring intervals.
+  // → only offer these methods for one-time donations (interval '0').
+  const walletMethods = ['stripe_apple_pay', 'stripe_google_pay']
+
+  function getInterval() {
+    const $checked = $root.find('input[name="payment[interval]"]:checked')
+    if ($checked.length) return $checked.val()
+    const $hidden = $root.find('input[name="payment[interval]"][type="hidden"]')
+    return $hidden.length ? $hidden.val() : '0'
+  }
+
+  function applyWalletAvailability() {
+    const isRecurring = getInterval() !== '0'
+    const $pmWrapper = $root.find('.payment-methods')
+    let unselectedWallet = false
+
+    walletMethods.forEach((method) => {
+      const $wrap = $pmWrapper.find(`[data-payment-method="${method}"]`)
+      if (!$wrap.length) return
+      const $input = $wrap.find('input[type="radio"]').first()
+
+      if (isRecurring) {
+        if ($input.is(':checked')) {
+          $input.prop('checked', false)
+          $wrap.removeClass('is-selected')
+          unselectedWallet = true
+        }
+        $wrap.stop(true, true).hide()
+      } else {
+        $wrap.stop(true, true).show()
+      }
+    })
+
+    // If we just removed a selected wallet method, refresh dependent fields/infos
+    if (unselectedWallet) togglePaymentFields()
+  }
+
   function togglePaymentFields() {
     const val = $root.find('[name="payment[payment_method]"]:checked').val()
     const sepaValues = ['sepa_direct_debit', 'wikando_direct_debit', 'bank']
@@ -76,8 +114,13 @@ export default function initPaymentFields(component, myForm) {
       })
       togglePaymentFields()
     })
+
+    // Hide Apple/Google Pay for recurring donations and react to interval changes
+    $root.on('change', 'input[name="payment[interval]"]', applyWalletAvailability)
+    applyWalletAvailability()
+
     togglePaymentFields()
   }
 
-  return { togglePaymentFields, bindMethodSelectionUI }
+  return { togglePaymentFields, bindMethodSelectionUI, applyWalletAvailability }
 }
